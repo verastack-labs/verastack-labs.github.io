@@ -1,6 +1,6 @@
 import { products } from '@/data/products'
 import { process } from '@/data/process'
-import { services } from '@/data/services'
+import { services, tools } from '@/data/services'
 import { booking, site } from '@/data/site'
 import { roleLabel, work } from '@/data/work'
 
@@ -29,7 +29,7 @@ export function homeGraph(): Node {
         founder: { '@id': ids.founder },
         sameAs: [site.githubUrl],
         areaServed: 'Worldwide',
-        knowsAbout: services.map((s) => s.name),
+        knowsAbout: [...services.map((s) => s.name), ...tools],
         makesOffer: [
           ...services.map((s) => ({
             '@type': 'Offer',
@@ -71,6 +71,8 @@ export function llmsText(): string {
     '',
     ...services.map((s) => `- ${s.name}: ${s.blurb} See: ${s.proof.join('; ')}.`),
     '- Anything else that lives on a screen: just ask.',
+    '',
+    `Tools: ${tools.join(', ')}.`,
     '',
     "## Our founder's client work",
     '',
