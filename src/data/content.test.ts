@@ -2,12 +2,13 @@ import { describe, expect, it } from 'vitest'
 import { site } from '@/data/site'
 import { sections } from '@/data/sections'
 import { products } from '@/data/products'
+import { hero } from '@/data/hero'
 
 // Built from its code point so this file never contains the character itself.
 const EM_DASH = String.fromCodePoint(0x2014)
 
 // Add every data module here as it is created.
-const modules: Record<string, unknown> = { site, sections, products }
+const modules: Record<string, unknown> = { site, sections, products, hero }
 
 function collectStrings(value: unknown, path: string): Array<[string, string]> {
   if (typeof value === 'string') return [[path, value]]
@@ -40,5 +41,11 @@ describe('content', () => {
       if (p.status === 'live') expect(p.url).toMatch(/^https:\/\//)
       else expect(p.url).toBeNull()
     }
+  })
+
+  it('points the hero calls to action at real sections', () => {
+    const ids = sections.map((s) => `#${s.id}`)
+    expect(ids).toContain(hero.primary.href)
+    expect(ids).toContain(hero.secondary.href)
   })
 })

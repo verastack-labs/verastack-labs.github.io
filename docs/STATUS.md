@@ -11,14 +11,14 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 ## Where things stand
 
-Foundation built: tokens, fonts, motion system, nav, footer, placeholder scenes, CI. Deploy is gated until launch, so nothing is public yet.
+Foundation and hero built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, placeholder scenes for the rest, CI. Deploy is gated until launch, so nothing is public yet.
 
 | Phase | Status | PR |
 | --- | --- | --- |
 | 0. Spec, status, brief, mockups | done | #1 |
 | 1. Foundation | done | #2 |
-| 2. Hero | next | |
-| 3. Services and configurator demo | planned | |
+| 2. Hero | done | #3 |
+| 3. Services and configurator demo | next | |
 | 4. Work and Products | planned | |
 | 5. Process and About | planned | |
 | 6. Contact | planned | |
@@ -45,7 +45,8 @@ Foundation built: tokens, fonts, motion system, nav, footer, placeholder scenes,
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Hero headline and the `availability` line ("taking projects for Q4 2026" is placeholder).
+- [ ] Hero headline (placeholder copy in `src/data/hero.ts`) and the `availability` line in
+  `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
 - [ ] Contact email address for the site (the footer shows a "Start a project" link instead until it is set in `src/data/site.ts`).
 - [ ] Reply-time promise ("within two working days" is placeholder).
 - [ ] Dollar budget bands (placeholders: under $3k, $3-7k, $7-15k, $15k+). Rupee bands too, if
@@ -64,7 +65,7 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Phases 2 to 7 (spec section 11).
+- [ ] Phases 3 to 7 (spec section 11).
 - [ ] Launch: set the `DEPLOY_ENABLED` repo variable to `true` and enable Pages with GitHub Actions as the source (phase 7).
 - [ ] Configurator demo model: find a CC0 mechanical keyboard model (Poly Haven, Poly Pizza,
   Kenney); headphones if none is good enough. Pre-render the 12 fallback images.
