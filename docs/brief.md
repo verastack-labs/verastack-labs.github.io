@@ -37,6 +37,8 @@ Each product has `-app`, `-internal` (roadmap and planning) and landing-page rep
 - Ultraviolette, X-47 configurator (2025, as an employee). Live at ultraviolette.com/configure.
 - E3 Electric.AI, TRION launch site (2026, freelance). Framer, with a custom configurator in React
   code components and a Razorpay pre-booking flow. Live at e3electric.ai.
+- Cold Stone Creamery Arabia, website and CMS (2026, freelance). Built, not live yet, so no
+  screenshots.
 - Maven Consultancy (event registration with emailed QR passes), Pee Empro Exports (Android QR
   attendance with CSV export), Suggaa Ventures (payments, cancellation flows, pricing data).
 - PixelStack Studio, a design and development agency's site (client project, in progress).

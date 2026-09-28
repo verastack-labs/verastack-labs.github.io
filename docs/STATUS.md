@@ -56,9 +56,11 @@ Content (placeholders are in the design until these arrive):
 - [ ] Cal.com account and the 20-minute event link.
 - [ ] Confirm the nav and footer proposals (spec 6.00 and 6.08); neither was covered in the
   brainstorm.
-- [ ] The unpublished client entry. Its notes and publishing steps are kept privately in the
-  workspace (`notes/verastack-labs-private.md`), not in this public repo. It goes into
-  `src/data/work.ts` only once it is cleared to be shown.
+- [ ] Cold Stone Creamery Arabia launch. It is built (website and CMS) and listed as a text-only
+  `launching soon` row; no visuals until it is live. When it launches, follow spec 7.2: set
+  `status: 'live'`, add media and the live link, decide headliner or supporting, and quote
+  metrics honestly or not at all.
+- [ ] Confirm Cold Stone should appear as a `launching soon` row now, rather than only after launch.
 
 ## Planned, not started
 

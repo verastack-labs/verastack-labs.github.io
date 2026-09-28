@@ -210,7 +210,9 @@ Prototype: [../../mockups/scene-work.html](../../mockups/scene-work.html), optio
 - **Supporting work** (Maven Consultancy, Pee Empro Exports, Suggaa Ventures, PixelStack Studio)
   follows as a list. Hovering a row slides up a signal band with a scrolling marquee of the row's
   text (flowing menu).
-- One further client project is not launched yet. It stays out of this repo entirely (7.2).
+- **Cold Stone Creamery Arabia** (website and CMS, 2026, freelance) is built but not live. Until
+  launch it appears as a supporting row marked `launching soon`, text only: no screenshots, video
+  or live link (7.2).
 - Case study links go to the portfolio's case study pages.
 - Phones: no pin; headliners are full-width cards with the video autoplaying muted only while
   visible; the list has no marquee (tap goes to the case study).
@@ -324,7 +326,7 @@ Wordmark, email, links to the three products, the GitHub org and the founder's p
 | --- | --- |
 | `site.ts` | name, email, Cal.com link, form endpoint, `availability` line, social links |
 | `services.ts` | id, name, blurb, proof lines, order, `lead` flag |
-| `work.ts` | client, project, year, role (`employee` / `freelance`), stack, summary, live URL, case study URL, media, `tier` (`headliner` / `supporting`) |
+| `work.ts` | client, project, year, role (`employee` / `freelance`), stack, summary, live URL, case study URL, media, `tier` (`headliner` / `supporting`), `status` (`live` / `launching`) |
 | `products.ts` | name, pitch, one-liner, platform, meta line, URL, palette, status (`live` / `coming-soon`) |
 | `process.ts` | step name and line |
 | `capabilities.ts` | name and descriptor (About row) |
@@ -332,20 +334,31 @@ Wordmark, email, links to the three products, the GitHub org and the founder's p
 | `budgets.ts` | rupee and dollar bands |
 | `configurator.ts` | demo options, price deltas, image paths |
 
-### 7.2 Unpublished work stays out of the repo
+### 7.2 Cold Stone Creamery Arabia (built, not live)
 
-This repo is public (GitHub Pages on a free org plan requires it), so anything in it is published,
-including data that never renders. Work that is not cleared to be shown is therefore **absent**
-from `work.ts`, not flagged as hidden. Notes for the one such project are kept privately in the
-workspace (`notes/verastack-labs-private.md`, outside every repo) and move into the data only when
-it is cleared.
+Built and delivered, both the website and the CMS, but not launched. It can be named and described
+now; **no visuals until it is live** (screenshots, recordings or before-and-after shots), and no
+live link. In `work.ts` it has `status: 'launching'`, which renders a text-only supporting row
+tagged `launching soon`.
 
-Any metrics quoted for client work include the unflattering ones alongside the flattering (for
-example page weight next to paint times), or none are quoted.
+Source material is the `cold-stone-showcase` folder in the founder's Documents (case study,
+metrics, comparison shots, intro video and poster). Summary for the entry: a regional franchise
+site rebuilt from WordPress 6.4 into a Next.js 16 application with its own CMS; three validated
+enquiry pipelines writing to MariaDB through Prisma; resume uploads checked against their actual
+leading bytes; a store directory of 76 outlets across six countries.
+
+**When it goes live:** set `status: 'live'`, add media and the live link, and decide whether it
+becomes a headliner (which changes the Work headline to "Three launches").
+
+**Metrics must be quoted honestly.** The case study's table omits page weight: the new home page
+transfers about 87 MB against about 10 MB before (the intro video), and third-party hosts on the
+contact page went from 21 to 10, not 2. Either quote page weight alongside the favourable numbers
+or quote no metrics. The same rule applies to any client metrics.
 
 ### 7.3 Content guards (tests)
 
 - No em dashes anywhere in `src/data` or rendered copy.
+- A `launching` entry has no media and no live link.
 - Every `work.ts` entry has a role (so every credit is attributable).
 - Both budget sets exist and have the same number of bands.
 
