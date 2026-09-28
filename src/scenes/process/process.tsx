@@ -41,7 +41,7 @@ function Head() {
 
 // Desktop (full): a short pin while the rail draws; each flap spins up as the tip reaches it.
 function Rail() {
-  const section = useRef<HTMLElement>(null)
+  const section = useRef<HTMLDivElement>(null)
   const [on, setOn] = useState(() => process.steps.map(() => false))
 
   // Layout effect: the pin must be reverted before React removes the pinned node.
@@ -73,7 +73,9 @@ function Rail() {
   }, [])
 
   return (
-    <section id="process" ref={section} className={styles.pinned}>
+    <section id="process">
+      {/* The pin wraps this div, never the section, so every section stays a child of main. */}
+      <div ref={section} className={styles.pinned}>
       <Head />
       <div className={styles.rail}>
         <div className={styles.line} data-line>
@@ -81,6 +83,7 @@ function Rail() {
         </div>
         <Steps on={on} animate withRail />
       </div>
+    </div>
     </section>
   )
 }

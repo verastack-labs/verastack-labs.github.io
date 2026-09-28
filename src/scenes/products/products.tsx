@@ -53,13 +53,14 @@ function Copy({ product }: { product: Product }) {
 
 // Desktop (full): the pinned stage hands itself to each product's palette in turn (spec 6.04).
 function Handover() {
-  const section = useRef<HTMLElement>(null)
+  const section = useRef<HTMLDivElement>(null)
   const [stop, setStop] = useState(0)
 
   // Layout effect: the pin must be reverted before React removes the pinned node.
   useLayoutEffect(() => {
     const el = section.current
-    if (!el) return
+    const host = el?.parentElement
+    if (!el || !host) return
     const panels = [...el.querySelectorAll<HTMLElement>('[data-panel]')]
     const intro = el.querySelector<HTMLElement>('[data-intro]')!
     const palettes = [
@@ -77,9 +78,10 @@ function Handover() {
         panel.style.transform = `translateY(${((1 - o) * 28).toFixed(1)}px)`
         panel.inert = o < 0.5
       })
+      // The nav reads the theme from the section itself.
       const light = f.stop > 0 && products[f.stop - 1].light
-      if (light) el.dataset.navTheme = 'light'
-      else delete el.dataset.navTheme
+      if (light) host.dataset.navTheme = 'light'
+      else delete host.dataset.navTheme
       setStop(f.stop)
     }
     const ctx = gsap.context(() => {
@@ -94,12 +96,14 @@ function Handover() {
     }, el)
     return () => {
       ctx.revert()
-      delete el.dataset.navTheme
+      delete host.dataset.navTheme
     }
   }, [])
 
   return (
-    <section id="products" ref={section} className={styles.handover}>
+    <section id="products">
+      {/* The pin wraps this div, never the section, so every section stays a child of main. */}
+      <div ref={section} className={styles.handover}>
       <div className={styles.intro} data-intro>
         <Label />
         <h2 className={styles.headline}>{HEADLINE}</h2>
@@ -115,6 +119,7 @@ function Handover() {
           <i key={p.id} data-on={stop === i + 1} />
         ))}
       </div>
+    </div>
     </section>
   )
 }

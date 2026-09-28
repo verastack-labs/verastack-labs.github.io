@@ -27,7 +27,7 @@ function ProofLine({ text, animate }: { text: string; animate: boolean }) {
 
 // Desktop (full): one stage pinned for about five viewports (spec 6.02 beats).
 function PinnedServices() {
-  const section = useRef<HTMLElement>(null)
+  const section = useRef<HTMLDivElement>(null)
   const main = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
   const [open, setOpen] = useState(false)
@@ -72,7 +72,9 @@ function PinnedServices() {
   const next = services[1]
 
   return (
-    <section id="services" ref={section} className={styles.pinned} aria-labelledby="services-title">
+    <section id="services" aria-labelledby="services-title">
+      {/* The pin wraps this div, never the section, so every section stays a child of main. */}
+      <div ref={section} className={styles.pinned}>
       <div className="sr-only">
         <h2 id="services-title">Services</h2>
         <ul>
@@ -111,6 +113,7 @@ function PinnedServices() {
           </div>
         </div>
       </div>
+    </div>
     </section>
   )
 }
