@@ -42,6 +42,9 @@
 }
 .pinned[data-live='true'] .demo { pointer-events: auto; }
 
+.more { margin: 6px 0 0 42px; font: 400 12px var(--font-mono); color: var(--muted); }
+.more em { font-style: normal; color: var(--signal); }
+.stacked .more { margin: 22px 0 0; }
 .proof { margin: 0; display: flex; flex-direction: column; font: 400 12.5px/1.8 var(--font-mono); color: var(--muted); }
 .proof b { color: var(--text); font-weight: 500; }
 

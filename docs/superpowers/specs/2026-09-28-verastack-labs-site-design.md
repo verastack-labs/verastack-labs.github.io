@@ -166,7 +166,7 @@ a headline scrolling beneath.
 
 ### 01. Hero
 
-- **Headline** (placeholder copy): "Configurators, commerce and the sites that *launch* them." in
+- **Headline** (placeholder copy): "Web experiences, apps and 3D, built to *launch*." in
   Bricolage 800, with "launch" in signal. A status line in mono (`● taking projects for Q4 2026`)
   reads from `site.ts` (`availability`) and hides when unset.
 - **Calls to action:** "Start a project" (to Contact) and "See the work" (to Work).
@@ -186,8 +186,10 @@ a headline scrolling beneath.
 
 Prototype: [../../mockups/scene-services-v2.html](../../mockups/scene-services-v2.html).
 
-Four services, in this order: **Configurators**, **Commerce & web apps**, **Launch sites**,
-**Desktop apps** (smallest). The section is about five viewports of scroll pinned to one stage.
+Four services, in this order: **Web experiences & 3D** (configurators among them), **Web apps &
+CMS**, **Websites & launches**, **Desktop & mobile apps**, with a line under the index: "+ and
+whatever else lives on a screen. ask." (Broadened on 2026-09-28: the studio takes on any web or app
+project, and configurators are one kind of 3D web work, not the headline.) The section is about five viewports of scroll pinned to one stage.
 Beats, as fractions of the pinned progress:
 
 | Progress | Beat |
@@ -294,10 +296,10 @@ Prototype: [../../mockups/scene-about-v5.html](../../mockups/scene-about-v5.html
 
 - Unpinned. Label `/about // the studio`. Headline "Design and engineering. *One studio.*" (800,
   second sentence in signal).
-- Statement: "VeraStack Labs is a design and engineering studio. **We build configurators,
-  commerce and launch sites for clients, and our own products alongside them.** Design and build
+- Statement: "VeraStack Labs is a design and engineering studio. **We build web experiences,
+  apps, content systems and 3D on the web for clients, and our own products alongside them.** Design and build
   happen in the same hands, so nothing gets lost between a mockup and a handover."
-- **Capabilities row:** Scope, Design, Engineering, Commerce, Launch, each with a one-line mono
+- **Capabilities row:** Scope, Design, Engineering, Systems, Launch, each with a one-line mono
   descriptor and a small status light. When the row enters the viewport it **boots up**: the lights
   flicker on one by one (no lines during the boot). Once the boot ends, a single light walks
   across the five every 1.6 s and a signal underline draws under the lit capability; the first
@@ -324,8 +326,8 @@ Prototypes: [../../mockups/scene-contact-v2.html](../../mockups/scene-contact-v2
   - Blanks are real `<input>`s (with visually hidden labels and `autocomplete`), tinted, dashed
     underline, auto-sized to their content, signal glow on focus, solid once valid.
   - Choices are native `<select>`s styled as signal words with a chevron, auto-sized to the chosen
-    option. Services: a configurator, a commerce flow, a web app, a launch site, a desktop app,
-    something else. Timeline: as soon as possible, within 3 months, within 6 months, no fixed date.
+    option. Services: a website, a web experience, something in 3D, a configurator, a web app, a CMS,
+    a mobile or desktop app, something else. Timeline: as soon as possible, within 3 months, within 6 months, no fixed date.
   - "+ add a note" expands a textarea for links and context.
   - Send stays visually muted until name and a valid email are present. Pressing it early pulses
     the missing blanks in `alert`, focuses the first, and says what is wrong ("a couple of blanks

@@ -24,7 +24,7 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 })
 
-const shareImage = { url: '/og.png', width: 1200, height: 630, alt: `${site.name}: configurators, commerce and launch sites` }
+const shareImage = { url: '/og.png', width: 1200, height: 630, alt: site.title }
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

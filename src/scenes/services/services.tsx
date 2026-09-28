@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { services } from '@/data/services'
+import { services, servicesMore } from '@/data/services'
 import { useScramble } from '@/components/use-scramble'
 import { formatCounter } from '@/lib/counter'
 import { activeService, demoOpenness, snapToHold } from '@/lib/services-beats'
@@ -98,6 +98,9 @@ function PinnedServices() {
               </li>
             ))}
           </ol>
+          <p className={styles.more}>
+            <em>+</em> {servicesMore}
+          </p>
         </div>
         <div className={styles.right}>
           <div className={styles.desc} aria-hidden="true">
@@ -109,7 +112,7 @@ function PinnedServices() {
             </p>
           </div>
           <div className={styles.demo} inert={!open}>
-            <ConfiguratorDemo live mounted={near} running={open} animate holdNote={`02 ${next.name.split(' ')[0].toLowerCase()}`} />
+            <ConfiguratorDemo live mounted={near} running={open} animate holdNote={`02 ${next.short}`} />
           </div>
         </div>
       </div>
@@ -149,6 +152,9 @@ function StackedServices({ animate }: { animate: boolean }) {
           )}
         </div>
       ))}
+      <p className={styles.more}>
+        <em>+</em> {servicesMore}
+      </p>
     </section>
   )
 }

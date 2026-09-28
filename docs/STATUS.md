@@ -50,7 +50,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Hero headline (placeholder copy in `src/data/hero.ts`) and the `availability` line in
+- [ ] Hero headline (placeholder copy in `src/data/hero.ts`, "Web experiences, apps and 3D, built to
+  launch." since the copy was broadened on 2026-09-28) and the `availability` line in
   `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
 - [x] Contact email: `therealriganb@gmail.com` for now (2026-09-28), set once in `src/data/site.ts`
   (`email`). Change it there and the footer, Contact and the form's fallback all follow.
@@ -67,9 +68,6 @@ Content (placeholders are in the design until these arrive):
   placeholder, in `src/data/process.ts`), and whether "a fixed quote" and "weekly previews" are promises we keep.
 - [ ] Mehfil's one-line pitch ("Chai in ten? Rally the group." is placeholder) and whether it has
   a public page to link to yet.
-- [ ] Year for the Tesseract configurator (built as a contract employee at Ultraviolette). The Work
-  credit shows `2025 · as an employee` for Ultraviolette as a whole; say if Tesseract needs its own
-  year or a "contract" note.
 - [ ] Screen recordings of the Ultraviolette X-47 and Tesseract configurators and the E3 TRION site (with poster
   frames). Until then the Work reel shows stand-in artwork (`art` in `src/data/work.ts`); add
   `media: { poster, mp4, webm }` to swap in the recording.
