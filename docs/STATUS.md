@@ -11,13 +11,13 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 ## Where things stand
 
-Design agreed and approved on 2026-09-28. Nothing built yet.
+Foundation built: tokens, fonts, motion system, nav, footer, placeholder scenes, CI. Deploy is gated until launch, so nothing is public yet.
 
 | Phase | Status | PR |
 | --- | --- | --- |
 | 0. Spec, status, brief, mockups | done | #1 |
-| 1. Foundation | next | |
-| 2. Hero | planned | |
+| 1. Foundation | done | #2 |
+| 2. Hero | next | |
 | 3. Services and configurator demo | planned | |
 | 4. Work and Products | planned | |
 | 5. Process and About | planned | |
@@ -37,13 +37,16 @@ Design agreed and approved on 2026-09-28. Nothing built yet.
 - **Border trace**: the book-a-call hover, a signal line drawing round the card, then
   "bring · your · idea".
 - **Motion modes**: `full`, `lite` and `static` from `useMotionPreference()`.
+- **Path pill**: the nav (`src/components/nav/path-pill.tsx`). Opens into the **dock row** on hover
+  at 900 px and wider, and the **section panel** on touch or narrower screens.
+- **Panel mode**: `(hover: none), (max-width: 899px)`.
 
 ## Waiting on Rigan
 
 Content (placeholders are in the design until these arrive):
 
 - [ ] Hero headline and the `availability` line ("taking projects for Q4 2026" is placeholder).
-- [ ] Contact email address for the site.
+- [ ] Contact email address for the site (the footer shows a "Start a project" link instead until it is set in `src/data/site.ts`).
 - [ ] Reply-time promise ("within two working days" is placeholder).
 - [ ] Dollar budget bands (placeholders: under $3k, $3-7k, $7-15k, $15k+). Rupee bands too, if
   the placeholders (under ₹2L, ₹2-5L, ₹5-10L, ₹10L+) are wrong.
@@ -53,7 +56,7 @@ Content (placeholders are in the design until these arrive):
   a public page to link to yet.
 - [ ] Screen recordings of the Ultraviolette X-47 configurator and the E3 TRION site (with poster
   frames).
-- [ ] Cal.com account and the 20-minute event link.
+- [ ] Cal.com account and the 20-minute event link (`site.calLink`; booking links stay hidden until set).
 - [ ] Cold Stone Creamery Arabia launch. It is built (website and CMS) and listed as a text-only
   `launching soon` row; no visuals until it is live. When it launches, follow spec 7.2: set
   `status: 'live'`, add media and the live link, decide headliner or supporting, and quote
@@ -61,7 +64,8 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Phases 1 to 7 (spec section 11).
+- [ ] Phases 2 to 7 (spec section 11).
+- [ ] Launch: set the `DEPLOY_ENABLED` repo variable to `true` and enable Pages with GitHub Actions as the source (phase 7).
 - [ ] Configurator demo model: find a CC0 mechanical keyboard model (Poly Haven, Poly Pizza,
   Kenney); headphones if none is good enough. Pre-render the 12 fallback images.
 - [ ] Custom domain: `public/CNAME` plus DNS. Product pages move under it too.
@@ -80,6 +84,8 @@ Content (placeholders are in the design until these arrive):
 - The configurator demo uses a stand-in product (a keyboard), not client work, so it cannot
   misrepresent whose work it is.
 - No auto-reply to enquiries until the form backend moves.
+- Scene placeholders (`src/components/scene-placeholder.tsx`) stand in for each section until its
+  phase lands; each carries the id the nav tracks.
 
 ## Working rules
 
