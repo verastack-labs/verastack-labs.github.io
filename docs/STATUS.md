@@ -83,6 +83,10 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [ ] Confirm mobile LCP on https://pagespeed.web.dev (Google's servers; the anonymous API quota was
+  used up on 2026-09-28). If it is over 2.5 s there, try dropping the `opsz` axis from Bricolage
+  (smaller font file) before anything else.
+
 - [ ] Cal.com pop-up (spec 6.07): the booking card is always shown. With no `calLink` it opens an
   email asking for a call (`booking` in `src/data/site.ts`); with one it opens the link in a new tab. Load Cal's embed on first click and restyle it to the tokens
   once there is a real link to test against.
@@ -100,8 +104,12 @@ Content (placeholders are in the design until these arrive):
   animations paused off screen (TBT about 300 ms locally) and fixed the tab contrast and footer
   tap spacing. The remaining contrast findings are the unlit process steps and capabilities, dim
   on purpose until they switch on; Lighthouse does not scroll, so it only sees them unlit.
-- LCP sits near the 2.5 s limit on mobile: the headline paints at first paint and counts again when
-  Bricolage swaps in. Watch it if the hero gets heavier.
+- LCP on mobile measured 2.4 to 2.9 s with Lighthouse run on this machine, against a 2.5 s target.
+  Those runs are not trustworthy for paint timing: first paint waits on an idle main thread, and
+  the portfolio site shows the same delay as a control (observed first paint 2.5 s). LCP there
+  equals first paint (the headline), so the page itself paints as soon as it can. Hydration is
+  chunked per scene (#11), and the WebGL field accounts for most lab TBT only because headless
+  Chrome renders it in software.
 
 - Four pinned scenes run back to back (Services, Work, Products, Process). Each hold is sized to
   its content and About is unpinned to give the page a breather.
