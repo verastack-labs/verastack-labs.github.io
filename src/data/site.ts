@@ -6,8 +6,15 @@ export const site = {
   title: 'VeraStack Labs: configurators, commerce and launch sites',
   description:
     'A design and engineering studio. We build configurators, commerce and launch sites for clients, and our own products alongside them.',
-  email: null as string | null,
+  // Every email on the site reads from here: footer, contact and the form's fallback.
+  email: 'therealriganb@gmail.com' as string | null,
   calLink: null as string | null,
+  // Web3Forms access key for the enquiry form (spec 7.4). Public by design; the form cannot send
+  // until it is set.
+  formAccessKey: null as string | null,
+  formEndpoint: 'https://api.web3forms.com/submit',
+  // Placeholder promise until confirmed.
+  replyPromise: 'within two working days',
   availability: null as string | null,
   githubUrl: 'https://github.com/verastack-labs',
   founderName: 'Rigan Burnwal',
