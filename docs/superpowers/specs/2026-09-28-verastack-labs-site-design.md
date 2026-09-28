@@ -411,8 +411,9 @@ or quote no metrics. The same rule applies to any client metrics.
 
 ### 7.4 Form backend, now and later
 
-- **Now:** a hosted form service (Formspree or Web3Forms; choose after checking current free-tier
-  terms at implementation). The form posts with `fetch`; the endpoint lives in `site.ts`.
+- **Now:** Web3Forms (chosen in phase 6: the access key is public by design, honeypot field
+  `botcheck`; Formspree's free plan was 50 submissions a month). The form posts JSON with `fetch`;
+  the endpoint and access key live in `site.ts`.
 - **Later, with the custom domain:** a Cloudflare Worker receiving the form, Cloudflare Turnstile
   for bot checks, and an email API (such as Resend) sending the enquiry to the studio and a copy
   to the visitor. The front end only changes its endpoint; the "copy in your inbox" line returns.
