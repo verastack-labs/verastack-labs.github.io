@@ -35,6 +35,14 @@ export const metadata: Metadata = {
   openGraph: { title: site.title, description: site.description, url: site.url, siteName: site.name, type: 'website', locale: 'en_IN', images: [shareImage] },
   twitter: { card: 'summary_large_image', title: site.title, description: site.description, images: [shareImage] },
   robots: { index: true, follow: true },
+  // The SVG for browsers, PNGs for iOS and for crawlers that skip SVG.
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-48.png', sizes: '48x48', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
 }
 
 export const viewport: Viewport = { themeColor: '#0B0C0A', colorScheme: 'dark' }

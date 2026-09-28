@@ -39,6 +39,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 - **Boot-up**: the About capabilities flickering on one by one, followed by the walking light.
 - **Border trace**: the book-a-call hover, a signal line drawing round the card, then
   "bring · your · idea".
+- **llms.txt**: the plain-text brief for AI answer engines, generated from `src/data/` at build
+  time (`src/lib/structured-data.ts`).
 - **Sentence form**: the Contact enquiry, one sentence with blanks (`src/scenes/contact/`).
 - **Motion modes**: `full`, `lite` and `static` from `useMotionPreference()`.
 - **Path pill**: the nav (`src/components/nav/path-pill.tsx`). Opens into the **dock row** on hover
@@ -80,6 +82,13 @@ Content (placeholders are in the design until these arrive):
   metrics honestly or not at all.
 
 ## Planned, not started
+
+- [ ] Google Search Console (and optionally Bing Webmaster Tools): verify the site and submit
+  `https://verastack-labs.github.io/sitemap.xml`. Verification needs your Google account; send the
+  HTML-tag code and it goes in `metadata.verification` in `src/app/layout.tsx`.
+- [ ] Share caches: platforms keep the old preview of a link for days. After copy changes, refresh
+  with the Facebook Sharing Debugger and LinkedIn Post Inspector. WhatsApp and X refresh on their
+  own schedule.
 
 - [ ] Confirm mobile LCP on https://pagespeed.web.dev (Google's servers; the anonymous API quota was
   used up on 2026-09-28). If it is over 2.5 s there, try dropping the `opsz` axis from Bricolage

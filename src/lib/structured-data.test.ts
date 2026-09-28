@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { homeGraph, jsonLd } from '@/lib/structured-data'
+import { homeGraph, jsonLd, llmsText } from '@/lib/structured-data'
 
 type Node = Record<string, unknown>
 const graph = homeGraph()['@graph'] as Node[]
@@ -13,13 +13,30 @@ describe('structured data', () => {
     expect(org.founder).toEqual({ '@id': person['@id'] })
   })
 
-  it('offers only live products, each with a link', () => {
-    const offers = byType('Organization').makesOffer as Array<{ itemOffered: Node }>
-    expect(offers.map((o) => o.itemOffered.name)).toEqual(['rigseed', 'Riggit'])
-    for (const o of offers) expect(o.itemOffered.url).toMatch(/^https:\/\//)
+  it('offers every service, and only the live products, each with a link', () => {
+    const offers = (byType('Organization').makesOffer as Array<{ itemOffered: Node }>).map((o) => o.itemOffered)
+    expect(offers.filter((o) => o['@type'] === 'Service')).toHaveLength(4)
+    const apps = offers.filter((o) => o['@type'] === 'SoftwareApplication')
+    expect(apps.map((o) => o.name)).toEqual(['rigseed', 'Riggit'])
+    for (const o of apps) expect(o.url).toMatch(/^https:\/\//)
   })
 
   it('escapes anything that could close the script tag', () => {
     expect(jsonLd({ a: '</script>' })).not.toContain('</script>')
+  })
+})
+
+describe('llms.txt', () => {
+  const text = llmsText()
+
+  it('opens with the studio name and credits client work to the founder', () => {
+    expect(text.startsWith('# VeraStack Labs\n')).toBe(true)
+    expect(text).toContain('Done by the founder personally')
+    expect(text).toContain('Ultraviolette')
+  })
+
+  it('never doubles a full stop and never uses an em dash', () => {
+    expect(text).not.toMatch(/[^.]\.\.(?!\.)/)
+    expect(text).not.toContain(String.fromCodePoint(0x2014))
   })
 })
