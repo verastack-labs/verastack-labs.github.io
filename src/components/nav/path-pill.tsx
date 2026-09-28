@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { sections } from '@/data/sections'
-import { site } from '@/data/site'
+import { booking } from '@/data/site'
 import { formatCounter } from '@/lib/counter'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { useActiveSection } from '@/components/nav/use-active-section'
@@ -183,11 +183,14 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
               {s.label}
             </a>
           ))}
-          {site.calLink && (
-            <a className={styles.panelFoot} href={site.calLink} target="_blank" rel="noreferrer">
-              book a 20-min call <b>↗</b>
-            </a>
-          )}
+          <a
+            className={styles.panelFoot}
+            href={booking.href}
+            onClick={pick}
+            {...(booking.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+          >
+            book a 20-min call <b>↗</b>
+          </a>
         </div>
       )}
     </>

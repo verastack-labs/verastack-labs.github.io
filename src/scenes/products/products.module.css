@@ -69,14 +69,13 @@ a.cta:hover { transform: translateY(-2px); }
   padding: 0;
   border: 0;
   background: none;
-  color: var(--text);
+  color: var(--muted);
   font: 700 24px var(--font-display);
   letter-spacing: -0.04em;
-  opacity: 0.35;
   cursor: pointer;
-  transition: opacity 0.4s;
+  transition: color 0.4s;
 }
-.tabs button[aria-selected='true'] { opacity: 1; }
+.tabs button[aria-selected='true'] { color: var(--text); }
 .stack { position: relative; height: 330px; perspective: 1100px; cursor: pointer; }
 .swapCard {
   position: absolute;

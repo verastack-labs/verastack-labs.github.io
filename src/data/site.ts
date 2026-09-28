@@ -21,3 +21,16 @@ export const site = {
   founderUrl: 'https://riganb.github.io',
   basedIn: 'India',
 }
+
+// Where every "book a 20-min call" goes: the Cal.com page once it exists, until then an email to
+// the studio asking for a call. The button is always shown.
+export const booking = site.calLink
+  ? { href: site.calLink, external: true }
+  : site.email
+    ? {
+        href: `mailto:${site.email}?subject=${encodeURIComponent('20-min call')}&body=${encodeURIComponent(
+          "Hi, I'd like to book a 20-minute call. A couple of times that suit me:\n\n",
+        )}`,
+        external: false,
+      }
+    : { href: '#contact', external: false }

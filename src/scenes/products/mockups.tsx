@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import type { Product } from '@/data/products'
 import styles from '@/scenes/products/mockups.module.css'
 
@@ -38,7 +41,7 @@ function Rigseed() {
                 <span>{t.state}</span>
               </div>
               <div className={styles.bar}>
-                <i style={{ '--from': `${t.from}%`, '--to': `${t.to}%` } as React.CSSProperties} />
+                <i style={{ '--from': t.from / 100, '--to': t.to / 100 } as React.CSSProperties} />
               </div>
             </div>
           ))}
@@ -120,8 +123,17 @@ function Mehfil() {
 }
 
 export function ProductMockup({ id }: { id: Product['id'] }) {
+  const root = useRef<HTMLDivElement>(null)
+  const [play, setPlay] = useState(false)
+  useEffect(() => {
+    const el = root.current
+    if (!el) return
+    const io = new IntersectionObserver(([entry]) => setPlay(entry.isIntersecting))
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
   return (
-    <div className={styles.mockup} aria-hidden="true">
+    <div ref={root} className={styles.mockup} data-play={play} aria-hidden="true">
       {id === 'rigseed' ? <Rigseed /> : id === 'riggit' ? <Riggit /> : <Mehfil />}
     </div>
   )

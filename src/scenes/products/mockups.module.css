@@ -24,8 +24,9 @@
 .torrentName span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .torrentName span:last-child { flex: none; color: #7C8B99; }
 .bar { height: 4px; border-radius: 2px; background: #1E2831; overflow: hidden; }
-.bar i { display: block; height: 100%; width: var(--to); border-radius: 2px; background: #8FB0CB; animation: tick 7s linear infinite; }
-@keyframes tick { from { width: var(--from); } to { width: var(--to); } }
+/* Scaled, not resized, so the ticking never triggers layout. */
+.bar i { display: block; height: 100%; border-radius: 2px; background: #8FB0CB; transform-origin: left; transform: scaleX(var(--to)); animation: tick 7s linear infinite; }
+@keyframes tick { from { transform: scaleX(var(--from)); } to { transform: scaleX(var(--to)); } }
 
 /* Riggit */
 .riggit { background: #08120E; color: #E7F5EE; border: 1px solid #16261F; }
@@ -89,3 +90,5 @@
 }
 
 html[data-motion='static'] .mockup * { animation: none !important; }
+/* Off screen the mockups hold still (set by an IntersectionObserver). */
+.mockup[data-play='false'] * { animation-play-state: paused !important; }

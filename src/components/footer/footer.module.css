@@ -4,6 +4,7 @@
 @media (min-width: 900px) { .cols { grid-template-columns: 1.4fr repeat(3, 1fr); } }
 .col { font: 400 12px/1.9 var(--font-mono); color: var(--muted); }
 .col h3 { margin: 0 0 8px; font: 500 10.5px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); opacity: 0.7; }
+.col li { padding: 2px 0; }
 .col a { color: var(--text); text-decoration: none; transition: color 0.2s; }
 .col a:hover { color: var(--signal); }
 .lead { grid-column: 1 / -1; }

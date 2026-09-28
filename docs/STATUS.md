@@ -22,7 +22,7 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 | 4. Work and Products | done | #6 |
 | 5. Process and About | done | #7 |
 | 6. Contact | done | #9 |
-| 7. Launch pass | next | |
+| 7. Launch pass | done | #10 |
 
 ## Names used in this project
 
@@ -71,7 +71,8 @@ Content (placeholders are in the design until these arrive):
   frames). Until then the Work reel shows stand-in artwork (`art` in `src/data/work.ts`); add
   `media: { poster, mp4, webm }` to swap in the recording.
 - [ ] Years for the supporting work (Maven, Pee Empro, Suggaa, PixelStack), if you want them shown.
-- [ ] Cal.com account and the 20-minute event link (`site.calLink`; booking links stay hidden until set).
+- [ ] Cal.com account and the 20-minute event link (`site.calLink`). Until then "book a 20-min call"
+  (Contact, footer, phone nav) opens an email to you with the subject "20-min call".
 - [ ] Cold Stone Creamery Arabia launch. It is built (website and CMS) and listed as a text-only
   `launching soon` row; no visuals until it is live. When it launches, follow spec 7.2: set
   `status: 'live'`, add media and the live link, decide headliner or supporting, and quote
@@ -79,9 +80,8 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Phase 7, the launch pass (spec section 11).
-- [ ] Cal.com pop-up (spec 6.07): the booking card is built and appears once `calLink` is set, but
-  it opens the link in a new tab. Load Cal's embed on first click and restyle it to the tokens
+- [ ] Cal.com pop-up (spec 6.07): the booking card is always shown. With no `calLink` it opens an
+  email asking for a call (`booking` in `src/data/site.ts`); with one it opens the link in a new tab. Load Cal's embed on first click and restyle it to the tokens
   once there is a real link to test against.
 - [ ] Custom domain: `public/CNAME` plus DNS. Product pages move under it too.
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
@@ -91,6 +91,14 @@ Content (placeholders are in the design until these arrive):
 - [ ] Team row in About: built and hidden; it appears once `src/data/team.ts` has real people.
 
 ## Known trade-offs
+
+- Lighthouse, mobile, live site before phase 7: performance 86 (LCP 2.4 s, CLS 0.004, TBT 430 ms),
+  accessibility 93, best practices 100, SEO 100. Phase 7 moved the product mockups to transform
+  animations paused off screen (TBT about 300 ms locally) and fixed the tab contrast and footer
+  tap spacing. The remaining contrast findings are the unlit process steps and capabilities, dim
+  on purpose until they switch on; Lighthouse does not scroll, so it only sees them unlit.
+- LCP sits near the 2.5 s limit on mobile: the headline paints at first paint and counts again when
+  Bricolage swaps in. Watch it if the hero gets heavier.
 
 - Four pinned scenes run back to back (Services, Work, Products, Process). Each hold is sized to
   its content and About is unpinned to give the page a breather.

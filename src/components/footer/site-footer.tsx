@@ -1,5 +1,5 @@
 import { products } from '@/data/products'
-import { site } from '@/data/site'
+import { booking, site } from '@/data/site'
 import { GiantWordmark } from '@/components/footer/giant-wordmark'
 import { IndiaClock } from '@/components/footer/india-clock'
 import styles from '@/components/footer/footer.module.css'
@@ -20,14 +20,12 @@ export function SiteFooter() {
               Start a project
             </a>
           )}
-          {site.calLink && (
-            <div>
-              or{' '}
-              <a href={site.calLink} target="_blank" rel="noreferrer">
-                book a 20-min call ↗
-              </a>
-            </div>
-          )}
+          <div>
+            or{' '}
+            <a href={booking.href} {...(booking.external ? { target: '_blank', rel: 'noreferrer' } : {})}>
+              book a 20-min call ↗
+            </a>
+          </div>
         </div>
         <div className={styles.col}>
           <h3>products</h3>

@@ -444,7 +444,8 @@ or quote no metrics. The same rule applies to any client metrics.
   booking card and form; visible focus rings in signal; `static` mode for reduced motion; real
   text behind every animated heading; the form usable with a screen reader (labels on every
   blank, errors announced with `aria-live`).
-- **SEO:** metadata and a share image per page, sitemap, robots, `Organization` JSON-LD.
+- **SEO:** metadata and a share image per page, sitemap, robots, `Organization` JSON-LD. The share
+  image is drawn at build time by the route `src/app/og.png/route.tsx` so Pages serves it as a PNG.
 - **Phones:** every scene has a `lite` layout (section 6); tested at 375 px wide.
 
 ## 10. Testing
