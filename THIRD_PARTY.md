@@ -7,5 +7,8 @@ copied in (spec section 8).
 | --- | --- | --- |
 | `src/lib/contrast.ts`, `src/lib/scramble.ts` | adapted from riganb.github.io (same author) | n/a |
 
+Packages with notable licences: three.js and @react-three/fiber (MIT), used for the configurator
+demo only.
+
 Fonts: Bricolage Grotesque and JetBrains Mono, both SIL Open Font License, served through
 `next/font`.
