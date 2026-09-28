@@ -1,0 +1,154 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  color: var(--text);
+  pointer-events: none;
+  --pill-bg: rgba(11, 12, 10, 0.72);
+  --pill-line: var(--line);
+  --hi: var(--signal);
+  --hi-ink: var(--ink);
+  --path: var(--signal);
+  --idle: var(--muted);
+  transition: color 0.35s;
+}
+.header > * { pointer-events: auto; }
+.header[data-theme='light'] {
+  color: #1a1410;
+  --pill-bg: rgba(244, 235, 218, 0.82);
+  --pill-line: rgba(26, 20, 16, 0.2);
+  --hi: #1a1410;
+  --hi-ink: #f4ebda;
+  --path: #b93e29;
+  --idle: #5b4d42;
+}
+.wordmark { font-weight: 800; font-size: 17px; letter-spacing: -0.04em; white-space: nowrap; padding-top: 9px; color: inherit; text-decoration: none; }
+.wordmark em { font-style: normal; color: var(--path); }
+.header:not([data-theme='light']) .wordmark em { color: var(--signal); }
+.wordmark span { font-weight: 500; opacity: 0.55; }
+
+.nav { position: relative; margin-left: auto; }
+.pill {
+  position: relative;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid var(--pill-line);
+  background: var(--pill-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.35s, border-color 0.35s;
+}
+.path {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 0 16px;
+  white-space: nowrap;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.25s, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.seg { font: 500 12.5px var(--font-mono); color: var(--path); min-width: 9ch; text-align: left; }
+.count { font: 400 11px var(--font-mono); opacity: 0.55; }
+.caret {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  font: 500 11px var(--font-mono);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.row {
+  position: absolute; inset: 0 auto 0 0;
+  display: flex; align-items: center; gap: 2px; padding: 0 4px;
+  list-style: none; margin: 0; white-space: nowrap;
+  pointer-events: none;
+}
+.row a {
+  position: relative; z-index: 1;
+  display: flex; align-items: baseline; gap: 6px;
+  padding: 8px 12px; border-radius: 999px;
+  font: 500 12px var(--font-mono); color: var(--idle); text-decoration: none;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.25s, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s;
+  transition-delay: calc(var(--i) * 40ms);
+}
+.row a small { font-size: 10px; opacity: 0.6; }
+.row a:hover, .row a:focus-visible { color: inherit; }
+.row a[aria-current='true'] { color: var(--hi-ink); }
+.highlight {
+  list-style: none;
+  position: absolute; top: 4px; bottom: 4px; left: 0; width: 0;
+  border-radius: 999px; background: var(--hi); opacity: 0;
+  transition: left 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s 0.1s, background 0.35s;
+}
+.open .path { opacity: 0; transform: translateX(-14px); pointer-events: none; }
+.open .row { pointer-events: auto; }
+.open .row a { opacity: 1; transform: none; }
+.open .highlight { opacity: 1; }
+
+.cta {
+  flex: none; margin-left: 10px;
+  background: var(--hi); color: var(--hi-ink);
+  border-radius: 999px; padding: 10px 15px;
+  font: 600 13px var(--font-body); white-space: nowrap; text-decoration: none;
+}
+.header:not([data-theme='light']) .cta { background: var(--signal); color: var(--ink); }
+
+/* Touch: the pill stays a path; a vertical panel lists every section by name. */
+.panel {
+  position: fixed; left: 14px; right: 14px; top: 66px; z-index: 49;
+  border-radius: 18px; border: 1px solid var(--pill-line);
+  background: color-mix(in srgb, var(--ink) 94%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  padding: 8px; display: grid; gap: 2px;
+  transform-origin: top center; transform: translateY(-8px) scaleY(0.96); opacity: 0; pointer-events: none;
+  transition: opacity 0.25s, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.panelOpen { opacity: 1; transform: none; pointer-events: auto; }
+.panel a {
+  display: flex; align-items: baseline; gap: 12px; padding: 12px 14px; border-radius: 12px;
+  color: var(--text); text-decoration: none; font-weight: 700; font-size: 22px; letter-spacing: -0.04em;
+  opacity: 0; transform: translateY(-6px);
+  transition: opacity 0.25s, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s;
+  transition-delay: calc(0.05s + var(--i) * 40ms);
+}
+.panel a small { font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0; min-width: 18px; }
+.panel a[aria-current='true'] { background: var(--signal); color: var(--ink); }
+.panel a[aria-current='true'] small { color: var(--ink); }
+.panelOpen a { opacity: 1; transform: none; }
+.panelFoot { display: flex; justify-content: space-between; padding: 10px 14px 6px; margin-top: 6px; border-top: 1px solid var(--line); font: 400 11px var(--font-mono); color: var(--muted); text-decoration: none; }
+.panelFoot b { color: var(--signal); font-weight: 500; }
+.header[data-theme='light'] .panel { background: rgba(244, 235, 218, 0.96); border-color: rgba(26, 20, 16, 0.2); }
+.header[data-theme='light'] .panel a { color: #1a1410; }
+.header[data-theme='light'] .panel a small { color: #5b4d42; }
+.header[data-theme='light'] .panel a[aria-current='true'] { background: #1a1410; color: #f4ebda; }
+.header[data-theme='light'] .panel a[aria-current='true'] small { color: #f4ebda; }
+.touch.open .caret { transform: rotate(180deg); }
+.touch .path { opacity: 1; transform: none; pointer-events: auto; }
+.touch .row { display: none; }
+
+@media (max-width: 640px) {
+  .header { padding: 14px; }
+  .wordmark span { display: none; }
+  .count { display: none; }
+  .cta { padding: 10px 12px; font-size: 12px; margin-left: 8px; }
+}
+
+/* Static motion mode: no stagger, no width or slide animation. */
+:global(html[data-motion='static']) .pill,
+:global(html[data-motion='static']) .row a,
+:global(html[data-motion='static']) .path,
+:global(html[data-motion='static']) .panel,
+:global(html[data-motion='static']) .panel a,
+:global(html[data-motion='static']) .highlight {
+  transition: none;
+}
