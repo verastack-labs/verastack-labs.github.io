@@ -1,0 +1,111 @@
+.label { margin: 0; font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.label em { font-style: normal; color: var(--signal); }
+.headline {
+  margin: 12px 0 0;
+  max-width: 13ch;
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96;
+  font-size: clamp(40px, 6.6vw, 100px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+/* Shared product copy: colours come from the stage (--fg) or the block. */
+.copy { min-width: 0; }
+.kicker { margin: 0; font: 500 11px var(--font-mono); opacity: 0.7; }
+.pitch {
+  margin: 12px 0 14px;
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96;
+  font-size: clamp(34px, 4.6vw, 72px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+.line { margin: 0 0 16px; max-width: 34ch; font-size: 17px; line-height: 1.45; opacity: 0.85; }
+.meta { margin: 0; font: 400 12px/1.8 var(--font-mono); opacity: 0.75; }
+.cta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+a.cta:hover { transform: translateY(-2px); }
+.ctaBrutal { border: 2.5px solid #1A1410; box-shadow: 3px 3px 0 #1A1410; }
+
+/* ---------- Hand-over (full): --bg and --fg are tweened from scroll ---------- */
+.handover {
+  --bg: var(--ink);
+  --fg: var(--text);
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+}
+.intro { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 40px; }
+.panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+  padding: 96px 72px 40px 40px;
+  opacity: 0;
+}
+.dots { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 9px; }
+.dots i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.25; transition: opacity 0.3s; }
+.dots i[data-on='true'] { opacity: 1; }
+
+/* ---------- Card swap (lite) ---------- */
+.swap { padding: 112px 24px 72px; border-bottom: 1px solid var(--line); overflow: hidden; }
+@media (min-width: 768px) { .swap { padding: 140px 40px 96px; } }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 26px 0 8px; }
+.tabs button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: 700 24px var(--font-display);
+  letter-spacing: -0.04em;
+  opacity: 0.35;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+.tabs button[aria-selected='true'] { opacity: 1; }
+.stack { position: relative; height: 330px; perspective: 1100px; cursor: pointer; }
+.swapCard {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(420px, 88%);
+  padding: 16px;
+  border-radius: 16px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s, filter 0.8s;
+}
+.swapCard[data-depth='0'] { transform: translate(-50%, -50%) rotateY(-12deg) rotateX(4deg); }
+.swapCard[data-depth='1'] { transform: translate(-50%, -50%) translate3d(26px, -24px, -90px) rotateY(-12deg) rotateX(4deg); filter: brightness(0.75); }
+.swapCard[data-depth='2'] { transform: translate(-50%, -50%) translate3d(52px, -48px, -180px) rotateY(-12deg) rotateX(4deg); filter: brightness(0.55); opacity: 0.6; }
+.swapCopy { margin-top: 18px; min-height: 180px; }
+.swapPitch { margin: 0 0 8px; font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -0.05em; }
+.swapLine { margin: 0 0 8px; max-width: 36ch; font-size: 16px; line-height: 1.45; color: var(--muted); }
+.swapMeta { margin: 0; font: 400 11.5px var(--font-mono); color: var(--muted); }
+
+/* ---------- Blocks (static) ---------- */
+.blocks { border-bottom: 1px solid var(--line); }
+.blocksHead { padding: 112px 24px 48px; }
+@media (min-width: 768px) { .blocksHead { padding: 140px 40px 64px; } }
+.block {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+  padding: 56px 24px;
+  background: var(--bg);
+  color: var(--fg);
+}
+@media (min-width: 900px) { .block { grid-template-columns: 1fr 1.15fr; padding: 88px 40px; } }
