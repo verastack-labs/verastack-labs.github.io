@@ -1,0 +1,27 @@
+.footer { padding: 56px 24px 0; border-top: 1px solid var(--line); overflow: hidden; }
+@media (min-width: 768px) { .footer { padding: 72px 40px 0; } }
+.cols { display: grid; gap: 28px; grid-template-columns: 1fr 1fr; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+@media (min-width: 900px) { .cols { grid-template-columns: 1.4fr repeat(3, 1fr); } }
+.col { font: 400 12px/1.9 var(--font-mono); color: var(--muted); }
+.col h3 { margin: 0 0 8px; font: 500 10.5px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); opacity: 0.7; }
+.col a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+.col a:hover { color: var(--signal); }
+.lead { grid-column: 1 / -1; }
+@media (min-width: 900px) { .lead { grid-column: auto; } }
+.mail { display: inline-block; font: 800 clamp(22px, 2.8vw, 34px) var(--font-body); letter-spacing: -0.045em; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
+.mail:hover { border-color: var(--signal); color: var(--text) !important; }
+.soon { opacity: 0.6; }
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 8px var(--signal); margin-right: 7px; vertical-align: 1px; animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.35; } }
+.time { color: var(--text); font-weight: 500; }
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 16px 0; font: 400 11px var(--font-mono); color: #6b6f63; }
+.top { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 999px; padding: 8px 13px; font: 500 11.5px var(--font-mono); text-decoration: none; }
+.top:hover { border-color: var(--signal); color: var(--signal); }
+.clip { overflow: hidden; display: flex; align-items: flex-start; }
+.giant { display: inline-block; margin: 0.02em 0 0 -0.03em; line-height: 0.8; font-weight: 800; font-variation-settings: 'opsz' 96; letter-spacing: -0.065em; white-space: nowrap; user-select: none; }
+.ch { display: inline-block; transform: translateY(105%); transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.in .ch { transform: none; }
+.slash { color: var(--signal); }
+.labs { opacity: 0.28; }
+:global(html[data-motion='static']) .ch { transform: none; transition: none; }
+:global(html[data-motion='static']) .dot { animation: none; }

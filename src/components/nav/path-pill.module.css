@@ -14,7 +14,10 @@
   --hi-ink: var(--ink);
   --path: var(--signal);
   --idle: var(--muted);
-  transition: color 0.35s;
+  --fade: rgba(11, 12, 10, 0.9);
+  /* A soft fade so the wordmark never sits directly on a headline scrolling beneath it. */
+  background: linear-gradient(to bottom, var(--fade), transparent);
+  transition: color 0.35s, background 0.35s;
 }
 .header > * { pointer-events: auto; }
 .header[data-theme='light'] {
@@ -25,6 +28,7 @@
   --hi-ink: #f4ebda;
   --path: #b93e29;
   --idle: #5b4d42;
+  --fade: rgba(244, 235, 218, 0.9);
 }
 .wordmark { font-weight: 800; font-size: 17px; letter-spacing: -0.04em; white-space: nowrap; padding-top: 9px; color: inherit; text-decoration: none; }
 .wordmark em { font-style: normal; color: var(--path); }

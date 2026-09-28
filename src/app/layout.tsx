@@ -5,6 +5,7 @@ import { site } from '@/data/site'
 import { MotionAttribute } from '@/lib/motion/motion-attribute'
 import { SmoothScroll } from '@/lib/motion/smooth-scroll'
 import { SiteHeader } from '@/components/nav/site-header'
+import { SiteFooter } from '@/components/footer/site-footer'
 import { tokensToCss } from '@/styles/tokens'
 import './globals.css'
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SmoothScroll />
         <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   )
