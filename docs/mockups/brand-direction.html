@@ -1,0 +1,240 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;125,800;125,900&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .dirs{display:grid;gap:28px}
+  .dirs .card{cursor:pointer}
+  .dirs .card-image{aspect-ratio:auto;display:block;background:none}
+  .hero{position:relative;height:460px;overflow:hidden;isolation:isolate}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:-1}
+  .hero *{box-sizing:border-box}
+  .hero .in{position:relative;height:100%;padding:22px 30px;display:flex;flex-direction:column;justify-content:space-between}
+  .hero nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .hero nav .links{display:flex;gap:22px;align-items:center}
+  .hero h1{margin:0}
+  .hero .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+  .kit{display:grid;grid-template-columns:1.1fr 1.4fr 1.5fr;border-top:1px solid rgba(255,255,255,.08)}
+  .kit>div{padding:16px 20px;border-right:1px solid rgba(255,255,255,.08);min-width:0}
+  .kit>div:last-child{border-right:0}
+  .kit .lbl{font:500 10px/1 'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.55;margin-bottom:12px}
+  .sw{display:flex;gap:6px}
+  .sw span{flex:1;height:46px;border-radius:4px;position:relative;border:1px solid rgba(255,255,255,.08)}
+  .sw span i{position:absolute;left:6px;bottom:5px;font:500 9px/1 'Geist Mono',monospace;font-style:normal;opacity:.8}
+  .prods{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .prod{border-radius:6px;padding:10px 11px;height:64px;display:flex;flex-direction:column;justify-content:space-between;font-size:12px}
+  .prod small{font:400 9.5px/1.2 'Geist Mono',monospace;opacity:.7}
+  @media(max-width:820px){
+    .kit{grid-template-columns:1fr}
+    .kit>div{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .hero{height:520px}
+    .hero nav .links span:not(.cta){display:none}
+    .hero .in{padding:18px}
+  }
+
+  /* ---------- A. Monolith ---------- */
+  .dA{background:#0A0A0B;color:#ECEAE4}
+  .dA .hero{font-family:'Inter Tight',sans-serif}
+  .dA .wm{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:15px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+  .dA .wm .mk{display:grid;gap:2px}
+  .dA .wm .mk b{display:block;height:3px;background:#ECEAE4}
+  .dA .wm .mk b:nth-child(1){width:14px}.dA .wm .mk b:nth-child(2){width:10px}.dA .wm .mk b:nth-child(3){width:14px}
+  .dA .wm sup{font:500 9px 'Geist Mono',monospace;letter-spacing:.14em;opacity:.6;vertical-align:top;margin-left:2px}
+  .dA nav .links{font:500 11px 'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#9d9a92}
+  .dA .cta{border:1px solid rgba(236,234,228,.35);padding:7px 12px;border-radius:999px;color:#ECEAE4}
+  .dA h1{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:clamp(34px,6.2vw,84px);line-height:.86;letter-spacing:-.035em}
+  .dA h1 .thin{font-stretch:100%;font-weight:400;letter-spacing:-.04em;color:#9d9a92}
+  .dA .foot{font:400 11px/1.5 'Geist Mono',monospace;color:#9d9a92;text-transform:uppercase;letter-spacing:.06em}
+  .dA .type .d{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:30px;line-height:1;letter-spacing:-.03em}
+  .dA .type p{margin:8px 0 0;font-size:12px;line-height:1.5;color:#9d9a92}
+
+  /* ---------- B. Signal ---------- */
+  .dB{background:#0B0C0A;color:#F2F3EE}
+  .dB .hero{font-family:'Bricolage Grotesque',sans-serif}
+  .dB .wm{font-weight:800;font-size:18px;letter-spacing:-.04em}
+  .dB .wm em{font-style:normal;color:#D4FF3F}
+  .dB .wm span{font-weight:500;opacity:.55}
+  .dB nav .links{font:400 12px 'JetBrains Mono',monospace;color:#A3A69B}
+  .dB .cta{background:#D4FF3F;color:#0B0C0A;padding:8px 13px;border-radius:6px;font-weight:500}
+  .dB h1{font-weight:800;font-variation-settings:'opsz' 96;font-size:clamp(36px,6.4vw,88px);line-height:.9;letter-spacing:-.055em;max-width:14ch}
+  .dB h1 em{font-style:normal;color:#D4FF3F}
+  .dB .foot{font:400 11.5px/1.5 'JetBrains Mono',monospace;color:#A3A69B}
+  .dB .foot b{color:#D4FF3F;font-weight:500}
+  .dB .type .d{font-weight:800;font-variation-settings:'opsz' 96;font-size:32px;line-height:1;letter-spacing:-.05em}
+  .dB .type p{margin:8px 0 0;font:400 11.5px/1.55 'JetBrains Mono',monospace;color:#A3A69B}
+
+  /* ---------- C. Noir ---------- */
+  .dC{background:#0B0A10;color:#EEEBF5}
+  .dC .hero{font-family:'Inter Tight',sans-serif}
+  .dC .wm{font-family:'Instrument Serif',serif;font-size:22px;letter-spacing:-.01em}
+  .dC .wm i{color:#A5A3FF}
+  .dC nav .links{font-size:12.5px;color:#A29FB3}
+  .dC .cta{color:#EEEBF5;border-bottom:1px solid #A5A3FF;padding-bottom:2px}
+  .dC h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,7vw,100px);line-height:.92;letter-spacing:-.025em;max-width:13ch}
+  .dC h1 i{color:#A5A3FF}
+  .dC .foot{font-size:12px;color:#A29FB3}
+  .dC .type .d{font-family:'Instrument Serif',serif;font-size:36px;line-height:1;letter-spacing:-.02em}
+  .dC .type .d i{color:#A5A3FF}
+  .dC .type p{margin:8px 0 0;font-size:12px;line-height:1.5;color:#A29FB3}
+</style>
+
+<h2>Which brand direction feels like VeraStack Labs?</h2>
+<p class="subtitle">Three directions, each shown as the real hero with a live WebGL background (move your cursor over them). All three keep the studio neutral so the products keep their own colours. Pick the feeling; exact colours, weights and copy get tuned afterwards.</p>
+
+<div class="dirs">
+
+  <!-- A -->
+  <div class="card dA" data-choice="monolith" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero">
+        <canvas data-shader="monolith"></canvas>
+        <div class="in">
+          <nav>
+            <div class="wm"><span class="mk"><b></b><b></b><b></b></span>VERASTACK<sup>LABS</sup></div>
+            <div class="links"><span>Services</span><span>Work</span><span>Products</span><span class="cta">Start a project</span></div>
+          </nav>
+          <h1>We build<br>configurators<br><span class="thin">commerce &amp; launches</span></h1>
+          <div class="foot"><span>Configurators / Commerce / Launch sites / Desktop</span><span>Scroll ↓</span></div>
+        </div>
+      </div>
+      <div class="kit">
+        <div><div class="lbl">Palette</div><div class="sw">
+          <span style="background:#0A0A0B"><i style="color:#ECEAE4">#0A0A0B</i></span>
+          <span style="background:#1A1A1C"><i style="color:#ECEAE4">#1A1A1C</i></span>
+          <span style="background:#9D9A92"><i style="color:#0A0A0B">#9D9A92</i></span>
+          <span style="background:#ECEAE4"><i style="color:#0A0A0B">#ECEAE4</i></span>
+        </div></div>
+        <div class="type"><div class="lbl">Type · Archivo Expanded + Geist Mono</div><div class="d">CONFIGURE</div><p>No colour accent at all. The light itself is the accent: chrome and a thin iridescent sheen in the WebGL.</p></div>
+        <div><div class="lbl">Products inside it</div><div class="prods">
+          <div class="prod" style="background:#10151A;color:#8FB0CB;border:1px solid #8FB0CB33"><b>rigseed</b><small>Desktop · Tauri</small></div>
+          <div class="prod" style="background:#0E1713;color:#34D399;border:1px solid #34D39933"><b>Riggit</b><small>Desktop · Tauri</small></div>
+          <div class="prod" style="background:#F3EAD8;color:#B93E29"><b>Mehfil</b><small style="color:#C98A1B;opacity:1">PWA · soon</small></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="card-body"><h3>A. Monolith</h3><p>Black and bone, ultra-wide heavy caps, mono labels. No accent colour: the WebGL is liquid chrome with a faint rainbow sheen, so the spectacle is light, not hue. It reads as the most premium and "product company", like a high-end hardware brand. The products are the only colour on the whole site.</p></div>
+  </div>
+
+  <!-- B -->
+  <div class="card dB" data-choice="signal" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero">
+        <canvas data-shader="signal"></canvas>
+        <div class="in">
+          <nav>
+            <div class="wm">verastack<em>/</em><span>labs</span></div>
+            <div class="links"><span>services</span><span>work</span><span>products</span><span class="cta">Start a project</span></div>
+          </nav>
+          <h1>Configurators, commerce and the sites that <em>launch</em> them.</h1>
+          <div class="foot"><span><b>●</b> taking projects for Q4 2026</span><span>scroll ↓</span></div>
+        </div>
+      </div>
+      <div class="kit">
+        <div><div class="lbl">Palette</div><div class="sw">
+          <span style="background:#0B0C0A"><i style="color:#F2F3EE">#0B0C0A</i></span>
+          <span style="background:#1B1D18"><i style="color:#F2F3EE">#1B1D18</i></span>
+          <span style="background:#F2F3EE"><i style="color:#0B0C0A">#F2F3EE</i></span>
+          <span style="background:#D4FF3F"><i style="color:#0B0C0A">#D4FF3F</i></span>
+        </div></div>
+        <div class="type"><div class="lbl">Type · Bricolage Grotesque + JetBrains Mono</div><div class="d">build/ship</div><p>// one hot accent, used sparingly: the slash, the CTA, live states.</p></div>
+        <div><div class="lbl">Products inside it</div><div class="prods">
+          <div class="prod" style="background:#10151A;color:#8FB0CB;border:1px solid #8FB0CB33"><b>rigseed</b><small>Desktop · Tauri</small></div>
+          <div class="prod" style="background:#0E1713;color:#34D399;border:1px solid #34D39933"><b>Riggit</b><small>Desktop · Tauri</small></div>
+          <div class="prod" style="background:#F3EAD8;color:#B93E29"><b>Mehfil</b><small style="color:#C98A1B;opacity:1">PWA · soon</small></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="card-body"><h3>B. Signal</h3><p>Near-black with a single electric chartreuse, a characterful grotesk and code-like mono. The WebGL is a reactive dot matrix that ripples under the cursor, like a live display. The most energetic and "engineering studio" of the three, and the most distinctive in a sea of purple-gradient agency sites. Risk: chartreuse sits close to Riggit's green, so the accent must stay tiny.</p></div>
+  </div>
+
+  <!-- C -->
+  <div class="card dC" data-choice="noir" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero">
+        <canvas data-shader="noir"></canvas>
+        <div class="in">
+          <nav>
+            <div class="wm">VeraStack <i>Labs</i></div>
+            <div class="links"><span>Services</span><span>Work</span><span>Products</span><span class="cta">Start a project</span></div>
+          </nav>
+          <h1>Software you can <i>feel</i> before you buy it.</h1>
+          <div class="foot"><span>Configurators · Commerce · Launch sites · Desktop apps</span><span>Scroll</span></div>
+        </div>
+      </div>
+      <div class="kit">
+        <div><div class="lbl">Palette</div><div class="sw">
+          <span style="background:#0B0A10"><i style="color:#EEEBF5">#0B0A10</i></span>
+          <span style="background:#2A2748"><i style="color:#EEEBF5">#2A2748</i></span>
+          <span style="background:#A5A3FF"><i style="color:#0B0A10">#A5A3FF</i></span>
+          <span style="background:#EEEBF5"><i style="color:#0B0A10">#EEEBF5</i></span>
+        </div></div>
+        <div class="type"><div class="lbl">Type · Instrument Serif + Inter Tight</div><div class="d">Made to be <i>felt</i></div><p>A soft periwinkle glow in deep ink. Serif headlines with italic emphasis, a clean sans for everything else.</p></div>
+        <div><div class="lbl">Products inside it</div><div class="prods">
+          <div class="prod" style="background:#10151A;color:#8FB0CB;border:1px solid #8FB0CB33"><b>rigseed</b><small>Desktop · Tauri</small></div>
+          <div class="prod" style="background:#0E1713;color:#34D399;border:1px solid #34D39933"><b>Riggit</b><small>Desktop · Tauri</small></div>
+          <div class="prod" style="background:#F3EAD8;color:#B93E29"><b>Mehfil</b><small style="color:#C98A1B;opacity:1">PWA · soon</small></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="card-body"><h3>C. Noir</h3><p>Deep ink, a drifting periwinkle nebula with film grain, and a big editorial serif. The most emotional and cinematic, like a film title sequence. It sits closest to the personal site's editorial serif, which ties the two sites together, but also makes them less distinct. Risk: serif-plus-glow is a look many studios use.</p></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var HEAD = 'precision highp float;uniform vec2 r;uniform float t;uniform vec2 m;' +
+    'float h(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}' +
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}' +
+    'float fbm(vec2 p){float v=0.,a=.5;for(int k=0;k<5;k++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}';
+  var FRAG = {
+    monolith: HEAD + 'void main(){vec2 uv=(gl_FragCoord.xy-.5*r)/r.y;vec2 p=uv*1.5+m*.25;' +
+      'float w=fbm(p+fbm(p*1.2+t*.04)*1.6);float g=fbm(p*1.4+vec2(w*2.2,t*.03));' +
+      'float b=sin(g*20.+w*6.+t*.35)*.5+.5;float spec=pow(b,7.)*smoothstep(.25,.75,g);' +
+      'vec3 ir=.5+.5*cos(6.2831*(g*1.6+w+vec3(0.,.33,.67)));' +
+      'vec3 c=vec3(.04)+vec3(.92,.91,.89)*spec*.85+ir*pow(b,14.)*.22*smoothstep(.35,.8,g);' +
+      'c*=smoothstep(1.25,.2,length(uv*vec2(.8,1.)-vec2(.35,.1)));c=max(c,vec3(.039,.039,.043));' +
+      'gl_FragColor=vec4(c,1.);}',
+    signal: HEAD + 'void main(){float cs=13.;vec2 px=gl_FragCoord.xy;vec2 id=floor(px/cs);vec2 f=fract(px/cs)-.5;' +
+      'vec2 uv=(id*cs-.5*r)/r.y;float nn=fbm(uv*2.2+vec2(t*.07,-t*.03));' +
+      'float wv=sin(uv.x*5.-t*.9+nn*5.)*.5+.5;float mp=length(uv-m*vec2(r.x/r.y,1.));' +
+      'float rip=exp(-mp*4.)*(.6+.4*sin(mp*40.-t*6.));float e=clamp(wv*nn*1.7+rip*.8,0.,1.);' +
+      'float s=mix(.07,.44,e*e);float d=smoothstep(s,s-.09,length(f));' +
+      'vec3 c=mix(vec3(.17,.18,.16),vec3(.83,1.,.25),smoothstep(.55,.92,e))*d;' +
+      'float side=smoothstep(-.35,.55,uv.x)*.85+.15;c*=side*smoothstep(1.3,.3,abs(uv.y)*1.1);' +
+      'gl_FragColor=vec4(c*.9+vec3(.043,.047,.039),1.);}',
+    noir: HEAD + 'void main(){vec2 uv=(gl_FragCoord.xy-.5*r)/r.y;vec2 p=uv*1.2+m*.15;' +
+      'float a=fbm(p+vec2(t*.03,t*.02));float b=fbm(p*1.7+a*2.+vec2(-t*.02,t*.04));' +
+      'vec3 ink=vec3(.043,.039,.063);vec3 deep=vec3(.165,.153,.282);vec3 peri=vec3(.647,.639,1.);' +
+      'float k=b+.35*smoothstep(1.1,0.,length(uv-vec2(.55,.15)))-.05;' +
+      'vec3 c=mix(ink,deep*1.5,smoothstep(.25,.6,k));c=mix(c,peri,smoothstep(.5,.85,k)*.7);' +
+      'c+=vec3(1.,.88,.96)*pow(smoothstep(.65,.95,k),3.)*.45;' +
+      'c*=smoothstep(1.5,.15,length(uv-vec2(.5,.2)));c=max(c,ink);' +
+      'c+=(h(gl_FragCoord.xy+fract(t)*100.)-.5)*.05;gl_FragColor=vec4(c,1.);}'
+  };
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('canvas[data-shader]').forEach(function(cv){
+    var gl = cv.getContext('webgl', {antialias:false, premultipliedAlpha:false});
+    if(!gl) return;
+    function sh(type, src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);
+      if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));return s;}
+    var pr=gl.createProgram();
+    gl.attachShader(pr, sh(gl.VERTEX_SHADER,'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}'));
+    gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, FRAG[cv.dataset.shader]));
+    gl.linkProgram(pr); gl.useProgram(pr);
+    var buf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(pr,'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var uR=gl.getUniformLocation(pr,'r'), uT=gl.getUniformLocation(pr,'t'), uM=gl.getUniformLocation(pr,'m');
+    var mx=0,my=0,tx=0,ty=0,visible=false,raf=0,t0=performance.now();
+    function size(){var d=Math.min(devicePixelRatio||1,1.5);var w=cv.clientWidth*d|0,h=cv.clientHeight*d|0;
+      if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h);}}
+    cv.parentElement.addEventListener('pointermove',function(e){var b=cv.getBoundingClientRect();
+      tx=(e.clientX-b.left)/b.width-.5;ty=.5-(e.clientY-b.top)/b.height;});
+    function frame(now){size();mx+=(tx-mx)*.06;my+=(ty-my)*.06;
+      gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,(now-t0)/1000);gl.uniform2f(uM,mx,my);
+      gl.drawArrays(gl.TRIANGLES,0,3);if(visible&&!reduce)raf=requestAnimationFrame(frame);}
+    new IntersectionObserver(function(es){visible=es[0].isIntersecting;cancelAnimationFrame(raf);
+      if(visible)raf=requestAnimationFrame(frame);}).observe(cv);
+    requestAnimationFrame(frame);
+  });
+})();
+</script>
