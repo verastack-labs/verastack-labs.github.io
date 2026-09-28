@@ -1,0 +1,147 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .nv{--ink:#0B0C0A;--surf:#1B1D18;--line:#2A2D25;--tx:#F2F3EE;--mut:#A3A69B;--sig:#D4FF3F;--ease:cubic-bezier(.2,.8,.2,1)}
+  .nv *{box-sizing:border-box}
+  .ctl{display:flex;align-items:center;gap:8px;margin:0 0 16px;font:400 12px 'JetBrains Mono'}
+  .ctl input{accent-color:#D4FF3F}
+  .stage{display:flex;justify-content:center;background:#050505;border-radius:12px;padding:0}
+  .dev{position:relative;width:100%;height:560px;overflow:hidden;font-family:'Bricolage Grotesque',sans-serif;background:var(--ink);color:var(--tx);border-radius:12px;transition:width .45s var(--ease)}
+  .phone .dev{width:390px}
+  .sc{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#2A2D25 transparent}
+  .sec{height:540px;padding:110px 30px 30px;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid #151612}
+  .sec .k{font:500 11px 'JetBrains Mono';color:var(--mut)} .sec .k em{font-style:normal;color:var(--sig)}
+  .sec h4{margin:10px 0 0;font-weight:800;font-variation-settings:'opsz' 96;font-size:clamp(34px,5.6vw,68px);letter-spacing:-.055em;line-height:.9;max-width:12ch}
+  .sec.cream{background:#F4EBDA;color:#1A1410} .sec.cream .k{color:#5b4d42} .sec.cream .k em{color:#B93E29}
+
+  header{position:absolute;left:0;right:0;top:0;z-index:30;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 20px;color:var(--tx);transition:color .35s;pointer-events:none}
+  header>*{pointer-events:auto}
+  .wm{font-weight:800;font-size:17px;letter-spacing:-.04em;white-space:nowrap;padding-top:9px}
+  .wm em{font-style:normal;color:var(--sig)} .wm span{font-weight:500;opacity:.55}
+  .cta{background:var(--sig);color:var(--ink);border-radius:999px;padding:10px 15px;font:600 13px 'Bricolage Grotesque';white-space:nowrap;border:0;cursor:pointer;flex:none}
+  .light{color:#1A1410} .light .wm em{color:#B93E29} .light .cta{background:#1A1410;color:#F4EBDA}
+
+  /* the morphing nav */
+  .mn{position:relative;height:42px;border-radius:999px;border:1px solid var(--line);background:rgba(11,12,10,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      transition:width .5s var(--ease),background .35s,border-color .35s;overflow:hidden;cursor:pointer;margin-left:auto;margin-right:10px}
+  .light .mn{background:rgba(244,235,218,.8);border-color:#1A141033}
+  .mn:focus-visible{outline:2px solid var(--sig);outline-offset:3px}
+  /* collapsed layer: the path */
+  .pth{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;gap:10px;padding:0 8px 0 16px;white-space:nowrap;transition:opacity .25s,transform .4s var(--ease)}
+  .pth .seg{font:500 12.5px 'JetBrains Mono';color:var(--sig);min-width:9ch}
+  .light .pth .seg{color:#B93E29}
+  .pth .n{font:400 11px 'JetBrains Mono';opacity:.55}
+  .pth .dd{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(242,243,238,.08);font:500 11px 'JetBrains Mono';transition:transform .4s var(--ease)}
+  .light .pth .dd{background:#1A141012}
+  .ex .pth{opacity:0;transform:translateX(-14px);pointer-events:none}
+  /* expanded layer: the dock row */
+  .row{position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;gap:2px;padding:0 4px;white-space:nowrap;pointer-events:none}
+  .ex .row{pointer-events:auto}
+  .row a{position:relative;z-index:1;display:flex;align-items:baseline;gap:6px;padding:8px 12px;border-radius:999px;font:500 12px 'JetBrains Mono';color:var(--mut);text-decoration:none;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .35s var(--ease),color .25s}
+  .row a small{font-size:10px;opacity:.6}
+  .light .row a{color:#5b4d42}
+  .ex .row a{opacity:1;transform:none}
+  .ex .row a:nth-child(2){transition-delay:.08s}.ex .row a:nth-child(3){transition-delay:.12s}.ex .row a:nth-child(4){transition-delay:.16s}.ex .row a:nth-child(5){transition-delay:.2s}.ex .row a:nth-child(6){transition-delay:.24s}.ex .row a:nth-child(7){transition-delay:.28s}
+  .row a:hover{color:var(--tx)} .light .row a:hover{color:#1A1410}
+  .row a.on{color:var(--ink)} .light .row a.on{color:#F4EBDA}
+  .row .pill{position:absolute;top:4px;bottom:4px;left:0;width:0;border-radius:999px;background:var(--sig);opacity:0;transition:left .45s var(--ease),width .45s var(--ease),opacity .25s .1s,background .35s}
+  .light .row .pill{background:#1A1410}
+  .ex .row .pill{opacity:1}
+  /* phone: the pill stays a path; a vertical dropdown lists every section by name */
+  .phone .pth .n{display:none}
+  .phone .wm span{display:none}
+  .phone header{padding:14px 14px}
+  .phone .mn{margin-right:8px}
+  .phone .cta{padding:10px 12px;font-size:12px}
+  .phone .mn.ex .pth{opacity:1;transform:none;pointer-events:auto}
+  .phone .mn .row{display:none}
+  .phone .mn.ex .dd{transform:rotate(180deg)}
+  .drop{position:absolute;left:14px;right:14px;top:66px;z-index:29;border-radius:18px;border:1px solid var(--line);background:rgba(17,18,15,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+        padding:8px;display:grid;gap:2px;transform-origin:top center;transform:translateY(-8px) scaleY(.96);opacity:0;pointer-events:none;transition:opacity .25s,transform .4s var(--ease)}
+  .drop.show{opacity:1;transform:none;pointer-events:auto}
+  .drop a{display:flex;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;color:var(--tx);text-decoration:none;font-weight:700;font-size:22px;letter-spacing:-.04em;
+          opacity:0;transform:translateY(-6px);transition:opacity .25s,transform .35s var(--ease),background .2s}
+  .drop a small{font:500 11px 'JetBrains Mono';color:var(--mut);letter-spacing:0;min-width:18px}
+  .drop a:active{background:#2A2D25}
+  .drop a.on{background:var(--sig);color:var(--ink)} .drop a.on small{color:var(--ink)}
+  .drop.show a{opacity:1;transform:none}
+  .drop.show a:nth-child(1){transition-delay:.05s}.drop.show a:nth-child(2){transition-delay:.09s}.drop.show a:nth-child(3){transition-delay:.13s}.drop.show a:nth-child(4){transition-delay:.17s}.drop.show a:nth-child(5){transition-delay:.21s}.drop.show a:nth-child(6){transition-delay:.25s}.drop.show a:nth-child(7){transition-delay:.29s}
+  .drop .foot{display:flex;justify-content:space-between;padding:10px 14px 6px;font:400 11px 'JetBrains Mono';color:var(--mut);border-top:1px solid var(--line);margin-top:6px}
+  .drop .foot b{color:var(--sig);font-weight:500}
+  .light .drop{background:rgba(244,235,218,.96);border-color:#1A141033}
+  .light .drop a{color:#1A1410} .light .drop a small{color:#5b4d42}
+  .light .drop a.on{background:#1A1410;color:#F4EBDA} .light .drop a.on small{color:#F4EBDA}
+  .light .drop .foot{color:#5b4d42;border-color:#1A141022} .light .drop .foot b{color:#B93E29}
+  .hint{position:absolute;right:12px;bottom:12px;z-index:30;font:400 10px 'JetBrains Mono';color:var(--mut);background:rgba(11,12,10,.85);padding:4px 8px;border:1px solid var(--line);border-radius:4px;pointer-events:none}
+</style>
+
+<h2>Nav: phone dropdown with names</h2>
+<p class="subtitle">Desktop unchanged: hover the pill to open it into every section. Tick "phone width" and tap the pill: a vertical dropdown lists every section by name, current one highlighted.</p>
+<label class="ctl"><input type="checkbox" id="phone"> phone width (390 px, tap to open)</label>
+
+<div class="nv" id="root"><div class="stage"><div class="dev" id="dev">
+  <div class="sc" id="sc">
+    <div class="sec"><span class="k">/ <em>//</em> hero</span><h4>Configurators, commerce and the sites that launch them.</h4></div>
+    <div class="sec"><span class="k">/services <em>//</em> 01/04</span><h4>Configurators</h4></div>
+    <div class="sec"><span class="k">/work <em>//</em> our founder has worked with</span><h4>Two launches. Both still live.</h4></div>
+    <div class="sec cream"><span class="k">/products <em>//</em> mehfil</span><h4>Chai in ten? Rally the group.</h4></div>
+    <div class="sec"><span class="k">/process <em>//</em> how we work</span><h4>Four steps. No surprises.</h4></div>
+    <div class="sec"><span class="k">/about <em>//</em> the studio</span><h4>Design and engineering. One studio.</h4></div>
+    <div class="sec"><span class="k">/contact <em>//</em> start a project</span><h4>Let's build something.</h4></div>
+  </div>
+  <header id="hd">
+    <div class="wm">verastack<em>/</em><span>labs</span></div>
+    <nav class="mn" id="mn" tabindex="0" aria-label="Sections" aria-expanded="false">
+      <div class="pth" aria-hidden="true"><span class="seg" id="seg">/</span><span class="n" id="num">00/06</span><span class="dd">▾</span></div>
+      <div class="row" id="row"><span class="pill" id="pill"></span>
+        <a data-go="1"><small>01</small><span>services</span></a><a data-go="2"><small>02</small><span>work</span></a><a data-go="3"><small>03</small><span>products</span></a><a data-go="4"><small>04</small><span>process</span></a><a data-go="5"><small>05</small><span>about</span></a><a data-go="6"><small>06</small><span>contact</span></a>
+      </div>
+    </nav>
+    <button class="cta" data-go="6">Start a project</button>
+  </header>
+  <div class="drop" id="drop" role="menu">
+    <a data-go="0"><small>00</small>home</a><a data-go="1"><small>01</small>services</a><a data-go="2"><small>02</small>work</a><a data-go="3"><small>03</small>products</a><a data-go="4"><small>04</small>process</a><a data-go="5"><small>05</small>about</a><a data-go="6"><small>06</small>contact</a>
+    <div class="foot"><span>book a 20-min call</span><b>↗</b></div>
+  </div>
+  <div class="hint">scroll inside ↓ · hover the pill</div>
+</div></div></div>
+
+<script>
+(function(){
+  var root=document.getElementById('root'),dev=document.getElementById('dev'),sc=document.getElementById('sc'),hd=document.getElementById('hd');
+  var mn=document.getElementById('mn'),pth=mn.querySelector('.pth'),row=document.getElementById('row'),pill=document.getElementById('pill'),seg=document.getElementById('seg'),num=document.getElementById('num');
+  var secs=[].slice.call(sc.querySelectorAll('.sec')),links=[].slice.call(row.querySelectorAll('a')),cur=-1,expanded=false,closeT=0;
+  var NAMES=['/','/services','/work','/products','/process','/about','/contact'],GL='!<>-_\\/[]{}=+*^?#';
+  var touch=function(){return root.classList.contains('phone')||matchMedia('(hover: none)').matches;};
+  function scramble(el,text){var q=[],fr=0;for(var i=0;i<text.length;i++)q.push({to:text[i],s:Math.random()*8|0,e:(Math.random()*8|0)+8});
+    cancelAnimationFrame(el._r);(function tick(){var out='',done=0;for(var i=0;i<q.length;i++){var c=q[i];
+      if(fr>=c.e){done++;out+=c.to;}else if(fr>=c.s)out+=GL[Math.random()*GL.length|0];else out+=' ';}
+      el.textContent=out;fr++;if(done<q.length)el._r=requestAnimationFrame(tick);})();}
+  // widths are measured, so the morph always fits its content
+  function sizes(){var wasEx=expanded;mn.classList.add('measure');
+    var cw=pth.scrollWidth,ew=row.scrollWidth;mn.style.width=((wasEx&&!touch())?ew:cw)+'px';mn._cw=cw;mn._ew=ew;}
+  function place(){var on=links.find(function(a){return +a.dataset.go===cur;});
+    links.forEach(function(a){a.classList.toggle('on',a===on);});
+    drows.forEach(function(a){a.classList.toggle('on',+a.dataset.go===cur);});
+    if(on){pill.style.left=on.offsetLeft+'px';pill.style.width=on.offsetWidth+'px';pill.style.visibility='visible';}else pill.style.visibility='hidden';}
+  var drop=document.getElementById('drop'),drows=[].slice.call(drop.querySelectorAll('a'));
+  function setEx(v){expanded=v;mn.classList.toggle('ex',v);mn.setAttribute('aria-expanded',v);drop.classList.toggle('show',v&&touch());sizes();place();}
+  mn.addEventListener('pointerenter',function(){if(touch())return;clearTimeout(closeT);setEx(true);});
+  mn.addEventListener('pointerleave',function(){if(touch())return;clearTimeout(closeT);closeT=setTimeout(function(){if(!mn.contains(document.activeElement))setEx(false);},260);});
+  mn.addEventListener('focusin',function(){setEx(true);});
+  mn.addEventListener('focusout',function(e){if(!mn.contains(e.relatedTarget)&&!mn.matches(':hover'))setEx(false);});
+  mn.addEventListener('keydown',function(e){if(e.key==='Escape'){setEx(false);mn.blur();}});
+  links.forEach(function(a){a.tabIndex=0;a.addEventListener('keydown',function(e){if(e.key==='Enter')a.click();});});
+  dev.addEventListener('click',function(e){var g=e.target.closest('[data-go]');
+    if(g){e.stopPropagation();sc.scrollTo({top:secs[+g.dataset.go].offsetTop,behavior:'smooth'});if(touch())setEx(false);return;}
+    if(e.target.closest('#mn')&&touch()){setEx(!expanded);return;}
+    if(touch()&&expanded&&!e.target.closest('#drop'))setEx(false);});
+  function upd(){var y=sc.scrollTop+60,idx=0;secs.forEach(function(s,i){if(s.offsetTop<=y)idx=i;});
+    hd.classList.toggle('light',secs[idx].classList.contains('cream'));
+    if(idx!==cur){cur=idx;scramble(seg,NAMES[idx]);num.textContent='0'+idx+'/06';place();}}
+  sc.addEventListener('scroll',upd,{passive:true});
+  document.getElementById('phone').addEventListener('change',function(){root.classList.toggle('phone',this.checked);setEx(false);setTimeout(function(){sizes();place();},480);});
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){upd();sizes();place();});upd();sizes();
+})();
+</script>

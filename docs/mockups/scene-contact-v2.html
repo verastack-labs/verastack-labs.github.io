@@ -1,0 +1,183 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .ct{--ink:#0B0C0A;--surf:#1B1D18;--line:#2A2D25;--tx:#F2F3EE;--mut:#A3A69B;--dim:#3B3E35;--sig:#D4FF3F}
+  .ct *{box-sizing:border-box}
+  .frame{border-radius:12px;border:1px solid var(--line);background:var(--ink);color:var(--tx);font-family:'Bricolage Grotesque',sans-serif;padding:40px 36px 36px}
+  .l{font:500 11px 'JetBrains Mono';color:var(--mut)} .l em{font-style:normal;color:var(--sig)}
+  .vh{margin:10px 0 0;font-size:clamp(34px,5vw,64px);line-height:.95;letter-spacing:-.05em;font-weight:300;font-variation-settings:'opsz' 96,'wght' 300;user-select:none;cursor:crosshair}
+  .vh span{display:inline-block;font-variation-settings:'opsz' 96,'wght' var(--w,300);transition:color .2s}
+  .vh span.hot{color:var(--sig)}
+  .ctl{display:flex;align-items:center;gap:8px;margin:0 0 16px;font:400 12px 'JetBrains Mono'}
+  .ctl input{accent-color:#D4FF3F}
+
+  .grid{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;margin-top:26px}
+  .how{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;font:400 12px 'JetBrains Mono';color:var(--mut);margin-bottom:6px}
+  .how .k1{border-bottom:2px dashed #6B6F63;color:var(--tx);padding:0 3px}
+  .how .k2{color:var(--sig);border-bottom:2px solid var(--sig);padding:0 3px}
+  .how .count{margin-left:auto;color:var(--tx)} .how .count b{color:var(--sig);font-weight:500}
+
+  .ml{font-weight:700;font-size:clamp(22px,2.7vw,34px);line-height:1.75;letter-spacing:-.035em;color:var(--mut);margin:10px 0 0;max-width:32ch}
+  .ml label{display:inline}
+  .ml .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .blank{font:inherit;letter-spacing:inherit;color:var(--tx);background:rgba(242,243,238,.04);border:0;border-bottom:2px dashed #6B6F63;border-radius:6px 6px 0 0;padding:0 8px;outline:none;min-width:5ch;transition:border-color .2s,background .2s,box-shadow .2s}
+  .blank::placeholder{color:#55584e;font-weight:500}
+  .blank:hover{background:rgba(242,243,238,.07)}
+  .blank:focus{border-bottom-style:solid;border-color:var(--sig);background:rgba(212,255,63,.07);box-shadow:0 6px 16px -10px rgba(212,255,63,.6)}
+  .blank.ok{border-bottom-style:solid;border-color:var(--tx)}
+  .blank.miss{animation:miss .9s ease 2;border-color:#FF6B4A}
+  @keyframes miss{0%,100%{background:rgba(242,243,238,.04)}50%{background:rgba(255,107,74,.18)}}
+  .pick{font:inherit;letter-spacing:inherit;appearance:none;-webkit-appearance:none;background:transparent;border:0;border-bottom:2px solid var(--sig);color:var(--sig);padding:0 26px 0 4px;cursor:pointer;border-radius:0;
+    background-image:linear-gradient(45deg,transparent 50%,#D4FF3F 50%),linear-gradient(135deg,#D4FF3F 50%,transparent 50%);background-position:calc(100% - 13px) 55%,calc(100% - 6px) 55%;background-size:7px 7px;background-repeat:no-repeat;outline:none}
+  .pick:hover,.pick:focus{background-color:rgba(212,255,63,.08)}
+  .pick option{background:#1B1D18;color:#F2F3EE;font-size:15px}
+  .note-t{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:none;border:0;color:var(--mut);font:500 13px 'JetBrains Mono';cursor:pointer;padding:0}
+  .note-t:hover{color:var(--tx)}
+  .note-t i{font-style:normal;color:var(--sig);display:inline-block;transition:transform .3s}
+  .note-t[aria-expanded=true] i{transform:rotate(45deg)}
+  .note{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1)}
+  .note.open{grid-template-rows:1fr}
+  .note>div{overflow:hidden}
+  .note textarea{width:100%;margin-top:12px;background:rgba(242,243,238,.03);border:1px solid var(--line);border-radius:10px;color:var(--tx);font:500 15px/1.5 'Bricolage Grotesque';padding:12px 14px;resize:vertical;outline:none}
+  .note textarea:focus{border-color:var(--sig)}
+  .row{display:flex;align-items:center;gap:16px;margin-top:24px;flex-wrap:wrap}
+  .send{background:var(--sig);color:var(--ink);border:0;border-radius:10px;padding:14px 20px;font:700 16px 'Bricolage Grotesque';cursor:pointer;transition:opacity .2s,transform .2s}
+  .send[aria-disabled=true]{opacity:.35}
+  .send:not([aria-disabled=true]):hover{transform:translateY(-2px)}
+  .msg{font:400 12px 'JetBrains Mono';color:var(--mut)}
+  .sent .blank,.sent .pick{pointer-events:none}
+  .sentbar{display:none;margin-top:22px;font:500 13px/1.7 'JetBrains Mono';color:var(--mut)}
+  .sentbar b{display:block;font:800 30px 'Bricolage Grotesque';letter-spacing:-.05em;color:var(--tx)}
+  .sentbar b em{font-style:normal;color:var(--sig)}
+  .sent .sentbar{display:block}
+  .sent .row,.sent .note-t{display:none}
+
+  /* right column: routes */
+  .side{display:flex;flex-direction:column;gap:14px}
+  .side .cap{font:500 11px 'JetBrains Mono';color:var(--mut);margin-bottom:-4px}
+  .mail{font:400 12px/1.7 'JetBrains Mono';color:var(--mut)} .mail a{color:var(--tx);text-decoration:none;border-bottom:1px solid var(--line)}
+
+  /* booking card base */
+  .bk{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px;border-radius:12px;border:1px solid var(--line);background:var(--surf);cursor:pointer;overflow:hidden;text-decoration:none;color:var(--tx);isolation:isolate}
+  .bk b{display:block;font-weight:700;font-size:18px;letter-spacing:-.03em}
+  .bk span.s{font:400 11px 'JetBrains Mono';color:var(--mut);transition:color .3s}
+  .bk .ar{font:500 20px 'JetBrains Mono';color:var(--sig);transition:transform .45s cubic-bezier(.2,.8,.2,1),color .3s}
+  .tag{font:500 10px 'JetBrains Mono';color:#6B6F63;letter-spacing:.06em;text-transform:uppercase;margin:4px 0 -6px}
+  /* H1: fill sweep */
+  .h1:before{content:"";position:absolute;inset:0;background:var(--sig);transform:translateX(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:-1}
+  .h1:hover:before{transform:none}
+  .h1:hover b,.h1:hover .ar{color:var(--ink)} .h1:hover span.s{color:#3B3E35}
+  .h1:hover .ar{transform:translateX(4px) rotate(45deg)}
+  .h1 b{transition:color .3s}
+  /* H2: border trace */
+  .h2 svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .h2 rect{fill:none;stroke:var(--sig);stroke-width:2;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .8s cubic-bezier(.6,0,.2,1)}
+  .h2:hover rect{stroke-dashoffset:0}
+  .h2:hover .ar{transform:translate(3px,-3px)}
+  .h2 .slots{display:flex;gap:5px;margin-top:8px;max-height:0;opacity:0;transition:max-height .45s,opacity .35s}
+  .h2:hover .slots{max-height:30px;opacity:1}
+  .h2 .slots i{font:500 10px 'JetBrains Mono';font-style:normal;border:1px solid var(--line);border-radius:999px;padding:3px 7px;color:var(--tx)}
+  /* H3: magnetic spotlight */
+  .h3{transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s}
+  .h3:after{content:"";position:absolute;inset:0;background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%),rgba(212,255,63,.18),transparent 60%);opacity:0;transition:opacity .3s;z-index:-1}
+  .h3:hover{border-color:rgba(212,255,63,.45)}
+  .h3:hover:after{opacity:1}
+  .h3 .ar{display:inline-flex;width:38px;height:38px;border-radius:50%;align-items:center;justify-content:center;background:rgba(212,255,63,.1);font-size:16px}
+  .h3:hover .ar{background:var(--sig);color:var(--ink)}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}.how .count{margin-left:0}}
+</style>
+
+<h2>Contact C, clearer, plus book-a-call hovers</h2>
+<p class="subtitle">Fill the sentence in (try pressing Send early to see the missing blanks pulse). On the right, hover the three booking cards and pick a hover style. Nothing is actually sent.</p>
+<label class="ctl"><input type="checkbox" id="fromDemo"> arrived from the configurator demo's "Pre-book" button</label>
+
+<div class="ct"><div class="frame" id="form">
+  <span class="l">/contact <em>//</em> start a project</span>
+  <h4 class="vh" id="vh">Let's build something.</h4>
+
+  <div class="grid">
+    <div>
+      <div class="how"><span>fill in the sentence:</span><span><span class="k1">underlined</span> type here</span><span><span class="k2">green</span> tap to change</span><span class="count" id="count"><b>0</b> of 3 filled</span></div>
+      <p class="ml" id="ml">
+        Hi, I'm <label><span class="sr">Your name</span><input class="blank" data-req name="name" placeholder="your name" autocomplete="name"></label>
+        from <label><span class="sr">Company (optional)</span><input class="blank" name="company" placeholder="company (optional)" autocomplete="organization"></label>.
+        We need <label><span class="sr">What you need</span><select class="pick" id="svc" name="service"><option>a configurator</option><option selected>a commerce flow</option><option>a web app</option><option>a launch site</option><option>a desktop app</option><option>something else</option></select></label>
+        with a budget of <label><span class="sr">Budget</span><select class="pick" name="budget"><option>under ₹2L</option><option selected>₹2–5L</option><option>₹5–10L</option><option>₹10L+</option><option>we're not sure yet</option></select></label>,
+        ideally live by <label><span class="sr">Timeline</span><select class="pick" name="when"><option>as soon as possible</option><option selected>within 3 months</option><option>within 6 months</option><option>no fixed date</option></select></label>.
+        Reach me at <label><span class="sr">Email</span><input class="blank" data-req data-email type="email" name="email" placeholder="you@company.com" autocomplete="email"></label>.
+      </p>
+      <button class="note-t" id="noteT" aria-expanded="false" aria-controls="note"><i>+</i> add a note (links, context, anything)</button>
+      <div class="note" id="note"><div><textarea rows="3" placeholder="What it is, who it's for, links to anything similar you like"></textarea></div></div>
+      <div class="row"><button class="send" id="send" aria-disabled="true">Send it →</button><span class="msg" id="msg">fill the underlined blanks to send</span></div>
+      <div class="sentbar"><b>Sent. <em>We'll reply within two working days.</em></b>A copy of this sentence is on its way to your inbox.</div>
+    </div>
+
+    <div class="side">
+      <div class="cap">or skip the form</div>
+      <div class="tag">hover 1 · fill sweep</div>
+      <a class="bk h1"><div><b>Book a 20-min call</b><span class="s">no prep needed · pick any slot</span></div><span class="ar">→</span></a>
+      <div class="tag">hover 2 · border trace + slots</div>
+      <a class="bk h2"><svg aria-hidden="true"><rect x="1" y="1" rx="11" ry="11"/></svg><div><b>Book a 20-min call</b><span class="s">no prep needed · pick any slot</span><div class="slots"><i>Tue</i><i>Wed</i><i>Thu</i><i>+ more</i></div></div><span class="ar">↗</span></a>
+      <div class="tag">hover 3 · magnetic spotlight</div>
+      <a class="bk h3" id="mag"><div><b>Book a 20-min call</b><span class="s">no prep needed · pick any slot</span></div><span class="ar">→</span></a>
+      <div class="mail" style="margin-top:6px">or write to <a>hello@verastack…</a></div>
+    </div>
+  </div>
+</div></div>
+
+<script>
+(function(){
+  // headline proximity
+  var h=document.getElementById('vh'),t=h.textContent;
+  h.innerHTML=t.split(' ').map(function(w){return '<span style="white-space:nowrap">'+w.split('').map(function(c){return '<span>'+c+'</span>';}).join('')+'</span>';}).join(' ');
+  var ls=[].slice.call(h.querySelectorAll('span span')),host=document.getElementById('form');
+  host.addEventListener('pointermove',function(e){ls.forEach(function(s){var r=s.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
+    var k=Math.max(0,1-Math.sqrt(dx*dx+dy*dy)/180);s.style.setProperty('--w',Math.round(300+500*k*k*(3-2*k)));s.classList.toggle('hot',k>.72);});});
+  host.addEventListener('pointerleave',function(){ls.forEach(function(s){s.style.setProperty('--w',300);s.classList.remove('hot');});});
+
+  // auto-growing blanks
+  var blanks=[].slice.call(document.querySelectorAll('.blank'));
+  function fit(b){var probe=fit.p||(fit.p=document.createElement('span'));probe.style.cssText='position:absolute;visibility:hidden;white-space:pre;font:'+getComputedStyle(b).font+';letter-spacing:'+getComputedStyle(b).letterSpacing;
+    document.body.appendChild(probe);probe.textContent=b.value||b.placeholder;b.style.width=(probe.offsetWidth+22)+'px';}
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function valid(b){return b.hasAttribute('data-email')?emailRe.test(b.value.trim()):b.value.trim().length>0;}
+  function state(){var req=blanks.filter(function(b){return b.hasAttribute('data-req');});
+    var filled=blanks.filter(function(b){return b.value.trim();}).length;
+    blanks.forEach(function(b){b.classList.toggle('ok',!!b.value.trim()&&valid(b));});
+    document.getElementById('count').innerHTML='<b>'+filled+'</b> of 3 filled';
+    var ready=req.every(valid);var s=document.getElementById('send');s.setAttribute('aria-disabled',ready?'false':'true');
+    document.getElementById('msg').textContent=ready?'ready when you are':'fill the underlined blanks to send';return ready;}
+  blanks.forEach(function(b){fit(b);b.addEventListener('input',function(){b.classList.remove('miss');fit(b);state();});});
+  // size each dropdown to its chosen option, not its longest one
+  var picks=[].slice.call(document.querySelectorAll('.pick'));
+  function fitPick(s){var probe=fitPick.p||(fitPick.p=document.createElement('span'));probe.style.cssText='position:absolute;visibility:hidden;white-space:pre;font:'+getComputedStyle(s).font+';letter-spacing:'+getComputedStyle(s).letterSpacing;
+    document.body.appendChild(probe);probe.textContent=s.options[s.selectedIndex].text;s.style.width=(probe.offsetWidth+34)+'px';}
+  picks.forEach(function(s){fitPick(s);s.addEventListener('change',function(){fitPick(s);});});
+  document.fonts&&document.fonts.ready.then(function(){blanks.forEach(fit);picks.forEach(fitPick);});
+  document.getElementById('send').addEventListener('click',function(){
+    if(!state()){blanks.filter(function(b){return b.hasAttribute('data-req')&&!valid(b);}).forEach(function(b){b.classList.remove('miss');void b.offsetWidth;b.classList.add('miss');});
+      var first=blanks.find(function(b){return b.hasAttribute('data-req')&&!valid(b);});first&&first.focus();
+      document.getElementById('msg').textContent=blanks.some(function(b){return b.hasAttribute('data-email')&&b.value&&!valid(b);})?'that email doesn\'t look right':'a couple of blanks are still empty';return;}
+    document.getElementById('form').classList.add('sent');blanks.forEach(function(b){b.readOnly=true;});});
+  state();
+  // note toggle
+  var nt=document.getElementById('noteT');nt.addEventListener('click',function(){var o=nt.getAttribute('aria-expanded')!=='true';nt.setAttribute('aria-expanded',o);document.getElementById('note').classList.toggle('open',o);
+    if(o)setTimeout(function(){document.querySelector('#note textarea').focus();},300);});
+  // demo prefill
+  document.getElementById('fromDemo').addEventListener('change',function(){var s=document.getElementById('svc');s.selectedIndex=this.checked?0:1;fitPick(s);});
+
+  // hover 2: measure border length
+  var r2=document.querySelector('.h2'),rect=r2.querySelector('rect');
+  function sizeRect(){var b=r2.getBoundingClientRect();rect.setAttribute('width',b.width-2);rect.setAttribute('height',b.height-2);
+    r2.style.setProperty('--len',Math.ceil(2*(b.width+b.height)));}
+  sizeRect();new ResizeObserver(sizeRect).observe(r2);
+  // hover 3: magnetic + spotlight
+  var m=document.getElementById('mag');
+  m.addEventListener('pointermove',function(e){var b=m.getBoundingClientRect(),x=e.clientX-b.left,y=e.clientY-b.top;
+    m.style.setProperty('--mx',x+'px');m.style.setProperty('--my',y+'px');
+    m.style.transform='translate('+((x-b.width/2)*.06)+'px,'+((y-b.height/2)*.12)+'px)';
+    m.querySelector('.ar').style.transform='translate('+((x-b.width/2)*.08)+'px,'+((y-b.height/2)*.15)+'px)';});
+  m.addEventListener('pointerleave',function(){m.style.transform='';m.querySelector('.ar').style.transform='';});
+})();
+</script>

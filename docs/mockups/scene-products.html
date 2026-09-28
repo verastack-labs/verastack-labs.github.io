@@ -1,0 +1,236 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .pr{--ink:#0B0C0A;--surf:#1B1D18;--line:#2A2D25;--tx:#F2F3EE;--mut:#A3A69B;--sig:#D4FF3F}
+  .pr *{box-sizing:border-box}
+  .pr .card{cursor:pointer;background:var(--ink);color:var(--tx)}
+  .pr .card-image{aspect-ratio:auto;display:block;background:var(--ink)}
+  .pr .card-body{background:var(--ink)} .pr .card-body h3{color:var(--tx)} .pr .card-body p{color:var(--mut)}
+  .pr .src{font:400 11px/1.5 'JetBrains Mono',monospace;color:var(--mut);margin-top:8px} .pr .src b{color:var(--sig);font-weight:500}
+  .grid3{display:grid;gap:28px}
+  .demo{position:relative;height:560px;overflow:hidden;font-family:'Bricolage Grotesque',sans-serif}
+  .scroller{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin}
+  .hint{position:absolute;right:16px;top:14px;z-index:9;font:400 10.5px 'JetBrains Mono',monospace;color:#A3A69B;background:rgba(11,12,10,.85);padding:5px 9px;border:1px solid #2A2D25;border-radius:4px;pointer-events:none}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* ---------- shared product mockups ---------- */
+  .win{border-radius:10px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);font-family:'JetBrains Mono',monospace}
+  .win .tb{height:28px;display:flex;align-items:center;gap:6px;padding:0 11px}
+  .win .tb i{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.25}
+  .win .tb span{margin-left:8px;font-size:10px;opacity:.6}
+  /* rigseed */
+  .rs{background:#0E1318;color:#E6EDF3;border:1px solid #1E2831}
+  .rs .tb{background:#121920}
+  .rs .body{display:grid;grid-template-columns:110px 1fr;min-height:230px}
+  .rs .side{border-right:1px solid #1E2831;padding:12px 10px;font-size:10.5px;line-height:2;color:#7C8B99}
+  .rs .side b{color:#8FB0CB;font-weight:500}
+  .rs .list{padding:10px 14px;display:flex;flex-direction:column;gap:12px}
+  .rs .t{font-size:11px}
+  .rs .t .nm{display:flex;justify-content:space-between;gap:10px;margin-bottom:5px}
+  .rs .t .nm span:last-child{color:#7C8B99}
+  .rs .bar{height:4px;background:#1E2831;border-radius:2px;overflow:hidden}
+  .rs .bar i{display:block;height:100%;background:#8FB0CB;border-radius:2px;transition:width .6s linear}
+  /* riggit */
+  .rg{background:#08120E;color:#E7F5EE;border:1px solid #16261F}
+  .rg .tb{background:#0B1813}
+  .rg .body{padding:16px 16px 18px}
+  .rg .graph{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;margin:10px 0 12px}
+  .rg .graph i{aspect-ratio:1;border-radius:2px;background:#13241C;transition:background .5s}
+  .rg .graph i.l1{background:#1c5a41}.rg .graph i.l2{background:#23915f}.rg .graph i.l3{background:#34D399}
+  .rg .row{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:#8FB5A4}
+  .rg .chip{border:1px solid #34D39955;color:#34D399;padding:4px 8px;border-radius:5px}
+  /* mehfil */
+  .mh{width:220px;border-radius:26px;background:#F4EBDA;border:3px solid #1A1410;box-shadow:8px 8px 0 #1A1410;color:#1A1410;padding:14px 12px 16px;font-family:'Bricolage Grotesque',sans-serif}
+  .mh .top{display:flex;justify-content:space-between;font:500 10px 'JetBrains Mono',monospace;margin-bottom:12px}
+  .mh .ev{background:#fff;border:2.5px solid #1A1410;border-radius:12px;box-shadow:4px 4px 0 #1A1410;padding:10px;margin-bottom:10px}
+  .mh .ev h6{margin:0 0 4px;font-size:16px;font-weight:800;letter-spacing:-.03em}
+  .mh .ev p{margin:0 0 8px;font:500 10.5px 'JetBrains Mono',monospace;color:#5b4d42}
+  .mh .ev .who{display:flex;gap:-4px}
+  .mh .ev .who b{width:20px;height:20px;border-radius:50%;border:2px solid #1A1410;margin-right:-5px;display:block}
+  .mh .btn{display:block;text-align:center;background:#B93E29;color:#F4EBDA;border:2.5px solid #1A1410;border-radius:10px;box-shadow:3px 3px 0 #1A1410;padding:8px;font-weight:800;font-size:14px}
+  .mh .sf{background:#E7A33A}
+
+  /* ---------- A. hand-over ---------- */
+  .ho-track{height:3400px}
+  .ho-stage{position:sticky;top:0;height:560px;background:var(--bg,#0B0C0A);color:var(--fg,#F2F3EE);transition:none;overflow:hidden}
+  .ho-intro{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 34px}
+  .ho-intro .l{font:500 11px 'JetBrains Mono';color:#A3A69B} .ho-intro .l em{font-style:normal;color:#D4FF3F}
+  .ho-intro h4{margin:10px 0 0;font-weight:800;font-variation-settings:'opsz' 96;font-size:clamp(34px,5.6vw,72px);line-height:.9;letter-spacing:-.055em}
+  .ho-p{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.15fr;gap:30px;align-items:center;padding:0 34px;opacity:0}
+  .ho-p .k{font:500 11px 'JetBrains Mono';opacity:.7}
+  .ho-p h5{margin:10px 0 12px;font-weight:800;font-variation-settings:'opsz' 96;font-size:clamp(34px,5vw,64px);line-height:.88;letter-spacing:-.055em}
+  .ho-p p{margin:0 0 16px;font-size:16px;line-height:1.45;max-width:34ch;opacity:.85}
+  .ho-p .meta{font:400 11.5px/1.8 'JetBrains Mono';opacity:.75}
+  .ho-p .go{display:inline-block;margin-top:14px;font:600 14px 'Bricolage Grotesque';padding:10px 14px;border-radius:8px}
+  .ho-dots{position:absolute;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
+  .ho-dots i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.25}
+  .ho-dots i.on{opacity:1}
+
+  /* ---------- B. bento ---------- */
+  .bt{padding:26px 28px;height:100%;display:flex;flex-direction:column;gap:16px}
+  .bt .l{font:500 11px 'JetBrains Mono';color:#A3A69B} .bt .l em{font-style:normal;color:#D4FF3F}
+  .bt h4{margin:0;font-weight:800;font-variation-settings:'opsz' 96;font-size:clamp(26px,3.4vw,42px);letter-spacing:-.05em;line-height:.95}
+  .bt-grid{flex:1;display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:12px;min-height:0}
+  .bt-c{position:relative;border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .bt-c:hover{transform:translateY(-6px)}
+  .bt-c h5{margin:0;font-weight:800;font-size:28px;letter-spacing:-.05em}
+  .bt-c p{margin:6px 0 0;font-size:13.5px;line-height:1.4;opacity:.8}
+  .bt-c .m{font:400 10.5px 'JetBrains Mono';opacity:.7}
+  .bt-c .vis{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:10px 0}
+  .bt-c.c1{background:#0E1318;color:#E6EDF3;border:1px solid #1E2831}
+  .bt-c.c2{background:#08120E;color:#E7F5EE;border:1px solid #16261F}
+  .bt-c.c3{background:#F4EBDA;color:#1A1410;border:3px solid #1A1410;box-shadow:5px 5px 0 #1A1410}
+  .bt-c .win{width:100%;box-shadow:none}
+  .bt-c .rs .body{grid-template-columns:1fr;min-height:0}.bt-c .rs .side{display:none}
+  .bt-c .mh{transform:scale(.72);transform-origin:center}
+
+  /* ---------- C. swap ---------- */
+  .sw{height:100%;display:grid;grid-template-columns:1fr 1.2fr;align-items:center;padding:0 34px;gap:26px}
+  .sw .l{font:500 11px 'JetBrains Mono';color:#A3A69B} .sw .l em{font-style:normal;color:#D4FF3F}
+  .sw h4{margin:10px 0 14px;font-weight:800;font-variation-settings:'opsz' 96;font-size:clamp(28px,4vw,52px);letter-spacing:-.055em;line-height:.9}
+  .sw .names{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:22px;letter-spacing:-.04em}
+  .sw .names span{opacity:.3;transition:opacity .4s,color .4s;cursor:pointer}
+  .sw .names span.on{opacity:1}
+  .sw .desc{margin-top:14px;font-size:14.5px;line-height:1.45;color:#A3A69B;max-width:34ch;min-height:64px}
+  .sw-stack{position:relative;height:360px;perspective:1100px}
+  .sw-card{position:absolute;left:50%;top:50%;width:min(420px,90%);border-radius:14px;transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s,filter .8s;transform-style:preserve-3d;display:flex;justify-content:center}
+
+  @media(max-width:820px){.ho-p{grid-template-columns:1fr;align-content:center;gap:14px}.ho-p .vis{display:none}.bt-grid{grid-template-columns:1fr;overflow:auto}.sw{grid-template-columns:1fr}.sw-stack{height:280px}}
+</style>
+
+<h2>Products: how do they appear?</h2>
+<p class="subtitle">"And we build our own." Three treatments using the products' real copy and colours. Scroll inside A; hover B; watch or click C.</p>
+
+<template id="tpl-rs"><div class="win rs"><div class="tb"><i></i><i></i><i></i><span>rigseed</span></div><div class="body">
+  <div class="side">all · <b>4</b><br>downloading<br>seeding<br>completed</div>
+  <div class="list">
+    <div class="t"><div class="nm"><span>ubuntu-24.04-desktop-amd64.iso</span><span data-sp>12.4 MB/s</span></div><div class="bar"><i data-p="62" style="width:62%"></i></div></div>
+    <div class="t"><div class="nm"><span>archlinux-2026.09.01-x86_64.iso</span><span>8.1 MB/s</span></div><div class="bar"><i data-p="18" style="width:18%"></i></div></div>
+    <div class="t"><div class="nm"><span>debian-12.7.0-amd64-netinst.iso</span><span>seeding</span></div><div class="bar"><i style="width:100%"></i></div></div>
+    <div class="t"><div class="nm"><span>fedora-workstation-41.iso</span><span>queued</span></div><div class="bar"><i style="width:0%"></i></div></div>
+  </div></div></div></template>
+<template id="tpl-rg"><div class="win rg"><div class="tb"><i></i><i></i><i></i><span>riggit</span></div><div class="body">
+  <div class="row"><span>verastack/riggit</span><span>2026</span></div>
+  <div class="graph" data-graph></div>
+  <div class="row"><span>commit at <b style="color:#E7F5EE;font-weight:500">2026-03-14 22:40</b></span><span class="chip">backfill ↵</span></div>
+  </div></div></template>
+<template id="tpl-mh"><div class="mh"><div class="top"><span>mehfil</span><span>4:12 pm</span></div>
+  <div class="ev"><h6>Chai break?</h6><p>4:30 pm · tapri near gate 2</p><div class="who"><b style="background:#E7A33A"></b><b style="background:#B93E29"></b><b style="background:#8FB0CB"></b></div></div>
+  <div class="ev" style="opacity:.75"><h6>Cards tonight</h6><p>9:00 pm · 5 going</p></div>
+  <span class="btn">I'm in</span></div></template>
+
+<div class="pr"><div class="grid3">
+
+  <!-- A -->
+  <div class="card" data-choice="handover" onclick="toggleSelect(this)">
+    <div class="card-image"><div class="demo">
+      <div class="scroller" id="hoS"><div class="ho-track"><div class="ho-stage" id="hoStage">
+        <div class="ho-intro" id="hoIntro"><span class="l">/products <em>//</em> and we build our own</span><h4>Three products.<br>Three brands.<br>One studio.</h4></div>
+        <div class="ho-p" id="hp0"><div>
+          <span class="k">/products/rigseed · desktop · tauri</span>
+          <h5>Torrents, finally worth looking at.</h5>
+          <p>rigseed puts a modern interface on qBittorrent, and brings its own daemon.</p>
+          <div class="meta">v0.1.3 · Windows, macOS and Linux · one download, no account</div>
+          <span class="go" style="background:#8FB0CB;color:#0E1318">Visit rigseed ↗</span>
+        </div><div class="vis" data-tpl="tpl-rs"></div></div>
+        <div class="ho-p" id="hp1"><div>
+          <span class="k">/products/riggit · desktop · tauri</span>
+          <h5>Own your GitHub timeline.</h5>
+          <p>Commit at any date and time. Backfill the week you worked offline and make the graph tell the truth.</p>
+          <div class="meta">three commits free · from $2.49 a month</div>
+          <span class="go" style="background:#34D399;color:#08120E">Visit Riggit ↗</span>
+        </div><div class="vis" data-tpl="tpl-rg"></div></div>
+        <div class="ho-p" id="hp2"><div>
+          <span class="k">/products/mehfil · pwa · coming soon</span>
+          <h5>Chai in ten? Rally the group.</h5>
+          <p>A lightweight way to gather people for chai breaks, dinner in ten minutes or a cards night.</p>
+          <div class="meta">progressive web app · in development</div>
+          <span class="go" style="background:#B93E29;color:#F4EBDA;border:2.5px solid #1A1410;box-shadow:3px 3px 0 #1A1410">Get notified →</span>
+        </div><div class="vis" data-tpl="tpl-mh" style="display:flex;justify-content:center"></div></div>
+        <div class="ho-dots"><i></i><i></i><i></i></div>
+      </div></div></div>
+      <div class="hint">scroll inside ↓</div>
+    </div></div>
+    <div class="card-body"><h3>A. Hand-over</h3><p>The section pins, and as you scroll the studio hands the whole screen to each product in turn. The background, text and accent shift into rigseed's slate, then Riggit's green, then flip to Mehfil's cream and neobrutal borders, with a live mockup of each app. It shows that the studio builds distinct brands, not one template, and the colour shift is a scroll moment in itself.</p>
+      <div class="src">built from: <b>GSAP ScrollTrigger</b> pin + colour tweening on CSS variables · custom product mockups</div></div>
+  </div>
+
+  <!-- B -->
+  <div class="card" data-choice="bento" onclick="toggleSelect(this)">
+    <div class="card-image"><div class="demo"><div class="bt">
+      <div><span class="l">/products <em>//</em> and we build our own</span><h4>Three products, each with its own brand.</h4></div>
+      <div class="bt-grid">
+        <div class="bt-c c1"><div class="m">desktop · tauri · v0.1.3</div><div class="vis" data-tpl="tpl-rs"></div><div><h5>rigseed</h5><p>A modern interface for qBittorrent, daemon included.</p></div></div>
+        <div class="bt-c c2"><div class="m">desktop · tauri</div><div class="vis" data-tpl="tpl-rg"></div><div><h5>Riggit</h5><p>Commit at any date. Own your GitHub timeline.</p></div></div>
+        <div class="bt-c c3"><div class="m">pwa · coming soon</div><div class="vis" data-tpl="tpl-mh"></div><div><h5>Mehfil</h5><p>Rally the group for chai, dinner or cards.</p></div></div>
+      </div>
+    </div></div></div>
+    <div class="card-body"><h3>B. Bento</h3><p>One screen, three cards side by side, each fully in its own brand with a small live mockup. It's quick to scan and compact, and each card lifts on hover. It's the least cinematic, and three brands side by side can look busy.</p>
+      <div class="src">built from: <b>React Bits Magic Bento</b> or <b>21st.dev bento</b> patterns, restyled per product</div></div>
+  </div>
+
+  <!-- C -->
+  <div class="card" data-choice="swap" onclick="toggleSelect(this)">
+    <div class="card-image"><div class="demo"><div class="sw">
+      <div><span class="l">/products <em>//</em> and we build our own</span><h4>Three products.<br>Pick one up.</h4>
+        <div class="names" id="swNames"><span class="on" data-i="0" style="color:#8FB0CB">rigseed</span><span data-i="1" style="color:#34D399">Riggit</span><span data-i="2" style="color:#E7A33A">Mehfil</span></div>
+        <div class="desc" id="swDesc">A modern interface for qBittorrent, daemon included. Windows, macOS and Linux.</div></div>
+      <div class="sw-stack" id="swStack">
+        <div class="sw-card" data-tpl="tpl-rs"></div>
+        <div class="sw-card" data-tpl="tpl-rg"></div>
+        <div class="sw-card" data-tpl="tpl-mh"></div>
+      </div>
+    </div></div></div>
+    <div class="card-body"><h3>C. Card swap</h3><p>The product mockups sit in a tilted 3D stack that cycles every few seconds, with the product names beside it acting as tabs. It's tactile and compact, and needs no scroll pinning, which makes it the easiest on phones. It's less of a statement than A.</p>
+      <div class="src">built from: <b>React Bits Card Swap</b></div></div>
+  </div>
+
+</div></div>
+
+<script>
+(function(){
+  function cl(x){return Math.max(0,Math.min(1,x));}
+  // stamp templates
+  document.querySelectorAll('[data-tpl]').forEach(function(el){el.appendChild(document.getElementById(el.dataset.tpl).content.cloneNode(true));});
+  // riggit graphs: fill gaps over time
+  document.querySelectorAll('[data-graph]').forEach(function(g){var cells=[];
+    for(var i=0;i<7*26;i++){var c=document.createElement('i');var r=Math.random();c.className=r<.45?'':r<.7?'l1':r<.9?'l2':'l3';g.appendChild(c);cells.push(c);}
+    setInterval(function(){var empty=cells.filter(function(c){return !c.className;});
+      if(empty.length<12){cells.forEach(function(c){var r=Math.random();c.className=r<.45?'':r<.7?'l1':r<.9?'l2':'l3';});return;}
+      for(var k=0;k<3;k++){var c=empty[Math.random()*empty.length|0];c.className=Math.random()<.5?'l2':'l3';}},260);});
+  // rigseed bars tick
+  setInterval(function(){document.querySelectorAll('.rs .bar i[data-p]').forEach(function(b){var p=+b.dataset.p+Math.random()*2.2;if(p>100)p=4;b.dataset.p=p;b.style.width=p+'%';});},600);
+
+  // A. hand-over colour morph
+  var P=[{bg:[11,12,10],fg:[242,243,238]},{bg:[14,19,24],fg:[230,237,243]},{bg:[8,18,14],fg:[231,245,238]},{bg:[244,235,218],fg:[26,20,16]}];
+  var hoS=document.getElementById('hoS'),stage=document.getElementById('hoStage'),intro=document.getElementById('hoIntro');
+  var pans=[0,1,2].map(function(i){return document.getElementById('hp'+i);}),dots=[].slice.call(stage.querySelectorAll('.ho-dots i'));
+  function mix(a,b,k){return a.map(function(v,i){return Math.round(v+(b[i]-v)*k);});}
+  function ho(){var max=hoS.scrollHeight-hoS.clientHeight,p=max?hoS.scrollTop/max:0;
+    // segments: intro 0-.12, rigseed .12-.40, riggit .40-.68, mehfil .68-1 ; colour transitions over .06
+    var seg=p*1;var from,to,k;
+    var stops=[0,.12,.40,.68];var idx=0;for(var i=0;i<stops.length;i++)if(p>=stops[i])idx=i;
+    var nxt=Math.min(idx+1,3);var into=idx<3?cl((p-(stops[nxt]-.06))/.06):0;
+    var c=mix(P[idx].bg,P[nxt].bg,into),f=mix(P[idx].fg,P[nxt].fg,into);
+    stage.style.setProperty('--bg','rgb('+c+')');stage.style.setProperty('--fg','rgb('+f+')');
+    intro.style.opacity=1-cl((p-.07)/.05);
+    pans.forEach(function(pn,i){var a=stops[i+1],b=i<2?stops[i+2]:1.2;var o=cl((p-a+.02)/.05)*(1-cl((p-b+.05)/.04));pn.style.opacity=o;
+      pn.style.transform='translateY('+((1-o)*24)+'px)';pn.style.pointerEvents=o>.5?'auto':'none';});
+    dots.forEach(function(d,i){d.classList.toggle('on',idx-1===i);});}
+  hoS.addEventListener('scroll',ho,{passive:true});ho();
+
+  // C. card swap
+  var cards=[].slice.call(document.querySelectorAll('.sw-card')),names=[].slice.call(document.querySelectorAll('#swNames span')),front=0,timer;
+  var D=['A modern interface for qBittorrent, daemon included. Windows, macOS and Linux.','Commit at any date and time. Backfill the work you actually did. From $2.49 a month.','A lightweight way to rally people for chai, dinner or cards. Coming soon.'];
+  function lay(){cards.forEach(function(c,i){var d=(i-front+3)%3;
+    c.style.transform='translate(-50%,-50%) translate3d('+(d*38)+'px,'+(-d*30)+'px,'+(-d*90)+'px) rotateY('+(-14)+'deg) rotateX(4deg)';
+    c.style.zIndex=10-d;c.style.opacity=d===2?.55:1;c.style.filter='brightness('+(1-d*.22)+')';});
+    names.forEach(function(n,i){n.classList.toggle('on',i===front);});document.getElementById('swDesc').textContent=D[front];}
+  function next(){front=(front+1)%3;lay();}
+  function start(){clearInterval(timer);timer=setInterval(next,3200);}
+  names.forEach(function(n){n.addEventListener('click',function(e){e.stopPropagation();front=+n.dataset.i;lay();start();});});
+  document.getElementById('swStack').addEventListener('click',function(e){e.stopPropagation();next();start();});
+  lay();start();
+})();
+</script>

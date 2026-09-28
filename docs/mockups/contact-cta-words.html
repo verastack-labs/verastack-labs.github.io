@@ -1,0 +1,62 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .cw{--ink:#0B0C0A;--surf:#1B1D18;--line:#2A2D25;--tx:#F2F3EE;--mut:#A3A69B;--sig:#D4FF3F}
+  .cw *{box-sizing:border-box}
+  .board{background:var(--ink);border:1px solid var(--line);border-radius:12px;padding:30px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px 22px;font-family:'Bricolage Grotesque',sans-serif;color:var(--tx)}
+  .opt{display:flex;flex-direction:column;gap:10px}
+  .opt .k{font:500 10.5px 'JetBrains Mono';color:#6B6F63;letter-spacing:.06em;text-transform:uppercase}
+  .opt .why{font:400 11.5px/1.5 'JetBrains Mono';color:var(--mut)}
+  .opt.pick .k{color:var(--sig)}
+  .bk{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px;border-radius:12px;border:1px solid var(--line);background:var(--surf);cursor:pointer;overflow:hidden;color:var(--tx);isolation:isolate}
+  .bk b{display:block;font-weight:700;font-size:18px;letter-spacing:-.03em}
+  .bk .s{font:400 11px 'JetBrains Mono';color:var(--mut)}
+  .bk .ar{font:500 20px 'JetBrains Mono';color:var(--sig);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .bk svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .bk rect{fill:none;stroke:var(--sig);stroke-width:2;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .8s cubic-bezier(.6,0,.2,1)}
+  .bk:hover rect,.bk:focus-visible rect{stroke-dashoffset:0}
+  .bk:hover .ar{transform:translate(3px,-3px)}
+  .words{display:flex;flex-wrap:wrap;gap:5px;margin-top:0;max-height:0;transition:max-height .4s cubic-bezier(.2,.8,.2,1),margin .4s}
+  .bk:hover .words,.bk:focus-visible .words{max-height:30px;margin-top:9px}
+  .words i{font:500 10.5px 'JetBrains Mono';font-style:normal;border:1px solid var(--line);border-radius:999px;padding:3px 8px;color:var(--tx);opacity:0;transform:translateY(8px) scale(.9);transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,color .3s;transition-delay:0s}
+  .bk:hover .words i,.bk:focus-visible .words i{opacity:1;transform:none;transition-delay:calc(.28s + var(--i) * .11s)}
+  .bk:hover .words i:last-child,.bk:focus-visible .words i:last-child{border-color:var(--sig);color:var(--sig)}
+</style>
+
+<h2>Book-a-call: which words pop in?</h2>
+<p class="subtitle">Border trace kept. On hover, the phrase arrives one word at a time after the line starts drawing, and the last word lands in chartreuse. Hover each and click the one you like (or tell me your own).</p>
+
+<div class="cw"><div class="board">
+  <div class="opt" data-choice="bring" onclick="toggleSelect(this)"><span class="k">1 · the invitation</span>
+    <a class="bk" tabindex="0"><svg aria-hidden="true"><rect x="1" y="1" rx="11" ry="11"/></svg><div><b>Book a 20-min call</b><span class="s">no prep needed</span><div class="words"><i style="--i:0">bring</i><i style="--i:1">your</i><i style="--i:2">idea</i></div></div><span class="ar">↗</span></a>
+    <span class="why">Warm and forward-looking. Tells people what the call is for without sounding salesy.</span></div>
+
+  <div class="opt" data-choice="welcome" onclick="toggleSelect(this)"><span class="k">2 · your example</span>
+    <a class="bk" tabindex="0"><svg aria-hidden="true"><rect x="1" y="1" rx="11" ry="11"/></svg><div><b>Book a 20-min call</b><span class="s">no prep needed</span><div class="words"><i style="--i:0">you</i><i style="--i:1">are</i><i style="--i:2">welcome</i></div></div><span class="ar">↗</span></a>
+    <span class="why">The friendliest. Slightly formal in word-by-word form.</span></div>
+
+  <div class="opt" data-choice="nostrings" onclick="toggleSelect(this)"><span class="k">3 · the reassurance</span>
+    <a class="bk" tabindex="0"><svg aria-hidden="true"><rect x="1" y="1" rx="11" ry="11"/></svg><div><b>Book a 20-min call</b><span class="s">no prep needed</span><div class="words"><i style="--i:0">no</i><i style="--i:1">strings</i><i style="--i:2">attached</i></div></div><span class="ar">↗</span></a>
+    <span class="why">Answers the hesitation ("will this turn into a sales pitch?"). Only use if the call really is free and obligation-free.</span></div>
+
+  <div class="opt" data-choice="letstalk" onclick="toggleSelect(this)"><span class="k">4 · the nudge</span>
+    <a class="bk" tabindex="0"><svg aria-hidden="true"><rect x="1" y="1" rx="11" ry="11"/></svg><div><b>Book a 20-min call</b><span class="s">no prep needed</span><div class="words"><i style="--i:0">let's</i><i style="--i:1">talk</i><i style="--i:2">shop</i></div></div><span class="ar">↗</span></a>
+    <span class="why">Casual and a little playful. Fits the studio's direct voice.</span></div>
+
+  <div class="opt" data-choice="sketch" onclick="toggleSelect(this)"><span class="k">5 · the builder</span>
+    <a class="bk" tabindex="0"><svg aria-hidden="true"><rect x="1" y="1" rx="11" ry="11"/></svg><div><b>Book a 20-min call</b><span class="s">no prep needed</span><div class="words"><i style="--i:0">sketch</i><i style="--i:1">it</i><i style="--i:2">out</i><i style="--i:3">together</i></div></div><span class="ar">↗</span></a>
+    <span class="why">Four words, so the stagger lasts a beat longer. Suggests collaboration, not a pitch.</span></div>
+
+  <div class="opt" data-choice="half" onclick="toggleSelect(this)"><span class="k">6 · the confident one</span>
+    <a class="bk" tabindex="0"><svg aria-hidden="true"><rect x="1" y="1" rx="11" ry="11"/></svg><div><b>Book a 20-min call</b><span class="s">no prep needed</span><div class="words"><i style="--i:0">ideas</i><i style="--i:1">welcome</i><i style="--i:2">half-baked</i><i style="--i:3">too</i></div></div><span class="ar">↗</span></a>
+    <span class="why">Lowers the bar for early-stage clients who "don't have a brief yet".</span></div>
+</div></div>
+
+<script>
+(function(){
+  document.querySelectorAll('.bk').forEach(function(bk){var rect=bk.querySelector('rect');
+    function size(){var b=bk.getBoundingClientRect();rect.setAttribute('width',Math.max(0,b.width-2));rect.setAttribute('height',Math.max(0,b.height-2));bk.style.setProperty('--len',Math.ceil(2*(b.width+b.height)));}
+    size();new ResizeObserver(size).observe(bk);});
+})();
+</script>

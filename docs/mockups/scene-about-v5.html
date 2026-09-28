@@ -1,0 +1,78 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .ab{--ink:#0B0C0A;--line:#2A2D25;--tx:#F2F3EE;--mut:#A3A69B;--dim:#34372F;--sig:#D4FF3F}
+  .ab *{box-sizing:border-box}
+  .frame{border-radius:12px;border:1px solid var(--line);background:var(--ink);color:var(--tx);font-family:'Bricolage Grotesque',sans-serif;padding:56px 36px 40px}
+  .l{font:500 11px 'JetBrains Mono';color:var(--mut)} .l em{font-style:normal;color:var(--sig)}
+  h4{margin:14px 0 0;font-weight:800;font-variation-settings:'opsz' 96;font-size:clamp(34px,5.4vw,70px);line-height:.92;letter-spacing:-.055em}
+  h4 em{font-style:normal;color:var(--sig)}
+  p{margin:20px 0 0;font-size:17px;line-height:1.5;color:var(--mut);max-width:56ch}
+  p b{color:var(--tx);font-weight:600}
+  .caps{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);margin-top:30px;position:relative}
+  .cap{position:relative;padding:16px 12px 0 0;font:400 11.5px/1.5 'JetBrains Mono';color:var(--dim);transition:color .3s}
+  .cap b{display:flex;align-items:center;gap:8px;color:var(--dim);font:700 17px 'Bricolage Grotesque';letter-spacing:-.03em;margin-bottom:4px;transition:color .3s}
+  .cap i{width:7px;height:7px;border-radius:50%;background:var(--dim);flex:none;transition:background .2s,box-shadow .2s}
+  .cap.on{color:var(--mut)} .cap.on b{color:var(--tx)}
+  .cap.on i{background:#6B6F63}
+  .cap.live i{background:var(--sig);box-shadow:0 0 10px var(--sig)}
+  .cap:before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--sig);box-shadow:0 0 8px var(--sig);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+  .caps.walking .cap.live:before{width:calc(100% - 12px)}
+  .flick{animation:flick .5s steps(1) both}
+  @keyframes flick{0%{opacity:0}12%{opacity:1}22%{opacity:.15}34%{opacity:1}46%{opacity:.4}58%{opacity:1}100%{opacity:1}}
+  .blink{animation:blink .6s ease both}
+  @keyframes blink{0%{opacity:0}50%{opacity:1}70%{opacity:.3}100%{opacity:1}}
+  .foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font:400 11.5px 'JetBrains Mono';color:var(--mut)}
+  .foot b{color:var(--tx);font-weight:500}
+  .foot a{color:var(--sig);text-decoration:none;margin-left:auto}
+  .ctl{display:flex;gap:8px;align-items:center;margin:0 0 16px;flex-wrap:wrap}
+  .ctl button{font:500 12px 'JetBrains Mono';background:transparent;color:inherit;border:1px solid rgba(128,128,128,.4);border-radius:999px;padding:6px 12px;cursor:pointer}
+  .ctl button[aria-pressed=true]{border-color:currentColor;box-shadow:0 0 0 1px currentColor inset}
+  @media(max-width:820px){.caps{grid-template-columns:1fr 1fr}.foot a{margin-left:0}}
+</style>
+
+<h2>About: capabilities that switch on one by one</h2>
+<p class="subtitle">Boot-up: the lights flicker on one by one, no lines. Once that finishes, a single light walks across the five and only then does the underline appear with it. Try both styles; replay as often as you like.</p>
+
+<div class="ctl">
+  <button data-m="flick" aria-pressed="true">A. Flicker boot-up</button>
+  <button data-m="blink" aria-pressed="false">B. Simple blink</button>
+  <button id="replay">↻ replay</button>
+</div>
+
+<div class="ab"><div class="frame">
+  <span class="l">/about <em>//</em> the studio</span>
+  <h4>Design and engineering. <em>One studio.</em></h4>
+  <p>VeraStack Labs is a design and engineering studio. <b>We build configurators, commerce and launch sites for clients, and our own products alongside them.</b> Design and build happen in the same hands, so nothing gets lost between a mockup and a handover.</p>
+  <div class="caps" id="caps">
+    <div class="cap"><b><i></i>Scope</b>one call, a written plan</div>
+    <div class="cap"><b><i></i>Design</b>interfaces and brands</div>
+    <div class="cap"><b><i></i>Engineering</b>web, 3D and desktop</div>
+    <div class="cap"><b><i></i>Commerce</b>payments and flows</div>
+    <div class="cap"><b><i></i>Launch</b>and what comes after</div>
+  </div>
+  <div class="foot"><span>founded by <b>Rigan Burnwal</b></span><span>based in <b>India</b></span><span>products <b>rigseed · Riggit · Mehfil</b></span><a>riganb.github.io ↗</a></div>
+</div></div>
+
+<script>
+(function(){
+  var caps=[].slice.call(document.querySelectorAll('.cap')),mode='flick',timers=[],walk=0,wi=-1;
+  function clear(){timers.forEach(clearTimeout);timers=[];clearInterval(walk);document.getElementById('caps').classList.remove('walking');
+    caps.forEach(function(c){c.className='cap';});}
+  function run(){clear();
+    caps.forEach(function(c,i){timers.push(setTimeout(function(){
+      c.classList.add('on','live',mode);
+      timers.push(setTimeout(function(){c.classList.remove('live');},mode==='flick'?520:600));
+    },250+i*280));});
+    // after boot: one status light walks across, slowly
+    timers.push(setTimeout(function(){document.getElementById('caps').classList.add('walking');wi=-1;
+      function step(){caps.forEach(function(c){c.classList.remove('live');});wi=(wi+1)%caps.length;caps[wi].classList.add('live');}
+      step();walk=setInterval(step,1600);},250+caps.length*280+900));}
+  document.querySelectorAll('.ctl [data-m]').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.ctl [data-m]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});mode=b.dataset.m;run();});});
+  document.getElementById('replay').addEventListener('click',run);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){caps.forEach(function(c){c.classList.add('on');});}
+  else run();
+})();
+</script>
