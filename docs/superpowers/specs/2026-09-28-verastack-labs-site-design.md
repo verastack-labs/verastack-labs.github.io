@@ -149,6 +149,9 @@ a headline scrolling beneath.
   highlight sits on the current section, sliding when it changes. It folds back to the path 260 ms
   after the pointer leaves, so passing over it does not flicker. Escape closes it; Tab and Enter
   move through and follow the links.
+- **Intro (added 2026-09-28):** on those screens the pill opens into the dock row 0.3 s after
+  load, stays open for 3 s so visitors see every section, then folds back to the path (unless the
+  pointer or focus is on it). Once per page load; not in panel mode or `static`.
 - **Touch, or any screen under 900 px wide** (the row does not fit beside the wordmark and button
   there): tapping or clicking the pill keeps it a path (its ▾ flips) and drops a **vertical panel** under the
   header, full width with 14 px gutters, listing `00 home` to `06 contact` by number and name in

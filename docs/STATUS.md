@@ -41,7 +41,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
   "bring · your · idea".
 - **Motion modes**: `full`, `lite` and `static` from `useMotionPreference()`.
 - **Path pill**: the nav (`src/components/nav/path-pill.tsx`). Opens into the **dock row** on hover
-  at 900 px and wider, and the **section panel** on touch or narrower screens.
+  at 900 px and wider, and the **section panel** on touch or narrower screens. On desktop it starts
+  open as the dock row for 3 s after load, then folds.
 - **Panel mode**: `(hover: none), (max-width: 899px)`.
 
 ## Waiting on Rigan
