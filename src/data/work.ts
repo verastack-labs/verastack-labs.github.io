@@ -23,11 +23,12 @@ export const work: WorkEntry[] = [
   {
     id: 'ultraviolette',
     client: 'Ultraviolette',
-    project: 'X-47 configurator',
+    project: 'X-47 and Tesseract configurators',
     year: '2025',
     role: 'employee',
     stack: ['Next.js', 'TypeScript', 'AWS Lambda'],
-    summary: 'A multi-zone configurator that drives direct-to-consumer sales of the X-47.',
+    // X-47 as a full-time employee; Tesseract as a contract employee. Both are "as an employee".
+    summary: 'Configurators for the X-47 and the Tesseract that drive direct-to-consumer sales.',
     liveUrl: 'https://www.ultraviolette.com/configure',
     caseStudyUrl: 'https://riganb.github.io/work/ultraviolette/',
     media: null,
