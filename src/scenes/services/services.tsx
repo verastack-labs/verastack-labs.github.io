@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { services } from '@/data/services'
@@ -41,7 +41,8 @@ function PinnedServices() {
     return () => io.disconnect()
   }, [])
 
-  useEffect(() => {
+  // Layout effect: the pin must be reverted before React removes the pinned node.
+  useLayoutEffect(() => {
     const el = section.current
     const grid = main.current
     if (!el || !grid) return

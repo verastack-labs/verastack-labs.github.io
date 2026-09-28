@@ -5,12 +5,13 @@ import { products } from '@/data/products'
 import { hero } from '@/data/hero'
 import { services } from '@/data/services'
 import { configurator } from '@/data/configurator'
+import { work, headliners } from '@/data/work'
 
 // Built from its code point so this file never contains the character itself.
 const EM_DASH = String.fromCodePoint(0x2014)
 
 // Add every data module here as it is created.
-const modules: Record<string, unknown> = { site, sections, products, hero, services, configurator }
+const modules: Record<string, unknown> = { site, sections, products, hero, services, configurator, work }
 
 function collectStrings(value: unknown, path: string): Array<[string, string]> {
   if (typeof value === 'string') return [[path, value]]
@@ -49,5 +50,27 @@ describe('content', () => {
     const ids = sections.map((s) => `#${s.id}`)
     expect(ids).toContain(hero.primary.href)
     expect(ids).toContain(hero.secondary.href)
+  })
+
+  it('credits every piece of work to a role', () => {
+    for (const w of work) expect(['employee', 'freelance']).toContain(w.role)
+  })
+
+  it('shows no visuals or live link for work that is still launching (spec 7.2)', () => {
+    for (const w of work.filter((x) => x.status === 'launching')) {
+      expect(w.media).toBeNull()
+      expect(w.art).toBeUndefined()
+      expect(w.liveUrl).toBeNull()
+      expect(w.tier).toBe('supporting')
+    }
+  })
+
+  it('gives every headliner a live link, a case study and artwork until its recording arrives', () => {
+    expect(headliners.length).toBeGreaterThan(0)
+    for (const w of headliners) {
+      expect(w.liveUrl).toMatch(/^https:\/\//)
+      expect(w.caseStudyUrl).toMatch(/^https:\/\//)
+      expect(w.media ?? w.art).toBeTruthy()
+    }
   })
 })
