@@ -11,11 +11,11 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 ## Where things stand
 
-Design agreed in the 2026-09-28 brainstorm. Nothing built yet.
+Design agreed and approved on 2026-09-28. Nothing built yet.
 
 | Phase | Status | PR |
 | --- | --- | --- |
-| 0. Spec, status, brief, mockups | in review | #1 |
+| 0. Spec, status, brief, mockups | done | #1 |
 | 1. Foundation | next | |
 | 2. Hero | planned | |
 | 3. Services and configurator demo | planned | |
@@ -54,8 +54,6 @@ Content (placeholders are in the design until these arrive):
 - [ ] Screen recordings of the Ultraviolette X-47 configurator and the E3 TRION site (with poster
   frames).
 - [ ] Cal.com account and the 20-minute event link.
-- [ ] Confirm the nav and footer proposals (spec 6.00 and 6.08); neither was covered in the
-  brainstorm.
 - [ ] Cold Stone Creamery Arabia launch. It is built (website and CMS) and listed as a text-only
   `launching soon` row; no visuals until it is live. When it launches, follow spec 7.2: set
   `status: 'live'`, add media and the live link, decide headliner or supporting, and quote

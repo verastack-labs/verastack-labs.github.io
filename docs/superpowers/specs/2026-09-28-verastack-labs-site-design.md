@@ -1,7 +1,7 @@
 # verastack-labs.github.io: design spec
 
 Date: 2026-09-28
-Status: written 2026-09-28, awaiting review
+Status: approved 2026-09-28, amended as phases land
 
 ## 1. Why
 
@@ -131,13 +131,32 @@ pinned hold is sized to its content, and About deliberately gives the page a bre
 
 ## 6. The page
 
-### 00. Nav (proposal, confirm in review)
+### 00. Nav: the path pill
 
-Not covered in the brainstorm; proposed here. A thin fixed bar: wordmark left; `services`, `work`,
-`products`, `about` in mono; a signal "Start a project" button right. Hides on scroll down, returns
-on scroll up. Phones: wordmark and a menu button opening a full-screen list. The nav reads over
-every scene, including Mehfil's cream hand-over (it switches to ink text while that palette is
-active).
+Prototype: [../../mockups/nav.html](../../mockups/nav.html).
+
+A fixed header with three parts: the wordmark (left), the **path pill** (right of centre) and a
+signal "Start a project" button (right, visible at every width). It never hides.
+
+- **At rest** the pill reads like a file path for the section in view: `/work · 02/06 · ▾`. When
+  the section changes, the path decodes to the new name letter by letter (scramble text) and the
+  counter updates. Sections: `/` (hero, 00), `/services` 01, `/work` 02, `/products` 03,
+  `/process` 04, `/about` 05, `/contact` 06.
+- **Hover or keyboard focus (fine pointers):** the pill widens (measured widths, 0.5 s) into a
+  dock row of every section, numbered in mono; labels arrive in a short stagger and a signal pill
+  highlight sits on the current section, sliding when it changes. It folds back to the path 260 ms
+  after the pointer leaves, so passing over it does not flicker. Escape closes it; Tab and Enter
+  move through and follow the links.
+- **Touch:** tapping the pill keeps it a path (its ▾ flips) and drops a **vertical panel** under the
+  header, full width with 14 px gutters, listing `00 home` to `06 contact` by number and name in
+  large type. The current section is filled signal; rows arrive in a stagger. A "book a 20-min call
+  ↗" line sits at the bottom. Picking a section scrolls there and closes the panel; tapping outside
+  closes it too.
+- **Palettes:** over Mehfil's cream hand-over the pill, highlight, panel and button switch to ink
+  (vermilion for the path text). The current section is decided by a probe 60 px below the top.
+- `static`: no decode (the path swaps instantly), no stagger, no width animation.
+- Accessibility: the pill is a `nav` with `aria-label="Sections"` and `aria-expanded`; the links are
+  real anchors to section ids.
 
 ### 01. Hero
 
@@ -313,10 +332,21 @@ Prototypes: [../../mockups/scene-contact-v2.html](../../mockups/scene-contact-v2
   editable and a message offers a `mailto:` link with the sentence pre-filled as the body.
 - **Spam:** a hidden honeypot field plus the form service's own filtering.
 
-### 08. Footer (proposal, confirm in review)
+### 08. Footer: the giant wordmark, cut off by the page
 
-Wordmark, email, links to the three products, the GitHub org and the founder's portfolio, and
-`© 2026 VeraStack Labs`. Mono, one row on desktop, stacked on phones.
+Prototype: [../../mockups/footer.html](../../mockups/footer.html).
+
+- **Four columns** (two on phones): *start a project* (the email as a large Bricolage 800 link,
+  then "or book a 20-min call ↗"), *products* (rigseed ↗, Riggit ↗, Mehfil `soon`), *elsewhere*
+  (GitHub ↗, founder's portfolio ↗), *studio* (a live clock for India with a pulsing signal dot,
+  and "based in India").
+- A mono row: `© 2026 VeraStack Labs` and a "back to top ↑" button.
+- **The giant wordmark:** `verastack/labs` set edge to edge of the content width (font size
+  measured and fitted on load and resize), slash in signal, `labs` at 28% opacity. **The bottom 40%
+  of the letters is cut off by the bottom edge of the page**, as if the wordmark sinks below it (a
+  clipping box `0.74 × font size × 0.6` tall). As the footer arrives, the letters rise into place
+  one after another (0.9 s each, 45 ms apart). `static`: letters shown in place.
+- The clock uses `Intl.DateTimeFormat` with `Asia/Kolkata`, updated every 15 s.
 
 ## 7. Content model
 

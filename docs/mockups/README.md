@@ -15,6 +15,8 @@ one was chosen.
 | `scene-about-v5.html` | About | flicker boot-up, lines only after the boot |
 | `scene-contact-v2.html` | Contact | the fill-in-the-blanks sentence (ignore hovers 1 and 3) |
 | `contact-cta-words.html` | Book-a-call hover | 1, "bring · your · idea" |
+| `nav.html` | Nav | the path pill that opens into a dock on hover, a vertical panel on touch |
+| `footer.html` | Footer | the giant wordmark, bottom 40% cut off |
 
 The configurator in `scene-services-v2.html` is an e-bike line drawing; the build uses a keyboard
 model instead (spec 6.02).
