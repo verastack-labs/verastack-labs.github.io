@@ -12,6 +12,10 @@ import styles from '@/components/nav/path-pill.module.css'
 const IDS = sections.map((s) => s.id)
 const LAST = sections.length - 1
 const CLOSE_DELAY_MS = 260
+// On desktop the pill starts as the full dock row so visitors see every section, then folds.
+const INTRO_MS = 3000
+// A beat after hydration, so the widening is seen as a morph rather than a jump.
+const INTRO_DELAY_MS = 300
 
 // The horizontal row needs about 900px beside the wordmark and button; below that, or without
 // hover, the pill opens the vertical panel instead.
@@ -69,6 +73,29 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
     closeTimer.current = window.setTimeout(() => {
       if (!navRef.current?.contains(document.activeElement)) setOpen(false)
     }, CLOSE_DELAY_MS)
+  }, [])
+
+  // Desktop intro: open into the dock row just after load, fold back after 3 s unless the
+  // visitor is already on it. Once per page load; not on touch, narrow screens or reduced motion.
+  const introDone = useRef(false)
+  const introTimers = useRef({ open: 0, fold: 0 })
+  useEffect(() => {
+    if (introDone.current || mode === 'static') return
+    introDone.current = true
+    if (matchMedia(PANEL_QUERY).matches) return
+    const timers = introTimers.current
+    timers.open = window.setTimeout(() => setOpen(true), INTRO_DELAY_MS)
+    timers.fold = window.setTimeout(() => {
+      const nav = navRef.current
+      if (nav && !nav.matches(':hover') && !nav.contains(document.activeElement)) setOpen(false)
+    }, INTRO_DELAY_MS + INTRO_MS)
+  }, [mode])
+  useEffect(() => {
+    const timers = introTimers.current
+    return () => {
+      window.clearTimeout(timers.open)
+      window.clearTimeout(timers.fold)
+    }
   }, [])
 
   // Touch: a tap outside closes the panel.
