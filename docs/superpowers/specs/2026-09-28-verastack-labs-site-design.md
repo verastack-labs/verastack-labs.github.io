@@ -203,18 +203,21 @@ Beats, as fractions of the pinned progress:
 - The left column is `minmax(max-content, …)` so the shrunk list never runs under the demo.
 - A small line in the hold reads "keep scrolling for 02 commerce ↓".
 
-**Configurator demo (`ConfiguratorDemo`).** A mechanical keyboard (a CC0 3D model; not a client's
-product and not a vehicle). Options: case colour (3), keycap set (2), switch type (2), so 12
-combinations. Price counts up on change (count-up, eased 700 ms) and uses the visitor's currency
-(section 6.7). A "Pre-book" button scrolls to Contact and pre-selects "a configurator".
+**Configurator demo (`ConfiguratorDemo`).** A 65% mechanical keyboard (not a client's product and
+not a vehicle), the "VS-65". Options: case colour (graphite, silver, signal), keycap set (bone, ink
+PBT), switch type (linear, tactile), so 12 combinations. Price counts up on change (count-up, eased
+700 ms) and uses the visitor's currency (section 6.7). A "Pre-book" button scrolls to Contact and
+pre-selects "a configurator" (through `src/lib/enquiry-prefill.ts`).
 
-- Built with React Three Fiber and drei, lazy-loaded (`next/dynamic`, no SSR) when the Services
-  section comes within one viewport.
-- Model budget: under 1.5 MB after compression (meshopt or Draco). Environment lighting from a
-  small HDR or drei's presets; no post-processing.
-- `lite` and `static`: 12 pre-rendered images (one per combination) swapped instead of a live
-  canvas. The same images are the no-WebGL fallback.
-- If no suitable CC0 keyboard model exists, headphones are the fallback product.
+- **Built in code, not loaded from a model file** (changed from a CC0 model during phase 3): rounded
+  boxes from `keyboard-layout.ts`, so there is nothing to download or license and the colours are
+  exact. One key floats above its switch so the switch colour shows; changing switches runs a press
+  wave across the board. The board tilts a little towards the pointer.
+- React Three Fiber and three.js (no drei), lazy-loaded (`next/dynamic`, no SSR) when the Services
+  section comes within one viewport, and rendering only while the demo is open. Lighting is a
+  procedural studio room (three's `RoomEnvironment`), so no HDR file either; no post-processing.
+- `lite`, `static` and no-WebGL: `KeyboardFlat`, an SVG drawing of the same layout tilted with CSS,
+  recoloured from the same data (replaces the 12 pre-rendered images).
 
 **Phones (`lite`):** no pin. Services stack as blocks; the configurator is an inline card with the
 image-swap demo.
@@ -367,7 +370,7 @@ Prototype: [../../mockups/footer.html](../../mockups/footer.html).
 | `capabilities.ts` | name and descriptor (About row) |
 | `team.ts` | empty array; `{ name, role, portrait, link }` when used |
 | `budgets.ts` | rupee and dollar bands |
-| `configurator.ts` | demo options, price deltas, image paths |
+| `configurator.ts` | demo options, colours and price deltas in both currencies |
 
 ### 7.2 Cold Stone Creamery Arabia (built, not live)
 
@@ -409,7 +412,7 @@ or quote no metrics. The same rule applies to any client metrics.
 
 - Repo `verastack-labs/verastack-labs.github.io`, in the workspace next to `riganb.github.io/`.
 - Next.js (App Router) with `output: "export"`, TypeScript, Tailwind 4, GSAP and ScrollTrigger,
-  Lenis, React Three Fiber and drei (Services chunk only), Motion only where layout animation
+  Lenis, React Three Fiber and three.js (Services chunk only), Motion only where layout animation
   needs it. Vitest for tests.
 - Folders: `src/scenes/<Scene>/` (one per section), `src/components/` for shared pieces
   (`SplitFlap`, `ScrambleText`, `VariableProximity`, `BorderTrace`, `Pin`, `CountUp`,
@@ -454,7 +457,7 @@ One branch and one PR per phase, merged when done.
 | 0 | This spec, the status doc, the brief and the mockups |
 | 1 | Foundation: scaffold, tokens and contrast test, fonts, motion system (`useMotionPreference`, Lenis, ScrollTrigger), nav, footer, content guards, deploy workflow |
 | 2 | Hero: dot-matrix shader with `lite` and `static` fallbacks, calls to action, status line |
-| 3 | Services: pinned index, scramble proof lines, configurator demo (model sourcing, R3F, image fallbacks) |
+| 3 | Services: pinned index, scramble proof lines, configurator demo (a keyboard built in code, R3F, SVG fallback) |
 | 4 | Work (cinema reel, flowing list) and Products (hand-over, card swap on phones) |
 | 5 | Process (rail and split-flap) and About (capability boot-up, team slot) |
 | 6 | Contact: sentence form, currency bands, form service, Cal.com pop-up, border-trace card |

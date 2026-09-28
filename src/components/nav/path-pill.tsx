@@ -6,7 +6,7 @@ import { site } from '@/data/site'
 import { formatCounter } from '@/lib/counter'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { useActiveSection } from '@/components/nav/use-active-section'
-import { useScramble } from '@/components/nav/use-scramble'
+import { useScramble } from '@/components/use-scramble'
 import styles from '@/components/nav/path-pill.module.css'
 
 const IDS = sections.map((s) => s.id)
