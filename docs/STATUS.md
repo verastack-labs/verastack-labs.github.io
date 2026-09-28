@@ -60,7 +60,6 @@ Content (placeholders are in the design until these arrive):
   `launching soon` row; no visuals until it is live. When it launches, follow spec 7.2: set
   `status: 'live'`, add media and the live link, decide headliner or supporting, and quote
   metrics honestly or not at all.
-- [ ] Confirm Cold Stone should appear as a `launching soon` row now, rather than only after launch.
 
 ## Planned, not started
 
