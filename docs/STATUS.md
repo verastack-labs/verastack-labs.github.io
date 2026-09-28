@@ -7,11 +7,11 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 - Phase plans: [superpowers/plans/](superpowers/plans/)
 - Kickoff brief: [brief.md](brief.md)
 - Approved mockups: [mockups/](mockups/)
-- Live (once phase 1 deploys): https://verastack-labs.github.io
+- Live: https://verastack-labs.github.io (deploys on every push to `main`)
 
 ## Where things stand
 
-Foundation and hero built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, placeholder scenes for the rest, CI. Deploy is gated until launch, so nothing is public yet.
+Foundation and hero built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, placeholder scenes for the rest, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
 
 | Phase | Status | PR |
 | --- | --- | --- |
@@ -66,7 +66,6 @@ Content (placeholders are in the design until these arrive):
 ## Planned, not started
 
 - [ ] Phases 3 to 7 (spec section 11).
-- [ ] Launch: set the `DEPLOY_ENABLED` repo variable to `true` and enable Pages with GitHub Actions as the source (phase 7).
 - [ ] Configurator demo model: find a CC0 mechanical keyboard model (Poly Haven, Poly Pizza,
   Kenney); headphones if none is good enough. Pre-render the 12 fallback images.
 - [ ] Custom domain: `public/CNAME` plus DNS. Product pages move under it too.
@@ -85,6 +84,7 @@ Content (placeholders are in the design until these arrive):
 - The configurator demo uses a stand-in product (a keyboard), not client work, so it cannot
   misrepresent whose work it is.
 - No auto-reply to enquiries until the form backend moves.
+- The site went live early (after phase 2) with placeholder sections for services onwards.
 - Scene placeholders (`src/components/scene-placeholder.tsx`) stand in for each section until its
   phase lands; each carries the id the nav tracks.
 
