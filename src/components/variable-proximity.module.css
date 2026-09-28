@@ -1,0 +1,9 @@
+.root { font-weight: 300; }
+.word { white-space: nowrap; }
+.letter {
+  --w: 300;
+  display: inline-block;
+  font-variation-settings: 'opsz' 96, 'wght' var(--w);
+  transition: color 0.2s;
+}
+.letter[data-hot='true'] { color: var(--signal); }
