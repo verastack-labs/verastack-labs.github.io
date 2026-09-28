@@ -13,6 +13,14 @@
 .field { position: absolute; inset: 0; z-index: -1; }
 .canvas { width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 1.2s ease; }
 .canvasOn { opacity: 1; }
+/* On narrow screens the headline spans the full width, so the field fades out above it rather
+   than relying on the shader's rightward bias. */
+@media (max-width: 767px) {
+  .field {
+    -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 68%);
+    mask-image: linear-gradient(to bottom, #000 30%, transparent 68%);
+  }
+}
 /* Static and no-WebGL: a still dot pattern with one crest, biased right like the live field. */
 .fallback {
   position: absolute;

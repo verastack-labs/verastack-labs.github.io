@@ -1,9 +1,10 @@
 import { ScenePlaceholder } from '@/components/scene-placeholder'
+import { Hero } from '@/scenes/hero/hero'
 
 export default function Home() {
   return (
     <main id="main">
-      <ScenePlaceholder id="top" label="/" title="Configurators, commerce and the sites that launch them." />
+      <Hero />
       <ScenePlaceholder id="services" label="/services" title="Services" />
       <ScenePlaceholder id="work" label="/work" title="Our founder has worked with" />
       <ScenePlaceholder id="products" label="/products" title="And we build our own" />
