@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google'
 import { site } from '@/data/site'
+import { MotionAttribute } from '@/lib/motion/motion-attribute'
+import { SmoothScroll } from '@/lib/motion/smooth-scroll'
 import { tokensToCss } from '@/styles/tokens'
 import './globals.css'
 
@@ -41,6 +43,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Skip to content
         </a>
+        <MotionAttribute />
+        <SmoothScroll />
         {children}
       </body>
     </html>
