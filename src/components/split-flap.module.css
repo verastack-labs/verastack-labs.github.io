@@ -1,0 +1,21 @@
+.flap { position: relative; z-index: 1; display: inline-flex; gap: 3px; padding-right: 10px; background: var(--ink); }
+.flap > span {
+  position: relative;
+  width: 36px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #15170F;
+  color: var(--dim);
+  font: 500 29px var(--font-mono);
+  transition: color 0.3s, border-color 0.3s;
+}
+/* The hinge line across the middle of each card. */
+.flap > span::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--ink); }
+.flap[data-on='true'] > span { color: var(--signal); border-color: rgba(212, 255, 63, 0.35); }
+.flip { animation: flip 0.08s linear; }
+@keyframes flip { 50% { transform: scaleY(0.08); } }

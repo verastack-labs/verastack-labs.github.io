@@ -6,12 +6,15 @@ import { hero } from '@/data/hero'
 import { services } from '@/data/services'
 import { configurator } from '@/data/configurator'
 import { work, headliners } from '@/data/work'
+import { process } from '@/data/process'
+import { capabilities } from '@/data/capabilities'
+import { team } from '@/data/team'
 
 // Built from its code point so this file never contains the character itself.
 const EM_DASH = String.fromCodePoint(0x2014)
 
 // Add every data module here as it is created.
-const modules: Record<string, unknown> = { site, sections, products, hero, services, configurator, work }
+const modules: Record<string, unknown> = { site, sections, products, hero, services, configurator, work, process, capabilities, team }
 
 function collectStrings(value: unknown, path: string): Array<[string, string]> {
   if (typeof value === 'string') return [[path, value]]

@@ -11,7 +11,7 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 ## Where things stand
 
-Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones), placeholder scenes for Process, About and Contact, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
+Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones), the Process rail with split-flap indices, About with the capabilities boot-up, a placeholder for Contact, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
 
 | Phase | Status | PR |
 | --- | --- | --- |
@@ -20,8 +20,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 | 2. Hero | done | #3 |
 | 3. Services and configurator demo | done | #5 |
 | 4. Work and Products | done | #6 |
-| 5. Process and About | next | |
-| 6. Contact | planned | |
+| 5. Process and About | done | #7 |
+| 6. Contact | next | |
 | 7. Launch pass | planned | |
 
 ## Names used in this project
@@ -57,7 +57,7 @@ Content (placeholders are in the design until these arrive):
 - [ ] Dollar budget bands (placeholders: under $3k, $3-7k, $7-15k, $15k+). Rupee bands too, if
   the placeholders (under ₹2L, ₹2-5L, ₹5-10L, ₹10L+) are wrong.
 - [ ] How we work: the real steps and one line each (Discover, Design, Build, Launch are
-  placeholder), and whether "a fixed quote" and "weekly previews" are promises we keep.
+  placeholder, in `src/data/process.ts`), and whether "a fixed quote" and "weekly previews" are promises we keep.
 - [ ] Mehfil's one-line pitch ("Chai in ten? Rally the group." is placeholder) and whether it has
   a public page to link to yet.
 - [ ] Screen recordings of the Ultraviolette X-47 configurator and the E3 TRION site (with poster
@@ -72,7 +72,7 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Phases 5 to 7 (spec section 11).
+- [ ] Phases 6 and 7 (spec section 11).
 - [ ] Contact form (phase 6) reads the configurator's pre-book choice with `takeEnquiryPrefill()`
   and drives the `₹ / $` toggle through `setCurrency()` (`src/lib/use-currency.ts`).
 - [ ] Custom domain: `public/CNAME` plus DNS. Product pages move under it too.
@@ -80,7 +80,7 @@ Content (placeholders are in the design until these arrive):
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
   its way to your inbox" line.
 - [ ] Work and Products as full pages (`/work/...`, `/products/...`), reading the same data files.
-- [ ] Team row in About, once `src/data/team.ts` has real people.
+- [ ] Team row in About: built and hidden; it appears once `src/data/team.ts` has real people.
 
 ## Known trade-offs
 
