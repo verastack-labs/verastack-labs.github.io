@@ -35,6 +35,7 @@ export const metadata: Metadata = {
   openGraph: { title: site.title, description: site.description, url: site.url, siteName: site.name, type: 'website', locale: 'en_IN', images: [shareImage] },
   twitter: { card: 'summary_large_image', title: site.title, description: site.description, images: [shareImage] },
   robots: { index: true, follow: true },
+  verification: { google: site.googleSiteVerification },
   // The SVG for browsers, PNGs for iOS and for crawlers that skip SVG.
   icons: {
     icon: [

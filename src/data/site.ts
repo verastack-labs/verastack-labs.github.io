@@ -20,6 +20,8 @@ export const site = {
   founderName: 'Rigan Burnwal',
   founderUrl: 'https://riganb.github.io',
   basedIn: 'India',
+  // Google Search Console ownership (HTML tag method). Keep it: removing it unverifies the site.
+  googleSiteVerification: 'Khv1EH0oq--r11Gxhsk82I4RJZJJ0wiL1JjTxQNXurU',
 }
 
 // Where every "book a 20-min call" goes: the Cal.com page once it exists, until then an email to
