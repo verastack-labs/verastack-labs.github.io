@@ -136,7 +136,9 @@ pinned hold is sized to its content, and About deliberately gives the page a bre
 Prototype: [../../mockups/nav.html](../../mockups/nav.html).
 
 A fixed header with three parts: the wordmark (left), the **path pill** (right of centre) and a
-signal "Start a project" button (right, visible at every width). It never hides.
+signal "Start a project" button (right, visible at every width). It never hides. A soft fade (ink at
+90% to transparent, cream on Mehfil's scene) sits behind it so the wordmark never lies directly on
+a headline scrolling beneath.
 
 - **At rest** the pill reads like a file path for the section in view: `/work · 02/06 · ▾`. When
   the section changes, the path decodes to the new name letter by letter (scramble text) and the
@@ -147,7 +149,8 @@ signal "Start a project" button (right, visible at every width). It never hides.
   highlight sits on the current section, sliding when it changes. It folds back to the path 260 ms
   after the pointer leaves, so passing over it does not flicker. Escape closes it; Tab and Enter
   move through and follow the links.
-- **Touch:** tapping the pill keeps it a path (its ▾ flips) and drops a **vertical panel** under the
+- **Touch, or any screen under 900 px wide** (the row does not fit beside the wordmark and button
+  there): tapping or clicking the pill keeps it a path (its ▾ flips) and drops a **vertical panel** under the
   header, full width with 14 px gutters, listing `00 home` to `06 contact` by number and name in
   large type. The current section is filled signal; rows arrive in a stagger. A "book a 20-min call
   ↗" line sits at the bottom. Picking a section scrolls there and closes the panel; tapping outside
@@ -344,7 +347,8 @@ Prototype: [../../mockups/footer.html](../../mockups/footer.html).
 - **The giant wordmark:** `verastack/labs` set edge to edge of the content width (font size
   measured and fitted on load and resize), slash in signal, `labs` at 28% opacity. **The bottom 40%
   of the letters is cut off by the bottom edge of the page**, as if the wordmark sinks below it (a
-  clipping box `0.74 × font size × 0.6` tall). As the footer arrives, the letters rise into place
+  clipping box `font size × (0.74 × 0.6 + 0.06)` tall, `clipHeight()` in `src/lib/fit.ts`). As the
+  footer arrives, the letters rise into place
   one after another (0.9 s each, 45 ms apart). `static`: letters shown in place.
 - The clock uses `Intl.DateTimeFormat` with `Asia/Kolkata`, updated every 15 s.
 
