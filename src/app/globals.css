@@ -1,1 +1,45 @@
 @import 'tailwindcss';
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-signal: var(--signal);
+  --color-alert: var(--alert);
+
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-body: var(--font-bricolage), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--ink);
+    color: var(--text);
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background: var(--signal);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+  }
+}
+
+/* Inactive states: dim when motion runs, muted when it does not (spec 5.1). */
+html[data-motion='static'] {
+  --dim: var(--muted);
+}
