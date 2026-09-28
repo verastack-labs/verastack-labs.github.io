@@ -9,12 +9,14 @@ import { work, headliners } from '@/data/work'
 import { process } from '@/data/process'
 import { capabilities } from '@/data/capabilities'
 import { team } from '@/data/team'
+import { budgets } from '@/data/budgets'
+import { contact } from '@/data/contact'
 
 // Built from its code point so this file never contains the character itself.
 const EM_DASH = String.fromCodePoint(0x2014)
 
 // Add every data module here as it is created.
-const modules: Record<string, unknown> = { site, sections, products, hero, services, configurator, work, process, capabilities, team }
+const modules: Record<string, unknown> = { site, sections, products, hero, services, configurator, work, process, capabilities, team, budgets, contact }
 
 function collectStrings(value: unknown, path: string): Array<[string, string]> {
   if (typeof value === 'string') return [[path, value]]
@@ -75,5 +77,17 @@ describe('content', () => {
       expect(w.caseStudyUrl).toMatch(/^https:\/\//)
       expect(w.media ?? w.art).toBeTruthy()
     }
+  })
+
+  it('has both budget sets with the same number of bands (spec 7.3)', () => {
+    expect(budgets.inr.length).toBeGreaterThan(1)
+    expect(budgets.usd.length).toBe(budgets.inr.length)
+  })
+
+  it('offers the defaults and the pre-book choice among the contact options', () => {
+    expect(contact.services).toContain(contact.defaultService)
+    expect(contact.timelines).toContain(contact.defaultTimeline)
+    for (const s of Object.values(contact.prefillService)) expect(contact.services).toContain(s)
+    expect(budgets.inr[contact.defaultBudget]).toBeDefined()
   })
 })

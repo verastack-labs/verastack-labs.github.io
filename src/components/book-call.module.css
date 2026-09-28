@@ -1,0 +1,57 @@
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+}
+.card:focus-visible { outline: none; }
+.text { display: flex; flex-direction: column; }
+.text b { font-weight: 700; font-size: 19px; letter-spacing: -0.03em; }
+.sub { font: 400 11.5px var(--font-mono); color: var(--muted); }
+.arrow { font: 500 20px var(--font-mono); color: var(--signal); transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+/* The border trace: pathLength 1 means the dash maths needs no measuring. */
+.trace { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); pointer-events: none; overflow: visible; }
+.trace rect {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+.words { display: flex; flex-wrap: wrap; gap: 5px; max-height: 0; transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), margin 0.4s; }
+.words i {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: 500 11px var(--font-mono);
+  font-style: normal;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(8px) scale(0.9);
+  transition: opacity 0.25s, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, color 0.3s;
+}
+
+.card:hover .trace rect,
+.card:focus-visible .trace rect { stroke-dashoffset: 0; }
+.card:hover .arrow,
+.card:focus-visible .arrow { transform: translate(3px, -3px); }
+.card:hover .words,
+.card:focus-visible .words { max-height: 32px; margin-top: 10px; }
+.card:hover .words i,
+.card:focus-visible .words i { opacity: 1; transform: none; transition-delay: calc(0.28s + var(--i) * 0.11s); }
+.card:hover .words i:last-child,
+.card:focus-visible .words i:last-child { border-color: var(--signal); color: var(--signal); }
+
+html[data-motion='static'] .card * { transition: none !important; }

@@ -11,7 +11,7 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 ## Where things stand
 
-Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones), the Process rail with split-flap indices, About with the capabilities boot-up, a placeholder for Contact, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
+Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones), the Process rail with split-flap indices, About with the capabilities boot-up, Contact with the sentence form, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
 
 | Phase | Status | PR |
 | --- | --- | --- |
@@ -21,8 +21,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 | 3. Services and configurator demo | done | #5 |
 | 4. Work and Products | done | #6 |
 | 5. Process and About | done | #7 |
-| 6. Contact | next | |
-| 7. Launch pass | planned | |
+| 6. Contact | done | #9 |
+| 7. Launch pass | next | |
 
 ## Names used in this project
 
@@ -39,6 +39,7 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 - **Boot-up**: the About capabilities flickering on one by one, followed by the walking light.
 - **Border trace**: the book-a-call hover, a signal line drawing round the card, then
   "bring · your · idea".
+- **Sentence form**: the Contact enquiry, one sentence with blanks (`src/scenes/contact/`).
 - **Motion modes**: `full`, `lite` and `static` from `useMotionPreference()`.
 - **Path pill**: the nav (`src/components/nav/path-pill.tsx`). Opens into the **dock row** on hover
   at 900 px and wider, and the **section panel** on touch or narrower screens. On desktop it starts
@@ -51,8 +52,13 @@ Content (placeholders are in the design until these arrive):
 
 - [ ] Hero headline (placeholder copy in `src/data/hero.ts`) and the `availability` line in
   `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
-- [ ] Contact email address for the site (the footer shows a "Start a project" link instead until it is set in `src/data/site.ts`).
-- [ ] Reply-time promise ("within two working days" is placeholder).
+- [x] Contact email: `therealriganb@gmail.com` for now (2026-09-28), set once in `src/data/site.ts`
+  (`email`). Change it there and the footer, Contact and the form's fallback all follow.
+- [ ] **Web3Forms access key** (the enquiry form cannot send without it). Create one at
+  web3forms.com with the address that should receive enquiries, then set `formAccessKey` in
+  `src/data/site.ts`. It is safe to be public (their docs). Until then a sent enquiry fails
+  honestly and offers "email it instead" with the sentence pre-filled.
+- [ ] Reply-time promise ("within two working days" is placeholder, `replyPromise` in `src/data/site.ts`).
 - [ ] Configurator demo prices (VS-65 keyboard, `src/data/configurator.ts`): illustrative
   placeholders, labelled "demo price" on the page. Fine to keep unless you want other numbers.
 - [ ] Dollar budget bands (placeholders: under $3k, $3-7k, $7-15k, $15k+). Rupee bands too, if
@@ -73,9 +79,10 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Phases 6 and 7 (spec section 11).
-- [ ] Contact form (phase 6) reads the configurator's pre-book choice with `takeEnquiryPrefill()`
-  and drives the `₹ / $` toggle through `setCurrency()` (`src/lib/use-currency.ts`).
+- [ ] Phase 7, the launch pass (spec section 11).
+- [ ] Cal.com pop-up (spec 6.07): the booking card is built and appears once `calLink` is set, but
+  it opens the link in a new tab. Load Cal's embed on first click and restyle it to the tokens
+  once there is a real link to test against.
 - [ ] Custom domain: `public/CNAME` plus DNS. Product pages move under it too.
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
@@ -94,8 +101,12 @@ Content (placeholders are in the design until these arrive):
   simple rounded boxes, not photoreal.
 - three.js is about 245 KB gzipped, loaded only when Services comes near (never on first paint).
 - No auto-reply to enquiries until the form backend moves.
+- The form service is Web3Forms (public access key, `botcheck` honeypot). Formspree's free plan
+  was 50 submissions a month; Web3Forms' pricing page could not be read at build time, so check
+  its current limit when creating the key.
 - The site went live early (after phase 2) with placeholder sections for services onwards.
-- Pinned scenes set up their pins in `useLayoutEffect` so GSAP unwraps its pin spacer before React
+- Pinned scenes pin an inner div, never the `<section>` (so React can still insert next to it when
+  the layout switches), and set up their pins in `useLayoutEffect` so GSAP unwraps its pin spacer before React
   removes the node (otherwise resizing from desktop to phone width throws).
 - Scene placeholders (`src/components/scene-placeholder.tsx`) stand in for each section until its
   phase lands; each carries the id the nav tracks.
