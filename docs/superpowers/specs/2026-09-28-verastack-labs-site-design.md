@@ -174,7 +174,8 @@ a headline scrolling beneath.
   [../../mockups/brand-direction.html](../../mockups/brand-direction.html), option B.
 - `full`: device pixel ratio capped at 1.5, cell size about `viewport height / 46`.
 - `lite`: larger cells, 30 fps cap, pixel ratio 1, no cursor ripple (a slow autonomous ripple
-  instead), paused off screen.
+  instead), paused off screen. Under 768 px the field fades out towards the bottom (a CSS mask) so
+  it stays above the full-width headline.
 - `static` and no-WebGL: a static CSS dot pattern (radial-gradient) with one crest baked in.
 - The headline paints before the shader loads; the shader fades in after first paint.
 
