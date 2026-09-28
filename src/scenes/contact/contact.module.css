@@ -1,0 +1,153 @@
+.contact { padding: 112px 24px 96px; }
+@media (min-width: 768px) { .contact { padding: 160px 40px 128px; } }
+.label { margin: 0; font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.label em { font-style: normal; color: var(--signal); }
+.headline {
+  margin: 12px 0 0;
+  font-size: clamp(44px, 7.6vw, 120px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  cursor: default;
+}
+
+.grid { display: grid; gap: 48px; margin-top: 40px; align-items: start; }
+@media (min-width: 1024px) { .grid[data-side='true'] { grid-template-columns: 1fr 320px; } }
+
+/* ---------- The sentence ---------- */
+.form { min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; font: 400 12px var(--font-mono); color: var(--muted); }
+.keyBlank { padding: 0 3px; border-bottom: 2px dashed #6B6F63; color: var(--text); }
+.keyPick { padding: 0 3px; border-bottom: 2px solid var(--signal); color: var(--signal); }
+.count { margin-left: auto; color: var(--text); }
+.count b { font-weight: 500; color: var(--signal); }
+@media (max-width: 767px) { .count { margin-left: 0; } }
+
+.sentence {
+  margin: 14px 0 0;
+  max-width: 34ch;
+  font-weight: 700;
+  font-size: clamp(22px, 2.8vw, 36px);
+  line-height: 1.8;
+  letter-spacing: -0.035em;
+  color: var(--muted);
+}
+.auto { position: relative; display: inline-grid; vertical-align: baseline; max-width: 100%; }
+.auto::after {
+  content: attr(data-value) ' ';
+  grid-area: 1 / 1;
+  visibility: hidden;
+  white-space: pre;
+  overflow: hidden;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: 0 10px;
+}
+.auto[data-kind='pick']::after { padding: 0 28px 0 4px; }
+/* width 0 keeps the field's built-in size out of the cell; min-width then fills the cell. */
+.auto > input,
+.auto > select { grid-area: 1 / 1; width: 0; min-width: 100%; }
+
+.blank {
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--text);
+  background: rgba(242, 243, 238, 0.04);
+  border: 0;
+  border-bottom: 2px dashed #6B6F63;
+  border-radius: 6px 6px 0 0;
+  padding: 0 8px;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+.blank::placeholder { color: #55584E; font-weight: 500; }
+.blank:hover { background: rgba(242, 243, 238, 0.07); }
+.blank:focus { border-bottom-style: solid; border-color: var(--signal); background: rgba(212, 255, 63, 0.07); box-shadow: 0 6px 16px -10px rgba(212, 255, 63, 0.6); }
+.blank[data-ok='true'] { border-bottom-style: solid; border-color: var(--text); }
+.blank.miss { border-color: var(--alert); animation: miss 0.9s ease 2; }
+@keyframes miss { 50% { background: rgba(255, 107, 74, 0.18); } }
+
+.pick {
+  font: inherit;
+  letter-spacing: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0 26px 0 4px;
+  border: 0;
+  border-bottom: 2px solid var(--signal);
+  border-radius: 0;
+  color: var(--signal);
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  background-image: linear-gradient(45deg, transparent 50%, var(--signal) 50%), linear-gradient(135deg, var(--signal) 50%, transparent 50%);
+  background-position: calc(100% - 13px) 55%, calc(100% - 6px) 55%;
+  background-size: 7px 7px;
+  background-repeat: no-repeat;
+}
+.pick:hover,
+.pick:focus-visible { background-color: rgba(212, 255, 63, 0.08); }
+.pick option { background: var(--surface); color: var(--text); font-size: 15px; }
+.pick:disabled { cursor: default; opacity: 1; }
+
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 20px; }
+.currency { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.currency button {
+  padding: 5px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 500 13px var(--font-mono);
+  cursor: pointer;
+}
+.currency button[aria-pressed='true'] { background: var(--signal); color: var(--ink); }
+.noteToggle { display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; background: none; color: var(--muted); font: 500 13px var(--font-mono); cursor: pointer; }
+.noteToggle:hover { color: var(--text); }
+.noteToggle i { display: inline-block; font-style: normal; color: var(--signal); transition: transform 0.3s; }
+.noteToggle[aria-expanded='true'] i { transform: rotate(45deg); }
+.note { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.note[data-open='true'] { grid-template-rows: 1fr; }
+.note > div { overflow: hidden; }
+.note textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(242, 243, 238, 0.03);
+  color: var(--text);
+  font: 500 16px/1.5 var(--font-body);
+  resize: vertical;
+  outline: none;
+}
+.note textarea:focus { border-color: var(--signal); }
+
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 28px; }
+.send {
+  padding: 15px 22px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--signal);
+  color: var(--ink);
+  font: 700 17px var(--font-display);
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.send[aria-disabled='true'] { opacity: 0.35; }
+.send:not([aria-disabled='true']):hover { transform: translateY(-2px); }
+.hint { font: 400 12px var(--font-mono); color: var(--muted); }
+.hint a { color: var(--signal); }
+.sent { margin: 28px 0 0; }
+.sent b { display: block; font-weight: 800; font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.05em; color: var(--text); }
+.sent em { font-style: normal; color: var(--signal); }
+
+/* ---------- The other routes ---------- */
+.side { display: flex; flex-direction: column; gap: 14px; }
+.mail { margin: 0; font: 400 12px/1.7 var(--font-mono); color: var(--muted); }
+.mail a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); }
+.mail a:hover { border-color: var(--signal); }
+
+html[data-motion='static'] .blank.miss { animation: none; }

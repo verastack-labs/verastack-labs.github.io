@@ -1,10 +1,10 @@
-import { ScenePlaceholder } from '@/components/scene-placeholder'
 import { Hero } from '@/scenes/hero/hero'
 import { Services } from '@/scenes/services/services'
 import { Work } from '@/scenes/work/work'
 import { Products } from '@/scenes/products/products'
 import { Process } from '@/scenes/process/process'
 import { About } from '@/scenes/about/about'
+import { Contact } from '@/scenes/contact/contact'
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
       <Products />
       <Process />
       <About />
-      <ScenePlaceholder id="contact" label="/contact" title="Let's build something." />
+      <Contact />
     </main>
   )
 }
