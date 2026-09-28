@@ -1,0 +1,50 @@
+.label { margin: 0; font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.label em { font-style: normal; color: var(--signal); }
+.headline {
+  margin: 12px 0 0;
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96;
+  font-size: clamp(40px, 6.4vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.pinned {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 96px 40px 40px;
+  border-bottom: 1px solid var(--line);
+}
+.pinned .headline { margin-bottom: 56px; }
+.grid { padding: 112px 24px 72px; border-bottom: 1px solid var(--line); }
+@media (min-width: 768px) { .grid { padding: 140px 40px 96px; } }
+.grid .headline { margin-bottom: 40px; }
+
+.rail { position: relative; }
+/* The rail runs behind the flaps; each flap's ink backing hides it. */
+.line { position: absolute; left: 0; right: 0; top: 24px; height: 2px; background: var(--line); }
+.line i {
+  position: absolute;
+  inset: 0;
+  background: var(--signal);
+  box-shadow: 0 0 12px var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.grid .steps { grid-template-columns: 1fr 1fr; gap: 36px 20px; }
+@media (min-width: 900px) { .grid .steps { grid-template-columns: repeat(4, 1fr); } }
+.step h3 {
+  margin: 22px 0 8px;
+  font-weight: 800;
+  font-size: clamp(22px, 2.2vw, 30px);
+  letter-spacing: -0.045em;
+  color: var(--dim);
+  transition: color 0.35s;
+}
+.step p { margin: 0; max-width: 28ch; font-size: 15px; line-height: 1.45; color: var(--muted); opacity: 0.35; transition: opacity 0.35s; }
+.step[data-on='true'] h3 { color: var(--text); }
+.step[data-on='true'] p { opacity: 1; }
