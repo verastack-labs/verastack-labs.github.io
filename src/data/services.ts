@@ -12,7 +12,7 @@ export const services: Service[] = [
     id: 'configurators',
     name: 'Configurators',
     blurb: '3D and visual build-your-own tools that turn browsing into buying.',
-    proof: ['Ultraviolette X-47', 'E3 TRION'],
+    proof: ['Ultraviolette X-47 · Tesseract', 'E3 TRION'],
     lead: true,
   },
   {
