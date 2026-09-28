@@ -232,14 +232,18 @@ Prototype: [../../mockups/scene-work.html](../../mockups/scene-work.html), optio
 - **Headliners** (Ultraviolette X-47 configurator, E3 Electric.AI TRION launch) each get a pinned
   moment: a framed card grows to full bleed as you scroll, with the name in huge type and a mono
   credit block (`2025 · as an employee`, `2026 · freelance`, stack, `visit live ↗ · case study ↗`).
-  Media is a muted, looping screen recording with a poster frame.
+  Media is a muted, looping screen recording with a poster frame. Until a recording exists, the
+  card shows stand-in artwork in the client's colours (a glow, a faint grid and the model name in
+  outline type): abstract, never a fake screenshot. The card sits framed on the right of the intro
+  and grows to full bleed (a `clip-path` inset driven by scroll).
 - **Supporting work** (Maven Consultancy, Pee Empro Exports, Suggaa Ventures, PixelStack Studio)
   follows as a list. Hovering a row slides up a signal band with a scrolling marquee of the row's
   text (flowing menu).
 - **Cold Stone Creamery Arabia** (website and CMS, 2026, freelance) is built but not live. Until
   launch it appears as a supporting row marked `launching soon`, text only: no screenshots, video
   or live link (7.2).
-- Case study links go to the portfolio's case study pages.
+- Case study links go to the portfolio's case study pages (`riganb.github.io/work/<slug>/`).
+  Supporting rows have no case studies, so they are not links.
 - Phones: no pin; headliners are full-width cards with the video autoplaying muted only while
   visible; the list has no marquee (tap goes to the case study).
 
@@ -264,6 +268,8 @@ Prototype: [../../mockups/scene-products.html](../../mockups/scene-products.html
 - Copy for rigseed and Riggit comes from their landing pages; links go to those pages.
 - **Phones:** the hand-over becomes a **card swap**: the three mockups in a tilted 3D stack that
   cycles every 3.2 s, with the product names as tabs (tap to bring one forward).
+- `static`: no pin and no cycling; each product is its own block in its palette, with its mockup
+  standing still.
 
 ### 05. How we work: pinned rail with split-flap indices
 

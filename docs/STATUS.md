@@ -11,7 +11,7 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 ## Where things stand
 
-Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, placeholder scenes for the rest, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
+Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones), placeholder scenes for Process, About and Contact, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
 
 | Phase | Status | PR |
 | --- | --- | --- |
@@ -19,8 +19,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 | 1. Foundation | done | #2 |
 | 2. Hero | done | #3 |
 | 3. Services and configurator demo | done | #5 |
-| 4. Work and Products | next | |
-| 5. Process and About | planned | |
+| 4. Work and Products | done | #6 |
+| 5. Process and About | next | |
 | 6. Contact | planned | |
 | 7. Launch pass | planned | |
 
@@ -33,6 +33,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
   configurator demo) or read.
 - **Hand-over**: the Products scene, where the stage takes on each product's palette in turn.
 - **Card swap**: the phone version of the Products scene.
+- **Reel**: the Work scene on desktop, where each headliner grows from a framed card to full bleed.
+- **Flowing list**: the supporting work under the reel; hovering a row slides up a signal marquee.
 - **Split-flap**: the departure-board digits used for the process indices.
 - **Boot-up**: the About capabilities flickering on one by one, followed by the walking light.
 - **Border trace**: the book-a-call hover, a signal line drawing round the card, then
@@ -59,7 +61,9 @@ Content (placeholders are in the design until these arrive):
 - [ ] Mehfil's one-line pitch ("Chai in ten? Rally the group." is placeholder) and whether it has
   a public page to link to yet.
 - [ ] Screen recordings of the Ultraviolette X-47 configurator and the E3 TRION site (with poster
-  frames).
+  frames). Until then the Work reel shows stand-in artwork (`art` in `src/data/work.ts`); add
+  `media: { poster, mp4, webm }` to swap in the recording.
+- [ ] Years for the supporting work (Maven, Pee Empro, Suggaa, PixelStack), if you want them shown.
 - [ ] Cal.com account and the 20-minute event link (`site.calLink`; booking links stay hidden until set).
 - [ ] Cold Stone Creamery Arabia launch. It is built (website and CMS) and listed as a text-only
   `launching soon` row; no visuals until it is live. When it launches, follow spec 7.2: set
@@ -68,7 +72,7 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Phases 4 to 7 (spec section 11).
+- [ ] Phases 5 to 7 (spec section 11).
 - [ ] Contact form (phase 6) reads the configurator's pre-book choice with `takeEnquiryPrefill()`
   and drives the `₹ / $` toggle through `setCurrency()` (`src/lib/use-currency.ts`).
 - [ ] Custom domain: `public/CNAME` plus DNS. Product pages move under it too.
@@ -90,6 +94,8 @@ Content (placeholders are in the design until these arrive):
 - three.js is about 245 KB gzipped, loaded only when Services comes near (never on first paint).
 - No auto-reply to enquiries until the form backend moves.
 - The site went live early (after phase 2) with placeholder sections for services onwards.
+- Pinned scenes set up their pins in `useLayoutEffect` so GSAP unwraps its pin spacer before React
+  removes the node (otherwise resizing from desktop to phone width throws).
 - Scene placeholders (`src/components/scene-placeholder.tsx`) stand in for each section until its
   phase lands; each carries the id the nav tracks.
 
