@@ -83,9 +83,10 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Google Search Console (and optionally Bing Webmaster Tools): verify the site and submit
-  `https://verastack-labs.github.io/sitemap.xml`. Verification needs your Google account; send the
-  HTML-tag code and it goes in `metadata.verification` in `src/app/layout.tsx`.
+- [ ] Google Search Console: the verification tag is live (`googleSiteVerification` in
+  `src/data/site.ts`, 2026-09-28). Remaining: press Verify, then submit
+  `https://verastack-labs.github.io/sitemap.xml` under Sitemaps. Bing Webmaster Tools can import
+  the property from Search Console.
 - [ ] Share caches: platforms keep the old preview of a link for days. After copy changes, refresh
   with the Facebook Sharing Debugger and LinkedIn Post Inspector. WhatsApp and X refresh on their
   own schedule.
