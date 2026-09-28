@@ -31,7 +31,7 @@ export const services: Service[] = [
     id: 'sites',
     name: 'Websites & launches',
     short: 'websites',
-    blurb: 'Marketing sites, rebuilds and launch pages, fast and easy to keep up to date.',
+    blurb: 'Marketing sites, rebuilds and launch pages, in code or in Framer and Webflow when your team wants to edit it themselves.',
     proof: ['E3 TRION launch', 'PixelStack Studio'],
     lead: false,
   },
@@ -44,6 +44,9 @@ export const services: Service[] = [
     lead: false,
   },
 ]
+
+// The tools we build with, for search engines and answer engines (JSON-LD, llms.txt).
+export const tools = ['Next.js', 'React', 'TypeScript', 'Three.js', 'Framer', 'Webflow', 'Tauri']
 
 // Under the index: the list is where we start, not where we stop.
 export const servicesMore = 'and whatever else lives on a screen. ask.'
