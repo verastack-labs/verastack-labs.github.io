@@ -15,7 +15,7 @@ Design agreed in the 2026-09-28 brainstorm. Nothing built yet.
 
 | Phase | Status | PR |
 | --- | --- | --- |
-| 0. Spec, status, brief, mockups | in review | |
+| 0. Spec, status, brief, mockups | in review | #1 |
 | 1. Foundation | next | |
 | 2. Hero | planned | |
 | 3. Services and configurator demo | planned | |
