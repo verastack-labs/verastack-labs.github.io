@@ -7,6 +7,71 @@ import styles from '@/scenes/products/mockups.module.css'
 // Drawn stand-ins for each app, in its own palette (spec 6.04). Motion is CSS only and stops in
 // static mode.
 
+// Origan: a four-year longitudinal profile in survey notation, the language of its own page. Its
+// brief allows only partial, synthetic imagery, so this is a drawing, not a dashboard.
+const SEMESTERS = [96, 90, 82, 72, 62, 50, 38, 24]
+const PROFILE = `M0 104 ${SEMESTERS.map((y, i) => `L${20 + i * 40} ${y}`).join(' ')}`
+const BENCHMARKS = [
+  { at: 1, mark: 'I' },
+  { at: 3, mark: 'II' },
+  { at: 5, mark: 'III' },
+  { at: 7, mark: 'IV' },
+]
+
+function Origan() {
+  return (
+    <div className={`${styles.win} ${styles.origan}`}>
+      <div className={styles.titlebar}>
+        <i />
+        <i />
+        <i />
+        <span>origan · profile</span>
+      </div>
+      <div className={styles.orBody}>
+        <div className={styles.orRow}>
+          <span>longitudinal section</span>
+          <span>
+            ch <b>5+400</b>
+          </span>
+        </div>
+        <svg className={styles.orPlot} viewBox="0 0 320 120" preserveAspectRatio="none">
+          <g className={styles.contours}>
+            <path d="M-20 34 C 60 14, 140 54, 340 22" />
+            <path d="M-20 58 C 80 36, 170 80, 340 48" />
+            <path d="M-20 82 C 70 64, 190 100, 340 74" />
+          </g>
+          <path className={styles.profile} d={PROFILE} pathLength={1} />
+          {BENCHMARKS.map((b) => {
+            const x = 20 + b.at * 40
+            const y = SEMESTERS[b.at]
+            return (
+              <g key={b.mark} className={styles.benchmark}>
+                <path d={`M${x - 4} ${y + 7} L${x} ${y} L${x + 4} ${y + 7} Z`} />
+                <text x={x} y={y - 6}>
+                  {b.mark}
+                </text>
+              </g>
+            )
+          })}
+        </svg>
+        <div className={styles.orTicks}>
+          {SEMESTERS.map((_, i) => (
+            <span key={i} data-now={i === 5 || undefined}>
+              S{i + 1}
+            </span>
+          ))}
+        </div>
+        <div className={styles.orRow}>
+          <span>
+            benchmark <b>III</b> · readiness
+          </span>
+          <span className={styles.orChip}>year III of IV</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const TORRENTS = [
   { name: 'ubuntu-24.04-desktop-amd64.iso', state: '12.4 MB/s', from: 38, to: 92 },
   { name: 'archlinux-2026.09.01-x86_64.iso', state: '8.1 MB/s', from: 6, to: 64 },
@@ -134,7 +199,7 @@ export function ProductMockup({ id }: { id: Product['id'] }) {
   }, [])
   return (
     <div ref={root} className={styles.mockup} data-play={play} aria-hidden="true">
-      {id === 'rigseed' ? <Rigseed /> : id === 'riggit' ? <Riggit /> : <Mehfil />}
+      {id === 'origan' ? <Origan /> : id === 'rigseed' ? <Rigseed /> : id === 'riggit' ? <Riggit /> : <Mehfil />}
     </div>
   )
 }

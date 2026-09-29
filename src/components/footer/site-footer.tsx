@@ -32,13 +32,8 @@ export function SiteFooter() {
           <ul className="m-0 list-none p-0">
             {products.map((p) => (
               <li key={p.name}>
-                {p.url ? (
-                  <a href={p.url}>{p.name} ↗</a>
-                ) : (
-                  <>
-                    {p.name} <span className={styles.soon}>soon</span>
-                  </>
-                )}
+                {p.url ? <a href={p.url}>{p.name} ↗</a> : p.name}
+                {p.status === 'coming-soon' && <span className={styles.soon}> soon</span>}
               </li>
             ))}
           </ul>

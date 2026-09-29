@@ -12,6 +12,25 @@
 .titlebar i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.25; }
 .titlebar span { margin-left: 8px; font-size: 10.5px; opacity: 0.6; }
 
+/* Origan: survey drawing on ink green, mint the only saturated colour */
+.origan { background: #0D1815; color: #EEF3F0; border: 1px solid #22423A; }
+.origan .titlebar { background: #13251F; }
+.orBody { padding: 16px 18px 18px; }
+.orRow { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 11px; color: #8FA89E; }
+.orRow b { color: #EEF3F0; font-weight: 500; }
+.orPlot { display: block; width: 100%; height: 150px; margin: 12px 0 6px; overflow: visible; }
+.contours path { fill: none; stroke: #22423A; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.contours { animation: drift 9s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(-14px); } }
+/* Drawn at rest, so a stopped animation still shows the whole profile. */
+.profile { fill: none; stroke: #5FD9A8; stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 0; vector-effect: non-scaling-stroke; animation: survey 7s ease-out infinite; }
+@keyframes survey { 0% { stroke-dashoffset: 1; } 55%, 100% { stroke-dashoffset: 0; } }
+.benchmark path { fill: #0D1815; stroke: #5FD9A8; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.benchmark text { fill: #EEF3F0; font: 500 9px var(--font-mono); text-anchor: middle; }
+.orTicks { display: grid; grid-template-columns: repeat(8, 1fr); margin-bottom: 14px; padding-top: 6px; border-top: 1px solid #22423A; font-size: 10px; color: #8FA89E; text-align: center; }
+.orTicks span[data-now] { color: #5FD9A8; }
+.orChip { padding: 4px 8px; border: 1px solid rgba(95, 217, 168, 0.35); border-radius: 3px; color: #5FD9A8; }
+
 /* rigseed */
 .rigseed { background: #0E1318; color: #E6EDF3; border: 1px solid #1E2831; }
 .rigseed .titlebar { background: #121920; }

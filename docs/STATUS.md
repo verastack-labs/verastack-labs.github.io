@@ -71,8 +71,10 @@ Content (placeholders are in the design until these arrive):
   the placeholders (under ₹2L, ₹2-5L, ₹5-10L, ₹10L+) are wrong.
 - [ ] How we work: the real steps and one line each (Discover, Design, Build, Launch are
   placeholder, in `src/data/process.ts`), and whether "a fixed quote" and "weekly previews" are promises we keep.
-- [ ] Mehfil's one-line pitch ("Chai in ten? Rally the group." is placeholder) and whether it has
-  a public page to link to yet.
+- [ ] Mehfil's one-line pitch ("Chai in ten? Rally the group." is placeholder). Its landing page
+  (`/mehfil/`) is live, so the site now links it ("Join the waitlist") and its line comes from there.
+- [ ] Origan's copy on the studio site (pitch "Four years, not four weeks.", from its PRODUCT.md
+  principles; line from its landing page). Origan leads the Products scene, footer and sitemap.
 - [ ] Screen recordings of the Ultraviolette X-47 and Tesseract configurators and the E3 TRION site (with poster
   frames). Until then the Work reel shows stand-in artwork (`art` in `src/data/work.ts`); add
   `media: { poster, mp4, webm }` to swap in the recording.
@@ -86,6 +88,9 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [ ] After this deploy, resubmit `sitemap.xml` in Search Console: it now lists the four product
+  landing pages (Origan, rigseed, Riggit, Mehfil), and robots.txt points at the Origan and Riggit
+  sitemaps. A new product page is one line in `src/data/landing-pages.ts`.
 - [ ] Google Search Console: the verification tag is live (`googleSiteVerification` in
   `src/data/site.ts`, 2026-09-28). Remaining: press Verify, then submit
   `https://verastack-labs.github.io/sitemap.xml` under Sitemaps. Bing Webmaster Tools can import
