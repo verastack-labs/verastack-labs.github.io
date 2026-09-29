@@ -41,7 +41,7 @@ describe('content', () => {
 
   it('lists the seven sections in page order, each path matching its id', () => {
     expect(sections.map((s) => s.id)).toEqual(['top', 'services', 'work', 'products', 'process', 'about', 'contact'])
-    for (const s of sections) expect(s.path).toBe(s.id === 'top' ? '/' : `/${s.id}`)
+    for (const s of sections) expect(s.path).toBe(s.id === 'top' ? '/intro' : `/${s.id}`)
   })
 
   it('links every live product, and leads with Origan', () => {
