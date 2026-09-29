@@ -89,9 +89,11 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] After this deploy, resubmit `sitemap.xml` in Search Console: it now lists the four product
-  landing pages (Origan, rigseed, Riggit, Mehfil), and robots.txt points at the Origan and Riggit
-  sitemaps. A new product page is one line in `src/data/landing-pages.ts`.
+- [x] `sitemap.xml` resubmitted in Search Console on 2026-09-30. It lists the four product landing
+  pages (Origan, rigseed, Riggit, Mehfil), and robots.txt points at the Origan and Riggit sitemaps.
+  A new product page is one line in `src/data/landing-pages.ts`.
+- [ ] Check back in a few days that both sitemaps (root and `/origan/`) move from "Couldn't fetch"
+  to "Success". "Couldn't fetch" is normal until Google first reads a new property's sitemap.
 - [ ] Google Search Console: the verification tag is live (`googleSiteVerification` in
   `src/data/site.ts`, 2026-09-28). Remaining: press Verify, then submit
   `https://verastack-labs.github.io/sitemap.xml` under Sitemaps. Bing Webmaster Tools can import
