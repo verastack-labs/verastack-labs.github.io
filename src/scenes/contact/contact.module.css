@@ -123,6 +123,10 @@
 }
 .note textarea:focus { border-color: var(--signal); }
 
+/* The hCaptcha checkbox arrives once the sentence can be sent. */
+.captcha { margin-top: 24px; min-height: 78px; animation: captchaIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes captchaIn { from { opacity: 0; transform: translateY(8px); } }
+html[data-motion='static'] .captcha { animation: none; }
 .honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 28px; }

@@ -11,8 +11,11 @@ export const site = {
   calLink: null as string | null,
   // Web3Forms access key for the enquiry form (spec 7.4). Public by design; the form cannot send
   // until it is set.
-  formAccessKey: null as string | null,
+  formAccessKey: '83e439b1-16f2-4897-b789-225cdd314194' as string | null,
   formEndpoint: 'https://api.web3forms.com/submit',
+  // Web3Forms' shared hCaptcha site key (free plan). hCaptcha is switched on for the form in the
+  // Web3Forms dashboard, so every submission must carry a token.
+  hcaptchaSiteKey: '50b2fe65-b00b-4b9e-ad62-3ba471098be2' as string | null,
   // Placeholder promise until confirmed.
   replyPromise: 'within two working days',
   availability: null as string | null,
