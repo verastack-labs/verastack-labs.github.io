@@ -57,10 +57,12 @@ Content (placeholders are in the design until these arrive):
   `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
 - [x] Contact email: `therealriganb@gmail.com` for now (2026-09-28), set once in `src/data/site.ts`
   (`email`). Change it there and the footer, Contact and the form's fallback all follow.
-- [ ] **Web3Forms access key** (the enquiry form cannot send without it). Create one at
-  web3forms.com with the address that should receive enquiries, then set `formAccessKey` in
-  `src/data/site.ts`. It is safe to be public (their docs). Until then a sent enquiry fails
-  honestly and offers "email it instead" with the sentence pre-filled.
+- [x] Web3Forms form "VeraStack Labs enquiries" created 2026-09-29, delivering to
+  therealriganb@gmail.com (free plan, 250 submissions a month). Key in `src/data/site.ts`
+  (`formAccessKey`, public by design). hCaptcha is required on the form in the Web3Forms dashboard,
+  so the site sends a token with every enquiry (`hcaptchaSiteKey`, Web3Forms' shared key).
+- [ ] Send one real enquiry from the live site to confirm delivery (needs a person to solve the
+  captcha).
 - [ ] Reply-time promise ("within two working days" is placeholder, `replyPromise` in `src/data/site.ts`).
 - [ ] Configurator demo prices (VS-65 keyboard, `src/data/configurator.ts`): illustrative
   placeholders, labelled "demo price" on the page. Fine to keep unless you want other numbers.
@@ -115,8 +117,8 @@ Content (placeholders are in the design until these arrive):
 - LCP on mobile measured 2.4 to 2.9 s with Lighthouse run on this machine, against a 2.5 s target.
   Those runs are not trustworthy for paint timing: first paint waits on an idle main thread, and
   the portfolio site shows the same delay as a control (observed first paint 2.5 s). LCP there
-  equals first paint (the headline), so the page itself paints as soon as it can. Hydration is
-  chunked per scene (#11), and the WebGL field accounts for most lab TBT only because headless
+  equals first paint (the headline), so the page itself paints as soon as it can. Per-scene hydration
+  chunking (#11) was reverted in #17 because it left five scenes unhydrated. The WebGL field accounts for most lab TBT only because headless
   Chrome renders it in software.
 
 - Four pinned scenes run back to back (Services, Work, Products, Process). Each hold is sized to
@@ -128,9 +130,8 @@ Content (placeholders are in the design until these arrive):
   simple rounded boxes, not photoreal.
 - three.js is about 245 KB gzipped, loaded only when Services comes near (never on first paint).
 - No auto-reply to enquiries until the form backend moves.
-- The form service is Web3Forms (public access key, `botcheck` honeypot). Formspree's free plan
-  was 50 submissions a month; Web3Forms' pricing page could not be read at build time, so check
-  its current limit when creating the key.
+- The form service is Web3Forms (public access key, `botcheck` honeypot, hCaptcha). Free plan: 250
+  submissions a month. hCaptcha loads only once someone can send, and sets its own cookies.
 - The site went live early (after phase 2) with placeholder sections for services onwards.
 - Pinned scenes pin an inner div, never the `<section>` (so React can still insert next to it when
   the layout switches), and set up their pins in `useLayoutEffect` so GSAP unwraps its pin spacer before React

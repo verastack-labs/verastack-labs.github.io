@@ -7,6 +7,7 @@ import { site } from '@/data/site'
 import { filledCount, isEmail, mailtoHref, problemMessage, problems, sentence, type Enquiry } from '@/lib/enquiry'
 import { takeEnquiryPrefill } from '@/lib/enquiry-prefill'
 import { setCurrency, useCurrency } from '@/lib/use-currency'
+import { HCaptcha } from '@/components/hcaptcha'
 import styles from '@/scenes/contact/contact.module.css'
 
 type Status = 'idle' | 'sending' | 'sent' | 'failed'
@@ -37,6 +38,9 @@ export function SentenceForm() {
   const nameRef = useRef<HTMLInputElement>(null)
   const emailRef = useRef<HTMLInputElement>(null)
   const noteRef = useRef<HTMLTextAreaElement>(null)
+  const [token, setToken] = useState<string | null>(null)
+  const [captchaReset, setCaptchaReset] = useState(0)
+  const [captchaShown, setCaptchaShown] = useState(false)
 
   // Arriving from the configurator's Pre-book button picks "a configurator" (spec 6.07).
   useEffect(() => {
@@ -54,6 +58,10 @@ export function SentenceForm() {
   const issues = problems(enquiry)
   const ready = Object.keys(issues).length === 0
   const locked = status === 'sent' || status === 'sending'
+  // The captcha appears once the sentence can be sent, and stays once shown (spec 7.4).
+  const captchaOn = !!(site.formAccessKey && site.hcaptchaSiteKey)
+  if (captchaOn && ready && !captchaShown) setCaptchaShown(true)
+  const needsToken = captchaOn && !token
 
   const pulse = (el: HTMLElement | null) => {
     if (!el) return
@@ -80,6 +88,10 @@ export function SentenceForm() {
       setStatus('failed')
       return
     }
+    if (needsToken) {
+      setMessage('tick the box above to send')
+      return
+    }
     setStatus('sending')
     setMessage(null)
     try {
@@ -97,23 +109,36 @@ export function SentenceForm() {
           budget: enquiry.budget,
           timeline,
           message: sentence(enquiry),
+          ...(token ? { 'h-captcha-response': token } : {}),
         }),
       })
       const body = (await res.json().catch(() => null)) as { success?: boolean } | null
-      setStatus(res.ok && body?.success ? 'sent' : 'failed')
+      const ok = res.ok && !!body?.success
+      setStatus(ok ? 'sent' : 'failed')
+      if (!ok) setCaptchaReset((n) => n + 1)
     } catch {
       setStatus('failed')
+      setCaptchaReset((n) => n + 1)
     }
   }
 
   const hint =
-    message ?? (status === 'sending' ? 'sending…' : ready ? 'ready when you are' : 'fill the underlined blanks to send')
+    message ??
+    (status === 'sending'
+      ? 'sending…'
+      : !ready
+        ? 'fill the underlined blanks to send'
+        : needsToken
+          ? 'one quick check above, then send'
+          : 'ready when you are')
 
   return (
     <form
       className={styles.form}
       data-status={status}
       noValidate
+      // POST, so a press before the page has loaded never puts personal details in a URL.
+      method="post"
       onSubmit={(e) => {
         e.preventDefault()
         void send()
@@ -273,6 +298,12 @@ export function SentenceForm() {
         <input type="checkbox" name="botcheck" tabIndex={-1} checked={bot} onChange={(e) => setBot(e.target.checked)} />
       </label>
 
+      {captchaShown && site.hcaptchaSiteKey && status !== 'sent' && (
+        <div className={styles.captcha}>
+          <HCaptcha siteKey={site.hcaptchaSiteKey} onToken={setToken} resetKey={captchaReset} />
+        </div>
+      )}
+
       {status === 'sent' ? (
         <p className={styles.sent} role="status">
           <b>
@@ -281,7 +312,7 @@ export function SentenceForm() {
         </p>
       ) : (
         <div className={styles.row}>
-          <button type="submit" className={styles.send} aria-disabled={!ready || status === 'sending'}>
+          <button type="submit" className={styles.send} aria-disabled={!ready || needsToken || status === 'sending'}>
             Send it →
           </button>
           <span className={styles.hint} aria-live="polite">
