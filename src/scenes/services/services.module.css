@@ -95,6 +95,12 @@
 .flat svg { width: 100%; height: auto; max-height: 100%; transform: rotateX(32deg); transform-origin: 50% 60%; }
 .flat svg * { transition: fill 0.4s, stroke 0.4s; }
 html[data-motion='static'] .flat svg * { transition: none; }
+/* The 3D board's motions, drawn: the lifted key bobs, and a new switch runs a press wave. */
+.flatLifted { transform-box: fill-box; transform-origin: center; animation: bob 3.9s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { transform: translateY(-0.9px) rotate(-4deg); } 50% { transform: translateY(0.9px) rotate(4deg); } }
+[data-wave] .flatKey { animation: dip 0.22s ease-in-out var(--d) both; }
+@keyframes dip { 50% { transform: translateY(1.6px); opacity: 0.8; } }
+html[data-motion='static'] .flat svg * { animation: none; }
 
 .options { display: flex; flex-direction: column; gap: 14px; }
 .group { margin: 0; padding: 0; border: 0; min-width: 0; }

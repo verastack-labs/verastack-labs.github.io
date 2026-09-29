@@ -142,7 +142,7 @@ a headline scrolling beneath.
 
 - **At rest** the pill reads like a file path for the section in view: `/work · 02/06 · ▾`. When
   the section changes, the path decodes to the new name letter by letter (scramble text) and the
-  counter updates. Sections: `/` (hero, 00), `/services` 01, `/work` 02, `/products` 03,
+  counter updates. Sections: `/intro` (hero, 00; was `/`, which read as a lone slash on phones), `/services` 01, `/work` 02, `/products` 03,
   `/process` 04, `/about` 05, `/contact` 06.
 - **Hover or keyboard focus (fine pointers):** the pill widens (measured widths, 0.5 s) into a
   dock row of every section, numbered in mono; labels arrive in a short stagger and a signal pill
@@ -222,7 +222,9 @@ pre-selects "a configurator" (through `src/lib/enquiry-prefill.ts`).
   section comes within one viewport, and rendering only while the demo is open. Lighting is a
   procedural studio room (three's `RoomEnvironment`), so no HDR file either; no post-processing.
 - `lite`, `static` and no-WebGL: `KeyboardFlat`, an SVG drawing of the same layout tilted with CSS,
-  recoloured from the same data (replaces the 12 pre-rendered images).
+  recoloured from the same data (replaces the 12 pre-rendered images). In `lite` it keeps the 3D
+  board's two motions in CSS: the lifted key bobs above its switch, and changing switches runs the
+  press wave left to right. `static` holds still.
 
 **Phones (`lite`):** no pin. Services stack as blocks; the configurator is an inline card with the
 image-swap demo.
