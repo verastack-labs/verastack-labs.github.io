@@ -61,8 +61,9 @@ Content (placeholders are in the design until these arrive):
   therealriganb@gmail.com (free plan, 250 submissions a month). Key in `src/data/site.ts`
   (`formAccessKey`, public by design). hCaptcha is required on the form in the Web3Forms dashboard,
   so the site sends a token with every enquiry (`hcaptchaSiteKey`, Web3Forms' shared key).
-- [ ] Send one real enquiry from the live site to confirm delivery (needs a person to solve the
-  captcha).
+- [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the
+  Web3Forms inbox shows every field (name, email, company, service, budget, timeline, subject and
+  the full sentence).
 - [ ] Reply-time promise ("within two working days" is placeholder, `replyPromise` in `src/data/site.ts`).
 - [ ] Configurator demo prices (VS-65 keyboard, `src/data/configurator.ts`): illustrative
   placeholders, labelled "demo price" on the page. Fine to keep unless you want other numbers.
