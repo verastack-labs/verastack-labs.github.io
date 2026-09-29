@@ -74,7 +74,8 @@ Content (placeholders are in the design until these arrive):
 - [ ] Mehfil's one-line pitch ("Chai in ten? Rally the group." is placeholder). Its landing page
   (`/mehfil/`) is live, so the site now links it ("Join the waitlist") and its line comes from there.
 - [ ] Origan's copy on the studio site (pitch "Four years, not four weeks.", from its PRODUCT.md
-  principles; line from its landing page). Origan leads the Products scene, footer and sitemap.
+  principles; line from its landing page). Origan leads the Products scene, footer and sitemap, and
+  counts as shipped (a partnership plan), so it shows no "soon" tag.
 - [ ] Screen recordings of the Ultraviolette X-47 and Tesseract configurators and the E3 TRION site (with poster
   frames). Until then the Work reel shows stand-in artwork (`art` in `src/data/work.ts`); add
   `media: { poster, mp4, webm }` to swap in the recording.

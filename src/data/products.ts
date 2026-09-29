@@ -17,6 +17,8 @@ export type Product = {
   // Coming-soon products link to their landing page once it exists.
   url: string | null
   status: 'live' | 'coming-soon'
+  // How search engines should read it: an app, or a service sold as a partnership.
+  kind: 'app' | 'service'
   palette: ProductPalette
   // The nav switches to its light palette over this product (Mehfil's cream).
   light: boolean
@@ -31,10 +33,11 @@ export const products: Product[] = [
     platform: 'web · for colleges',
     pitch: 'Four years, not four weeks.',
     line: 'Software placement preparation for engineering colleges: a consultant on campus, and a platform students use from their first semester to the final drive.',
-    meta: 'a partnership for engineering colleges · in development',
+    meta: 'a multi-year partnership for engineering colleges',
     cta: 'Visit Origan ↗',
     url: 'https://verastack-labs.github.io/origan/',
-    status: 'coming-soon',
+    status: 'live',
+    kind: 'service',
     palette: { bg: '#0D1815', fg: '#EEF3F0', accent: '#5FD9A8', onAccent: '#06251A' },
     light: false,
   },
@@ -48,6 +51,7 @@ export const products: Product[] = [
     cta: 'Visit rigseed ↗',
     url: 'https://verastack-labs.github.io/rigseed/',
     status: 'live',
+    kind: 'app',
     palette: { bg: '#0E1318', fg: '#E6EDF3', accent: '#8FB0CB', onAccent: '#0E1318' },
     light: false,
   },
@@ -61,6 +65,7 @@ export const products: Product[] = [
     cta: 'Visit Riggit ↗',
     url: 'https://verastack-labs.github.io/riggit/',
     status: 'live',
+    kind: 'app',
     palette: { bg: '#08120E', fg: '#E7F5EE', accent: '#34D399', onAccent: '#08120E' },
     light: false,
   },
@@ -74,6 +79,7 @@ export const products: Product[] = [
     cta: 'Join the waitlist ↗',
     url: 'https://verastack-labs.github.io/mehfil/',
     status: 'coming-soon',
+    kind: 'app',
     palette: { bg: '#F4EBDA', fg: '#1A1410', accent: '#B93E29', onAccent: '#F4EBDA' },
     light: true,
   },
