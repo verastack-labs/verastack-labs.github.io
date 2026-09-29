@@ -87,7 +87,10 @@ export function llmsText(): string {
     '',
     '## Our own products',
     '',
-    ...products.map((p) => `- ${p.name} (${p.platform}): ${p.line}${p.url ? ` ${p.url}` : ' Coming soon.'}`),
+    ...products.map((p) => {
+      const soon = p.status === 'coming-soon' ? ' In development.' : ''
+      return `- ${p.name} (${p.platform}): ${stop(p.line)}${soon}${p.url ? ` ${p.url}` : ''}`
+    }),
     '',
     '## How we work',
     '',

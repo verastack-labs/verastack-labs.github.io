@@ -257,10 +257,14 @@ Prototype: [../../mockups/scene-work.html](../../mockups/scene-work.html), optio
 Prototype: [../../mockups/scene-products.html](../../mockups/scene-products.html), option A
 (desktop) and option C (phones).
 
-- Label `/products // and we build our own`, intro headline "Three products. Three brands. One
+- Label `/products // and we build our own`, intro headline "Four products. Four brands. One
   studio."
 - Pinned; as you scroll, the whole stage hands over to each product's palette in turn (background
   and text colour tweened on CSS variables), each with a live mockup:
+  - **Origan** (ink green #0D1815, survey mint #5FD9A8), first: "Four years, not four weeks."
+    Software placement preparation for engineering colleges. In development; links to its landing
+    page. Mockup: a four-year longitudinal profile in survey notation, drawn rather than a
+    dashboard (its brief allows only partial, synthetic product imagery).
   - **rigseed** (slate #0E1318, accent #8FB0CB): "Torrents, finally worth looking at." A desktop
     client for qBittorrent that brings its own daemon. `v0.1.3 · Windows, macOS and Linux`. Mockup:
     a download list with ticking progress bars.
@@ -269,9 +273,9 @@ Prototype: [../../mockups/scene-products.html](../../mockups/scene-products.html
     its gaps.
   - **Mehfil** (cream #F4EBDA, ink #1A1410, vermilion #B93E29, saffron #E7A33A, neobrutal borders
     and hard shadows): a lightweight way to rally people for chai, dinner or cards. Coming soon.
-    Mockup: a phone with event cards. Its pitch line is placeholder.
-- Copy for rigseed and Riggit comes from their landing pages; links go to those pages.
-- **Phones:** the hand-over becomes a **card swap**: the three mockups in a tilted 3D stack that
+    Mockup: a phone with event cards. Its pitch line is placeholder; links to its waitlist page.
+- Copy comes from each product's landing page; links go to those pages.
+- **Phones:** the hand-over becomes a **card swap**: the four mockups in a tilted 3D stack that
   cycles every 3.2 s, with the product names as tabs (tap to bring one forward).
 - `static`: no pin and no cycling; each product is its own block in its palette, with its mockup
   standing still.
@@ -304,7 +308,7 @@ Prototype: [../../mockups/scene-about-v5.html](../../mockups/scene-about-v5.html
   flicker on one by one (no lines during the boot). Once the boot ends, a single light walks
   across the five every 1.6 s and a signal underline draws under the lit capability; the first
   walking step follows the boot immediately. `static`: all five shown on, no walking.
-- Footer line: `founded by Rigan Burnwal · based in India · products rigseed · Riggit · Mehfil`
+- Footer line: `founded by Rigan Burnwal · based in India · products Origan · rigseed · Riggit · Mehfil`
   with `riganb.github.io ↗`.
 - **Team row:** rendered above the footer line only when `data/team.ts` has entries. Empty today.
 - Removed on purpose: any line implying staff or specialists ("we bring in specialists"), a founder
@@ -355,7 +359,7 @@ Prototypes: [../../mockups/scene-contact-v2.html](../../mockups/scene-contact-v2
 Prototype: [../../mockups/footer.html](../../mockups/footer.html).
 
 - **Four columns** (two on phones): *start a project* (the email as a large Bricolage 800 link,
-  then "or book a 20-min call ↗"), *products* (rigseed ↗, Riggit ↗, Mehfil `soon`), *elsewhere*
+  then "or book a 20-min call ↗"), *products* (Origan ↗ `soon`, rigseed ↗, Riggit ↗, Mehfil ↗ `soon`), *elsewhere*
   (GitHub ↗, founder's portfolio ↗), *studio* (a live clock for India with a pulsing signal dot,
   and "based in India").
 - A mono row: `© 2026 VeraStack Labs` and a "back to top ↑" button.

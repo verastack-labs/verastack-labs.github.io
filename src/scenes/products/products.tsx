@@ -12,7 +12,7 @@ import styles from '@/scenes/products/products.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const HEADLINE = 'Three products. Three brands. One studio.'
+const HEADLINE = 'Four products. Four brands. One studio.'
 const SWAP_MS = 3200
 
 function Label() {

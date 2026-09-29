@@ -7,13 +7,14 @@ export type ProductPalette = {
 }
 
 export type Product = {
-  id: 'rigseed' | 'riggit' | 'mehfil'
+  id: 'origan' | 'rigseed' | 'riggit' | 'mehfil'
   name: string
   platform: string
   pitch: string
   line: string
   meta: string
   cta: string
+  // Coming-soon products link to their landing page once it exists.
   url: string | null
   status: 'live' | 'coming-soon'
   palette: ProductPalette
@@ -21,9 +22,22 @@ export type Product = {
   light: boolean
 }
 
-// Copy for rigseed and Riggit comes from their landing pages (spec 6.04). Mehfil's pitch is
-// placeholder (docs/STATUS.md, Waiting on Rigan).
+// Copy comes from each product's landing page (spec 6.04), except Mehfil's pitch, which is
+// placeholder (docs/STATUS.md, Waiting on Rigan). Origan leads.
 export const products: Product[] = [
+  {
+    id: 'origan',
+    name: 'Origan',
+    platform: 'web · for colleges',
+    pitch: 'Four years, not four weeks.',
+    line: 'Software placement preparation for engineering colleges: a consultant on campus, and a platform students use from their first semester to the final drive.',
+    meta: 'a partnership for engineering colleges · in development',
+    cta: 'Visit Origan ↗',
+    url: 'https://verastack-labs.github.io/origan/',
+    status: 'coming-soon',
+    palette: { bg: '#0D1815', fg: '#EEF3F0', accent: '#5FD9A8', onAccent: '#06251A' },
+    light: false,
+  },
   {
     id: 'rigseed',
     name: 'rigseed',
@@ -55,10 +69,10 @@ export const products: Product[] = [
     name: 'Mehfil',
     platform: 'pwa · coming soon',
     pitch: 'Chai in ten? Rally the group.',
-    line: 'A lightweight way to gather people for chai breaks, dinner in ten minutes or a cards night.',
+    line: 'Mehfil turns the most ignored question in your group chat into a plan: one time, two answers, and a live list of who is actually coming.',
     meta: 'progressive web app · in development',
-    cta: 'Coming soon',
-    url: null,
+    cta: 'Join the waitlist ↗',
+    url: 'https://verastack-labs.github.io/mehfil/',
     status: 'coming-soon',
     palette: { bg: '#F4EBDA', fg: '#1A1410', accent: '#B93E29', onAccent: '#F4EBDA' },
     light: true,

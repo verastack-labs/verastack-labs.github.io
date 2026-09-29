@@ -44,11 +44,10 @@ describe('content', () => {
     for (const s of sections) expect(s.path).toBe(s.id === 'top' ? '/' : `/${s.id}`)
   })
 
-  it('links live products and leaves coming-soon products unlinked', () => {
-    for (const p of products) {
-      if (p.status === 'live') expect(p.url).toMatch(/^https:\/\//)
-      else expect(p.url).toBeNull()
-    }
+  it('links every live product, and leads with Origan', () => {
+    for (const p of products.filter((x) => x.status === 'live')) expect(p.url).toMatch(/^https:\/\//)
+    for (const p of products) if (p.url) expect(p.url).toMatch(/^https:\/\/verastack-labs\.github\.io\/[a-z]+\/$/)
+    expect(products.map((p) => p.id)).toEqual(['origan', 'rigseed', 'riggit', 'mehfil'])
   })
 
   it('points the hero calls to action at real sections', () => {
