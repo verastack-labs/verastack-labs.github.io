@@ -262,8 +262,8 @@ Prototype: [../../mockups/scene-products.html](../../mockups/scene-products.html
 - Pinned; as you scroll, the whole stage hands over to each product's palette in turn (background
   and text colour tweened on CSS variables), each with a live mockup:
   - **Origan** (ink green #0D1815, survey mint #5FD9A8), first: "Four years, not four weeks."
-    Software placement preparation for engineering colleges. In development; links to its landing
-    page. Mockup: a four-year longitudinal profile in survey notation, drawn rather than a
+    Software placement preparation for engineering colleges, sold as a multi-year partnership, so
+    it counts as shipped. Links to its landing page. Mockup: a four-year longitudinal profile in survey notation, drawn rather than a
     dashboard (its brief allows only partial, synthetic product imagery).
   - **rigseed** (slate #0E1318, accent #8FB0CB): "Torrents, finally worth looking at." A desktop
     client for qBittorrent that brings its own daemon. `v0.1.3 · Windows, macOS and Linux`. Mockup:
@@ -359,7 +359,7 @@ Prototypes: [../../mockups/scene-contact-v2.html](../../mockups/scene-contact-v2
 Prototype: [../../mockups/footer.html](../../mockups/footer.html).
 
 - **Four columns** (two on phones): *start a project* (the email as a large Bricolage 800 link,
-  then "or book a 20-min call ↗"), *products* (Origan ↗ `soon`, rigseed ↗, Riggit ↗, Mehfil ↗ `soon`), *elsewhere*
+  then "or book a 20-min call ↗"), *products* (Origan ↗, rigseed ↗, Riggit ↗, Mehfil ↗ `soon`), *elsewhere*
   (GitHub ↗, founder's portfolio ↗), *studio* (a live clock for India with a pulsing signal dot,
   and "based in India").
 - A mono row: `© 2026 VeraStack Labs` and a "back to top ↑" button.

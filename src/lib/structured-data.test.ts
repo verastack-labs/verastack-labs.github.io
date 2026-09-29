@@ -15,7 +15,9 @@ describe('structured data', () => {
 
   it('offers every service, and only the live products, each with a link', () => {
     const offers = (byType('Organization').makesOffer as Array<{ itemOffered: Node }>).map((o) => o.itemOffered)
-    expect(offers.filter((o) => o['@type'] === 'Service')).toHaveLength(4)
+    const named = offers.filter((o) => o['@type'] === 'Service').map((o) => o.name)
+    expect(named).toHaveLength(5)
+    expect(named).toContain('Origan')
     const apps = offers.filter((o) => o['@type'] === 'SoftwareApplication')
     expect(apps.map((o) => o.name)).toEqual(['rigseed', 'Riggit'])
     for (const o of apps) expect(o.url).toMatch(/^https:\/\//)

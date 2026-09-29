@@ -39,7 +39,13 @@ export function homeGraph(): Node {
             .filter((p) => p.status === 'live' && p.url)
             .map((p) => ({
               '@type': 'Offer',
-              itemOffered: { '@type': 'SoftwareApplication', name: p.name, url: p.url, description: p.line },
+              itemOffered: {
+                '@type': p.kind === 'service' ? 'Service' : 'SoftwareApplication',
+                name: p.name,
+                url: p.url,
+                description: p.line,
+                ...(p.kind === 'service' ? { provider: { '@id': ids.studio } } : {}),
+              },
             })),
         ],
       },
