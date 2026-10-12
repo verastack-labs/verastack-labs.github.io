@@ -7,7 +7,7 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 - Phase plans: [superpowers/plans/](superpowers/plans/)
 - Kickoff brief: [brief.md](brief.md)
 - Approved mockups: [mockups/](mockups/)
-- Live: https://verastack-labs.github.io (deploys on every push to `main`)
+- Live: https://verastack.dev (deploys on every push to `main`; the old https://verastack-labs.github.io address redirects there)
 
 ## Where things stand
 
@@ -114,13 +114,13 @@ Content (placeholders are in the design until these arrive):
   - [x] Cloudflare DNS (2026-10-12), all "DNS only": apex A and AAAA records to GitHub Pages,
     CNAMEs from `www` and the four product subdomains to `verastack-labs.github.io`.
   - [x] TXT `_github-pages-challenge-verastack-labs` added for GitHub's domain verification.
-  - [ ] Press Verify in the org's Pages settings (GitHub refused the click from the browser
-    session; it likely needs Rigan's password or 2FA). Until verified, any GitHub account could
-    claim the product subdomains, so do this before anything else.
-  - [ ] This repo: `public/CNAME` with `verastack.dev`, `site.url`, product links, sitemap (product
-    URLs come out: a sitemap only lists its own host), then the Pages custom domain and Enforce
-    HTTPS. `.dev` is HTTPS-only in every browser, so the site is unreachable at the new address
-    until GitHub issues the certificate.
+  - [x] verastack.dev verified in the org's Pages settings (2026-10-12), so no other account can
+    claim it or its subdomains.
+  - [x] This repo moved (2026-10-12): `site.url` is `https://verastack.dev` (canonical, share
+    image, JSON-LD, llms.txt, robots), the sitemap lists only this host, and the Pages custom
+    domain is set through the API (the repo deploys from a workflow, so no `CNAME` file is needed).
+  - [ ] Product links in `src/data/products.ts` still point at `verastack-labs.github.io/<name>/`
+    (which redirects); switch each to its subdomain as that product moves.
   - [ ] Each product repo in its own session: `public/CNAME`, drop the Next.js `basePath`, update
     its `site.url`; then check the old `/origan/`-style URLs redirect.
   - [ ] Search Console: one Domain property for verastack.dev (DNS TXT), covering every subdomain.

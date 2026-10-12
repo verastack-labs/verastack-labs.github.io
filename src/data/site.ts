@@ -2,7 +2,7 @@
 // (docs/STATUS.md, Waiting on Rigan).
 export const site = {
   name: 'VeraStack Labs',
-  url: 'https://verastack-labs.github.io',
+  url: 'https://verastack.dev',
   title: 'VeraStack Labs: web experiences, apps and 3D on the web',
   description:
     'A design and engineering studio. We build web experiences, web and mobile apps, content systems and 3D on the web for clients, and our own products alongside them.',
