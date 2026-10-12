@@ -109,7 +109,23 @@ Content (placeholders are in the design until these arrive):
 - [ ] Cal.com pop-up (spec 6.07): the booking card is always shown. With no `calLink` it opens an
   email asking for a call (`booking` in `src/data/site.ts`); with one it opens the link in a new tab. Load Cal's embed on first click and restyle it to the tokens
   once there is a real link to test against.
-- [ ] Custom domain: `public/CNAME` plus DNS. Product pages move under it too.
+- [ ] Custom domain **verastack.dev** (registered at Cloudflare 2026-10-12). Products move to
+  subdomains, not paths: `origan.`, `rigseed.`, `riggit.`, `mehfil.verastack.dev`.
+  - [x] Cloudflare DNS (2026-10-12), all "DNS only": apex A and AAAA records to GitHub Pages,
+    CNAMEs from `www` and the four product subdomains to `verastack-labs.github.io`.
+  - [x] TXT `_github-pages-challenge-verastack-labs` added for GitHub's domain verification.
+  - [ ] Press Verify in the org's Pages settings (GitHub refused the click from the browser
+    session; it likely needs Rigan's password or 2FA). Until verified, any GitHub account could
+    claim the product subdomains, so do this before anything else.
+  - [ ] This repo: `public/CNAME` with `verastack.dev`, `site.url`, product links, sitemap (product
+    URLs come out: a sitemap only lists its own host), then the Pages custom domain and Enforce
+    HTTPS. `.dev` is HTTPS-only in every browser, so the site is unreachable at the new address
+    until GitHub issues the certificate.
+  - [ ] Each product repo in its own session: `public/CNAME`, drop the Next.js `basePath`, update
+    its `site.url`; then check the old `/origan/`-style URLs redirect.
+  - [ ] Search Console: one Domain property for verastack.dev (DNS TXT), covering every subdomain.
+  - [ ] Optional: `www` redirect to the bare domain; email on the domain (Cloudflare Email Routing),
+    or a null SPF and DMARC record so nobody can send mail as @verastack.dev.
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
   its way to your inbox" line.
