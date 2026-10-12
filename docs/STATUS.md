@@ -124,8 +124,16 @@ Content (placeholders are in the design until these arrive):
   - [ ] Each product repo in its own session: `public/CNAME`, drop the Next.js `basePath`, update
     its `site.url`; then check the old `/origan/`-style URLs redirect.
   - [ ] Search Console: one Domain property for verastack.dev (DNS TXT), covering every subdomain.
-  - [ ] Optional: `www` redirect to the bare domain; email on the domain (Cloudflare Email Routing),
-    or a null SPF and DMARC record so nobody can send mail as @verastack.dev.
+  - [x] Search Console Domain property `sc-domain:verastack.dev` verified (2026-10-12, through
+    Cloudflare's one-time approval) and `https://verastack.dev/sitemap.xml` submitted. `www`
+    already redirects to the bare domain.
+  - [ ] Email on @verastack.dev through Zoho Mail's Forever Free plan (5 users, 5 GB each, India
+    data centre, no IMAP/POP). Zoho only offers paid plans to therealriganb@gmail.com because it
+    already had a personal Zoho account, so a request went to support@zohomail.com on 2026-10-12
+    asking them to enable Forever Free on that login. Waiting on their reply. Once enabled: Zoho's
+    verification TXT, MX, SPF, DKIM and DMARC in Cloudflare, create the addresses, then point
+    `site.email` and Web3Forms at the new address. Fallback: Cloudflare Email Routing (receive
+    only, forwards to Gmail).
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
   its way to your inbox" line.
