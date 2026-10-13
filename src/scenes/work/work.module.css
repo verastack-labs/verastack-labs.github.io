@@ -120,8 +120,10 @@ html[data-motion='static'] .artGlow { animation: none; }
   overflow: hidden;
 }
 .rowName { font-weight: 700; font-size: clamp(22px, 3vw, 36px); letter-spacing: -0.04em; line-height: 1.05; }
-.rowMeta { margin-left: auto; font: 400 11.5px var(--font-mono); color: var(--muted); }
-.soon { margin-right: 10px; padding: 3px 7px; border: 1px solid var(--signal); border-radius: 999px; color: var(--signal); font-weight: 500; }
+.rowMeta { margin-left: auto; font: 400 11.5px/1.7 var(--font-mono); color: var(--muted); }
+/* On phones the line sits under the name, left-aligned, instead of hanging off the right edge. */
+@media (max-width: 599px) { .rowMeta { flex-basis: 100%; margin-left: 0; } }
+.soon { display: inline-block; margin: 0 10px 4px 0; padding: 3px 7px; border: 1px solid var(--signal); border-radius: 999px; color: var(--signal); font-weight: 500; }
 .band {
   position: absolute;
   inset: 0;

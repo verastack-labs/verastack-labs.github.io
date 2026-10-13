@@ -119,8 +119,9 @@ Content (placeholders are in the design until these arrive):
   - [x] This repo moved (2026-10-12): `site.url` is `https://verastack.dev` (canonical, share
     image, JSON-LD, llms.txt, robots), the sitemap lists only this host, and the Pages custom
     domain is set through the API (the repo deploys from a workflow, so no `CNAME` file is needed).
-  - [ ] Product links in `src/data/products.ts` still point at `verastack-labs.github.io/<name>/`
-    (which redirects); switch each to its subdomain as that product moves.
+  - [x] All four products live on their subdomains (2026-10-13), old URLs redirect (301), and the
+    links in `src/data/products.ts` point at `https://<name>.verastack.dev/`.
+  - [ ] Mehfil's page has no canonical tag (fix in the mehfil repo).
   - [ ] Each product repo in its own session: `public/CNAME`, drop the Next.js `basePath`, update
     its `site.url`; then check the old `/origan/`-style URLs redirect.
   - [ ] Search Console: one Domain property for verastack.dev (DNS TXT), covering every subdomain.
