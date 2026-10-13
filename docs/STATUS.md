@@ -101,6 +101,11 @@ Content (placeholders are in the design until these arrive):
 - [ ] Share caches: platforms keep the old preview of a link for days. After copy changes, refresh
   with the Facebook Sharing Debugger and LinkedIn Post Inspector. WhatsApp and X refresh on their
   own schedule.
+  - [x] LinkedIn Post Inspector re-scraped all five pages on 2026-10-13 (verastack.dev and the four
+    product subdomains): titles, images and canonical URLs correct. It warns that Riggit's and
+    Mehfil's descriptions are under 100 characters (fix in those repos).
+  - [ ] Facebook Sharing Debugger: needs Rigan signed in to Facebook, then "Scrape Again" for
+    https://verastack.dev/ and each product subdomain.
 
 - [ ] Confirm mobile LCP on https://pagespeed.web.dev (Google's servers; the anonymous API quota was
   used up on 2026-09-28). If it is over 2.5 s there, try dropping the `opsz` axis from Bricolage
@@ -121,17 +126,19 @@ Content (placeholders are in the design until these arrive):
     domain is set through the API (the repo deploys from a workflow, so no `CNAME` file is needed).
   - [x] All four products live on their subdomains (2026-10-13), old URLs redirect (301), and the
     links in `src/data/products.ts` point at `https://<name>.verastack.dev/`.
-  - [ ] Mehfil's page has no canonical tag (fix in the mehfil repo).
-  - [ ] Each product repo in its own session: `public/CNAME`, drop the Next.js `basePath`, update
-    its `site.url`; then check the old `/origan/`-style URLs redirect.
-  - [ ] Search Console: one Domain property for verastack.dev (DNS TXT), covering every subdomain.
+  - [ ] Mehfil's page has no canonical tag (Rigan is handling it in the mehfil repo).
   - [x] Search Console Domain property `sc-domain:verastack.dev` verified (2026-10-12, through
     Cloudflare's one-time approval) and `https://verastack.dev/sitemap.xml` submitted. `www`
-    already redirects to the bare domain.
+    already redirects to the bare domain. All five sitemaps are in that property (2026-10-13):
+    the studio, Origan and Mehfil read Success; Riggit's `sitemap.xml` and rigseed's
+    `sitemap-index.xml` were just submitted. Check they move from "Couldn't fetch" to Success.
   - [ ] Email on @verastack.dev through Zoho Mail's Forever Free plan (5 users, 5 GB each, India
     data centre, no IMAP/POP). Zoho only offers paid plans to therealriganb@gmail.com because it
     already had a personal Zoho account, so a request went to support@zohomail.com on 2026-10-12
-    asking them to enable Forever Free on that login. Waiting on their reply. Once enabled: Zoho's
+    asking them to enable Forever Free on that login. Zoho replied on 2026-10-13 (Santhiya K): sign in
+    at mail.zoho.in and create the mailbox with the domain. Followed that, and it lands on the same
+    paid-only plan picker. A follow-up to Zoho saying so is drafted, waiting on Rigan's go-ahead to
+    send. Once enabled: Zoho's
     verification TXT, MX, SPF, DKIM and DMARC in Cloudflare, create the addresses, then point
     `site.email` and Web3Forms at the new address. Fallback: Cloudflare Email Routing (receive
     only, forwards to Gmail).
