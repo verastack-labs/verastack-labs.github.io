@@ -137,8 +137,8 @@ Content (placeholders are in the design until these arrive):
     already had a personal Zoho account, so a request went to support@zohomail.com on 2026-10-12
     asking them to enable Forever Free on that login. Zoho replied on 2026-10-13 (Santhiya K): sign in
     at mail.zoho.in and create the mailbox with the domain. Followed that, and it lands on the same
-    paid-only plan picker. A follow-up to Zoho saying so is drafted, waiting on Rigan's go-ahead to
-    send. Once enabled: Zoho's
+    paid-only plan picker. Follow-up sent on the same thread on 2026-10-13 asking them to enable
+    Forever Free or send a direct link to the free setup. Waiting on their reply. Once enabled: Zoho's
     verification TXT, MX, SPF, DKIM and DMARC in Cloudflare, create the addresses, then point
     `site.email` and Web3Forms at the new address. Fallback: Cloudflare Email Routing (receive
     only, forwards to Gmail).
