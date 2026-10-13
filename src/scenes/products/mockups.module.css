@@ -29,6 +29,7 @@
 .benchmark text { fill: #EEF3F0; font: 500 9px var(--font-mono); text-anchor: middle; }
 .orTicks { display: grid; grid-template-columns: repeat(8, 1fr); margin-bottom: 14px; padding-top: 6px; border-top: 1px solid #22423A; font-size: 10px; color: #8FA89E; text-align: center; }
 .orTicks span[data-now] { color: #5FD9A8; }
+@media (max-width: 599px) { .orPlot { height: 104px; margin: 8px 0 4px; } .orTicks { font-size: 9px; } }
 .orChip { padding: 4px 8px; border: 1px solid rgba(95, 217, 168, 0.35); border-radius: 3px; color: #5FD9A8; }
 
 /* rigseed */

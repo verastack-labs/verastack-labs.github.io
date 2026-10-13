@@ -64,24 +64,29 @@ a.cta:hover { transform: translateY(-2px); }
 /* ---------- Card swap (lite) ---------- */
 .swap { padding: 112px 24px 72px; border-bottom: 1px solid var(--line); overflow: hidden; }
 @media (min-width: 768px) { .swap { padding: 140px 40px 96px; } }
-.tabs { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 26px 0 8px; }
+/* Sized so all four names fit on one line at phone width. */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px clamp(12px, 3.6vw, 18px); margin: 26px 0 8px; }
 .tabs button {
   padding: 0;
   border: 0;
   background: none;
   color: var(--muted);
-  font: 700 24px var(--font-display);
+  font: 700 clamp(19px, 5.4vw, 24px) var(--font-display);
   letter-spacing: -0.04em;
   cursor: pointer;
   transition: color 0.4s;
 }
 .tabs button[aria-selected='true'] { color: var(--text); }
-.stack { position: relative; height: 330px; perspective: 1100px; cursor: pointer; }
+/* Tall enough for the tallest mockup plus the back cards' lift, so nothing reaches the copy. */
+.stack { position: relative; height: 380px; margin-top: 12px; perspective: 1100px; cursor: pointer; }
+/* Narrow phones: the window mockups wrap onto more lines and grow taller. */
+@media (max-width: 400px) { .stack { height: 412px; } }
 .swapCard {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: min(420px, 88%);
+  /* Centred a little low: the cards behind rise up and to the right. */
+  top: calc(50% + 24px);
+  width: min(420px, 84%);
   padding: 16px;
   border-radius: 16px;
   transform-style: preserve-3d;
@@ -90,7 +95,9 @@ a.cta:hover { transform: translateY(-2px); }
 .swapCard[data-depth='0'] { transform: translate(-50%, -50%) rotateY(-12deg) rotateX(4deg); }
 .swapCard[data-depth='1'] { transform: translate(-50%, -50%) translate3d(26px, -24px, -90px) rotateY(-12deg) rotateX(4deg); filter: brightness(0.75); }
 .swapCard[data-depth='2'] { transform: translate(-50%, -50%) translate3d(52px, -48px, -180px) rotateY(-12deg) rotateX(4deg); filter: brightness(0.55); opacity: 0.6; }
-.swapCopy { margin-top: 18px; min-height: 180px; }
+/* Any card further back waits out of sight behind the third, ready to come round. */
+.swapCard:not([data-depth='0'], [data-depth='1'], [data-depth='2']) { transform: translate(-50%, -50%) translate3d(52px, -48px, -260px) rotateY(-12deg) rotateX(4deg); opacity: 0; pointer-events: none; }
+.swapCopy { position: relative; margin-top: 18px; min-height: 200px; }
 .swapPitch { margin: 0 0 8px; font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -0.05em; }
 .swapLine { margin: 0 0 8px; max-width: 36ch; font-size: 16px; line-height: 1.45; color: var(--muted); }
 .swapMeta { margin: 0; font: 400 11.5px var(--font-mono); color: var(--muted); }

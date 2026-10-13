@@ -46,7 +46,7 @@ describe('content', () => {
 
   it('links every live product, and leads with Origan', () => {
     for (const p of products.filter((x) => x.status === 'live')) expect(p.url).toMatch(/^https:\/\//)
-    for (const p of products) if (p.url) expect(p.url).toMatch(/^https:\/\/verastack-labs\.github\.io\/[a-z]+\/$/)
+    for (const p of products) if (p.url) expect(p.url).toBe(`https://${p.id}.verastack.dev/`)
     expect(products.map((p) => p.id)).toEqual(['origan', 'rigseed', 'riggit', 'mehfil'])
   })
 
