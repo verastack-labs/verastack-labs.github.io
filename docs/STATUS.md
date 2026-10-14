@@ -156,10 +156,11 @@ Content (placeholders are in the design until these arrive):
     verastack.labs@gmail.com (destination verified). Zoho dropped: its Forever Free plan is only
     reachable through a 15-day paid-plan trial (Zoho support confirmed this in writing on
     2026-10-14) and has no IMAP or POP.
-  - [ ] **Waiting on Rigan:** sending as rigan@ from Gmail. Brevo free account, add verastack.dev
-    there, add `include:spf.brevo.com` to the SPF record (Cloudflare wrote it with `-all` in the
-    dashboard; public record currently reads `~all`), then Gmail "Send mail as" with Brevo's SMTP
-    key. (`site.email` already reads rigan@verastack.dev, since #39.)
+  - [x] Brevo (free plan) authenticated for verastack.dev on 2026-10-14: brevo-code TXT, DKIM
+    CNAMEs `brevo1/brevo2._domainkey` (DNS only) and Cloudflare DMARC Management (`p=none`,
+    reports to Cloudflare). Brevo asked for no SPF change. `site.email` reads rigan@verastack.dev.
+  - [ ] **Waiting on Rigan:** Brevo SMTP key, then Gmail "Send mail as" rigan@ via
+    `smtp-relay.brevo.com:587`, default address, "always reply from default".
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
   its way to your inbox" line.
