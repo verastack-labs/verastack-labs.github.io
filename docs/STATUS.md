@@ -110,8 +110,8 @@ Content (placeholders are in the design until these arrive):
   - [x] LinkedIn Post Inspector re-scraped all five pages on 2026-10-13 (verastack.dev and the four
     product subdomains): titles, images and canonical URLs correct. It warns that Riggit's and
     Mehfil's descriptions are under 100 characters (fix in those repos).
-  - [ ] Facebook Sharing Debugger: needs Rigan signed in to Facebook, then "Scrape Again" for
-    https://verastack.dev/ and each product subdomain.
+  - [ ] Facebook Sharing Debugger (deferred by Rigan, 2026-10-14: no Facebook access yet): sign in,
+    then "Scrape Again" for https://verastack.dev/ and each product subdomain.
 
 - [ ] Confirm mobile LCP on https://pagespeed.web.dev (Google's servers; the anonymous API quota was
   used up on 2026-09-28). If it is over 2.5 s there, try dropping the `opsz` axis from Bricolage
@@ -162,6 +162,11 @@ Content (placeholders are in the design until these arrive):
 - [ ] Team row in About: built and hidden; it appears once `src/data/team.ts` has real people.
 
 ## Known trade-offs
+
+- A Pages deploy can hang and lock every later one ("due to in progress deployment. Please cancel
+  <sha> first"), even after the cancel API says it is cancelled. Seen 2026-10-14 with `7339820`.
+  What cleared it: re-run that same stuck run (`gh run rerun <run-id> --failed`) so it finishes,
+  then re-run the newest failed deploy. Retrying only the newest run does not help.
 
 - Lighthouse, mobile, live site before phase 7: performance 86 (LCP 2.4 s, CLS 0.004, TBT 430 ms),
   accessibility 93, best practices 100, SEO 100. Phase 7 moved the product mockups to transform
