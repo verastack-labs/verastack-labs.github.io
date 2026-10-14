@@ -26,3 +26,7 @@ next-env.d.ts
 
 # local tooling
 .superpowers/
+
+# The repo uses npm (package-lock.json); keep other lockfiles out.
+pnpm-lock.yaml
+yarn.lock
