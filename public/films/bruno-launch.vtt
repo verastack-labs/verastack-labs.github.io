@@ -1,0 +1,28 @@
+WEBVTT
+
+00:00.200 --> 00:03.300
+Where does your API collection live?
+
+00:03.367 --> 00:09.933
+In your repo.
+Collections stored as code.
+
+00:10.067 --> 00:16.533
+Plain-text files you can read.
+
+00:16.667 --> 00:23.167
+Branch it. Diff it. Review it. Merge it.
+
+00:23.300 --> 00:29.767
+An API client, not a platform.
+
+00:29.900 --> 00:36.400
+The same files run in your terminal and CI.
+
+00:36.533 --> 00:43.033
+No cloud sync. No account. No login.
+
+00:43.167 --> 00:49.667
+Bruno
+The Git-native API client.
+usebruno.com

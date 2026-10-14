@@ -191,8 +191,9 @@ CMS**, **Websites & launches**, **AI search & SEO** (answer engine optimisation 
 in ChatGPT, Perplexity and Google's AI answers through structured data, llms.txt and quotable
 pages, with SEO as the foundation; added 2026-10-14; proof is the studio's own site and product
 pages), **Product videos** (launch films, explainers and ad cuts for SaaS
-and other products, fast and priced to test; added 2026-10-14; its block shows two film posters,
-the rigseed launch film and the Origan explainer, that play in a dialog with captions, loading
+and other products, fast and priced to test; added 2026-10-14; made in hours and in the client's own
+style; its block shows three film posters, the rigseed launch film, the Origan explainer and an
+independent film about Bruno (labelled as such, not a commission), that play in a dialog with captions, loading
 nothing until pressed; files in `public/films`, 720p H.264 with faststart), **Desktop & mobile apps**, with a line under the index: "+ and
 whatever else lives on a screen. ask." (Broadened on 2026-09-28: the studio takes on any web or app
 project, and configurators are one kind of 3D web work, not the headline.) The section is about five viewports of scroll pinned to one stage.

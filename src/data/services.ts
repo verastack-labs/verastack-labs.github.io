@@ -58,8 +58,8 @@ export const services: Service[] = [
     id: 'videos',
     name: 'Product videos',
     short: 'videos',
-    blurb: 'Launch films, explainers and ad cuts for SaaS and other products. Fast to make and priced to test: ship a few versions, keep the one that works.',
-    proof: ['rigseed launch film · full, 30 s and vertical cuts', 'Origan explainer · 16:9, 9:16 and a short'],
+    blurb: 'Launch films, explainers and ad cuts for SaaS and other products, made in hours and in your brand\'s own style. Priced to test: ship a few versions, keep the one that works.',
+    proof: ['rigseed launch film · full, 30 s and vertical cuts', 'Origan explainer · 16:9, 9:16 and a short', 'Bruno, the open-source API client · independent film'],
     lead: false,
     films: [
       {
@@ -77,6 +77,15 @@ export const services: Service[] = [
         src: '/films/origan-explainer.mp4',
         poster: '/films/origan-explainer.jpg',
         captions: '/films/origan-explainer.vtt',
+      },
+      {
+        // An independent film, not made with or for the Bruno team; the card says so.
+        id: 'bruno-launch',
+        title: 'Bruno film (independent)',
+        meta: '0:50',
+        src: '/films/bruno-launch.mp4',
+        poster: '/films/bruno-launch.jpg',
+        captions: '/films/bruno-launch.vtt',
       },
     ],
   },
