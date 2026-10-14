@@ -1,3 +1,13 @@
+// A film we made, played in a dialog from its poster. Files live in public/films.
+export type Film = {
+  id: string
+  title: string
+  meta: string
+  src: string
+  poster: string
+  captions: string
+}
+
 export type Service = {
   id: string
   name: string
@@ -6,6 +16,7 @@ export type Service = {
   blurb: string
   proof: string[]
   lead: boolean
+  films?: Film[]
 }
 
 // Spec 6.02, in this order. Proof lines credit the founder's work (spec voice, section 4.4). The
@@ -42,6 +53,24 @@ export const services: Service[] = [
     blurb: 'Launch films, explainers and ad cuts for SaaS and other products. Fast to make and priced to test: ship a few versions, keep the one that works.',
     proof: ['rigseed launch film · full, 30 s and vertical cuts', 'Origan explainer · 16:9, 9:16 and a short'],
     lead: false,
+    films: [
+      {
+        id: 'rigseed-launch',
+        title: 'rigseed launch film',
+        meta: '0:30',
+        src: '/films/rigseed-launch.mp4',
+        poster: '/films/rigseed-launch.jpg',
+        captions: '/films/rigseed-launch.vtt',
+      },
+      {
+        id: 'origan-explainer',
+        title: 'Origan explainer',
+        meta: '1:22',
+        src: '/films/origan-explainer.mp4',
+        poster: '/films/origan-explainer.jpg',
+        captions: '/films/origan-explainer.vtt',
+      },
+    ],
   },
   {
     id: 'apps',

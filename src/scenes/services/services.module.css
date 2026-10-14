@@ -149,3 +149,20 @@ html[data-motion='static'] .flat svg * { animation: none; }
 .prebook:hover { transform: translateY(-2px); }
 .holdNote { margin: 0; font: 400 11px var(--font-mono); color: var(--muted); }
 .holdNote b { font-weight: 500; color: var(--signal); }
+
+/* ---------- Films (Product videos): posters, then a dialog player ---------- */
+.films { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 520px; margin: 4px 0 0; padding: 0; list-style: none; }
+.film { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--ink); color: var(--text); text-align: left; cursor: pointer; }
+.film img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; opacity: 0.8; transition: opacity 0.3s, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.film:hover img, .film:focus-visible img { opacity: 1; transform: scale(1.03); }
+.film:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+.play { position: absolute; top: 10px; left: 10px; display: grid; place-items: center; width: 30px; height: 30px; padding-left: 2px; border-radius: 50%; background: var(--signal); color: var(--ink); font-size: 11px; }
+.filmText { display: flex; flex-direction: column; gap: 2px; padding: 9px 11px 10px; font: 400 11px var(--font-mono); color: var(--muted); }
+.filmText b { color: var(--text); font-weight: 500; }
+.player { width: min(1100px, 94vw); max-width: none; max-height: none; margin: auto; padding: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--ink); color: var(--text); }
+.player::backdrop { background: rgba(5, 6, 5, 0.86); backdrop-filter: blur(6px); }
+.playerInner video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 80vh; background: #000; }
+.playerBar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; padding: 12px 16px; font: 400 12px var(--font-mono); color: var(--text); }
+.playerBar em { font-style: normal; color: var(--muted); }
+.playerBar button { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: none; color: var(--text); font: 500 11.5px var(--font-mono); cursor: pointer; }
+.playerBar button:hover, .playerBar button:focus-visible { border-color: var(--signal); color: var(--signal); }

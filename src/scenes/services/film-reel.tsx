@@ -1,0 +1,93 @@
+'use client'
+
+import { useCallback, useEffect, useRef, useState } from 'react'
+import type { Film } from '@/data/services'
+import { lenisRef } from '@/lib/motion/smooth-scroll'
+import styles from '@/scenes/services/services.module.css'
+
+// Posters for the films we made. Nothing loads until one is pressed; it then plays in a dialog with
+// controls, sound and captions, and the page holds still underneath.
+export function FilmReel({ films }: { films: Film[] }) {
+  const dialog = useRef<HTMLDialogElement>(null)
+  const video = useRef<HTMLVideoElement>(null)
+  const [film, setFilm] = useState<Film | null>(null)
+
+  // Undo everything opening did. Called directly from every way out (button, backdrop, Escape),
+  // with the dialog's close event as a backstop, so it never waits on that event.
+  const release = useCallback(() => {
+    video.current?.pause()
+    lenisRef.current?.start()
+    document.documentElement.style.overflow = ''
+    setFilm(null)
+  }, [])
+
+  const shut = useCallback(() => {
+    const d = dialog.current
+    if (d?.open) d.close()
+    release()
+  }, [release])
+
+  useEffect(() => {
+    const d = dialog.current
+    if (!film || !d) return
+    if (!d.open) d.showModal()
+    lenisRef.current?.stop()
+    document.documentElement.style.overflow = 'hidden'
+    void video.current?.play().catch(() => {})
+    const onCancel = (e: Event) => {
+      e.preventDefault()
+      shut()
+    }
+    d.addEventListener('cancel', onCancel)
+    d.addEventListener('close', release)
+    return () => {
+      d.removeEventListener('cancel', onCancel)
+      d.removeEventListener('close', release)
+    }
+  }, [film, release, shut])
+
+  return (
+    <>
+      <ul className={styles.films}>
+        {films.map((f) => (
+          <li key={f.id}>
+            <button type="button" className={styles.film} onClick={() => setFilm(f)} aria-label={`Play the ${f.title} (${f.meta})`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={f.poster} alt="" width={1280} height={720} loading="lazy" decoding="async" />
+              <span className={styles.play} aria-hidden="true">
+                ▶
+              </span>
+              <span className={styles.filmText}>
+                <b>{f.title}</b>
+                <span>{f.meta}</span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
+      <dialog
+        ref={dialog}
+        className={styles.player}
+        aria-label={film?.title}
+        data-lenis-prevent
+        onClick={(e) => e.target === e.currentTarget && shut()}
+      >
+        {film && (
+          <div className={styles.playerInner}>
+            <video ref={video} key={film.id} src={film.src} poster={film.poster} controls playsInline preload="metadata">
+              <track kind="captions" src={film.captions} srcLang="en" label="English" default />
+            </video>
+            <div className={styles.playerBar}>
+              <span>
+                {film.title} <em>· {film.meta}</em>
+              </span>
+              <button type="button" onClick={shut}>
+                close ✕
+              </button>
+            </div>
+          </div>
+        )}
+      </dialog>
+    </>
+  )
+}
