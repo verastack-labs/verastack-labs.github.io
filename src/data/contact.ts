@@ -9,6 +9,7 @@ export const contact = {
     'a web app',
     'a CMS',
     'a mobile or desktop app',
+    'a product video',
     'something else',
   ],
   // Picked when a visitor arrives from the configurator demo's Pre-book button.

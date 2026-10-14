@@ -58,7 +58,7 @@ function PinnedServices() {
       ScrollTrigger.create({
         trigger: el,
         start: 'top top',
-        end: '+=400%',
+        end: '+=440%',
         pin: true,
         snap: { snapTo: snapToHold, delay: 0.12, duration: { min: 0.2, max: 0.5 }, ease: 'power1.inOut' },
         onUpdate: (self) => apply(self.progress),
