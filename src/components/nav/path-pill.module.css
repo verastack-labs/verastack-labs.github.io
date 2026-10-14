@@ -146,6 +146,15 @@
   .count { display: none; }
   .cta { padding: 10px 12px; font-size: 12px; margin-left: 8px; }
 }
+.ctaShort { display: none; }
+/* Narrow phones: tighter spacing and the short call to action, so the bar never scrolls sideways. */
+@media (max-width: 374px) {
+  .header { gap: 8px; padding: 12px; }
+  .wordmark { font-size: 15px; }
+  .cta { margin-left: 4px; padding: 10px; }
+  .ctaLong { display: none; }
+  .ctaShort { display: inline; }
+}
 
 /* Static motion mode: no stagger, no width or slide animation. */
 :global(html[data-motion='static']) .pill,

@@ -151,7 +151,8 @@ html[data-motion='static'] .flat svg * { animation: none; }
 .holdNote b { font-weight: 500; color: var(--signal); }
 
 /* ---------- Films (Product videos): posters, then a dialog player ---------- */
-.films { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 520px; margin: 4px 0 0; padding: 0; list-style: none; }
+/* Two or three posters across, so the row stays inside the pinned scene's right column. */
+.films { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr)); gap: 12px; width: 100%; min-width: 0; max-width: 540px; margin: 4px 0 0; padding: 0; list-style: none; }
 .film { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--ink); color: var(--text); text-align: left; cursor: pointer; }
 .film img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; opacity: 0.8; transition: opacity 0.3s, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .film:hover img, .film:focus-visible img { opacity: 1; transform: scale(1.03); }

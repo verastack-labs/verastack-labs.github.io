@@ -13,8 +13,12 @@ export function SiteHeader() {
         <span>labs</span>
       </a>
       <PathPill onTheme={setTheme} />
-      <a className={styles.cta} href="#contact">
-        Start a project
+      {/* Under 375 px the full label does not fit beside the pill, so a shorter one shows. */}
+      <a className={styles.cta} href="#contact" aria-label="Start a project">
+        <span className={styles.ctaLong}>Start a project</span>
+        <span className={styles.ctaShort} aria-hidden="true">
+          Let&apos;s talk
+        </span>
       </a>
     </header>
   )

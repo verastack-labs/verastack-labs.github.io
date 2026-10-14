@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, type RefObject } from 'react'
+import { Fragment, useEffect, useRef, type RefObject } from 'react'
 import styles from '@/components/variable-proximity.module.css'
 
 const RADIUS = 180
@@ -92,15 +92,18 @@ export function VariableProximity({
     <span ref={root} className={`${styles.root} ${className ?? ''}`}>
       <span className="sr-only">{text}</span>
       <span aria-hidden="true">
+        {/* The space sits outside the no-wrap word, so the line can break between words. */}
         {text.split(' ').map((word, w, words) => (
-          <span key={w} className={styles.word}>
-            {[...word].map((ch, i) => (
-              <span key={i} data-l className={styles.letter}>
-                {ch}
-              </span>
-            ))}
+          <Fragment key={w}>
+            <span className={styles.word}>
+              {[...word].map((ch, i) => (
+                <span key={i} data-l className={styles.letter}>
+                  {ch}
+                </span>
+              ))}
+            </span>
             {w < words.length - 1 ? ' ' : ''}
-          </span>
+          </Fragment>
         ))}
       </span>
     </span>
