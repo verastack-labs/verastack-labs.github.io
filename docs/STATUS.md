@@ -149,16 +149,17 @@ Content (placeholders are in the design until these arrive):
   - [x] Search Console Domain property `sc-domain:verastack.dev` verified (2026-10-12, through
     Cloudflare's one-time approval) and `https://verastack.dev/sitemap.xml` submitted. `www`
     already redirects to the bare domain. All five sitemaps are in that property (2026-10-13):
-    the studio, Origan and Mehfil read Success; Riggit's `sitemap.xml` and rigseed's
-    `sitemap-index.xml` were just submitted. Check they move from "Couldn't fetch" to Success.
+    all five read Success on 2026-10-14 (20 pages found: studio 1, Origan 6, rigseed 5, Riggit 7,
+    Mehfil 1).
   - [x] Email on @verastack.dev, receiving, via **Cloudflare Email Routing** (2026-10-14). MX, SPF
     and DKIM records added by Cloudflare; `rigan@verastack.dev` and a catch-all both forward to
     verastack.labs@gmail.com (destination verified). Zoho dropped: its Forever Free plan is only
-    reachable through a 15-day paid-plan trial and has no IMAP or POP.
+    reachable through a 15-day paid-plan trial (Zoho support confirmed this in writing on
+    2026-10-14) and has no IMAP or POP.
   - [ ] **Waiting on Rigan:** sending as rigan@ from Gmail. Brevo free account, add verastack.dev
     there, add `include:spf.brevo.com` to the SPF record (Cloudflare wrote it with `-all` in the
     dashboard; public record currently reads `~all`), then Gmail "Send mail as" with Brevo's SMTP
-    key. Then switch `site.email` to rigan@verastack.dev.
+    key. (`site.email` already reads rigan@verastack.dev, since #39.)
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
   its way to your inbox" line.
