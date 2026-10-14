@@ -134,8 +134,8 @@ Content (placeholders are in the design until these arrive):
     data is still processing for the new property.
   - [x] GitHub org: website https://verastack.dev, description and location set (2026-10-14);
     profile README live from `verastack-labs/.github`; topics on every public repo.
-  - [ ] GitHub org avatar: the 512 px mark is ready (signal slash on ink), but the crop dialog
-    would not render while Chrome was in the background. Upload again with Chrome in front.
+  - [x] GitHub org avatar set to the mark (signal slash on ink, 512 px) and display name
+    "VeraStack Labs" (2026-10-14).
   - [x] Search Console Domain property `sc-domain:verastack.dev` verified (2026-10-12, through
     Cloudflare's one-time approval) and `https://verastack.dev/sitemap.xml` submitted. `www`
     already redirects to the bare domain. All five sitemaps are in that property (2026-10-13):
