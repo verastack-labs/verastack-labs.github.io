@@ -143,16 +143,14 @@ Content (placeholders are in the design until these arrive):
     already redirects to the bare domain. All five sitemaps are in that property (2026-10-13):
     the studio, Origan and Mehfil read Success; Riggit's `sitemap.xml` and rigseed's
     `sitemap-index.xml` were just submitted. Check they move from "Couldn't fetch" to Success.
-  - [ ] Email on @verastack.dev through Zoho Mail's Forever Free plan (5 users, 5 GB each, India
-    data centre, no IMAP/POP). Zoho only offers paid plans to therealriganb@gmail.com because it
-    already had a personal Zoho account, so a request went to support@zohomail.com on 2026-10-12
-    asking them to enable Forever Free on that login. Zoho replied on 2026-10-13 (Santhiya K): sign in
-    at mail.zoho.in and create the mailbox with the domain. Followed that, and it lands on the same
-    paid-only plan picker. Follow-up sent on the same thread on 2026-10-13 asking them to enable
-    Forever Free or send a direct link to the free setup. Waiting on their reply. Once enabled: Zoho's
-    verification TXT, MX, SPF, DKIM and DMARC in Cloudflare, create the addresses, then point
-    `site.email` and Web3Forms at the new address. Fallback: Cloudflare Email Routing (receive
-    only, forwards to Gmail).
+  - [x] Email on @verastack.dev, receiving, via **Cloudflare Email Routing** (2026-10-14). MX, SPF
+    and DKIM records added by Cloudflare; `rigan@verastack.dev` and a catch-all both forward to
+    verastack.labs@gmail.com (destination verified). Zoho dropped: its Forever Free plan is only
+    reachable through a 15-day paid-plan trial and has no IMAP or POP.
+  - [ ] **Waiting on Rigan:** sending as rigan@ from Gmail. Brevo free account, add verastack.dev
+    there, add `include:spf.brevo.com` to the SPF record (Cloudflare wrote it with `-all` in the
+    dashboard; public record currently reads `~all`), then Gmail "Send mail as" with Brevo's SMTP
+    key. Then switch `site.email` to rigan@verastack.dev.
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
   its way to your inbox" line.
