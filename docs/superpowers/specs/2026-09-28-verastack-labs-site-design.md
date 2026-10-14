@@ -188,7 +188,9 @@ Prototype: [../../mockups/scene-services-v2.html](../../mockups/scene-services-v
 
 Five services, in this order: **Web experiences & 3D** (configurators among them), **Web apps &
 CMS**, **Websites & launches**, **Product videos** (launch films, explainers and ad cuts for SaaS
-and other products, fast and priced to test; added 2026-10-14), **Desktop & mobile apps**, with a line under the index: "+ and
+and other products, fast and priced to test; added 2026-10-14; its block shows two film posters,
+the rigseed launch film and the Origan explainer, that play in a dialog with captions, loading
+nothing until pressed; files in `public/films`, 720p H.264 with faststart), **Desktop & mobile apps**, with a line under the index: "+ and
 whatever else lives on a screen. ask." (Broadened on 2026-09-28: the studio takes on any web or app
 project, and configurators are one kind of 3D web work, not the headline.) The section is about five viewports of scroll pinned to one stage.
 Beats, as fractions of the pinned progress:

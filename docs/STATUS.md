@@ -89,9 +89,6 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Product videos service (added 2026-10-14): show the work, not just name it. Embed the rigseed
-  launch film and the Origan explainer (short, muted, poster first, loaded on demand) in the
-  Services block or as a Work entry. The renders exist locally in several cuts (16:9, 9:16, 30 s).
 
 - [x] `sitemap.xml` resubmitted in Search Console on 2026-09-30. It lists the four product landing
   pages (Origan, rigseed, Riggit, Mehfil), and robots.txt points at the Origan and Riggit sitemaps.

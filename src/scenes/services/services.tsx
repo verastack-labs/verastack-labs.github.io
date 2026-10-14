@@ -8,6 +8,7 @@ import { useScramble } from '@/components/use-scramble'
 import { formatCounter } from '@/lib/counter'
 import { activeService, demoOpenness, snapToHold } from '@/lib/services-beats'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
+import { FilmReel } from '@/scenes/services/film-reel'
 import { ConfiguratorDemo } from '@/scenes/services/configurator-demo'
 import styles from '@/scenes/services/services.module.css'
 
@@ -103,13 +104,15 @@ function PinnedServices() {
           </p>
         </div>
         <div className={styles.right}>
-          <div className={styles.desc} aria-hidden="true">
-            <p>{service.blurb}</p>
-            <p className={styles.proof}>
+          {/* The words repeat the screen-reader list above; the film posters are real controls. */}
+          <div className={styles.desc}>
+            <p aria-hidden="true">{service.blurb}</p>
+            <p className={styles.proof} aria-hidden="true">
               {service.proof.map((p) => (
                 <ProofLine key={`${service.id}-${p}`} text={p} animate />
               ))}
             </p>
+            {service.films && <FilmReel films={service.films} />}
           </div>
           <div className={styles.demo} inert={!open}>
             <ConfiguratorDemo live mounted={near} running={open} animate holdNote={`02 ${next.short}`} />
@@ -145,6 +148,7 @@ function StackedServices({ animate }: { animate: boolean }) {
               </span>
             ))}
           </p>
+          {s.films && <FilmReel films={s.films} />}
           {s.lead && (
             <div className={styles.inlineDemo}>
               <ConfiguratorDemo live={false} mounted={false} running={false} animate={animate} />
