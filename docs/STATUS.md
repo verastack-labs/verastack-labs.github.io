@@ -127,6 +127,15 @@ Content (placeholders are in the design until these arrive):
   - [x] All four products live on their subdomains (2026-10-13), old URLs redirect (301), and the
     links in `src/data/products.ts` point at `https://<name>.verastack.dev/`.
   - [ ] Mehfil's page has no canonical tag (Rigan is handling it in the mehfil repo).
+  - [x] SEO and AEO check on the live site (2026-10-14): title, description, canonical, robots,
+    Open Graph and Twitter cards, icons, one h1, alt text on every image, valid JSON-LD
+    (Organization, Person, WebSite, ten offers), robots.txt, sitemap (now with `lastmod`) and
+    llms.txt all correct; 1,105 words of content in the server HTML. Search Console says indexing
+    data is still processing for the new property.
+  - [x] GitHub org: website https://verastack.dev, description and location set (2026-10-14);
+    profile README live from `verastack-labs/.github`; topics on every public repo.
+  - [ ] GitHub org avatar: the 512 px mark is ready (signal slash on ink), but the crop dialog
+    would not render while Chrome was in the background. Upload again with Chrome in front.
   - [x] Search Console Domain property `sc-domain:verastack.dev` verified (2026-10-12, through
     Cloudflare's one-time approval) and `https://verastack.dev/sitemap.xml` submitted. `www`
     already redirects to the bare domain. All five sitemaps are in that property (2026-10-13):
