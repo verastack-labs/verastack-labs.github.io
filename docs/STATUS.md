@@ -58,7 +58,8 @@ Content (placeholders are in the design until these arrive):
 - [x] Contact email: `verastack.labs@gmail.com` since 2026-10-14 (was `therealriganb@gmail.com`), set once in `src/data/site.ts`
   (`email`). Change it there and the footer, Contact and the form's fallback all follow.
 - [x] Web3Forms form "VeraStack Labs enquiries" created 2026-09-29, delivering to
-  therealriganb@gmail.com (free plan, 250 submissions a month). Key in `src/data/site.ts`
+  verastack.labs@gmail.com since 2026-10-14 (a verified linked email; was therealriganb@gmail.com;
+  the form's website is set to verastack.dev). Free plan: 250 submissions a month, one recipient. Key in `src/data/site.ts`
   (`formAccessKey`, public by design). hCaptcha is required on the form in the Web3Forms dashboard,
   so the site sends a token with every enquiry (`hcaptchaSiteKey`, Web3Forms' shared key).
 - [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the
