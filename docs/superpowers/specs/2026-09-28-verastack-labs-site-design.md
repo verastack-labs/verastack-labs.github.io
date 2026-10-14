@@ -277,6 +277,12 @@ Prototype: [../../mockups/scene-products.html](../../mockups/scene-products.html
     and hard shadows): a lightweight way to rally people for chai, dinner or cards. Coming soon.
     Mockup: a phone with event cards. Its pitch line is placeholder; links to its waitlist page.
 - Copy comes from each product's landing page; links go to those pages.
+- **Mods shelf**, after the products in every mode (`ModShelf`, `src/data/mods.ts`): the studio's
+  open-source Claude Code mods (secret-guard, session-meter, repo-board; Apache 2.0) as three cards
+  under the label `/products/mods // open source, for Claude Code`. Each shows a status-line
+  sample from its README, a one-liner, the install command with a copy button, and a GitHub link.
+  They are tools, not brands, so they get a shelf rather than hand-over panels. JSON-LD lists them
+  as free SoftwareApplication offers; llms.txt has a section for them.
 - **Phones:** the hand-over becomes a **card swap**: the four mockups in a tilted 3D stack that
   cycles every 3.2 s, with the product names as tabs (tap to bring one forward).
 - `static`: no pin and no cycling; each product is its own block in its palette, with its mockup

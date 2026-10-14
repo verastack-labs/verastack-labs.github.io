@@ -1,3 +1,4 @@
+import { mods, modsLicense } from '@/data/mods'
 import { products } from '@/data/products'
 import { process } from '@/data/process'
 import { services, tools } from '@/data/services'
@@ -47,6 +48,19 @@ export function homeGraph(): Node {
                 ...(p.kind === 'service' ? { provider: { '@id': ids.studio } } : {}),
               },
             })),
+          ...mods.map((m) => ({
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+            itemOffered: {
+              '@type': 'SoftwareApplication',
+              name: m.name,
+              url: m.repo,
+              description: m.line,
+              applicationCategory: 'DeveloperApplication',
+              license: 'https://www.apache.org/licenses/LICENSE-2.0',
+            },
+          })),
         ],
       },
       { '@type': 'Person', '@id': ids.founder, name: site.founderName, url: site.founderUrl },
@@ -97,6 +111,10 @@ export function llmsText(): string {
       const soon = p.status === 'coming-soon' ? ' In development.' : ''
       return `- ${p.name} (${p.platform}): ${stop(p.line)}${soon}${p.url ? ` ${p.url}` : ''}`
     }),
+    '',
+    `## Open-source mods for Claude Code (${modsLicense})`,
+    '',
+    ...mods.map((m) => `- ${m.name}: ${stop(m.line)} ${m.repo}. Install: \`${m.install}\``),
     '',
     '## How we work',
     '',
