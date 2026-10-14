@@ -16,7 +16,7 @@ describe('structured data', () => {
   it('offers every service, and only the live products, each with a link', () => {
     const offers = (byType('Organization').makesOffer as Array<{ itemOffered: Node }>).map((o) => o.itemOffered)
     const named = offers.filter((o) => o['@type'] === 'Service').map((o) => o.name)
-    expect(named).toHaveLength(5)
+    expect(named).toHaveLength(6)
     expect(named).toContain('Origan')
     const apps = offers.filter((o) => o['@type'] === 'SoftwareApplication')
     expect(apps.map((o) => o.name)).toEqual(['rigseed', 'Riggit', 'secret-guard', 'session-meter', 'repo-board'])

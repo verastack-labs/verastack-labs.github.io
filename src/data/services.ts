@@ -36,6 +36,14 @@ export const services: Service[] = [
     lead: false,
   },
   {
+    id: 'videos',
+    name: 'Product videos',
+    short: 'videos',
+    blurb: 'Launch films, explainers and ad cuts for SaaS and other products. Fast to make and priced to test: ship a few versions, keep the one that works.',
+    proof: ['rigseed launch film · full, 30 s and vertical cuts', 'Origan explainer · 16:9, 9:16 and a short'],
+    lead: false,
+  },
+  {
     id: 'apps',
     name: 'Desktop & mobile apps',
     short: 'native',

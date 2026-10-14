@@ -3,7 +3,8 @@ export const OPEN_START = 0.08
 export const HOLD_START = 0.18
 export const HOLD_END = 0.45
 export const CLOSE_END = 0.55
-const SERVICE_STARTS = [0, 0.55, 0.7, 0.85]
+// The first service holds the demo; the rest share what is left of the scroll equally.
+const SERVICE_STARTS = [0, 0.55, 0.66, 0.77, 0.88]
 
 const clamp01 = (x: number) => Math.min(Math.max(x, 0), 1)
 const easeInOut = (x: number) => (x < 0.5 ? 2 * x * x : 1 - (-2 * x + 2) ** 2 / 2)

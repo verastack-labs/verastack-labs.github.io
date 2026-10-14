@@ -186,8 +186,9 @@ a headline scrolling beneath.
 
 Prototype: [../../mockups/scene-services-v2.html](../../mockups/scene-services-v2.html).
 
-Four services, in this order: **Web experiences & 3D** (configurators among them), **Web apps &
-CMS**, **Websites & launches**, **Desktop & mobile apps**, with a line under the index: "+ and
+Five services, in this order: **Web experiences & 3D** (configurators among them), **Web apps &
+CMS**, **Websites & launches**, **Product videos** (launch films, explainers and ad cuts for SaaS
+and other products, fast and priced to test; added 2026-10-14), **Desktop & mobile apps**, with a line under the index: "+ and
 whatever else lives on a screen. ask." (Broadened on 2026-09-28: the studio takes on any web or app
 project, and configurators are one kind of 3D web work, not the headline.) The section is about five viewports of scroll pinned to one stage.
 Beats, as fractions of the pinned progress:
@@ -309,7 +310,7 @@ Prototype: [../../mockups/scene-about-v5.html](../../mockups/scene-about-v5.html
 - Unpinned. Label `/about // the studio`. Headline "Design and engineering. *One studio.*" (800,
   second sentence in signal).
 - Statement: "VeraStack Labs is a design and engineering studio. **We build web experiences,
-  apps, content systems and 3D on the web for clients, and our own products alongside them.** Design and build
+  apps, content systems, 3D on the web and product videos for clients, and our own products alongside them.** Design and build
   happen in the same hands, so nothing gets lost between a mockup and a handover."
 - **Capabilities row:** Scope, Design, Engineering, Systems, Launch, each with a one-line mono
   descriptor and a small status light. When the row enters the viewport it **boots up**: the lights
