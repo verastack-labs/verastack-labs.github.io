@@ -9,6 +9,10 @@ describe('sitemap and robots.txt', () => {
     for (const url of urls) expect(new URL(url).host).toBe('verastack.dev')
   })
 
+  it('dates every entry, so crawlers can tell when the page changed', () => {
+    for (const e of sitemap()) expect(e.lastModified).toBeInstanceOf(Date)
+  })
+
   it('points robots.txt at the studio sitemap', () => {
     expect(robots().sitemap).toBe('https://verastack.dev/sitemap.xml')
     expect(robots().host).toBe('https://verastack.dev')
