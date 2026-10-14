@@ -159,8 +159,10 @@ Content (placeholders are in the design until these arrive):
   - [x] Brevo (free plan) authenticated for verastack.dev on 2026-10-14: brevo-code TXT, DKIM
     CNAMEs `brevo1/brevo2._domainkey` (DNS only) and Cloudflare DMARC Management (`p=none`,
     reports to Cloudflare). Brevo asked for no SPF change. `site.email` reads rigan@verastack.dev.
-  - [ ] **Waiting on Rigan:** Brevo SMTP key, then Gmail "Send mail as" rigan@ via
-    `smtp-relay.brevo.com:587`, default address, "always reply from default".
+  - [x] Gmail "Send mail as" rigan@verastack.dev live on 2026-10-15 via `smtp-relay.brevo.com:587`
+    (TLS), set as the default with "always reply from default". Brevo's IP blocking for SMTP keys
+    had to be switched off, since Gmail sends from changing Google IPs. A test to a Gmail inbox
+    landed in the inbox with SPF, DKIM (d=verastack.dev) and DMARC all passing.
 - [ ] Form backend move (spec 7.4): Cloudflare Worker, Turnstile, an email API (Resend or
   similar), auto-reply copy to the visitor. Needs the custom domain. Brings back the "a copy is on
   its way to your inbox" line.
