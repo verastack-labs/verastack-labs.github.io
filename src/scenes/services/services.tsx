@@ -26,7 +26,7 @@ function ProofLine({ text, animate }: { text: string; animate: boolean }) {
   )
 }
 
-// Desktop (full): one stage pinned for about five viewports (spec 6.02 beats).
+// Desktop (full): one stage pinned for about six viewports (spec 6.02 beats).
 function PinnedServices() {
   const section = useRef<HTMLDivElement>(null)
   const main = useRef<HTMLDivElement>(null)
@@ -59,7 +59,7 @@ function PinnedServices() {
       ScrollTrigger.create({
         trigger: el,
         start: 'top top',
-        end: '+=440%',
+        end: '+=480%',
         pin: true,
         snap: { snapTo: snapToHold, delay: 0.12, duration: { min: 0.2, max: 0.5 }, ease: 'power1.inOut' },
         onUpdate: (self) => apply(self.progress),

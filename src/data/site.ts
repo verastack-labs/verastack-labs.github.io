@@ -5,7 +5,7 @@ export const site = {
   url: 'https://verastack.dev',
   title: 'VeraStack Labs: web experiences, apps and 3D on the web',
   description:
-    'A design and engineering studio. We build web experiences, web and mobile apps, content systems, 3D on the web and product videos for clients, and our own products alongside them.',
+    'A design and engineering studio. We build web experiences, web and mobile apps, content systems, 3D on the web, AI search and SEO, and product videos for clients, and our own products alongside them.',
   // Every email on the site reads from here: footer, contact and the form's fallback.
   email: 'rigan@verastack.dev' as string | null,
   calLink: null as string | null,

@@ -47,6 +47,14 @@ export const services: Service[] = [
     lead: false,
   },
   {
+    id: 'search',
+    name: 'AI search & SEO',
+    short: 'search',
+    blurb: "Get named when people ask ChatGPT, Perplexity or Google's AI answers. Answer engine optimisation (AEO): structured data, llms.txt and pages written to be quoted, on solid SEO foundations.",
+    proof: ['verastack.dev · structured data, llms.txt, answer-ready copy', 'Origan, rigseed, Riggit and Mehfil product pages'],
+    lead: false,
+  },
+  {
     id: 'videos',
     name: 'Product videos',
     short: 'videos',

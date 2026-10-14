@@ -90,6 +90,10 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [ ] AI search & SEO service (added 2026-10-14): its proof is the studio's own sites. Once a client
+  engagement exists, add it as a proof line, and consider a short page that explains AEO (answer
+  engine optimisation) in plain words, since few buyers know the term yet.
+
 
 - [x] `sitemap.xml` resubmitted in Search Console on 2026-09-30. It lists the four product landing
   pages (Origan, rigseed, Riggit, Mehfil), and robots.txt points at the Origan and Riggit sitemaps.
