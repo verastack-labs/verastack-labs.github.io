@@ -7,7 +7,7 @@ export const site = {
   description:
     'A design and engineering studio. We build web experiences, web and mobile apps, content systems, 3D on the web and product videos for clients, and our own products alongside them.',
   // Every email on the site reads from here: footer, contact and the form's fallback.
-  email: 'verastack.labs@gmail.com' as string | null,
+  email: 'rigan@verastack.dev' as string | null,
   calLink: null as string | null,
   // Web3Forms access key for the enquiry form (spec 7.4). Public by design; the form cannot send
   // until it is set.
