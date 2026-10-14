@@ -186,8 +186,11 @@ a headline scrolling beneath.
 
 Prototype: [../../mockups/scene-services-v2.html](../../mockups/scene-services-v2.html).
 
-Five services, in this order: **Web experiences & 3D** (configurators among them), **Web apps &
-CMS**, **Websites & launches**, **Product videos** (launch films, explainers and ad cuts for SaaS
+Six services, in this order: **Web experiences & 3D** (configurators among them), **Web apps &
+CMS**, **Websites & launches**, **AI search & SEO** (answer engine optimisation first: being named
+in ChatGPT, Perplexity and Google's AI answers through structured data, llms.txt and quotable
+pages, with SEO as the foundation; added 2026-10-14; proof is the studio's own site and product
+pages), **Product videos** (launch films, explainers and ad cuts for SaaS
 and other products, fast and priced to test; added 2026-10-14; its block shows two film posters,
 the rigseed launch film and the Origan explainer, that play in a dialog with captions, loading
 nothing until pressed; files in `public/films`, 720p H.264 with faststart), **Desktop & mobile apps**, with a line under the index: "+ and
@@ -312,7 +315,7 @@ Prototype: [../../mockups/scene-about-v5.html](../../mockups/scene-about-v5.html
 - Unpinned. Label `/about // the studio`. Headline "Design and engineering. *One studio.*" (800,
   second sentence in signal).
 - Statement: "VeraStack Labs is a design and engineering studio. **We build web experiences,
-  apps, content systems, 3D on the web and product videos for clients, and our own products alongside them.** Design and build
+  apps, content systems, 3D on the web, AI search and SEO, and product videos for clients, and our own products alongside them.** Design and build
   happen in the same hands, so nothing gets lost between a mockup and a handover."
 - **Capabilities row:** Scope, Design, Engineering, Systems, Launch, each with a one-line mono
   descriptor and a small status light. When the row enters the viewport it **boots up**: the lights

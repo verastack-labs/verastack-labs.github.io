@@ -26,10 +26,11 @@ describe('services beats (spec 6.02)', () => {
     expect(activeService(0)).toBe(0)
     expect(activeService(0.54)).toBe(0)
     expect(activeService(0.55)).toBe(1)
-    expect(activeService(0.66)).toBe(2)
-    expect(activeService(0.77)).toBe(3)
-    expect(activeService(0.88)).toBe(4)
-    expect(activeService(1)).toBe(4)
+    expect(activeService(0.64)).toBe(2)
+    expect(activeService(0.73)).toBe(3)
+    expect(activeService(0.82)).toBe(4)
+    expect(activeService(0.91)).toBe(5)
+    expect(activeService(1)).toBe(5)
   })
 
   it('snaps half-open positions into the hold and leaves the rest alone', () => {

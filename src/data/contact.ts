@@ -8,6 +8,7 @@ export const contact = {
     'a configurator',
     'a web app',
     'a CMS',
+    'to show up in AI search',
     'a mobile or desktop app',
     'a product video',
     'something else',
