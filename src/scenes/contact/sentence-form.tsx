@@ -218,7 +218,7 @@ export function SentenceForm() {
             ))}
           </select>
         </Auto>
-        , ideally live by{' '}
+        , ideally live{' '}
         <Auto value={timeline} kind="pick">
           <span className="sr-only">Timeline</span>
           <select className={styles.pick} name="timeline" disabled={locked} value={timeline} onChange={(e) => setTimeline(e.target.value)}>

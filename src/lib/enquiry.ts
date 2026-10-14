@@ -44,7 +44,7 @@ export function sentence(e: Enquiry): string {
   const note = e.note.trim() ? `\n\n${e.note.trim()}` : ''
   return (
     `Hi, I'm ${e.name.trim()}${from}. We need ${e.service} with a budget of ${e.budget}, ` +
-    `ideally live by ${e.timeline}. Reach me at ${e.email.trim()}.${note}`
+    `ideally live ${e.timeline}. Reach me at ${e.email.trim()}.${note}`
   )
 }
 
