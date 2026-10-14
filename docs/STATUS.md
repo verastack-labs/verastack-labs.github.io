@@ -55,7 +55,7 @@ Content (placeholders are in the design until these arrive):
 - [ ] Hero headline (placeholder copy in `src/data/hero.ts`, "Web experiences, apps and 3D, built to
   launch." since the copy was broadened on 2026-09-28) and the `availability` line in
   `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
-- [x] Contact email: `therealriganb@gmail.com` for now (2026-09-28), set once in `src/data/site.ts`
+- [x] Contact email: `verastack.labs@gmail.com` since 2026-10-14 (was `therealriganb@gmail.com`), set once in `src/data/site.ts`
   (`email`). Change it there and the footer, Contact and the form's fallback all follow.
 - [x] Web3Forms form "VeraStack Labs enquiries" created 2026-09-29, delivering to
   therealriganb@gmail.com (free plan, 250 submissions a month). Key in `src/data/site.ts`
