@@ -11,7 +11,7 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 ## Where things stand
 
-Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones), the Process rail with split-flap indices, About with the capabilities boot-up, Contact with the sentence form, CI. Live at https://verastack-labs.github.io since 2026-09-28; every push to `main` deploys.
+Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones) followed by the shelf of open-source Claude Code mods, the Process rail with split-flap indices, About with the capabilities boot-up, Contact with the sentence form, CI. Live since 2026-09-28, at https://verastack.dev since 2026-10-12; every push to `main` deploys.
 
 | Phase | Status | PR |
 | --- | --- | --- |

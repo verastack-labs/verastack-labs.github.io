@@ -19,7 +19,7 @@ describe('structured data', () => {
     expect(named).toHaveLength(5)
     expect(named).toContain('Origan')
     const apps = offers.filter((o) => o['@type'] === 'SoftwareApplication')
-    expect(apps.map((o) => o.name)).toEqual(['rigseed', 'Riggit'])
+    expect(apps.map((o) => o.name)).toEqual(['rigseed', 'Riggit', 'secret-guard', 'session-meter', 'repo-board'])
     for (const o of apps) expect(o.url).toMatch(/^https:\/\//)
   })
 

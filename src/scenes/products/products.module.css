@@ -115,3 +115,25 @@ a.cta:hover { transform: translateY(-2px); }
   color: var(--fg);
 }
 @media (min-width: 900px) { .block { grid-template-columns: 1fr 1.15fr; padding: 88px 40px; } }
+
+/* ---------- Mods shelf: after the products, in every mode ---------- */
+.mods { padding: 72px 24px 88px; background: var(--ink); color: var(--text); border-top: 1px solid var(--line); }
+@media (min-width: 768px) { .mods { padding: 96px 40px 120px; } }
+.modGrid { display: grid; gap: 16px; margin: 24px 0 0; padding: 0; list-style: none; }
+@media (min-width: 900px) { .modGrid { grid-template-columns: repeat(3, 1fr); } }
+.mod { display: flex; flex-direction: column; min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.modSample { margin: 0 0 22px; padding: 10px 12px; border-radius: 8px; background: var(--ink); font: 500 12px var(--font-mono); color: var(--signal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.modSample i { font-style: normal; color: var(--muted); }
+.modName { margin: 0 0 8px; font-weight: 800; font-size: 26px; letter-spacing: -0.045em; line-height: 1; }
+.modLine { flex: 1; margin: 0 0 18px; font-size: 15px; line-height: 1.5; color: var(--muted); }
+.modInstall { display: flex; align-items: center; gap: 8px; min-width: 0; padding: 6px 6px 6px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.modInstall code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; font: 400 11px var(--font-mono); color: var(--text); scrollbar-width: none; }
+.modInstall code::-webkit-scrollbar { display: none; }
+.modInstall button { flex: none; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: none; color: var(--text); font: 500 11px var(--font-mono); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.modInstall button:hover, .modInstall button:focus-visible { border-color: var(--signal); color: var(--signal); }
+.modRepo { margin-top: 14px; font: 500 12px var(--font-mono); color: var(--text); text-decoration: none; }
+.modRepo:hover { color: var(--signal); }
+.modRepo span { margin-left: 8px; color: var(--muted); }
+/* In the card swap the shelf sits inside the section's padding, so it reaches back out to the edges. */
+.swap .mods { margin: 72px -24px -72px; }
+@media (min-width: 768px) { .swap .mods { margin: 96px -40px -96px; } }

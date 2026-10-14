@@ -8,6 +8,7 @@ import { tokens } from '@/styles/tokens'
 import { handoverFrame, hexToRgb } from '@/lib/handover'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { ProductMockup } from '@/scenes/products/mockups'
+import { ModShelf } from '@/scenes/products/mod-shelf'
 import styles from '@/scenes/products/products.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -120,6 +121,7 @@ function Handover() {
         ))}
       </div>
     </div>
+      <ModShelf />
     </section>
   )
 }
@@ -173,6 +175,7 @@ function CardSwap() {
         <p className={styles.swapMeta}>{current.meta}</p>
         <Cta product={current} />
       </div>
+      <ModShelf />
     </section>
   )
 }
@@ -195,6 +198,7 @@ function Blocks() {
           <ProductMockup id={p.id} />
         </div>
       ))}
+      <ModShelf />
     </section>
   )
 }
