@@ -59,7 +59,11 @@ Content (placeholders are in the design until these arrive):
   (`email`). Change it there and the footer, Contact and the form's fallback all follow.
 - [x] Web3Forms form "VeraStack Labs enquiries" created 2026-09-29, delivering to
   verastack.labs@gmail.com since 2026-10-14 (a verified linked email; was therealriganb@gmail.com;
-  the form's website is set to verastack.dev). Free plan: 250 submissions a month, one recipient. Key in `src/data/site.ts`
+  the form's website is set to verastack.dev). Free plan: 250 submissions a month, one recipient.
+- [x] Live test to the studio inbox on 2026-10-14 (captcha solved by Rigan): the site showed Sent and
+  verastack.labs@gmail.com received every field, including the new "a product video" choice. The
+  message read "ideally live by within 3 months", so the sentence now says "ideally live within 3
+  months" and "no fixed date" became "whenever it's ready". Key in `src/data/site.ts`
   (`formAccessKey`, public by design). hCaptcha is required on the form in the Web3Forms dashboard,
   so the site sends a token with every enquiry (`hcaptchaSiteKey`, Web3Forms' shared key).
 - [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the

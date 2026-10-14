@@ -16,7 +16,7 @@ export const contact = {
   // Picked when a visitor arrives from the configurator demo's Pre-book button.
   prefillService: { configurator: 'a configurator' } as Record<string, string>,
   defaultService: 'a website',
-  timelines: ['as soon as possible', 'within 3 months', 'within 6 months', 'no fixed date'],
+  timelines: ['as soon as possible', 'within 3 months', 'within 6 months', "whenever it's ready"],
   defaultTimeline: 'within 3 months',
   // Index into the budget bands, so it survives a currency switch.
   defaultBudget: 1,

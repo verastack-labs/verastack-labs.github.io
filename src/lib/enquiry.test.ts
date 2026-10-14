@@ -44,7 +44,7 @@ describe('enquiry validation', () => {
 describe('the sentence', () => {
   it('reads as the form reads, leaving out an empty company', () => {
     expect(sentence(base)).toBe(
-      "Hi, I'm Asha. We need a configurator with a budget of ₹2-5L, ideally live by within 3 months. Reach me at asha@example.com.",
+      "Hi, I'm Asha. We need a configurator with a budget of ₹2-5L, ideally live within 3 months. Reach me at asha@example.com.",
     )
     expect(sentence({ ...base, company: 'Acme' })).toContain("I'm Asha from Acme.")
   })
