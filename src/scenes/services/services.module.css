@@ -160,8 +160,32 @@ html[data-motion='static'] .flat svg * { animation: none; }
 .play { position: absolute; top: 10px; left: 10px; display: grid; place-items: center; width: 30px; height: 30px; padding-left: 2px; border-radius: 50%; background: var(--signal); color: var(--ink); font-size: 11px; }
 .filmText { display: flex; flex-direction: column; gap: 2px; padding: 9px 11px 10px; font: 400 11px var(--font-mono); color: var(--muted); }
 .filmText b { color: var(--text); font-weight: 500; }
-.player { width: min(1100px, 94vw); max-width: none; max-height: none; margin: auto; padding: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--ink); color: var(--text); }
-.player::backdrop { background: rgba(5, 6, 5, 0.86); backdrop-filter: blur(6px); }
+.player {
+  width: min(1100px, 94vw); max-width: none; max-height: none; margin: auto; padding: 0;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--ink); color: var(--text);
+  /* Closed state, and where the exit lands: a little low, a little small, transparent. */
+  opacity: 0;
+  transform: translateY(18px) scale(0.965);
+  transition:
+    opacity 0.26s ease,
+    transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1),
+    overlay 0.32s allow-discrete,
+    display 0.32s allow-discrete;
+}
+.player[open] { opacity: 1; transform: none; }
+.player::backdrop {
+  background: rgba(5, 6, 5, 0);
+  backdrop-filter: blur(0);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, overlay 0.32s allow-discrete, display 0.32s allow-discrete;
+}
+.player[open]::backdrop { background: rgba(5, 6, 5, 0.86); backdrop-filter: blur(6px); }
+/* Where the entry starts from, on the first frame after showModal(). */
+@starting-style {
+  .player[open] { opacity: 0; transform: translateY(18px) scale(0.965); }
+  .player[open]::backdrop { background: rgba(5, 6, 5, 0); backdrop-filter: blur(0); }
+}
+:global(html[data-motion='static']) .player,
+:global(html[data-motion='static']) .player::backdrop { transition: none; }
 .playerInner video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 80vh; background: #000; }
 .playerBar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; padding: 12px 16px; font: 400 12px var(--font-mono); color: var(--text); }
 .playerBar em { font-style: normal; color: var(--muted); }
