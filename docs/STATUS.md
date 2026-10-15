@@ -13,6 +13,9 @@ that finishes, adds or drops an item. Last updated 2026-09-28.
 
 Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, the hero over the dot-matrix field, the pinned Services scene with the live keyboard configurator, the Work reel and list, the Products hand-over (card swap on phones) followed by the shelf of open-source Claude Code mods, the Process rail with split-flap indices, About with the capabilities boot-up, Contact with the sentence form, CI. Live since 2026-09-28, at https://verastack.dev since 2026-10-12; every push to `main` deploys.
 
+Product version strings in `src/data/products.ts` are kept by hand: bump them when a product
+releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
+
 | Phase | Status | PR |
 | --- | --- | --- |
 | 0. Spec, status, brief, mockups | done | #1 |
