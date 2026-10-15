@@ -20,7 +20,7 @@ export function About() {
       </h2>
       <p className={styles.statement}>
         {site.name} is a design and engineering studio.{' '}
-        <b>We build web experiences, apps, content systems, 3D on the web, AI search and SEO, and product videos for clients, and our own products alongside them.</b>{' '}
+        <b>We build web experiences and 3D, apps and content systems, AI search and SEO, and product videos, for clients and for our own products.</b>{' '}
         Design and build happen in the same hands, so nothing gets lost between a mockup and a handover.
       </p>
       <CapabilitiesRow key={mode} animate={mode !== 'static'} />

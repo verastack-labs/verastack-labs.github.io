@@ -166,7 +166,7 @@ a headline scrolling beneath.
 
 ### 01. Hero
 
-- **Headline** (placeholder copy): "Web experiences, apps and 3D, built to *launch*." in
+- **Headline** (proposed 2026-10-15 to cover all six services; still Rigan's call): "Sites, apps, 3D and films, built to launch and get *found*." Was "Web experiences, apps and 3D, built to *launch*." in
   Bricolage 800, with "launch" in signal. A status line in mono (`● taking projects for Q4 2026`)
   reads from `site.ts` (`availability`) and hides when unset.
 - **Calls to action:** "Start a project" (to Contact) and "See the work" (to Work).
@@ -315,8 +315,8 @@ Prototype: [../../mockups/scene-about-v5.html](../../mockups/scene-about-v5.html
 
 - Unpinned. Label `/about // the studio`. Headline "Design and engineering. *One studio.*" (800,
   second sentence in signal).
-- Statement: "VeraStack Labs is a design and engineering studio. **We build web experiences,
-  apps, content systems, 3D on the web, AI search and SEO, and product videos for clients, and our own products alongside them.** Design and build
+- Statement: "VeraStack Labs is a design and engineering studio. **We build web experiences and
+  3D, apps and content systems, AI search and SEO, and product videos, for clients and for our own products.** Design and build
   happen in the same hands, so nothing gets lost between a mockup and a handover."
 - **Capabilities row:** Scope, Design, Engineering, Systems, Launch, each with a one-line mono
   descriptor and a small status light. When the row enters the viewport it **boots up**: the lights
