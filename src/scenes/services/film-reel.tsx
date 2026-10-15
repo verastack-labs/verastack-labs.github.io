@@ -5,12 +5,25 @@ import type { Film } from '@/data/services'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import styles from '@/scenes/services/services.module.css'
 
+// Matches the exit transition on .player in services.module.css.
+const EXIT_MS = 320
+
 // Posters for the films we made. Nothing loads until one is pressed; it then plays in a dialog with
 // controls, sound and captions, and the page holds still underneath.
 export function FilmReel({ films }: { films: Film[] }) {
   const dialog = useRef<HTMLDialogElement>(null)
   const video = useRef<HTMLVideoElement>(null)
   const [film, setFilm] = useState<Film | null>(null)
+  // Bumped on every open, so pressing the same poster again reopens the dialog.
+  const [opens, setOpens] = useState(0)
+  // The film stays mounted until the exit animation has played, then unmounts.
+  const unmount = useRef<number | undefined>(undefined)
+
+  const open = useCallback((f: Film) => {
+    window.clearTimeout(unmount.current)
+    setFilm(f)
+    setOpens((n) => n + 1)
+  }, [])
 
   // Undo everything opening did. Called directly from every way out (button, backdrop, Escape),
   // with the dialog's close event as a backstop, so it never waits on that event.
@@ -18,7 +31,8 @@ export function FilmReel({ films }: { films: Film[] }) {
     video.current?.pause()
     lenisRef.current?.start()
     document.documentElement.style.overflow = ''
-    setFilm(null)
+    window.clearTimeout(unmount.current)
+    unmount.current = window.setTimeout(() => setFilm(null), EXIT_MS)
   }, [])
 
   const shut = useCallback(() => {
@@ -44,14 +58,14 @@ export function FilmReel({ films }: { films: Film[] }) {
       d.removeEventListener('cancel', onCancel)
       d.removeEventListener('close', release)
     }
-  }, [film, release, shut])
+  }, [film, opens, release, shut])
 
   return (
     <>
       <ul className={styles.films}>
         {films.map((f) => (
           <li key={f.id}>
-            <button type="button" className={styles.film} onClick={() => setFilm(f)} aria-label={`Play the ${f.title} (${f.meta})`}>
+            <button type="button" className={styles.film} onClick={() => open(f)} aria-label={`Play the ${f.title} (${f.meta})`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={f.poster} alt="" width={1280} height={720} loading="lazy" decoding="async" />
               <span className={styles.play} aria-hidden="true">
@@ -75,7 +89,8 @@ export function FilmReel({ films }: { films: Film[] }) {
         {film && (
           <div className={styles.playerInner}>
             <video ref={video} key={film.id} src={film.src} poster={film.poster} controls playsInline preload="metadata">
-              <track kind="captions" src={film.captions} srcLang="en" label="English" default />
+              {/* Off by default: the films already carry their words on screen. */}
+              <track kind="captions" src={film.captions} srcLang="en" label="English" />
             </video>
             <div className={styles.playerBar}>
               <span>
