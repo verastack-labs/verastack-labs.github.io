@@ -166,7 +166,7 @@ a headline scrolling beneath.
 
 ### 01. Hero
 
-- **Headline** (proposed 2026-10-15 to cover all six services; still Rigan's call): "Sites, apps, 3D and films, built to launch and get *found*." Was "Web experiences, apps and 3D, built to *launch*." in
+- **Headline** (confirmed 2026-10-15; covers all six services): "Sites, apps, 3D and films, built to launch and get *found*." Was "Web experiences, apps and 3D, built to *launch*." in
   Bricolage 800, with "launch" in signal. A status line in mono (`● taking projects for Q4 2026`)
   reads from `site.ts` (`availability`) and hides when unset.
 - **Calls to action:** "Start a project" (to Contact) and "See the work" (to Work).

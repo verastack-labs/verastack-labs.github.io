@@ -52,8 +52,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Hero headline: confirm "Sites, apps, 3D and films, built to launch and get found." (set on
-  2026-10-15 so the hero, title and description all cover the six services; `src/data/hero.ts`) and the `availability` line in
+- [x] Hero headline confirmed by Rigan on 2026-10-15: "Sites, apps, 3D and films, built to launch and
+  get found." (`src/data/hero.ts`; it covers all six services, like the title and description) and the `availability` line in
   `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
 - [x] Contact email: `verastack.labs@gmail.com` since 2026-10-14 (was `therealriganb@gmail.com`), set once in `src/data/site.ts`
   (`email`). Change it there and the footer, Contact and the form's fallback all follow.

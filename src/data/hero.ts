@@ -1,4 +1,4 @@
-// Headline covers all six services (2026-10-15); still to be confirmed (docs/STATUS.md, Waiting on Rigan).
+// Headline covers all six services; confirmed by Rigan on 2026-10-15.
 export const hero = {
   label: 'design and engineering studio',
   lead: 'Sites, apps, 3D and films, built to launch and get ',
