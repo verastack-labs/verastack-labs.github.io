@@ -47,7 +47,7 @@ export const products: Product[] = [
     platform: 'desktop · tauri',
     pitch: 'Torrents, finally worth looking at.',
     line: 'rigseed puts a modern interface on qBittorrent, and brings its own daemon.',
-    meta: 'v0.1.3 · Windows, macOS and Linux',
+    meta: 'v0.1.7 · Windows, macOS and Linux',
     cta: 'Visit rigseed ↗',
     url: 'https://rigseed.verastack.dev/',
     status: 'live',
