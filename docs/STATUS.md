@@ -112,8 +112,10 @@ Content (placeholders are in the design until these arrive):
   with the Facebook Sharing Debugger and LinkedIn Post Inspector. WhatsApp and X refresh on their
   own schedule.
   - [x] LinkedIn Post Inspector re-scraped all five pages on 2026-10-13 (verastack.dev and the four
-    product subdomains): titles, images and canonical URLs correct. It warns that Riggit's and
-    Mehfil's descriptions are under 100 characters (fix in those repos).
+    product subdomains): titles, images and canonical URLs correct. Its warning about Riggit's and
+    Mehfil's short descriptions is gone since their repos lengthened them (re-scraped 2026-10-15:
+    Riggit 120 characters, Mehfil 144). Optional: Mehfil's title is only "Mehfil"; a short line
+    after the name, as Riggit has, would make its preview stronger (mehfil repo).
   - [ ] Facebook Sharing Debugger (deferred by Rigan, 2026-10-14: no Facebook access yet): sign in,
     then "Scrape Again" for https://verastack.dev/ and each product subdomain.
 
@@ -136,7 +138,7 @@ Content (placeholders are in the design until these arrive):
     domain is set through the API (the repo deploys from a workflow, so no `CNAME` file is needed).
   - [x] All four products live on their subdomains (2026-10-13), old URLs redirect (301), and the
     links in `src/data/products.ts` point at `https://<name>.verastack.dev/`.
-  - [ ] Mehfil's page has no canonical tag (Rigan is handling it in the mehfil repo).
+  - [x] Mehfil's page has its canonical tag, https://mehfil.verastack.dev/ (checked 2026-10-15).
   - [x] SEO and AEO check on the live site (2026-10-14): title, description, canonical, robots,
     Open Graph and Twitter cards, icons, one h1, alt text on every image, valid JSON-LD
     (Organization, Person, WebSite, ten offers), robots.txt, sitemap (now with `lastmod`) and
