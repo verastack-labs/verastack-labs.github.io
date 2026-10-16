@@ -97,6 +97,11 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
+  press links in `src/data/work.ts`): Tesseract 60,000+, Shockwave 7,000+, X-47 3,000+ in 24 hours,
+  70,000+ in all. Refresh them if newer coverage appears. E3 TRION has no public count, so none is
+  shown; add one only if E3 publishes it.
+
 - [ ] AI search & SEO service (added 2026-10-14): its proof is the studio's own sites. Once a client
   engagement exists, add it as a proof line, and consider a short page that explains AEO (answer
   engine optimisation) in plain words, since few buyers know the term yet.

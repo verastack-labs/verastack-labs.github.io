@@ -27,7 +27,7 @@ export const services: Service[] = [
     name: 'Web experiences & 3D',
     short: 'experiences',
     blurb: 'Distinctive, motion-rich sites and 3D on the web: configurators, product stories, interactive pieces.',
-    proof: ['Ultraviolette X-47 · Tesseract', 'E3 TRION'],
+    proof: ['Ultraviolette X-47 · Tesseract · Shockwave, behind 70,000+ bookings', 'E3 TRION'],
     lead: true,
   },
   {

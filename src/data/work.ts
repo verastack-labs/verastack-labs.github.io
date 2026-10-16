@@ -16,6 +16,10 @@ export type WorkEntry = {
   art?: { from: string; to: string; glow: string; word: string }
   tier: 'headliner' | 'supporting'
   status: 'live' | 'launching'
+  // What the work led to, said as the client's numbers, not ours. Only public figures.
+  result?: string
+  // Press coverage that backs the result, by outlet.
+  press?: { outlet: string; url: string }[]
 }
 
 // Everything here was done by the founder personally, credited as such (spec 4.4).
@@ -23,12 +27,21 @@ export const work: WorkEntry[] = [
   {
     id: 'ultraviolette',
     client: 'Ultraviolette',
-    project: 'X-47 and Tesseract configurators',
-    year: '2025',
+    project: 'X-47, Tesseract and Shockwave configurators',
+    year: '2024–2026',
     role: 'employee',
     stack: ['Next.js', 'TypeScript', 'AWS Lambda'],
-    // X-47 as a full-time employee; Tesseract as a contract employee. Both are "as an employee".
-    summary: 'Configurators for the X-47 and the Tesseract that drive direct-to-consumer sales.',
+    // X-47 as a full-time employee; Tesseract and Shockwave as a contract employee. All "as an employee".
+    summary: 'The configurators and booking flows for three launches: the X-47, the Tesseract and the Shockwave.',
+    // Ultraviolette's bookings, taken through flows the founder built. Figures from the press below.
+    result: 'Behind 70,000+ bookings: Tesseract 60,000+, Shockwave 7,000+, X-47 3,000+ in its first 24 hours.',
+    press: [
+      { outlet: 'Autocar India', url: 'https://www.autocarindia.com/bike-news/ultraviolette-tesseract-electric-scooter-surpasses-50000-bookings-434877' },
+      { outlet: 'Mobility Outlook', url: 'https://www.mobilityoutlook.com/news/ultraviolette-tesseract-electric-scooter-garners-60000-bookings-ahead-of-2026-launch/' },
+      { outlet: 'Team-BHP', url: 'https://www.team-bhp.com/news/ultraviolette-x-47-surpasses-3000-bookings-24-hours' },
+      { outlet: 'BikeWale', url: 'https://www.bikewale.com/news/ultraviolette-shockwave-garners-over-7000-bookings-since-launch/' },
+      { outlet: 'Motoroids', url: 'https://www.motoroids.com/news/ultraviolette-tesseract-shockwave-take-india-by-storm-over-67000-bookings-and-counting/' },
+    ],
     liveUrl: 'https://www.ultraviolette.com/configure',
     caseStudyUrl: 'https://riganb.github.io/work/ultraviolette/',
     media: null,
@@ -44,6 +57,13 @@ export const work: WorkEntry[] = [
     role: 'freelance',
     stack: ['Framer', 'React configurator', 'Razorpay'],
     summary: 'A launch site with a custom configurator that took paid pre-bookings on launch day.',
+    // No public booking count exists, so none is claimed; the coverage is of the launch itself.
+    press: [
+      { outlet: 'Autocar India', url: 'https://www.autocarindia.com/bike-news/e3-trion-electric-scooter-launched-at-rs-1-lakh-440423' },
+      { outlet: 'Autocar Pro', url: 'https://www.autocarpro.in/news/e3-electricai-launches-e3-trion-electric-scooter-starting-at-rs-99999-133951' },
+      { outlet: 'BikeDekho', url: 'https://www.bikedekho.com/news/category-launch-news/breaking-e3-trion-launched-at-rs-99999-full-details-here-19979' },
+      { outlet: 'EVreporter', url: 'https://evreporter.com/e3-electric-ai-launches-e3-trion-electric-scooter-priced-from-%E2%82%B999999/' },
+    ],
     liveUrl: 'https://e3electric.ai/',
     caseStudyUrl: 'https://riganb.github.io/work/e3-trion/',
     media: null,
