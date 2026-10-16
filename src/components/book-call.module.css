@@ -19,15 +19,19 @@
 .sub { font: 400 11.5px var(--font-mono); color: var(--muted); }
 .arrow { font: 500 20px var(--font-mono); color: var(--signal); transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-/* The border trace: pathLength 1 means the dash maths needs no measuring. */
+/* The border trace: pathLength 1 means the dash maths needs no measuring. A rounded rect's length
+   is approximated, so the dash and gap are a touch longer than the path: no sliver shows at rest,
+   and the line closes all the way round when drawn. It is also hidden until it starts drawing. */
 .trace { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); pointer-events: none; overflow: visible; }
 .trace rect {
   fill: none;
   stroke: var(--signal);
   stroke-width: 2;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.8s cubic-bezier(0.6, 0, 0.2, 1);
+  stroke-dasharray: 1.02 1.02;
+  stroke-dashoffset: 1.02;
+  opacity: 0;
+  /* Leaving: retract first, then hide. */
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.6, 0, 0.2, 1), opacity 0s 0.8s;
 }
 
 .words { display: flex; flex-wrap: wrap; gap: 5px; max-height: 0; transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), margin 0.4s; }
@@ -43,15 +47,21 @@
   transition: opacity 0.25s, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s, color 0.3s;
 }
 
+/* Hover and keyboard focus on desktop; data-inview on touch screens (set in book-call.tsx). */
 .card:hover .trace rect,
-.card:focus-visible .trace rect { stroke-dashoffset: 0; }
+.card:focus-visible .trace rect,
+.card[data-inview='true'] .trace rect { stroke-dashoffset: 0; opacity: 1; transition: stroke-dashoffset 0.8s cubic-bezier(0.6, 0, 0.2, 1), opacity 0s; }
 .card:hover .arrow,
-.card:focus-visible .arrow { transform: translate(3px, -3px); }
+.card:focus-visible .arrow,
+.card[data-inview='true'] .arrow { transform: translate(3px, -3px); }
 .card:hover .words,
-.card:focus-visible .words { max-height: 32px; margin-top: 10px; }
+.card:focus-visible .words,
+.card[data-inview='true'] .words { max-height: 32px; margin-top: 10px; }
 .card:hover .words i,
-.card:focus-visible .words i { opacity: 1; transform: none; transition-delay: calc(0.28s + var(--i) * 0.11s); }
+.card:focus-visible .words i,
+.card[data-inview='true'] .words i { opacity: 1; transform: none; transition-delay: calc(0.28s + var(--i) * 0.11s); }
 .card:hover .words i:last-child,
-.card:focus-visible .words i:last-child { border-color: var(--signal); color: var(--signal); }
+.card:focus-visible .words i:last-child,
+.card[data-inview='true'] .words i:last-child { border-color: var(--signal); color: var(--signal); }
 
 html[data-motion='static'] .card * { transition: none !important; }

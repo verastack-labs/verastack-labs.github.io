@@ -365,7 +365,8 @@ Prototypes: [../../mockups/scene-contact-v2.html](../../mockups/scene-contact-v2
   same currency.
 - **Book a call:** a card "Book a 20-min call · no prep needed". Hover and keyboard focus: a signal
   line traces the card's border (SVG stroke, 0.8 s), then the words **bring · your · idea** pop in
-  one by one as chips (0.28 s, then every 0.11 s), the last in signal. Opens the Cal.com pop-up,
+  one by one as chips (0.28 s, then every 0.11 s), the last in signal. Touch screens (no hover)
+  play the same sequence each time the card is 60% in view, and reset when it leaves. Opens the Cal.com pop-up,
   restyled to the site's tokens.
 - Email fallback in mono under the card.
 - **Failures:** if the form service is unreachable or returns an error, the sentence stays
