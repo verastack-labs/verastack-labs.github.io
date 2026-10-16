@@ -51,6 +51,20 @@ function Credit({ entry }: { entry: WorkEntry }) {
           </>
         )}
       </p>
+      {entry.result && <p className={styles.result}>{entry.result}</p>}
+      {entry.press && (
+        <p className={styles.press}>
+          in the press:{' '}
+          {entry.press.map((p, i) => (
+            <span key={p.url}>
+              {i > 0 && ' · '}
+              <a href={p.url} target="_blank" rel="noopener">
+                {p.outlet}
+              </a>
+            </span>
+          ))}
+        </p>
+      )}
     </div>
   )
 }

@@ -56,6 +56,12 @@ describe('content', () => {
     expect(ids).toContain(hero.secondary.href)
   })
 
+  it('backs results with press links, and claims no figure where none is public', () => {
+    for (const w of work) for (const p of w.press ?? []) expect(p.url).toMatch(/^https:\/\//)
+    for (const w of work.filter((x) => x.result)) expect(w.press?.length).toBeGreaterThan(0)
+    expect(work.find((w) => w.id === 'e3-trion')?.result).toBeUndefined()
+  })
+
   it('credits every piece of work to a role', () => {
     for (const w of work) expect(['employee', 'freelance']).toContain(w.role)
   })

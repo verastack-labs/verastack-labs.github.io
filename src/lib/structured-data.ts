@@ -102,7 +102,9 @@ export function llmsText(): string {
       const when = [w.year, roleLabel(w.role)].filter(Boolean).join(', ')
       const status = w.status === 'launching' ? ' Built, launching soon.' : ''
       const links = [w.liveUrl && `Live: ${w.liveUrl}`, w.caseStudyUrl && `Case study: ${w.caseStudyUrl}`].filter(Boolean)
-      return `- ${w.client}, ${w.project} (${when}): ${stop(w.summary)}${status}${links.length ? ` ${links.join('. ')}.` : ''}`
+      const result = w.result ? ` ${stop(w.result)}` : ''
+      const press = w.press?.length ? ` Press: ${w.press.map((p) => `${p.outlet} ${p.url}`).join('; ')}.` : ''
+      return `- ${w.client}, ${w.project} (${when}): ${stop(w.summary)}${result}${status}${links.length ? ` ${links.join('. ')}.` : ''}${press}`
     }),
     '',
     '## Our own products',
