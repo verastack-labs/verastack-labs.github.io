@@ -221,3 +221,9 @@ Content (placeholders are in the design until these arrive):
 See `../CLAUDE.md` in the workspace. In short: one branch per phase, PR and merge when done, no AI
 attribution, no em dashes, never rewrite `main`, and keep this file current in the same PR as the
 change it describes.
+
+Animation stack (Rigan's decision, 2026-10-17): GSAP with ScrollTrigger and Lenis for the
+scroll-pinned scenes, plain CSS transitions for hover and in-view effects, and CSS modules for
+styling, with Tailwind for simple layout. Motion (Framer Motion) is not used yet; add it later only
+where it is genuinely better, such as shared-element and layout transitions when Work and Product
+become full pages.
