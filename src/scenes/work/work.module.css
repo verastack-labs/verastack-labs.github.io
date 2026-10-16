@@ -151,3 +151,22 @@ html[data-motion='static'] .artGlow { animation: none; }
 .press { flex-basis: 100%; margin: 0; font: 400 11.5px/1.8 var(--font-mono); color: var(--muted); }
 .press a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
 .press a:hover { color: var(--signal); text-decoration-color: var(--signal); }
+
+/* ---------- Reel on phones: intro on top, the card grows up from the lower half ---------- */
+@media (max-width: 767px) {
+  /* The small viewport height, so the stage does not jump as the address bar hides and shows. */
+  .stage { height: 100svh; }
+  .intro { left: 24px; right: 24px; top: 92px; width: auto; }
+  .intro .headline { font-size: clamp(36px, 10.5vw, 56px); }
+  .frame {
+    clip-path: inset(
+      calc((1 - var(--g)) * 42%) calc((1 - var(--g)) * 6%) calc((1 - var(--g)) * 9%) calc((1 - var(--g)) * 6%)
+      round calc((1 - var(--g)) * 16px)
+    );
+  }
+  .layer .meta { left: 24px; right: 24px; bottom: 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .layer .meta::before { inset: -180px -24px -24px; }
+  .layer .name { font-size: clamp(34px, 9.5vw, 52px); }
+  .layer .credit { text-align: left; }
+  .layer .result { font-size: 15px; }
+}

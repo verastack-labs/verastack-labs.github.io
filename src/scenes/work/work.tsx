@@ -122,7 +122,7 @@ function Reel() {
   )
 }
 
-// Phones and reduced motion: no pin; headliners are full-width cards (spec 6.03).
+// Reduced motion: no pin; headliners are full-width cards (spec 6.03).
 function Cards({ autoplay }: { autoplay: boolean }) {
   const [visible, setVisible] = useState<string | null>(null)
   const list = useRef<HTMLDivElement>(null)
@@ -161,7 +161,8 @@ export function Work() {
   const mode = useMotionPreference()
   return (
     <section id="work" className={styles.work}>
-      {mode === 'full' ? <Reel /> : <Cards autoplay={mode === 'lite'} />}
+      {/* The reel runs on phones too (its layout adapts in CSS); only reduced motion gets cards. */}
+      {mode === 'static' ? <Cards autoplay={false} /> : <Reel />}
       <FlowingList marquee={mode === 'full'} />
     </section>
   )

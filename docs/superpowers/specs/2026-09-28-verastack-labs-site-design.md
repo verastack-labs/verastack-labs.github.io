@@ -258,8 +258,11 @@ Prototype: [../../mockups/scene-work.html](../../mockups/scene-work.html), optio
   or live link (7.2).
 - Case study links go to the portfolio's case study pages (`riganb.github.io/work/<slug>/`).
   Supporting rows have no case studies, so they are not links.
-- Phones: no pin; headliners are full-width cards with the video autoplaying muted only while
-  visible; the list has no marquee (tap goes to the case study).
+- Phones (`lite`, changed 2026-10-17 at Rigan's request): the same pinned reel. Under 768 px the
+  intro sits at the top, the card starts in the lower half and grows to full bleed, and the credit
+  stacks left-aligned at the bottom; the stage uses `100svh` so the address bar does not make it
+  jump. Reduced motion (`static`) keeps full-width cards. The list has no marquee on phones (tap
+  goes to the case study).
 
 ### 04. Products: hand-over
 
