@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { faq } from '@/data/faq'
+import { founder } from '@/data/founder'
 import { products } from '@/data/products'
 import { site } from '@/data/site'
 import { team } from '@/data/team'
@@ -25,6 +26,16 @@ export function About() {
         <b>We build web experiences and 3D, apps and content systems, AI search and SEO, and product videos, for clients and for our own products.</b>{' '}
         Design and build happen in the same hands, so nothing gets lost between a mockup and a handover.
       </p>
+      {/* The way to the founder page, where a visitor is deciding about the studio. */}
+      <Link href={founder.path} className={styles.meet}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- static export, no image optimiser */}
+        <img src={founder.photo.src} alt="" width={56} height={56} loading="lazy" />
+        <span className={styles.meetText}>
+          <b>{site.founderName}, founder</b>
+          <span>One person on every call, design to code.</span>
+        </span>
+        <span className={styles.meetCta}>Meet the founder →</span>
+      </Link>
       <CapabilitiesRow key={mode} animate={mode !== 'static'} />
       {team.length > 0 && (
         <ul className={styles.team}>

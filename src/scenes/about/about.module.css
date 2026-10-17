@@ -14,6 +14,32 @@
 .statement { margin: 26px 0 0; max-width: 56ch; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--muted); }
 .statement b { font-weight: 600; color: var(--text); }
 
+/* Meet the founder: a slim card under the statement, leading to /founder. */
+.meet {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 640px;
+  margin: 28px 0 0;
+  padding: 12px 14px 12px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.meet:hover, .meet:focus-visible { border-color: var(--signal); transform: translateY(-1px); }
+.meet img { flex: none; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; }
+.meetText { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
+.meetText b { font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
+.meetText span { font: 400 12px/1.4 var(--font-mono); color: var(--muted); }
+.meetCta { flex: none; padding: 10px 16px; border-radius: 999px; background: var(--signal); color: var(--ink); font-weight: 700; font-size: 13px; white-space: nowrap; }
+@media (max-width: 520px) {
+  .meet { flex-wrap: wrap; border-radius: 20px; }
+  .meetCta { width: 100%; text-align: center; }
+}
+
 /* ---------- Capabilities: the boot-up ---------- */
 .caps {
   position: relative;
