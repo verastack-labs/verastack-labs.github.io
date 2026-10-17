@@ -12,7 +12,7 @@
 }
 
 /* ---------- Reel (full): --a is a layer's opacity, --g how far it has grown ---------- */
-.stage { position: relative; height: 100dvh; overflow: hidden; }
+.stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
 .intro { position: absolute; left: 40px; top: 22%; width: 42%; z-index: 3; }
 .intro .headline { font-size: clamp(40px, 6vw, 92px); }
 .layer { --a: 0; --g: 0; position: absolute; inset: 0; opacity: var(--a); }

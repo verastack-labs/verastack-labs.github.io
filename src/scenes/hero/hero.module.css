@@ -1,7 +1,8 @@
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: 100dvh;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

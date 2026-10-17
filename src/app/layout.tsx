@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <style dangerouslySetInnerHTML={{ __html: tokensToCss() }} />
       </head>
-      <body className="min-h-dvh bg-ink text-text">
+      <body className="min-h-svh bg-ink text-text">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-signal focus:px-3 focus:py-2 focus:text-ink"
