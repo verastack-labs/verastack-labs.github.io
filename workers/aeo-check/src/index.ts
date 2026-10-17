@@ -2,7 +2,7 @@
 // robots.txt, llms.txt and sitemap, and scores how readable it is to search and answer engines.
 // GET /aeo-check?url=example.com returns JSON.
 
-import { readPage } from './html'
+import { decode, readPage } from './html'
 import { normaliseInput, publicUrl } from './guard'
 import { parseRobots, type Robots } from './robots'
 import { runChecks, score, topFixes, type Evidence } from './score'
@@ -125,6 +125,18 @@ export async function check(input: string, selfHost: string) {
   ])
   const robots: Robots | null = robotsText === null ? null : parseRobots(robotsText)
 
+  // A sitemap index often carries no dates itself (Shopify's never does), while the sitemaps it
+  // lists do. Then read one child, preferring products, then pages.
+  let lastmod = newestLastmod(sitemapXml)
+  if (!lastmod && sitemapXml && /<sitemapindex\b/i.test(sitemapXml)) {
+    const children = [...sitemapXml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)].map((m) => decode(m[1]))
+    const child = children.find((u) => /product/i.test(u)) ?? children.find((u) => /page/i.test(u)) ?? children[0]
+    const target = child ? publicUrl(child, selfHost) : null
+    if (target && target.origin === origin) {
+      lastmod = newestLastmod(await sideFile(origin, target.pathname + target.search, selfHost))
+    }
+  }
+
   const evidence: Evidence = {
     finalUrl: url.href,
     headers: { xRobotsTag: res.headers.get('x-robots-tag'), lastModified: res.headers.get('last-modified') },
@@ -132,7 +144,7 @@ export async function check(input: string, selfHost: string) {
     robots,
     llmsTxt: llms && llms.trim().length > 20 ? llms : null,
     sitemap: !!(robots?.sitemaps.length || (sitemapXml && /<(urlset|sitemapindex)\b/i.test(sitemapXml))),
-    sitemapLastmod: newestLastmod(sitemapXml),
+    sitemapLastmod: lastmod,
     botStatus: botStatus !== null && botStatus !== res.status ? botStatus : null,
     now: new Date(),
   }
@@ -170,7 +182,7 @@ const worker = {
     // `fresh=1` (the page's "check again" after a fix) skips it, and counts against the rate limit.
     const fresh = searchParams.get('fresh') === '1'
     const target = publicUrl(normaliseInput(input), env.SELF_HOST)
-    const cacheKey = target ? new Request(`https://${env.SELF_HOST}/cache/aeo-check/v2?u=${encodeURIComponent(target.href)}`) : null
+    const cacheKey = target ? new Request(`https://${env.SELF_HOST}/cache/aeo-check/v3?u=${encodeURIComponent(target.href)}`) : null
     if (cacheKey && !fresh) {
       const hit = await caches.default.match(cacheKey)
       if (hit) return json(await hit.json(), 200, cors)
