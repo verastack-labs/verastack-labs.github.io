@@ -12,7 +12,7 @@
 }
 
 /* ---------- Reel (full): --a is a layer's opacity, --g how far it has grown ---------- */
-.stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+.stage { position: relative; height: 100vh; height: 100lvh; overflow: hidden; }
 .intro { position: absolute; left: 40px; top: 22%; width: 42%; z-index: 3; }
 .intro .headline { font-size: clamp(40px, 6vw, 92px); }
 .layer { --a: 0; --g: 0; position: absolute; inset: 0; opacity: var(--a); }
@@ -154,8 +154,9 @@ html[data-motion='static'] .artGlow { animation: none; }
 
 /* ---------- Reel on phones: intro on top, the card grows up from the lower half ---------- */
 @media (max-width: 767px) {
-  /* The small viewport height, so the stage does not jump as the address bar hides and shows. */
-  .stage { height: 100svh; }
+  /* The large viewport height: it holds still as the address bar hides and shows (no jump), and
+     still fills the screen once the bar has gone (no strip of background under a pinned stage). */
+  .stage { height: 100lvh; }
   .intro { left: 24px; right: 24px; top: 92px; width: auto; }
   .intro .headline { font-size: clamp(36px, 10.5vw, 56px); }
   .frame {
@@ -164,8 +165,8 @@ html[data-motion='static'] .artGlow { animation: none; }
       round calc((1 - var(--g)) * 16px)
     );
   }
-  .layer .meta { left: 24px; right: 24px; bottom: 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
-  .layer .meta::before { inset: -180px -24px -24px; }
+  .layer .meta { left: 24px; right: 24px; bottom: 48px; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .layer .meta::before { inset: -180px -24px -48px; }
   .layer .name { font-size: clamp(34px, 9.5vw, 52px); }
   .layer .credit { text-align: left; }
   .layer .result { font-size: 15px; }

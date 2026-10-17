@@ -186,8 +186,10 @@ Content (placeholders are in the design until these arrive):
   - [x] No page shift on Android scroll-direction changes (2026-10-17): full-screen scenes (hero,
     Services, Work, Products, Process) and the body used `100dvh`, which grows and shrinks as
     Chrome's address bar hides and shows, shifting everything below and putting the pinned scenes
-    out of step with ScrollTrigger (which ignores mobile resizes). Now `100svh` with a `100vh`
-    fallback; `dvh` stays only on dialogs. Every other site chat was asked to check the same.
+    out of step with ScrollTrigger (which ignores mobile resizes). Now pinned scenes use `100lvh`
+    (stable, and fills the screen once the bar hides; `svh` left a strip of background under a
+    pinned scene, fixed 2026-10-17) and the hero `100svh`, each with a `100vh` fallback; `dvh` stays
+    only on dialogs. Every other site chat was asked to check the same.
   - [x] "Meet the founder" card in About (2026-10-17): photo, one line and a button to /founder,
     under the studio statement.
   - [x] Offer popup timing (2026-10-17, agreed with Rigan): once every 14 days, never again after a
