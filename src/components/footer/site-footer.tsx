@@ -24,7 +24,7 @@ export function SiteFooter() {
           <div>
             or{' '}
             <a href={booking.href} {...(booking.external ? { target: '_blank', rel: 'noreferrer' } : {})}>
-              book a 20-min call ↗
+              book a 30-min call ↗
             </a>
           </div>
         </div>

@@ -4,8 +4,8 @@ description: Four perfect scores, four pages that are blank to crawlers. How 26 
 date: 2026-10-17
 time: 11:25
 category: studies
-hook: Founders: send us your homepage and we'll tell you, on a free 20-minute call, exactly what's keeping it out of AI answers.
-hookCta: Book a 20-min call | call
+hook: Founders: send us your homepage and we'll tell you, on a free 30-minute call, exactly what's keeping it out of AI answers.
+hookCta: Book a 30-min call | call
 checkCompare: The median SaaS homepage in our study scored 77.5, and four scored 100. Where does yours land?
 tags: AI search, SaaS
 ---

@@ -4,8 +4,8 @@ description: We asked an AI site builder for a launch page and built the same pa
 date: 2026-10-17
 time: 16:30
 category: launches
-hook: Built your launch page with an AI tool? Book a free 20-minute call and we'll go through it with you: what to cut, what to fix, what to keep.
-hookCta: Book a 20-min call | call
+hook: Built your launch page with an AI tool? Book a free 30-minute call and we'll go through it with you: what to cut, what to fix, what to keep.
+hookCta: Book a 30-min call | call
 checkCompare: The AI-built Bookwell page scored 54; ours scored 100. Check your own launch page.
 tags: AI search, launches, design
 ---

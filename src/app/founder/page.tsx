@@ -134,7 +134,7 @@ export default function FounderPage() {
 
       <div className={styles.ctas} data-reveal>
         <a className={styles.cta} href={booking.href} {...(booking.external ? { target: '_blank', rel: 'noreferrer' } : {})}>
-          Book a 20-min call
+          Book a 30-min call
         </a>
         <a className={styles.ghost} href={site.founderUrl} target="_blank" rel="noopener">
           Founder&apos;s portfolio ↗

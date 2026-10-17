@@ -57,7 +57,7 @@ export const founderQuestions: { q: string; a: string }[] = [
     q: 'Are AI search and a launch video extra work for me?',
     a: "No. They're built into the launch as we go, so you're findable and have a film the day you go live.",
   },
-  { q: 'What does it cost?', a: 'Every project is quoted after a free 20-minute call, once we know what the launch needs.' },
+  { q: 'What does it cost?', a: 'Every project is quoted after a free 30-minute call, once we know what the launch needs.' },
   {
     q: 'What have you launched before?',
     a: `The configurators behind 70,000+ Ultraviolette bookings (${ownership(uv)}) and the E3 TRION launch, which took paid pre-bookings on day one (${ownership(e3)}). Alongside them, smaller builds for clients: Maven Consultancy's event registration with emailed QR passes, Pee Empro Exports' Android QR attendance app, Suggaa Ventures' payments and cancellations, and Cold Stone Creamery Arabia's website and CMS (built, launching soon).`,

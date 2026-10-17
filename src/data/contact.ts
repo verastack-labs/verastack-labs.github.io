@@ -21,5 +21,5 @@ export const contact = {
   defaultTimeline: 'within 3 months',
   // Index into the budget bands, so it survives a currency switch.
   defaultBudget: 1,
-  booking: { title: 'Book a 20-min call', sub: 'no prep needed', words: ['bring', 'your', 'idea'] },
+  booking: { title: 'Book a 30-min call', sub: 'no prep needed', words: ['bring', 'your', 'idea'] },
 }
