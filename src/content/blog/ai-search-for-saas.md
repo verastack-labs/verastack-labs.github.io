@@ -54,4 +54,4 @@ Alongside that, Search Console still shows the classic side: which queries bring
 
 ---
 
-We do this work for clients as part of our AI search and SEO service, and our own site is the worked example: crawlers allowed, the story in plain HTML, labelled facts, an llms.txt. If you'd like to know how your product reads to an answer engine, [tell us about it](/#contact).
+We do this work for clients as part of our AI search and SEO service, and our own site is the worked example: crawlers allowed, the story in plain HTML, labelled facts, an llms.txt. To see how one of your pages reads to an answer engine right now, run our [free AI search check](/ai-search-check). For the whole site, [tell us about it](/#contact).

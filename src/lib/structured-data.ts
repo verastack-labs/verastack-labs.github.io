@@ -1,5 +1,6 @@
 import { mods, modsLicense } from '@/data/mods'
 import { allPosts } from '@/lib/blog'
+import { checker } from '@/data/ai-search-check'
 import { products } from '@/data/products'
 import { process } from '@/data/process'
 import { services, tools } from '@/data/services'
@@ -118,6 +119,10 @@ export function llmsText(): string {
     `## Open-source mods for Claude Code (${modsLicense})`,
     '',
     ...mods.map((m) => `- ${m.name}: ${stop(m.line)} ${m.repo}. Install: \`${m.install}\``),
+    '',
+    '## Free tools',
+    '',
+    `- AI search check: ${checker.description} ${site.url}${checker.path}/`,
     '',
     '## Notes from the blog',
     '',

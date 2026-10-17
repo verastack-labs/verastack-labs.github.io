@@ -13,8 +13,9 @@ export const contact = {
     'a product video',
     'something else',
   ],
-  // Picked when a visitor arrives from the configurator demo's Pre-book button.
-  prefillService: { configurator: 'a configurator' } as Record<string, string>,
+  // Picked when a visitor arrives from the configurator demo's Pre-book button, or from the AI
+  // search check's audit link.
+  prefillService: { configurator: 'a configurator', 'ai-search': 'to show up in AI search' } as Record<string, string>,
   defaultService: 'a website',
   timelines: ['as soon as possible', 'within 3 months', 'within 6 months', "whenever it's ready"],
   defaultTimeline: 'within 3 months',

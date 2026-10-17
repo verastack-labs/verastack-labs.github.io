@@ -1,0 +1,85 @@
+import Link from 'next/link'
+import type { Metadata } from 'next'
+import { checker, checks, faqs } from '@/data/ai-search-check'
+import { site } from '@/data/site'
+import { jsonLd } from '@/lib/structured-data'
+import { Checker } from '@/app/ai-search-check/checker'
+import styles from '@/app/ai-search-check/checker.module.css'
+
+export const metadata: Metadata = {
+  title: `${checker.title} · VeraStack Labs`,
+  description: checker.description,
+  alternates: { canonical: checker.path },
+  openGraph: { title: checker.title, description: checker.description, url: `${site.url}${checker.path}/`, siteName: site.name, type: 'website' },
+  twitter: { card: 'summary_large_image', title: checker.title, description: checker.description },
+}
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'AI search check',
+      url: `${site.url}${checker.path}/`,
+      description: checker.description,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Any (web browser)',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      provider: { '@id': `${site.url}/#organization` },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ],
+}
+
+export default function AiSearchCheckPage() {
+  return (
+    <main id="main" className={styles.page}>
+      <span id="top" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(graph) }} />
+      <p className={styles.label}>
+        /ai-search-check <em>{'//'}</em> free, no sign-up
+      </p>
+      <h1 className={styles.title}>Does ChatGPT know your site?</h1>
+      <p className={styles.lede}>
+        See how a page reads to ChatGPT, Perplexity, Claude and Google&apos;s AI answers. Twelve checks, a score out of 100 and the three
+        fixes that matter most.
+      </p>
+
+      <Checker />
+
+      <section className={styles.section} aria-labelledby="what-we-check">
+        <h2 id="what-we-check" className={styles.h2}>
+          What the check looks at
+        </h2>
+        <ol className={styles.explain}>
+          {checks.map((c) => (
+            <li key={c.id}>
+              <b>{c.label}</b>
+              <span>{c.why}</span>
+            </li>
+          ))}
+        </ol>
+        <p className={styles.more}>
+          Why these matter, in more depth: <Link href="/blog/ai-search-for-saas">what ChatGPT reads before it recommends you</Link>.
+        </p>
+      </section>
+
+      <section className={styles.section} aria-labelledby="questions">
+        <h2 id="questions" className={styles.h2}>
+          Questions
+        </h2>
+        <dl className={styles.faq}>
+          {faqs.map((f) => (
+            <div key={f.q}>
+              <dt>{f.q}</dt>
+              <dd>{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </main>
+  )
+}
