@@ -12,7 +12,7 @@
 }
 
 /* ---------- Reel (full): --a is a layer's opacity, --g how far it has grown ---------- */
-.stage { position: relative; height: 100vh; height: 100lvh; overflow: hidden; }
+.stage { position: relative; height: 100vh; height: var(--screen-large, 100lvh); overflow: hidden; }
 .intro { position: absolute; left: 40px; top: 22%; width: 42%; z-index: 3; }
 .intro .headline { font-size: clamp(40px, 6vw, 92px); }
 .layer { --a: 0; --g: 0; position: absolute; inset: 0; opacity: var(--a); }
@@ -154,9 +154,9 @@ html[data-motion='static'] .artGlow { animation: none; }
 
 /* ---------- Reel on phones: intro on top, the card grows up from the lower half ---------- */
 @media (max-width: 767px) {
-  /* The large viewport height: it holds still as the address bar hides and shows (no jump), and
-     still fills the screen once the bar has gone (no strip of background under a pinned stage). */
-  .stage { height: 100lvh; }
+  /* The locked large screen height (src/lib/screen-lock.ts): it holds still as the address bar
+     hides and shows, and fills the screen once the bar has gone. */
+  .stage { height: var(--screen-large, 100lvh); }
   .intro { left: 24px; right: 24px; top: 92px; width: auto; }
   .intro .headline { font-size: clamp(36px, 10.5vw, 56px); }
   .frame {
