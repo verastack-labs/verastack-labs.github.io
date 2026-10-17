@@ -165,3 +165,6 @@
 :global(html[data-motion='static']) .highlight {
   transition: none;
 }
+
+/* The pill on pages away from home: a plain link naming the page. */
+.pagePill { display: flex; align-items: center; width: auto; padding: 0 16px; text-decoration: none; }

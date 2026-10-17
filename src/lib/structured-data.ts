@@ -1,4 +1,5 @@
 import { mods, modsLicense } from '@/data/mods'
+import { allPosts } from '@/lib/blog'
 import { products } from '@/data/products'
 import { process } from '@/data/process'
 import { services, tools } from '@/data/services'
@@ -117,6 +118,10 @@ export function llmsText(): string {
     `## Open-source mods for Claude Code (${modsLicense})`,
     '',
     ...mods.map((m) => `- ${m.name}: ${stop(m.line)} ${m.repo}. Install: \`${m.install}\``),
+    '',
+    '## Notes from the blog',
+    '',
+    ...allPosts().map((p) => `- ${p.title} (${p.date}): ${stop(p.description)} ${site.url}/blog/${p.slug}/`),
     '',
     '## How we work',
     '',

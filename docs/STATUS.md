@@ -102,7 +102,13 @@ Content (placeholders are in the design until these arrive):
   oinkbuns.verastack.dev and riganb.github.io; each project chat was sent its snippet.
 - [ ] Growth plan (`docs/growth-plan.md`, agreed 2026-10-17): blog, the freemium "Does ChatGPT know
   your brand?" checker, a D2C AI-visibility study, launch teardowns, open-source spec films, more
-  mods, full Work pages, open-source templates, product cross-links. Building the blog first.
+  mods, full Work pages, open-source templates, product cross-links.
+  - [x] Blog live at /blog (2026-10-17): Markdown posts in `src/content/blog/` (front matter: title,
+    description, date, tags), static pages with BlogPosting structured data, in the sitemap and
+    llms.txt, linked from the footer. First post: "AI search for SaaS: what ChatGPT reads before it
+    recommends you". To publish, add a .md file and open a PR.
+  - [ ] Next: the "Does ChatGPT know your brand?" checker (freemium), which needs a Cloudflare
+    Worker and `npx wrangler login` on this machine.
 
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
   press links in `src/data/work.ts`): Tesseract 60,000+, Shockwave 7,000+, X-47 3,000+ in 24 hours,

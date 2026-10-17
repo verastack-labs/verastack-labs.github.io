@@ -20,7 +20,7 @@ and job-seeker traffic belongs to Origan, not here.
 
 ## The ideas, in build order
 
-1. **Blog (`/blog`).** SaaS and launches first; open source and AI as a second lane. Written for the
+1. **Blog (`/blog`).** Live since 2026-10-17. SaaS and launches first; open source and AI as a second lane. Written for the
    founder about to launch, from real work: what the configurator behind 70,000+ bookings taught
    us, launch-page teardowns, AI search for SaaS. Plain static pages from Markdown, each with its
    own title, description, share image and Article structured data, listed in the sitemap and
