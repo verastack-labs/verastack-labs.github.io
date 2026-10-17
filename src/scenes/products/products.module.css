@@ -41,7 +41,8 @@ a.cta:hover { transform: translateY(-2px); }
   --bg: var(--ink);
   --fg: var(--text);
   position: relative;
-  height: 100dvh;
+  height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background: var(--bg);
   color: var(--fg);

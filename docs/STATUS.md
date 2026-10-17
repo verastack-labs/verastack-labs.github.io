@@ -158,6 +158,11 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] No page shift on Android scroll-direction changes (2026-10-17): full-screen scenes (hero,
+    Services, Work, Products, Process) and the body used `100dvh`, which grows and shrinks as
+    Chrome's address bar hides and shows, shifting everything below and putting the pinned scenes
+    out of step with ScrollTrigger (which ignores mobile resizes). Now `100svh` with a `100vh`
+    fallback; `dvh` stays only on dialogs. Every other site chat was asked to check the same.
   - [x] "Meet the founder" card in About (2026-10-17): photo, one line and a button to /founder,
     under the studio statement.
   - [x] Offer popup timing (2026-10-17, agreed with Rigan): once every 14 days, never again after a

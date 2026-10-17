@@ -3,7 +3,7 @@
 .num { font: 500 12px var(--font-mono); flex: none; width: 28px; }
 
 /* ---------- Pinned (full): --o is the demo's openness, 0 to 1, set from scroll ---------- */
-.pinned { --o: 0; height: 100dvh; border-bottom: 1px solid var(--line); overflow: hidden; }
+.pinned { --o: 0; height: 100vh; height: 100svh; border-bottom: 1px solid var(--line); overflow: hidden; }
 .stage {
   height: 100%;
   display: grid;
