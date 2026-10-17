@@ -76,6 +76,9 @@ Content (placeholders are in the design until these arrive):
   the cost answer ("quoted after a free first call").
 - [ ] A price for the AI search audit, if you want one shown. Until then the checker page and its
   FAQ say "price on request".
+- [ ] The free product video's terms: how many we make, how long they are and who qualifies.
+  Until then the offer says only "a few products we pick" (`src/data/offer.ts`). Applications
+  arrive in the studio inbox with the subject "Free product video application: <product>".
 - [ ] Reply-time promise ("within two working days" is placeholder, `replyPromise` in `src/data/site.ts`).
 - [ ] Configurator demo prices (VS-65 keyboard, `src/data/configurator.ts`): illustrative
   placeholders, labelled "demo price" on the page. Fine to keep unless you want other numbers.
@@ -136,6 +139,22 @@ Content (placeholders are in the design until these arrive):
     root layout to the home page so other pages do not claim questions they do not show. llms.txt
     has a Key pages section with Markdown links; blog and checker pages keep the share image.
     The blog index (79, one post) and the post (93, no FAQ) improve as posts arrive.
+  - [x] Faster upsell (2026-10-17). A site-wide offer (`src/components/offer/`, copy in
+    `src/data/offer.ts`, mounted in the root layout): a dialog with two offers, "Apply for a free
+    product video" (product name or URL, email, an optional one-line note, hCaptcha, sent through
+    Web3Forms with the subject "Free product video application: <product>") and the free AI search
+    check (a URL field that opens `/ai-search-check/?url=...`). On the checker page only the video
+    offer shows. Never on load, because of Google's mobile interstitial rule: it opens once per
+    visitor every 7 days (local storage, `src/lib/offer.ts`) at half the page scrolled, 30 seconds,
+    or the pointer leaving through the top on desktop, and waits while the contact form is in view
+    or in use, or any field has focus. Centred about 880 px wide on desktop, a bottom sheet under
+    768 px; closes on Escape, the backdrop or the close button; holds Lenis still while open.
+    Once closed, a pill at the bottom right ("Free video · AI check") reopens it; it hides over
+    the contact section and the footer. The checker now reads `?url=`, fills the field and runs;
+    "Check again" re-runs with `fresh=1` (skips the Worker's 10-minute cache). Straight under the
+    score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
+    "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
+    is gone.
   - [ ] Next: the D2C AI-visibility study (idea 3).
 
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
