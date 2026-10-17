@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { faq } from '@/data/faq'
 import { products } from '@/data/products'
 import { site } from '@/data/site'
@@ -54,7 +55,10 @@ export function About() {
       </div>
       <p className={styles.foot}>
         <span>
-          founded by <b>{site.founderName}</b>
+          founded by{' '}
+          <Link href="/founder" className={styles.founderLink}>
+            <b>{site.founderName}</b>
+          </Link>
         </span>
         <span>
           based in <b>{site.basedIn}</b>

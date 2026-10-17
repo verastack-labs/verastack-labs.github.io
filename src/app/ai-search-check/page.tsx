@@ -52,7 +52,7 @@ export default function AiSearchCheckPage() {
 
       <Checker />
 
-      <section className={styles.section} aria-labelledby="what-we-check">
+      <section className={styles.section} aria-labelledby="what-we-check" data-reveal>
         <h2 id="what-we-check" className={styles.h2}>
           What the check looks at
         </h2>
@@ -69,7 +69,7 @@ export default function AiSearchCheckPage() {
         </p>
       </section>
 
-      <section className={styles.section} aria-labelledby="questions">
+      <section className={styles.section} aria-labelledby="questions" data-reveal>
         <h2 id="questions" className={styles.h2}>
           Questions
         </h2>

@@ -39,7 +39,7 @@ export default async function PostPage({ params }: Props) {
     datePublished: post.date,
     url: `${site.url}/blog/${post.slug}/`,
     keywords: post.tags.join(', '),
-    author: { '@type': 'Organization', name: site.name, url: `${site.url}/` },
+    author: { '@type': 'Person', '@id': `${site.url}/#founder`, name: site.founderName, url: `${site.url}/founder/` },
     publisher: studioNode(),
   }
   return (
@@ -53,6 +53,9 @@ export default async function PostPage({ params }: Props) {
         <p className={styles.itemMeta}>
           {formatDate(post.date)} · {readingMinutes(post.words)} min read
           {post.tags.length > 0 && <> · {post.tags.join(' · ')}</>}
+        </p>
+        <p className={styles.byline}>
+          by <Link href="/founder">{site.founderName}</Link>
         </p>
         <h1 className={styles.postTitle}>{post.title}</h1>
         <p className={styles.lede}>{post.description}</p>

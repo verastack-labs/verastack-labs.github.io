@@ -8,6 +8,7 @@ import { SmoothScroll } from '@/lib/motion/smooth-scroll'
 import { SiteHeader } from '@/components/nav/site-header'
 import { SiteFooter } from '@/components/footer/site-footer'
 import { Offer } from '@/components/offer/offer'
+import { RouteCurtain } from '@/components/transition/route-curtain'
 import { tokensToCss } from '@/styles/tokens'
 import './globals.css'
 
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
         <SiteFooter />
         <Offer />
+        <RouteCurtain />
         {/* Production only, so dev-server visits never count. */}
         {site.analyticsToken && process.env.NODE_ENV === 'production' && (
           <Script

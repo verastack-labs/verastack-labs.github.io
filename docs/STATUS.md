@@ -158,6 +158,18 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] Founder page at /founder (2026-10-17, spec `superpowers/specs/2026-10-17-founder-page-design.md`):
+    a first-person letter with the portrait Rigan supplied in chat (black and white, VeraStack Labs
+    hoodie; `public/founder/rigan-burnwal.webp`), three metric cards and a launch rail held to
+    `src/data/work.ts` by tests, the press line, five agreed questions (FAQPage), and two buttons
+    (call, founder's portfolio). Linked from About, the footer and post bylines; Person JSON-LD
+    shared with the home graph; in the sitemap and llms.txt. Scores 100 on our own check.
+  - [x] Page transitions (2026-10-17): an ink curtain with the lime slash covers and lifts between
+    pages of the site (`src/components/transition/route-curtain.tsx`); pages after the first rise in
+    with a short stagger (`src/app/template.tsx`; home only fades so its pinned scenes are
+    untouched); inner-page sections marked `data-reveal` rise once as they scroll in. None on the
+    first load, in static motion mode or under reduced motion; links to a section ("/#contact")
+    land on it under the curtain.
   - [x] Checker selling (2026-10-17): after the top three fixes, the rest show as "+N more to
     fix" with their names visible and details blurred (the real details are not in the page until
     unlocked). An unlock dialog opens once per visit when that list scrolls into view, and from the

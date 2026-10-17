@@ -93,3 +93,5 @@
 .faq dl > div { padding: 16px 0; border-bottom: 1px solid var(--line); }
 .faq dt { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
 .faq dd { margin: 6px 0 0; max-width: 64ch; font-size: 15px; line-height: 1.55; color: var(--muted); }
+.founderLink { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.founderLink:hover, .founderLink:focus-visible { text-decoration-color: var(--signal); }
