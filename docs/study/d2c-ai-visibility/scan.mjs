@@ -1,15 +1,15 @@
 // Part A of the D2C AI-visibility study: runs every brand's homepage through the live AI search
 // check (the same scoring visitors get) and saves the full reports.
 //
-//   node docs/study/d2c-ai-visibility/scan.mjs
+//   node docs/study/d2c-ai-visibility/scan.mjs [study-folder]
 //
-// Reads brands.csv beside this file and writes scan.json. Paced at one check every 7 seconds to
-// stay under the checker's limit of 10 a minute.
+// Reads brands.csv in the study folder (this one by default) and writes scan.json there. Paced
+// at one check every 7 seconds to stay under the checker's limit of 10 a minute.
 import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const here = dirname(fileURLToPath(import.meta.url))
+const here = process.argv[2] ?? dirname(fileURLToPath(import.meta.url))
 const ENDPOINT = 'https://api.verastack.dev/aeo-check'
 const PAUSE_MS = 7000
 
