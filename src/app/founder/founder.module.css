@@ -5,6 +5,7 @@
 .label em { font-style: normal; color: var(--signal); }
 
 /* The letter beside the portrait; the portrait leads on phones, at a modest size. */
+.photo { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 18px; }
 .intro { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 @media (max-width: 767px) {
   .intro { grid-template-columns: 1fr; gap: 28px; }
@@ -29,7 +30,6 @@
   line-height: 1;
   color: var(--text);
 }
-.photo { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 18px; }
 
 .proof { margin-top: 72px; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
