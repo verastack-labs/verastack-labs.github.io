@@ -25,6 +25,9 @@ export const site = {
   basedIn: 'India',
   // Google Search Console ownership (HTML tag method). Keep it: removing it unverifies the site.
   googleSiteVerification: 'Khv1EH0oq--r11Gxhsk82I4RJZJJ0wiL1JjTxQNXurU',
+  // Cloudflare Web Analytics beacon for verastack.dev: cookieless visit counts. Public by design;
+  // null turns it off. The dashboard is under Web analytics in the Cloudflare account.
+  analyticsToken: '0627ce9905824942893b1850c5f9f426' as string | null,
 }
 
 // Where every "book a 20-min call" goes: the Cal.com page once it exists, until then an email to

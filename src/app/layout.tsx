@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import { Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google'
+import Script from 'next/script'
 import { site } from '@/data/site'
 import { MotionAttribute } from '@/lib/motion/motion-attribute'
 import { SmoothScroll } from '@/lib/motion/smooth-scroll'
@@ -67,6 +68,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SiteHeader />
         {children}
         <SiteFooter />
+        {/* Production only, so dev-server visits never count. */}
+        {site.analyticsToken && process.env.NODE_ENV === 'production' && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: site.analyticsToken })}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   )
