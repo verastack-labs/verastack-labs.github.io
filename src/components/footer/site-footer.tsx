@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { products } from '@/data/products'
 import { booking, site } from '@/data/site'
 import { GiantWordmark } from '@/components/footer/giant-wordmark'
@@ -40,6 +41,8 @@ export function SiteFooter() {
         </div>
         <div className={styles.col}>
           <h3>elsewhere</h3>
+          <Link href="/blog">blog</Link>
+          <br />
           <a href={site.githubUrl}>GitHub ↗</a>
           <br />
           <a href={site.founderUrl}>founder&apos;s portfolio ↗</a>
