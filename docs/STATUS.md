@@ -158,6 +158,12 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] Offer popup timing (2026-10-17, agreed with Rigan): once every 14 days, never again after a
+    video application or a check; never mid-scroll (waits for a 1.5 s pause); never on the page a
+    visit lands on, except a laptop pointer heading for the tabs; on home once Work has been read,
+    on later pages after 45 s. Rules in `src/lib/offer.ts` with tests.
+  - [x] Nav back to dark after the Products hand-over (2026-10-17): Mehfil turns it light; it now
+    returns to dark once the hand-over's bottom passes the nav, so the mods shelf reads dark.
   - [x] Founder page at /founder (2026-10-17, spec `superpowers/specs/2026-10-17-founder-page-design.md`):
     a first-person letter with the portrait Rigan supplied in chat (black and white, VeraStack Labs
     hoodie; `public/founder/rigan-burnwal.webp`), three metric cards and a launch rail held to

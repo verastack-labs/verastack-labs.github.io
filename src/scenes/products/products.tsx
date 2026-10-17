@@ -5,6 +5,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { products, type Product } from '@/data/products'
 import { tokens } from '@/styles/tokens'
+import { PROBE_Y } from '@/lib/active-section'
 import { handoverFrame, hexToRgb } from '@/lib/handover'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { ProductMockup } from '@/scenes/products/mockups'
@@ -68,6 +69,8 @@ function Handover() {
       { bg: hexToRgb(tokens.ink), fg: hexToRgb(tokens.text) },
       ...products.map((p) => ({ bg: hexToRgb(p.palette.bg), fg: hexToRgb(p.palette.fg) })),
     ]
+    // Set once the hand-over has scrolled up past the nav.
+    let past = false
     const apply = (p: number) => {
       const f = handoverFrame(p, palettes)
       el.style.setProperty('--bg', `rgb(${f.bg.join(',')})`)
@@ -79,20 +82,34 @@ function Handover() {
         panel.style.transform = `translateY(${((1 - o) * 28).toFixed(1)}px)`
         panel.inert = o < 0.5
       })
-      // The nav reads the theme from the section itself.
-      const light = f.stop > 0 && products[f.stop - 1].light
+      // The nav reads the theme from the section itself. Once the hand-over has scrolled past the
+      // nav, the mods shelf below it is dark again, whatever the last product was.
+      const light = !past && f.stop > 0 && products[f.stop - 1].light
       if (light) host.dataset.navTheme = 'light'
       else delete host.dataset.navTheme
       setStop(f.stop)
     }
     const ctx = gsap.context(() => {
-      ScrollTrigger.create({
+      const handover = ScrollTrigger.create({
         trigger: el,
         start: 'top top',
         end: `+=${products.length * 110}%`,
         pin: true,
         onUpdate: (self) => apply(self.progress),
         onRefresh: (self) => apply(self.progress),
+      })
+      // The hand-over's bottom edge passing under the nav (its probe line) hands the nav back.
+      ScrollTrigger.create({
+        trigger: el,
+        start: `bottom ${PROBE_Y}px`,
+        onEnter: () => {
+          past = true
+          delete host.dataset.navTheme
+        },
+        onLeaveBack: () => {
+          past = false
+          apply(handover.progress)
+        },
       })
     }, el)
     return () => {

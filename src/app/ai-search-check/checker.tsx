@@ -9,6 +9,7 @@ import { site } from '@/data/site'
 import { EMAIL_WARNING } from '@/lib/enquiry'
 import { setEnquiryPrefill } from '@/lib/enquiry-prefill'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
+import { markOfferDone } from '@/lib/offer'
 import styles from '@/app/ai-search-check/checker.module.css'
 
 type Check = { id: string; label: string; status: 'pass' | 'warn' | 'fail'; weight: number; detail: string; fix: string }
@@ -86,6 +87,8 @@ export function Checker() {
       }
       setReport(body)
       setState('done')
+      // They have used the free check, so the site-wide offer stops offering it.
+      markOfferDone()
     } catch {
       setError('Could not reach the checker. Check your connection and try again.')
       setState('error')
