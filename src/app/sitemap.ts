@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { site } from '@/data/site'
-import { allPosts } from '@/lib/blog'
+import { allPosts, usedCategories } from '@/lib/blog'
 
 export const dynamic = 'force-static'
 
@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/ai-search-check/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${site.url}/founder/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${site.url}/blog/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    ...usedCategories().map((c) => ({ url: `${site.url}/blog/category/${c.id}/`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.5 })),
     ...allPosts().map((p) => ({ url: `${site.url}/blog/${p.slug}/`, lastModified: new Date(`${p.date}T00:00:00Z`), changeFrequency: 'yearly' as const, priority: 0.6 })),
   ]
 }

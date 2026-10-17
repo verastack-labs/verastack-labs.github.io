@@ -10,6 +10,7 @@ import { site } from '@/data/site'
 import { EMAIL_WARNING, isEmail } from '@/lib/enquiry'
 import { FINE_QUERY } from '@/lib/motion/mode'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
+import { useFramed } from '@/lib/use-framed'
 import { countPage, markOfferDone, offerDone, offerDue, offerMoment, readLastShown, writeLastShown } from '@/lib/offer'
 import styles from '@/components/offer/offer.module.css'
 
@@ -205,7 +206,12 @@ function CheckForm({ onGo }: { onGo: (url: string) => void }) {
 // The site-wide offer: a free product video application and the free AI search check, in a dialog
 // that opens by itself at a natural pause, at most once every 14 days (src/lib/offer.ts). Once closed, a pill
 // at the bottom right reopens it. On the checker page only the video offer shows.
+// Inside an embed (a post showing an example page), the offer stays out of the way.
 export function Offer() {
+  return useFramed() ? null : <SiteOffer />
+}
+
+function SiteOffer() {
   const pathname = usePathname()
   const router = useRouter()
   const onChecker = !!pathname?.startsWith(checker.path)

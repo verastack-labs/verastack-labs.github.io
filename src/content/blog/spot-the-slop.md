@@ -2,6 +2,10 @@
 title: Spot the slop: what an AI-built launch page gets wrong
 description: We asked an AI site builder for a launch page and built the same page ourselves. The AI one looks fine. Here is where it quietly fails, and how to check yours.
 date: 2026-10-17
+category: launches
+hook: Built your launch page with an AI tool? Book a free 20-minute call and we'll go through it with you: what to cut, what to fix, what to keep.
+hookCta: Book a 20-min call | call
+checkCompare: The AI-built Bookwell page scored 54; ours scored 100. Check your own launch page.
 tags: AI search, launches, design
 ---
 
@@ -16,7 +20,14 @@ Bookwell isn't a real company. Neither page is selling anything.
 
 ![The AI-built Bookwell page: a serif headline, "Fewer phone calls. Fuller days.", on cream, with a calendar mockup](/blog/spot-the-slop/ai-builder.webp)
 
-![The Bookwell page we built: "Appointment booking for small clinics." in a heavy sans-serif, navy and coral](/blog/spot-the-slop/built-properly.webp)
+![The Bookwell page we built: "Appointment booking for small clinics." in a heavy sans-serif, navy and coral, with a phone showing the booking screen](/blog/spot-the-slop/built-properly.webp)
+
+Or scroll both, live, side by side:
+
+<div class="pair">
+<figure><iframe src="https://bookwell-launchpad-app.lovable.app/" title="The AI-built Bookwell page, live" loading="lazy"></iframe><figcaption>AI-built · 54/100</figcaption></figure>
+<figure><iframe src="/examples/bookwell/" title="The Bookwell page we built, live" loading="lazy"></iframe><figcaption>Built properly · 100/100</figcaption></figure>
+</div>
 
 ## What the AI got right
 
@@ -29,6 +40,8 @@ Credit first, because it earned some. The page is tidy and readable. The headlin
 **2. Machines can't tell what it is.** We ran both pages through our [AI search check](/ai-search-check), the sixteen checks we use for how well ChatGPT, Perplexity and Google's AI answers can read a page. On 17 October the AI-built page scored **54 out of 100**. It has no structured data saying who is behind it or what it sells, no questions and answers for an engine to quote, no canonical address, no sitemap and no llms.txt. Its server HTML carries about 230 words. An AI answer asked "what's a good booking app for a small clinic?" has very little here to go on.
 
 **3. It looks like everything else.** Calm green on cream, a soft serif headline, rounded cards: the safe "trustworthy software" look. It isn't ugly. It's just the average of a thousand pages, so it says nothing about this product. We noticed because our own first draft of Bookwell drifted to the same serif and nearly the same green before we caught it and gave Bookwell a look of its own. The pull toward the average is real, for people and for tools.
+
+<!-- hook -->
 
 ## What we did differently
 

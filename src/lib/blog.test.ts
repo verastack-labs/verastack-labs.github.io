@@ -4,14 +4,19 @@ import sitemap from '@/app/sitemap'
 
 describe('blog', () => {
   it('parses front matter, keeping colons inside the title', () => {
-    const post = parsePost('x', '---\ntitle: AI search: a guide\ndescription: d\ndate: 2026-10-17\ntags: a, b\n---\n\n## Hello\n\nWorld.')
+    const post = parsePost('x', '---\ntitle: AI search: a guide\ndescription: d\ndate: 2026-10-17\ncategory: studies\ntags: a, b\n---\n\n## Hello\n\nWorld.')
     expect(post.title).toBe('AI search: a guide')
     expect(post.tags).toEqual(['a', 'b'])
     expect(post.html).toContain('<h2>Hello</h2>')
   })
 
   it('refuses a post without a description', () => {
-    expect(() => parsePost('x', '---\ntitle: t\ndate: 2026-10-17\n---\nbody')).toThrow(/description/)
+    expect(() => parsePost('x', '---\ntitle: t\ndate: 2026-10-17\ncategory: studies\n---\nbody')).toThrow(/description/)
+  })
+
+  it('refuses a post without a known category', () => {
+    expect(() => parsePost('x', '---\ntitle: t\ndescription: d\ndate: 2026-10-17\n---\nbody')).toThrow(/category/)
+    expect(() => parsePost('x', '---\ntitle: t\ndescription: d\ndate: 2026-10-17\ncategory: gossip\n---\nbody')).toThrow(/unknown category/)
   })
 
   it('gives every post a real date, a description sized for search results, and no em dashes', () => {

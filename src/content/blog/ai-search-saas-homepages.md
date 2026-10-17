@@ -2,6 +2,10 @@
 title: AI search scores of 26 SaaS homepages
 description: Four perfect scores, four pages that are blank to crawlers. How 26 SaaS homepages read to ChatGPT and AI answers, and the three fixes that separate the top from the rest.
 date: 2026-10-17
+category: studies
+hook: Founders: send us your homepage and we'll tell you, on a free 20-minute call, exactly what's keeping it out of AI answers.
+hookCta: Book a 20-min call | call
+checkCompare: The median SaaS homepage in our study scored 77.5, and four scored 100. Where does yours land?
 tags: AI search, SaaS, study
 ---
 
@@ -15,6 +19,8 @@ We ran 27 SaaS homepages through the same [AI search check](/ai-search-check): s
 - **Four perfect 100s.** No D2C store got above 91.
 - **Four pages that are close to blank.** They send 50 words of HTML or fewer before JavaScript runs.
 - **13 of 26 under 80.**
+
+<!-- hook -->
 
 ## The top of the table
 

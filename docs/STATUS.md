@@ -158,6 +158,15 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] Blog structure (2026-10-17): categories with a short phrase each (`src/data/blog-categories.ts`;
+    every post names one in front matter, and an unknown one fails the build), chips on /blog with
+    counts, a page per category with posts (/blog/category/<id>/, in the sitemap). Every post now
+    ends with an inline AI search check, and can carry a highlighted hook (`hook` and `hookCta:
+    Label | href-or-call` in front matter, placed at a `<!-- hook -->` marker or after the opening).
+    Embeds work in posts (YouTube or live pages via iframes; `<div class="pair">` puts two side by
+    side). Inside an embed, the site header and the offer step aside. All four posts have hooks;
+    Spot the slop embeds both Bookwell pages live. Bookwell gained a product visual (phone with the
+    slot picker and a reminder bubble), numbered steps and icons.
   - [x] Post "Spot the slop: what an AI-built launch page gets wrong" (2026-10-17). A made-up product,
     Bookwell: Lovable built one page from one prompt (live at bookwell-launchpad-app.lovable.app, in
     Rigan's Lovable account; scored 54), and we built ours at /examples/bookwell/ (own brand,
