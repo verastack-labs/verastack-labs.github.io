@@ -158,6 +158,8 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] "Meet the founder" card in About (2026-10-17): photo, one line and a button to /founder,
+    under the studio statement.
   - [x] Offer popup timing (2026-10-17, agreed with Rigan): once every 14 days, never again after a
     video application or a check; never mid-scroll (waits for a 1.5 s pause); never on the page a
     visit lands on, except a laptop pointer heading for the tabs; on home once Work has been read,
