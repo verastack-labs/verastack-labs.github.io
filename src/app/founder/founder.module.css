@@ -1,0 +1,69 @@
+.page { max-width: 1040px; margin: 0 auto; padding: 120px 24px 96px; }
+@media (min-width: 768px) { .page { padding: 160px 40px 128px; } }
+
+.label { margin: 0 0 18px; font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.label em { font-style: normal; color: var(--signal); }
+
+/* The letter beside the portrait; the portrait leads on phones, at a modest size. */
+.intro { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+@media (max-width: 767px) {
+  .intro { grid-template-columns: 1fr; gap: 28px; }
+  .photo { order: -1; width: min(240px, 62%); }
+}
+.title {
+  margin: 0 0 12px;
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96;
+  font-size: clamp(44px, 7.4vw, 96px);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+.title em { font-style: normal; color: var(--signal); }
+.byline { margin: 0 0 28px; font: 400 12.5px var(--font-mono); color: var(--muted); }
+.byline b { font-weight: 500; color: var(--text); }
+.para { max-width: 58ch; margin: 0 0 16px; font-size: clamp(16px, 1.45vw, 19px); line-height: 1.6; color: var(--muted); }
+.signature {
+  margin: 18px 0 0;
+  font-family: 'Brush Script MT', 'Segoe Script', 'Snell Roundhand', cursive;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--text);
+}
+.photo { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 18px; }
+
+.proof { margin-top: 72px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+@media (max-width: 767px) { .cards { grid-template-columns: 1fr; } }
+.card { padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.card strong { display: block; margin-bottom: 10px; font-weight: 800; font-size: clamp(34px, 4vw, 48px); line-height: 1; letter-spacing: -0.05em; color: var(--signal); }
+.card span { font: 400 12px/1.5 var(--font-mono); color: var(--muted); }
+.press { margin: 18px 2px 0; font: 400 12px/1.8 var(--font-mono); color: var(--muted); }
+.press > span:first-child { text-transform: uppercase; letter-spacing: 0.06em; color: #6b6f63; }
+.press a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); transition: color 0.2s, border-color 0.2s; }
+.press a:hover, .press a:focus-visible { color: var(--signal); border-color: var(--signal); }
+
+.section { margin-top: 80px; }
+.h2 { margin: 0 0 24px; font-weight: 800; font-size: clamp(26px, 3.2vw, 36px); line-height: 1.1; letter-spacing: -0.04em; }
+
+/* The launch rail: a line with a lit stop per launch, ending at an open one for yours. */
+.rail { margin: 0 0 0 7px; padding: 0 0 0 26px; list-style: none; border-left: 2px solid var(--line); }
+.stop { position: relative; padding-bottom: 26px; }
+.stop:last-child { padding-bottom: 0; }
+.stop::before { content: ''; position: absolute; left: -34px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 5px var(--ink); }
+.stop[data-you='true']::before { background: var(--ink); border: 2px dashed var(--signal); width: 10px; height: 10px; }
+.stop b { display: block; font-weight: 700; font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.02em; }
+.stop[data-you='true'] b { color: var(--signal); }
+.stop span { display: block; margin-top: 4px; font: 400 12.5px/1.5 var(--font-mono); color: var(--muted); }
+.stop p { max-width: 62ch; margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+.faq { margin: 0; border-top: 1px solid var(--line); }
+.faq > div { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.faq dt { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+.faq dd { max-width: 66ch; margin: 8px 0 0; font-size: 15.5px; line-height: 1.6; color: var(--muted); }
+
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 56px; }
+.cta, .ghost { display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.2s, border-color 0.2s, color 0.2s; }
+.cta { background: var(--signal); color: var(--ink); }
+.cta:hover { transform: translateY(-1px); }
+.ghost { border: 1px solid var(--line); color: var(--text); font-weight: 600; }
+.ghost:hover, .ghost:focus-visible { border-color: var(--signal); color: var(--signal); }

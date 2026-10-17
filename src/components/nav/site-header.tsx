@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { PathPill } from '@/components/nav/path-pill'
 import styles from '@/components/nav/path-pill.module.css'
 
-// Away from the one-page home (the blog, the AI search check), there are no sections to track: the
+// Away from the one-page home (the blog, the AI search check, the founder page), there are no sections to track: the
 // wordmark goes home, the pill names the page, and the call to action jumps to the home page's
 // contact section. A long page name can pass a short one for phones.
 function PageHeader({ path, short }: { path: string; short?: string }) {
@@ -38,6 +38,7 @@ export function SiteHeader() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   const pathname = usePathname()
   if (pathname?.startsWith('/blog')) return <PageHeader path="/blog" />
+  if (pathname?.startsWith('/founder')) return <PageHeader path="/founder" />
   if (pathname?.startsWith('/ai-search-check')) return <PageHeader path="/ai-search-check" short="/ai-check" />
   return (
     <header className={styles.header} data-theme={theme}>
