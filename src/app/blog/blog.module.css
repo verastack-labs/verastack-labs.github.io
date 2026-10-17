@@ -55,3 +55,4 @@
 .byline { margin: 6px 0 0; font: 400 11.5px var(--font-mono); color: var(--muted); }
 .byline a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); }
 .byline a:hover { color: var(--signal); border-color: var(--signal); }
+.prose img { display: block; width: 100%; height: auto; margin: 1.6em 0; border: 1px solid var(--line); border-radius: 12px; }

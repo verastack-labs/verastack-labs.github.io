@@ -1,0 +1,53 @@
+/* Bookwell's own brand, not the studio's: deep navy and a warm coral on near-white, set in a
+   confident geometric sans. Deliberately not the calm-green-and-serif look AI builders reach for. */
+.page {
+  --bw-paper: #fbfaf8;
+  --bw-ink: #16213e;
+  --bw-accent: #e4572e;
+  --bw-accent-soft: #fde7df;
+  --bw-muted: #4c5670;
+  --bw-line: #e6e3de;
+  min-height: 100vh;
+  padding: 104px 24px 96px;
+  background: var(--bw-paper);
+  color: var(--bw-ink);
+}
+@media (min-width: 768px) { .page { padding: 132px 40px 128px; } }
+.page > * { max-width: 920px; margin-left: auto; margin-right: auto; }
+
+.banner { margin-bottom: 48px; padding: 12px 16px; border: 1px dashed var(--bw-accent); border-radius: 10px; font: 400 13px/1.5 var(--font-mono); color: var(--bw-muted); }
+.banner a { color: var(--bw-accent); }
+
+.hero h1, .section h2, .cta h2 { font-family: var(--font-bw-display), system-ui, sans-serif; font-weight: 800; letter-spacing: -0.035em; }
+.mark { display: inline-block; width: 14px; height: 14px; margin-right: 6px; border-radius: 4px 50% 50% 50%; background: var(--bw-accent); vertical-align: -1px; }
+.brand { margin: 0 0 18px; font-family: var(--font-bw-display), system-ui, sans-serif; font-weight: 800; font-size: 19px; color: var(--bw-ink); }
+.hero h1 { margin: 0; max-width: 16ch; font-size: clamp(40px, 6vw, 72px); line-height: 1.02; }
+.lede { max-width: 56ch; margin: 22px 0 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: var(--bw-muted); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.primary, .secondary { display: inline-flex; align-items: center; height: 50px; padding: 0 24px; border-radius: 12px; font-weight: 700; text-decoration: none; }
+.primary { background: var(--bw-accent); color: #fff; }
+.secondary { border: 1px solid var(--bw-line); color: var(--bw-ink); background: #fff; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 28px 0 0; padding: 0; list-style: none; font-size: 14px; color: var(--bw-muted); }
+.facts li::before { content: '✓ '; color: var(--bw-accent); font-weight: 700; }
+
+.section { margin-top: 88px; }
+.section h2 { margin: 0 0 22px; font-size: clamp(28px, 3.4vw, 40px); }
+.steps { margin: 0; padding-left: 22px; }
+.steps li { margin-bottom: 16px; max-width: 64ch; font-size: 17px; line-height: 1.6; color: var(--bw-muted); }
+.steps b { color: var(--bw-ink); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+.grid > div { padding: 22px; border: 1px solid var(--bw-line); border-radius: 14px; background: #fff; }
+.grid h3 { margin: 0 0 8px; font-size: 18px; }
+.grid p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--bw-muted); }
+.prose { max-width: 64ch; margin: 0; font-size: 17px; line-height: 1.65; color: var(--bw-muted); }
+.price { max-width: 520px; padding: 26px; border-radius: 16px; background: var(--bw-accent-soft); }
+.amount { margin: 0 0 8px; font-family: var(--font-bw-display), system-ui, sans-serif; font-weight: 700; font-size: 44px; }
+.amount span { font-family: inherit; font-weight: 600; font-size: 16px; color: var(--bw-muted); }
+.price p:last-child { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--bw-muted); }
+.faq { margin: 0; border-top: 1px solid var(--bw-line); }
+.faq > div { padding: 18px 0; border-bottom: 1px solid var(--bw-line); }
+.faq dt { font-weight: 700; font-size: 17px; }
+.faq dd { margin: 8px 0 0; max-width: 64ch; font-size: 15.5px; line-height: 1.6; color: var(--bw-muted); }
+.cta { margin-top: 96px; padding: 48px 32px; border-radius: 20px; background: var(--bw-ink); color: var(--bw-paper); text-align: center; }
+.cta h2 { margin: 0 0 24px; font-size: clamp(26px, 3.2vw, 38px); }
