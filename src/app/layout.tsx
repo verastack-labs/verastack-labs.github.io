@@ -2,13 +2,12 @@ import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 import { Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
-import { site } from '@/data/site'
+import { shareImage, site } from '@/data/site'
 import { MotionAttribute } from '@/lib/motion/motion-attribute'
 import { SmoothScroll } from '@/lib/motion/smooth-scroll'
 import { SiteHeader } from '@/components/nav/site-header'
 import { SiteFooter } from '@/components/footer/site-footer'
 import { tokensToCss } from '@/styles/tokens'
-import { homeGraph, jsonLd } from '@/lib/structured-data'
 import './globals.css'
 
 const bricolage = Bricolage_Grotesque({
@@ -24,8 +23,6 @@ const jetbrains = JetBrains_Mono({
   variable: '--font-jetbrains',
   display: 'swap',
 })
-
-const shareImage = { url: '/og.png', width: 1200, height: 630, alt: site.title }
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -54,7 +51,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${bricolage.variable} ${jetbrains.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: tokensToCss() }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(homeGraph()) }} />
       </head>
       <body className="min-h-dvh bg-ink text-text">
         <a

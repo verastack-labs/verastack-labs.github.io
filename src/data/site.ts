@@ -42,3 +42,7 @@ export const booking = site.calLink
         external: false,
       }
     : { href: '#contact', external: false }
+
+// The link-preview image. Pages that set their own openGraph must list it again, since Next
+// replaces the whole openGraph object rather than merging it.
+export const shareImage = { url: '/og.png', width: 1200, height: 630, alt: site.title }

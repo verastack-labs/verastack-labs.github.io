@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { allPosts, formatDate, readingMinutes } from '@/lib/blog'
-import { site } from '@/data/site'
+import { shareImage, site } from '@/data/site'
+import { jsonLd, studioNode } from '@/lib/structured-data'
 import styles from '@/app/blog/blog.module.css'
 
 const title = 'Blog · VeraStack Labs'
@@ -11,15 +12,29 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: '/blog' },
-  openGraph: { title, description, url: `${site.url}/blog/`, siteName: site.name, type: 'website' },
-  twitter: { card: 'summary_large_image', title, description },
+  openGraph: { title, description, url: `${site.url}/blog/`, siteName: site.name, type: 'website', images: [shareImage] },
+  twitter: { card: 'summary_large_image', title, description, images: [shareImage] },
 }
 
 export default function BlogIndex() {
   const posts = allPosts()
+  const graph = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      studioNode(),
+      {
+        '@type': 'Blog',
+        name: `${site.name} blog`,
+        url: `${site.url}/blog/`,
+        publisher: { '@id': `${site.url}/#organization` },
+        blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `${site.url}/blog/${p.slug}/`, datePublished: p.date })),
+      },
+    ],
+  }
   return (
     <main id="main" className={styles.page}>
       <span id="top" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(graph) }} />
       <p className={styles.label}>
         /blog <em>{'//'}</em> launches, AI search, open source
       </p>

@@ -2,8 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { allPosts, formatDate, postBySlug, readingMinutes } from '@/lib/blog'
-import { jsonLd } from '@/lib/structured-data'
-import { site } from '@/data/site'
+import { jsonLd, studioNode } from '@/lib/structured-data'
+import { shareImage, site } from '@/data/site'
 import styles from '@/app/blog/blog.module.css'
 
 export const dynamicParams = false
@@ -19,11 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {}
   const url = `${site.url}/blog/${post.slug}/`
   return {
-    title: `${post.title} · VeraStack Labs`,
+    // The studio name only when it still fits a results page.
+    title: post.title.length <= 46 ? `${post.title} · VeraStack Labs` : post.title,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: { title: post.title, description: post.description, url, siteName: site.name, type: 'article', publishedTime: post.date },
-    twitter: { card: 'summary_large_image', title: post.title, description: post.description },
+    openGraph: { title: post.title, description: post.description, url, siteName: site.name, type: 'article', publishedTime: post.date, images: [shareImage] },
+    twitter: { card: 'summary_large_image', title: post.title, description: post.description, images: [shareImage] },
   }
 }
 
@@ -39,7 +40,7 @@ export default async function PostPage({ params }: Props) {
     url: `${site.url}/blog/${post.slug}/`,
     keywords: post.tags.join(', '),
     author: { '@type': 'Organization', name: site.name, url: `${site.url}/` },
-    publisher: { '@type': 'Organization', name: site.name, url: `${site.url}/`, logo: `${site.url}/icon.svg` },
+    publisher: studioNode(),
   }
   return (
     <main id="main" className={styles.page}>

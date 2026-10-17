@@ -21,7 +21,7 @@ describe('blog', () => {
       expect(p.date).toMatch(/^\d{4}-\d{2}-\d{2}$/)
       expect(Number.isNaN(Date.parse(p.date))).toBe(false)
       expect(p.description.length).toBeGreaterThan(70)
-      expect(p.description.length).toBeLessThan(220)
+      expect(p.description.length).toBeLessThanOrEqual(170)
       expect(`${p.title} ${p.description} ${p.html}`).not.toContain(String.fromCodePoint(0x2014))
       expect(readingMinutes(p.words)).toBeGreaterThan(0)
     }

@@ -72,6 +72,8 @@ Content (placeholders are in the design until these arrive):
 - [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the
   Web3Forms inbox shows every field (name, email, company, service, budget, timeline, subject and
   the full sentence).
+- [ ] The home page's Questions (`src/data/faq.ts`): check the five answers read right, especially
+  the cost answer ("quoted after a free first call").
 - [ ] A price for the AI search audit, if you want one shown. Until then the checker page and its
   FAQ say "price on request".
 - [ ] Reply-time promise ("within two working days" is placeholder, `replyPromise` in `src/data/site.ts`).
@@ -120,6 +122,20 @@ Content (placeholders are in the design until these arrive):
     ports or credentials), every redirect rechecked, 8 s timeout, 2 MB cap, 10 checks a minute
     per visitor, results cached 10 minutes. Deploy the Worker by hand: `cd workers/aeo-check`,
     `npm install`, `npx wrangler deploy` (it is not part of the Pages workflow).
+  - [x] Stricter scoring (2026-10-17, after onefin.in scored 93 with no Organization data, no FAQ
+    and a keyword-list description). Sixteen checks now: added "who you are" (Organization with
+    logo and sameAs), FAQ, headings outline, freshness (sitemap lastmod, Last-Modified,
+    dateModified) and image alt text; more crawlers (ChatGPT-User, Perplexity-User, Claude-User,
+    Applebot-Extended, CCBot, Meta-ExternalAgent); text needs 500 words; keyword-list descriptions
+    warn; llms.txt needs a title and links. A warning earns a third of its points (was half), and a
+    page that blocks search crawlers or says noindex is capped at 40. onefin.in now scores 69,
+    stripe.com 74. `fresh=1` skips the 10-minute result cache (for re-checks after a fix); the cache
+    key is versioned so a scoring change never serves old results.
+  - [x] Our own pages pass the stricter check: home and /ai-search-check score 100. Home gained a
+    visible Questions block in About (`src/data/faq.ts`) with FAQPage markup, which moved from the
+    root layout to the home page so other pages do not claim questions they do not show. llms.txt
+    has a Key pages section with Markdown links; blog and checker pages keep the share image.
+    The blog index (79, one post) and the post (93, no FAQ) improve as posts arrive.
   - [ ] Next: the D2C AI-visibility study (idea 3).
 
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the

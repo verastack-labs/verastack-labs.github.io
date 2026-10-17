@@ -8,7 +8,7 @@ import { readPage } from '../../workers/aeo-check/src/html'
 
 describe('AI search check page', () => {
   it('explains exactly the checks the Worker runs, in the same order', () => {
-    const ran = runChecks({ finalUrl: 'https://a.example.com/', headers: { xRobotsTag: null }, page: readPage(''), robots: null, llmsTxt: false, sitemap: false, botStatus: null })
+    const ran = runChecks({ finalUrl: 'https://a.example.com/', headers: { xRobotsTag: null, lastModified: null }, page: readPage(''), robots: null, llmsTxt: null, sitemap: false, sitemapLastmod: null, botStatus: null, now: new Date() })
     expect(checks.map((c) => c.id)).toEqual(ran.map((c) => c.id))
     expect(checks.map((c) => c.label)).toEqual(ran.map((c) => c.label))
   })

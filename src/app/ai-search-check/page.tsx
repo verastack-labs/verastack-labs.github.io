@@ -1,22 +1,24 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { checker, checks, faqs } from '@/data/ai-search-check'
-import { site } from '@/data/site'
-import { jsonLd } from '@/lib/structured-data'
+import { shareImage, site } from '@/data/site'
+import { jsonLd, studioNode } from '@/lib/structured-data'
 import { Checker } from '@/app/ai-search-check/checker'
 import styles from '@/app/ai-search-check/checker.module.css'
 
 export const metadata: Metadata = {
-  title: `${checker.title} · VeraStack Labs`,
+  // Short enough for results pages; the share card keeps the full question.
+  title: 'Free AI search check · VeraStack Labs',
   description: checker.description,
   alternates: { canonical: checker.path },
-  openGraph: { title: checker.title, description: checker.description, url: `${site.url}${checker.path}/`, siteName: site.name, type: 'website' },
-  twitter: { card: 'summary_large_image', title: checker.title, description: checker.description },
+  openGraph: { title: checker.title, description: checker.description, url: `${site.url}${checker.path}/`, siteName: site.name, type: 'website', images: [shareImage] },
+  twitter: { card: 'summary_large_image', title: checker.title, description: checker.description, images: [shareImage] },
 }
 
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
+    studioNode(),
     {
       '@type': 'WebApplication',
       name: 'AI search check',
@@ -44,7 +46,7 @@ export default function AiSearchCheckPage() {
       </p>
       <h1 className={styles.title}>Does ChatGPT know your site?</h1>
       <p className={styles.lede}>
-        See how a page reads to ChatGPT, Perplexity, Claude and Google&apos;s AI answers. Twelve checks, a score out of 100 and the three
+        See how a page reads to ChatGPT, Perplexity, Claude and Google&apos;s AI answers. Sixteen checks, a score out of 100 and the three
         fixes that matter most.
       </p>
 
