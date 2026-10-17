@@ -14,6 +14,9 @@ export type Problem = 'empty' | 'email'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+// Shown under an email field that loses focus holding something that is not an address.
+export const EMAIL_WARNING = "That email doesn't look right. Check for a typo, like a missing @ or dot."
+
 export function isEmail(value: string): boolean {
   return EMAIL.test(value.trim())
 }

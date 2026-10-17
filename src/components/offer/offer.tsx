@@ -2,11 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
+import { FieldWarning } from '@/components/field-warning'
 import { HCaptcha } from '@/components/hcaptcha'
 import { checker } from '@/data/ai-search-check'
 import { offer } from '@/data/offer'
 import { site } from '@/data/site'
-import { isEmail } from '@/lib/enquiry'
+import { EMAIL_WARNING, isEmail } from '@/lib/enquiry'
 import { FINE_QUERY } from '@/lib/motion/mode'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import { OFFER_DELAY_MS, OFFER_SCROLL, offerDue, readLastShown, scrollDepth, writeLastShown } from '@/lib/offer'
@@ -36,6 +37,8 @@ function pageBusy(): boolean {
 function VideoForm({ sent, onSent }: { sent: boolean; onSent: () => void }) {
   const [product, setProduct] = useState('')
   const [email, setEmail] = useState('')
+  // The email warning waits until the field is left, so typing is never interrupted.
+  const [emailLeft, setEmailLeft] = useState(false)
   const [note, setNote] = useState('')
   const [bot, setBot] = useState(false)
   const [token, setToken] = useState<string | null>(null)
@@ -43,6 +46,7 @@ function VideoForm({ sent, onSent }: { sent: boolean; onSent: () => void }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'failed'>('idle')
 
   const ready = !!product.trim() && isEmail(email)
+  const emailBad = emailLeft && !!email.trim() && !isEmail(email)
   const captchaOn = !!(site.formAccessKey && site.hcaptchaSiteKey)
 
   const send = async (e: React.FormEvent) => {
@@ -112,9 +116,13 @@ function VideoForm({ sent, onSent }: { sent: boolean; onSent: () => void }) {
           placeholder="you@company.com"
           autoComplete="email"
           value={email}
+          aria-invalid={emailBad}
+          aria-describedby={emailBad ? 'offer-email-warning' : undefined}
           onChange={(e) => setEmail(e.target.value)}
+          onBlur={() => setEmailLeft(true)}
         />
       </label>
+      {emailBad && <FieldWarning id="offer-email-warning">{EMAIL_WARNING}</FieldWarning>}
       <label className={styles.field}>
         <span className="sr-only">One line about it (optional)</span>
         <input
@@ -139,18 +147,19 @@ function VideoForm({ sent, onSent }: { sent: boolean; onSent: () => void }) {
       <button className={styles.go} type="submit" disabled={!ready || status === 'sending' || (captchaOn && !token)}>
         {status === 'sending' ? 'Sending…' : offer.video.submit}
       </button>
+      {status === 'failed' && (
+        <FieldWarning>
+          That did not go through. Tick the box again and retry
+          {site.email && (
+            <>
+              , or write to <a href={`mailto:${site.email}`}>{site.email}</a>
+            </>
+          )}
+          .
+        </FieldWarning>
+      )}
       <p className={styles.hint} aria-live="polite">
-        {status === 'failed' ? (
-          <>
-            That did not go through. Tick the box again and retry
-            {site.email && (
-              <>
-                , or write to <a href={`mailto:${site.email}`}>{site.email}</a>
-              </>
-            )}
-            .
-          </>
-        ) : !ready ? (
+        {status === 'failed' ? null : !ready ? (
           'A name or link and an email, then one quick check.'
         ) : captchaOn && !token ? (
           'One quick check above, then apply.'

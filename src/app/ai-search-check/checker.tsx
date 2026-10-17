@@ -2,9 +2,11 @@
 
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { FieldWarning } from '@/components/field-warning'
 import { HCaptcha } from '@/components/hcaptcha'
 import { checker } from '@/data/ai-search-check'
 import { site } from '@/data/site'
+import { EMAIL_WARNING } from '@/lib/enquiry'
 import { setEnquiryPrefill } from '@/lib/enquiry-prefill'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import styles from '@/app/ai-search-check/checker.module.css'
@@ -57,6 +59,9 @@ export function Checker() {
   const [error, setError] = useState<string | null>(null)
   const [report, setReport] = useState<Report | null>(null)
   const [email, setEmail] = useState('')
+  // Warnings wait until a field is left, so typing is never interrupted.
+  const [urlLeft, setUrlLeft] = useState(false)
+  const [emailLeft, setEmailLeft] = useState(false)
   const [token, setToken] = useState<string | null>(null)
   const [captchaReset, setCaptchaReset] = useState(0)
   const [unlock, setUnlock] = useState<'locked' | 'sending' | 'open' | 'failed'>('locked')
@@ -140,6 +145,9 @@ export function Checker() {
   }, [unlock])
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+  const emailBad = emailLeft && !!email.trim() && !emailOk
+  // A web address needs a dot and no spaces; the Worker does the real checking.
+  const urlBad = urlLeft && !!input.trim() && !/^\S+\.\S+$/.test(input.trim())
   const captchaOn = !!(site.formAccessKey && site.hcaptchaSiteKey)
 
   // The full report opens here once the email is sent; the email reaches the studio with the score.
@@ -198,15 +206,32 @@ export function Checker() {
           spellCheck={false}
           placeholder="yourproduct.com"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          aria-invalid={urlBad || state === 'error'}
+          aria-describedby={urlBad || state === 'error' ? 'check-url-warning' : undefined}
+          onChange={(e) => {
+            setInput(e.target.value)
+            setUrlLeft(false)
+            if (state === 'error') setState('idle')
+          }}
+          onBlur={() => setUrlLeft(true)}
         />
         <button className={styles.go} type="submit" disabled={state === 'checking' || !input.trim()}>
           {state === 'checking' ? 'Checking…' : 'Check'}
         </button>
       </form>
-      <p className={styles.note} aria-live="polite">
-        {state === 'checking' ? 'Fetching the page, robots.txt, llms.txt and sitemap. About ten seconds.' : error ?? 'One page at a time. Results are kept for ten minutes, then dropped; nothing else is stored unless you ask for the full report.'}
-      </p>
+      {state === 'error' && error ? (
+        <FieldWarning id="check-url-warning">{error}</FieldWarning>
+      ) : urlBad ? (
+        <FieldWarning id="check-url-warning">
+          That doesn&apos;t look like a website address. Try something like example.com.
+        </FieldWarning>
+      ) : (
+        <p className={styles.note} aria-live="polite">
+          {state === 'checking'
+            ? 'Fetching the page, robots.txt, llms.txt and sitemap. About ten seconds.'
+            : 'One page at a time. Results are kept for ten minutes, then dropped; nothing else is stored unless you ask for the full report.'}
+        </p>
+      )}
 
       {report && state !== 'checking' && (
         <div className={styles.result} ref={resultRef} tabIndex={-1} data-offer-hold aria-label={`Score ${report.score} out of 100`}>
@@ -337,18 +362,22 @@ export function Checker() {
                     autoComplete="email"
                     placeholder="you@company.com"
                     value={email}
+                    aria-invalid={emailBad}
+                    aria-describedby={emailBad ? 'check-email-warning' : undefined}
                     onChange={(e) => setEmail(e.target.value)}
+                    onBlur={() => setEmailLeft(true)}
                   />
                   <button className={styles.go} type="submit" disabled={!emailOk || unlock === 'sending' || (captchaOn && !token)}>
                     {unlock === 'sending' ? 'Opening…' : 'Open report'}
                   </button>
                 </div>
+                {emailBad && <FieldWarning id="check-email-warning">{EMAIL_WARNING}</FieldWarning>}
                 {captchaOn && emailOk && site.hcaptchaSiteKey && (
                   <div className={styles.captcha}>
                     <HCaptcha siteKey={site.hcaptchaSiteKey} onToken={setToken} resetKey={captchaReset} />
                   </div>
                 )}
-                {unlock === 'failed' && <p className={styles.note}>That did not go through. Tick the box again and retry.</p>}
+                {unlock === 'failed' && <FieldWarning>That did not go through. Tick the box again and retry.</FieldWarning>}
                 <p className={styles.note}>We may write once about what we found; no newsletter.</p>
               </form>
               <p className={styles.gateAlt}>

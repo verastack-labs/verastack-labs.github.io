@@ -103,9 +103,13 @@ export async function check(input: string, selfHost: string) {
     page = await safeFetch(start, selfHost)
   } catch (e) {
     if (e instanceof CheckError) throw e
-    throw new CheckError('Could not reach that site. Check the address, or try again in a minute.')
+    throw new CheckError("We couldn't reach that site. Check the address for a typo, or try again in a minute.")
   }
   const { res, url } = page
+  // Cloudflare answers 530 (and 52x) when the name does not resolve or the origin is unreachable.
+  if (res.status === 530 || (res.status >= 521 && res.status <= 523)) {
+    throw new CheckError("We couldn't find that site. Check the address for a typo.")
+  }
   if ([401, 403, 429, 503].includes(res.status)) {
     throw new CheckError(`The site turned the checker away (HTTP ${res.status}). Bot protection that blocks us may be blocking AI crawlers too, which is worth checking.`)
   }
