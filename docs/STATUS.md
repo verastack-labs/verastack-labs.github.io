@@ -161,7 +161,13 @@ Content (placeholders are in the design until these arrive):
     "Unlock the full report, free" button; it takes the email (Web3Forms, hCaptcha) and links to
     the paid fix. The result scrolls smoothly into view below the header. The site-wide offer
     holds off while a result is on screen (`data-offer-hold`).
-  - [ ] Next: the D2C AI-visibility study (idea 3).
+  - [x] D2C AI-visibility study, part A (2026-10-17): 99 brands from the AEO outreach batches
+    through the live checker (`docs/study/d2c-ai-visibility/`, scan.json). 96 reachable: median
+    75, top 91, 71 under 80; 91 homepages lack product structured data, 71 have no FAQ. Published
+    as the blog post "We ran 96 Indian D2C sites through an AI search check", naming only the top
+    ten (praise in public; low scorers hear privately by email or DM). Part B (asking the engines
+    who they name) dropped: paid APIs or hours by hand, not worth it now.
+  - [ ] Next: the SaaS version (28 companies from social-docs linkedin/praise-and-saas-targets.md).
 
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
   press links in `src/data/work.ts`): Tesseract 60,000+, Shockwave 7,000+, X-47 3,000+ in 24 hours,
