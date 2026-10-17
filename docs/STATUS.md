@@ -74,6 +74,9 @@ Content (placeholders are in the design until these arrive):
   the full sentence).
 - [ ] The home page's Questions (`src/data/faq.ts`): check the five answers read right, especially
   the cost answer ("quoted after a free first call").
+- [ ] Test the hCaptcha challenge inside the popups on a real device (2026-10-17 fix: the
+  challenge frame is lifted into the top layer as a popover when the checkbox sits in an open
+  dialog; it cannot be tested here because ticking a captcha is not something we automate).
 - [ ] A price for the AI search audit, if you want one shown. Until then the checker page and its
   FAQ say "price on request".
 - [ ] The free product video's terms: how many we make, how long they are and who qualifies.

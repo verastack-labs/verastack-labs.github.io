@@ -7,6 +7,7 @@ import { site } from '@/data/site'
 import { filledCount, isEmail, mailtoHref, problemMessage, problems, sentence, type Enquiry } from '@/lib/enquiry'
 import { takeEnquiryPrefill } from '@/lib/enquiry-prefill'
 import { setCurrency, useCurrency } from '@/lib/use-currency'
+import { InlineWarning } from '@/components/field-warning'
 import { HCaptcha } from '@/components/hcaptcha'
 import styles from '@/scenes/contact/contact.module.css'
 
@@ -241,10 +242,18 @@ export function SentenceForm() {
             required
             readOnly={locked}
             value={email}
+            aria-invalid={!!email.trim() && !isEmail(email) && message !== null}
             onChange={(e) => {
               setEmail(e.target.value)
               e.target.classList.remove(styles.miss)
               setMessage(null)
+            }}
+            onBlur={(e) => {
+              // Left holding something that is not an address: say so now, not at send.
+              if (e.target.value.trim() && !isEmail(e.target.value)) {
+                e.target.classList.add(styles.miss)
+                setMessage("that email doesn't look right. Check for a typo, like a missing @ or dot")
+              }
             }}
           />
         </Auto>
@@ -317,14 +326,18 @@ export function SentenceForm() {
           </button>
           <span className={styles.hint} aria-live="polite">
             {status === 'failed' ? (
-              site.email ? (
-                <>
-                  that didn&apos;t go through.{' '}
-                  <a href={mailtoHref(site.email, enquiry)}>email it instead ↗</a>
-                </>
-              ) : (
-                "that didn't go through. Please try again in a little while."
-              )
+              <InlineWarning>
+                {site.email ? (
+                  <>
+                    that didn&apos;t go through.{' '}
+                    <a href={mailtoHref(site.email, enquiry)}>email it instead ↗</a>
+                  </>
+                ) : (
+                  "that didn't go through. Please try again in a little while."
+                )}
+              </InlineWarning>
+            ) : message ? (
+              <InlineWarning>{message}</InlineWarning>
             ) : (
               hint
             )}

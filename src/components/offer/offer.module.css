@@ -133,3 +133,4 @@
 @media (prefers-reduced-motion: reduce) {
   .pill { transition: none; }
 }
+.input[aria-invalid='true'] { border-color: var(--alert); }

@@ -1,0 +1,5 @@
+/* Doubled class: wins over a form's own paragraph styles (".gate > p" and the like). */
+.warn.warn { display: flex; align-items: flex-start; gap: 7px; margin: 8px 4px 0; font: 400 12.5px/1.45 var(--font-mono); color: var(--alert); }
+.icon { flex: none; margin-top: 1px; }
+.inline { display: inline-flex; align-items: flex-start; gap: 6px; color: var(--alert); }
+.warn.warn a { color: inherit; text-decoration: underline; }
