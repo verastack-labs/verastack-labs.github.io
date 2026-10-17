@@ -8,7 +8,8 @@ export const site = {
     'A design and engineering studio. Web experiences and 3D, web and mobile apps, AI search and SEO, and product videos, for clients and for our own products.',
   // Every email on the site reads from here: footer, contact and the form's fallback.
   email: 'rigan@verastack.dev' as string | null,
-  calLink: null as string | null,
+  // The 30-minute intro call on Cal.com (a 15-minute one is at cal.com/verastack/quick).
+  calLink: 'https://cal.com/verastack/intro' as string | null,
   // Web3Forms access key for the enquiry form (spec 7.4). Public by design; the form cannot send
   // until it is set.
   formAccessKey: '83e439b1-16f2-4897-b789-225cdd314194' as string | null,
@@ -30,14 +31,14 @@ export const site = {
   analyticsToken: '0627ce9905824942893b1850c5f9f426' as string | null,
 }
 
-// Where every "book a 20-min call" goes: the Cal.com page once it exists, until then an email to
+// Where every "book a 30-min call" goes: the Cal.com page once it exists, until then an email to
 // the studio asking for a call. The button is always shown.
 export const booking = site.calLink
   ? { href: site.calLink, external: true }
   : site.email
     ? {
-        href: `mailto:${site.email}?subject=${encodeURIComponent('20-min call')}&body=${encodeURIComponent(
-          "Hi, I'd like to book a 20-minute call. A couple of times that suit me:\n\n",
+        href: `mailto:${site.email}?subject=${encodeURIComponent('30-min call')}&body=${encodeURIComponent(
+          "Hi, I'd like to book a 30-minute call. A couple of times that suit me:\n\n",
         )}`,
         external: false,
       }

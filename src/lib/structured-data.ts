@@ -165,7 +165,7 @@ export function llmsText(): string {
     '',
     `- Start a project: ${site.url}/#contact`,
     ...(site.email ? [`- Email: ${site.email}`] : []),
-    `- Book a 20-minute call: ${booking.href.startsWith('mailto:') ? `email ${site.email} with the subject "20-min call"` : booking.href}`,
+    `- Book a 30-minute call: ${booking.href.startsWith('mailto:') ? `email ${site.email} with the subject "30-min call"` : booking.href}`,
     `- GitHub: ${site.githubUrl}`,
     '',
   ]

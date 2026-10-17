@@ -189,7 +189,7 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
             onClick={pick}
             {...(booking.external ? { target: '_blank', rel: 'noreferrer' } : {})}
           >
-            book a 20-min call <b>↗</b>
+            book a 30-min call <b>↗</b>
           </a>
         </div>
       )}

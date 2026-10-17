@@ -4,8 +4,8 @@ description: We checked 226 YC Summer 2026 homepages for how well ChatGPT and AI
 date: 2026-10-17
 time: 22:45
 category: startups
-hook: YC founder? Book a free 20-minute call and we'll go through your homepage with you, live: what's keeping it out of AI answers and what to fix before your next raise.
-hookCta: Book a 20-min call | call
+hook: YC founder? Book a free 30-minute call and we'll go through your homepage with you, live: what's keeping it out of AI answers and what to fix before your next raise.
+hookCta: Book a 30-min call | call
 checkCompare: The median YC Summer 2026 homepage scored 66 out of 100. See where yours lands.
 tags: YC, AI search, startups
 ---

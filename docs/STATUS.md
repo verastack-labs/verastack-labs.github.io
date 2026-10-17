@@ -98,8 +98,9 @@ Content (placeholders are in the design until these arrive):
   frames). Until then the Work reel shows stand-in artwork (`art` in `src/data/work.ts`); add
   `media: { poster, mp4, webm }` to swap in the recording.
 - [ ] Years for the supporting work (Maven, Pee Empro, Suggaa, PixelStack), if you want them shown.
-- [ ] Cal.com account and the 20-minute event link (`site.calLink`). Until then "book a 20-min call"
-  (Contact, footer, phone nav) opens an email to you with the subject "20-min call".
+- [x] Cal.com live (2026-10-17): every "book a 30-min call" button opens
+  https://cal.com/verastack/intro (30 min; a 15-min one is at /verastack/quick). Rigan chose two
+  lengths, 15 and 30; the site says 30 everywhere.
 - [ ] Cold Stone Creamery Arabia launch. It is built (website and CMS) and listed as a text-only
   `launching soon` row; no visuals until it is live. When it launches, follow spec 7.2: set
   `status: 'live'`, add media and the live link, decide headliner or supporting, and quote

@@ -4,8 +4,8 @@ description: Buyers now ask ChatGPT and Perplexity which tool to use. What those
 date: 2026-10-17
 time: 09:30
 category: ai-search
-hook: Not sure how your SaaS reads to ChatGPT? Book a free 20-minute call and we'll walk through your homepage with you, live.
-hookCta: Book a 20-min call | call
+hook: Not sure how your SaaS reads to ChatGPT? Book a free 30-minute call and we'll walk through your homepage with you, live.
+hookCta: Book a 30-min call | call
 tags: AI search, SaaS, SEO
 ---
 
