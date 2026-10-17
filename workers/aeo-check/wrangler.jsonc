@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "verastack-aeo-check",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  // Only the custom domain: the workers.dev address would carry the account name.
+  "workers_dev": false,
+  // api.verastack.dev is a Workers custom domain: Cloudflare creates its DNS record and certificate.
+  "routes": [{ "pattern": "api.verastack.dev", "custom_domain": true }],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://verastack.dev",
+    "SELF_HOST": "api.verastack.dev"
+  },
+  // Ten checks a minute per visitor address.
+  "ratelimits": [{ "name": "LIMITER", "namespace_id": "4101", "simple": { "limit": 10, "period": 60 } }],
+  "observability": { "enabled": true }
+}
