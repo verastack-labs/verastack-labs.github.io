@@ -155,6 +155,12 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] Checker selling (2026-10-17): after the top three fixes, the rest show as "+N more to
+    fix" with their names visible and details blurred (the real details are not in the page until
+    unlocked). An unlock dialog opens once per visit when that list scrolls into view, and from the
+    "Unlock the full report, free" button; it takes the email (Web3Forms, hCaptcha) and links to
+    the paid fix. The result scrolls smoothly into view below the header. The site-wide offer
+    holds off while a result is on screen (`data-offer-hold`).
   - [ ] Next: the D2C AI-visibility study (idea 3).
 
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
