@@ -25,7 +25,7 @@ and job-seeker traffic belongs to Origan, not here.
    us, launch-page teardowns, AI search for SaaS. Plain static pages from Markdown, each with its
    own title, description, share image and Article structured data, listed in the sitemap and
    llms.txt.
-2. **"Does ChatGPT know your brand?" checker.** Paste a URL, get a score: structured data present
+2. **"Does ChatGPT know your brand?" checker.** Live since 2026-10-17 at /ai-search-check. Paste a URL, get a score: structured data present
    and valid, llms.txt, AI crawlers allowed in robots.txt, title and description quality, sitemap.
    Needs a small server (a Cloudflare Worker) to fetch other sites, since this site is static.
    Every result ends with the paid next step.
@@ -45,5 +45,4 @@ and job-seeker traffic belongs to Origan, not here.
 ## What needs Rigan
 
 - Topics and real anecdotes for blog posts; no client facts that are not public.
-- A Cloudflare login on this machine (`npx wrangler login`) before the checker's Worker can deploy.
-- Pricing for the paid audit.
+- Pricing for the paid audit: "price on request" until Rigan sets a number (decided 2026-10-17).

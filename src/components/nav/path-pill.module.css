@@ -168,3 +168,10 @@
 
 /* The pill on pages away from home: a plain link naming the page. */
 .pagePill { display: flex; align-items: center; width: auto; padding: 0 16px; text-decoration: none; }
+.pagePill .seg { white-space: nowrap; }
+.segShort { display: none; }
+/* Phones: a long page name gives way to its short form, so it stays on one line. */
+@media (max-width: 480px) {
+  .pagePill:has(.segShort) .segLong { display: none; }
+  .segShort { display: inline; }
+}

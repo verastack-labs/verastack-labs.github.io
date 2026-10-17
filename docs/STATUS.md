@@ -1,7 +1,7 @@
 # VeraStack Labs site status
 
 The single place to catch up on verastack-labs.github.io. Update it in the same PR as any change
-that finishes, adds or drops an item. Last updated 2026-09-28.
+that finishes, adds or drops an item. Last updated 2026-10-17.
 
 - Design spec: [superpowers/specs/2026-09-28-verastack-labs-site-design.md](superpowers/specs/2026-09-28-verastack-labs-site-design.md)
 - Phase plans: [superpowers/plans/](superpowers/plans/)
@@ -72,6 +72,8 @@ Content (placeholders are in the design until these arrive):
 - [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the
   Web3Forms inbox shows every field (name, email, company, service, budget, timeline, subject and
   the full sentence).
+- [ ] A price for the AI search audit, if you want one shown. Until then the checker page and its
+  FAQ say "price on request".
 - [ ] Reply-time promise ("within two working days" is placeholder, `replyPromise` in `src/data/site.ts`).
 - [ ] Configurator demo prices (VS-65 keyboard, `src/data/configurator.ts`): illustrative
   placeholders, labelled "demo price" on the page. Fine to keep unless you want other numbers.
@@ -107,8 +109,18 @@ Content (placeholders are in the design until these arrive):
     description, date, tags), static pages with BlogPosting structured data, in the sitemap and
     llms.txt, linked from the footer. First post: "AI search for SaaS: what ChatGPT reads before it
     recommends you". To publish, add a .md file and open a PR.
-  - [ ] Next: the "Does ChatGPT know your brand?" checker (freemium), which needs a Cloudflare
-    Worker and `npx wrangler login` on this machine.
+  - [x] AI search check live at /ai-search-check (2026-10-17), freemium. A Cloudflare Worker in
+    `workers/aeo-check` (custom domain api.verastack.dev, no workers.dev address) fetches one
+    page plus robots.txt, llms.txt and sitemap.xml and runs twelve weighted checks (crawler
+    access, AI-crawler blocking at the CDN, server-HTML text, JSON-LD, title, description,
+    canonical, noindex, h1, llms.txt, sitemap, Open Graph). Free: score and top three fixes.
+    The full report opens after an email (Web3Forms with hCaptcha, subject "AI search check: <host>
+    scored <n>"). Paid: the audit and fixes, price on request, linked to the contact form with
+    "to show up in AI search" picked. Guards: public hostnames only (no IPs, local names, odd
+    ports or credentials), every redirect rechecked, 8 s timeout, 2 MB cap, 10 checks a minute
+    per visitor, results cached 10 minutes. Deploy the Worker by hand: `cd workers/aeo-check`,
+    `npm install`, `npx wrangler deploy` (it is not part of the Pages workflow).
+  - [ ] Next: the D2C AI-visibility study (idea 3).
 
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
   press links in `src/data/work.ts`): Tesseract 60,000+, Shockwave 7,000+, X-47 3,000+ in 24 hours,
