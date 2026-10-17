@@ -1,0 +1,1584 @@
+{
+ "audun.co": {
+  "company": "Audun",
+  "sector": "Fintech",
+  "what": "AI-native debt collection company",
+  "founder": "Jacob Hambro",
+  "linkedin": "https://www.linkedin.com/in/jacob-hambro-70a9b1153/"
+ },
+ "lastaccountingcompany.com": {
+  "company": "Last Accounting Company",
+  "sector": "B2B -> Finance and Accounting",
+  "what": "AI-native accounting firm.",
+  "founder": "Sami Laakkonen",
+  "linkedin": "https://www.linkedin.com/in/sami-laakkonen/"
+ },
+ "osseus.ai": {
+  "company": "Osseus",
+  "sector": "B2B",
+  "what": "The frontier data platform for aligned health and biological AI",
+  "founder": "Anish Mariathasan",
+  "linkedin": "https://www.linkedin.com/in/anishmariathasan/"
+ },
+ "princeps.dev": {
+  "company": "PRINCEPS",
+  "sector": "Fintech -> Insurance",
+  "what": "AI-native insurance company for the compute economy",
+  "founder": "Conrad Fr\u00f8yland Moe",
+  "linkedin": "https://www.linkedin.com/in/conrad-fr\u00f8yland-moe-7950b1229/"
+ },
+ "zaplar.com": {
+  "company": "Zaplar",
+  "sector": "B2B -> Operations",
+  "what": "Agentic Hotel Operating System",
+  "founder": "Douglas Solberg",
+  "linkedin": "https://www.linkedin.com/in/douglas-solberg/"
+ },
+ "agentcard.sh": {
+  "company": "Agentcard",
+  "sector": "Fintech",
+  "what": "cards for AI agents",
+  "founder": "Karen Serfaty",
+  "linkedin": "https://www.linkedin.com/in/keyserfaty/"
+ },
+ "akonlabs.com": {
+  "company": "Akon Labs",
+  "sector": "B2B",
+  "what": "Databricks for Enterprise Codebases",
+  "founder": "Subham Kundu",
+  "linkedin": "https://www.linkedin.com/in/subham-kundu-2746b515b/"
+ },
+ "allia.health": {
+  "company": "Allia Health",
+  "sector": "Healthcare -> Healthcare Services",
+  "what": "AI-Native Medical Group for Mental Health",
+  "founder": "Amie Leighton",
+  "linkedin": "https://www.linkedin.com/in/amieleighton/"
+ },
+ "www.alloovium.com": {
+  "company": "Alloovium",
+  "sector": "Real Estate and Construction -> Construction",
+  "what": "The company brain for construction companies",
+  "founder": "Zander Schweitzer",
+  "linkedin": "https://www.linkedin.com/in/zander-schweitzer-1a0651205/"
+ },
+ "usealmanac.com": {
+  "company": "Almanac",
+  "sector": "B2B",
+  "what": "Organizing company knowledge",
+  "founder": "Rohan Sharma",
+  "linkedin": "https://www.linkedin.com/in/rohan-sharma-b6275219b/"
+ },
+ "www.arbital.xyz": {
+  "company": "Arbital",
+  "sector": "Fintech -> Consumer Finance",
+  "what": "The social trading app for stocks, memes, and perps",
+  "founder": "Karon Pangestu",
+  "linkedin": "https://www.linkedin.com/in/pangestukaron/"
+ },
+ "www.assemble.ai": {
+  "company": "Assemble",
+  "sector": "B2B",
+  "what": "Autonomous IT Delivery",
+  "founder": "Aliyan Ishfaq",
+  "linkedin": "https://www.linkedin.com/in/aliyan-ishfaq/"
+ },
+ "withasync.com": {
+  "company": "Async",
+  "sector": "B2B",
+  "what": "AI agents that run small businesses",
+  "founder": "Ben Smith",
+  "linkedin": "https://www.linkedin.com/in/ben-smith-b15b12293/"
+ },
+ "www.atlia.com": {
+  "company": "Atlia",
+  "sector": "Real Estate and Construction -> Housing and Real Estate",
+  "what": "The AI-native property management company for short-term rentals",
+  "founder": "Edmond Niu",
+  "linkedin": "https://www.linkedin.com/in/edmond-niu/"
+ },
+ "avocasystems.com": {
+  "company": "Avoca Systems",
+  "sector": "Healthcare",
+  "what": "The AI operating system for radiology networks",
+  "founder": "Max Shand",
+  "linkedin": "https://www.linkedin.com/in/max-shand-700a3ab5/"
+ },
+ "axelrodlabs.com": {
+  "company": "Axelrod",
+  "sector": "B2B",
+  "what": "Hotels that run themselves",
+  "founder": "Adrian Lucas Tariel Stoica",
+  "linkedin": "https://www.linkedin.com/in/stoicaadrian/"
+ },
+ "belvedir.ai": {
+  "company": "Belvedir",
+  "sector": "B2B",
+  "what": "The autonomous AI model factory",
+  "founder": "Zachary Yu",
+  "linkedin": "https://www.linkedin.com/in/zacharyyu/"
+ },
+ "bernardhq.com": {
+  "company": "Bernard",
+  "sector": "B2B -> Operations",
+  "what": "AI employees that run home appliance repair companies",
+  "founder": "Dan Katzman",
+  "linkedin": "https://www.linkedin.com/in/dankatzman/"
+ },
+ "thebillow.ai": {
+  "company": "Billow AI Labs",
+  "sector": "B2B -> Finance and Accounting",
+  "what": "AI-native Accounting Firm that's killing Deloitte",
+  "founder": "Joanathan McIntosh",
+  "linkedin": "https://www.linkedin.com/in/joanathanlim/"
+ },
+ "bizmark.ai": {
+  "company": "Bizmark",
+  "sector": "B2B",
+  "what": "OpenClaw for manufacturers",
+  "founder": "Rodrigo Mosqueira",
+  "linkedin": "https://www.linkedin.com/in/moag/"
+ },
+ "bloomylearning.com": {
+  "company": "Bloomy",
+  "sector": "Education",
+  "what": "AI-native learning for every school",
+  "founder": "Alex Southmayd",
+  "linkedin": "https://www.linkedin.com/in/alex-southmayd/"
+ },
+ "www.getcoach.com": {
+  "company": "COACH",
+  "sector": "B2B -> Sales",
+  "what": "The AI Coach for in person sales reps.",
+  "founder": "Mathieu Perez",
+  "linkedin": "https://www.linkedin.com/in/mathieu-perez-719019201/"
+ },
+ "callbook.ai": {
+  "company": "Callbook AI",
+  "sector": "B2B",
+  "what": "AI collections agency for late stage portfolios",
+  "founder": "Diego Avellaneda",
+  "linkedin": "https://www.linkedin.com/in/diegoavellaneda/"
+ },
+ "gocapto.com": {
+  "company": "Capto",
+  "sector": "B2B",
+  "what": "Build something the government wants",
+  "founder": "Ananth Sankaralingam",
+  "linkedin": "https://www.linkedin.com/in/ananth-s/"
+ },
+ "www.trycarsignal.com": {
+  "company": "CarSignal",
+  "sector": "B2B",
+  "what": "The AI Operating System for Auto Shops.",
+  "founder": "Michael Muzzin",
+  "linkedin": "https://www.linkedin.com/in/mmuzzin/"
+ },
+ "caregp.com.au": {
+  "company": "Care GP",
+  "sector": "Healthcare",
+  "what": "AI agents to run primary healthcare operations",
+  "founder": "Melvin Chen",
+  "linkedin": "https://www.linkedin.com/in/melvinchen/"
+ },
+ "www.conifer.build": {
+  "company": "Conifer",
+  "sector": "B2B",
+  "what": "Least cost routing system to reduce 70%+ token spend",
+  "founder": "Charles Muehlberger",
+  "linkedin": "https://www.linkedin.com/in/charlesmuehl/"
+ },
+ "cova.care": {
+  "company": "Cova",
+  "sector": "Healthcare",
+  "what": "Financial infrastructure for family caregiving",
+  "founder": "Jordan Ibe",
+  "linkedin": "https://www.linkedin.com/in/c-jordan-ibe/"
+ },
+ "cuebench.dev": {
+  "company": "CueBench",
+  "sector": "B2B",
+  "what": "RL post-training for science reasoning and performance engineering",
+  "founder": "Dillon Mehta",
+  "linkedin": "https://www.linkedin.com/in/dillon-mehta-49aa2827b/"
+ },
+ "www.daqstra.com": {
+  "company": "Daqstra",
+  "sector": "B2B",
+  "what": "AI-native test infrastructure layer for hardware companies",
+  "founder": "Darell Chua",
+  "linkedin": "https://www.linkedin.com/in/darell-chua/"
+ },
+ "www.datoric.com": {
+  "company": "Datoric",
+  "sector": "B2B",
+  "what": "The secure training data R&D engine for physical AI",
+  "founder": "Nikhil Reddy",
+  "linkedin": "https://www.linkedin.com/in/nikhilrreddy/"
+ },
+ "www.deepreach.ai": {
+  "company": "DeepReach Inc.",
+  "sector": "B2B",
+  "what": "Network for Physical AI Data Business",
+  "founder": "Chris Liu",
+  "linkedin": "https://www.linkedin.com/in/drxcliu/"
+ },
+ "denta.com": {
+  "company": "Denta",
+  "sector": "Fintech -> Insurance",
+  "what": "Fortune 500 Dental Benefits for Startups",
+  "founder": "Jack Beecher",
+  "linkedin": "https://www.linkedin.com/in/jack-beecher-459a13180/"
+ },
+ "usederya.com": {
+  "company": "Derya",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "AI Brokers for Industrial Trade",
+  "founder": "Mert Turna",
+  "linkedin": "https://www.linkedin.com/in/mert-turna/"
+ },
+ "trydock.ai": {
+  "company": "Dock",
+  "sector": "B2B",
+  "what": "Multiplayer workspace for agents and humans",
+  "founder": "Mike Molinet",
+  "linkedin": "https://www.linkedin.com/in/mikemolinet/"
+ },
+ "donkey.trade": {
+  "company": "Donkey",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "The AI-native trading company: factory prices, delivered, one number",
+  "founder": "Benjamin Martindale",
+  "linkedin": "https://www.linkedin.com/in/benjamin-martindale/"
+ },
+ "www.pingdream.com": {
+  "company": "Dream",
+  "sector": "B2B",
+  "what": "Using VLMs to Catch Damage",
+  "founder": "Ryland Birchmeier",
+  "linkedin": "https://www.linkedin.com/in/rylandbirchmeier/"
+ },
+ "edotenv.com": {
+  "company": "EdotEnv",
+  "sector": "B2B",
+  "what": "Quant Neolab building self-improving agents from quant data",
+  "founder": "Rui Wang",
+  "linkedin": "https://www.linkedin.com/in/rui-wang-456032198/"
+ },
+ "ego.ist": {
+  "company": "Egoist Machines",
+  "sector": "Consumer",
+  "what": "Your personal context, securely portable across every AI app.",
+  "founder": "Erin McGurk",
+  "linkedin": "https://www.linkedin.com/in/erin-mcgurk/"
+ },
+ "ekholabs.com": {
+  "company": "Ekho Labs",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "World Model for Freight",
+  "founder": "Alina Park",
+  "linkedin": "https://www.linkedin.com/in/alinapark/"
+ },
+ "goekpa.com": {
+  "company": "Ekpa",
+  "sector": "Fintech -> Asset Management",
+  "what": "Building Autonomous Research Agents for Trading",
+  "founder": "Anant Asthana",
+  "linkedin": "https://www.linkedin.com/in/asthana-anant/"
+ },
+ "elitehq.ai": {
+  "company": "Elite",
+  "sector": "Healthcare -> Healthcare IT",
+  "what": "Healthcare AI",
+  "founder": "Raj Jagiasi",
+  "linkedin": "https://www.linkedin.com/in/raj-jagiasi/"
+ },
+ "erinys.ai": {
+  "company": "Erinys",
+  "sector": "B2B -> Legal",
+  "what": "We help lawyers start and scale AI-native law firms.",
+  "founder": "Sasha Zyuzin",
+  "linkedin": "https://www.linkedin.com/in/azyuzin/"
+ },
+ "www.evergrovelabs.com": {
+  "company": "Evergrove",
+  "sector": "Healthcare",
+  "what": "Instant healthcare for all, starting with work comp",
+  "founder": "Sid Unnithan",
+  "linkedin": "https://www.linkedin.com/in/siddhanthunnithan/"
+ },
+ "financialdatasets.ai": {
+  "company": "Financial Datasets",
+  "sector": "B2B",
+  "what": "Connect your agents to the stock market ",
+  "founder": "Virat Singh",
+  "linkedin": "https://www.linkedin.com/in/singhvirat/"
+ },
+ "www.floracene.com": {
+  "company": "Floracene",
+  "sector": "Healthcare",
+  "what": "Vibecode + deploy HIPAA-compliant internal tools, no eng team needed",
+  "founder": "Asaph Kupferman",
+  "linkedin": "https://www.linkedin.com/in/aa-kup/"
+ },
+ "florin.inc": {
+  "company": "Florin",
+  "sector": "Fintech -> Insurance",
+  "what": "Florin is an AI-native insurance company that runs autonomously",
+  "founder": "Shaurya Aggarwal",
+  "linkedin": "https://www.linkedin.com/in/shauryaagg/"
+ },
+ "flowmanual.com": {
+  "company": "FlowManual",
+  "sector": "Real Estate and Construction -> Construction",
+  "what": "AI for Construction's Back Office",
+  "founder": "David Shijoon Bae",
+  "linkedin": "https://www.linkedin.com/in/shijoonbae/"
+ },
+ "generalcontextlabs.com": {
+  "company": "General Context Labs",
+  "sector": "Consumer -> Gaming",
+  "what": "Building Products and Datasets for Frontier Models",
+  "founder": "Akhil Aggarwal",
+  "linkedin": "https://www.linkedin.com/in/akhil--aggarwal/"
+ },
+ "www.tryglen.com": {
+  "company": "Glen",
+  "sector": "B2B -> Productivity",
+  "what": "Institutional Learning Layer for Every Agent in Your Company",
+  "founder": "Nikos Dritsakos",
+  "linkedin": "https://www.linkedin.com/in/nikos-dritsakos/"
+ },
+ "grocalo.com": {
+  "company": "Grocalo",
+  "sector": "Consumer -> Content",
+  "what": "AI brain for creators that runs their social content",
+  "founder": "David Hwang",
+  "linkedin": "https://www.linkedin.com/in/david-hwang-b5301436/"
+ },
+ "gutgutgoose.com": {
+  "company": "Gutgutgoose",
+  "sector": "Healthcare",
+  "what": "We sequence your gut and build the probiotics it\u2019s missing",
+  "founder": "Leon Mojarrabi",
+  "linkedin": "https://www.linkedin.com/in/leon-moj/"
+ },
+ "hubble.ai": {
+  "company": "Hubble",
+  "sector": "Healthcare -> Healthcare IT",
+  "what": "AI-native retrieval engine for medical records",
+  "founder": "Prabha Dublish",
+  "linkedin": "https://www.linkedin.com/in/prabhadublish/"
+ },
+ "www.illumelabs.ai": {
+  "company": "Illume Labs",
+  "sector": "Healthcare -> Consumer Health and Wellness",
+  "what": "24/7 Personal Health & Longevity Companion",
+  "founder": "Pari Latawa",
+  "linkedin": "https://www.linkedin.com/in/paridhilatawa/"
+ },
+ "www.insurf.io": {
+  "company": "Insurf",
+  "sector": "Healthcare",
+  "what": "The AI-Native Decision Layer for Health Insurance",
+  "founder": "Bryan Chung",
+  "linkedin": "https://www.linkedin.com/in/bryan-chung-21b531265/"
+ },
+ "jcode.sh": {
+  "company": "Jcode",
+  "sector": "Consumer",
+  "what": "High performance coding agents",
+  "founder": "Jeremy Huang",
+  "linkedin": "https://www.linkedin.com/in/jeremy1huang/"
+ },
+ "kebra.com": {
+  "company": "Kebra",
+  "sector": "B2B -> Operations",
+  "what": "AI For The Skilled Workforce",
+  "founder": "Luca Hadife",
+  "linkedin": "https://www.linkedin.com/in/luca-hadife/"
+ },
+ "www.latolabs.io": {
+  "company": "LATO",
+  "sector": "B2B",
+  "what": "Predict how market participants behave",
+  "founder": "Tymek Staniszewski",
+  "linkedin": "https://www.linkedin.com/in/tymeks/"
+ },
+ "lamb-labs.com": {
+  "company": "Lamb Labs",
+  "sector": "B2B",
+  "what": "Lightning fast chips with hardcoded AI models",
+  "founder": "Niki Kotecha",
+  "linkedin": "https://www.linkedin.com/in/niki-kotecha/"
+ },
+ "www.lemonlime.com": {
+  "company": "LemonLime",
+  "sector": "B2B",
+  "what": "Fully automated GTM for small business",
+  "founder": "Jordan Zietz",
+  "linkedin": "https://www.linkedin.com/in/jordan-zietz/"
+ },
+ "levocred.com": {
+  "company": "Levocred AI",
+  "sector": "Fintech",
+  "what": "The Bloomberg of Loans",
+  "founder": "Mohit Gupta",
+  "linkedin": "https://www.linkedin.com/in/guptamohit2299/"
+ },
+ "litmushiring.com": {
+  "company": "Litmus",
+  "sector": "B2B",
+  "what": "Evals for humans",
+  "founder": "Shaivi Rau",
+  "linkedin": "https://www.linkedin.com/in/shaivi-rau/"
+ },
+ "locke.inc": {
+  "company": "Locke",
+  "sector": "B2B",
+  "what": "The AI-native firm for public influence.",
+  "founder": "Parth Badhwar",
+  "linkedin": "https://www.linkedin.com/in/parth-badhwar-8a8037189/"
+ },
+ "lucaiq.com": {
+  "company": "Luca IQ",
+  "sector": "B2B -> Finance and Accounting",
+  "what": "API-first tax engine for CPA firms and developers",
+  "founder": "Angelo Policicchio",
+  "linkedin": "https://www.linkedin.com/in/angelo-policicchio/"
+ },
+ "lumeria.skin": {
+  "company": "Lumeria",
+  "sector": "Healthcare -> Consumer Health and Wellness",
+  "what": "Oura Ring for Skin",
+  "founder": "Maryanne Alhallak",
+  "linkedin": "https://www.linkedin.com/in/maryanne-alhallak-33b250241/"
+ },
+ "joinmarble.ai": {
+  "company": "Marble",
+  "sector": "B2B",
+  "what": "The autonomous back-of-house for restaurants.",
+  "founder": "Aakar Khanna",
+  "linkedin": "https://www.linkedin.com/in/aakarkhanna/"
+ },
+ "onmarker.com": {
+  "company": "Marker",
+  "sector": "B2B -> Productivity",
+  "what": "Platform + FDEs that rebuild enterprises agent-first",
+  "founder": "David Pastewka",
+  "linkedin": "https://www.linkedin.com/in/davidpastewka/"
+ },
+ "mentlio.com": {
+  "company": "Mentlio",
+  "sector": "B2B",
+  "what": "Engineering Intelligence and Token Optimization for the AI-Coding Era",
+  "founder": "Ashank Shah",
+  "linkedin": "https://www.linkedin.com/in/ashank-shah/"
+ },
+ "www.mochi.tv": {
+  "company": "Mochi",
+  "sector": "Consumer -> Content",
+  "what": "Watch and create anime",
+  "founder": "Robert Qiu",
+  "linkedin": "https://www.linkedin.com/in/robertqiu/"
+ },
+ "moonshot.computer": {
+  "company": "Moonshot",
+  "sector": "Consumer",
+  "what": "agents for the rest of us",
+  "founder": "Ojas Kandhare",
+  "linkedin": "https://www.linkedin.com/in/ojas-kandhare-74b349212/"
+ },
+ "mosaic.inc": {
+  "company": "Mosaic",
+  "sector": "B2B",
+  "what": "Defining the frontier of multiplayer AI.",
+  "founder": "Shubham Patil",
+  "linkedin": "https://www.linkedin.com/in/shubhampatilsd/"
+ },
+ "musicarena.io": {
+  "company": "MusicArena",
+  "sector": "B2B",
+  "what": "The crowdsourced benchmark for AI-generated music and music production",
+  "founder": "Kevin Yao",
+  "linkedin": "https://www.linkedin.com/in/kevinyao05/"
+ },
+ "nex.ai": {
+  "company": "Nex",
+  "sector": "B2B -> Sales",
+  "what": "Grok bot for GTM & Revenue teams",
+  "founder": "Najmuzzaman (Nazz) Mohammad",
+  "linkedin": "https://www.linkedin.com/in/najmuzzaman/"
+ },
+ "olamlabs.ai": {
+  "company": "Olam Labs",
+  "sector": "B2B",
+  "what": "Crafting simulations for frontier lab model training",
+  "founder": "Om Buddhdev",
+  "linkedin": "https://www.linkedin.com/in/ombud/"
+ },
+ "omanta.com": {
+  "company": "Omanta",
+  "sector": "Healthcare",
+  "what": "A research lab for one",
+  "founder": "Alfredo Gonzalez",
+  "linkedin": "https://www.linkedin.com/in/alfredo-gonzalez-phd/"
+ },
+ "onecli.sh": {
+  "company": "OneCLI",
+  "sector": "B2B -> Productivity",
+  "what": "AI teammates for your business-critical work.",
+  "founder": "Jonathan Fishner",
+  "linkedin": "https://www.linkedin.com/in/jonathanfishner/"
+ },
+ "ooakdata.com": {
+  "company": "Ooak Data",
+  "sector": "B2B",
+  "what": "We turn company data into training data",
+  "founder": "Pierre-Louis Vouteau",
+  "linkedin": "https://www.linkedin.com/in/pierre-louis-vouteauau-15a06566/"
+ },
+ "www.tryopentag.com": {
+  "company": "OpenTag",
+  "sector": "B2B",
+  "what": "Model Agnostic AI coworker in Slack",
+  "founder": "Tony Kam",
+  "linkedin": "https://www.linkedin.com/in/tonyshekkam/"
+ },
+ "palettelabs.com": {
+  "company": "Palette",
+  "sector": "B2B",
+  "what": "The Media Engine of the AI Era",
+  "founder": "Josephine Lee",
+  "linkedin": "https://www.linkedin.com/in/josephinelee1234/"
+ },
+ "pango.ai": {
+  "company": "Pango",
+  "sector": "B2B -> Retail",
+  "what": "Agentic OS for e-commerce operations",
+  "founder": "Steve Rahimi",
+  "linkedin": "https://www.linkedin.com/in/steve-rahimi/"
+ },
+ "peer-freight.com": {
+  "company": "Peer",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "AI-native freight brokerage",
+  "founder": "Aaron Zhang",
+  "linkedin": "https://www.linkedin.com/in/aaronttzhang/"
+ },
+ "www.getpennant.ai": {
+  "company": "Pennant",
+  "sector": "Fintech -> Asset Management",
+  "what": "The World Model for Corporate Governance",
+  "founder": "Ryan Nowicki Stewart",
+  "linkedin": "https://www.linkedin.com/in/ryan-nowicki-stewart/"
+ },
+ "perceptronml.com": {
+  "company": "Perceptron ML",
+  "sector": "B2B",
+  "what": "We make law firms AI-native.",
+  "founder": "Michael Marcotte",
+  "linkedin": "https://www.linkedin.com/in/marcottemichael/"
+ },
+ "petrarch.co": {
+  "company": "Petrarch",
+  "sector": "B2B",
+  "what": "Internal industrial company data for frontier labs",
+  "founder": "Ian Lee",
+  "linkedin": "https://www.linkedin.com/in/-ianlee/"
+ },
+ "talentpluto.com": {
+  "company": "Pluto",
+  "sector": "B2B -> Recruiting and Talent",
+  "what": "LinkedIn for agents",
+  "founder": "Sahil Seth",
+  "linkedin": "https://www.linkedin.com/in/sahilseth9/"
+ },
+ "pothlabs.com": {
+  "company": "Poth Labs",
+  "sector": "B2B",
+  "what": "The customer brain that connects data to explain customer behavior",
+  "founder": "Mojmir Horvath",
+  "linkedin": "https://www.linkedin.com/in/mojmir-horvath/"
+ },
+ "www.getprescience.com": {
+  "company": "Prescience, Inc.",
+  "sector": "Healthcare",
+  "what": "Superintelligent health insurance that keeps employees healthy",
+  "founder": "Rishab Jain",
+  "linkedin": "https://www.linkedin.com/in/rishab-jain-k/"
+ },
+ "prodigy.markets": {
+  "company": "Prodigy Research",
+  "sector": "Fintech",
+  "what": "Training the world's best AI model for quantitative finance.",
+  "founder": "Michael Wang",
+  "linkedin": "https://www.linkedin.com/in/michael-w-02810b161/"
+ },
+ "www.getqlo.com": {
+  "company": "Qlo",
+  "sector": "Fintech -> Insurance",
+  "what": "Legora for commercial insurance carriers",
+  "founder": "Ryan Hu",
+  "linkedin": "https://www.linkedin.com/in/chenshuohu/"
+ },
+ "radley.health": {
+  "company": "Radley",
+  "sector": "Healthcare",
+  "what": "The AI-native radiology practice",
+  "founder": "Maryam Jahed",
+  "linkedin": "https://www.linkedin.com/in/maryamjahed/"
+ },
+ "rapidfolio.com": {
+  "company": "Rapidfolio",
+  "sector": "B2B",
+  "what": "AI-native back-office for banks and fintechs",
+  "founder": "Naveen Qureshi",
+  "linkedin": "https://www.linkedin.com/in/naveen-qureshi/"
+ },
+ "www.rasyn.ai": {
+  "company": "Rasyn",
+  "sector": "Healthcare",
+  "what": "Making chemicals 100,000x faster",
+  "founder": "Ansh Tiwari",
+  "linkedin": "https://www.linkedin.com/in/ansschh/"
+ },
+ "rational.to": {
+  "company": "Rational",
+  "sector": "B2B -> Operations",
+  "what": "First Zero-human Accounting Firm",
+  "founder": "Jibril Moinuddin",
+  "linkedin": "https://www.linkedin.com/in/jibril-moinuddin-32702b271/"
+ },
+ "realpact.ai": {
+  "company": "RealPact",
+  "sector": "Real Estate and Construction -> Housing and Real Estate",
+  "what": "AI-native OS for Real Estate Brokerages",
+  "founder": "Ranvir Deshmukh",
+  "linkedin": "https://www.linkedin.com/in/ranvir-deshmukh-209706199/"
+ },
+ "www.rex.inc": {
+  "company": "Rex",
+  "sector": "B2B -> Finance and Accounting",
+  "what": "AI-native BPO for enterprise order-to-cash",
+  "founder": "Merlin Kafka",
+  "linkedin": "https://www.linkedin.com/in/merlinkafka/"
+ },
+ "www.risklytics.ai": {
+  "company": "Risklytics",
+  "sector": "Fintech -> Insurance",
+  "what": "AI-Native Insurance for Frontier Tech",
+  "founder": "Samuel Gold",
+  "linkedin": "https://www.linkedin.com/in/samuelggold/"
+ },
+ "ronanrx.com": {
+  "company": "RonanRx Inc.",
+  "sector": "Healthcare",
+  "what": "Full Stack Pharmaceutical Company for Personalized Peptides and GLP-1s",
+  "founder": "Lloyd Armbrust",
+  "linkedin": "https://www.linkedin.com/in/lloydarmbrust/"
+ },
+ "textsidekick.com": {
+  "company": "Sidekick",
+  "sector": "B2B -> Operations",
+  "what": "AI agent that manages manufacturing operations over text",
+  "founder": "Justin So",
+  "linkedin": "https://www.linkedin.com/in/justinso1/"
+ },
+ "spaceflow.tech": {
+  "company": "SpaceFlow Technologies, Inc.",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "AI-native procurement services for the physical economy",
+  "founder": "Emre Isik",
+  "linkedin": "https://www.linkedin.com/in/emre-isik-6a88aa193/"
+ },
+ "www.spectreintelligence.ai": {
+  "company": "Spectre Intelligence",
+  "sector": "Fintech -> Asset Management",
+  "what": "We are a multi-strategy trading firm that trains AI traders. ",
+  "founder": "Michelle Li",
+  "linkedin": "https://www.linkedin.com/in/michelle-zhiya-li/"
+ },
+ "standardmachines.com": {
+  "company": "Standard Machines",
+  "sector": "B2B",
+  "what": "Teaching AI to Design Chips",
+  "founder": "Jacob Peake",
+  "linkedin": "https://www.linkedin.com/in/jacob-peake/"
+ },
+ "www.stoaexchange.com": {
+  "company": "Stoa",
+  "sector": "Fintech",
+  "what": "The market behind AI hardware.",
+  "founder": "Berat Celik",
+  "linkedin": "https://www.linkedin.com/in/beratcelik1/"
+ },
+ "subvysion.com": {
+  "company": "SubVysion",
+  "sector": "Real Estate and Construction -> Construction",
+  "what": "Autonomous rovers to make the \u2018Google Maps\u2019 of underground utilities",
+  "founder": "Maxwell Stone",
+  "linkedin": "https://www.linkedin.com/in/maxwell-stone-2b5b6b1a0/"
+ },
+ "sunflowerclinic.com": {
+  "company": "Sunflower",
+  "sector": "Healthcare -> Healthcare Services",
+  "what": "We are building an AI-native telemedicine clinic for addiction. \ud83c\udf3b",
+  "founder": "Koby Conrad",
+  "linkedin": "https://www.linkedin.com/in/kobyconrad/"
+ },
+ "www.tarifflo.com": {
+  "company": "Tarifflo Inc.",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "Supply chain compliance and cost savings",
+  "founder": "Bryce Judy",
+  "linkedin": "https://www.linkedin.com/in/brycejudy/"
+ },
+ "heytenor.com": {
+  "company": "Tenor",
+  "sector": "B2B",
+  "what": "Infrastructure for building and scaling AI-native businesses.",
+  "founder": "Hamze Al-Zamkan",
+  "linkedin": "https://www.linkedin.com/in/hamze-al-zamkan/"
+ },
+ "toven.ai": {
+  "company": "TovenAI",
+  "sector": "Fintech -> Banking and Exchange",
+  "what": "AI agents for compliance at institutional trading firms",
+  "founder": "Batu Balci",
+  "linkedin": "https://www.linkedin.com/in/batuhan-balci-7a3589114/"
+ },
+ "tracerml.ai": {
+  "company": "Tracer",
+  "sector": "B2B",
+  "what": "Combining open-source AI models for better answers at lower cost",
+  "founder": "Adam Rida",
+  "linkedin": "https://www.linkedin.com/in/adam-rida-581296142/"
+ },
+ "trope.ai": {
+  "company": "Trope",
+  "sector": "B2B",
+  "what": "AI FDE that deploys custom AI agents into ERPs",
+  "founder": "Matthew Chow",
+  "linkedin": "https://www.linkedin.com/in/mdchow/"
+ },
+ "trynearby.com": {
+  "company": "TryNearby",
+  "sector": "B2B -> Marketing",
+  "what": "Local creators for local businesses",
+  "founder": "Yousef Abdelfattah",
+  "linkedin": "https://www.linkedin.com/in/yousef-abdelfattah-b0906b336/"
+ },
+ "tsenta.com": {
+  "company": "Tsenta",
+  "sector": "Consumer -> Job and Career Services",
+  "what": "AI career agent that finds matching jobs & applies on your behalf",
+  "founder": "Agnay Srivastava",
+  "linkedin": "https://www.linkedin.com/in/agnaysrivastava/"
+ },
+ "vestris.ai": {
+  "company": "Vestris",
+  "sector": "Real Estate and Construction -> Housing and Real Estate",
+  "what": "AI native platform for real estate closings",
+  "founder": "Joshua Tang",
+  "linkedin": "https://www.linkedin.com/in/joshua-tang-449717279/"
+ },
+ "www.waybill.to": {
+  "company": "Waybill",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "Agentic procurement & inventory for deep tech teams.",
+  "founder": "Rishi Laddha",
+  "linkedin": "https://www.linkedin.com/in/rishiladdha/"
+ },
+ "whitespacehq.ai": {
+  "company": "Whitespace",
+  "sector": "B2B -> Supply Chain and Logistics",
+  "what": "AI Operating System for Wholesale Distribution",
+  "founder": "Alex Tung",
+  "linkedin": "https://www.linkedin.com/in/alexyctung/"
+ },
+ "wondering.app": {
+  "company": "Wondering",
+  "sector": "Consumer",
+  "what": "Duolingo for learning anything",
+  "founder": "Cheng-Wei Hu",
+  "linkedin": "https://www.linkedin.com/in/cwhu/"
+ },
+ "zommalabs.com": {
+  "company": "Zomma",
+  "sector": "B2B",
+  "what": "The AI BPO for financial servies, run by computer-use agents",
+  "founder": "Jihyun Kim",
+  "linkedin": "https://www.linkedin.com/in/kimjihyun/"
+ },
+ "rekursiv.ai": {
+  "company": "rekursiv.ai",
+  "sector": "B2B -> Productivity",
+  "what": "Scale AI scientists whose own breakthroughs accelerate the next.",
+  "founder": "Joshua Dillon",
+  "linkedin": "https://www.linkedin.com/in/jvdillon/"
+ },
+ "screenpipe.com": {
+  "company": "screenpipe",
+  "sector": "B2B -> Productivity",
+  "what": "Turn your company's computer work into AI agents.",
+  "founder": "Louis Beaumont",
+  "linkedin": "https://www.linkedin.com/in/louis030195/"
+ },
+ "www.tradetash.com": {
+  "company": "tash",
+  "sector": "Consumer",
+  "what": "The BlackRock of collectibles",
+  "founder": "John Ohannesian",
+  "linkedin": "https://www.linkedin.com/in/johnohannesian/"
+ },
+ "agnost.ai": {
+  "company": "Agnost AI",
+  "sector": "B2B -> Analytics",
+  "what": "We find where AI agents fail, then train better models to run them.",
+  "founder": "Shubham Palriwala",
+  "linkedin": "https://www.linkedin.com/in/shubhampalriwala/"
+ },
+ "alkera.ai": {
+  "company": "Alkera AI",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "Reliable and safe data engineering and data science agents",
+  "founder": "Rick Gao",
+  "linkedin": "https://www.linkedin.com/in/rgao09/"
+ },
+ "www.agentmuxer.com": {
+  "company": "Amorphic Labs",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "OpenRouter for Agent Tools",
+  "founder": "Dylan Kelly",
+  "linkedin": "https://www.linkedin.com/in/dylankelly04/"
+ },
+ "www.archal.ai": {
+  "company": "Archal",
+  "sector": "B2B -> Infrastructure",
+  "what": "API sandboxes, built for AI agents",
+  "founder": "Aidan Tiruvan",
+  "linkedin": "https://www.linkedin.com/in/aidantiruvan/"
+ },
+ "autoresearch.inc": {
+  "company": "Autoresearch, Inc.",
+  "sector": "B2B -> Infrastructure",
+  "what": "Autoresearch as a service: we solve your hardest measurable problems",
+  "founder": "Karan Brar",
+  "linkedin": "https://www.linkedin.com/in/brarkaran/"
+ },
+ "caution.co": {
+  "company": "Caution",
+  "sector": "B2B -> Infrastructure",
+  "what": "Hosting platform for software you can't afford to have hacked",
+  "founder": "Anton Livaja",
+  "linkedin": "https://www.linkedin.com/in/alivaja/"
+ },
+ "www.useclick.ai": {
+  "company": "Click",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "Managed Agents API",
+  "founder": "Aditya Asgaonkar",
+  "linkedin": "https://www.linkedin.com/in/aditya-asgaonkar/"
+ },
+ "coarena.ai": {
+  "company": "CoArena",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "The biggest crowdsourced benchmark for Computer-Use",
+  "founder": "Prateek Jannu",
+  "linkedin": "https://www.linkedin.com/in/prateekjannu/"
+ },
+ "codag.ai": {
+  "company": "Codag",
+  "sector": "B2B -> Infrastructure",
+  "what": "The AI gateway for cheaper, faster, permissioned agents.",
+  "founder": "Michael Zhou",
+  "linkedin": "https://www.linkedin.com/in/mzxzhou/"
+ },
+ "context.dev": {
+  "company": "Context.dev",
+  "sector": "B2B -> Infrastructure",
+  "what": "We give AI agents realtime web context via API",
+  "founder": "Yahia Bakour",
+  "linkedin": "https://www.linkedin.com/in/yahia-bakour/"
+ },
+ "decawork.ai": {
+  "company": "Decawork",
+  "sector": "B2B -> Infrastructure",
+  "what": "Training company-specific models that approve AI actions.",
+  "founder": "Aman Raj",
+  "linkedin": "https://www.linkedin.com/in/aman-raj-84636a158/"
+ },
+ "www.dialoguslabs.com": {
+  "company": "Dialogus",
+  "sector": "B2B -> Infrastructure",
+  "what": "The AI-native contact center",
+  "founder": "Juberth Rodriguez",
+  "linkedin": "https://www.linkedin.com/in/juberth-rodriguez-398b2b277/"
+ },
+ "edviroenergy.com": {
+  "company": "Edviro",
+  "sector": "B2B -> Infrastructure",
+  "what": "AI That Operates Energy Infrastructure",
+  "founder": "Hursh Shah",
+  "linkedin": "https://www.linkedin.com/in/hursh-shah/"
+ },
+ "executor.sh": {
+  "company": "Executor",
+  "sector": "B2B -> Infrastructure",
+  "what": "The open source tool gateway",
+  "founder": "Rhys Sullivan",
+  "linkedin": "https://www.linkedin.com/in/rhyssullivan/"
+ },
+ "experientiallabs.ai": {
+  "company": "Experiential Labs",
+  "sector": "B2B -> Infrastructure",
+  "what": "Open source AI gateway that turns your traffic into better models",
+  "founder": "Kion Fallah",
+  "linkedin": "https://www.linkedin.com/in/kfallah/"
+ },
+ "fabraix.com": {
+  "company": "Fabraix",
+  "sector": "B2B -> Security",
+  "what": "The world's frontier hacker of AI agents.",
+  "founder": "Ahmed Aly",
+  "linkedin": "https://www.linkedin.com/in/ahmed-a-657264b4/"
+ },
+ "git.cafe": {
+  "company": "GitCafe",
+  "sector": "B2B -> Infrastructure",
+  "what": "The Git forge for the next hundred billion commits",
+  "founder": "Veronica C.",
+  "linkedin": ""
+ },
+ "www.graphify.com": {
+  "company": "Graphify Labs",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "On-device Knowledge Graph engine for Enterprise Software",
+  "founder": "Safi Shamsi",
+  "linkedin": "https://www.linkedin.com/in/safi-shamsi/"
+ },
+ "hoplite.sh": {
+  "company": "Hoplite",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "Effortlessly deploy cloud software factories.",
+  "founder": "Ryan Morrissey",
+  "linkedin": "https://www.linkedin.com/in/ryan-morrissey-834256271/"
+ },
+ "hyperprobe.co": {
+  "company": "HyperProbe",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "AI engineer that debugs and fixes production incidents in realtime",
+  "founder": "Shailendra Singh",
+  "linkedin": "https://www.linkedin.com/in/shailendra-singh-6540b8b/"
+ },
+ "inductionlabs.com": {
+  "company": "Induction Labs",
+  "sector": "B2B -> Infrastructure",
+  "what": "Building intellectually curious AI",
+  "founder": "Jonathan Li",
+  "linkedin": "https://www.linkedin.com/in/jonatli/"
+ },
+ "inkbox.ai": {
+  "company": "Inkbox",
+  "sector": "B2B -> Infrastructure",
+  "what": "The identity and communication layer for AI agents",
+  "founder": "Ray Liao",
+  "linkedin": "https://www.linkedin.com/in/ruizhi-liao/"
+ },
+ "magmahq.ai": {
+  "company": "Magma",
+  "sector": "B2B -> Infrastructure",
+  "what": "Monetize your agent's traces.",
+  "founder": "Ramtin Shahzanian",
+  "linkedin": "https://www.linkedin.com/in/ramtin-shahzanian/"
+ },
+ "www.markovstudios.com": {
+  "company": "Markov",
+  "sector": "B2B -> Infrastructure",
+  "what": "Expert computer-use data for frontier AI labs",
+  "founder": "Dev Mandal",
+  "linkedin": "https://www.linkedin.com/in/dev-mandal-iitm/"
+ },
+ "www.mireye.com": {
+  "company": "Mireye",
+  "sector": "B2B -> Infrastructure",
+  "what": "Search Engine for the Physical World",
+  "founder": "Ansh Chokshi",
+  "linkedin": "https://www.linkedin.com/in/ansh-chokshi/"
+ },
+ "nebusec.ai": {
+  "company": "NebuSec",
+  "sector": "B2B -> Security",
+  "what": "Autonomous AI defense system for cyber attack",
+  "founder": "Eten Zou",
+  "linkedin": "https://www.linkedin.com/in/xiaochen-zou-phd-29540b168/"
+ },
+ "onetriangle.ai": {
+  "company": "OneTriangle",
+  "sector": "B2B -> Infrastructure",
+  "what": "The cheapest, fastest inference cloud",
+  "founder": "Hannah Chung",
+  "linkedin": "https://www.linkedin.com/in/hannahchung1/"
+ },
+ "www.openrelay.inc": {
+  "company": "OpenRelay",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "Distributed, hardware-agnostic AI inference",
+  "founder": "Jaden Wang",
+  "linkedin": "https://www.linkedin.com/in/jaden-wang-b99327177/"
+ },
+ "openvector.com": {
+  "company": "OpenVector",
+  "sector": "B2B -> Infrastructure",
+  "what": "AI that turns any camera to an autonomous worker with real-time vision",
+  "founder": "Andrey Gizdov",
+  "linkedin": "https://www.linkedin.com/in/andreygizdov/"
+ },
+ "orchestra.ai": {
+  "company": "Orchestra",
+  "sector": "B2B -> Infrastructure",
+  "what": "Self-optimizing neocloud that cuts LLM costs by 100x",
+  "founder": "Luis Manrique",
+  "linkedin": "https://www.linkedin.com/in/luismanrique/"
+ },
+ "palisade-ai.com": {
+  "company": "Palisade",
+  "sector": "B2B -> Security",
+  "what": "AI that finds and fixes OS-level vulnerabilities across device fleets",
+  "founder": "Fnu Prince",
+  "linkedin": "https://www.linkedin.com/in/fnu-prince-a98405276/"
+ },
+ "palisade.run": {
+  "company": "Palisade",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "AI-native sales agents that run marketplaces",
+  "founder": "Jonathan Salama",
+  "linkedin": "https://www.linkedin.com/in/jonathan-salama/"
+ },
+ "parasma.com": {
+  "company": "Parasma",
+  "sector": "B2B -> Infrastructure",
+  "what": "Replacing GPUs with human brain cells",
+  "founder": "Sean Cole",
+  "linkedin": "https://www.linkedin.com/in/sean-cole-8985a4207/"
+ },
+ "prized.dev": {
+  "company": "Prized",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "A cloud devbox that feels local",
+  "founder": "Hudson Griffith",
+  "linkedin": "https://www.linkedin.com/in/hudsongri/"
+ },
+ "riften.ai": {
+  "company": "Riften",
+  "sector": "B2B -> Infrastructure",
+  "what": "Earned intelligence for every company",
+  "founder": "Carl Stauffer",
+  "linkedin": "https://www.linkedin.com/in/carl-stauffer-314335262/"
+ },
+ "maxxwell.dev": {
+  "company": "Rindler",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "The IDE for Tokenmaxxers",
+  "founder": "Michael Serrano",
+  "linkedin": "https://www.linkedin.com/in/michael-y-serrano/"
+ },
+ "speko.ai": {
+  "company": "Speko",
+  "sector": "B2B -> Infrastructure",
+  "what": "OpenRouter for Voice AI: one API, every call on the best speech model",
+  "founder": "Beknazar Abdikamalov",
+  "linkedin": "https://www.linkedin.com/in/abdik/"
+ },
+ "trystudio.ai": {
+  "company": "Studio",
+  "sector": "B2B -> Analytics",
+  "what": "Accurately simulate market response at scale",
+  "founder": "Nikita Mullangi",
+  "linkedin": "https://www.linkedin.com/in/nikita-mullangi/"
+ },
+ "usetokenless.com": {
+  "company": "Tokenless",
+  "sector": "B2B -> Infrastructure",
+  "what": "We find flaws in RL environments and evals and help you fix them.",
+  "founder": "Rohit Agarwal",
+  "linkedin": "https://www.linkedin.com/in/rohit-agarwal-b647951ba/"
+ },
+ "touchmark.ai": {
+  "company": "Touchmark",
+  "sector": "B2B -> Infrastructure",
+  "what": "Market for future inference capacity",
+  "founder": "Ilia Bolgov",
+  "linkedin": "https://www.linkedin.com/in/ilia-bolgov-8683b0254/"
+ },
+ "www.traceforce.ai": {
+  "company": "Traceforce",
+  "sector": "B2B -> Security",
+  "what": "CrowdStrike for AI Agents",
+  "founder": "Xia Hua",
+  "linkedin": "https://www.linkedin.com/in/xia-hua-ph-d-28856a30/"
+ },
+ "tridentsecurity.io": {
+  "company": "Trident",
+  "sector": "B2B -> Security",
+  "what": "Autonomous offensive security agents. The best defense is offense",
+  "founder": "Junaid Mahmood",
+  "linkedin": "https://www.linkedin.com/in/junaidmahmood-/"
+ },
+ "verdictmachine.com": {
+  "company": "Verdict Machine",
+  "sector": "B2B -> Security",
+  "what": "AI cybersecurity for financial institutions' digital assets",
+  "founder": "Dan Danay",
+  "linkedin": "https://www.linkedin.com/in/dandanay/"
+ },
+ "hardwareintelligence.ai": {
+  "company": "hardware intelligence",
+  "sector": "B2B -> Engineering, Product and Design",
+  "what": "AI tools for the chips your AI runs on",
+  "founder": "Athreya Anand",
+  "linkedin": "https://www.linkedin.com/in/athreyaanand/"
+ },
+ "machine0.io": {
+  "company": "machine0",
+  "sector": "B2B -> Infrastructure",
+  "what": "AWS for Agents",
+  "founder": "Barnaby Malet",
+  "linkedin": "https://www.linkedin.com/in/barnabymalet/"
+ },
+ "frontier.site": {
+  "company": "Frontier Computing",
+  "sector": "Industrials",
+  "what": "Frontier grows scalable biological brains as an ML training substrate",
+  "founder": "Michael Domarkas",
+  "linkedin": "https://www.linkedin.com/in/michael-domarkas/"
+ },
+ "www.griprobotics.ai": {
+  "company": "Grip",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Robots for waste manipulation",
+  "founder": "Jonas Gruetter",
+  "linkedin": "https://www.linkedin.com/in/jonasgrutter/"
+ },
+ "6thsense.dev": {
+  "company": "6thSense",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Nervous System for Physical AI",
+  "founder": "James Baek",
+  "linkedin": "https://www.linkedin.com/in/james-baek1/"
+ },
+ "83sciences.ai": {
+  "company": "83 Sciences",
+  "sector": "Industrials",
+  "what": "AI-native materials discovery powered by unpublished experimental data",
+  "founder": "Ian Naccarella",
+  "linkedin": "https://www.linkedin.com/in/ian-naccarella/"
+ },
+ "www.aerogensystems.com": {
+  "company": "Aerogen Systems",
+  "sector": "Industrials",
+  "what": "Modernizing Chip Manufacturing Infrastructure",
+  "founder": "Noah Vogel",
+  "linkedin": "https://www.linkedin.com/in/noahvogel/"
+ },
+ "agencytool.com": {
+  "company": "Agency Tool Company",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Reliable infrastructure to build, deploy and manage real-world robots.",
+  "founder": "Jack Morrison",
+  "linkedin": "https://www.linkedin.com/in/morrisonjack/"
+ },
+ "aktoria.com": {
+  "company": "Aktoria Robotics",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Human as API for robots",
+  "founder": "Jaskaran Singh Walia",
+  "linkedin": "https://www.linkedin.com/in/jaskaranwalia/"
+ },
+ "www.ae-dyn.com": {
+  "company": "Applied Electrodynamics, Inc.",
+  "sector": "Industrials",
+  "what": "A new kind of camera that can see through walls.",
+  "founder": "Bilgehan Avser",
+  "linkedin": "https://www.linkedin.com/in/bavser/"
+ },
+ "atlasdiscovery.bio": {
+  "company": "Atlas Discovery",
+  "sector": "Healthcare -> Drug Discovery and Delivery",
+  "what": "AI-native pharma company",
+  "founder": "Shaamil Karim",
+  "linkedin": "https://www.linkedin.com/in/shaamil-karim/"
+ },
+ "atomarine.co": {
+  "company": "Atomarine",
+  "sector": "Industrials -> Energy",
+  "what": "Floating nuclear powered data centers at sea.",
+  "founder": "Dimitris Koutentakis",
+  "linkedin": "https://www.linkedin.com/in/dkoutentakis/"
+ },
+ "baudlabs.ai": {
+  "company": "Baud",
+  "sector": "Industrials",
+  "what": "AI chips for ultra-fast training and inference",
+  "founder": "Sarang Zambare",
+  "linkedin": "https://www.linkedin.com/in/sarang-zambare/"
+ },
+ "www.controlseat.com": {
+  "company": "Control Seat",
+  "sector": "Industrials",
+  "what": "AI that runs factories. ",
+  "founder": "Warren Shepard",
+  "linkedin": "https://www.linkedin.com/in/warren-shepard-493a37201/"
+ },
+ "www.cosmicrobotics.com": {
+  "company": "Cosmic Robotics",
+  "sector": "Industrials",
+  "what": "Autonomous construction on Earth and beyond",
+  "founder": "James Emerick",
+  "linkedin": "https://www.linkedin.com/in/jamesemerick/"
+ },
+ "www.dawnxr.com": {
+  "company": "Dawn Industries",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Automatic Diagnosis & Fix for Industrial Automation Cells",
+  "founder": "Joohyun (CJ) Cha",
+  "linkedin": "https://www.linkedin.com/in/joohyun-cha/"
+ },
+ "dipolelabs.com": {
+  "company": "Dipole Labs",
+  "sector": "Industrials",
+  "what": "AI-controlled optical switching for AI clusters",
+  "founder": "Deepankur Thureja",
+  "linkedin": "https://www.linkedin.com/in/dthureja/"
+ },
+ "earendil.io": {
+  "company": "Earendil Robotics",
+  "sector": "Industrials -> Defense",
+  "what": "Drone swarm defence at a small-unit level",
+  "founder": "James Walton",
+  "linkedin": "https://www.linkedin.com/in/james-walton-79b35339a/"
+ },
+ "edgerun.com": {
+  "company": "Edgerun",
+  "sector": "Industrials -> Defense",
+  "what": "Military exoskeletons",
+  "founder": "David Venegas",
+  "linkedin": "https://www.linkedin.com/in/david-venegas-m/"
+ },
+ "enact.company": {
+  "company": "Enact",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Real-world RL environments for robotics models",
+  "founder": "James Stevens",
+  "linkedin": "https://www.linkedin.com/in/james-stevens-440362200/"
+ },
+ "ethos-space.com": {
+  "company": "Ethos Space Resources",
+  "sector": "Industrials -> Aviation and Space",
+  "what": "We make silicon on the Moon, to power everything in space.",
+  "founder": "Ross Centers",
+  "linkedin": "https://www.linkedin.com/in/centers/"
+ },
+ "www.exosat.com": {
+  "company": "Exosat",
+  "sector": "Industrials -> Aviation and Space",
+  "what": "Building a neutral, sovereign alternative to Starlink",
+  "founder": "Edward Ge",
+  "linkedin": "https://www.linkedin.com/in/edwardge9/"
+ },
+ "www.guildai.co": {
+  "company": "GUILD",
+  "sector": "Industrials -> Defense",
+  "what": "Making Defense Manufacturing Faster and Cheaper",
+  "founder": "Kaya Celebi",
+  "linkedin": "https://www.linkedin.com/in/kaya-celebi/"
+ },
+ "gamgee.io": {
+  "company": "Gamgee",
+  "sector": "Healthcare -> Drug Discovery and Delivery",
+  "what": "Curing cancer. Starting with dogs.",
+  "founder": "Paul Conyngham",
+  "linkedin": "https://www.linkedin.com/in/paustevenlconyngham/"
+ },
+ "greypointindustries.com": {
+  "company": "Greypoint Industries",
+  "sector": "Industrials -> Defense",
+  "what": "Building drone swarms that hunt hidden enemies.",
+  "founder": "Darcy Zhang",
+  "linkedin": "https://www.linkedin.com/in/darcy-zhang-021134243/"
+ },
+ "www.manufacturingintelligence.org": {
+  "company": "HERA",
+  "sector": "Industrials",
+  "what": "We make sure every factory in the world builds without mistakes.",
+  "founder": "Meera Patel",
+  "linkedin": "https://www.linkedin.com/in/meera-patel-92704b207/"
+ },
+ "hebbianrobotics.com": {
+  "company": "Hebbian Robotics",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Foundational infrastructure for Physical AI",
+  "founder": "Brandon Ong",
+  "linkedin": "https://www.linkedin.com/in/ongjjbrandon/"
+ },
+ "hilstart.io": {
+  "company": "Hilstart",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Autonomous Hardware Testing",
+  "founder": "William A'court",
+  "linkedin": "https://www.linkedin.com/in/william-acourt/"
+ },
+ "hopaero.com": {
+  "company": "Hop Aero",
+  "sector": "Industrials -> Defense",
+  "what": "Rocket cargo delivery to contested environments",
+  "founder": "Matija Milenovic",
+  "linkedin": "https://www.linkedin.com/in/matija-milenovic/"
+ },
+ "www.impact-drones.com": {
+  "company": "IMPACT Drones",
+  "sector": "Industrials -> Defense",
+  "what": "Air Defense as a Service for Civilian Infrastructure.",
+  "founder": "Jasper Lortije",
+  "linkedin": "https://www.linkedin.com/in/jasper-l/"
+ },
+ "isengardindustries.com": {
+  "company": "Isengard Industries Inc",
+  "sector": "Industrials -> Defense",
+  "what": "Mass-produced AI strike systems and Counter-UAS",
+  "founder": "Francisco Serra-Martins",
+  "linkedin": "https://www.linkedin.com/in/franciscoserramartins/"
+ },
+ "karalabs.ai": {
+  "company": "Kara",
+  "sector": "Industrials",
+  "what": "Making Diamond Semiconductors",
+  "founder": "Aarin Jhaveri",
+  "linkedin": "https://www.linkedin.com/in/aarin-jhaveri/"
+ },
+ "www.librabots.com": {
+  "company": "Libra Robotics",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "The robot workforce for infrastructure",
+  "founder": "Jermaine Zhao",
+  "linkedin": "https://www.linkedin.com/in/jermaine-zhao-9439202a2/"
+ },
+ "www.maingen.com": {
+  "company": "Maingen",
+  "sector": "Industrials -> Energy",
+  "what": "Simulating Agents Running Industrial Companies",
+  "founder": "Phillip Yan",
+  "linkedin": "https://www.linkedin.com/in/pyan/"
+ },
+ "www.manifoldindustries.ai": {
+  "company": "Manifold",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Drop-in robotic labor that works on Day 1",
+  "founder": "Nicolas Yeh",
+  "linkedin": "https://www.linkedin.com/in/nicolas-yeh/"
+ },
+ "marengox.com": {
+  "company": "Marengo",
+  "sector": "Industrials -> Energy",
+  "what": "AI-Native Engineering Firm designing Data Centers ",
+  "founder": "Emil Ares",
+  "linkedin": "https://www.linkedin.com/in/emil-ares/"
+ },
+ "massmagnetics.com": {
+  "company": "Mass Magnetics",
+  "sector": "Industrials -> Defense",
+  "what": "USA-made magnetics for robotics and defense. ",
+  "founder": "Eric Silver",
+  "linkedin": "https://www.linkedin.com/in/energyeric/"
+ },
+ "meteoric.earth": {
+  "company": "Meteoric",
+  "sector": "Industrials -> Climate",
+  "what": "Drones that clear clouds over solar farms and weaken hurricanes",
+  "founder": "Mete Karslioglu",
+  "linkedin": "https://www.linkedin.com/in/mete-karslioglu/"
+ },
+ "molagri.com": {
+  "company": "Molagri",
+  "sector": "Industrials -> Agriculture",
+  "what": "Resistance free pesticides.",
+  "founder": "Zaky Hassan",
+  "linkedin": "https://www.linkedin.com/in/zaky-hassan/"
+ },
+ "mostrobotic.com": {
+  "company": "Most Robotic",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Research lab building the most robotic household in the world",
+  "founder": "Claire Mao",
+  "linkedin": "https://www.linkedin.com/in/clairemao-/"
+ },
+ "movingatoms.ai": {
+  "company": "Moving Atoms",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Virtual Reality for Training Robots",
+  "founder": "Shehryar Saroya",
+  "linkedin": "https://www.linkedin.com/in/shehryar-saroya/"
+ },
+ "www.neuromorphic.vision": {
+  "company": "Neuromorphic",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Building robots to automate wetlabs",
+  "founder": "Vatan Aksoy Tezer",
+  "linkedin": "https://www.linkedin.com/in/vatanaksoytezer/"
+ },
+ "neuronindustries.com": {
+  "company": "Neuron Industries",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Industrial Controllers built for AI",
+  "founder": "Dennis Ren",
+  "linkedin": "https://www.linkedin.com/in/dennisren/"
+ },
+ "norirobotics.com": {
+  "company": "Nori",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "The most capable American-made humanoid robot for $1,688",
+  "founder": "Antonio Sitong Li",
+  "linkedin": "https://www.linkedin.com/in/antonio-sitong-li/"
+ },
+ "os3robotics.com": {
+  "company": "OS3",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Affordable, intelligent humanoid robots built to deploy at scale",
+  "founder": "Rishabh Chanana",
+  "linkedin": "https://www.linkedin.com/in/risos8200/"
+ },
+ "operonsolutions.com": {
+  "company": "Operon",
+  "sector": "Industrials",
+  "what": "Agentic data layer for manufacturing & process industries. ",
+  "founder": "Anderson Chen",
+  "linkedin": "https://www.linkedin.com/in/anderson-chen-2b6941216/"
+ },
+ "pacific.space": {
+  "company": "Pacific",
+  "sector": "Industrials",
+  "what": "Mass-producing and financing micro data center incredibly quickly.",
+  "founder": "Harper Dammann Smith",
+  "linkedin": "https://www.linkedin.com/in/harper-dammann-smith/"
+ },
+ "www.praxisrobotics.io": {
+  "company": "Praxis Robotics",
+  "sector": "Industrials",
+  "what": "Turns real businesses into robotics data vendors",
+  "founder": "Rohan Seelamsetty",
+  "linkedin": "https://www.linkedin.com/in/rohan-s-1186b2214/"
+ },
+ "www.propriorobotics.com": {
+  "company": "Proprio Robotics",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Robots to maintain and assemble data centers",
+  "founder": "Anirudh Pai",
+  "linkedin": "https://www.linkedin.com/in/apai25/"
+ },
+ "provenmetal.com": {
+  "company": "ProvenMetal",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "AI-native electronics manufacturing for the American industrial base",
+  "founder": "Johnny Doyle",
+  "linkedin": "https://www.linkedin.com/in/johnny-doyle-69022718a/"
+ },
+ "rise-reforming.com": {
+  "company": "Rise Reforming",
+  "sector": "Industrials -> Climate",
+  "what": "We turn waste gases into supply-secure chemicals ",
+  "founder": "George Rose",
+  "linkedin": "https://www.linkedin.com/in/george-rose25/"
+ },
+ "robocurve.org": {
+  "company": "Robocurve",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Evals for robots",
+  "founder": "Jay Chooi",
+  "linkedin": "https://www.linkedin.com/in/jeqcho/"
+ },
+ "salemroboticsinc.com": {
+  "company": "Salem Robotics Inc",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Deploying robots to replace workers in hazardous spaces",
+  "founder": "Caleb Horan",
+  "linkedin": "https://www.linkedin.com/in/caleb-horan/"
+ },
+ "shiraz.ai": {
+  "company": "Shiraz AI",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Robots that learn on the job",
+  "founder": "Navid Aghasadeghi",
+  "linkedin": "https://www.linkedin.com/in/navid-aghasadeghi-356b077b/"
+ },
+ "skymerse.com": {
+  "company": "Skymerse",
+  "sector": "Industrials -> Aviation and Space",
+  "what": "Autopilot for Flight Operations",
+  "founder": "Damian Szumski",
+  "linkedin": "https://www.linkedin.com/in/damian-szumski/"
+ },
+ "synapsesemi.org": {
+  "company": "Synapse Semiconductor",
+  "sector": "Industrials",
+  "what": "New semiconductors that merge compute and vision",
+  "founder": "Sanjeev Chauhan",
+  "linkedin": "https://www.linkedin.com/in/sanjeev-one/"
+ },
+ "tarebio.com": {
+  "company": "TareBio",
+  "sector": "Healthcare -> Drug Discovery and Delivery",
+  "what": "Vaccines for any cancer or infection in weeks.",
+  "founder": "Eta Atolia",
+  "linkedin": "https://www.linkedin.com/in/eta-atolia/"
+ },
+ "tensr.com": {
+  "company": "Tensr",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Robotic factories that build robots",
+  "founder": "Eric Berndt",
+  "linkedin": "https://www.linkedin.com/in/ekberndt/"
+ },
+ "www.usetorus.com": {
+  "company": "Torus",
+  "sector": "Industrials",
+  "what": "Legora for physical engineering firms",
+  "founder": "Marcus Lima",
+  "linkedin": "https://www.linkedin.com/in/marcus-lima-144974101/"
+ },
+ "ultrasonium.com": {
+  "company": "Ultrasonium",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "Metal manufacturing, faster, cheaper, and more versatile.",
+  "founder": "Jack Qiu",
+  "linkedin": "https://www.linkedin.com/in/jack-q-a1b81546/"
+ },
+ "www.verdantapp.com": {
+  "company": "Verdant",
+  "sector": "Government",
+  "what": "AI Agents to Make Local Gov Efficient",
+  "founder": "Aidan Ng",
+  "linkedin": "https://www.linkedin.com/in/aidan-c-ng/"
+ },
+ "www.vernius.systems": {
+  "company": "Vernius Systems, Inc.",
+  "sector": "Industrials -> Defense",
+  "what": "Mass-deployable radars for air defense",
+  "founder": "Arthur Nguyen-cao",
+  "linkedin": "https://www.linkedin.com/in/arthur-nguyen-cao-690847146/"
+ },
+ "www.waddlelabs.ai": {
+  "company": "Waddle Labs",
+  "sector": "Industrials -> Manufacturing and Robotics",
+  "what": "LLMs that control robots",
+  "founder": "Hanming Ye",
+  "linkedin": "https://www.linkedin.com/in/hanming-ye/"
+ },
+ "wondertx.ai": {
+  "company": "WonderTx",
+  "sector": "Healthcare -> Therapeutics",
+  "what": "Extrapolative AI to unlock First-in-Class drugs",
+  "founder": "Abraham Heifets",
+  "linkedin": "https://www.linkedin.com/in/abrahamheifets/"
+ }
+}
