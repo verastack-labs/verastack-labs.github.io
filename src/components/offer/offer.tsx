@@ -20,9 +20,10 @@ const noSubscribe = () => () => {}
 const useHydrated = () => useSyncExternalStore(noSubscribe, () => true, () => false)
 
 // Somewhere the offer would get in the way: the contact form in view or in use, another dialog
-// open (the film player), or the visitor typing in any field.
+// open (the film player), the visitor typing in any field, or a page part that asks for quiet with
+// data-offer-hold (the AI search check while a result is on screen).
 function pageBusy(): boolean {
-  if (document.querySelector('dialog[open]')) return true
+  if (document.querySelector('dialog[open], [data-offer-hold]')) return true
   const active = document.activeElement
   if (active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement || active instanceof HTMLSelectElement) return true
   const contact = document.getElementById('contact')
