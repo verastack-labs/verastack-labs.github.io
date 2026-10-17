@@ -7,6 +7,7 @@ import { MotionAttribute } from '@/lib/motion/motion-attribute'
 import { SmoothScroll } from '@/lib/motion/smooth-scroll'
 import { SiteHeader } from '@/components/nav/site-header'
 import { SiteFooter } from '@/components/footer/site-footer'
+import { Offer } from '@/components/offer/offer'
 import { tokensToCss } from '@/styles/tokens'
 import './globals.css'
 
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SiteHeader />
         {children}
         <SiteFooter />
+        <Offer />
         {/* Production only, so dev-server visits never count. */}
         {site.analyticsToken && process.env.NODE_ENV === 'production' && (
           <Script

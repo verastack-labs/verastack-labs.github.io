@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { HCaptcha } from '@/components/hcaptcha'
 import { checker } from '@/data/ai-search-check'
 import { site } from '@/data/site'
@@ -46,13 +46,12 @@ export function Checker() {
   const [unlock, setUnlock] = useState<'locked' | 'sending' | 'open' | 'failed'>('locked')
   const resultRef = useRef<HTMLDivElement>(null)
 
-  const run = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!input.trim() || state === 'checking') return
+  // fresh skips the Worker's ten-minute cache, for a re-run right after a fix.
+  const check = useCallback(async (url: string, fresh = false) => {
     setState('checking')
     setError(null)
     try {
-      const res = await fetch(`${checker.endpoint}?url=${encodeURIComponent(input.trim())}`)
+      const res = await fetch(`${checker.endpoint}?url=${encodeURIComponent(url)}${fresh ? '&fresh=1' : ''}`)
       const body = (await res.json().catch(() => null)) as (Report & { error?: string }) | null
       if (!res.ok || !body || body.error) {
         setError(body?.error ?? 'The check did not finish. Try again in a minute.')
@@ -66,7 +65,26 @@ export function Checker() {
       setError('Could not reach the checker. Check your connection and try again.')
       setState('error')
     }
+  }, [])
+
+  const run = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!input.trim() || state === 'checking') return
+    void check(input.trim())
   }
+
+  // Arriving with ?url= (from the site-wide offer, or a shared link) fills the field and runs, once.
+  const autoRan = useRef(false)
+  useEffect(() => {
+    const url = new URLSearchParams(window.location.search).get('url')?.trim()
+    if (!url || autoRan.current) return
+    autoRan.current = true
+    const start = () => {
+      setInput(url)
+      void check(url)
+    }
+    start()
+  }, [check])
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
   const captchaOn = !!(site.formAccessKey && site.hcaptchaSiteKey)
@@ -130,7 +148,7 @@ export function Checker() {
         </button>
       </form>
       <p className={styles.note} aria-live="polite">
-        {state === 'checking' ? 'Fetching the page, robots.txt, llms.txt and sitemap. About ten seconds.' : error ?? 'One page at a time. Nothing is stored unless you ask for the full report.'}
+        {state === 'checking' ? 'Fetching the page, robots.txt, llms.txt and sitemap. About ten seconds.' : error ?? 'One page at a time. Results are kept for ten minutes, then dropped; nothing else is stored unless you ask for the full report.'}
       </p>
 
       {report && state !== 'checking' && (
@@ -143,7 +161,28 @@ export function Checker() {
             <div>
               <p className={styles.checked}>{report.url}</p>
               <p className={styles.verdict}>{verdict(report.score)}</p>
+              <button type="button" className={styles.again} onClick={() => void check(report.url, true)}>
+                Check again
+              </button>
             </div>
+          </div>
+
+          <div className={styles.upsell}>
+            <p>
+              {report.score < 100 ? (
+                <>
+                  <b>Get this to 100:</b> we fix every item in the report and re-run the check until it reads 100. Price on request.
+                </>
+              ) : (
+                <>
+                  <b>Readable is step one.</b> The audit checks who AI engines cite for your category and gets you named. Price on
+                  request.
+                </>
+              )}
+            </p>
+            <Link className={styles.upsellCta} href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
+              {report.score < 100 ? 'Get it to 100' : 'Ask about the audit'}
+            </Link>
           </div>
 
           {top.length > 0 ? (
@@ -197,17 +236,6 @@ export function Checker() {
               {unlock === 'failed' && <p className={styles.note}>That did not go through. Tick the box again and retry.</p>}
             </form>
           )}
-
-          <div className={styles.audit}>
-            <h2 className={styles.h2}>Want it fixed?</h2>
-            <p>
-              The full audit covers every key page and the sources AI engines cite for your category, then we make the fixes: crawler
-              access, server-rendered copy, structured data, llms.txt and the pages that get you named. Price on request.
-            </p>
-            <Link className={styles.cta} href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
-              Ask about an audit
-            </Link>
-          </div>
         </div>
       )}
     </div>
