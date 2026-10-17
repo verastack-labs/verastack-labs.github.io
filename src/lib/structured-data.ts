@@ -1,3 +1,4 @@
+import { faq } from '@/data/faq'
 import { mods, modsLicense } from '@/data/mods'
 import { allPosts } from '@/lib/blog'
 import { checker } from '@/data/ai-search-check'
@@ -67,8 +68,18 @@ export function homeGraph(): Node {
       },
       { '@type': 'Person', '@id': ids.founder, name: site.founderName, url: site.founderUrl },
       { '@type': 'WebSite', '@id': ids.website, name: site.name, url: `${site.url}/`, publisher: { '@id': ids.studio } },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      },
     ],
   }
+}
+
+// The studio as a standalone node, for pages other than home: who is behind the page, with a logo
+// and links to its other profiles.
+export function studioNode(): Node {
+  return { '@type': 'Organization', '@id': ids.studio, name: site.name, url: `${site.url}/`, logo: `${site.url}/icon.svg`, sameAs: [site.githubUrl] }
 }
 
 // Safe to drop into a <script> tag: no closing tag can appear inside it.
@@ -88,6 +99,13 @@ export function llmsText(): string {
     `> ${site.description}`,
     '',
     `Founded by ${site.founderName} (${site.founderUrl}), based in ${site.basedIn}, working with clients anywhere.`,
+    '',
+    '## Key pages',
+    '',
+    `- [Home](${site.url}/): services, work, products and how we work`,
+    `- [Free AI search check](${site.url}${checker.path}/): score a page for AI search`,
+    `- [Blog](${site.url}/blog/): notes on launches and AI search`,
+    `- [Start a project](${site.url}/#contact)`,
     '',
     '## Services',
     '',

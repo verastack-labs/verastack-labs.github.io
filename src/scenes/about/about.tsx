@@ -1,5 +1,6 @@
 'use client'
 
+import { faq } from '@/data/faq'
 import { products } from '@/data/products'
 import { site } from '@/data/site'
 import { team } from '@/data/team'
@@ -40,6 +41,17 @@ export function About() {
           ))}
         </ul>
       )}
+      <div className={styles.faq}>
+        <h3 className={styles.faqTitle}>Questions</h3>
+        <dl>
+          {faq.map((f) => (
+            <div key={f.q}>
+              <dt>{f.q}</dt>
+              <dd>{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
       <p className={styles.foot}>
         <span>
           founded by <b>{site.founderName}</b>

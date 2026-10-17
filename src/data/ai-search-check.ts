@@ -7,21 +7,25 @@ export const checker = {
   path: '/ai-search-check',
   title: 'Free AI search check: does ChatGPT know your site?',
   description:
-    'Check how your page reads to ChatGPT, Perplexity, Claude and Google AI answers. Twelve checks, a score out of 100 and the three fixes that matter most. Free.',
+    'Check how your page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the three fixes that matter most. Free.',
 }
 
 export const checks: { id: string; label: string; why: string }[] = [
-  { id: 'crawlers', label: 'AI and search crawlers can read the page', why: 'robots.txt rules for Googlebot, Bingbot, OAI-SearchBot, PerplexityBot and Claude-SearchBot, plus the training crawlers GPTBot, ClaudeBot and Google-Extended.' },
+  { id: 'crawlers', label: 'AI and search crawlers can read the page', why: 'robots.txt rules for the crawlers behind Google, Bing, ChatGPT, Perplexity and Claude, including the ones that fetch a page when a user asks, plus the training crawlers.' },
   { id: 'edge', label: 'Your server or CDN answers AI crawlers', why: 'Some bot protection turns AI crawlers away even when robots.txt lets them in.' },
-  { id: 'text', label: 'The page says what you do in plain HTML', why: 'Many crawlers do not run JavaScript. We count the words in the HTML your server sends.' },
-  { id: 'structured', label: 'Structured data labels the facts', why: 'JSON-LD that names your organisation, product, service, prices or FAQs.' },
+  { id: 'text', label: 'The page says what you do in plain HTML', why: 'Many crawlers do not run JavaScript. We count the words in the HTML your server sends; 500 or more passes.' },
+  { id: 'identity', label: 'Structured data says who you are', why: 'Organization JSON-LD with a logo and sameAs links to your other profiles, so a model can tell you apart from a namesake.' },
+  { id: 'structured', label: 'Structured data describes what you sell', why: 'Product, Service, SoftwareApplication or similar JSON-LD, with prices where they apply.' },
+  { id: 'faq', label: 'Answers to the questions buyers ask', why: 'A visible FAQ marked up as FAQPage. Question-and-answer pairs are the easiest thing for an engine to quote.' },
   { id: 'title', label: 'A clear title', why: 'Present, and long enough to say what the page is.' },
-  { id: 'description', label: 'A meta description that answers "what is this?"', why: 'Engines often quote it as the summary.' },
+  { id: 'description', label: 'A meta description that answers "what is this?"', why: 'Plain sentences, not a keyword list. Engines often quote it as the summary.' },
   { id: 'canonical', label: 'One canonical address', why: 'So every copy of the page credits the same URL.' },
   { id: 'indexable', label: 'The page may be indexed', why: 'No noindex in a meta tag or an X-Robots-Tag header.' },
-  { id: 'h1', label: 'One main heading', why: 'A single h1 in the server HTML.' },
-  { id: 'llms', label: 'An llms.txt for language models', why: 'A proposed plain-text summary file for models. A cheap bet.' },
+  { id: 'headings', label: 'Headings that outline the page', why: 'One h1 and an h2 per section, so engines can lift the right passage.' },
+  { id: 'llms', label: 'An llms.txt for language models', why: 'A proposed plain-text summary file for models, with a title and links. A cheap bet.' },
   { id: 'sitemap', label: 'A sitemap engines can find', why: 'At /sitemap.xml or named in robots.txt.' },
+  { id: 'fresh', label: 'Signs the page is current', why: 'A recent lastmod in the sitemap, a Last-Modified header or dateModified in the JSON-LD.' },
+  { id: 'images', label: 'Images described in text', why: 'Alt text on the images, since a model reads the words, not the picture.' },
   { id: 'og', label: 'Link previews (Open Graph)', why: 'Title, description and image for shared and cited links.' },
 ]
 

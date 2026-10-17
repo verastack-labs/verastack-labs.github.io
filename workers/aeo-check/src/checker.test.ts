@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { normaliseInput, publicUrl } from './guard'
 import { readPage } from './html'
 import { isAllowed, parseRobots } from './robots'
-import { runChecks, score, topFixes, type Evidence } from './score'
+import { keywordy, runChecks, score, topFixes, type Evidence } from './score'
 
 describe('robots.txt', () => {
   const robots = parseRobots(`
@@ -44,90 +44,132 @@ Sitemap: https://example.com/sitemap.xml
   })
 })
 
-const goodHtml = `<!doctype html><html lang="en"><head>
+const ORG = '{"@type":"Organization","name":"Acme","logo":"https://acme.example.com/logo.png","sameAs":["https://www.linkedin.com/company/acme"]}'
+const APP = '{"@type":["SoftwareApplication"],"name":"Acme","dateModified":"2026-10-01"}'
+const FAQ = '{"@type":"FAQPage","mainEntity":[]}'
+
+const page = ({ graph = [ORG, APP, FAQ], date = '2026-10-01' } = {}) => `<!doctype html><html lang="en"><head>
 <title>Acme: booking software for clinics</title>
 <meta name="description" content="Acme is booking software for clinics: appointments, reminders and payments in one place, for small practices in India.">
 <link rel="canonical" href="https://acme.example.com/">
 <meta property="og:title" content="Acme"><meta property="og:description" content="x"><meta property="og:image" content="/og.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Acme"},{"@type":["SoftwareApplication"],"name":"Acme"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[${graph.join(',').replace('2026-10-01', date)}]}</script>
 </head><body><h1>Booking for clinics</h1><script>var hidden = "these words do not count"</script>
-<p>${'Clinics book patients with Acme every day. '.repeat(60)}</p></body></html>`
+<h2>How it works</h2><p>${'Clinics book patients with Acme every day. '.repeat(70)}</p>
+<h2>What does it <em>cost</em>?</h2><p>It is free for one clinic.</p>
+<img src="/a.png" alt="The Acme calendar"><img src="/line.svg" alt=""></body></html>`
 
 describe('reading a page', () => {
-  it('finds the title, description, canonical, headings and JSON-LD types', () => {
-    const page = readPage(goodHtml)
-    expect(page.title).toBe('Acme: booking software for clinics')
-    expect(page.description).toMatch(/^Acme is booking software/)
-    expect(page.canonical).toBe('https://acme.example.com/')
-    expect(page.lang).toBe('en')
-    expect(page.h1Count).toBe(1)
-    expect(page.schemaTypes).toEqual(['Organization', 'SoftwareApplication'])
-    expect(page.og).toEqual({ title: true, description: true, image: true })
+  it('finds the title, description, canonical, headings, images and JSON-LD', () => {
+    const p = readPage(page())
+    expect(p.title).toBe('Acme: booking software for clinics')
+    expect(p.description).toMatch(/^Acme is booking software/)
+    expect(p.canonical).toBe('https://acme.example.com/')
+    expect(p.lang).toBe('en')
+    expect(p.h1Count).toBe(1)
+    expect(p.h2Count).toBe(2)
+    expect(p.questionHeadings).toBe(1)
+    expect(p.images).toEqual({ total: 2, withAlt: 2 })
+    expect(p.schemaTypes).toEqual(['FAQPage', 'Organization', 'SoftwareApplication'])
+    expect(p.org).toEqual({ found: true, logo: true, sameAs: 1 })
+    expect(p.dates).toEqual(['2026-10-01'])
+    expect(p.og).toEqual({ title: true, description: true, image: true })
   })
 
   it('counts only text a reader would see, not scripts', () => {
-    const page = readPage(goodHtml)
-    expect(page.words).toBeGreaterThan(400)
+    expect(readPage(page()).words).toBeGreaterThan(500)
     expect(readPage('<html><body><div id="root"></div><script>lots of words here really</script></body></html>').words).toBe(0)
   })
 
   it('counts JSON-LD that fails to parse', () => {
-    const page = readPage('<script type="application/ld+json">{oops</script>')
-    expect(page.jsonLdBlocks).toBe(1)
-    expect(page.jsonLdErrors).toBe(1)
+    const p = readPage('<script type="application/ld+json">{oops</script>')
+    expect(p.jsonLdBlocks).toBe(1)
+    expect(p.jsonLdErrors).toBe(1)
   })
 })
 
 const evidence = (over: Partial<Evidence> = {}): Evidence => ({
   finalUrl: 'https://acme.example.com/',
-  headers: { xRobotsTag: null },
-  page: readPage(goodHtml),
+  headers: { xRobotsTag: null, lastModified: null },
+  page: readPage(page()),
   robots: parseRobots('User-agent: *\nAllow: /'),
-  llmsTxt: true,
+  llmsTxt: '# Acme\n\n> Booking for clinics.\n\n- [Pricing](https://acme.example.com/pricing)',
   sitemap: true,
+  sitemapLastmod: null,
   botStatus: null,
+  now: new Date('2026-10-17T00:00:00Z'),
   ...over,
 })
+
+const statuses = (ev: Evidence) => Object.fromEntries(runChecks(ev).map((c) => [c.id, c.status]))
 
 describe('scoring', () => {
   it('gives a well-built page full marks', () => {
     const checks = runChecks(evidence())
+    expect(checks).toHaveLength(16)
     expect(checks.reduce((n, c) => n + c.weight, 0)).toBe(100)
-    expect(checks.every((c) => c.status === 'pass')).toBe(true)
+    expect(checks.filter((c) => c.status !== 'pass')).toEqual([])
     expect(score(checks)).toBe(100)
     expect(topFixes(checks)).toEqual([])
   })
 
-  it('fails a JavaScript-only page that blocks AI search, and ranks those fixes first', () => {
+  it('caps a JavaScript-only page that blocks AI search at 40, and ranks those fixes first', () => {
     const checks = runChecks(
       evidence({
         page: readPage('<html><head><title>App</title></head><body><div id="root"></div></body></html>'),
         robots: parseRobots('User-agent: OAI-SearchBot\nDisallow: /'),
-        llmsTxt: false,
+        llmsTxt: null,
       }),
     )
     const byId = Object.fromEntries(checks.map((c) => [c.id, c.status]))
     expect(byId.crawlers).toBe('fail')
     expect(byId.text).toBe('fail')
     expect(byId.structured).toBe('fail')
-    expect(byId.llms).toBe('warn')
-    expect(score(checks)).toBeLessThan(40)
-    expect(topFixes(checks).map((c) => c.id)).toEqual(['crawlers', 'text', 'structured'])
+    expect(byId.llms).toBe('fail')
+    expect(score(checks)).toBeLessThanOrEqual(40)
+    expect(topFixes(checks).map((c) => c.id)).toEqual(['crawlers', 'text', 'identity'])
   })
 
-  it('only warns when just the training crawlers are blocked', () => {
-    const checks = runChecks(evidence({ robots: parseRobots('User-agent: GPTBot\nDisallow: /') }))
-    expect(checks.find((c) => c.id === 'crawlers')?.status).toBe('warn')
+  it('only warns when just the training crawlers are blocked, or ChatGPT-User fails it', () => {
+    expect(statuses(evidence({ robots: parseRobots('User-agent: GPTBot\nDisallow: /') })).crawlers).toBe('warn')
+    expect(statuses(evidence({ robots: parseRobots('User-agent: ChatGPT-User\nDisallow: /') })).crawlers).toBe('fail')
   })
 
-  it('fails noindex from a header, and warns when AI crawlers are turned away at the edge', () => {
-    const checks = runChecks(evidence({ headers: { xRobotsTag: 'noindex, nofollow' }, botStatus: 403 }))
-    expect(checks.find((c) => c.id === 'indexable')?.status).toBe('fail')
-    expect(checks.find((c) => c.id === 'edge')?.status).toBe('warn')
+  it('fails noindex and caps the score at 40, but only warns when the edge turns a crawler away', () => {
+    const noindex = runChecks(evidence({ headers: { xRobotsTag: 'noindex, nofollow', lastModified: null } }))
+    expect(noindex.find((c) => c.id === 'indexable')?.status).toBe('fail')
+    expect(score(noindex)).toBe(40)
+    const edge = runChecks(evidence({ botStatus: 403 }))
+    expect(edge.find((c) => c.id === 'edge')?.status).toBe('warn')
+    expect(score(edge)).toBeGreaterThan(90)
+  })
+
+  it('gives a warning a third of its points', () => {
+    const checks = runChecks(evidence({ llmsTxt: 'just some words about acme, nothing else here' }))
+    expect(checks.find((c) => c.id === 'llms')?.status).toBe('warn')
+    expect(score(checks)).toBe(98)
+  })
+
+  it('marks down a keyword-list description and a site with no Organization or FAQ', () => {
+    expect(keywordy('OneFin LOS LMS Powered by AI Loan Origination System Loan Management System Collection System for NBFCs')).toMatch(/system/)
+    expect(keywordy('Acme is booking software for clinics: appointments, reminders and payments in one place.')).toBeNull()
+    const checks = runChecks(evidence({ page: readPage(page({ graph: [APP] })) }))
+    const byId = Object.fromEntries(checks.map((c) => [c.id, c.status]))
+    expect(byId.identity).toBe('fail')
+    expect(byId.faq).toBe('fail')
+    expect(score(checks)).toBeLessThan(85)
+  })
+
+  it('reads freshness from the newest date it can find', () => {
+    const stale = readPage(page({ date: '2024-01-01' }))
+    const fresh = (over: Partial<Evidence>) => statuses(evidence({ page: stale, ...over })).fresh
+    expect(fresh({})).toBe('fail')
+    expect(fresh({ sitemapLastmod: '2026-09-30' })).toBe('pass')
+    expect(fresh({ headers: { xRobotsTag: null, lastModified: 'Wed, 01 Jan 2026 00:00:00 GMT' } })).toBe('warn')
   })
 
   it('writes every detail and fix without em dashes', () => {
-    for (const c of runChecks(evidence({ botStatus: 403, llmsTxt: false }))) {
+    for (const c of runChecks(evidence({ botStatus: 403, llmsTxt: null, page: readPage('<p>x</p>') }))) {
       expect(`${c.label} ${c.detail} ${c.fix}`).not.toContain(String.fromCodePoint(0x2014))
     }
   })

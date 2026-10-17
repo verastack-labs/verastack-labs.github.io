@@ -87,6 +87,13 @@ async function sideFile(origin: string, path: string, selfHost: string): Promise
   }
 }
 
+// The newest <lastmod> in a sitemap or sitemap index.
+function newestLastmod(xml: string | null): string | null {
+  if (!xml) return null
+  const stamps = [...xml.matchAll(/<lastmod>\s*([^<\s]+)\s*<\/lastmod>/gi)].map((m) => m[1]).filter((s) => Number.isFinite(Date.parse(s)))
+  return stamps.sort((a, b) => Date.parse(b) - Date.parse(a))[0] ?? null
+}
+
 export async function check(input: string, selfHost: string) {
   const start = publicUrl(normaliseInput(input), selfHost)
   if (!start) throw new CheckError('Enter a public website address, like example.com.', 400)
@@ -120,12 +127,14 @@ export async function check(input: string, selfHost: string) {
 
   const evidence: Evidence = {
     finalUrl: url.href,
-    headers: { xRobotsTag: res.headers.get('x-robots-tag') },
+    headers: { xRobotsTag: res.headers.get('x-robots-tag'), lastModified: res.headers.get('last-modified') },
     page: readPage(html),
     robots,
-    llmsTxt: !!llms && llms.trim().length > 20,
+    llmsTxt: llms && llms.trim().length > 20 ? llms : null,
     sitemap: !!(robots?.sitemaps.length || (sitemapXml && /<(urlset|sitemapindex)\b/i.test(sitemapXml))),
+    sitemapLastmod: newestLastmod(sitemapXml),
     botStatus: botStatus !== null && botStatus !== res.status ? botStatus : null,
+    now: new Date(),
   }
   const checks = runChecks(evidence)
   return { url: url.href, checkedAt: new Date().toISOString(), score: score(checks), top: topFixes(checks).map((c) => c.id), checks }
@@ -158,9 +167,11 @@ const worker = {
     if (!input || input.length > 2000) return json({ error: 'Enter a website address.' }, 400, cors)
 
     // Repeat checks of the same address within ten minutes come from the cache and cost nothing.
+    // `fresh=1` (the page's "check again" after a fix) skips it, and counts against the rate limit.
+    const fresh = searchParams.get('fresh') === '1'
     const target = publicUrl(normaliseInput(input), env.SELF_HOST)
-    const cacheKey = target ? new Request(`https://${env.SELF_HOST}/cache/aeo-check?u=${encodeURIComponent(target.href)}`) : null
-    if (cacheKey) {
+    const cacheKey = target ? new Request(`https://${env.SELF_HOST}/cache/aeo-check/v2?u=${encodeURIComponent(target.href)}`) : null
+    if (cacheKey && !fresh) {
       const hit = await caches.default.match(cacheKey)
       if (hit) return json(await hit.json(), 200, cors)
     }
