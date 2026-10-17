@@ -97,6 +97,13 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
+  token in `site.analyticsToken`. Entries also created for origan., rigseed., riggit., mehfil.,
+  oinkbuns.verastack.dev and riganb.github.io; each project chat was sent its snippet.
+- [ ] Growth plan (`docs/growth-plan.md`, agreed 2026-10-17): blog, the freemium "Does ChatGPT know
+  your brand?" checker, a D2C AI-visibility study, launch teardowns, open-source spec films, more
+  mods, full Work pages, open-source templates, product cross-links. Building the blog first.
+
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
   press links in `src/data/work.ts`): Tesseract 60,000+, Shockwave 7,000+, X-47 3,000+ in 24 hours,
   70,000+ in all. Refresh them if newer coverage appears. E3 TRION has no public count, so none is
