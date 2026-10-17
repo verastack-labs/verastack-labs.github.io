@@ -158,6 +158,13 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] Post "Spot the slop: what an AI-built launch page gets wrong" (2026-10-17). A made-up product,
+    Bookwell: Lovable built one page from one prompt (live at bookwell-launchpad-app.lovable.app, in
+    Rigan's Lovable account; scored 54), and we built ours at /examples/bookwell/ (own brand,
+    banner saying it is an example, out of the sitemap; scores 100). The post names no real
+    clinic and does not repeat the AI page's invented testimonials. An empty Framer project,
+    "Stupendous Skills", was created by accident in Rigan's Framer (Framer AI was out of credits);
+    archive it when convenient.
   - [x] No page shift on Android scroll-direction changes (2026-10-17): full-screen scenes (hero,
     Services, Work, Products, Process) and the body used `100dvh`, which grows and shrinks as
     Chrome's address bar hides and shows, shifting everything below and putting the pinned scenes

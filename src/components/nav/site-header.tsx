@@ -38,6 +38,7 @@ export function SiteHeader() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   const pathname = usePathname()
   if (pathname?.startsWith('/blog')) return <PageHeader path="/blog" />
+  if (pathname?.startsWith('/examples')) return <PageHeader path="/examples" />
   if (pathname?.startsWith('/founder')) return <PageHeader path="/founder" />
   if (pathname?.startsWith('/ai-search-check')) return <PageHeader path="/ai-search-check" short="/ai-check" />
   return (
