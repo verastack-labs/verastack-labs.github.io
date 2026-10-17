@@ -76,6 +76,7 @@ export default function BookwellExample() {
       </p>
 
       <header className={styles.hero}>
+        <div className={styles.heroCopy}>
         <p className={styles.brand}>
           <span aria-hidden="true" className={styles.mark} /> Bookwell
         </p>
@@ -97,6 +98,8 @@ export default function BookwellExample() {
           <li>Reminders by SMS and WhatsApp</li>
           <li>Live the same day you sign up</li>
         </ul>
+        </div>
+        <BookingVisual />
       </header>
 
       <section id="how" className={styles.section}>
@@ -120,19 +123,19 @@ export default function BookwellExample() {
       <section className={styles.section}>
         <h2>What it does</h2>
         <div className={styles.grid}>
-          <div>
+          <div data-icon="calendar">
             <h3>One calendar for the whole clinic</h3>
             <p>Every doctor&apos;s hours in one place. The front desk adds phone bookings by hand and blocks time for walk-ins.</p>
           </div>
-          <div>
+          <div data-icon="bell">
             <h3>Fewer no-shows</h3>
             <p>Reminders with a one-tap confirm. A slot freed the day before can be offered to the next patient on the waitlist.</p>
           </div>
-          <div>
+          <div data-icon="phone">
             <h3>Works on any phone</h3>
             <p>Booking takes a few taps on the cheapest Android phone, on a slow connection, in English or Hindi.</p>
           </div>
-          <div>
+          <div data-icon="sheet">
             <h3>A day sheet each morning</h3>
             <p>One page of who is coming when, ready at opening time, so nobody has to scroll a shared spreadsheet.</p>
           </div>
@@ -185,5 +188,49 @@ export default function BookwellExample() {
         </a>
       </section>
     </main>
+  )
+}
+
+
+// What booking looks like for a patient, drawn in code: a phone with the slot picker, and the
+// reminder that arrives the day before. Decorative; the page text says the same in words.
+const SLOTS = [
+  { time: '9:30', state: 'open' },
+  { time: '10:00', state: 'taken' },
+  { time: '10:30', state: 'picked' },
+  { time: '11:00', state: 'open' },
+  { time: '11:30', state: 'taken' },
+  { time: '12:00', state: 'open' },
+]
+
+function BookingVisual() {
+  return (
+    <div className={styles.visual} aria-hidden="true">
+      <div className={styles.phone}>
+        <div className={styles.notch} />
+        <p className={styles.phoneTitle}>Book a visit</p>
+        <p className={styles.phoneSub}>Your clinic · General check-up</p>
+        <div className={styles.days}>
+          {['Mon 20', 'Tue 21', 'Wed 22'].map((d, i) => (
+            <span key={d} data-on={i === 1}>
+              {d}
+            </span>
+          ))}
+        </div>
+        <div className={styles.slots}>
+          {SLOTS.map((slot) => (
+            <span key={slot.time} data-state={slot.state}>
+              {slot.time}
+            </span>
+          ))}
+        </div>
+        <span className={styles.confirm}>Confirm 10:30</span>
+      </div>
+      <div className={styles.bubble}>
+        <b>Bookwell</b>
+        Reminder: your visit is tomorrow at 10:30. Reply 1 to confirm, 2 to move it.
+        <span>9:00 am ✓✓</span>
+      </div>
+    </div>
   )
 }

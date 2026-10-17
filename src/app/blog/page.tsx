@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
-import { allPosts, formatDate, readingMinutes } from '@/lib/blog'
+import { allPosts } from '@/lib/blog'
+import { CategoryBar, PostList } from '@/app/blog/post-list'
 import { shareImage, site } from '@/data/site'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import styles from '@/app/blog/blog.module.css'
@@ -39,19 +39,8 @@ export default function BlogIndex() {
         /blog <em>{'//'}</em> launches, AI search, open source
       </p>
       <h1 className={styles.indexTitle}>Notes from the studio.</h1>
-      <ul className={styles.list}>
-        {posts.map((p) => (
-          <li key={p.slug}>
-            <Link className={styles.item} href={`/blog/${p.slug}`}>
-              <span className={styles.itemMeta}>
-                {formatDate(p.date)} · {readingMinutes(p.words)} min read
-              </span>
-              <b>{p.title}</b>
-              <span className={styles.itemDesc}>{p.description}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <CategoryBar />
+      <PostList posts={posts} />
     </main>
   )
 }
