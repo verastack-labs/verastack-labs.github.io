@@ -30,6 +30,16 @@ const STATUS_WORD = { pass: 'pass', warn: 'improve', fail: 'fix' } as const
 // report is unlocked, so the blur hides nothing worth reading in the source.
 const LOCKED_TEXT = 'What we found on your page, and the exact change that fixes it, open with the full report.'
 
+// A padlock, for the unlock button.
+function LockIcon() {
+  return (
+    <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+      <rect x="2.5" y="7" width="11" height="7.5" rx="2" fill="currentColor" />
+      <path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 // Brings an element into view below the fixed header, smoothly unless motion is reduced.
 function reveal(el: HTMLElement) {
   el.focus({ preventScroll: true })
@@ -279,9 +289,7 @@ export function Checker() {
                 ))}
               </ol>
             </>
-          ) : (
-            <p className={styles.verdict}>Every check passed.</p>
-          )}
+          ) : null}
 
           {unlock === 'open' ? (
             <>
@@ -295,31 +303,39 @@ export function Checker() {
               </ol>
             </>
           ) : (
-            <section className={styles.locked} ref={lockedRef} aria-labelledby="locked-title">
-              <h2 id="locked-title" className={styles.h2}>
-                {rest.length ? <span className={styles.more}>+{rest.length} more to fix</span> : 'The full report'}
-              </h2>
+            <section className={styles.locked} ref={lockedRef} aria-label="The rest of the report, locked">
               {rest.length > 0 && (
-                <ol className={styles.list} aria-hidden="true">
-                  {rest.map((c) => (
-                    <li key={c.id} className={styles.check} data-status={c.status}>
+                // The rest of the list, carrying on from the top fixes and fading out, row by row.
+                <ol className={`${styles.list} ${styles.fade}`} aria-hidden="true">
+                  {rest.slice(0, 3).map((c, i) => (
+                    <li key={c.id} className={styles.check} data-status={c.status} style={{ '--i': i } as React.CSSProperties}>
                       <span className={styles.badge}>{STATUS_WORD[c.status]}</span>
                       <div>
                         <b>{c.label}</b>
-                        <p className={styles.blur}>{LOCKED_TEXT}</p>
+                        <p>{LOCKED_TEXT}</p>
                       </div>
                     </li>
                   ))}
                 </ol>
               )}
-              <div className={styles.lockBar}>
-                <p>
+              <div className={styles.lockCard} data-over={rest.length > 0}>
+                <p className={styles.lockTitle}>
+                  {rest.length ? (
+                    <>
+                      <span>{rest.length}</span> more {rest.length === 1 ? 'issue is' : 'issues are'} keeping {host} out of AI answers.
+                    </>
+                  ) : (
+                    <>All {report.checks.length} checks passed for {host}.</>
+                  )}
+                </p>
+                <p className={styles.lockText}>
                   {rest.length
-                    ? `${rest.length} more ${rest.length === 1 ? 'issue is' : 'issues are'} costing ${host} mentions in AI answers. The details and fixes are in the full report, with the ${passed} checks you pass.`
-                    : `See all ${report.checks.length} checks for ${host}, with what each one found.`}
+                    ? `Every fix explained, step by step, alongside the ${passed} checks you already pass. Free: leave your email and the full report opens right here.`
+                    : `See what each of the ${report.checks.length} checks found on your page. Free: leave your email and it opens right here.`}
                 </p>
                 <button type="button" className={styles.unlock} onClick={openGate}>
-                  Unlock the full report, free
+                  <LockIcon />
+                  Unlock the full report
                 </button>
               </div>
             </section>

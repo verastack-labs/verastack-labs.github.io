@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { checker, checks, faqs } from '@/data/ai-search-check'
+import { checker, faqs } from '@/data/ai-search-check'
 import { shareImage, site } from '@/data/site'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { Checker } from '@/app/ai-search-check/checker'
+import { ChecksPreview } from '@/app/ai-search-check/checks-preview'
 import styles from '@/app/ai-search-check/checker.module.css'
 
 export const metadata: Metadata = {
@@ -56,14 +57,7 @@ export default function AiSearchCheckPage() {
         <h2 id="what-we-check" className={styles.h2}>
           What the check looks at
         </h2>
-        <ol className={styles.explain}>
-          {checks.map((c) => (
-            <li key={c.id}>
-              <b>{c.label}</b>
-              <span>{c.why}</span>
-            </li>
-          ))}
-        </ol>
+        <ChecksPreview />
         <p className={styles.more}>
           Why these matter, in more depth: <Link href="/blog/ai-search-for-saas">what ChatGPT reads before it recommends you</Link>.
         </p>
