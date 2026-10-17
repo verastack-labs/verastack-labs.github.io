@@ -184,6 +184,13 @@ Content (placeholders are in the design until these arrive):
     banner saying it is an example, out of the sitemap; scores 100). The post names no real
     clinic and does not repeat the AI page's invented testimonials. An empty Framer project made by
     accident ("Stupendous Skills") was archived and then deleted by Rigan.
+  - [x] Android shift, measured on a real phone (2026-10-18, OPPO Reno15 Pro Mini over adb, Chrome
+    with its address bar at the bottom): even svh and lvh moved by about 73px as the toolbar slid,
+    and ScrollTrigger re-measured pins on the resize Chrome fired, so the page swung by up to 366px.
+    Fix: `src/lib/screen-lock.ts` measures the screen once before first paint into --screen-small
+    and --screen-large (re-measured only on a 50px+ width change); full-screen scenes use those; and
+    ScrollTrigger no longer refreshes on resize, only on load and real width changes. Measured after:
+    locked heights constant, pinned scenes constant, page height within 32px (content animations).
   - [x] No page shift on Android scroll-direction changes (2026-10-17): full-screen scenes (hero,
     Services, Work, Products, Process) and the body used `100dvh`, which grows and shrinks as
     Chrome's address bar hides and shows, shifting everything below and putting the pinned scenes

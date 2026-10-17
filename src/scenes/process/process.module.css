@@ -11,7 +11,7 @@
 
 .pinned {
   height: 100vh;
-  height: 100lvh;
+  height: var(--screen-large, 100lvh);
   display: flex;
   flex-direction: column;
   justify-content: center;

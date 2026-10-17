@@ -9,6 +9,7 @@ import { SiteHeader } from '@/components/nav/site-header'
 import { SiteFooter } from '@/components/footer/site-footer'
 import { Offer } from '@/components/offer/offer'
 import { RouteCurtain } from '@/components/transition/route-curtain'
+import { screenLockScript } from '@/lib/screen-lock'
 import { tokensToCss } from '@/styles/tokens'
 import './globals.css'
 
@@ -53,8 +54,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${bricolage.variable} ${jetbrains.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: tokensToCss() }} />
+        {/* Freezes the screen height before the first paint (src/lib/screen-lock.ts). */}
+        <script dangerouslySetInnerHTML={{ __html: screenLockScript }} />
       </head>
-      <body className="min-h-svh bg-ink text-text">
+      <body className="bg-ink text-text" style={{ minHeight: 'var(--screen-small, 100svh)' }}>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-signal focus:px-3 focus:py-2 focus:text-ink"
