@@ -42,7 +42,7 @@ a.cta:hover { transform: translateY(-2px); }
   --fg: var(--text);
   position: relative;
   height: 100vh;
-  height: 100svh;
+  height: 100lvh;
   overflow: hidden;
   background: var(--bg);
   color: var(--fg);
