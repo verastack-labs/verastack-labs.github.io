@@ -2,11 +2,12 @@
 title: We ran 96 Indian D2C sites through an AI search check
 description: Median score 75, nobody above 91. What Indian D2C homepages get right for ChatGPT and AI answers, the two gaps almost all of them share, and who leads.
 date: 2026-10-17
+time: 11:15
 category: studies
 hook: Run a Shopify store? The median here was 75. Check yours in ten seconds; if it's under 80, the two fixes almost every store needs are a day's work, and we can do them for you.
 hookCta: Check my store | /ai-search-check
 checkCompare: The median Indian D2C homepage in our study scored 75 out of 100. See where yours lands.
-tags: AI search, D2C, Shopify, study
+tags: AI search, D2C, Shopify
 ---
 
 More shoppers now ask an AI before they search: "best natural hair oil brand in India", "where to buy block-printed kurtas online". The answer names a few brands and links a few pages. We wanted to know how ready Indian D2C brands are to be one of those names, so we ran 99 of them through our [AI search check](/ai-search-check).

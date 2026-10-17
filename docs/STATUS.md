@@ -158,6 +158,10 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] Blog order and tags (2026-10-17): posts carry an optional `time:` (IST, HH:MM) so same-day
+    posts sort newest first (a test holds it); JSON-LD datePublished includes it. Inside a post, the
+    category and tags are bordered pills under the date (the category highlighted, linking to its
+    page; a tag repeating the category is dropped). Category chips on /blog share one height.
   - [x] Blog structure (2026-10-17): categories with a short phrase each (`src/data/blog-categories.ts`;
     every post names one in front matter, and an unknown one fails the build), chips on /blog with
     counts, a page per category with posts (/blog/category/<id>/, in the sitemap). Every post now

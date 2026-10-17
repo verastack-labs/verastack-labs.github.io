@@ -58,8 +58,8 @@
 .prose img { display: block; width: 100%; height: auto; margin: 1.6em 0; border: 1px solid var(--line); border-radius: 12px; }
 
 /* Category chips: name and count, the short phrase underneath. */
-.cats { display: flex; flex-wrap: wrap; gap: 10px; margin: -12px 0 36px; }
-.cat { display: flex; flex-direction: column; gap: 3px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 14px; color: var(--text); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+.cats { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; margin: -12px 0 36px; }
+.cat { display: flex; flex-direction: column; justify-content: center; gap: 3px; min-height: 58px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 14px; color: var(--text); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
 .cat b { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
 .cat:hover, .cat:focus-visible { border-color: var(--signal); }
 .cat[aria-current='page'] { border-color: var(--signal); background: rgba(212, 255, 63, 0.08); }
@@ -91,4 +91,11 @@
 .prose :global(.pair) iframe { aspect-ratio: 3 / 4; margin: 0; background: #fff; }
 .prose :global(.pair) figcaption { margin-top: 6px; font: 400 12px var(--font-mono); color: var(--muted); }
 @media (max-width: 700px) { .prose :global(.pair) { grid-template-columns: 1fr; } }
+
+/* A post's category and tags, as pills under the date: the category leads and links to its page. */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.tag, .tagCat { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font: 500 11.5px var(--font-mono); letter-spacing: 0.01em; }
+.tag { border: 1px solid var(--line); color: var(--muted); }
+.tagCat { border: 1px solid var(--signal); background: rgba(212, 255, 63, 0.08); color: var(--signal); text-decoration: none; transition: background 0.2s; }
+.tagCat:hover, .tagCat:focus-visible { background: rgba(212, 255, 63, 0.16); }
 

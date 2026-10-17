@@ -9,6 +9,8 @@ export type Post = {
   description: string
   // ISO date, YYYY-MM-DD.
   date: string
+  // Publish time in India, HH:MM, so posts from the same day sort newest first. Optional.
+  time: string | null
   // One of src/data/blog-categories.ts.
   category: string
   tags: string[]
@@ -42,6 +44,7 @@ export function parsePost(slug: string, source: string): Post {
     title: meta.title,
     description: meta.description,
     date: meta.date,
+    time: meta.time || null,
     category: meta.category,
     hook: meta.hook ? parseHook(meta.hook, meta.hookCta, slug) : null,
     checkCompare: meta.checkCompare || null,
@@ -65,8 +68,11 @@ export function allPosts(): Post[] {
   return readdirSync(DIR)
     .filter((f) => f.endsWith('.md'))
     .map((f) => parsePost(f.replace(/\.md$/, ''), readFileSync(join(DIR, f), 'utf8')))
-    .sort((a, b) => b.date.localeCompare(a.date))
+    .sort((a, b) => published(b).localeCompare(published(a)))
 }
+
+// When a post went out, as an ISO timestamp in India's time zone (for sorting and JSON-LD).
+export const published = (p: Pick<Post, 'date' | 'time'>) => `${p.date}T${p.time ?? '00:00'}:00+05:30`
 
 export function postBySlug(slug: string): Post | undefined {
   return allPosts().find((p) => p.slug === slug)
