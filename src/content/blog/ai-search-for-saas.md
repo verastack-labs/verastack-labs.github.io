@@ -2,6 +2,7 @@
 title: AI search for SaaS: what ChatGPT reads before it recommends you
 description: Buyers now ask ChatGPT and Perplexity which tool to use. What those answers are built from, and the five fixes that get your product named.
 date: 2026-10-17
+time: 09:30
 category: ai-search
 hook: Not sure how your SaaS reads to ChatGPT? Book a free 20-minute call and we'll walk through your homepage with you, live.
 hookCta: Book a 20-min call | call

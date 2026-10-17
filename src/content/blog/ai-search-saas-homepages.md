@@ -2,11 +2,12 @@
 title: AI search scores of 26 SaaS homepages
 description: Four perfect scores, four pages that are blank to crawlers. How 26 SaaS homepages read to ChatGPT and AI answers, and the three fixes that separate the top from the rest.
 date: 2026-10-17
+time: 11:25
 category: studies
 hook: Founders: send us your homepage and we'll tell you, on a free 20-minute call, exactly what's keeping it out of AI answers.
 hookCta: Book a 20-min call | call
 checkCompare: The median SaaS homepage in our study scored 77.5, and four scored 100. Where does yours land?
-tags: AI search, SaaS, study
+tags: AI search, SaaS
 ---
 
 Earlier today we published [how 96 Indian D2C stores read to AI search](/blog/ai-search-indian-d2c-brands). Shopify gave those stores a solid, similar floor: a median of 75 and a narrow spread. SaaS homepages are built every which way, so we expected a wider range. We got one.

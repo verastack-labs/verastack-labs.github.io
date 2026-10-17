@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { HOOK_MARKER, allPosts, formatDate, postBySlug, readingMinutes } from '@/lib/blog'
+import { categoryById } from '@/data/blog-categories'
+import { HOOK_MARKER, allPosts, formatDate, postBySlug, published, readingMinutes } from '@/lib/blog'
 import { PostCheck, PostHook } from '@/app/blog/post-extras'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { shareImage, site } from '@/data/site'
@@ -37,12 +38,13 @@ export default async function PostPage({ params }: Props) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    datePublished: post.date,
+    datePublished: published(post),
     url: `${site.url}/blog/${post.slug}/`,
     keywords: post.tags.join(', '),
     author: { '@type': 'Person', '@id': `${site.url}/#founder`, name: site.founderName, url: `${site.url}/founder/` },
     publisher: studioNode(),
   }
+  const category = categoryById(post.category)
   return (
     <main id="main" className={styles.page}>
       <span id="top" />
@@ -53,8 +55,24 @@ export default async function PostPage({ params }: Props) {
       <header className={styles.postHead}>
         <p className={styles.itemMeta}>
           {formatDate(post.date)} · {readingMinutes(post.words)} min read
-          {post.tags.length > 0 && <> · {post.tags.join(' · ')}</>}
         </p>
+        <ul className={styles.tags} aria-label="Category and tags">
+          {category && (
+            <li>
+              <Link className={styles.tagCat} href={`/blog/category/${category.id}`}>
+                {category.name}
+              </Link>
+            </li>
+          )}
+          {/* A tag that repeats the category is dropped; each starts with a capital. */}
+          {post.tags
+            .filter((t) => t.toLowerCase() !== category?.name.toLowerCase())
+            .map((t) => (
+              <li key={t} className={styles.tag}>
+                {t.charAt(0).toUpperCase() + t.slice(1)}
+              </li>
+            ))}
+        </ul>
         <p className={styles.byline}>
           by <Link href="/founder">{site.founderName}</Link>
         </p>

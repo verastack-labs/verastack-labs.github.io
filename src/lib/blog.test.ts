@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { allPosts, parsePost, readingMinutes } from '@/lib/blog'
+import { allPosts, parsePost, published, readingMinutes } from '@/lib/blog'
 import sitemap from '@/app/sitemap'
 
 describe('blog', () => {
@@ -24,6 +24,7 @@ describe('blog', () => {
     expect(posts.length).toBeGreaterThan(0)
     for (const p of posts) {
       expect(p.date).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+      if (p.time) expect(p.time).toMatch(/^([01]\d|2[0-3]):[0-5]\d$/)
       expect(Number.isNaN(Date.parse(p.date))).toBe(false)
       expect(p.description.length).toBeGreaterThan(70)
       expect(p.description.length).toBeLessThanOrEqual(170)
@@ -36,7 +37,9 @@ describe('blog', () => {
     const urls = sitemap().map((e) => e.url)
     expect(urls).toContain('https://verastack.dev/blog/')
     for (const p of allPosts()) expect(urls).toContain(`https://verastack.dev/blog/${p.slug}/`)
-    const dates = allPosts().map((p) => p.date)
-    expect([...dates].sort().reverse()).toEqual(dates)
+    const stamps = allPosts().map(published)
+    expect([...stamps].sort().reverse()).toEqual(stamps)
+    // Same-day posts: the newest leads.
+    expect(allPosts()[0].slug).toBe('spot-the-slop')
   })
 })
