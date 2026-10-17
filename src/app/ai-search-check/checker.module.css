@@ -143,37 +143,41 @@
   .badge { justify-self: start; padding: 3px 12px; }
 }
 
-/* The locked part of the report: names visible, details blurred, one way in. */
+/* The locked part of the report: the list carries on from the top fixes and fades out, row by
+   row, and the unlock card rises from the bottom of the fade. */
 .locked { position: relative; }
-.more { color: var(--alert); }
-.blur { filter: blur(5px); user-select: none; }
-.locked .list { -webkit-mask-image: linear-gradient(#000 45%, transparent); mask-image: linear-gradient(#000 45%, transparent); }
-.lockBar {
+.fade { border-top: 0; -webkit-mask-image: linear-gradient(#000 10%, transparent 92%); mask-image: linear-gradient(#000 10%, transparent 92%); }
+.fade li { opacity: calc(0.8 - var(--i) * 0.22); filter: blur(calc(1.5px + var(--i) * 1.5px)); user-select: none; }
+.lockCard {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 24px;
-  margin-top: -24px;
-  padding: 22px;
+  margin-top: 32px;
+  padding: 30px 28px;
   border: 1px solid var(--alert);
-  border-radius: 16px;
-  background: var(--surface);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 107, 74, 0.08), rgba(255, 107, 74, 0) 60%), var(--surface);
+  box-shadow: 0 -30px 60px -10px var(--ink);
 }
-.lockBar p { flex: 1 1 320px; margin: 0; font-size: 16px; line-height: 1.5; color: var(--text); }
+.lockCard[data-over='true'] { margin-top: -60px; }
+.lockTitle { margin: 0 0 10px; max-width: 26ch; font-weight: 800; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.08; letter-spacing: -0.04em; color: var(--text); overflow-wrap: anywhere; }
+.lockTitle span { color: var(--alert); }
+.lockText { max-width: 56ch; margin: 0 0 22px; font-size: 16px; line-height: 1.55; color: var(--muted); }
 .unlock {
-  flex: none;
-  height: 52px;
-  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 26px;
   border: 0;
   border-radius: 999px;
   background: var(--signal);
   color: var(--ink);
   font: 700 15px var(--font-body);
   cursor: pointer;
-  transition: transform 0.2s;
+  box-shadow: 0 10px 30px -12px rgba(212, 255, 63, 0.6);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.unlock:hover { transform: translateY(-1px); }
+.unlock:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -12px rgba(212, 255, 63, 0.75); }
+@media (max-width: 520px) { .unlock { width: 100%; justify-content: center; } .lockCard { padding: 24px 20px; } }
 
 /* The unlock dialog: centred on desktop, a bottom sheet on phones. */
 .gateDialog {
@@ -220,3 +224,16 @@
 @media (prefers-reduced-motion: reduce) { .gateDialog[open] { animation: none; } }
 :global(html[data-motion='static']) .gateDialog[open] { animation: none; }
 .input[aria-invalid='true'] { border-color: var(--alert); }
+
+/* What the check looks at, collapsed: three in full, three fading and blurring away beneath them,
+   the rest folded away (still in the HTML) until the visitor opens the list. */
+.preview { position: relative; }
+.preview[data-open='false'] .explain li[data-hidden='true'] { display: none; }
+.explain li[data-fade] { user-select: none; pointer-events: none; }
+.explain li[data-fade='1'] { opacity: 0.6; filter: blur(1px); }
+.explain li[data-fade='2'] { opacity: 0.35; filter: blur(2.5px); }
+.explain li[data-fade='3'] { opacity: 0.15; filter: blur(4px); border-bottom-color: transparent; }
+.previewMore { position: relative; margin-top: -40px; padding: 30px 0 0; background: linear-gradient(180deg, rgba(11, 12, 10, 0), var(--ink) 38%); }
+.previewMore p { max-width: 62ch; margin: 0 0 14px; font-size: 15.5px; line-height: 1.55; color: var(--muted); }
+.previewMore b { color: var(--text); }
+
