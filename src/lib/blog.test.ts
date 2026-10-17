@@ -40,6 +40,6 @@ describe('blog', () => {
     const stamps = allPosts().map(published)
     expect([...stamps].sort().reverse()).toEqual(stamps)
     // Same-day posts: the newest leads.
-    expect(allPosts()[0].slug).toBe('spot-the-slop')
+    expect(published(allPosts()[0])).toBe([...stamps].sort().at(-1))
   })
 })

@@ -6,6 +6,7 @@ export const blogCategories: BlogCategory[] = [
   { id: 'ai-search', name: 'AI search', phrase: 'getting named by ChatGPT and Google' },
   { id: 'studies', name: 'Studies', phrase: 'what we measured, with the data' },
   { id: 'launches', name: 'Launches', phrase: 'shipping launches that hold up' },
+  { id: 'startups', name: 'Startups', phrase: "who's raising, building and shipping" },
   { id: 'design', name: 'Design', phrase: 'brands that look like themselves' },
 ]
 

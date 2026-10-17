@@ -158,6 +158,12 @@ Content (placeholders are in the design until these arrive):
     score a band sells the fix: under 100, "Get it to 100" (price on request, contact form with
     "to show up in AI search" picked); at 100, the citation audit. The old "Want it fixed?" block
     is gone.
+  - [x] Startup series started (2026-10-17): the leads chat scouts weekly
+    (`social-docs/research/startups/`); we verify, scan and write. New Startups category. First post
+    "AI search scores of YC Summer 2026, by space" (`docs/study/yc-s26/`). Next: "Funded this
+    fortnight" on back-office agents, from the 17 Oct scout file.
+  - [ ] SaaS Launch Kit (proposal, not built): research in `docs/launch-kit-research.md`; waiting on
+    Rigan for timeline, capacity, refund guarantee, price point, equity and build tool.
   - [x] Blog order and tags (2026-10-17): posts carry an optional `time:` (IST, HH:MM) so same-day
     posts sort newest first (a test holds it); JSON-LD datePublished includes it. Inside a post, the
     category and tags are bordered pills under the date (the category highlighted, linking to its
@@ -175,9 +181,8 @@ Content (placeholders are in the design until these arrive):
     Bookwell: Lovable built one page from one prompt (live at bookwell-launchpad-app.lovable.app, in
     Rigan's Lovable account; scored 54), and we built ours at /examples/bookwell/ (own brand,
     banner saying it is an example, out of the sitemap; scores 100). The post names no real
-    clinic and does not repeat the AI page's invented testimonials. An empty Framer project,
-    "Stupendous Skills", was created by accident in Rigan's Framer (Framer AI was out of credits);
-    archive it when convenient.
+    clinic and does not repeat the AI page's invented testimonials. An empty Framer project made by
+    accident ("Stupendous Skills") was archived and then deleted by Rigan.
   - [x] No page shift on Android scroll-direction changes (2026-10-17): full-screen scenes (hero,
     Services, Work, Products, Process) and the body used `100dvh`, which grows and shrinks as
     Chrome's address bar hides and shows, shifting everything below and putting the pinned scenes
