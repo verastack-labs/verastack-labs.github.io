@@ -1,4 +1,5 @@
 import { faq } from '@/data/faq'
+import { founder } from '@/data/founder'
 import { mods, modsLicense } from '@/data/mods'
 import { allPosts } from '@/lib/blog'
 import { checker } from '@/data/ai-search-check'
@@ -66,7 +67,16 @@ export function homeGraph(): Node {
           })),
         ],
       },
-      { '@type': 'Person', '@id': ids.founder, name: site.founderName, url: site.founderUrl },
+      {
+        '@type': 'Person',
+        '@id': ids.founder,
+        name: site.founderName,
+        url: `${site.url}${founder.path}/`,
+        image: `${site.url}${founder.photo.src}`,
+        jobTitle: 'Founder',
+        worksFor: { '@id': ids.studio },
+        sameAs: founder.sameAs,
+      },
       { '@type': 'WebSite', '@id': ids.website, name: site.name, url: `${site.url}/`, publisher: { '@id': ids.studio } },
       {
         '@type': 'FAQPage',
@@ -98,13 +108,14 @@ export function llmsText(): string {
     '',
     `> ${site.description}`,
     '',
-    `Founded by ${site.founderName} (${site.founderUrl}), based in ${site.basedIn}, working with clients anywhere.`,
+    `Founded by ${site.founderName} (${site.url}${founder.path}/), based in ${site.basedIn}, working with clients anywhere.`,
     '',
     '## Key pages',
     '',
     `- [Home](${site.url}/): services, work, products and how we work`,
     `- [Free AI search check](${site.url}${checker.path}/): score a page for AI search`,
     `- [Blog](${site.url}/blog/): notes on launches and AI search`,
+    `- [The founder](${site.url}${founder.path}/): who you work with, on every call`,
     `- [Start a project](${site.url}/#contact)`,
     '',
     '## Services',

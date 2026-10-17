@@ -45,6 +45,8 @@ export function SiteFooter() {
           <br />
           <Link href="/ai-search-check">free AI search check</Link>
           <br />
+          <Link href="/founder">founder</Link>
+          <br />
           <a href={site.githubUrl}>GitHub ↗</a>
           <br />
           <a href={site.founderUrl}>founder&apos;s portfolio ↗</a>
