@@ -10,7 +10,7 @@ import { site } from '@/data/site'
 import { EMAIL_WARNING, isEmail } from '@/lib/enquiry'
 import { FINE_QUERY } from '@/lib/motion/mode'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
-import { OFFER_DELAY_MS, OFFER_SCROLL, offerDue, readLastShown, scrollDepth, writeLastShown } from '@/lib/offer'
+import { countPage, markOfferDone, offerDone, offerDue, offerMoment, readLastShown, writeLastShown } from '@/lib/offer'
 import styles from '@/components/offer/offer.module.css'
 
 // Matches the exit transition on .dialog in offer.module.css.
@@ -203,7 +203,7 @@ function CheckForm({ onGo }: { onGo: (url: string) => void }) {
 }
 
 // The site-wide offer: a free product video application and the free AI search check, in a dialog
-// that opens by itself at most once a week (src/lib/offer.ts), never on load. Once closed, a pill
+// that opens by itself at a natural pause, at most once every 14 days (src/lib/offer.ts). Once closed, a pill
 // at the bottom right reopens it. On the checker page only the video offer shows.
 export function Offer() {
   const pathname = usePathname()
@@ -212,10 +212,18 @@ export function Offer() {
   const dialog = useRef<HTMLDialogElement>(null)
   const pill = useRef<HTMLButtonElement>(null)
   const hydrated = useHydrated()
-  // waiting: not shown yet this week; open; pill: closed, or shown within the last 7 days.
+  // waiting: due and not shown yet; open; pill: closed, shown in the last 14 days, or done with.
   const [phase, setPhase] = useState<'waiting' | 'open' | 'pill'>(() =>
-    typeof window !== 'undefined' && !offerDue(readLastShown(), Date.now()) ? 'pill' : 'waiting',
+    typeof window !== 'undefined' && !offerDue(readLastShown(), Date.now(), offerDone()) ? 'pill' : 'waiting',
   )
+  // Pages seen in this visit, counted on each arrival.
+  const pages = useRef(0)
+  const counted = useRef<string | null>(null)
+  useEffect(() => {
+    if (counted.current === pathname) return
+    counted.current = pathname
+    pages.current = countPage()
+  }, [pathname])
   // The content stays mounted until the exit animation has played, then unmounts.
   const [mounted, setMounted] = useState(false)
   const unmount = useRef<number | undefined>(undefined)
@@ -249,39 +257,46 @@ export function Offer() {
     release()
   }, [release])
 
-  // The triggers: half the page scrolled, 30 seconds, or (with a mouse) the pointer leaving through
-  // the top. Whichever comes first wants the offer; it opens once nothing on the page is busy.
+  // The triggers (src/lib/offer.ts): a laptop pointer heading for the tabs, or a pause in
+  // scrolling once the visitor has read past Work on the home page or spent 45 seconds on a later
+  // page. Checked every half second; it opens once nothing on the page is busy.
   useEffect(() => {
     if (phase !== 'waiting') return
-    let wanted = false
-    let retry: number | undefined
-    const tryOpen = () => {
-      if (wanted && !pageBusy()) open(false)
-    }
-    const want = () => {
-      if (wanted) return
-      wanted = true
-      tryOpen()
-      retry = window.setInterval(tryOpen, 1000)
+    const arrived = Date.now()
+    let lastScroll = 0
+    let exitIntent = false
+    const check = () => {
+      const work = pathname === '/' ? document.getElementById('work') : null
+      const now = Date.now()
+      const due = offerMoment({
+        exitIntent,
+        idleMs: now - lastScroll,
+        onHome: pathname === '/',
+        pastWork: !!work && work.getBoundingClientRect().bottom < window.innerHeight * 0.3,
+        readMs: now - arrived,
+        pagesThisVisit: pages.current,
+      })
+      if (due && !pageBusy()) open(false)
     }
     const onScroll = () => {
-      const doc = document.documentElement
-      if (scrollDepth(window.scrollY, window.innerHeight, doc.scrollHeight) >= OFFER_SCROLL) want()
+      lastScroll = Date.now()
     }
     const onLeave = (e: MouseEvent) => {
-      if (!e.relatedTarget && e.clientY <= 0) want()
+      if (!e.relatedTarget && e.clientY <= 0) {
+        exitIntent = true
+        check()
+      }
     }
-    const timer = window.setTimeout(want, OFFER_DELAY_MS)
-    const exitIntent = window.matchMedia(FINE_QUERY).matches
+    const poll = window.setInterval(check, 500)
+    const exitWatch = window.matchMedia(FINE_QUERY).matches
     window.addEventListener('scroll', onScroll, { passive: true })
-    if (exitIntent) document.documentElement.addEventListener('mouseleave', onLeave)
+    if (exitWatch) document.documentElement.addEventListener('mouseleave', onLeave)
     return () => {
-      window.clearTimeout(timer)
-      window.clearInterval(retry)
+      window.clearInterval(poll)
       window.removeEventListener('scroll', onScroll)
       document.documentElement.removeEventListener('mouseleave', onLeave)
     }
-  }, [phase, open])
+  }, [phase, open, pathname])
 
   useEffect(() => {
     const d = dialog.current
@@ -360,7 +375,13 @@ export function Offer() {
                 </h2>
                 <p className={styles.body}>{offer.video.body}</p>
                 <p className={styles.proof}>{offer.video.proof}</p>
-                <VideoForm sent={applied} onSent={() => setApplied(true)} />
+                <VideoForm
+                  sent={applied}
+                  onSent={() => {
+                    markOfferDone()
+                    setApplied(true)
+                  }}
+                />
               </section>
               {showCheck && (
                 <section className={styles.card} aria-labelledby="offer-check">
