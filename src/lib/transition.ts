@@ -18,6 +18,7 @@ export function shouldCurtain(from: string, to: string, firstLoad: boolean): boo
   return pathOf(url.pathname) !== pathOf(here.pathname)
 }
 
-// Curtain timing, in ms: it covers, the route changes underneath, then it lifts away.
-export const CURTAIN_IN_MS = 260
-export const CURTAIN_OUT_MS = 420
+// Curtain timing, in ms: it covers, the route changes underneath, then it lifts away. Keep in step with
+// the animation durations in transition.module.css (slowed a notch on 2026-10-18 at Rigan's request).
+export const CURTAIN_IN_MS = 380
+export const CURTAIN_OUT_MS = 620
