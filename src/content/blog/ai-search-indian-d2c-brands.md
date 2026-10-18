@@ -36,7 +36,7 @@ That is a better start than we expected, and the reason is mostly Shopify. Most 
 
 **1. The homepage doesn't say what you sell, in a form machines read.** 91 of 96 homepages have no structured data for their products: no Product, no ItemList, no Offer. Product pages often have it; the homepage, which is where a model starts when someone asks about the brand, usually describes only the company and the website. Adding an ItemList of best sellers, or Product data for the hero range, fixes it.
 
-**2. No answers to the questions shoppers ask.** 71 of 96 have no FAQ at all, and another 14 have questions on the page but no FAQPage markup. Question-and-answer pairs are the easiest thing for an AI answer to lift and quote. "Is it safe for sensitive skin?", "How long does delivery take in Bangalore?", "What's the difference between the two blends?" Five of those, answered in a sentence or two each, marked up as FAQPage.
+**2. No answers to the questions shoppers ask.** 71 of 96 have no FAQ at all, and another 14 have questions on the page but no FAQPage markup. Short, plain answers to real questions are easy for an AI answer to lift and quote. "Is it safe for sensitive skin?", "How long does delivery take in Bangalore?", "What's the difference between the two blends?" Five of those, answered in a sentence or two each, marked up as FAQPage.
 
 The smaller ones: 51 meta descriptions are too long, too short or written as a keyword list, and 41 titles are outside the length a results page shows in full. Each is a ten-minute fix.
 

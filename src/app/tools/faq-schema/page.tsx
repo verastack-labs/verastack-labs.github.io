@@ -28,8 +28,8 @@ const questions = [
     a: 'FAQPage structured data: a few lines of JSON-LD that label each question and its answer on your page, so search engines and AI answers can read them as pairs instead of guessing.',
   },
   {
-    q: 'Does FAQ schema still matter now that Google shows fewer FAQ rich results?',
-    a: 'Yes, for a different reason. Since 2023 Google shows FAQ rich results mainly for government and health sites, but AI answers still read and quote clean question and answer pairs. The markup tells them exactly where each answer starts and ends.',
+    q: 'Will FAQ schema get me cited by ChatGPT?',
+    a: 'Not on its own, and we would rather say so. Google says AI answers need no special structured data, and a 2026 Ahrefs test of 1,885 pages found adding JSON-LD alone did not raise AI citations. What helps is the answers themselves: plain, specific replies to the questions buyers ask, on the page. The markup is good practice that labels those answers clearly and matches what Google expects, so write the answers first and add it in a minute.',
   },
   {
     q: 'Where do I put the code?',
@@ -81,8 +81,8 @@ export default function FaqSchemaPage() {
         <b className={styles.big} data-m="count">
           {faq.nonePct}%
         </b>{' '}
-        of the {faq.total} homepages we checked have no FAQ an AI answer can quote. Write the questions your buyers ask and get the
-        structured data that labels each answer, plus the HTML to show it. Free, no sign-up.
+        of the {faq.total} homepages we checked answer none of their buyers&apos; questions on the page. Write those answers here and
+        get the HTML to show them, plus the structured data that labels them. Free, no sign-up.
       </p>
 
       <FaqBuilder />
@@ -106,9 +106,13 @@ export default function FaqSchemaPage() {
             </span>
           </div>
           <div>
-            <b>1 answer</b>
+            <b>8% vs 15%</b>
             <span>
-              is what an AI assistant gives a buyer, not ten links. Clean question and answer pairs are the easiest thing for it to quote.
+              People clicked a normal search result on 8% of visits when Google showed an AI summary, and on 15% when it did not.{' '}
+              <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener">
+                Pew Research, 2025
+              </a>
+              . The answer is the new front page.
             </span>
           </div>
         </div>
