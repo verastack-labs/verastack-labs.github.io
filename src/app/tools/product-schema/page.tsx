@@ -11,7 +11,7 @@ const path = '/tools/product-schema'
 const sells = gap('structured')
 
 const title = 'Free product and service schema generator'
-const description = `Say what you sell in one sentence AI answers can quote, and get the matching SoftwareApplication, Service or Product structured data, free. ${sells.nonePct}% of ${sells.total} homepages we checked describe nothing they sell.`
+const description = `Say what you sell, for whom and from what price in one plain sentence, and get the matching SoftwareApplication, Service or Product structured data, free. ${sells.nonePct}% of ${sells.total} homepages we checked describe nothing they sell.`
 
 export const metadata: Metadata = {
   title: 'Free product and service schema generator · VeraStack Labs',
@@ -28,7 +28,7 @@ const questions = [
   },
   {
     q: 'Will the structured data get me cited by ChatGPT?',
-    a: 'Not on its own. Google says AI answers need no special markup, and a 2026 Ahrefs test found adding JSON-LD alone did not raise AI citations. The sentence on the page is what an answer can quote. The markup is good practice that keeps your prices and category unambiguous.',
+    a: 'Not on its own. Google says AI answers need no special markup, and a 2026 Ahrefs test found adding JSON-LD alone did not raise AI citations. The sentence on the page is what readers, and crawlers, actually read. The markup is good practice that keeps your prices and category unambiguous.',
   },
   {
     q: 'Should I publish my prices?',

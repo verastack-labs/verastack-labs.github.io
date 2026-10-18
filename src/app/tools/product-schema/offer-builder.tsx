@@ -159,7 +159,7 @@ export function OfferBuilder() {
         </div>
 
         <div className={styles.output}>
-          <p className={styles.count}>1. Say it on the page (this is what an AI answer quotes)</p>
+          <p className={styles.count}>1. Say it on the page (what readers and crawlers actually read)</p>
           <p className={styles.sentence}>{sentence}</p>
           <div className={styles.actions}>
             <Copy text={sentence} label="Copy the sentence" />

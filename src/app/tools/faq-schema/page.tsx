@@ -11,7 +11,7 @@ import styles from '@/app/tools/tool.module.css'
 const path = '/tools/faq-schema'
 const faq = gap('faq')
 
-const title = 'Free FAQ schema generator: get quoted in AI answers'
+const title = 'Free FAQ schema generator: answer what buyers ask'
 const description = `Write the questions buyers ask and get FAQPage structured data plus matching HTML, free. ${faq.nonePct}% of the ${faq.total} homepages we checked have none.`
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ const questions = [
   },
   {
     q: 'How many questions should I add?',
-    a: 'Five to ten real questions buyers ask: price, who it is for, how it compares, how long it takes, what happens if it goes wrong. Short answers of one or two sentences get quoted most.',
+    a: 'Five to ten real questions buyers ask: price, who it is for, how it compares, how long it takes, what happens if it goes wrong. Keep each answer to one or two plain sentences.',
   },
   {
     q: 'Is this tool free?',
@@ -72,16 +72,16 @@ export default function FaqSchemaPage() {
         /tools/faq-schema <em>{'//'}</em> free, runs in your browser
       </p>
       <h1 className={styles.title} data-m="lines">
-        <span className={styles.line}>Get quoted in</span>
+        <span className={styles.line}>Answer what</span>
         <span className={styles.line}>
-          <em>AI answers.</em>
+          <em>buyers ask.</em>
         </span>
       </h1>
       <p className={styles.lede}>
         <b className={styles.big} data-m="count">
           {faq.nonePct}%
         </b>{' '}
-        of the {faq.total} homepages we checked answer none of their buyers&apos; questions on the page. Write those answers here and
+        of the {faq.total} homepages we checked have no FAQ on the homepage. Write the answers to what your buyers ask here and
         get the HTML to show them, plus the structured data that labels them. Free, no sign-up.
       </p>
 
@@ -95,7 +95,7 @@ export default function FaqSchemaPage() {
           <div>
             <b data-m="count">{faq.nonePct}%</b>
             <span>
-              of {faq.total} homepages we scanned in October 2026 have no FAQ at all: YC startups, SaaS, D2C stores, even software
+              of {faq.total} homepages we scanned in October 2026 have no FAQ on the homepage: YC startups, SaaS, D2C stores, even software
               studios.
             </span>
           </div>
@@ -120,7 +120,7 @@ export default function FaqSchemaPage() {
 
       <ToolBridge
         fixes="This fixes one of the sixteen checks"
-        detail="An FAQ helps an engine quote you. Whether ChatGPT names you over a competitor also depends on the other fifteen checks, the rest of your pages and what other sites say about you. That is what our AEO and GEO audit covers, and we make the fixes."
+        detail="An FAQ answers what buyers ask, in words any reader, or crawler, can find. Whether ChatGPT names you over a competitor also depends on the other fifteen checks, the rest of your pages and what other sites say about you. That is what our AEO and GEO audit covers, and we make the fixes."
       />
 
       <section className={styles.section} aria-labelledby="questions">
