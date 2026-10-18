@@ -3,6 +3,7 @@
 // GET /aeo-check?url=example.com returns JSON: the score, the top three fixes and a count of the rest.
 // With the studio's key in an X-Report-Key header it returns every check, for studies and summaries.
 
+import { crawlerView } from './crawler-view'
 import { decode, readPage } from './html'
 import { normaliseInput, publicUrl } from './guard'
 import { parseRobots, type Robots } from './robots'
@@ -95,7 +96,8 @@ function newestLastmod(xml: string | null): string | null {
   return stamps.sort((a, b) => Date.parse(b) - Date.parse(a))[0] ?? null
 }
 
-export async function check(input: string, selfHost: string) {
+// Fetches one public page safely and returns its HTML, or a CheckError a visitor can act on.
+async function fetchPage(input: string, selfHost: string): Promise<{ res: Response; url: URL; html: string }> {
   const start = publicUrl(normaliseInput(input), selfHost)
   if (!start) throw new CheckError('Enter a public website address, like example.com.', 400)
 
@@ -118,7 +120,17 @@ export async function check(input: string, selfHost: string) {
   const type = res.headers.get('content-type') ?? ''
   if (!/html/i.test(type)) throw new CheckError('That address did not return a web page.')
   const html = await readCapped(res)
+  return { res, url, html }
+}
 
+// The page as a crawler that skips JavaScript reads it (the "What ChatGPT sees" tool).
+export async function pageView(input: string, selfHost: string) {
+  const { url, html } = await fetchPage(input, selfHost)
+  return { url: url.href, checkedAt: new Date().toISOString(), ...crawlerView(html) }
+}
+
+export async function check(input: string, selfHost: string) {
+  const { res, url, html } = await fetchPage(input, selfHost)
   const origin = url.origin
   const [robotsText, llms, sitemapXml, botStatus] = await Promise.all([
     sideFile(origin, '/robots.txt', selfHost),
@@ -178,11 +190,36 @@ const worker = {
     const cors = corsHeaders(request, env)
     const { pathname, searchParams } = new URL(request.url)
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors })
-    if (pathname !== '/aeo-check') return json({ error: 'Not found.' }, 404, cors)
+    if (pathname !== '/aeo-check' && pathname !== '/page-view') return json({ error: 'Not found.' }, 404, cors)
     if (request.method !== 'GET') return json({ error: 'Use GET.' }, 405, cors)
 
     const input = searchParams.get('url') ?? ''
     if (!input || input.length > 2000) return json({ error: 'Enter a website address.' }, 400, cors)
+
+    // The crawler's-eye view: same guards, its own cache, the same rate limit.
+    if (pathname === '/page-view') {
+      const target = publicUrl(normaliseInput(input), env.SELF_HOST)
+      const viewKey = target ? new Request(`https://${env.SELF_HOST}/cache/page-view/v1?u=${encodeURIComponent(target.href)}`) : null
+      if (viewKey) {
+        const hit = await caches.default.match(viewKey)
+        if (hit) return json(await hit.json(), 200, cors)
+      }
+      if (env.LIMITER) {
+        const { success } = await env.LIMITER.limit({ key: request.headers.get('cf-connecting-ip') ?? 'unknown' })
+        if (!success) return json({ error: 'Too many checks at once. Wait a minute and try again.' }, 429, cors)
+      }
+      try {
+        const result = await pageView(input, env.SELF_HOST)
+        if (viewKey) {
+          const cached = new Response(JSON.stringify(result), { headers: { 'Content-Type': 'application/json', 'Cache-Control': `max-age=${CACHE_SECONDS}` } })
+          ctx.waitUntil(caches.default.put(viewKey, cached))
+        }
+        return json(result, 200, cors)
+      } catch (e) {
+        if (e instanceof CheckError) return json({ error: e.message }, e.status, cors)
+        return json({ error: 'Something went wrong while reading the page. Try again in a minute.' }, 500, cors)
+      }
+    }
 
     // Repeat checks of the same address within ten minutes come from the cache and cost nothing.
     // `fresh=1` (the page's "check again" after a fix) skips it, and counts against the rate limit.

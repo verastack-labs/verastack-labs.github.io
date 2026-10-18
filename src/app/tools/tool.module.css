@@ -87,3 +87,27 @@
 .currency { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font: 500 12px var(--font-mono); }
 .sentence { margin: 0; padding: 18px 20px; border: 1px solid var(--signal); border-radius: 14px; background: rgba(212, 255, 63, 0.06); font-weight: 700; font-size: 20px; line-height: 1.35; letter-spacing: -0.02em; }
 select.a { appearance: auto; }
+
+/* "What ChatGPT sees": the word count and verdict, then the page as a crawler reads it. */
+a.copy { display: inline-block; text-decoration: none; }
+.viewResult { display: grid; gap: 18px; margin-top: 24px; scroll-margin-top: 100px; }
+.viewHead { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: var(--ink); }
+.viewHead[data-tone='poor'] { border-color: var(--alert); }
+.viewHead[data-tone='good'] { border-color: var(--signal); }
+@media (max-width: 640px) { .viewHead { grid-template-columns: 1fr; gap: 12px; } }
+.viewWords { display: flex; flex-direction: column; margin: 0; font-weight: 800; font-size: clamp(56px, 7vw, 88px); line-height: 0.9; letter-spacing: -0.06em; }
+.viewHead[data-tone='poor'] .viewWords { color: var(--alert); }
+.viewHead[data-tone='fair'] .viewWords { color: var(--text); }
+.viewHead[data-tone='good'] .viewWords { color: var(--signal); }
+.viewWords small { margin-top: 8px; font: 500 11px var(--font-mono); letter-spacing: 0; color: var(--muted); }
+.viewVerdict { margin: 0 0 6px; font-weight: 800; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -0.035em; }
+.viewPane { display: grid; gap: 10px; }
+.viewDoc { max-height: 560px; overflow: auto; padding: 22px 24px; border: 1px dashed var(--line); border-radius: 16px; background: #f4f3ee; color: #1b1d18; font-family: 'Times New Roman', Georgia, serif; }
+.viewMeta { margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid #d6d4cc; font: 400 12.5px/1.6 var(--font-mono); color: #44463f; }
+.viewMeta em { color: #b3402a; }
+.viewEmpty { margin: 8px 0 0; font: 500 13px var(--font-mono); color: #b3402a; }
+.vH1 { margin: 14px 0 6px; font-size: 28px; font-weight: 700; line-height: 1.15; }
+.vH2 { margin: 14px 0 4px; font-size: 20px; font-weight: 700; line-height: 1.2; }
+.vP { margin: 0 0 8px; font-size: 16px; line-height: 1.5; }
+.vLi { margin: 0 0 4px; padding-left: 16px; font-size: 16px; line-height: 1.45; text-indent: -12px; }
+.vLi::before { content: '• '; }
