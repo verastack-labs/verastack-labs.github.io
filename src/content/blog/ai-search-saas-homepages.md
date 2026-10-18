@@ -7,6 +7,7 @@ category: studies
 hook: Founders: send us your homepage and we'll tell you, on a free 30-minute call, exactly what's keeping it out of AI answers.
 hookCta: Book a 30-min call | call
 checkCompare: The median SaaS homepage in our study scored 77.5, and four scored 100. Where does yours land?
+stat: 77.5 | median score of 26 SaaS homepages
 tags: AI search, SaaS
 ---
 

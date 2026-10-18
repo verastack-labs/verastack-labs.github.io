@@ -7,6 +7,7 @@ category: studies
 hook: Run a studio or an agency? Book a free 30-minute call and we'll show you, live, what ChatGPT says when a buyer asks for a team like yours.
 hookCta: Book a 30-min call | call
 checkCompare: The median software studio homepage scored 81 out of 100. Where does yours land?
+stat: 81 | median score of 25 studios
 tags: AI search, studios, AEO
 ---
 

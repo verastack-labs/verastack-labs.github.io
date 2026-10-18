@@ -39,8 +39,8 @@ describe('content', () => {
     expect(offenders).toEqual([])
   })
 
-  it('lists the seven sections in page order, each path matching its id', () => {
-    expect(sections.map((s) => s.id)).toEqual(['top', 'services', 'work', 'products', 'process', 'about', 'contact'])
+  it('lists the eight sections in page order, each path matching its id', () => {
+    expect(sections.map((s) => s.id)).toEqual(['top', 'services', 'work', 'products', 'process', 'about', 'notes', 'contact'])
     for (const s of sections) expect(s.path).toBe(s.id === 'top' ? '/intro' : `/${s.id}`)
   })
 

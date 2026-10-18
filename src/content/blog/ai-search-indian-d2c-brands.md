@@ -7,6 +7,7 @@ category: studies
 hook: Run a Shopify store? The median here was 75. Check yours in ten seconds; if it's under 80, the two fixes almost every store needs are a day's work, and we can do them for you.
 hookCta: Check my store | /tools/ai-search-check
 checkCompare: The median Indian D2C homepage in our study scored 75 out of 100. See where yours lands.
+stat: 75 | median score of 96 D2C stores
 tags: AI search, D2C, Shopify
 ---
 

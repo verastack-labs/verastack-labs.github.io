@@ -7,6 +7,7 @@ category: startups
 hook: Just raised? Launch week is when buyers, hires and journalists look you up, more and more by asking ChatGPT. Book a free 30-minute call and we'll go through your homepage before the announcement does the rounds.
 hookCta: Book a 30-min call | call
 checkCompare: Three of these six freshly funded startups scored 82 or more. See where your homepage lands.
+stat: $136.8M | raised in two weeks
 tags: funding, AI agents, AI search
 ---
 
