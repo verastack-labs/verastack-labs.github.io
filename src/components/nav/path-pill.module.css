@@ -175,3 +175,61 @@
   .pagePill:has(.segShort) .segLong { display: none; }
   .segShort { display: inline; }
 }
+
+/* The studio pages after the sections: a hairline in the row, a labelled group in the panel. */
+.divider { list-style: none; flex: none; width: 1px; height: 18px; margin: 0 6px; background: var(--pill-line); }
+.newDot { width: 6px; height: 6px; margin-left: 2px; border-radius: 50%; background: var(--signal); align-self: center; }
+.panelHead {
+  margin: 8px 0 0; padding: 10px 14px 4px; border-top: 1px solid var(--line);
+  font: 500 11px var(--font-mono); color: var(--muted);
+  opacity: 0; transition: opacity 0.25s; transition-delay: calc(0.05s + var(--i) * 40ms);
+}
+.panelOpen .panelHead { opacity: 1; }
+.newTag { margin-left: auto; align-self: center; padding: 3px 9px; border-radius: 999px; background: var(--signal); color: var(--ink); font: 500 10.5px var(--font-mono); letter-spacing: 0; }
+.panel a[aria-current='true'] .newTag { background: var(--ink); color: var(--signal); }
+
+/* Desktop: the Launch Kit button beside Start a project. */
+.kit {
+  flex: none; margin-left: 10px;
+  border: 1px solid currentColor; border-radius: 999px; padding: 9px 15px;
+  font: 600 13px var(--font-body); white-space: nowrap; text-decoration: none; color: inherit;
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: background 0.2s, color 0.2s;
+}
+.kit:hover { background: var(--signal); color: var(--ink); border-color: var(--signal); }
+.kit .newDot { margin: 0; }
+@media (max-width: 899px) { .kit { display: none; } }
+
+/* Pages away from home: the page pill opens the same menu as a dropdown. */
+.menuWrap { position: relative; }
+.pageMenuBtn { cursor: pointer; gap: 10px; color: inherit; font: inherit; }
+.pageMenuBtn .caret { width: 24px; height: 24px; }
+.dropdown {
+  position: absolute; top: 50px; left: 0; z-index: 49; width: 300px;
+  border-radius: 18px; border: 1px solid var(--pill-line);
+  background: color-mix(in srgb, var(--ink) 96%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  padding: 8px; display: grid; gap: 2px;
+  opacity: 0; transform: translateY(-6px); pointer-events: none;
+  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dropdown.panelOpen { opacity: 1; transform: none; pointer-events: auto; }
+.dropdown a { display: flex; align-items: baseline; gap: 12px; padding: 9px 12px; border-radius: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 17px; letter-spacing: -0.03em; }
+.dropdown a:hover, .dropdown a:focus-visible { background: color-mix(in srgb, var(--text) 8%, transparent); }
+.dropdown a[aria-current='true'] { background: var(--signal); color: var(--ink); }
+.dropdown a small { font: 500 11px var(--font-mono); color: var(--muted); min-width: 18px; }
+.dropdown .panelHead { opacity: 1; margin-top: 4px; }
+.dropdown .panelHead:first-child { margin-top: 0; border-top: 0; padding-top: 4px; }
+@media (max-width: 640px) {
+  .dropdown { position: fixed; left: 14px; right: 14px; top: 66px; width: auto; }
+  .dropdown a { font-size: 22px; padding: 12px 14px; }
+}
+
+/* With the studio group the panel runs long: it scrolls on short phones, links sit a little
+   tighter, and on wider screens without room for the row it opens as a dropdown at the right. */
+.panel, .dropdown { max-height: calc(100svh - 80px); overflow-y: auto; overscroll-behavior: contain; background: var(--ink); }
+.panel a { padding: 10px 14px; font-size: 20px; }
+@media (min-width: 641px) {
+  .panel { left: auto; right: 20px; width: 320px; }
+  .panel a { font-size: 17px; padding: 9px 12px; }
+}
