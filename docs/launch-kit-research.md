@@ -2,7 +2,7 @@
 
 Desk research for a packaged launch offer (brand, launch site, launch film, AI search setup, then an
 optional monthly plan). Every figure below came from a linked source in the research run; prices
-are vendors' own published figures. Not yet a decision.
+are vendors' own published figures. Decided on 18 Oct 2026: see `docs/launch-kit.md`.
 
 ## What comparable offers charge
 - Designjoy: unlimited design requests, $4,995/mo, pause any time, "75% back" in week one
@@ -33,6 +33,6 @@ are vendors' own published figures. Not yet a decision.
 - Headline direction: "Launch-ready in 4 weeks: brand, site, launch film, and found in ChatGPT on
   day one."
 
-## Rigan to decide
-Timeline and kits per month; whether to refund for delays; price point; equity (yes/no, cash
-floor); proof of AEO results to show; build tool (code, Framer or Webflow).
+## Rigan decided (18 Oct 2026)
+See `docs/launch-kit.md`: $9,500, 4 weeks, two a month, capped late-week refund, equity case by
+case with a cash floor, a 90+ score promise, code by default, and a $2,500/mo plan.
