@@ -256,3 +256,10 @@
 .beyondList li { padding: 20px 20px 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
 .beyondList b { display: block; margin-bottom: 6px; font-weight: 700; font-size: 16.5px; }
 .beyondList span { font-size: 15px; line-height: 1.5; color: var(--muted); }
+
+/* Wide screens: the page uses the width (like the blog index), the field stays a comfortable length. */
+@media (min-width: 1100px) {
+  .page { max-width: 1180px; padding-left: 40px; padding-right: 40px; }
+  .form { max-width: 820px; }
+  .note { max-width: 820px; }
+}
