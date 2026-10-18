@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${site.url}/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
     { url: `${site.url}/tools/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${site.url}/tools/organization-schema/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${site.url}/tools/what-ai-sees/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${site.url}/tools/product-schema/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${site.url}/tools/faq-schema/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },

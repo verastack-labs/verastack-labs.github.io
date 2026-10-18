@@ -220,7 +220,10 @@ Content (placeholders are in the design until these arrive):
       that skips JavaScript reads it; the page shows the word count, a verdict in the checker's bands
       and the text itself. 34% of 379 homepages send under 500 words, 17% under 200. Source for
       crawlers not rendering JavaScript: Vercel, Dec 2024.
-    - [ ] 4. Organization markup generator.
+    - [x] 4. Organization schema generator at /tools/organization-schema (2026-10-19): the about line
+      for the page first, then Organization JSON-LD (logo, founding year, place, founders, contact,
+      de-duplicated sameAs links with the platform recognised); 53% of 379 homepages have it missing
+      or unlinked, 39% none.
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).

@@ -116,6 +116,7 @@ export function llmsText(): string {
     `- [SaaS Launch Kit](${site.url}/launch-kit/): brand, launch site, launch film, AEO and GEO; 4 weeks, $9,500 fixed (25% off, $7,125, booked by 31 December 2026); a smaller Launch Site kit from $4,500`,
     `- [Free tools](${site.url}/tools/): free tools for launches and AI search`,
     `- [Free AEO and GEO check](${site.url}${checker.path}/): score a page for AI search`,
+    `- [Free Organization schema generator](${site.url}/tools/organization-schema/): who your company is, with its profiles linked`,
     `- [What ChatGPT sees](${site.url}/tools/what-ai-sees/): a page the way AI crawlers read it, without JavaScript`,
     `- [Free product and service schema generator](${site.url}/tools/product-schema/): one sentence that says what you sell, and its structured data`,
     `- [Free FAQ schema generator](${site.url}/tools/faq-schema/): FAQPage structured data and HTML from your questions`,
