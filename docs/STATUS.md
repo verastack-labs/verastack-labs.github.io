@@ -112,16 +112,6 @@ Content (placeholders are in the design until these arrive):
   `status: 'live'`, add media and the live link, decide headliner or supporting, and quote
   metrics honestly or not at all.
 
-- [x] Blog post "Funded this fortnight: six AI agents for the back office" (2026-10-18, Startups):
-  Hone, Duvo, Causa Prima, Clueso, Forgepoint and Shamrock AI, $136.8M, rounds fact-checked; top three
-  AI search scores named (Clueso 100, Duvo 90, Causa Prima 82), the rest private. Data in
-  `docs/study/funded-2026-10/`. Next edition after 31 Oct.
-
-- [x] AEO and GEO used together everywhere (Rigan, 2026-10-18): checker title, description, label and
-  lede; FAQ adds "What is GEO?" and "AEO vs GEO vs SEO"; audit pitch, services blurb, home FAQ, site
-  description and the report email. New post "GEO is the new SEO: what changes and what doesn't"
-  (AI search category), for Rigan's profile.
-
 ## Planned, not started
 
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
@@ -134,6 +124,14 @@ Content (placeholders are in the design until these arrive):
     description, date, tags), static pages with BlogPosting structured data, in the sitemap and
     llms.txt, linked from the footer. First post: "AI search for SaaS: what ChatGPT reads before it
     recommends you". To publish, add a .md file and open a PR.
+  - [x] Blog post "Funded this fortnight: six AI agents for the back office" (2026-10-18, Startups):
+    Hone, Duvo, Causa Prima, Clueso, Forgepoint and Shamrock AI, $136.8M, rounds fact-checked; top three
+    AI search scores named (Clueso 100, Duvo 90, Causa Prima 82), the rest private. Data in
+    `docs/study/funded-2026-10/`. Next edition after 31 Oct.
+  - [x] AEO and GEO used together everywhere (Rigan, 2026-10-18): checker title, description, label and
+    lede; FAQ adds "What is GEO?" and "AEO vs GEO vs SEO"; audit pitch, services blurb, home FAQ, site
+    description and the report email. New post "GEO is the new SEO: what changes and what doesn't"
+    (AI search category), for Rigan's profile.
   - [x] AI search check live at /ai-search-check (2026-10-17), freemium. A Cloudflare Worker in
     `workers/aeo-check` (custom domain api.verastack.dev, no workers.dev address) fetches one
     page plus robots.txt, llms.txt and sitemap.xml and runs twelve weighted checks (crawler
