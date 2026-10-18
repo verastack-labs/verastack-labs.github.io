@@ -64,7 +64,7 @@ export const kitQuestions: { q: string; a: string }[] = [
   },
   {
     q: 'Will ChatGPT name us?',
-    a: 'Nobody can promise that, and you should be wary of anyone who does. We promise a launch site that scores 90 or more on our AEO and GEO check, so engines can read and quote it. The monthly plan then tracks whether ChatGPT, Perplexity and Google name you, and works on it.',
+    a: 'Nobody can promise that, and you should be wary of anyone who does. We promise a launch site that scores 90 or more on our AEO and GEO check, so engines can read it. The monthly plan then tracks whether ChatGPT, Perplexity and Google name you, and works on it.',
   },
   {
     q: 'Is it only for SaaS?',
