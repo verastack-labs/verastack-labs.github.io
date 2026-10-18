@@ -227,6 +227,8 @@ Content (placeholders are in the design until these arrive):
   - [x] Claims rule (2026-10-18): no page, post or pitch promises being quoted or cited by AI. Markup
     is "good practice that labels"; numbers only from `docs/why-ai-search-numbers.md` or the scans.
     Study FAQ figures were counted under the old FAQ rule: quote them as "no FAQ on the homepage".
+  - [ ] 1 Jan 2027: redeploy so the Launch Kit's year-end offer (25% off, $7,125 and $3,375) comes
+    off the page; see `docs/launch-kit.md`.
   - [ ] Phone screenshot checks on Rigan's Android (paused at his request; adb wireless, port changes
     each reconnect): configurator and Pre-book strip, Work spacing, nav after Mehfil, curtain,
     checker, Launch Kit bar and India block, the new menu, and the shift check on portfolio and Origan.

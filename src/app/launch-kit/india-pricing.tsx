@@ -1,6 +1,7 @@
 'use client'
 
 import { useSyncExternalStore } from 'react'
+import { discounted, launchKit, usd, yearEndActive } from '@/data/launch-kit'
 import { site } from '@/data/site'
 import styles from '@/app/launch-kit/launch-kit.module.css'
 
@@ -55,7 +56,7 @@ export function KitBar() {
   return (
     <div className={styles.bar}>
       <p>
-        <b>$9,500</b>
+        <b>{usd(yearEndActive() ? discounted(launchKit.price) : launchKit.price)}</b>
         <span>{india ? 'regional pricing in India' : 'fixed, 4 weeks'}</span>
       </p>
       <a className={styles.barCta} href={callHref} target="_blank" rel="noopener">
