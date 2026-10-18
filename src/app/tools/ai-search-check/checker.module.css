@@ -239,7 +239,10 @@
    the rest folded away (still in the HTML) until the visitor opens the list. */
 .preview { position: relative; }
 .explain li[data-fade] { user-select: none; pointer-events: none; }
-.explain li[data-fade='1'] { opacity: 0.55; filter: blur(3px); }
+.explain li[data-half] span { -webkit-mask-image: linear-gradient(90deg, #000 35%, transparent 75%); mask-image: linear-gradient(90deg, #000 35%, transparent 75%); }
+.explain li[data-tease] { user-select: none; }
+.explain li[data-tease] b { opacity: 0.8; filter: blur(0.7px); }
+.explain li[data-tease] span { opacity: 0.45; filter: blur(3px); }
 .explain li[data-fade='2'] { opacity: 0.32; filter: blur(4.5px); }
 .explain li[data-fade='3'] { opacity: 0.15; filter: blur(6px); border-bottom-color: transparent; }
 .previewMore { position: relative; margin-top: -40px; padding: 30px 0 0; background: linear-gradient(180deg, rgba(11, 12, 10, 0), var(--ink) 38%); }
