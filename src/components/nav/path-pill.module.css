@@ -233,3 +233,11 @@
   .panel { left: auto; right: 20px; width: 320px; }
   .panel a { font-size: 17px; padding: 9px 12px; }
 }
+
+/* Phones: the menus run in two columns, so every item shows at once; headings and the call span both. */
+@media (max-width: 640px) {
+  .panel, .dropdown { grid-template-columns: 1fr 1fr; column-gap: 4px; }
+  .panel .panelHead, .panel .panelFoot, .dropdown .panelHead { grid-column: 1 / -1; }
+  .panel a, .dropdown a { font-size: 17px; padding: 10px 12px; }
+  .panel a small, .dropdown a small { min-width: 16px; }
+}
