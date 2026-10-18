@@ -57,7 +57,7 @@ The four perfect scores: [OpenTag](/tools/ai-search-check/?url=tryopentag.com), 
 
 The gaps are the same ones we keep finding, only wider:
 
-- **No FAQ:** 86% of homepages. Questions and answers are the easiest thing for an AI answer to quote.
+- **No FAQ:** 86% of homepages. The questions buyers ask go unanswered on the page.
 - **Nothing that describes the product to machines:** 80% have no Product, Service or SoftwareApplication data.
 - **No llms.txt:** 63%. It takes an hour to write.
 - **Nothing that says who the company is:** 49% have no Organization data, so a model has to guess whether "Atlas" or "Nova" is them or one of the dozen other companies with that name.
