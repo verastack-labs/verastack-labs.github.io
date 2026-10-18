@@ -6,12 +6,12 @@ time: 09:30
 category: ai-search
 hook: Not sure how your SaaS reads to ChatGPT? Book a free 30-minute call and we'll walk through your homepage with you, live.
 hookCta: Book a 30-min call | call
-tags: AI search, SaaS, SEO
+tags: AI search, SaaS, GEO
 ---
 
 Buyers still search, but more and more of them ask. "What's a good booking tool for a clinic in Bangalore?" "Which analytics tool works without cookies?" The answer comes back as a short list, and if your product isn't on it, a whole page of blue links you might have ranked in never gets seen.
 
-Getting onto that list is called answer engine optimisation, or AEO. It sounds new, but most of it is plain, careful SEO done for a reader that happens to be a model. Here is what that reader actually looks at, and what we'd fix first on a typical SaaS site.
+Getting onto that list is called answer engine optimisation (AEO) or, more and more, generative engine optimisation (GEO): [two names for nearly the same work](/blog/geo-is-the-new-seo). It sounds new, but most of it is plain, careful SEO done for a reader that happens to be a model. Here is what that reader actually looks at, and what we'd fix first on a typical SaaS site.
 
 ## 1. Let the crawlers in
 
@@ -58,4 +58,4 @@ Alongside that, Search Console still shows the classic side: which queries bring
 
 ---
 
-We do this work for clients as part of our AI search and SEO service, and our own site is the worked example: crawlers allowed, the story in plain HTML, labelled facts, an llms.txt. To see how one of your pages reads to an answer engine right now, run our [free AI search check](/ai-search-check). For the whole site, [tell us about it](/#contact).
+We do this work for clients as part of our AEO and GEO service, built on SEO, and our own site is the worked example: crawlers allowed, the story in plain HTML, labelled facts, an llms.txt. To see how one of your pages reads to an answer engine right now, run our [free AEO and GEO check](/ai-search-check). For the whole site, [tell us about it](/#contact).
