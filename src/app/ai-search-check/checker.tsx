@@ -13,7 +13,9 @@ import { markOfferDone } from '@/lib/offer'
 import styles from '@/app/ai-search-check/checker.module.css'
 
 type Check = { id: string; label: string; status: 'pass' | 'warn' | 'fail'; weight: number; detail: string; fix: string }
-type Report = { url: string; score: number; top: string[]; checks: Check[] }
+// The public answer: the top fixes in full and only a count of the rest. Every check's finding and
+// fix together are the audit; a visitor who wants more gets a summary by email from the studio.
+type Report = { url: string; score: number; top: Check[]; counts: { pass: number; warn: number; fail: number; total: number } }
 
 const verdict = (score: number) =>
   score >= 85
@@ -26,9 +28,9 @@ const tone = (score: number) => (score >= 85 ? 'good' : score >= 60 ? 'fair' : '
 
 const STATUS_WORD = { pass: 'pass', warn: 'improve', fail: 'fix' } as const
 
-// Stands in for a locked check's details. The real detail and fix never reach the page until the
-// report is unlocked, so the blur hides nothing worth reading in the source.
-const LOCKED_TEXT = 'What we found on your page, and the exact change that fixes it, open with the full report.'
+// Stands in for the checks that are not shown. The page never receives them, so the blurred rows
+// are placeholders and there is nothing to read in the source.
+const LOCKED_ROW = { label: 'Another thing keeping you out of AI answers', text: 'What we found on your page, and what it takes to fix it.' }
 
 // A padlock, for the unlock button.
 function LockIcon() {
@@ -75,10 +77,10 @@ export function Checker() {
   const [emailLeft, setEmailLeft] = useState(false)
   const [token, setToken] = useState<string | null>(null)
   const [captchaReset, setCaptchaReset] = useState(0)
-  const [unlock, setUnlock] = useState<'locked' | 'sending' | 'open' | 'failed'>('locked')
+  const [unlock, setUnlock] = useState<'locked' | 'sending' | 'sent' | 'failed'>('locked')
   const resultRef = useRef<HTMLDivElement>(null)
   const lockedRef = useRef<HTMLElement>(null)
-  const fullRef = useRef<HTMLHeadingElement>(null)
+  const sentRef = useRef<HTMLParagraphElement>(null)
   const gateRef = useRef<HTMLDialogElement>(null)
   // The unlock dialog opens by itself once per visit, when the locked list scrolls into view.
   const autoShown = useRef(false)
@@ -96,6 +98,7 @@ export function Checker() {
         return
       }
       setReport(body)
+      setUnlock((u) => (u === 'sending' ? u : 'locked'))
       setState('done')
       // They have used the free check, so the site-wide offer stops offering it.
       markOfferDone()
@@ -139,7 +142,7 @@ export function Checker() {
 
   useEffect(() => {
     const el = lockedRef.current
-    if (!report || unlock === 'open' || autoShown.current || !el) return
+    if (!report || unlock === 'sent' || autoShown.current || !el) return
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting || autoShown.current) return
@@ -154,7 +157,7 @@ export function Checker() {
   }, [report, unlock, openGate])
 
   useEffect(() => {
-    if (unlock === 'open' && fullRef.current) reveal(fullRef.current)
+    if (unlock === 'sent' && sentRef.current) reveal(sentRef.current)
   }, [unlock])
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
@@ -163,8 +166,9 @@ export function Checker() {
   const urlBad = urlLeft && !!input.trim() && !/^\S+\.\S+$/.test(input.trim())
   const captchaOn = !!(site.formAccessKey && site.hcaptchaSiteKey)
 
-  // The full report opens here once the email is sent; the email reaches the studio with the score.
-  const openReport = async (e: React.FormEvent) => {
+  // The email reaches the studio with the score; we write the summary from the full report
+  // (workers/aeo-check/full-report.mjs) and send it within a working day.
+  const sendSummary = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!report || !emailOk || unlock === 'sending' || !site.formAccessKey) return
     if (captchaOn && !token) return
@@ -180,13 +184,16 @@ export function Checker() {
           email: email.trim(),
           checked_url: report.url,
           score: report.score,
-          to_fix: report.checks.filter((c) => c.status !== 'pass').map((c) => `${c.status}: ${c.label}`).join('\n') || 'nothing',
+          wants: 'Emailed summary of the full report',
+          issues: `${report.counts.fail} to fix, ${report.counts.warn} to improve, ${report.counts.pass} passed`,
+          shown_on_page: report.top.map((c) => c.label).join('; ') || 'nothing',
+          full_report: `node workers/aeo-check/full-report.mjs ${new URL(report.url).host}`,
           ...(token ? { 'h-captcha-response': token } : {}),
         }),
       })
       const body = (await res.json().catch(() => null)) as { success?: boolean } | null
       if (res.ok && body?.success) {
-        setUnlock('open')
+        setUnlock('sent')
         closeGate()
       } else {
         setUnlock('failed')
@@ -198,10 +205,9 @@ export function Checker() {
     }
   }
 
-  const top = report ? report.top.map((id) => report.checks.find((c) => c.id === id)!).filter(Boolean) : []
-  const failing = report ? report.checks.filter((c) => c.status !== 'pass').length : 0
-  const rest = report ? report.checks.filter((c) => c.status !== 'pass' && !report.top.includes(c.id)) : []
-  const passed = report ? report.checks.length - failing : 0
+  const top = report?.top ?? []
+  const failing = report ? report.counts.fail + report.counts.warn : 0
+  const rest = failing - top.length
   const host = report ? new URL(report.url).host.replace(/^www\./, '') : ''
 
   return (
@@ -242,7 +248,7 @@ export function Checker() {
         <p className={styles.note} aria-live="polite">
           {state === 'checking'
             ? 'Fetching the page, robots.txt, llms.txt and sitemap. About ten seconds.'
-            : 'One page at a time. Results are kept for ten minutes, then dropped; nothing else is stored unless you ask for the full report.'}
+            : 'One page at a time. Results are kept for ten minutes, then dropped; nothing else is stored unless you ask for the summary.'}
         </p>
       )}
 
@@ -291,52 +297,45 @@ export function Checker() {
             </>
           ) : null}
 
-          {unlock === 'open' ? (
-            <>
-              <h2 className={styles.h2} ref={fullRef} tabIndex={-1}>
-                The full report
-              </h2>
-              <ol className={styles.list}>
-                {report.checks.map((c) => (
-                  <CheckRow key={c.id} c={c} showFix />
+          {rest > 0 && (
+            <section className={styles.locked} ref={lockedRef} aria-label="The rest of the report">
+              {/* The list carries on from the top fixes and fades out, row by row, as placeholders. */}
+              <ol className={`${styles.list} ${styles.fade}`} aria-hidden="true">
+                {Array.from({ length: Math.min(rest, 3) }, (_, i) => (
+                  <li key={i} className={styles.check} data-status="fail" style={{ '--i': i } as React.CSSProperties}>
+                    <span className={styles.badge}>fix</span>
+                    <div>
+                      <b>{LOCKED_ROW.label}</b>
+                      <p>{LOCKED_ROW.text}</p>
+                    </div>
+                  </li>
                 ))}
               </ol>
-            </>
-          ) : (
-            <section className={styles.locked} ref={lockedRef} aria-label="The rest of the report, locked">
-              {rest.length > 0 && (
-                // The rest of the list, carrying on from the top fixes and fading out, row by row.
-                <ol className={`${styles.list} ${styles.fade}`} aria-hidden="true">
-                  {rest.slice(0, 3).map((c, i) => (
-                    <li key={c.id} className={styles.check} data-status={c.status} style={{ '--i': i } as React.CSSProperties}>
-                      <span className={styles.badge}>{STATUS_WORD[c.status]}</span>
-                      <div>
-                        <b>{c.label}</b>
-                        <p>{LOCKED_TEXT}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              )}
-              <div className={styles.lockCard} data-over={rest.length > 0}>
+              <div className={styles.lockCard} data-over="true">
                 <p className={styles.lockTitle}>
-                  {rest.length ? (
-                    <>
-                      <span>{rest.length}</span> more {rest.length === 1 ? 'issue is' : 'issues are'} keeping {host} out of AI answers.
-                    </>
-                  ) : (
-                    <>All {report.checks.length} checks passed for {host}.</>
-                  )}
+                  <span>{rest}</span> more {rest === 1 ? 'issue is' : 'issues are'} keeping {host} out of AI answers.
                 </p>
-                <p className={styles.lockText}>
-                  {rest.length
-                    ? `Every fix explained, step by step, alongside the ${passed} checks you already pass. Free: leave your email and the full report opens right here.`
-                    : `See what each of the ${report.checks.length} checks found on your page. Free: leave your email and it opens right here.`}
-                </p>
-                <button type="button" className={styles.unlock} onClick={openGate}>
-                  <LockIcon />
-                  Unlock the full report
-                </button>
+                {unlock === 'sent' ? (
+                  <p className={styles.lockText} ref={sentRef} tabIndex={-1}>
+                    Your summary is on its way to {email.trim()}: what we found and what it takes to fix it, within one working
+                    day. Want it done sooner?{' '}
+                    <Link href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
+                      Tell us about your site
+                    </Link>
+                    .
+                  </p>
+                ) : (
+                  <>
+                    <p className={styles.lockText}>
+                      Get a summary of what we found on your page and what it takes to fix it, by email. Free, from a person, within
+                      one working day.
+                    </p>
+                    <button type="button" className={styles.unlock} onClick={openGate}>
+                      <LockIcon />
+                      Email me the summary
+                    </button>
+                  </>
+                )}
               </div>
             </section>
           )}
@@ -356,20 +355,13 @@ export function Checker() {
                 /report <em>{'//'}</em> {host}
               </p>
               <h2 id="gate-title" className={styles.gateTitle}>
-                {failing > 0 ? (
-                  <>
-                    <span>{failing}</span> {failing === 1 ? 'thing is' : 'things are'} keeping {host} out of AI answers.
-                  </>
-                ) : (
-                  <>Every check passed. See what each one found.</>
-                )}
+                <span>{failing}</span> {failing === 1 ? 'thing is' : 'things are'} keeping {host} out of AI answers.
               </h2>
               <p className={styles.gateText}>
-                {rest.length
-                  ? `You have seen the top ${top.length}. The full report shows ${rest.length === 1 ? 'the other one with its' : `the other ${rest.length}, each with the`} exact fix. It is free: leave your email and it opens on this page.`
-                  : 'The full report shows every check with what it found. It is free: leave your email and it opens on this page.'}
+                You have seen the top {top.length}. Leave your email and we&apos;ll send a summary of the other {rest}: what we found
+                and what it takes to fix {rest === 1 ? 'it' : 'them'}. Free, within one working day.
               </p>
-              <form className={styles.gate} onSubmit={openReport} noValidate>
+              <form className={styles.gate} onSubmit={sendSummary} noValidate>
                 <div className={styles.form}>
                   <label className={styles.srOnly} htmlFor="check-email">
                     Email
@@ -387,7 +379,7 @@ export function Checker() {
                     onBlur={() => setEmailLeft(true)}
                   />
                   <button className={styles.go} type="submit" disabled={!emailOk || unlock === 'sending' || (captchaOn && !token)}>
-                    {unlock === 'sending' ? 'Opening…' : 'Open report'}
+                    {unlock === 'sending' ? 'Sending…' : 'Send it'}
                   </button>
                 </div>
                 {emailBad && <FieldWarning id="check-email-warning">{EMAIL_WARNING}</FieldWarning>}
@@ -397,7 +389,7 @@ export function Checker() {
                   </div>
                 )}
                 {unlock === 'failed' && <FieldWarning>That did not go through. Tick the box again and retry.</FieldWarning>}
-                <p className={styles.note}>We may write once about what we found; no newsletter.</p>
+                <p className={styles.note}>One email with your summary, maybe one follow-up. No newsletter.</p>
               </form>
               <p className={styles.gateAlt}>
                 Rather have it done?{' '}

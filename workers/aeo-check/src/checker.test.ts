@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { normaliseInput, publicUrl } from './guard'
 import { readPage } from './html'
 import { isAllowed, parseRobots } from './robots'
-import { keywordy, runChecks, score, topFixes, type Evidence } from './score'
+import { keywordy, publicView, runChecks, score, topFixes, type Evidence } from './score'
 
 describe('robots.txt', () => {
   const robots = parseRobots(`
@@ -203,5 +203,18 @@ describe('which addresses may be fetched', () => {
 
   it('refuses the checker itself', () => {
     expect(publicUrl('https://api.verastack.dev/aeo-check', 'api.verastack.dev')).toBeNull()
+  })
+})
+
+describe('public view', () => {
+  it('keeps the top fixes and only counts the rest', () => {
+    const mk = (id: string, status: 'pass' | 'warn' | 'fail', weight: number) => ({ id, label: id, status, weight, detail: `d ${id}`, fix: `f ${id}` })
+    const checks = [mk('a', 'fail', 10), mk('b', 'warn', 5), mk('c', 'fail', 3), mk('d', 'warn', 2), mk('e', 'pass', 8)]
+    const view = publicView({ url: 'https://x.dev/', checkedAt: 'now', score: 50, checks })
+    expect(view.top.map((c) => c.id)).toEqual(['a', 'c', 'b'])
+    expect(view.counts).toEqual({ pass: 1, warn: 2, fail: 2, total: 5 })
+    const text = JSON.stringify(view)
+    expect(text).not.toContain('f d')
+    expect(text).not.toContain('"checks"')
   })
 })

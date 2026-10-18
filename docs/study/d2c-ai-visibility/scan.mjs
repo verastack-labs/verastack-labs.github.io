@@ -23,6 +23,9 @@ const brands = readFileSync(join(here, 'brands.csv'), 'utf8')
   })
 
 // Resumable: brands already in scan.json without an error are kept and skipped.
+// Studies need every check, so this sends the studio's key (workers/aeo-check/.report-key).
+const REPORT_KEY = readFileSync(join(here, '../../../workers/aeo-check/.report-key'), 'utf8').trim()
+
 let results = []
 try {
   results = JSON.parse(readFileSync(join(here, 'scan.json'), 'utf8')).results.filter((r) => !r.error)
@@ -33,7 +36,7 @@ for (const [i, { brand, domain }] of brands.entries()) {
   if (done.has(domain)) continue
   let report
   try {
-    const res = await fetch(`${ENDPOINT}?url=${encodeURIComponent(domain)}&fresh=1`, { headers: { Origin: 'https://verastack.dev' } })
+    const res = await fetch(`${ENDPOINT}?url=${encodeURIComponent(domain)}&fresh=1`, { headers: { Origin: 'https://verastack.dev', 'X-Report-Key': REPORT_KEY } })
     report = await res.json()
   } catch (e) {
     report = { error: String(e) }

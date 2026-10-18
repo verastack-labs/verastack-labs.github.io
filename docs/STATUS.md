@@ -55,6 +55,10 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
+- [ ] Who sends the AI search check summaries, and from which address (rigan@ fits the sending
+  rule for replies). Each request lands in the inbox with the command that prints the full report.
+  Automating it (a mail provider such as Resend called from the Worker) needs an account in your
+  name.
 - [x] Hero headline confirmed by Rigan on 2026-10-15: "Sites, apps, 3D and films, built to launch and
   get found." (`src/data/hero.ts`; it covers all six services, like the title and description) and the `availability` line in
   `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
@@ -123,8 +127,13 @@ Content (placeholders are in the design until these arrive):
     page plus robots.txt, llms.txt and sitemap.xml and runs twelve weighted checks (crawler
     access, AI-crawler blocking at the CDN, server-HTML text, JSON-LD, title, description,
     canonical, noindex, h1, llms.txt, sitemap, Open Graph). Free: score and top three fixes.
-    The full report opens after an email (Web3Forms with hCaptcha, subject "AI search check: <host>
-    scored <n>"). Paid: the audit and fixes, price on request, linked to the contact form with
+    Since 2026-10-18 the full report is never shown on the page: the Worker's public answer has
+    only the score, the top three fixes and a count of the rest, and the page lists only three of
+    the sixteen checks. The email gate (Web3Forms with hCaptcha, subject "AI search check: <host>
+    scored <n>") now asks for an emailed summary, which the studio writes by hand within one working
+    day from `node workers/aeo-check/full-report.mjs <host>`. That script and the study scan send
+    the studio key (`workers/aeo-check/.report-key`, not in git; on the Worker as the REPORT_KEY
+    secret) to get every check. Paid: the audit and fixes, price on request, linked to the contact form with
     "to show up in AI search" picked. Guards: public hostnames only (no IPs, local names, odd
     ports or credentials), every redirect rechecked, 8 s timeout, 2 MB cap, 10 checks a minute
     per visitor, results cached 10 minutes. Deploy the Worker by hand: `cd workers/aeo-check`,

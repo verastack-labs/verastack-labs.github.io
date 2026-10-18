@@ -1,2 +1,4 @@
 /node_modules
 /.wrangler
+/.report-key
+/.dev.vars

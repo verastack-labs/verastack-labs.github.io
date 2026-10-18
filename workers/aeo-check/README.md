@@ -2,7 +2,15 @@
 
 The server behind https://verastack.dev/ai-search-check. `GET https://api.verastack.dev/aeo-check?url=example.com`
 fetches that page with its robots.txt, llms.txt and sitemap.xml and returns a score out of 100,
-the top three fixes and all twelve checks as JSON.
+the top three fixes and a count of the rest as JSON. Every check's finding and fix together are
+the audit, so only requests carrying the studio key in an `X-Report-Key` header get all sixteen:
+`node full-report.mjs example.com` prints them, and the study scan uses the same key.
+
+The key lives in `.report-key` here (not in git) and on the Worker as a secret:
+
+```bash
+npx wrangler secret put REPORT_KEY < .report-key
+```
 
 - `src/guard.ts`: which addresses may be fetched (public hostnames only; every redirect rechecked).
 - `src/robots.ts`: robots.txt rules per crawler (RFC 9309).
