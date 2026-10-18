@@ -50,6 +50,6 @@ If your SEO is broken, your GEO is broken. That part is not new, it just got pun
 
 ## Where to start
 
-Start with what a model can read today. Our [AEO and GEO check](/ai-search-check) runs sixteen checks on one page in about ten seconds and gives you the three fixes that matter most. It's free.
+Start with what a model can read today. Our [AEO and GEO check](/tools/ai-search-check) runs sixteen checks on one page in about ten seconds and gives you the three fixes that matter most. It's free.
 
 The page is step one. Whether ChatGPT names you or a competitor comes down to the questions your buyers ask, the sites the answers draw on, and pages worth quoting. That is the audit we run, and the work we do. [Tell us about your site](/#contact).

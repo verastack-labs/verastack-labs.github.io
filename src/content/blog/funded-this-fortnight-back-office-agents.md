@@ -43,11 +43,11 @@ Six of them raised between 3 and 17 October 2026, $136.8M between them, from Ben
 
 A round is the week the most people look a company up at once: buyers checking the vendor, candidates checking the employer, journalists checking the facts. A growing share of them ask ChatGPT, Perplexity or Google's AI answers instead of searching, and the answer is only as good as what the model can read on the company's own site.
 
-So we ran all six homepages through our [AI search check](/ai-search-check) on 18 October 2026, the same sixteen checks as our [YC Summer 2026](/blog/yc-summer-2026-ai-search) and [SaaS](/blog/ai-search-saas-homepages) studies.
+So we ran all six homepages through our [AI search check](/tools/ai-search-check) on 18 October 2026, the same sixteen checks as our [YC Summer 2026](/blog/yc-summer-2026-ai-search) and [SaaS](/blog/ai-search-saas-homepages) studies.
 
-- **[Clueso](/ai-search-check/?url=clueso.io): 100.** Every check passes, from plain HTML that says what the product does to a marked-up FAQ and an llms.txt. A video company with a homepage that reads perfectly as text.
-- **[Duvo](/ai-search-check/?url=duvo.ai): 90.** Everything a model needs is there. The one note: robots.txt turns away a training crawler, which is a fair choice, not a mistake.
-- **[Causa Prima](/ai-search-check/?url=causaprima.ai): 82.** Organization data, a marked-up FAQ and almost 2,000 words of readable HTML. What's missing is structured data that describes the product itself.
+- **[Clueso](/tools/ai-search-check/?url=clueso.io): 100.** Every check passes, from plain HTML that says what the product does to a marked-up FAQ and an llms.txt. A video company with a homepage that reads perfectly as text.
+- **[Duvo](/tools/ai-search-check/?url=duvo.ai): 90.** Everything a model needs is there. The one note: robots.txt turns away a training crawler, which is a fair choice, not a mistake.
+- **[Causa Prima](/tools/ai-search-check/?url=causaprima.ai): 82.** Organization data, a marked-up FAQ and almost 2,000 words of readable HTML. What's missing is structured data that describes the product itself.
 
 On the other three homepages, the gaps were the same three: no structured data that describes what they sell, no FAQ an engine can quote, and Organization data that is missing or links to no other profiles, so a model has to guess which of several namesakes it is reading about. None of that is hard. For a company that just raised, each is about a day's work.
 

@@ -24,7 +24,7 @@ const issues = report.checks.filter((c) => c.status !== 'pass').sort((a, b) => r
 const passed = report.checks.length - issues.length
 const link = (href, text) => `<a href="${href}">${text}</a>`
 const call = 'https://cal.com/verastack/intro'
-const recheck = `https://verastack.dev/ai-search-check/?url=${encodeURIComponent(host)}`
+const recheck = `https://verastack.dev/tools/ai-search-check/?url=${encodeURIComponent(host)}`
 
 const subject = `Your AI search report: ${host}, ${report.score}/100`
 const body = `<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.55;color:#1a1a1a;max-width:640px">

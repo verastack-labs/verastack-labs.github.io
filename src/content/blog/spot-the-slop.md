@@ -38,7 +38,7 @@ Credit first, because it earned some. The page is tidy and readable. The headlin
 
 **1. It invents proof.** The page quotes three doctors by name, at three named clinics, saying how much Bookwell changed their week. None of them exist. It also promises reminders that "cut no-shows by up to 40%", a number nobody measured, and three price plans nobody chose. To the tool's credit, it said so: it listed what it had made up and asked for the real details. But a founder in a hurry ships the page, and now the launch is built on quotes a customer could check and find empty. That's the slop: not the look, the made-up parts that read as true.
 
-**2. Machines can't tell what it is.** We ran both pages through our [AI search check](/ai-search-check), the sixteen checks we use for how well ChatGPT, Perplexity and Google's AI answers can read a page. On 17 October the AI-built page scored **54 out of 100**. It has no structured data saying who is behind it or what it sells, no questions and answers for an engine to quote, no canonical address, no sitemap and no llms.txt. Its server HTML carries about 230 words. An AI answer asked "what's a good booking app for a small clinic?" has very little here to go on.
+**2. Machines can't tell what it is.** We ran both pages through our [AI search check](/tools/ai-search-check), the sixteen checks we use for how well ChatGPT, Perplexity and Google's AI answers can read a page. On 17 October the AI-built page scored **54 out of 100**. It has no structured data saying who is behind it or what it sells, no questions and answers for an engine to quote, no canonical address, no sitemap and no llms.txt. Its server HTML carries about 230 words. An AI answer asked "what's a good booking app for a small clinic?" has very little here to go on.
 
 **3. It looks like everything else.** Calm green on cream, a soft serif headline, rounded cards: the safe "trustworthy software" look. It isn't ugly. It's just the average of a thousand pages, so it says nothing about this product. We noticed because our own first draft of Bookwell drifted to the same serif and nearly the same green before we caught it and gave Bookwell a look of its own. The pull toward the average is real, for people and for tools.
 
@@ -63,7 +63,7 @@ AI builders are a good first draft and a bad final one. Before yours goes live:
 2. **Say who it's for in one plain sentence**, and who it isn't for.
 3. **Make it look like you**, not like the category. Pick the colour and type on purpose.
 4. **Check the parts you can't see.** Structured data, an FAQ, a sitemap, and text in the HTML the server sends.
-5. **Run it through a checker.** [Ours is free](/ai-search-check) and takes ten seconds.
+5. **Run it through a checker.** [Ours is free](/tools/ai-search-check) and takes ten seconds.
 
 ---
 

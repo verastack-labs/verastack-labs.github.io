@@ -5,12 +5,12 @@ date: 2026-10-17
 time: 11:15
 category: studies
 hook: Run a Shopify store? The median here was 75. Check yours in ten seconds; if it's under 80, the two fixes almost every store needs are a day's work, and we can do them for you.
-hookCta: Check my store | /ai-search-check
+hookCta: Check my store | /tools/ai-search-check
 checkCompare: The median Indian D2C homepage in our study scored 75 out of 100. See where yours lands.
 tags: AI search, D2C, Shopify
 ---
 
-More shoppers now ask an AI before they search: "best natural hair oil brand in India", "where to buy block-printed kurtas online". The answer names a few brands and links a few pages. We wanted to know how ready Indian D2C brands are to be one of those names, so we ran 99 of them through our [AI search check](/ai-search-check).
+More shoppers now ask an AI before they search: "best natural hair oil brand in India", "where to buy block-printed kurtas online". The answer names a few brands and links a few pages. We wanted to know how ready Indian D2C brands are to be one of those names, so we ran 99 of them through our [AI search check](/tools/ai-search-check).
 
 The sample is random: 99 brands from the 886 listed on d2cstory.com, skincare to snacks to furniture. Three sites turned the checker away or were down, which leaves 96 homepages, all checked on 17 October 2026 with the same sixteen checks anyone can run on our site.
 
@@ -45,16 +45,16 @@ Scores as of 17 October 2026. Each one links to a live re-check, so you can see 
 
 | Brand | Score |
 | --- | --- |
-| [WOD Armour](/ai-search-check/?url=wodarmour.in) | 91 |
-| [Silvertraq](/ai-search-check/?url=silvertraq.com) | 91 |
-| [Explosive Whey](/ai-search-check/?url=explosivewhey.com) | 91 |
-| [TrustBasket](/ai-search-check/?url=trustbasket.com) | 87 |
-| [Libas](/ai-search-check/?url=libas.in) | 86 |
-| [Pelican Essentials](/ai-search-check/?url=pelicanessentials.com) | 86 |
-| [WROGN](/ai-search-check/?url=wrogn.com) | 84 |
-| [Selected Homme](/ai-search-check/?url=selectedhomme.in) | 84 |
-| [Slurrp Farm](/ai-search-check/?url=slurrpfarm.com) | 84 |
-| [Neesh Perfumes](/ai-search-check/?url=neeshperfumes.com) | 84 |
+| [WOD Armour](/tools/ai-search-check/?url=wodarmour.in) | 91 |
+| [Silvertraq](/tools/ai-search-check/?url=silvertraq.com) | 91 |
+| [Explosive Whey](/tools/ai-search-check/?url=explosivewhey.com) | 91 |
+| [TrustBasket](/tools/ai-search-check/?url=trustbasket.com) | 87 |
+| [Libas](/tools/ai-search-check/?url=libas.in) | 86 |
+| [Pelican Essentials](/tools/ai-search-check/?url=pelicanessentials.com) | 86 |
+| [WROGN](/tools/ai-search-check/?url=wrogn.com) | 84 |
+| [Selected Homme](/tools/ai-search-check/?url=selectedhomme.in) | 84 |
+| [Slurrp Farm](/tools/ai-search-check/?url=slurrpfarm.com) | 84 |
+| [Neesh Perfumes](/tools/ai-search-check/?url=neeshperfumes.com) | 84 |
 
 What the top three share: the brand described in structured data with its social profiles, questions answered on the homepage, and clean descriptions. None is perfect, and each is one or two fixes from 100. Silvertraq and Explosive Whey already mark up their FAQs but don't describe their products on the homepage; WOD Armour has questions on the page without the FAQ markup, and a ten-character title.
 
@@ -66,4 +66,4 @@ It is also one page per brand. A brand with great product pages and a thin homep
 
 ## Check your own
 
-The check is free, takes about ten seconds and shows your top three fixes: [run it on your site](/ai-search-check). If you'd rather we made the fixes, [tell us about your store](/#contact).
+The check is free, takes about ten seconds and shows your top three fixes: [run it on your site](/tools/ai-search-check). If you'd rather we made the fixes, [tell us about your store](/#contact).

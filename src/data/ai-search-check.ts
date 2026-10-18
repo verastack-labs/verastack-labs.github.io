@@ -4,7 +4,7 @@
 
 export const checker = {
   endpoint: 'https://api.verastack.dev/aeo-check',
-  path: '/ai-search-check',
+  path: '/tools/ai-search-check',
   title: 'Free AEO and GEO check: does ChatGPT know your site?',
   description:
     'A free AEO and GEO check: how your page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the top three fixes.',
