@@ -359,7 +359,7 @@ export function Checker() {
             </h2>
             <p className={styles.beyondLead}>
               A page engines can read is where it starts. Whether ChatGPT recommends you or your competitor comes down to
-              things no score can see. The audit covers them, and we do the work.
+              things no score can see. Our AEO and GEO audit covers them, and we do the work.
             </p>
             <ul className={styles.beyondList}>
               {BEYOND.map((item) => (

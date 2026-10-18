@@ -38,7 +38,7 @@ ${issues
 <p style="margin:0">What it takes: ${esc(c.fix)}</p>`,
   )
   .join('\n')}
-<p style="margin-top:22px"><b>What a score can't see.</b> These checks read one page. Whether ChatGPT, Perplexity or Google's AI answers actually name ${esc(host)}, or a competitor, depends on more than that: how the questions your buyers ask get answered today, what the sites engines quote say about you, and whether the rest of your pages give an engine something worth citing. That is what our audit covers, and we make the fixes too.</p>
+<p style="margin-top:22px"><b>What a score can't see.</b> These checks read one page. Whether ChatGPT, Perplexity or Google's AI answers actually name ${esc(host)}, or a competitor, depends on more than that: how the questions your buyers ask get answered today, what the sites engines quote say about you, and whether the rest of your pages give an engine something worth citing. That is what our AEO and GEO audit covers, and we make the fixes too.</p>
 <p>If it helps, ${link(call, 'book a 30-minute call')} and we'll walk through this report with you, or just reply to this email. You can ${link(recheck, 're-run the check')} any time after a change.</p>
 <p>Rigan, for the VeraStack Labs team<br>${link('https://verastack.dev', 'verastack.dev')}</p>
 </div>`

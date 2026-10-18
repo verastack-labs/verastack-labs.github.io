@@ -5,9 +5,9 @@
 export const checker = {
   endpoint: 'https://api.verastack.dev/aeo-check',
   path: '/ai-search-check',
-  title: 'Free AI search check: does ChatGPT know your site?',
+  title: 'Free AEO and GEO check: does ChatGPT know your site?',
   description:
-    'Check how your page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the three fixes that matter most. Free.',
+    'A free AEO and GEO check: how your page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the top three fixes.',
 }
 
 export const checks: { id: string; label: string; why: string }[] = [
@@ -31,8 +31,16 @@ export const checks: { id: string; label: string; why: string }[] = [
 
 export const faqs: { q: string; a: string }[] = [
   {
-    q: 'What is AI search optimisation (AEO)?',
+    q: 'What is AEO?',
     a: 'Answer engine optimisation is the work of getting named when people ask ChatGPT, Perplexity, Claude or Google AI answers a question. Most of it is careful SEO for a reader that is a model: let the crawlers in, say what you do in plain text, label the facts with structured data, and be cited by the pages engines trust.',
+  },
+  {
+    q: 'What is GEO?',
+    a: 'Generative engine optimisation: the same goal, named after the engines that write their answers instead of listing links. GEO adds the parts that decide whether a written answer quotes you: passages a model can lift word for word, facts and numbers worth citing, and mentions on the sites those answers draw from.',
+  },
+  {
+    q: 'AEO vs GEO vs SEO: what is the difference?',
+    a: 'SEO gets a page ranked in a list of links. AEO and GEO get your company named inside the answer itself, which is where more and more buyers now stop. They build on SEO rather than replace it: a page search engines cannot crawl will not be quoted either. AEO and GEO are two names for nearly the same work, and we do both.',
   },
   {
     q: 'What does the check look at?',
@@ -44,6 +52,6 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'What does the full audit cost?',
-    a: 'It depends on the size of the site, so the price is on request. The audit covers every key page and the sources engines cite for your category, and we can make the fixes too.',
+    a: 'It depends on the size of the site, so the price is on request. The AEO and GEO audit covers every key page and the sources engines cite for your category, and we can make the fixes too.',
   },
 ]
