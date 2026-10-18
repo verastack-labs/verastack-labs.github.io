@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${site.url}/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
     { url: `${site.url}/ai-search-check/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/launch-kit/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${site.url}/founder/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${site.url}/blog/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     ...usedCategories().map((c) => ({ url: `${site.url}/blog/category/${c.id}/`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.5 })),

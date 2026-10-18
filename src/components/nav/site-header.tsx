@@ -44,6 +44,7 @@ export function SiteHeader() {
   // There is no /examples index; the pill points at the example being viewed.
   if (pathname?.startsWith('/examples')) return <PageHeader path="/examples" href={pathname} />
   if (pathname?.startsWith('/founder')) return <PageHeader path="/founder" />
+  if (pathname?.startsWith('/launch-kit')) return <PageHeader path="/launch-kit" />
   if (pathname?.startsWith('/ai-search-check')) return <PageHeader path="/ai-search-check" short="/ai-check" />
   return (
     <header className={styles.header} data-theme={theme}>
