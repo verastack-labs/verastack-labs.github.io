@@ -1,14 +1,15 @@
 // The AI search check behind verastack.dev/ai-search-check: fetches one public page plus its
 // robots.txt, llms.txt and sitemap, and scores how readable it is to search and answer engines.
-// GET /aeo-check?url=example.com returns JSON.
+// GET /aeo-check?url=example.com returns JSON: the score, the top three fixes and a count of the rest.
+// With the studio's key in an X-Report-Key header it returns every check, for studies and summaries.
 
 import { decode, readPage } from './html'
 import { normaliseInput, publicUrl } from './guard'
 import { parseRobots, type Robots } from './robots'
-import { runChecks, score, topFixes, type Evidence } from './score'
+import { publicView, runChecks, score, topFixes, type Evidence } from './score'
 
 type RateLimiter = { limit: (opts: { key: string }) => Promise<{ success: boolean }> }
-type Env = { LIMITER?: RateLimiter; ALLOWED_ORIGINS: string; SELF_HOST: string }
+type Env = { LIMITER?: RateLimiter; ALLOWED_ORIGINS: string; SELF_HOST: string; REPORT_KEY?: string }
 
 const USER_AGENT = 'Mozilla/5.0 (compatible; VeraStackCheck/1.0; +https://verastack.dev/ai-search-check/)'
 const BOT_AGENT = 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.3; +https://openai.com/searchbot'
@@ -163,6 +164,7 @@ function corsHeaders(request: Request, env: Env): Record<string, string> {
     // Any local dev server may call it too; browsers on other sites are refused by CORS.
     'Access-Control-Allow-Origin': allowed.includes(origin) || /^http:\/\/localhost:\d+$/.test(origin) ? origin : allowed[0],
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    // Deliberately no X-Report-Key here: browsers can't send the key, only our own scripts can.
     'Access-Control-Max-Age': '86400',
     Vary: 'Origin',
   }
@@ -185,11 +187,14 @@ const worker = {
     // Repeat checks of the same address within ten minutes come from the cache and cost nothing.
     // `fresh=1` (the page's "check again" after a fix) skips it, and counts against the rate limit.
     const fresh = searchParams.get('fresh') === '1'
+    const key = request.headers.get('x-report-key')
+    const full = !!env.REPORT_KEY && key === env.REPORT_KEY
+    const view = (report: Parameters<typeof publicView>[0]) => (full ? report : publicView(report))
     const target = publicUrl(normaliseInput(input), env.SELF_HOST)
     const cacheKey = target ? new Request(`https://${env.SELF_HOST}/cache/aeo-check/v3?u=${encodeURIComponent(target.href)}`) : null
     if (cacheKey && !fresh) {
       const hit = await caches.default.match(cacheKey)
-      if (hit) return json(await hit.json(), 200, cors)
+      if (hit) return json(view((await hit.json()) as Parameters<typeof publicView>[0]), 200, cors)
     }
 
     if (env.LIMITER) {
@@ -204,7 +209,7 @@ const worker = {
         const cached = new Response(JSON.stringify(report), { headers: { 'Content-Type': 'application/json', 'Cache-Control': `max-age=${CACHE_SECONDS}` } })
         ctx.waitUntil(caches.default.put(cacheKey, cached))
       }
-      return json(report, 200, cors)
+      return json(view(report), 200, cors)
     } catch (e) {
       if (e instanceof CheckError) return json({ error: e.message }, e.status, cors)
       return json({ error: 'Something went wrong while checking. Try again in a minute.' }, 500, cors)

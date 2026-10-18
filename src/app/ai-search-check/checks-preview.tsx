@@ -1,44 +1,37 @@
-'use client'
-
-import { useState } from 'react'
 import { checks } from '@/data/ai-search-check'
 import styles from '@/app/ai-search-check/checker.module.css'
 
-// Three in full, three fading out beneath them, the rest folded away.
+// Three in full, then three blurred rows that hold no real text.
 const FULL = 3
-const SHOWN = 6
+const FADED = 3
 
-// What the check looks at: the first few in full, the rest fading out beneath a line that says how
-// many more we cover, until the visitor asks for all of them. Every check stays in the page's
-// HTML either way, so engines read the full list.
+// What the check looks at: a taste, not the playbook. Only the first few checks reach the page
+// (this renders on the server, so the rest are not in the HTML or the JavaScript either); the full
+// list, with what each found and how to fix it, is what the audit sells.
 export function ChecksPreview() {
-  const [open, setOpen] = useState(false)
   const more = checks.length - FULL
   return (
-    <div className={styles.preview} data-open={open}>
-      <ol className={styles.explain} id="all-checks">
-        {checks.map((c, i) => (
-          <li
-            key={c.id}
-            data-hidden={!open && i >= SHOWN ? 'true' : undefined}
-            data-fade={!open && i >= FULL && i < SHOWN ? i - FULL + 1 : undefined}
-          >
+    <div className={styles.preview}>
+      <ol className={styles.explain}>
+        {checks.slice(0, FULL).map((c) => (
+          <li key={c.id}>
             <b>{c.label}</b>
             <span>{c.why}</span>
           </li>
         ))}
+        {Array.from({ length: FADED }, (_, i) => (
+          <li key={i} data-fade={i + 1} aria-hidden="true">
+            <b>One more thing an AI answer looks for</b>
+            <span>And what it takes to get it right on your page, which the audit covers in full.</span>
+          </li>
+        ))}
       </ol>
-      {!open && (
-        <div className={styles.previewMore}>
-          <p>
-            <b>And {more} more checks we take care of,</b> from AI crawlers turned away at your CDN to freshness signals,
-            headings that outline the page and the alt text on every image.
-          </p>
-          <button type="button" className={styles.again} aria-controls="all-checks" aria-expanded={open} onClick={() => setOpen(true)}>
-            See all {checks.length} checks
-          </button>
-        </div>
-      )}
+      <div className={styles.previewMore}>
+        <p>
+          <b>And {more} more checks we take care of,</b> from AI crawlers turned away at your CDN to freshness signals,
+          headings that outline the page and the alt text on every image.
+        </p>
+      </div>
     </div>
   )
 }

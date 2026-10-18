@@ -281,3 +281,24 @@ export function topFixes(checks: Check[], n = 3): Check[] {
   const rank = (c: Check) => (c.status === 'fail' ? 2 : c.status === 'warn' ? 1 : 0) * 1000 + c.weight
   return checks.filter((c) => c.status !== 'pass').sort((a, b) => rank(b) - rank(a)).slice(0, n)
 }
+
+// What the public page gets: the score, the top fixes in full and only a count of the rest. Every
+// check's finding and fix together are the audit, so they stay with the studio (see `full` in index.ts).
+export type PublicReport = {
+  url: string
+  checkedAt: string
+  score: number
+  top: Check[]
+  counts: { pass: number; warn: number; fail: number; total: number }
+}
+
+export function publicView(report: { url: string; checkedAt: string; score: number; checks: Check[] }): PublicReport {
+  const n = (s: Status) => report.checks.filter((c) => c.status === s).length
+  return {
+    url: report.url,
+    checkedAt: report.checkedAt,
+    score: report.score,
+    top: topFixes(report.checks),
+    counts: { pass: n('pass'), warn: n('warn'), fail: n('fail'), total: report.checks.length },
+  }
+}

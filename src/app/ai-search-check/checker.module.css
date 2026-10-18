@@ -228,11 +228,10 @@
 /* What the check looks at, collapsed: three in full, three fading and blurring away beneath them,
    the rest folded away (still in the HTML) until the visitor opens the list. */
 .preview { position: relative; }
-.preview[data-open='false'] .explain li[data-hidden='true'] { display: none; }
 .explain li[data-fade] { user-select: none; pointer-events: none; }
-.explain li[data-fade='1'] { opacity: 0.6; filter: blur(1px); }
-.explain li[data-fade='2'] { opacity: 0.35; filter: blur(2.5px); }
-.explain li[data-fade='3'] { opacity: 0.15; filter: blur(4px); border-bottom-color: transparent; }
+.explain li[data-fade='1'] { opacity: 0.55; filter: blur(3px); }
+.explain li[data-fade='2'] { opacity: 0.32; filter: blur(4.5px); }
+.explain li[data-fade='3'] { opacity: 0.15; filter: blur(6px); border-bottom-color: transparent; }
 .previewMore { position: relative; margin-top: -40px; padding: 30px 0 0; background: linear-gradient(180deg, rgba(11, 12, 10, 0), var(--ink) 38%); }
 .previewMore p { max-width: 62ch; margin: 0 0 14px; font-size: 15.5px; line-height: 1.55; color: var(--muted); }
 .previewMore b { color: var(--text); }
