@@ -203,9 +203,15 @@ Content (placeholders are in the design until these arrive):
     (front matter `stat: value | label`; the server shows the newest), beside the three newest others.
     Posts have no scheduling: a merged post is live on that deploy, whatever its `time` (time only
     sorts same-day posts), so no scheduled rebuild is needed.
-  - [ ] Free tools programme (`docs/tools-plan.md`, 2026-10-18): eight zero-cost tools, one at a
-    time, each with a number from our 379 scanned homepages, an ungated output, the audit and kit
-    as the next step, a blog post and a LinkedIn post. Plan awaiting Rigan's go-ahead.
+  - [ ] Free tools programme (`docs/tools-plan.md`, approved 2026-10-18): eight zero-cost tools, one
+    at a time. Shared: `src/app/tools/tool.module.css`, `ToolBridge` (the honest limit, the full
+    check with their URL, the audit, the kit, a call) and `src/lib/scan-stats.ts` (each page's number
+    computed from docs/study at build time).
+    - [x] 1. FAQ schema generator at /tools/faq-schema (2026-10-18): templates for SaaS, studios and
+      stores, live JSON-LD, HTML and preview, copy buttons, quotability notes; 81% of 379 homepages
+      have no FAQ. Next: its blog post, and the outside numbers once `docs/why-ai-search-numbers.md`
+      is sourced.
+    - [ ] 2. Product and service markup generator.
   - [x] Main navigation (2026-10-18): the pill's dock row and panel gain a studio group (launch kit
     with a new dot, tools, blog, founder; `src/data/studio-links.ts`); on every other page the page
     pill opens a dropdown with the home sections and the studio group; desktop (900px and up) has a
