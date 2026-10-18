@@ -18,6 +18,13 @@ export const tools: Tool[] = [
     href: '/tools/faq-schema',
     tag: 'structured data',
   },
+  {
+    slug: 'product-schema',
+    name: 'Product and service schema generator',
+    line: 'Say what you sell, for whom and from what price in one sentence for your page, and get the matching structured data.',
+    href: '/tools/product-schema',
+    tag: 'structured data',
+  },
 ]
 
 export const toolsPage = {
