@@ -221,6 +221,15 @@ Content (placeholders are in the design until these arrive):
       and the text itself. 34% of 379 homepages send under 500 words, 17% under 200. Source for
       crawlers not rendering JavaScript: Vercel, Dec 2024.
     - [ ] 4. Organization markup generator.
+    - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
+      checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
+      tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Claims rule (2026-10-18): no page, post or pitch promises being quoted or cited by AI. Markup
+    is "good practice that labels"; numbers only from `docs/why-ai-search-numbers.md` or the scans.
+    Study FAQ figures were counted under the old FAQ rule: quote them as "no FAQ on the homepage".
+  - [ ] Phone screenshot checks on Rigan's Android (paused at his request; adb wireless, port changes
+    each reconnect): configurator and Pre-book strip, Work spacing, nav after Mehfil, curtain,
+    checker, Launch Kit bar and India block, the new menu, and the shift check on portfolio and Origan.
   - [x] Main navigation (2026-10-18): the pill's dock row and panel gain a studio group (launch kit
     with a new dot, tools, blog, founder; `src/data/studio-links.ts`); on every other page the page
     pill opens a dropdown with the home sections and the studio group; desktop (900px and up) has a
