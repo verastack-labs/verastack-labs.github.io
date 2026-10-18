@@ -1,5 +1,5 @@
 ---
-title: AI search for SaaS: what ChatGPT reads before it recommends you
+title: AI search for SaaS: what *ChatGPT reads* before it recommends you
 description: Buyers now ask ChatGPT and Perplexity which tool to use. What those answers are built from, and the five fixes that get your product named.
 date: 2026-10-17
 time: 09:30

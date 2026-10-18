@@ -1,5 +1,5 @@
 ---
-title: Funded this fortnight: six AI agents for the back office
+title: Funded this fortnight: six *AI agents* for the back office
 description: $136.8M went to six startups whose AI agents quote, settle invoices and test ERP systems. Who raised from whom, 3 to 17 October 2026, and how AI search reads them.
 date: 2026-10-18
 time: 11:10

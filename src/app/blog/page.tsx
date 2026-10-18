@@ -38,7 +38,9 @@ export default function BlogIndex() {
       <p className={styles.label}>
         /blog <em>{'//'}</em> launches, AI search, open source
       </p>
-      <h1 className={styles.indexTitle}>Notes from the studio.</h1>
+      <h1 className={styles.indexTitle}>
+        Notes from the <em className={styles.hi}>studio.</em>
+      </h1>
       <CategoryBar />
       <PostList posts={posts} />
     </main>

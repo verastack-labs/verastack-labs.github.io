@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { categoryById } from '@/data/blog-categories'
 import { formatDate, readingMinutes, type Post, usedCategories } from '@/lib/blog'
+import { PostTitle } from '@/app/blog/post-title'
 import styles from '@/app/blog/blog.module.css'
 
 // The category chips: All, then each category with posts, its count and its short phrase.
@@ -32,7 +33,9 @@ export function PostList({ posts }: { posts: Post[] }) {
             <span className={styles.itemMeta}>
               {categoryById(p.category)?.name} · {formatDate(p.date)} · {readingMinutes(p.words)} min read
             </span>
-            <b>{p.title}</b>
+            <b>
+              <PostTitle parts={p.titleParts} />
+            </b>
             <span className={styles.itemDesc}>{p.description}</span>
           </Link>
         </li>

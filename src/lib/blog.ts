@@ -5,7 +5,11 @@ import { blogCategories, categoryById } from '@/data/blog-categories'
 
 export type Post = {
   slug: string
+  // Plain title, for search results, share cards and structured data.
   title: string
+  // The same title in pieces; `hi` marks the words shown in signal green. In the front matter they
+  // sit between asterisks: `title: GEO is the new *SEO*`.
+  titleParts: TitlePart[]
   description: string
   // ISO date, YYYY-MM-DD.
   date: string
@@ -20,6 +24,15 @@ export type Post = {
   checkCompare: string | null
   html: string
   words: number
+}
+
+export type TitlePart = { text: string; hi: boolean }
+
+export function splitTitle(raw: string): TitlePart[] {
+  return raw
+    .split(/(\*[^*]+\*)/)
+    .filter(Boolean)
+    .map((piece) => (piece.startsWith('*') && piece.endsWith('*') ? { text: piece.slice(1, -1), hi: true } : { text: piece, hi: false }))
 }
 
 const DIR = join(process.cwd(), 'src', 'content', 'blog')
@@ -41,7 +54,8 @@ export function parsePost(slug: string, source: string): Post {
   const body = match[2]
   return {
     slug,
-    title: meta.title,
+    title: splitTitle(meta.title).map((p) => p.text).join(''),
+    titleParts: splitTitle(meta.title),
     description: meta.description,
     date: meta.date,
     time: meta.time || null,

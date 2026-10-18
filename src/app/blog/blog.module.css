@@ -23,7 +23,7 @@
 .back:hover { color: var(--signal); }
 .postHead { margin: 28px 0 40px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
 .postTitle {
-  margin: 12px 0 18px;
+  margin: 22px 0 18px;
   font-weight: 800;
   font-variation-settings: 'opsz' 96;
   font-size: clamp(34px, 5.6vw, 60px);
@@ -53,7 +53,7 @@
 .prose th { font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
 /* Two-column tables are name and score: the score sits right, in mono. Wider tables read left. */
 .prose td:nth-child(2):last-child, .prose th:nth-child(2):last-child { text-align: right; font-family: var(--font-mono); }
-.byline { margin: 6px 0 0; font: 400 11.5px var(--font-mono); color: var(--muted); }
+.byline { margin: 16px 0 0; font: 400 11.5px var(--font-mono); color: var(--muted); }
 .byline a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--line); }
 .byline a:hover { color: var(--signal); border-color: var(--signal); }
 .prose img { display: block; width: 100%; height: auto; margin: 1.6em 0; border: 1px solid var(--line); border-radius: 12px; }
@@ -94,9 +94,12 @@
 @media (max-width: 700px) { .prose :global(.pair) { grid-template-columns: 1fr; } }
 
 /* A post's category and tags, as pills under the date: the category leads and links to its page. */
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
 .tag, .tagCat { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font: 500 11.5px var(--font-mono); letter-spacing: 0.01em; }
 .tag { border: 1px solid var(--line); color: var(--muted); }
 .tagCat { border: 1px solid var(--signal); background: rgba(212, 255, 63, 0.08); color: var(--signal); text-decoration: none; transition: background 0.2s; }
 .tagCat:hover, .tagCat:focus-visible { background: rgba(212, 255, 63, 0.16); }
 
+
+/* The highlighted words of a title. In a list the whole title turns signal on hover, so they hold. */
+.hi { font-style: normal; color: var(--signal); }

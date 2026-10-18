@@ -1,5 +1,5 @@
 ---
-title: The cobbler's shoes: AI search scores of 25 software studios
+title: The *cobbler's shoes*: AI search scores of 25 software studios
 description: We ran 25 software studios' own homepages through our AEO and GEO check. Median 81, and 21 of 25 have no FAQ an AI answer can quote. The top four, and the fixes.
 date: 2026-10-18
 time: 13:30
