@@ -125,6 +125,7 @@ export function SiteHeader() {
   if (pathname?.startsWith('/launch-kit')) return <PageHeader path="/launch-kit" short="/kit" />
   if (pathname?.startsWith('/tools/ai-search-check') || pathname?.startsWith('/ai-search-check'))
     return <PageHeader path="/tools/ai-search-check" short="/ai-check" />
+  if (pathname?.startsWith('/tools/what-ai-sees')) return <PageHeader path="/tools/what-ai-sees" short="/ai-sees" />
   if (pathname?.startsWith('/tools/product-schema')) return <PageHeader path="/tools/product-schema" short="/product" />
   if (pathname?.startsWith('/tools/faq-schema')) return <PageHeader path="/tools/faq-schema" short="/faq" />
   if (pathname?.startsWith('/tools')) return <PageHeader path="/tools" />

@@ -202,3 +202,11 @@ as hygiene and clarity, not as a citation lever.
   not read.
 - **Adobe "AI revenue per visit up 254%."** Seen only in search snippets of Adobe's blog, which
   timed out; use the Marketing Dive figures instead.
+
+## 8. AI crawlers and JavaScript (added 18 Oct 2026)
+
+- **"None of the major AI crawlers currently render JavaScript"**, naming OpenAI's crawlers,
+  ClaudeBot, Meta-ExternalAgent, Bytespider and PerplexityBot; ChatGPT's and Claude's crawlers fetch
+  JavaScript files but do not execute them. Gemini (via Googlebot) and AppleBot do render. Vercel
+  network data, past month. (Vercel, 17 Dec 2024; dated, re-check before quoting as current)
+  https://vercel.com/blog/the-rise-of-the-ai-crawler

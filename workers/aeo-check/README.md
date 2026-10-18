@@ -22,6 +22,10 @@ npx wrangler secret put REPORT_KEY < .report-key
   `src/data/ai-search-check.ts` lists the same checks; a test keeps them in step.
 - `src/index.ts`: CORS (verastack.dev and localhost), rate limit, cache and fetching.
 
+`GET /page-view?url=example.com` returns the page as a crawler that skips JavaScript reads it (title,
+description, word count and its headings, paragraphs and list items in order), for the "What ChatGPT
+sees" tool; `src/crawler-view.ts`.
+
 Tests run with the site's own `npm test`. Deploy by hand, from this folder:
 
 ```bash

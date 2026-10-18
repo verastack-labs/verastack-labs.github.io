@@ -215,7 +215,12 @@ Content (placeholders are in the design until these arrive):
       service or product; writes the plain sentence for the page first (what an answer quotes), then
       SoftwareApplication, Service or Product JSON-LD with each price as an offer; 81% of 379 have none.
       Forrester (94% of B2B buyers use AI) and Adobe (31% more conversions) as the outside numbers.
-    - [ ] 3. "What ChatGPT sees" viewer.
+    - [x] 3. "What ChatGPT sees" at /tools/what-ai-sees (2026-10-18): the Worker's new /page-view
+      route (same guards, own 10-minute cache, same rate limit) returns the page's text as a crawler
+      that skips JavaScript reads it; the page shows the word count, a verdict in the checker's bands
+      and the text itself. 34% of 379 homepages send under 500 words, 17% under 200. Source for
+      crawlers not rendering JavaScript: Vercel, Dec 2024.
+    - [ ] 4. Organization markup generator.
   - [x] Main navigation (2026-10-18): the pill's dock row and panel gain a studio group (launch kit
     with a new dot, tools, blog, founder; `src/data/studio-links.ts`); on every other page the page
     pill opens a dropdown with the home sections and the studio group; desktop (900px and up) has a
