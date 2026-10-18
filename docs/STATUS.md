@@ -55,10 +55,10 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Who sends the AI search check complete reports, and from which address (rigan@ fits the sending
-  rule for replies). Each request lands in the inbox with the command that prints the full report.
-  Automating it (a mail provider such as Resend called from the Worker) needs an account in your
-  name.
+- [x] AI search check complete reports go from rigan@verastack.dev (decided 2026-10-18): the
+  visitor asked for it, so it is opted-in mail and fits Brevo's terms; signed by a person, as the
+  page promises. Written by hand while volume is low; automate later through Brevo's
+  transactional API (already set up for the domain, DKIM passing), no new account needed.
 - [x] Hero headline confirmed by Rigan on 2026-10-15: "Sites, apps, 3D and films, built to launch and
   get found." (`src/data/hero.ts`; it covers all six services, like the title and description) and the `availability` line in
   `src/data/site.ts` (null, so hidden; the mockup used "taking projects for Q4 2026").
