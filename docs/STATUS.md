@@ -198,6 +198,9 @@ Content (placeholders are in the design until these arrive):
     /tools/ai-search-check. /ai-search-check now forwards there with ?url= kept (noindex, canonical to
     the new address); every internal link, the sitemap, llms.txt, the footer and the report email use
     the new address. New tools go in `src/data/tools.ts` at /tools/<slug>.
+  - [ ] Free tools programme (`docs/tools-plan.md`, 2026-10-18): eight zero-cost tools, one at a
+    time, each with a number from our 379 scanned homepages, an ungated output, the audit and kit
+    as the next step, a blog post and a LinkedIn post. Plan awaiting Rigan's go-ahead.
   - [x] Main navigation (2026-10-18): the pill's dock row and panel gain a studio group (launch kit
     with a new dot, tools, blog, founder; `src/data/studio-links.ts`); on every other page the page
     pill opens a dropdown with the home sections and the studio group; desktop (900px and up) has a
