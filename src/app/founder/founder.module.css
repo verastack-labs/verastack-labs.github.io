@@ -20,6 +20,7 @@
   letter-spacing: -0.055em;
 }
 .title em { font-style: normal; color: var(--signal); }
+.line { display: block; }
 .byline { margin: 0 0 28px; font: 400 12.5px var(--font-mono); color: var(--muted); }
 .byline b { font-weight: 500; color: var(--text); }
 .para { max-width: 58ch; margin: 0 0 16px; font-size: clamp(16px, 1.45vw, 19px); line-height: 1.6; color: var(--muted); }
@@ -46,7 +47,9 @@
 .h2 { margin: 0 0 24px; font-weight: 800; font-size: clamp(26px, 3.2vw, 36px); line-height: 1.1; letter-spacing: -0.04em; }
 
 /* The launch rail: a line with a lit stop per launch, ending at an open one for yours. */
-.rail { margin: 0 0 0 7px; padding: 0 0 0 26px; list-style: none; border-left: 2px solid var(--line); }
+.rail { position: relative; margin: 0 0 0 7px; padding: 0 0 0 26px; list-style: none; border-left: 2px solid var(--line); }
+/* The signal line draws down the rail as it scrolls (--draw, set by PageMotion); full by default. */
+.rail::before { content: ''; position: absolute; top: 0; bottom: 0; left: -2px; width: 2px; background: var(--signal); transform-origin: top; transform: scaleY(var(--draw, 1)); }
 .stop { position: relative; padding-bottom: 26px; }
 .stop:last-child { padding-bottom: 0; }
 .stop::before { content: ''; position: absolute; left: -34px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 5px var(--ink); }

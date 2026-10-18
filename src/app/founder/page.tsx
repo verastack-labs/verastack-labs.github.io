@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { founder, founderQuestions, pressOutlets } from '@/data/founder'
 import { booking, shareImage, site } from '@/data/site'
 import { jsonLd, studioNode } from '@/lib/structured-data'
+import { PageMotion } from '@/components/page-motion'
 import styles from '@/app/founder/founder.module.css'
 
 export const metadata: Metadata = {
@@ -52,8 +53,8 @@ export default function FounderPage() {
 
       <section className={styles.intro} data-reveal>
         <div className={styles.letter}>
-          <h1 className={styles.title}>
-            Hi, I&apos;m <em>Rigan</em>.
+          <h1 className={styles.title} data-m="lines">
+            <span className={styles.line}>Hi, I&apos;m <em>Rigan</em>.</span>
           </h1>
           <p className={styles.byline}>
             <b>{site.founderName}</b> · founder, {site.name}
@@ -63,12 +64,13 @@ export default function FounderPage() {
               {para}
             </p>
           ))}
-          <p className={styles.signature} aria-hidden="true">
+          <p className={styles.signature} aria-hidden="true" data-m="wipe">
             Rigan
           </p>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element -- static export, no image optimiser */}
         <img
+          data-m="mask"
           className={styles.photo}
           src={founder.photo.src}
           width={founder.photo.width}
@@ -82,10 +84,10 @@ export default function FounderPage() {
         <h2 id="proof-title" className="sr-only">
           The numbers
         </h2>
-        <ul className={styles.cards}>
+        <ul className={styles.cards} data-m="stagger">
           {founder.metrics.map((m) => (
-            <li key={m.value} className={styles.card}>
-              <strong>{m.value}</strong>
+            <li key={m.value} className={styles.card} data-tilt>
+              <strong data-m="count">{m.value}</strong>
               <span>{m.label}</span>
             </li>
           ))}
@@ -107,7 +109,7 @@ export default function FounderPage() {
         <h2 id="rail-title" className={styles.h2}>
           The launches so far
         </h2>
-        <ol className={styles.rail}>
+        <ol className={styles.rail} data-m="rail">
           {founder.rail.map((r) => (
             <li key={r.name} className={styles.stop} data-you={r.you ? 'true' : undefined}>
               <b>{r.name}</b>
@@ -122,7 +124,7 @@ export default function FounderPage() {
         <h2 id="questions-title" className={styles.h2}>
           Questions
         </h2>
-        <dl className={styles.faq}>
+        <dl className={styles.faq} data-m="stagger">
           {founderQuestions.map((f) => (
             <div key={f.q}>
               <dt>{f.q}</dt>
@@ -140,6 +142,7 @@ export default function FounderPage() {
           Founder&apos;s portfolio ↗
         </a>
       </div>
+      <PageMotion />
     </main>
   )
 }

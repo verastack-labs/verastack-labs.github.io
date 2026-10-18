@@ -10,6 +10,7 @@
 .label em { font-style: normal; color: var(--signal); }
 .title { margin: 0 0 20px; font-weight: 800; font-variation-settings: 'opsz' 96; font-size: clamp(52px, 7.4vw, 104px); line-height: 0.9; letter-spacing: -0.055em; }
 .title em { font-style: normal; color: var(--signal); }
+.line { display: block; }
 .lede { max-width: 38ch; margin: 0 0 24px; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.5; color: var(--muted); }
 .lede b { color: var(--text); font-weight: 700; }
 
@@ -29,7 +30,9 @@
 .addons b { color: var(--text); }
 
 .weeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0; padding: 0; list-style: none; }
-.weeks li { padding-top: 14px; border-top: 6px solid var(--signal); border-radius: 3px 3px 0 0; }
+.weeks li { position: relative; padding-top: 18px; }
+/* The bar grows left to right when motion is on (--grow, set by PageMotion); full by default. */
+.weeks li::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 6px; border-radius: 3px; background: var(--signal); transform-origin: left; transform: scaleX(var(--grow, 1)); }
 .weeks span { font: 500 11px var(--font-mono); color: var(--signal); }
 .weeks b { display: block; margin: 6px 0 4px; font-size: 20px; letter-spacing: -0.03em; }
 .weeks p { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
@@ -103,3 +106,8 @@ a.proofCard:hover { border-color: var(--signal); }
   .bar span { font: 500 10.5px var(--font-mono); color: var(--muted); }
   .barCta { padding: 12px 18px; background: var(--signal); color: var(--ink); font-size: 15px; white-space: nowrap; }
 }
+
+/* Questions open and close with a smooth height where the browser supports it; elsewhere they jump. */
+.faq details::details-content { block-size: 0; overflow: hidden; transition: block-size 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), content-visibility 0.4s allow-discrete; }
+.faq details[open]::details-content { block-size: auto; }
+.proofCard { will-change: transform; }
