@@ -6,6 +6,7 @@ import { HOOK_MARKER, allPosts, formatDate, postBySlug, published, readingMinute
 import { PostCheck, PostHook } from '@/app/blog/post-extras'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { shareImage, site } from '@/data/site'
+import { PostTitle } from '@/app/blog/post-title'
 import styles from '@/app/blog/blog.module.css'
 
 export const dynamicParams = false
@@ -76,7 +77,9 @@ export default async function PostPage({ params }: Props) {
         <p className={styles.byline}>
           by <Link href="/founder">{site.founderName}</Link>
         </p>
-        <h1 className={styles.postTitle}>{post.title}</h1>
+        <h1 className={styles.postTitle}>
+          <PostTitle parts={post.titleParts} />
+        </h1>
         <p className={styles.lede}>{post.description}</p>
       </header>
       {/* Our own Markdown, rendered at build time, split where the highlighted hook goes. */}

@@ -1,5 +1,5 @@
 ---
-title: Spot the slop: what an AI-built launch page gets wrong
+title: Spot the *slop*: what an AI-built launch page gets wrong
 description: We asked an AI site builder for a launch page and built the same page ourselves. The AI one looks fine. Here is where it quietly fails, and how to check yours.
 date: 2026-10-17
 time: 16:30

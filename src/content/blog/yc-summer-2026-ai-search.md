@@ -1,5 +1,5 @@
 ---
-title: AI search scores of YC Summer 2026, by space
+title: AI search scores of *YC Summer 2026*, by space
 description: We checked 226 YC Summer 2026 homepages for how well ChatGPT and AI answers can read them. Median 66, four perfect scores, and the leaders in each space.
 date: 2026-10-17
 time: 22:45

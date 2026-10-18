@@ -10,6 +10,22 @@ describe('blog', () => {
     expect(post.html).toContain('<h2>Hello</h2>')
   })
 
+  it('splits highlighted words out of the title, keeping a plain title', () => {
+    const post = parsePost('x', '---\ntitle: *GEO* is the new SEO\ndescription: d\ndate: 2026-10-18\ncategory: studies\n---\nbody')
+    expect(post.title).toBe('GEO is the new SEO')
+    expect(post.titleParts).toEqual([
+      { text: 'GEO', hi: true },
+      { text: ' is the new SEO', hi: false },
+    ])
+  })
+
+  it('gives every post title at least one highlighted word', () => {
+    for (const p of allPosts()) {
+      expect(p.titleParts.some((t) => t.hi), p.slug).toBe(true)
+      expect(p.title).not.toContain('*')
+    }
+  })
+
   it('refuses a post without a description', () => {
     expect(() => parsePost('x', '---\ntitle: t\ndate: 2026-10-17\ncategory: studies\n---\nbody')).toThrow(/description/)
   })

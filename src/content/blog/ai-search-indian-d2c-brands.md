@@ -1,5 +1,5 @@
 ---
-title: We ran 96 Indian D2C sites through an AI search check
+title: We ran 96 *Indian D2C sites* through an AI search check
 description: Median score 75, nobody above 91. What Indian D2C homepages get right for ChatGPT and AI answers, the two gaps almost all of them share, and who leads.
 date: 2026-10-17
 time: 11:15

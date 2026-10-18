@@ -1,5 +1,5 @@
 ---
-title: AI search scores of 26 SaaS homepages
+title: AI search scores of *26 SaaS homepages*
 description: Four perfect scores, four pages that are blank to crawlers. How 26 SaaS homepages read to ChatGPT and AI answers, and the three fixes that separate the top from the rest.
 date: 2026-10-17
 time: 11:25

@@ -1,5 +1,5 @@
 ---
-title: GEO is the new SEO: what changes and what doesn't
+title: *GEO* is the new SEO: what changes and what doesn't
 description: Generative engine optimisation, AEO and SEO, untangled. What actually changes when buyers ask ChatGPT instead of searching, and the SEO work that still carries it.
 date: 2026-10-18
 time: 11:35
