@@ -5,6 +5,9 @@ fetches that page with its robots.txt, llms.txt and sitemap.xml and returns a sc
 the top three fixes and a count of the rest as JSON. Every check's finding and fix together are
 the audit, so only requests carrying the studio key in an `X-Report-Key` header get all sixteen:
 `node full-report.mjs example.com` prints them, and the study scan uses the same key.
+`node report-email.mjs example.com [first name]` drafts the complete-report email a visitor asked
+for (sent by hand from rigan@verastack.dev): it prints the subject and writes the HTML body to
+`emails/<host>.html`, which is not in git.
 
 The key lives in `.report-key` here (not in git) and on the Worker as a secret:
 
