@@ -190,7 +190,10 @@ Content (placeholders are in the design until these arrive):
     month, 10% back per late week capped at 30%, equity case by case (60% cash floor, up to 1% via
     SAFE), a 90+ AEO and GEO score promise, code by default (Framer on request), $2,500/mo plan with
     a 3-month minimum. India: regional pricing on a call, shown only to Asia/Kolkata visitors; floor INR 4 lakh
-    (internal). Next: plan and build the /launch-kit page.
+    (internal). Page live at /launch-kit (2026-10-18): mockup B (price card pinned, a bottom bar on
+    phones) with A's guarantee headline and proof cards; Service and Offer plus FAQPage JSON-LD; in
+    the footer, sitemap and llms.txt. The India block and chip render only for Asia/Kolkata time
+    zones. Next: a place in the main navigation (plan pending).
   - [x] Blog order and tags (2026-10-17): posts carry an optional `time:` (IST, HH:MM) so same-day
     posts sort newest first (a test holds it); JSON-LD datePublished includes it. Inside a post, the
     category and tags are bordered pills under the date (the category highlighted, linking to its

@@ -41,6 +41,8 @@ export function SiteFooter() {
         </div>
         <div className={styles.col}>
           <h3>elsewhere</h3>
+          <Link href="/launch-kit">SaaS launch kit</Link>
+          <br />
           <Link href="/blog">blog</Link>
           <br />
           <Link href="/ai-search-check">free AI search check</Link>

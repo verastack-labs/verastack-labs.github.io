@@ -113,6 +113,7 @@ export function llmsText(): string {
     '## Key pages',
     '',
     `- [Home](${site.url}/): services, work, products and how we work`,
+    `- [SaaS Launch Kit](${site.url}/launch-kit/): brand, launch site, launch film, AEO and GEO; 4 weeks, $9,500 fixed`,
     `- [Free AI search check](${site.url}${checker.path}/): score a page for AI search`,
     `- [Blog](${site.url}/blog/): notes on launches and AI search`,
     `- [The founder](${site.url}${founder.path}/): who you work with, on every call`,
