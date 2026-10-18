@@ -84,3 +84,7 @@ html[data-motion='static'] .reveal-pending { opacity: 1; transform: none; }
 
 /* Lets details elements animate their height to auto (questions on the tool and kit pages). */
 :root { interpolate-size: allow-keywords; }
+
+/* Slide-in animations start off-screen; clipping keeps them from widening the page on phones (which
+   zoom out to fit). clip, not hidden, so sticky elements keep working. */
+html, body { overflow-x: clip; }
