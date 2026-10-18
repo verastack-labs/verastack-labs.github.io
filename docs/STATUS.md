@@ -112,6 +112,11 @@ Content (placeholders are in the design until these arrive):
   `status: 'live'`, add media and the live link, decide headliner or supporting, and quote
   metrics honestly or not at all.
 
+- [x] Blog post "Funded this fortnight: six AI agents for the back office" (2026-10-18, Startups):
+  Hone, Duvo, Causa Prima, Clueso, Forgepoint and Shamrock AI, $136.8M, rounds fact-checked; top three
+  AI search scores named (Clueso 100, Duvo 90, Causa Prima 82), the rest private. Data in
+  `docs/study/funded-2026-10/`. Next edition after 31 Oct.
+
 ## Planned, not started
 
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
