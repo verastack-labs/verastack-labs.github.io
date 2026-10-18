@@ -39,7 +39,7 @@ export default function BlogIndex() {
         /blog <em>{'//'}</em> launches, AI search, open source
       </p>
       <h1 className={styles.indexTitle}>
-        Notes from the <em className={styles.hi}>studio.</em>
+        Notes from the <span className={styles.hi}>studio.</span>
       </h1>
       <CategoryBar />
       <PostList posts={posts} />

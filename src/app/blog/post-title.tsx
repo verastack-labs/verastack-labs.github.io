@@ -7,9 +7,9 @@ export function PostTitle({ parts }: { parts: TitlePart[] }) {
     <>
       {parts.map((p, i) =>
         p.hi ? (
-          <em key={i} className={styles.hi}>
+          <span key={i} className={styles.hi}>
             {p.text}
-          </em>
+          </span>
         ) : (
           p.text
         ),
