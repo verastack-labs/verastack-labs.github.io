@@ -107,3 +107,11 @@
 
 /* The highlighted words of a title. In a list the whole title turns signal on hover, so they hold. */
 .hi { color: var(--signal); }
+
+/* The index and category pages use the width a desktop has: a wider column, posts in two columns.
+   A post itself keeps the narrow reading measure. */
+@media (min-width: 1100px) {
+  .wide { max-width: 1180px; padding-left: 40px; padding-right: 40px; }
+  .wide .list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
+  .wide .item { height: 100%; }
+}

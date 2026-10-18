@@ -32,7 +32,7 @@ export default function BlogIndex() {
     ],
   }
   return (
-    <main id="main" className={styles.page}>
+    <main id="main" className={`${styles.page} ${styles.wide}`}>
       <span id="top" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(graph) }} />
       <p className={styles.label}>
