@@ -10,7 +10,7 @@ import { EMAIL_WARNING } from '@/lib/enquiry'
 import { setEnquiryPrefill } from '@/lib/enquiry-prefill'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import { markOfferDone } from '@/lib/offer'
-import styles from '@/app/ai-search-check/checker.module.css'
+import styles from '@/app/tools/ai-search-check/checker.module.css'
 
 type Check = { id: string; label: string; status: 'pass' | 'warn' | 'fail'; weight: number; detail: string; fix: string }
 // The public answer: the top fixes in full and only a count of the rest. Every check's finding and

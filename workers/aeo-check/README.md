@@ -1,6 +1,6 @@
 # AI search check Worker
 
-The server behind https://verastack.dev/ai-search-check. `GET https://api.verastack.dev/aeo-check?url=example.com`
+The server behind https://verastack.dev/tools/ai-search-check. `GET https://api.verastack.dev/aeo-check?url=example.com`
 fetches that page with its robots.txt, llms.txt and sitemap.xml and returns a score out of 100,
 the top three fixes and a count of the rest as JSON. Every check's finding and fix together are
 the audit, so only requests carrying the studio key in an `X-Report-Key` header get all sixteen:

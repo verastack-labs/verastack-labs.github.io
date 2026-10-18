@@ -115,7 +115,7 @@ export default function LaunchKitPage() {
             <p className={styles.note}>
               66 is the median{' '}
               <Link href="/blog/yc-summer-2026-ai-search">YC Summer 2026 homepage</Link> on our{' '}
-              <Link href="/ai-search-check">AEO and GEO check</Link>. Every kit launches at 90 or more.
+              <Link href="/tools/ai-search-check">AEO and GEO check</Link>. Every kit launches at 90 or more.
             </p>
           </section>
 

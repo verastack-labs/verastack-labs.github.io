@@ -193,7 +193,14 @@ Content (placeholders are in the design until these arrive):
     (internal). Page live at /launch-kit (2026-10-18): mockup B (price card pinned, a bottom bar on
     phones) with A's guarantee headline and proof cards; Service and Offer plus FAQPage JSON-LD; in
     the footer, sitemap and llms.txt. The India block and chip render only for Asia/Kolkata time
-    zones. Next: a place in the main navigation (plan pending).
+    zones.
+  - [x] Tools section (2026-10-18): /tools lists the free tools; the checker moved to
+    /tools/ai-search-check. /ai-search-check now forwards there with ?url= kept (noindex, canonical to
+    the new address); every internal link, the sitemap, llms.txt, the footer and the report email use
+    the new address. New tools go in `src/data/tools.ts` at /tools/<slug>.
+  - [ ] Main navigation (Rigan chose 2026-10-18): the pill's dock and phone panel gain a studio
+    group (launch kit with a new dot, tools, blog, founder), the page pill opens the same menu on
+    every page, and desktop gets a Launch kit button beside Start a project.
   - [x] Blog order and tags (2026-10-17): posts carry an optional `time:` (IST, HH:MM) so same-day
     posts sort newest first (a test holds it); JSON-LD datePublished includes it. Inside a post, the
     category and tags are bordered pills under the date (the category highlighted, linking to its

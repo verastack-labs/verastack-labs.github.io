@@ -12,7 +12,7 @@ tags: AI search, SaaS
 
 Earlier today we published [how 96 Indian D2C stores read to AI search](/blog/ai-search-indian-d2c-brands). Shopify gave those stores a solid, similar floor: a median of 75 and a narrow spread. SaaS homepages are built every which way, so we expected a wider range. We got one.
 
-We ran 27 SaaS homepages through the same [AI search check](/ai-search-check): sixteen checks of how well ChatGPT, Perplexity, Claude and Google's AI answers can read a page. One site's bot protection turned the checker away, which leaves 26. They are mostly companies whose founders are active on LinkedIn, in the US and Europe: a handpicked list, not a random sample of SaaS.
+We ran 27 SaaS homepages through the same [AI search check](/tools/ai-search-check): sixteen checks of how well ChatGPT, Perplexity, Claude and Google's AI answers can read a page. One site's bot protection turned the checker away, which leaves 26. They are mostly companies whose founders are active on LinkedIn, in the US and Europe: a handpicked list, not a random sample of SaaS.
 
 ## The scores
 
@@ -29,18 +29,18 @@ Scores as of 17 October 2026. Each links to a live re-check.
 
 | Company | Score |
 | --- | --- |
-| [Sitefire](/ai-search-check/?url=sitefire.ai) | 100 |
-| [Fastshot](/ai-search-check/?url=fastshot.ai) | 100 |
-| [Revnu](/ai-search-check/?url=revnu.com) | 100 |
-| [screenpipe](/ai-search-check/?url=screenpipe.com) | 100 |
-| [TesterArmy](/ai-search-check/?url=tester.army) | 97 |
-| [RB2B](/ai-search-check/?url=rb2b.com) | 92 |
-| [Waalaxy](/ai-search-check/?url=waalaxy.com) | 90 |
-| [Financial Datasets](/ai-search-check/?url=financialdatasets.ai) | 88 |
-| [lemlist](/ai-search-check/?url=lemlist.com) | 88 |
-| [Omniconvert](/ai-search-check/?url=omniconvert.com) | 86 |
-| [Kuli](/ai-search-check/?url=kuli.one) | 86 |
-| [folk](/ai-search-check/?url=folk.app) | 86 |
+| [Sitefire](/tools/ai-search-check/?url=sitefire.ai) | 100 |
+| [Fastshot](/tools/ai-search-check/?url=fastshot.ai) | 100 |
+| [Revnu](/tools/ai-search-check/?url=revnu.com) | 100 |
+| [screenpipe](/tools/ai-search-check/?url=screenpipe.com) | 100 |
+| [TesterArmy](/tools/ai-search-check/?url=tester.army) | 97 |
+| [RB2B](/tools/ai-search-check/?url=rb2b.com) | 92 |
+| [Waalaxy](/tools/ai-search-check/?url=waalaxy.com) | 90 |
+| [Financial Datasets](/tools/ai-search-check/?url=financialdatasets.ai) | 88 |
+| [lemlist](/tools/ai-search-check/?url=lemlist.com) | 88 |
+| [Omniconvert](/tools/ai-search-check/?url=omniconvert.com) | 86 |
+| [Kuli](/tools/ai-search-check/?url=kuli.one) | 86 |
+| [folk](/tools/ai-search-check/?url=folk.app) | 86 |
 
 The four perfect scores share a pattern (and one of them, Sitefire, works on AI search visibility for a living): about a thousand words of plain HTML, the company and the product both described in structured data, an FAQ marked up for machines, and an llms.txt. Nothing exotic. Every item is a day's work or less.
 
@@ -72,4 +72,4 @@ This measures how readable a homepage is to AI search, not whether ChatGPT recom
 
 ## Check your own
 
-The check is free and takes about ten seconds: [run it on your homepage](/ai-search-check). If you'd rather we made the fixes, [tell us about your product](/#contact).
+The check is free and takes about ten seconds: [run it on your homepage](/tools/ai-search-check). If you'd rather we made the fixes, [tell us about your product](/#contact).

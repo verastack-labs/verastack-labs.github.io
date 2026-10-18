@@ -58,4 +58,4 @@ Alongside that, Search Console still shows the classic side: which queries bring
 
 ---
 
-We do this work for clients as part of our AEO and GEO service, built on SEO, and our own site is the worked example: crawlers allowed, the story in plain HTML, labelled facts, an llms.txt. To see how one of your pages reads to an answer engine right now, run our [free AEO and GEO check](/ai-search-check). For the whole site, [tell us about it](/#contact).
+We do this work for clients as part of our AEO and GEO service, built on SEO, and our own site is the worked example: crawlers allowed, the story in plain HTML, labelled facts, an llms.txt. To see how one of your pages reads to an answer engine right now, run our [free AEO and GEO check](/tools/ai-search-check). For the whole site, [tell us about it](/#contact).

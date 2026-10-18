@@ -45,7 +45,7 @@ export function SiteFooter() {
           <br />
           <Link href="/blog">blog</Link>
           <br />
-          <Link href="/ai-search-check">free AI search check</Link>
+          <Link href="/tools">free tools</Link>
           <br />
           <Link href="/founder">founder</Link>
           <br />

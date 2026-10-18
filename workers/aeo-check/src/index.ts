@@ -11,7 +11,7 @@ import { publicView, runChecks, score, topFixes, type Evidence } from './score'
 type RateLimiter = { limit: (opts: { key: string }) => Promise<{ success: boolean }> }
 type Env = { LIMITER?: RateLimiter; ALLOWED_ORIGINS: string; SELF_HOST: string; REPORT_KEY?: string }
 
-const USER_AGENT = 'Mozilla/5.0 (compatible; VeraStackCheck/1.0; +https://verastack.dev/ai-search-check/)'
+const USER_AGENT = 'Mozilla/5.0 (compatible; VeraStackCheck/1.0; +https://verastack.dev/tools/ai-search-check/)'
 const BOT_AGENT = 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; OAI-SearchBot/1.3; +https://openai.com/searchbot'
 const TIMEOUT_MS = 8000
 const MAX_BYTES = 2_000_000

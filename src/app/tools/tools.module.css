@@ -1,0 +1,17 @@
+.page { max-width: 1040px; margin: 0 auto; padding: 120px 24px 96px; }
+@media (min-width: 768px) { .page { padding: 160px 40px 128px; } }
+.label { margin: 0 0 18px; font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.label em { font-style: normal; color: var(--signal); }
+.title { margin: 0 0 18px; font-weight: 800; font-variation-settings: 'opsz' 96; font-size: clamp(44px, 7vw, 92px); line-height: 0.92; letter-spacing: -0.055em; }
+.title em { font-style: normal; color: var(--signal); }
+.lede { max-width: 46ch; margin: 0 0 44px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: var(--muted); }
+.list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.card, .soon { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--text); text-decoration: none; }
+.card { transition: border-color 0.2s, transform 0.2s; }
+.card:hover { border-color: var(--signal); transform: translateY(-2px); }
+.soon { background: transparent; border-style: dashed; }
+.n { font: 500 11px var(--font-mono); color: var(--signal); }
+.card b, .soon b { font-size: 24px; letter-spacing: -0.035em; }
+.line { font-size: 15.5px; line-height: 1.55; color: var(--muted); }
+.line a { color: var(--text); }
+.go { margin-top: auto; padding-top: 10px; font-weight: 700; color: var(--signal); }

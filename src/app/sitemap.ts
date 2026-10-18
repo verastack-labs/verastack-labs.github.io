@@ -10,7 +10,8 @@ export const dynamic = 'force-static'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${site.url}/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
-    { url: `${site.url}/ai-search-check/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${site.url}/tools/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${site.url}/tools/ai-search-check/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${site.url}/launch-kit/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${site.url}/founder/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${site.url}/blog/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },

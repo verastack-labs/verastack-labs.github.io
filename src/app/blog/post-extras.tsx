@@ -39,7 +39,7 @@ export function PostCheck({ compare }: { compare: string | null }) {
         className={styles.checkForm}
         onSubmit={(e) => {
           e.preventDefault()
-          if (url.trim()) router.push(`/ai-search-check/?url=${encodeURIComponent(url.trim())}`)
+          if (url.trim()) router.push(`/tools/ai-search-check/?url=${encodeURIComponent(url.trim())}`)
         }}
       >
         <label className="sr-only" htmlFor="post-check-url">

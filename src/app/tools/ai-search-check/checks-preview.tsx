@@ -1,5 +1,5 @@
 import { checks } from '@/data/ai-search-check'
-import styles from '@/app/ai-search-check/checker.module.css'
+import styles from '@/app/tools/ai-search-check/checker.module.css'
 
 // Three in full, then three blurred rows that hold no real text.
 const FULL = 3
