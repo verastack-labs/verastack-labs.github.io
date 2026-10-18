@@ -9,8 +9,8 @@
   background: var(--ink);
   pointer-events: none;
 }
-.curtain[data-phase='cover'] { animation: cover 0.475s cubic-bezier(0.7, 0, 0.84, 0) both; }
-.curtain[data-phase='lift'] { animation: lift 0.775s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.curtain[data-phase='cover'] { animation: cover 0.38s cubic-bezier(0.7, 0, 0.84, 0) both; }
+.curtain[data-phase='lift'] { animation: lift 0.62s cubic-bezier(0.16, 1, 0.3, 1) both; }
 @keyframes cover { from { transform: translateY(100%); } to { transform: translateY(0); } }
 @keyframes lift { from { transform: translateY(0); } to { transform: translateY(-100%); } }
 
@@ -22,8 +22,8 @@
   color: var(--signal);
   text-shadow: 0 0 60px rgba(212, 255, 63, 0.35);
 }
-.curtain[data-phase='cover'] .slash { animation: slashIn 0.475s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-.curtain[data-phase='lift'] .slash { animation: slashOut 0.55s ease-in both; }
+.curtain[data-phase='cover'] .slash { animation: slashIn 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.curtain[data-phase='lift'] .slash { animation: slashOut 0.44s ease-in both; }
 @keyframes slashIn { from { opacity: 0; transform: translateY(40px) skewX(-8deg); } }
 @keyframes slashOut { to { opacity: 0; transform: translateY(-30px); } }
 
