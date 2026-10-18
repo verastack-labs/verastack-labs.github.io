@@ -38,6 +38,17 @@ outlet; anything we cannot trace to its source does not go in. To find:
 - How AI-referred visitors convert compared with search visitors (published analytics studies).
 - How much of a buyer's shortlist now starts in an AI answer (B2B buyer surveys).
 
+## What the evidence says (read before writing any tool copy)
+
+`docs/why-ai-search-numbers.md` (sourced 18 Oct 2026). One finding shapes every structured-data tool:
+there is no credible evidence that schema markup by itself raises AI citations (Google: no special
+markup needed; Ahrefs' 2026 controlled test of 1,885 pages: no meaningful uplift). So the tools sell
+the content (plain answers, clear facts, readable pages) and present markup as good practice that
+labels it, never as a citation lever. Usable outside figures: Google AI Overviews 2.5 billion
+monthly users (May 2026); Pew, 8% vs 15% clicks with and without an AI summary (2025); ChatGPT 900
+million weekly users (Feb 2026); Forrester, 94% of B2B buyers use AI in buying (Jan 2026); Adobe,
+AI-referred visitors converted 31% more over holiday 2025.
+
 ## The pattern every tool page follows
 
 1. **One hard number in the hero,** from our table: "80% of the 379 homepages we checked have no

@@ -34,7 +34,7 @@ The good news first: every studio lets the AI search crawlers in, and no homepag
 
 ## What most studios are missing
 
-- **No FAQ: 21 of 25.** The questions a buyer asks a studio are predictable: what do you cost, how long does it take, do you work with startups, which stack. A marked-up FAQ hands an AI answer those replies word for word. Almost nobody has one.
+- **No FAQ: 21 of 25.** The questions a buyer asks a studio are predictable: what do you cost, how long does it take, do you work with startups, which stack. Plain, short answers to those questions on the page are exactly what an AI answer can lift. Almost nobody has them.
 - **Services nobody can read as services: 18 of 25.** The homepage lists apps, websites, AI and staffing in prose, but none of it is labelled as a Service in structured data, so a model has to guess what is on offer.
 - **No llms.txt: 11 of 25.** It takes an hour to write.
 - **No Organization data at all: 6 of 25,** and 3 more have it without links to their other profiles. Studio names are often common words, so without it a model has to guess which company of that name it is reading about.
