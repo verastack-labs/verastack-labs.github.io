@@ -410,6 +410,8 @@ function SiteOffer() {
           ref={pill}
           type="button"
           className={styles.pill}
+          // The Launch Kit page has its own price bar at the bottom on phones; the pill stands aside there.
+          data-kit={pathname?.startsWith('/launch-kit') || undefined}
           data-hidden={covered || undefined}
           aria-hidden={covered || undefined}
           tabIndex={covered ? -1 : undefined}

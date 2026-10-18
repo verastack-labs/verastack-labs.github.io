@@ -119,16 +119,16 @@ export function SiteHeader() {
   const pathname = usePathname()
   const framed = useFramed()
   if (framed) return null
-  if (pathname?.startsWith('/blog')) return <PageHeader path="/blog" />
-    if (pathname?.startsWith('/examples')) return <PageHeader path="/examples" />
-  if (pathname?.startsWith('/founder')) return <PageHeader path="/founder" />
-  if (pathname?.startsWith('/launch-kit')) return <PageHeader path="/launch-kit" short="/kit" />
+  if (pathname?.startsWith('/blog')) return <PageHeader key={pathname} path="/blog" />
+    if (pathname?.startsWith('/examples')) return <PageHeader key={pathname} path="/examples" />
+  if (pathname?.startsWith('/founder')) return <PageHeader key={pathname} path="/founder" />
+  if (pathname?.startsWith('/launch-kit')) return <PageHeader key={pathname} path="/launch-kit" short="/kit" />
   if (pathname?.startsWith('/tools/ai-search-check') || pathname?.startsWith('/ai-search-check'))
-    return <PageHeader path="/tools/ai-search-check" short="/ai-check" />
-  if (pathname?.startsWith('/tools/what-ai-sees')) return <PageHeader path="/tools/what-ai-sees" short="/ai-sees" />
-  if (pathname?.startsWith('/tools/product-schema')) return <PageHeader path="/tools/product-schema" short="/product" />
-  if (pathname?.startsWith('/tools/faq-schema')) return <PageHeader path="/tools/faq-schema" short="/faq" />
-  if (pathname?.startsWith('/tools')) return <PageHeader path="/tools" />
+    return <PageHeader key={pathname} path="/tools/ai-search-check" short="/ai-check" />
+  if (pathname?.startsWith('/tools/what-ai-sees')) return <PageHeader key={pathname} path="/tools/what-ai-sees" short="/ai-sees" />
+  if (pathname?.startsWith('/tools/product-schema')) return <PageHeader key={pathname} path="/tools/product-schema" short="/product" />
+  if (pathname?.startsWith('/tools/faq-schema')) return <PageHeader key={pathname} path="/tools/faq-schema" short="/faq" />
+  if (pathname?.startsWith('/tools')) return <PageHeader key={pathname} path="/tools" />
   return (
     <header className={styles.header} data-theme={theme}>
       <a className={styles.wordmark} href="#top" aria-label="VeraStack Labs, back to top">

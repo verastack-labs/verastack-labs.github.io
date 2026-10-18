@@ -134,3 +134,6 @@
   .pill { transition: none; }
 }
 .input[aria-invalid='true'] { border-color: var(--alert); }
+
+/* On the Launch Kit page, phones show the kit's own price bar in this spot (launch-kit.module.css .bar). */
+@media (max-width: 959px) { .pill[data-kit='true'] { display: none; } }
