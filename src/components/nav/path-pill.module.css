@@ -241,3 +241,13 @@
   .panel a, .dropdown a { font-size: 17px; padding: 10px 12px; }
   .panel a small, .dropdown a small { min-width: 16px; }
 }
+
+/* Phones: the bar spreads evenly (wordmark, pill centred, button at the edge) and the menu arrow is
+   big enough to read as a control. */
+@media (max-width: 640px) {
+  .header { justify-content: space-between; }
+  .nav { margin-left: 0; }
+  .cta { margin-left: 0; }
+  .caret { width: 30px; height: 30px; font-size: 15px; }
+  .pageMenuBtn .caret { width: 28px; height: 28px; font-size: 15px; }
+}
