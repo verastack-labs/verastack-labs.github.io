@@ -1,21 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import { site } from '@/data/site'
 import styles from '@/app/launch-kit/launch-kit.module.css'
 
 // Regional pricing, offered only to visitors whose browser is set to India's time zone. It is added
-// after the page loads, so search engines, AI crawlers and the structured data see only the dollar
-// price, and no rupee figure is ever published (docs/launch-kit.md).
+// after the page loads (the server snapshot is false), so search engines, AI crawlers and the
+// structured data see only the dollar price, and no rupee figure is ever published
+// (docs/launch-kit.md).
+const noSubscribe = () => () => {}
+function inIndia() {
+  try {
+    const zone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    return zone === 'Asia/Kolkata' || zone === 'Asia/Calcutta'
+  } catch {
+    return false
+  }
+}
 function useInIndia() {
-  const [india, setIndia] = useState(false)
-  useEffect(() => {
-    try {
-      const zone = Intl.DateTimeFormat().resolvedOptions().timeZone
-      setIndia(zone === 'Asia/Kolkata' || zone === 'Asia/Calcutta')
-    } catch {}
-  }, [])
-  return india
+  return useSyncExternalStore(noSubscribe, inIndia, () => false)
 }
 
 const callHref = site.calLink ?? '/#contact'

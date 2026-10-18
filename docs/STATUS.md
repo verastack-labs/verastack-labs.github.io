@@ -198,9 +198,12 @@ Content (placeholders are in the design until these arrive):
     /tools/ai-search-check. /ai-search-check now forwards there with ?url= kept (noindex, canonical to
     the new address); every internal link, the sitemap, llms.txt, the footer and the report email use
     the new address. New tools go in `src/data/tools.ts` at /tools/<slug>.
-  - [ ] Main navigation (Rigan chose 2026-10-18): the pill's dock and phone panel gain a studio
-    group (launch kit with a new dot, tools, blog, founder), the page pill opens the same menu on
-    every page, and desktop gets a Launch kit button beside Start a project.
+  - [x] Main navigation (2026-10-18): the pill's dock row and panel gain a studio group (launch kit
+    with a new dot, tools, blog, founder; `src/data/studio-links.ts`); on every other page the page
+    pill opens a dropdown with the home sections and the studio group; desktop (900px and up) has a
+    Launch kit button beside Start a project, hidden on the kit's own page. The row needs 1360px, so
+    narrower mouse screens open the panel as a right-hand dropdown; phone panels scroll when short.
+    Drop `isNew` from the launch kit link after a few weeks.
   - [x] Blog order and tags (2026-10-17): posts carry an optional `time:` (IST, HH:MM) so same-day
     posts sort newest first (a test holds it); JSON-LD datePublished includes it. Inside a post, the
     category and tags are bordered pills under the date (the category highlighted, linking to its

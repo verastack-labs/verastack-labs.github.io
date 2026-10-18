@@ -1,8 +1,10 @@
 'use client'
 
+import Link from 'next/link'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { sections } from '@/data/sections'
 import { booking } from '@/data/site'
+import { studioLinks } from '@/data/studio-links'
 import { formatCounter } from '@/lib/counter'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { useActiveSection } from '@/components/nav/use-active-section'
@@ -17,9 +19,9 @@ const INTRO_MS = 3000
 // A beat after hydration, so the widening is seen as a morph rather than a jump.
 const INTRO_DELAY_MS = 300
 
-// The horizontal row needs about 900px beside the wordmark and button; below that, or without
-// hover, the pill opens the vertical panel instead.
-const PANEL_QUERY = '(hover: none), (max-width: 899px)'
+// The horizontal row (sections, then the studio pages) needs about 1360px beside the wordmark and
+// both buttons; below that, or without hover, the pill opens the vertical panel instead.
+const PANEL_QUERY = '(hover: none), (max-width: 1359px)'
 
 function usePanelMode(): boolean {
   const [touch, setTouch] = useState(false)
@@ -166,6 +168,20 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
                 </a>
               </li>
             ))}
+            <li className={styles.divider} aria-hidden="true" />
+            {studioLinks.map((l, i) => (
+              <li key={l.href} style={{ display: 'contents' }}>
+                <Link
+                  href={l.href}
+                  tabIndex={open && !touch ? 0 : -1}
+                  style={{ '--i': LAST + i } as CSSProperties}
+                  onClick={pick}
+                >
+                  {l.label}
+                  {l.isNew && <span className={styles.newDot} aria-label="new" />}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
@@ -183,6 +199,7 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
               {s.label}
             </a>
           ))}
+          <StudioGroup start={sections.length} onPick={pick} />
           <a
             className={styles.panelFoot}
             href={booking.href}
@@ -193,6 +210,23 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
           </a>
         </div>
       )}
+    </>
+  )
+}
+
+// The studio pages as the panel's second group: the launch kit first, flagged while it is new.
+export function StudioGroup({ start, onPick }: { start: number; onPick: () => void }) {
+  return (
+    <>
+      <p className={styles.panelHead} style={{ '--i': start } as CSSProperties}>
+        studio
+      </p>
+      {studioLinks.map((l, i) => (
+        <Link key={l.href} href={l.href} style={{ '--i': start + 1 + i } as CSSProperties} onClick={onPick}>
+          {l.label}
+          {l.isNew && <span className={styles.newTag}>new</span>}
+        </Link>
+      ))}
     </>
   )
 }
