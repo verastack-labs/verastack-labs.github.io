@@ -51,7 +51,9 @@ export const viewport: Viewport = { themeColor: '#0B0C0A', colorScheme: 'dark' }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${jetbrains.variable}`}>
+    // The screen-height script sets two CSS variables on <html> before React loads; that one
+    // difference from the server HTML is expected.
+    <html lang="en" className={`${bricolage.variable} ${jetbrains.variable}`} suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: tokensToCss() }} />
         {/* Freezes the screen height before the first paint (src/lib/screen-lock.ts). */}
