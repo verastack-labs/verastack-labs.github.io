@@ -57,7 +57,9 @@ Content (placeholders are in the design until these arrive):
 
 - [x] AI search check complete reports go from rigan@verastack.dev (decided 2026-10-18): the
   visitor asked for it, so it is opted-in mail and fits Brevo's terms; signed by a person, as the
-  page promises. Written by hand while volume is low; automate later through Brevo's
+  page promises. Drafted with `node workers/aeo-check/report-email.mjs <host> [first name]` (every
+  issue with what we found and what it takes, then what a score can't see and a 30-minute call
+  link), checked, then sent by hand while volume is low; automate later through Brevo's
   transactional API (already set up for the domain, DKIM passing), no new account needed.
 - [x] Hero headline confirmed by Rigan on 2026-10-15: "Sites, apps, 3D and films, built to launch and
   get found." (`src/data/hero.ts`; it covers all six services, like the title and description) and the `availability` line in
