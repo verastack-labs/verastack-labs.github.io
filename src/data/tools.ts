@@ -32,6 +32,13 @@ export const tools: Tool[] = [
     href: '/tools/what-ai-sees',
     tag: 'AI search',
   },
+  {
+    slug: 'organization-schema',
+    name: 'Organization schema generator',
+    line: 'The line that says who your company is, and the structured data that ties your website to your real profiles.',
+    href: '/tools/organization-schema',
+    tag: 'structured data',
+  },
 ]
 
 export const toolsPage = {

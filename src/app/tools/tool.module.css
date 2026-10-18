@@ -111,3 +111,7 @@ a.copy { display: inline-block; text-decoration: none; }
 .vP { margin: 0 0 8px; font-size: 16px; line-height: 1.5; }
 .vLi { margin: 0 0 4px; padding-left: 16px; font-size: 16px; line-height: 1.45; text-indent: -12px; }
 .vLi::before { content: '• '; }
+
+/* Organization generator: a profile row with the platform it recognised. */
+.profileRow { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; }
+.chipTag { padding: 4px 10px; border: 1px solid var(--signal); border-radius: 999px; color: var(--signal); font: 500 11px var(--font-mono); white-space: nowrap; }
