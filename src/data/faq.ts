@@ -15,7 +15,7 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: 'Can you get us named in ChatGPT and other AI answers?',
-    a: 'That is our AI search and SEO service. Start with the free AI search check on this site, which scores a page and lists the fixes; the full audit and the fixes themselves are priced on request.',
+    a: 'That is our AI search service, AEO and GEO on top of solid SEO. Start with the free AI search check on this site, which scores a page and lists the fixes; the full audit and the fixes themselves are priced on request.',
   },
   {
     q: 'Can our team edit the site after handover?',

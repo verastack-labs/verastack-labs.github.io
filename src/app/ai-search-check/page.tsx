@@ -9,7 +9,7 @@ import styles from '@/app/ai-search-check/checker.module.css'
 
 export const metadata: Metadata = {
   // Short enough for results pages; the share card keeps the full question.
-  title: 'Free AI search check · VeraStack Labs',
+  title: 'Free AEO and GEO check · VeraStack Labs',
   description: checker.description,
   alternates: { canonical: checker.path },
   openGraph: { title: checker.title, description: checker.description, url: `${site.url}${checker.path}/`, siteName: site.name, type: 'website', images: [shareImage] },
@@ -22,7 +22,7 @@ const graph = {
     studioNode(),
     {
       '@type': 'WebApplication',
-      name: 'AI search check',
+      name: 'AI search check (AEO and GEO)',
       url: `${site.url}${checker.path}/`,
       description: checker.description,
       applicationCategory: 'BusinessApplication',
@@ -43,12 +43,12 @@ export default function AiSearchCheckPage() {
       <span id="top" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(graph) }} />
       <p className={styles.label}>
-        /ai-search-check <em>{'//'}</em> free, no sign-up
+        /ai-search-check <em>{'//'}</em> AEO + GEO, free, no sign-up
       </p>
       <h1 className={styles.title}>Does ChatGPT know your site?</h1>
       <p className={styles.lede}>
-        See how a page reads to ChatGPT, Perplexity, Claude and Google&apos;s AI answers. Sixteen checks, a score out of 100 and the three
-        fixes that matter most.
+        A free AEO and GEO check: see how a page reads to ChatGPT, Perplexity, Claude and Google&apos;s AI answers. Sixteen checks, a
+        score out of 100 and the three fixes that matter most.
       </p>
 
       <Checker />

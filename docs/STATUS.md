@@ -117,6 +117,11 @@ Content (placeholders are in the design until these arrive):
   AI search scores named (Clueso 100, Duvo 90, Causa Prima 82), the rest private. Data in
   `docs/study/funded-2026-10/`. Next edition after 31 Oct.
 
+- [x] AEO and GEO used together everywhere (Rigan, 2026-10-18): checker title, description, label and
+  lede; FAQ adds "What is GEO?" and "AEO vs GEO vs SEO"; audit pitch, services blurb, home FAQ, site
+  description and the report email. New post "GEO is the new SEO: what changes and what doesn't"
+  (AI search category), for Rigan's profile.
+
 ## Planned, not started
 
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,

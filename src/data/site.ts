@@ -5,7 +5,7 @@ export const site = {
   url: 'https://verastack.dev',
   title: 'VeraStack Labs: sites, apps, 3D, AI search and videos',
   description:
-    'A design and engineering studio. Web experiences and 3D, web and mobile apps, AI search and SEO, and product videos, for clients and for our own products.',
+    'A design and engineering studio. Web experiences and 3D, web and mobile apps, AI search (AEO and GEO) and SEO, and product videos, for clients and for our own products.',
   // Every email on the site reads from here: footer, contact and the form's fallback.
   email: 'rigan@verastack.dev' as string | null,
   // The 30-minute intro call on Cal.com (a 15-minute one is at cal.com/verastack/quick).
