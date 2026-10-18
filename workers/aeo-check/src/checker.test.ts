@@ -156,8 +156,18 @@ describe('scoring', () => {
     const checks = runChecks(evidence({ page: readPage(page({ graph: [APP] })) }))
     const byId = Object.fromEntries(checks.map((c) => [c.id, c.status]))
     expect(byId.identity).toBe('fail')
-    expect(byId.faq).toBe('fail')
-    expect(score(checks)).toBeLessThan(85)
+    // One visible question and no markup: answered, but thinly.
+    expect(byId.faq).toBe('warn')
+    expect(score(checks)).toBeLessThan(90)
+  })
+
+  it('scores the answers on the page, with markup as a label', () => {
+    const faq = (html: string) => statuses(evidence({ page: readPage(html) })).faq
+    const qs = '<h2>What does it cost?</h2><p>From $9.</p><details><summary>Who is it for?</summary><p>Clinics.</p></details><dl><dt>Is my data safe?</dt><dd>Yes.</dd></dl>'
+    expect(faq(`<html><body>${qs}</body></html>`)).toBe('pass')
+    expect(faq('<html><body><h2>What does it cost?</h2></body></html>')).toBe('warn')
+    expect(faq(`<html><head><script type="application/ld+json">${FAQ}</script></head><body><p>No questions here.</p></body></html>`)).toBe('warn')
+    expect(faq('<html><body><p>Nothing asked.</p></body></html>')).toBe('fail')
   })
 
   it('reads freshness from the newest date it can find', () => {

@@ -11,6 +11,9 @@ export type PageFacts = {
   h2Count: number
   // h2 and h3 headings phrased as questions, the shape answer engines lift.
   questionHeadings: number
+  // Questions a visitor can read: headings, expandable rows (<summary>), definition terms and
+  // accordion buttons phrased as questions. Answers on the page are what an AI answer can lift.
+  visibleQuestions: number
   // Images with an alt attribute (an empty alt marks a decorative image, which is fine).
   images: { total: number; withAlt: number }
   words: number
@@ -125,6 +128,7 @@ export function readPage(html: string): PageFacts {
     h1Count: (html.match(/<h1\b/gi) ?? []).length,
     h2Count: (html.match(/<h2\b/gi) ?? []).length,
     questionHeadings: [...html.matchAll(/<h[23]\b[^>]*>([\s\S]*?)<\/h[23]>/gi)].filter((m) => stripTags(m[1]).endsWith('?')).length,
+    visibleQuestions: [...html.matchAll(/<(h[2-4]|summary|dt|button)\b[^>]*>([\s\S]*?)<\/\1>/gi)].filter((m) => stripTags(m[2]).trim().endsWith('?')).length,
     images: { total: images.length, withAlt: images.filter((i) => 'alt' in i).length },
     words: visibleWords(html),
     og: { title: !!meta('property', 'og:title'), description: !!meta('property', 'og:description'), image: !!meta('property', 'og:image') },
