@@ -10,6 +10,10 @@
   font-size: clamp(40px, 7vw, 84px);
   line-height: 0.92;
   letter-spacing: -0.055em;
+  /* Wider than the reading column: the heading may run past it to the right, so it keeps to one
+     line on desktop and only wraps when the screen itself is too narrow. */
+  width: max-content;
+  max-width: calc(100vw - 48px);
 }
 
 .list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
@@ -102,4 +106,4 @@
 
 
 /* The highlighted words of a title. In a list the whole title turns signal on hover, so they hold. */
-.hi { font-style: normal; color: var(--signal); }
+.hi { color: var(--signal); }
