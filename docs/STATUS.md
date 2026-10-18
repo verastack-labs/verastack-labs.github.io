@@ -198,6 +198,11 @@ Content (placeholders are in the design until these arrive):
     /tools/ai-search-check. /ai-search-check now forwards there with ?url= kept (noindex, canonical to
     the new address); every internal link, the sitemap, llms.txt, the footer and the report email use
     the new address. New tools go in `src/data/tools.ts` at /tools/<slug>.
+  - [x] Home notes section (2026-10-18, layout B): between About and Contact, in the section pill as
+    /notes. A featured post drawn at random in the browser from the newest four posts with a `stat`
+    (front matter `stat: value | label`; the server shows the newest), beside the three newest others.
+    Posts have no scheduling: a merged post is live on that deploy, whatever its `time` (time only
+    sorts same-day posts), so no scheduled rebuild is needed.
   - [ ] Free tools programme (`docs/tools-plan.md`, 2026-10-18): eight zero-cost tools, one at a
     time, each with a number from our 379 scanned homepages, an ungated output, the audit and kit
     as the next step, a blog post and a LinkedIn post. Plan awaiting Rigan's go-ahead.

@@ -22,6 +22,9 @@ export type Post = {
   hook: { text: string; label: string; href: string } | null
   // A line beside the inline check at the end, such as a study's median to beat.
   checkCompare: string | null
+  // A headline number, `stat: 81 | median score`. Optional; posts with one can be featured on the
+  // home page's notes section.
+  stat: { value: string; label: string } | null
   html: string
   words: number
 }
@@ -62,10 +65,18 @@ export function parsePost(slug: string, source: string): Post {
     category: meta.category,
     hook: meta.hook ? parseHook(meta.hook, meta.hookCta, slug) : null,
     checkCompare: meta.checkCompare || null,
+    stat: parseStat(meta.stat, slug),
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     html: marked.parse(body, { async: false }),
     words: body.split(/\s+/).filter(Boolean).length,
   }
+}
+
+function parseStat(raw: string | undefined, slug: string): Post['stat'] {
+  if (!raw) return null
+  const [value, label] = raw.split('|').map((s) => s.trim())
+  if (!value || !label) throw new Error(`Post ${slug} has a stat without "value | label"`)
+  return { value, label }
 }
 
 function parseHook(text: string, cta: string | undefined, slug: string): Post['hook'] {

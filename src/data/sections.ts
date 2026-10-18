@@ -8,5 +8,6 @@ export const sections: readonly Section[] = [
   { id: 'products', path: '/products', label: 'products' },
   { id: 'process', path: '/process', label: 'process' },
   { id: 'about', path: '/about', label: 'about' },
+  { id: 'notes', path: '/notes', label: 'notes' },
   { id: 'contact', path: '/contact', label: 'contact' },
 ]
