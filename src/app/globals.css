@@ -81,3 +81,6 @@ html[data-motion='static'] .reveal-pending { opacity: 1; transform: none; }
   .reveal-pending { opacity: 1; transform: none; }
 }
 
+
+/* Lets details elements animate their height to auto (questions on the tool and kit pages). */
+:root { interpolate-size: allow-keywords; }

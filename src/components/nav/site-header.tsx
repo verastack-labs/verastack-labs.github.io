@@ -125,6 +125,7 @@ export function SiteHeader() {
   if (pathname?.startsWith('/launch-kit')) return <PageHeader path="/launch-kit" />
   if (pathname?.startsWith('/tools/ai-search-check') || pathname?.startsWith('/ai-search-check'))
     return <PageHeader path="/tools/ai-search-check" short="/ai-check" />
+  if (pathname?.startsWith('/tools/faq-schema')) return <PageHeader path="/tools/faq-schema" short="/faq-schema" />
   if (pathname?.startsWith('/tools')) return <PageHeader path="/tools" />
   return (
     <header className={styles.header} data-theme={theme}>

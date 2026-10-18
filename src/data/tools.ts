@@ -11,6 +11,13 @@ export const tools: Tool[] = [
     href: checker.path,
     tag: 'AI search',
   },
+  {
+    slug: 'faq-schema',
+    name: 'FAQ schema generator',
+    line: 'Write the questions buyers ask; get FAQPage structured data and matching HTML, ready to paste. Runs in your browser.',
+    href: '/tools/faq-schema',
+    tag: 'structured data',
+  },
 ]
 
 export const toolsPage = {
