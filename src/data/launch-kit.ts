@@ -4,11 +4,27 @@ export const launchKit = {
   path: '/launch-kit',
   title: 'The SaaS Launch Kit: launch-ready in 4 weeks',
   description:
-    'Brand, a 5-page launch site, a 60-second launch film, and AEO and GEO built in from day one. One team, 4 weeks, $9,500 fixed. Two launch slots a month.',
+    'Brand, a 5-page launch site, a 60-second launch film, and AEO and GEO built in from day one. One team, 4 weeks, $9,500 fixed, 25% off booked by 31 December. Two launch slots a month.',
   price: 9500,
   priceLabel: '$9,500',
   monthly: '$2,500',
   slots: 'two launch slots a month',
+}
+
+// Year-end offer (Rigan, 2026-10-18): 25% off both kits, booked by 31 December. The page is static, so
+// it shows the offer while the build date is before `until`; a deploy on or after 1 January drops it.
+export const yearEnd = { until: '2026-12-31', off: 0.25, label: 'Year-end offer: 25% off, booked by 31 December' }
+export const yearEndActive = (now = new Date()) => now.toISOString().slice(0, 10) <= yearEnd.until
+export const discounted = (price: number) => Math.round(price * (1 - yearEnd.off))
+export const usd = (n: number) => `$${n.toLocaleString('en-US')}`
+
+// The smaller kit: the launch site with AEO and GEO setup, for founders who already have a brand.
+export const siteKit = {
+  name: 'Launch Site kit',
+  price: 4500,
+  weeks: '2 to 3 weeks',
+  includes: ['5-page launch site, code you own', 'AEO and GEO setup, 90+ at launch', 'the same late-week refund'],
+  note: 'For founders who already have a brand. Add the film any time.',
 }
 
 export const kitParts = [

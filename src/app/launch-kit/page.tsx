@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { kitIncluded, kitParts, kitProof, kitQuestions, kitWeeks, launchKit } from '@/data/launch-kit'
+import { discounted, kitIncluded, kitParts, kitProof, kitQuestions, kitWeeks, launchKit, siteKit, usd, yearEnd, yearEndActive } from '@/data/launch-kit'
 import { shareImage, site } from '@/data/site'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { IndiaBlock, IndiaChip, KitBar } from '@/app/launch-kit/india-pricing'
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title: launchKit.title, description: launchKit.description, images: [shareImage] },
 }
 
+const sale = yearEndActive()
+
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -26,7 +28,10 @@ const graph = {
       description: launchKit.description,
       serviceType: 'Product launch: brand, website, launch film, AEO and GEO',
       provider: { '@id': `${site.url}/#organization` },
-      offers: { '@type': 'Offer', price: String(launchKit.price), priceCurrency: 'USD', url: `${site.url}${launchKit.path}/` },
+      offers: [
+        { '@type': 'Offer', name: 'Launch Kit', price: String(sale ? discounted(launchKit.price) : launchKit.price), priceCurrency: 'USD', url: `${site.url}${launchKit.path}/`, ...(sale ? { priceValidUntil: yearEnd.until } : {}) },
+        { '@type': 'Offer', name: siteKit.name, price: String(sale ? discounted(siteKit.price) : siteKit.price), priceCurrency: 'USD', url: `${site.url}${launchKit.path}/`, ...(sale ? { priceValidUntil: yearEnd.until } : {}) },
+      ],
     },
     {
       '@type': 'FAQPage',
@@ -171,9 +176,11 @@ export default function LaunchKitPage() {
         <aside className={styles.aside} id="pricing" aria-label="Price" data-m="slide">
           <div className={styles.card}>
             <p className={styles.tag}>the launch kit, fixed price</p>
+            {sale && <p className={styles.sale}>{yearEnd.label}</p>}
             <p className={styles.amount} data-m="count">
-              {launchKit.priceLabel}
+              {usd(sale ? discounted(launchKit.price) : launchKit.price)}
             </p>
+            {sale && <p className={styles.was}>was {launchKit.priceLabel}</p>}
             <p className={styles.terms}>Half now, half at launch.</p>
             <p className={styles.slots}>{launchKit.slots}</p>
             <IndiaBlock />
@@ -187,6 +194,15 @@ export default function LaunchKitPage() {
             </a>
             <p className={styles.guarantee}>
               <b>Late?</b> 10% back for every week we slip, up to 30%.
+            </p>
+          </div>
+          <div className={styles.plan}>
+            <p className={styles.tag}>smaller kit</p>
+            <p>
+              <b>
+                {siteKit.name}: {usd(sale ? discounted(siteKit.price) : siteKit.price)}
+              </b>
+              {sale && <s className={styles.wasInline}> {usd(siteKit.price)}</s>}, {siteKit.weeks}. {siteKit.includes.join(', ')}. {siteKit.note}
             </p>
           </div>
           <div className={styles.plan}>

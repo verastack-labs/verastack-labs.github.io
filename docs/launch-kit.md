@@ -19,6 +19,15 @@ setup, in 4 weeks for one fixed fee. App builds and 3D are add-ons, quoted separ
 | India pricing | The page shows $9,500 to everyone. Visitors whose browser time zone is Asia/Kolkata also see "Building from India? We offer regional pricing. Book a call and we'll quote in rupees." (added in the browser, so crawlers and structured data see only $9,500). No rupee figure is published. Quote on the call by scope and budget, typically INR 4.5 to 6 lakh; the floor for the full kit is INR 4 lakh (Rigan, 18 Oct 2026, internal only). Below the floor, cut scope (the film or the brand work) instead of discounting further. |
 | Monthly plan | $2,500/mo, 3-month minimum, then pause any time. Site changes and new pages, monthly AEO and GEO tracking (the engines asked the buyers' questions again), and two short cut-downs or new clips a month. |
 
+## Added 18 Oct 2026 (Rigan)
+- **Year-end offer:** 25% off both kits, booked by 31 December 2026: Launch Kit $7,125 (was $9,500),
+  Launch Site kit $3,375 (was $4,500). Set in `src/data/launch-kit.ts` (`yearEnd`); the static page
+  shows it while the build date is on or before 31 Dec, so the first deploy on or after 1 Jan 2027
+  drops it. Push any commit (or re-run the deploy) on 1 Jan.
+- **Launch Site kit** (smaller kit): $4,500, 2 to 3 weeks: the 5-page site and AEO and GEO setup,
+  same late-week refund, no brand work or film. For founders who already have a brand.
+- No "founding client" pricing: it reads as having no clients.
+
 ## Still open
 - The page itself: where it lives (likely /launch-kit, linked from Services and the hero) and
   its copy. Plan first, then build.
