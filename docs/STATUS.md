@@ -55,7 +55,7 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Who sends the AI search check summaries, and from which address (rigan@ fits the sending
+- [ ] Who sends the AI search check complete reports, and from which address (rigan@ fits the sending
   rule for replies). Each request lands in the inbox with the command that prints the full report.
   Automating it (a mail provider such as Resend called from the Worker) needs an account in your
   name.
@@ -129,9 +129,13 @@ Content (placeholders are in the design until these arrive):
     canonical, noindex, h1, llms.txt, sitemap, Open Graph). Free: score and top three fixes.
     Since 2026-10-18 the full report is never shown on the page: the Worker's public answer has
     only the score, the top three fixes and a count of the rest, and the page lists only three of
-    the sixteen checks. The email gate (Web3Forms with hCaptcha, subject "AI search check: <host>
-    scored <n>") now asks for an emailed summary, which the studio writes by hand within one working
-    day from `node workers/aeo-check/full-report.mjs <host>`. That script and the study scan send
+    the sixteen checks. Under the top fixes, three blurred placeholder rows and a "+N issues: find
+    them all in the complete report" card lead to the email gate (Web3Forms with hCaptcha, subject
+    "AI search check: <host> scored <n>"). The studio writes the complete report by hand within one
+    working day from `node workers/aeo-check/full-report.mjs <host>`. Every result also shows what
+    the audit covers beyond the sixteen checks (buyer questions asked in the engines, competitors,
+    every selling page, the sites AI quotes, pages written to be cited, re-asking after the fixes),
+    so the score never reads as the whole job. That script and the study scan send
     the studio key (`workers/aeo-check/.report-key`, not in git; on the Worker as the REPORT_KEY
     secret) to get every check. Paid: the audit and fixes, price on request, linked to the contact form with
     "to show up in AI search" picked. Guards: public hostnames only (no IPs, local names, odd

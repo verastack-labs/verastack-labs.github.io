@@ -32,6 +32,17 @@ const STATUS_WORD = { pass: 'pass', warn: 'improve', fail: 'fix' } as const
 // are placeholders and there is nothing to read in the source.
 const LOCKED_ROW = { label: 'Another thing keeping you out of AI answers', text: 'What we found on your page, and what it takes to fix it.' }
 
+// What the audit covers that the sixteen checks cannot: the check reads one page, the audit works on
+// whether AI answers name you. Shown under every result, a perfect score included.
+const BEYOND = [
+  { title: 'Your buyers’ questions, asked for real', text: 'We put the questions your customers ask to ChatGPT, Perplexity, Gemini and Google’s AI answers, and record who gets named.' },
+  { title: 'Your competitors, side by side', text: 'Who the answers cite instead of you, and what their pages and mentions have that yours don’t.' },
+  { title: 'Every page that sells', text: 'Pricing, product, docs and blog, not just the homepage this check reads.' },
+  { title: 'The sites AI quotes', text: 'Review sites, directories, Reddit, Wikipedia and press: where engines look for you, and where you are missing.' },
+  { title: 'Pages that earn the citation', text: 'Comparisons, answers and numbers written so an engine can quote them, built and shipped by us.' },
+  { title: 'Proof it moved', text: 'The same questions asked again after the fixes, so you see when and where you start being named.' },
+]
+
 // A padlock, for the unlock button.
 function LockIcon() {
   return (
@@ -184,7 +195,7 @@ export function Checker() {
           email: email.trim(),
           checked_url: report.url,
           score: report.score,
-          wants: 'Emailed summary of the full report',
+          wants: 'The complete report, by email',
           issues: `${report.counts.fail} to fix, ${report.counts.warn} to improve, ${report.counts.pass} passed`,
           shown_on_page: report.top.map((c) => c.label).join('; ') || 'nothing',
           full_report: `node workers/aeo-check/full-report.mjs ${new URL(report.url).host}`,
@@ -248,7 +259,7 @@ export function Checker() {
         <p className={styles.note} aria-live="polite">
           {state === 'checking'
             ? 'Fetching the page, robots.txt, llms.txt and sitemap. About ten seconds.'
-            : 'One page at a time. Results are kept for ten minutes, then dropped; nothing else is stored unless you ask for the summary.'}
+            : 'One page at a time. Results are kept for ten minutes, then dropped; nothing else is stored unless you ask for the complete report.'}
         </p>
       )}
 
@@ -299,10 +310,10 @@ export function Checker() {
 
           {rest > 0 && (
             <section className={styles.locked} ref={lockedRef} aria-label="The rest of the report">
-              {/* The list carries on from the top fixes and fades out, row by row, as placeholders. */}
+              {/* Placeholders, always three: the list carries on past the top fixes and fades out. */}
               <ol className={`${styles.list} ${styles.fade}`} aria-hidden="true">
-                {Array.from({ length: Math.min(rest, 3) }, (_, i) => (
-                  <li key={i} className={styles.check} data-status="fail" style={{ '--i': i } as React.CSSProperties}>
+                {[0, 1, 2].map((i) => (
+                  <li key={i} className={styles.check} data-status="fail">
                     <span className={styles.badge}>fix</span>
                     <div>
                       <b>{LOCKED_ROW.label}</b>
@@ -312,13 +323,15 @@ export function Checker() {
                 ))}
               </ol>
               <div className={styles.lockCard} data-over="true">
-                <p className={styles.lockTitle}>
-                  <span>{rest}</span> more {rest === 1 ? 'issue is' : 'issues are'} keeping {host} out of AI answers.
+                <p className={styles.lockCount}>
+                  <b data-n={`+${rest}`}>+{rest}</b>
+                  <span>{rest === 1 ? 'issue' : 'issues'}</span>
                 </p>
+                <p className={styles.lockTitle}>Find {rest === 1 ? 'it' : 'them all'} in the complete report.</p>
                 {unlock === 'sent' ? (
                   <p className={styles.lockText} ref={sentRef} tabIndex={-1}>
-                    Your summary is on its way to {email.trim()}: what we found and what it takes to fix it, within one working
-                    day. Want it done sooner?{' '}
+                    The complete report for {host} is on its way to {email.trim()}, within one working day. Want it fixed
+                    sooner?{' '}
                     <Link href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
                       Tell us about your site
                     </Link>
@@ -327,18 +340,39 @@ export function Checker() {
                 ) : (
                   <>
                     <p className={styles.lockText}>
-                      Get a summary of what we found on your page and what it takes to fix it, by email. Free, from a person, within
-                      one working day.
+                      Every issue we found on {host} and what it takes to fix it, by email. Free, from a person, within one
+                      working day.
                     </p>
                     <button type="button" className={styles.unlock} onClick={openGate}>
                       <LockIcon />
-                      Email me the summary
+                      Email me the complete report
                     </button>
                   </>
                 )}
               </div>
             </section>
           )}
+
+          <section className={styles.beyond} aria-labelledby="beyond-title">
+            <h2 id="beyond-title" className={styles.beyondTitle}>
+              Sixteen checks read your page. <em>The audit gets you named.</em>
+            </h2>
+            <p className={styles.beyondLead}>
+              A page engines can read is where it starts. Whether ChatGPT recommends you or your competitor comes down to
+              things no score can see. The audit covers them, and we do the work.
+            </p>
+            <ul className={styles.beyondList}>
+              {BEYOND.map((item) => (
+                <li key={item.title}>
+                  <b>{item.title}</b>
+                  <span>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+            <Link className={styles.upsellCta} href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
+              Ask about the audit
+            </Link>
+          </section>
 
           <dialog
             ref={gateRef}
@@ -355,11 +389,12 @@ export function Checker() {
                 /report <em>{'//'}</em> {host}
               </p>
               <h2 id="gate-title" className={styles.gateTitle}>
-                <span>{failing}</span> {failing === 1 ? 'thing is' : 'things are'} keeping {host} out of AI answers.
+                <span>+{rest}</span> more {rest === 1 ? 'issue' : 'issues'} on {host}. Find {rest === 1 ? 'it' : 'them all'} in the
+                complete report.
               </h2>
               <p className={styles.gateText}>
-                You have seen the top {top.length}. Leave your email and we&apos;ll send a summary of the other {rest}: what we found
-                and what it takes to fix {rest === 1 ? 'it' : 'them'}. Free, within one working day.
+                You have seen the top {top.length}. Leave your email and we&apos;ll send the complete report: every issue we found
+                and what it takes to fix it. Free, from a person, within one working day.
               </p>
               <form className={styles.gate} onSubmit={sendSummary} noValidate>
                 <div className={styles.form}>
@@ -389,7 +424,7 @@ export function Checker() {
                   </div>
                 )}
                 {unlock === 'failed' && <FieldWarning>That did not go through. Tick the box again and retry.</FieldWarning>}
-                <p className={styles.note}>One email with your summary, maybe one follow-up. No newsletter.</p>
+                <p className={styles.note}>One email with your report, maybe one follow-up. No newsletter.</p>
               </form>
               <p className={styles.gateAlt}>
                 Rather have it done?{' '}

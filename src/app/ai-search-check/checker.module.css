@@ -146,8 +146,12 @@
 /* The locked part of the report: the list carries on from the top fixes and fades out, row by
    row, and the unlock card rises from the bottom of the fade. */
 .locked { position: relative; }
-.fade { border-top: 0; -webkit-mask-image: linear-gradient(#000 10%, transparent 92%); mask-image: linear-gradient(#000 10%, transparent 92%); }
-.fade li { opacity: calc(0.8 - var(--i) * 0.22); filter: blur(calc(1.5px + var(--i) * 1.5px)); user-select: none; }
+.fade { border-top: 0; -webkit-mask-image: linear-gradient(#000 65%, transparent 100%); mask-image: linear-gradient(#000 65%, transparent 100%); }
+/* The same three steps as the "What the check looks at" list. */
+.fade li { user-select: none; pointer-events: none; }
+.fade li:nth-child(1) { opacity: 0.55; filter: blur(3px); }
+.fade li:nth-child(2) { opacity: 0.32; filter: blur(4.5px); }
+.fade li:nth-child(3) { opacity: 0.22; filter: blur(6px); border-bottom-color: transparent; }
 .lockCard {
   position: relative;
   margin-top: 32px;
@@ -157,8 +161,14 @@
   background: linear-gradient(180deg, rgba(255, 107, 74, 0.08), rgba(255, 107, 74, 0) 60%), var(--surface);
   box-shadow: 0 -30px 60px -10px var(--ink);
 }
-.lockCard[data-over='true'] { margin-top: -60px; }
-.lockTitle { margin: 0 0 10px; max-width: 26ch; font-weight: 800; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.08; letter-spacing: -0.04em; color: var(--text); overflow-wrap: anywhere; }
+.lockCard[data-over='true'] { margin-top: -40px; }
+/* "+2 issues" at about the size of the score, with a blurred copy of the number behind it, so it
+   reads as more underneath rather than one last thing. */
+.lockCount { position: relative; display: flex; align-items: baseline; gap: 14px; margin: 0; font-weight: 800; line-height: 0.9; letter-spacing: -0.06em; color: var(--text); }
+.lockCount b { position: relative; z-index: 0; font-size: clamp(72px, 11vw, 128px); color: var(--alert); }
+.lockCount b::after { content: attr(data-n); position: absolute; inset: 0; color: var(--alert); filter: blur(18px); opacity: 0.7; z-index: -1; }
+.lockCount span { font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.04em; }
+.lockTitle { margin: 14px 0 12px; max-width: 22ch; font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.04; letter-spacing: -0.04em; color: var(--text); overflow-wrap: anywhere; }
 .lockTitle span { color: var(--alert); }
 .lockText { max-width: 56ch; margin: 0 0 22px; font-size: 16px; line-height: 1.55; color: var(--muted); }
 .unlock {
@@ -236,3 +246,13 @@
 .previewMore p { max-width: 62ch; margin: 0 0 14px; font-size: 15.5px; line-height: 1.55; color: var(--muted); }
 .previewMore b { color: var(--text); }
 
+
+/* Beyond the sixteen checks: what the audit covers that a score cannot. */
+.beyond { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--line); }
+.beyondTitle { max-width: 24ch; margin: 0 0 10px; font-weight: 800; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.05; letter-spacing: -0.04em; }
+.beyondTitle em { font-style: normal; color: var(--signal); }
+.beyondLead { max-width: 60ch; margin: 0 0 26px; font-size: 16.5px; line-height: 1.55; color: var(--muted); }
+.beyondList { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 0 0 28px; padding: 0; list-style: none; }
+.beyondList li { padding: 20px 20px 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.beyondList b { display: block; margin-bottom: 6px; font-weight: 700; font-size: 16.5px; }
+.beyondList span { font-size: 15px; line-height: 1.5; color: var(--muted); }
