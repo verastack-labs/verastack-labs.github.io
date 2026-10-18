@@ -211,7 +211,11 @@ Content (placeholders are in the design until these arrive):
       stores, live JSON-LD, HTML and preview, copy buttons, quotability notes; 81% of 379 homepages
       have no FAQ. Next: its blog post, and the outside numbers once `docs/why-ai-search-numbers.md`
       is sourced.
-    - [ ] 2. Product and service markup generator.
+    - [x] 2. Product and service schema generator at /tools/product-schema (2026-10-18): software,
+      service or product; writes the plain sentence for the page first (what an answer quotes), then
+      SoftwareApplication, Service or Product JSON-LD with each price as an offer; 81% of 379 have none.
+      Forrester (94% of B2B buyers use AI) and Adobe (31% more conversions) as the outside numbers.
+    - [ ] 3. "What ChatGPT sees" viewer.
   - [x] Main navigation (2026-10-18): the pill's dock row and panel gain a studio group (launch kit
     with a new dot, tools, blog, founder; `src/data/studio-links.ts`); on every other page the page
     pill opens a dropdown with the home sections and the studio group; desktop (900px and up) has a

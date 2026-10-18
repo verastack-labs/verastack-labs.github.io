@@ -78,3 +78,12 @@
 .faq details p { max-width: 66ch; margin: 0 0 18px; font-size: 15.5px; line-height: 1.6; color: var(--muted); }
 .faq details::details-content { block-size: 0; overflow: hidden; transition: block-size 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), content-visibility 0.4s allow-discrete; }
 .faq details[open]::details-content { block-size: auto; }
+
+/* Form fields for the generators with more than question and answer pairs. */
+.field { display: grid; gap: 6px; }
+.field label { font: 500 11px var(--font-mono); color: var(--muted); }
+.plan { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+@media (max-width: 520px) { .plan { grid-template-columns: 1fr 1fr; } }
+.currency { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font: 500 12px var(--font-mono); }
+.sentence { margin: 0; padding: 18px 20px; border: 1px solid var(--signal); border-radius: 14px; background: rgba(212, 255, 63, 0.06); font-weight: 700; font-size: 20px; line-height: 1.35; letter-spacing: -0.02em; }
+select.a { appearance: auto; }
