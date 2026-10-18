@@ -51,7 +51,7 @@ The four perfect scores share a pattern (and one of them, Sitefire, works on AI 
 
 **2. Nothing says who you are or what you sell.** 11 of 26 have no Organization in their structured data, and 14 don't describe the product either. A model then has to guess what the company is from scattered text, and a guess is how you end up described by a competitor's comparison page instead of your own.
 
-**3. No FAQ.** 16 of 26 have none. A buyer's questions ("Does it work with HubSpot?", "Is there a free plan?") answered in a sentence each are the easiest thing for an AI answer to quote.
+**3. No FAQ.** 16 of 26 have none. A buyer's questions ("Does it work with HubSpot?", "Is there a free plan?") answered in a sentence each tell a buyer, and any engine reading the page, exactly what they asked.
 
 Then the cheap ones. 14 of 26 have no llms.txt, where Shopify stores get one for free; SaaS sites have to write their own, and it takes an hour. Four have no sitemap.
 
