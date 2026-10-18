@@ -16,7 +16,7 @@ export const checks: { id: string; label: string; why: string }[] = [
   { id: 'text', label: 'The page says what you do in plain HTML', why: 'Many crawlers do not run JavaScript. We count the words in the HTML your server sends; 500 or more passes.' },
   { id: 'identity', label: 'Structured data says who you are', why: 'Organization JSON-LD with a logo and sameAs links to your other profiles, so a model can tell you apart from a namesake.' },
   { id: 'structured', label: 'Structured data describes what you sell', why: 'Product, Service, SoftwareApplication or similar JSON-LD, with prices where they apply.' },
-  { id: 'faq', label: 'Answers to the questions buyers ask', why: 'A visible FAQ marked up as FAQPage. Question-and-answer pairs are the easiest thing for an engine to quote.' },
+  { id: 'faq', label: 'Answers to the questions buyers ask', why: 'Plain answers on the page to what buyers ask: price, fit, how it compares. FAQPage markup labels them as good practice.' },
   { id: 'title', label: 'A clear title', why: 'Present, and long enough to say what the page is.' },
   { id: 'description', label: 'A meta description that answers "what is this?"', why: 'Plain sentences, not a keyword list. Engines often quote it as the summary.' },
   { id: 'canonical', label: 'One canonical address', why: 'So every copy of the page credits the same URL.' },

@@ -128,18 +128,24 @@ export function runChecks(ev: Evidence): Check[] {
     fix: 'Describe what you sell in JSON-LD: Product with price and availability, SoftwareApplication, Service or an ItemList of products. Keep it in step with the visible page.',
   })
 
+  // The answers on the page are what counts; FAQPage markup labels them but has no proven effect on
+  // AI citations by itself (docs/why-ai-search-numbers.md). Markup with no visible questions is a
+  // warning, since Google expects marked-up answers to be on the page.
   const hasFaq = page.schemaTypes.includes('FAQPage')
+  const asked = page.visibleQuestions
+  const plural = (n: number) => `${n} question${n === 1 ? '' : 's'}`
   checks.push({
     id: 'faq',
     label: 'Answers to the questions buyers ask',
     weight: 7,
-    status: hasFaq ? 'pass' : page.questionHeadings >= 2 ? 'warn' : 'fail',
-    detail: hasFaq
-      ? 'FAQPage structured data found.'
-      : page.questionHeadings
-        ? `${page.questionHeadings} question heading${page.questionHeadings === 1 ? '' : 's'}, but no FAQPage structured data.`
-        : 'No questions and answers on the page.',
-    fix: 'Add a short FAQ with the questions buyers actually ask (price, who it is for, how it compares), answered in a sentence or two, and mark it up as FAQPage.',
+    status: asked >= 3 || (hasFaq && asked >= 1) ? 'pass' : asked >= 1 || hasFaq ? 'warn' : 'fail',
+    detail:
+      asked >= 1
+        ? `${plural(asked)} answered on the page${hasFaq ? ', labelled with FAQPage structured data' : ''}.`
+        : hasFaq
+          ? 'FAQPage structured data, but no questions a reader can see on the page.'
+          : 'No questions and answers on the page.',
+    fix: 'Answer the questions buyers actually ask (price, who it is for, how it compares) on the page, a sentence or two each. Labelling them with FAQPage structured data is good practice.',
   })
 
   const t = page.title
