@@ -35,9 +35,14 @@ function loadHCaptcha(): Promise<HCaptchaApi> {
 }
 
 // A challenge opens as a floating frame at the end of <body>. When the checkbox sits in a modal
-// <dialog>, the dialog is in the browser's top layer and covers that frame. Turning the frame into
-// a manual popover lifts it into the top layer too, above the dialog, without moving it in the
-// page (moving an iframe would reload it).
+// <dialog>, everything outside that dialog is inert: the frame can show (a popover lifts it into the
+// top layer) but takes no taps or clicks, which fall through to the dialog behind (on phones a long
+// press selects its text). So the frame moves into a modal dialog of its own, opened above the
+// first: the topmost modal is the one that takes input. `moveBefore` moves it without reloading the
+// iframe (moving it any other way would restart the challenge). Browsers without it get the
+// popover, which at least shows the challenge.
+type MovableParent = HTMLElement & { moveBefore?: (node: Node, child: Node | null) => void }
+
 function challengeFrame(): HTMLElement | null {
   const frame = document.querySelector<HTMLIFrameElement>('iframe[src*="hcaptcha"][src*="frame=challenge"]')
   let el: HTMLElement | null = frame
@@ -45,11 +50,26 @@ function challengeFrame(): HTMLElement | null {
   return el?.parentElement === document.body ? el : null
 }
 
+let host: HTMLDialogElement | null = null
+
 function raiseChallenge(box: HTMLElement | null, tries = 10) {
   if (!box?.closest('dialog[open]')) return
   const el = challengeFrame()
   if (!el) {
-    if (tries > 0) requestAnimationFrame(() => raiseChallenge(box, tries - 1))
+    if (tries > 0) setTimeout(() => raiseChallenge(box, tries - 1), 16)
+    return
+  }
+  const move = (document.body as MovableParent).moveBefore
+  if (typeof move === 'function') {
+    host ??= document.createElement('dialog')
+    host.className = 'hcaptcha-host'
+    host.setAttribute('aria-label', 'Security check')
+    // Escape belongs to the challenge; closing this dialog alone would strand it.
+    host.oncancel = (e) => e.preventDefault()
+    if (!host.isConnected) document.body.appendChild(host)
+    ;(host as MovableParent).moveBefore!(el, null)
+    el.classList.add('hcaptcha-raised')
+    if (!host.open) host.showModal()
     return
   }
   if (typeof el.showPopover !== 'function') return
@@ -62,12 +82,17 @@ function raiseChallenge(box: HTMLElement | null, tries = 10) {
 
 function lowerChallenge() {
   for (const el of document.querySelectorAll<HTMLElement>('.hcaptcha-raised')) {
-    try {
-      el.hidePopover()
-    } catch {}
-    el.removeAttribute('popover')
+    if (host && el.parentElement === host) {
+      ;(document.body as MovableParent).moveBefore!(el, null)
+    } else {
+      try {
+        el.hidePopover()
+      } catch {}
+      el.removeAttribute('popover')
+    }
     el.classList.remove('hcaptcha-raised')
   }
+  if (host?.open) host.close()
 }
 
 // The hCaptcha checkbox. Calls onToken with a token when solved and with null when it expires

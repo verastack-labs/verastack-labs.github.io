@@ -80,9 +80,16 @@ Content (placeholders are in the design until these arrive):
   the full sentence).
 - [ ] The home page's Questions (`src/data/faq.ts`): check the five answers read right, especially
   the cost answer ("quoted after a free first call").
-- [ ] Test the hCaptcha challenge inside the popups on a real device (2026-10-17 fix: the
-  challenge frame is lifted into the top layer as a popover when the checkbox sits in an open
-  dialog; it cannot be tested here because ticking a captcha is not something we automate).
+- [ ] Test the hCaptcha challenge inside the popups on a real device again. On 2026-10-20 Rigan
+  found the puzzle could not be used on Android: a modal dialog makes everything outside it inert,
+  so the 2026-10-17 popover showed the challenge but taps went through to the dialog (a long press
+  selected its text). Fix: the challenge's wrapper moves (with `moveBefore`, which keeps the iframe
+  loaded) into a second modal dialog above the first, and back on close (`src/components/hcaptcha.tsx`,
+  `.hcaptcha-host` in globals.css). Browsers without `moveBefore` fall back to the popover. Verified
+  with a stand-in challenge (taps reach it, the iframe keeps its state, the form dialog stays open);
+  a real challenge is not something we open here. Covers both captcha dialogs (checker report,
+  site-wide offer); the only other dialog plays our own video. Portfolio and Origan were asked to
+  check theirs; the portfolio has no third-party frames, so it is not affected.
 - [ ] A price for the AI search audit, if you want one shown. Until then the checker page and its
   FAQ say "price on request".
 - [ ] The free product video's terms: how many we make, how long they are and who qualifies.
