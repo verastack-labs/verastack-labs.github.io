@@ -227,6 +227,10 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Founder film on /founder (2026-10-19): the agency cut of the portfolio launch film (no Oinkbuns,
+    51 s, 1080p, 6.5 MB) from the video session (verastack-labs/studio 80278fa), click to play with a
+    poster and captions, a caption on the client work and bookings, and VideoObject JSON-LD. Files in
+    `public/founder/`.
   - [x] Blog sources and methods (2026-10-19, Origan request Rigan approved): each study ends with a
     "How we measured" box (what was checked and how it was sampled, date, the check and the FAQ-rule
     change, what the score means, limits, every site scored as a list without scores, top scorers

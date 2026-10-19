@@ -70,3 +70,9 @@
 .cta:hover { transform: translateY(-1px); }
 .ghost { border: 1px solid var(--line); color: var(--text); font-weight: 600; }
 .ghost:hover, .ghost:focus-visible { border-color: var(--signal); color: var(--signal); }
+
+/* The founder film: framed, full width of the page, the poster until it plays. */
+.film { margin-top: 64px; }
+.film .h2 em, .h2 em { font-style: normal; color: var(--signal); }
+.video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 18px; background: #0b0c0a; }
+.filmNote { max-width: 66ch; margin: 12px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--muted); }

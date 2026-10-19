@@ -28,6 +28,15 @@ const graph = {
       sameAs: founder.sameAs,
     },
     {
+      '@type': 'VideoObject',
+      name: `${site.founderName}, founder of ${site.name}`,
+      description: 'A 51-second film about the founder: launch work, numbers from client projects, and the products the studio makes.',
+      thumbnailUrl: `${site.url}/founder/founder-film-poster.jpg`,
+      contentUrl: `${site.url}/founder/founder-film.mp4`,
+      uploadDate: '2026-10-19',
+      duration: 'PT51S',
+    },
+    {
       '@type': 'ItemList',
       name: 'Launches by the founder',
       itemListElement: founder.rail
@@ -78,6 +87,29 @@ export default function FounderPage() {
           alt={founder.photo.alt}
           fetchPriority="high"
         />
+      </section>
+
+      {/* The founder film: click to play, no autoplay, captions on request. */}
+      <section className={styles.film} aria-labelledby="film-title" data-reveal>
+        <h2 id="film-title" className={styles.h2}>
+          The founder, in <em>51 seconds</em>
+        </h2>
+        <video
+          className={styles.video}
+          controls
+          playsInline
+          preload="none"
+          poster="/founder/founder-film-poster.jpg"
+          width={1920}
+          height={1080}
+        >
+          <source src="/founder/founder-film.mp4" type="video/mp4" />
+          <track kind="captions" src="/founder/founder-film.vtt" srcLang="en" label="English" />
+        </video>
+        <p className={styles.filmNote}>
+          The client work in the film is {site.founderName}&apos;s own, from before the studio; the 70,000+ bookings are
+          Ultraviolette&apos;s, through configurators {site.founderName.split(' ')[0]} built. Music: &ldquo;Fresh&rdquo; by Bransboynd, via Pixabay.
+        </p>
       </section>
 
       <section className={styles.proof} aria-labelledby="proof-title" data-reveal>
