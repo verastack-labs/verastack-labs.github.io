@@ -115,3 +115,21 @@
   .wide .list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
   .wide .item { height: 100%; }
 }
+
+/* External links in posts: an arrow on the same line as the last word, nudging up and right on hover. */
+.prose :global(.ext-tail) { white-space: nowrap; }
+.prose :global(.ext-arrow) { display: inline-block; margin-left: 0.15em; font-size: 0.85em; color: var(--signal); text-decoration: none; transition: transform 0.2s ease; }
+.prose a:global(.ext):hover :global(.ext-arrow), .prose a:global(.ext):focus-visible :global(.ext-arrow) { transform: translate(2px, -2px); }
+@media (prefers-reduced-motion: reduce) { .prose :global(.ext-arrow) { transition: none; } .prose a:global(.ext):hover :global(.ext-arrow) { transform: none; } }
+
+/* How we measured: a box at the end of each study. */
+.prose :global(.method) { margin-top: 2.6em; padding: 26px 28px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+.prose :global(.method) h2 { margin-top: 0; font-size: 24px; }
+.prose :global(.method) dl { display: grid; grid-template-columns: 150px 1fr; gap: 10px 20px; margin: 18px 0 0; font-size: 15.5px; }
+.prose :global(.method) dt { font: 500 12px var(--font-mono); color: var(--signal); padding-top: 3px; }
+.prose :global(.method) dd { margin: 0; color: var(--muted); }
+@media (max-width: 600px) { .prose :global(.method) dl { grid-template-columns: 1fr; gap: 4px; } .prose :global(.method) dd { margin-bottom: 10px; } }
+.prose :global(.method) details { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 12px; }
+.prose :global(.method) summary { cursor: pointer; font-weight: 700; color: var(--text); }
+.prose :global(.method-list) { columns: 3 200px; column-gap: 24px; padding-left: 1.1em; font-size: 14.5px; }
+.prose :global(.method-list) li { break-inside: avoid; }

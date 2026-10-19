@@ -71,6 +71,20 @@ The platform sets the floor. Shopify stores all start in the same place and few 
 
 This measures how readable a homepage is to AI search, not whether ChatGPT recommends the product. Readable is the part you control on your own site; being recommended also depends on what review sites, comparison posts and communities say about you.
 
+
+<section class="method" aria-labelledby="method-title">
+<h2 id="method-title">How we measured</h2>
+<dl>
+<dt>What we checked</dt><dd>SaaS companies whose founders are active on LinkedIn, from a list we keep for outreach, so not a random sample of SaaS: the homepage of each, 26 scored of 27 attempted. The full list is below.</dd>
+<dt>When</dt><dd>17 October 2026, one run per site.</dd>
+<dt>With what</dt><dd>Our free <a href="/tools/ai-search-check">AEO and GEO check</a>, with its sixteen weighted checks as they stood that day (crawler access, text in the server HTML, structured data, answers to buyers' questions, titles and descriptions, llms.txt, sitemap, freshness and more) (<a href="https://github.com/verastack-labs/verastack-labs.github.io/blob/main/workers/aeo-check/src/score.ts">the scoring code</a>). It reads the HTML the server sends, without running JavaScript, plus robots.txt, llms.txt and the sitemap. On 18 October 2026 we changed the FAQ check to count questions answered on the page; this study used the earlier rule, which looked for FAQPage markup or two or more question headings.</dd>
+<dt>What the score means</dt><dd>A score out of 100: the weighted share of the sixteen checks a page passes, with a partial pass earning a third of its weight. A page that blocks AI crawlers or asks not to be indexed is capped at 40. It measures how readable a page is to AI search, not whether any AI answer names or recommends the company.</dd>
+<dt>Limits</dt><dd>One page per site, one run, one day; sites change, so a fresh check may differ. Every score named in this post links to a live re-check.</dd>
+<dt>Per-site results</dt><dd>We name only the top scorers in public. Each company can have its own full report from us; anyone can run any site on the check and see its score today.</dd>
+</dl>
+<details><summary>All 26 sites we scored</summary><ul class="method-list"><li><a href="https://acquire.com">Acquire.com</a></li><li><a href="https://breakcold.com">Breakcold</a></li><li><a href="https://clay.com">Clay</a></li><li><a href="https://usecrunched.com">Crunched</a></li><li><a href="https://fastshot.ai">Fastshot</a></li><li><a href="https://financialdatasets.ai">Financial Datasets</a></li><li><a href="https://folk.app">folk</a></li><li><a href="https://gojiberry.ai">Gojiberry AI</a></li><li><a href="https://keyplay.io">Keyplay</a></li><li><a href="https://kit.com">Kit</a></li><li><a href="https://kuli.one">Kuli</a></li><li><a href="https://lavender.ai">Lavender</a></li><li><a href="https://lemlist.com">lemlist</a></li><li><a href="https://heylua.ai">Lua AI</a></li><li><a href="https://menza.ai">Menza</a></li><li><a href="https://agent.nexus">Nexus</a></li><li><a href="https://omniconvert.com">Omniconvert</a></li><li><a href="https://openroll.com">Openroll</a></li><li><a href="https://talentpluto.com">Pluto</a></li><li><a href="https://rb2b.com">RB2B</a></li><li><a href="https://relay.app">Relay.app</a></li><li><a href="https://revnu.com">Revnu</a></li><li><a href="https://screenpipe.com">screenpipe</a></li><li><a href="https://sitefire.ai">Sitefire</a></li><li><a href="https://tester.army">TesterArmy</a></li><li><a href="https://waalaxy.com">Waalaxy</a></li></ul><p>1 more could not be reached on the day, so they were not scored.</p></details>
+</section>
+
 ## Check your own
 
 The check is free and takes about ten seconds: [run it on your homepage](/tools/ai-search-check). If you'd rather we made the fixes, [tell us about your product](/#contact).

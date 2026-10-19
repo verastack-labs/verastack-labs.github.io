@@ -31,6 +31,19 @@ export type Post = {
 
 export type TitlePart = { text: string; hi: boolean }
 
+// Links that leave the site open in a new tab, say so to screen readers, and carry a small arrow
+// kept on the same line as the link's last word. Only plain-text links are touched.
+const OWN_HOSTS = /^https?:\/\/(www\.)?verastack\.dev(\/|$)/i
+export function externalLinks(html: string): string {
+  return html.replace(/<a href="(https?:\/\/[^"]+)"([^>]*)>([^<]+)<\/a>/g, (whole, href: string, attrs: string, text: string) => {
+    if (OWN_HOSTS.test(href)) return whole
+    const cut = text.lastIndexOf(' ')
+    const head = cut === -1 ? '' : text.slice(0, cut + 1)
+    const last = cut === -1 ? text : text.slice(cut + 1)
+    return `<a href="${href}"${attrs} class="ext" target="_blank" rel="noopener noreferrer">${head}<span class="ext-tail">${last}<span class="ext-arrow" aria-hidden="true">↗</span></span><span class="sr-only"> (opens in a new tab)</span></a>`
+  })
+}
+
 export function splitTitle(raw: string): TitlePart[] {
   return raw
     .split(/(\*[^*]+\*)/)
@@ -67,7 +80,7 @@ export function parsePost(slug: string, source: string): Post {
     checkCompare: meta.checkCompare || null,
     stat: parseStat(meta.stat, slug),
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
-    html: marked.parse(body, { async: false }),
+    html: externalLinks(marked.parse(body, { async: false })),
     words: body.split(/\s+/).filter(Boolean).length,
   }
 }

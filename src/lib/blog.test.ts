@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { allPosts, parsePost, published, readingMinutes } from '@/lib/blog'
+import { allPosts, externalLinks, parsePost, published, readingMinutes } from '@/lib/blog'
 import sitemap from '@/app/sitemap'
 
 describe('blog', () => {
@@ -24,6 +24,13 @@ describe('blog', () => {
       expect(p.titleParts.some((t) => t.hi), p.slug).toBe(true)
       expect(p.title).not.toContain('*')
     }
+  })
+
+  it('marks external links, leaving our own alone', () => {
+    const out = externalLinks('<a href="https://vercel.com/blog/x">Vercel study</a> and <a href="https://verastack.dev/blog/">ours</a> and <a href="/tools">tools</a>')
+    expect(out).toContain('class="ext" target="_blank" rel="noopener noreferrer">Vercel <span class="ext-tail">study<span class="ext-arrow" aria-hidden="true">↗</span></span><span class="sr-only"> (opens in a new tab)</span></a>')
+    expect(out).toContain('<a href="https://verastack.dev/blog/">ours</a>')
+    expect(out).toContain('<a href="/tools">tools</a>')
   })
 
   it('refuses a post without a description', () => {

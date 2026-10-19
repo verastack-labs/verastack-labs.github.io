@@ -227,6 +227,13 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Blog sources and methods (2026-10-19, Origan request Rigan approved): each study ends with a
+    "How we measured" box (what was checked and how it was sampled, date, the check and the FAQ-rule
+    change, what the score means, limits, every site scored as a list without scores, top scorers
+    only named). The two explainers end with Sources (OpenAI, Perplexity, Anthropic, Google Search
+    Central, Cloudflare, Vercel, Ahrefs, Pew, the GEO paper, llms.txt), and our own views are
+    labelled. External links in posts open in a new tab with a hidden note and a ↗ arrow. Note: the
+    raw per-site study data in `docs/study/` is in a public repo, which shows low scores.
   - [x] Claims rule (2026-10-18): no page, post or pitch promises being quoted or cited by AI. Markup
     is "good practice that labels"; numbers only from `docs/why-ai-search-numbers.md` or the scans.
     Study FAQ figures were counted under the old FAQ rule: quote them as "no FAQ on the homepage".
