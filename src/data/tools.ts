@@ -7,7 +7,7 @@ export const tools: Tool[] = [
   {
     slug: 'ai-search-check',
     name: 'AEO and GEO check',
-    line: 'How a page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the top three fixes.',
+    line: 'How a page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the fixes that matter most.',
     href: checker.path,
     tag: 'AI search',
   },

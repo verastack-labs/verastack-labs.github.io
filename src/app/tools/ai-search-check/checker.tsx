@@ -10,11 +10,14 @@ import { EMAIL_WARNING } from '@/lib/enquiry'
 import { setEnquiryPrefill } from '@/lib/enquiry-prefill'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import { markOfferDone } from '@/lib/offer'
+import { readShared, writeShared } from '@/lib/share-url'
 import styles from '@/app/tools/ai-search-check/checker.module.css'
 
-type Check = { id: string; label: string; status: 'pass' | 'warn' | 'fail'; weight: number; detail: string; fix: string }
-// The public answer: the top fixes in full and only a count of the rest. Every check's finding and
-// fix together are the audit; a visitor who wants more gets a summary by email from the studio.
+// `partial`: the finding is shown but not the fix; the Worker sends no fix text for it.
+type Check = { id: string; label: string; status: 'pass' | 'warn' | 'fail'; weight: number; detail: string; fix: string; partial?: true }
+// The public answer: a few fixes and only a count of the rest, never the whole list (more than three
+// issues: the top three in full; three or fewer: the first in full and the next without its fix).
+// Every check's finding and fix together are the audit; the rest comes by email from the studio.
 type Report = { url: string; score: number; top: Check[]; counts: { pass: number; warn: number; fail: number; total: number } }
 
 const verdict = (score: number) =>
@@ -31,6 +34,8 @@ const STATUS_WORD = { pass: 'pass', warn: 'improve', fail: 'fix' } as const
 // Stands in for the checks that are not shown. The page never receives them, so the blurred rows
 // are placeholders and there is nothing to read in the source.
 const LOCKED_ROW = { label: 'Another thing keeping you out of AI answers', text: 'What we found on your page, and what it takes to fix it.' }
+// Stands in for a fix that is held back, so the blurred line has the shape of real advice.
+const LOCKED_FIX = 'What it takes to fix this on your page, step by step, with the exact wording and where it goes, is in the complete report.'
 
 // What the audit covers that the sixteen checks cannot: the check reads one page, the audit works on
 // whether AI answers name you. Shown under every result, a perfect score included.
@@ -71,7 +76,16 @@ function CheckRow({ c, showFix }: { c: Check; showFix: boolean }) {
       <div>
         <b>{c.label}</b>
         <p>{c.detail}</p>
-        {showFix && c.status !== 'pass' && <p className={styles.fix}>{c.fix}</p>}
+        {c.partial ? (
+          <>
+            <p className={`${styles.fix} ${styles.heldFix}`} aria-hidden="true">
+              {LOCKED_FIX}
+            </p>
+            <span className="sr-only">The fix for this one is in the complete report.</span>
+          </>
+        ) : (
+          showFix && c.status !== 'pass' && <p className={styles.fix}>{c.fix}</p>
+        )}
       </div>
     </li>
   )
@@ -109,6 +123,8 @@ export function Checker() {
         return
       }
       setReport(body)
+      // The address now names the site, so sharing or bookmarking the page shares this report.
+      writeShared(url)
       setUnlock((u) => (u === 'sending' ? u : 'locked'))
       setState('done')
       // They have used the free check, so the site-wide offer stops offering it.
@@ -133,7 +149,7 @@ export function Checker() {
   // Arriving with ?url= (from the site-wide offer, or a shared link) fills the field and runs, once.
   const autoRan = useRef(false)
   useEffect(() => {
-    const url = new URLSearchParams(window.location.search).get('url')?.trim()
+    const url = readShared(window.location.search)
     if (!url || autoRan.current) return
     autoRan.current = true
     const start = () => {
@@ -218,7 +234,13 @@ export function Checker() {
 
   const top = report?.top ?? []
   const failing = report ? report.counts.fail + report.counts.warn : 0
-  const rest = failing - top.length
+  const rest = Math.max(0, failing - top.length)
+  // How much is held back: issues not shown at all, plus a fix cut from a shown one (short reports).
+  const shownFull = top.filter((c) => !c.partial).length
+  const held = failing - shownFull
+  const short = top.some((c) => c.partial)
+  const heldWord = short ? (held === 1 ? 'fix' : 'fixes') : held === 1 ? 'issue' : 'issues'
+  const rows = short ? rest : 3
   const host = report ? new URL(report.url).host.replace(/^www\./, '') : ''
 
   return (
@@ -308,26 +330,29 @@ export function Checker() {
             </>
           ) : null}
 
-          {rest > 0 && (
+          {held > 0 && (
             <section className={styles.locked} ref={lockedRef} aria-label="The rest of the report">
-              {/* Placeholders, always three: the list carries on past the top fixes and fades out. */}
-              <ol className={`${styles.list} ${styles.fade}`} aria-hidden="true">
-                {[0, 1, 2].map((i) => (
-                  <li key={i} className={styles.check} data-status="fail">
-                    <span className={styles.badge}>fix</span>
-                    <div>
-                      <b>{LOCKED_ROW.label}</b>
-                      <p>{LOCKED_ROW.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-              <div className={styles.lockCard} data-over="true">
+              {/* Placeholders: the list carries on past what is shown and fades out. Three for a long
+                  report; for a short one, one per issue not shown, so the count never lies. */}
+              {rows > 0 && (
+                <ol className={`${styles.list} ${styles.fade}`} aria-hidden="true">
+                  {Array.from({ length: rows }, (_, i) => (
+                    <li key={i} className={styles.check} data-status="fail">
+                      <span className={styles.badge}>fix</span>
+                      <div>
+                        <b>{LOCKED_ROW.label}</b>
+                        <p>{LOCKED_ROW.text}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              )}
+              <div className={styles.lockCard} data-over={rows > 0 ? 'true' : 'fix'}>
                 <p className={styles.lockCount}>
-                  <b data-n={`+${rest}`}>+{rest}</b>
-                  <span>{rest === 1 ? 'issue' : 'issues'}</span>
+                  <b data-n={`+${held}`}>+{held}</b>
+                  <span>{heldWord}</span>
                 </p>
-                <p className={styles.lockTitle}>Find {rest === 1 ? 'it' : 'them all'} in the complete report.</p>
+                <p className={styles.lockTitle}>Find {held === 1 ? 'it' : 'them all'} in the complete report.</p>
                 {unlock === 'sent' ? (
                   <p className={styles.lockText} ref={sentRef} tabIndex={-1}>
                     The complete report for {host} is on its way to {email.trim()}, within one working day. Want it fixed
@@ -389,11 +414,11 @@ export function Checker() {
                 /report <em>{'//'}</em> {host}
               </p>
               <h2 id="gate-title" className={styles.gateTitle}>
-                <span>+{rest}</span> more {rest === 1 ? 'issue' : 'issues'} on {host}. Find {rest === 1 ? 'it' : 'them all'} in the
-                complete report.
+                <span>+{held}</span> more {heldWord} on {host}. Find {held === 1 ? 'it' : 'them all'} in the complete report.
               </h2>
               <p className={styles.gateText}>
-                You have seen the top {top.length}. Leave your email and we&apos;ll send the complete report: every issue we found
+                {shownFull === 0 ? 'You have seen what we found.' : shownFull === 1 ? 'You have seen the first fix.' : `You have seen the top ${shownFull}.`}{' '}
+                Leave your email and we&apos;ll send the complete report: every issue we found
                 and what it takes to fix it. Free, from a person, within one working day.
               </p>
               <form className={styles.gate} onSubmit={sendSummary} noValidate>

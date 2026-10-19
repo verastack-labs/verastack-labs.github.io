@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { checker } from '@/data/ai-search-check'
+import { readShared, writeShared } from '@/lib/share-url'
 import styles from '@/app/tools/tool.module.css'
 
 type Block = { tag: 'h1' | 'h2' | 'h3' | 'p' | 'li'; text: string }
@@ -39,11 +40,23 @@ export function Viewer() {
       }
       setView(body)
       setState('done')
+      // The address now names the site, so the page can be shared or bookmarked with its result.
+      writeShared(url)
     } catch {
       setError('Could not reach the tool. Check your connection and try again.')
       setState('error')
     }
   }
+
+  // Opening a shared link (?url=) fills the field and reads that page, once.
+  const autoRan = useRef(false)
+  useEffect(() => {
+    const url = readShared(window.location.search)
+    if (!url || autoRan.current) return
+    autoRan.current = true
+    setInput(url)
+    void run(url)
+  }, [])
 
   useEffect(() => {
     if (state === 'done') resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })

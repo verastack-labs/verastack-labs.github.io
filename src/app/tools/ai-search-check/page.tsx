@@ -48,7 +48,7 @@ export default function AiSearchCheckPage() {
       <h1 className={styles.title}>Does ChatGPT know your site?</h1>
       <p className={styles.lede}>
         A free AEO and GEO check: see how a page reads to ChatGPT, Perplexity, Claude and Google&apos;s AI answers. Sixteen checks, a
-        score out of 100 and the three fixes that matter most.
+        score out of 100 and the fixes that matter most.
       </p>
 
       <Checker />

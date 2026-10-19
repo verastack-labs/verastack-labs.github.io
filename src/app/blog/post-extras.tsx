@@ -34,7 +34,7 @@ export function PostCheck({ compare }: { compare: string | null }) {
   return (
     <section className={styles.check} aria-labelledby="post-check-title">
       <h2 id="post-check-title">How does your site read to AI search?</h2>
-      <p>{compare ?? 'Sixteen checks, a score out of 100 and your top three fixes, in about ten seconds. Free.'}</p>
+      <p>{compare ?? 'Sixteen checks, a score out of 100 and your top fixes, in about ten seconds. Free.'}</p>
       <form
         className={styles.checkForm}
         onSubmit={(e) => {

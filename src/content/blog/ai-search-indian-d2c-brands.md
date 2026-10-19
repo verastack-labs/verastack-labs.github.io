@@ -81,4 +81,4 @@ It is also one page per brand. A brand with great product pages and a thin homep
 
 ## Check your own
 
-The check is free, takes about ten seconds and shows your top three fixes: [run it on your site](/tools/ai-search-check). If you'd rather we made the fixes, [tell us about your store](/#contact).
+The check is free, takes about ten seconds and shows the fixes that matter most: [run it on your site](/tools/ai-search-check). If you'd rather we made the fixes, [tell us about your store](/#contact).

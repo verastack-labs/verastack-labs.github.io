@@ -227,4 +227,34 @@ describe('public view', () => {
     expect(text).not.toContain('f d')
     expect(text).not.toContain('"checks"')
   })
+
+  // Never the whole list for free: short reports show one fix in full, the next one's finding
+  // without its fix, and nothing of the rest.
+  it('never gives away a short list', () => {
+    const mk = (id: string, status: 'pass' | 'warn' | 'fail', weight: number) => ({ id, label: id, status, weight, detail: `d ${id}`, fix: `f ${id}` })
+    const view = (failing: number, passing = 0) =>
+      publicView({
+        url: 'https://x.dev/',
+        checkedAt: 'now',
+        score: 50,
+        checks: [
+          ...Array.from({ length: failing }, (_, i) => mk(`c${i}`, 'fail', 20 - i)),
+          ...Array.from({ length: passing }, (_, i) => mk(`p${i}`, 'pass', 1)),
+        ],
+      })
+    expect(view(0, 3).top).toEqual([])
+    const one = view(1, 2)
+    expect(one.top.map((c) => [c.id, c.partial ?? false, c.fix])).toEqual([['c0', true, '']])
+    expect(JSON.stringify(one)).not.toContain('f c0')
+    const two = view(2)
+    expect(two.top.map((c) => [c.id, c.partial ?? false])).toEqual([['c0', false], ['c1', true]])
+    expect(JSON.stringify(two)).not.toContain('f c1')
+    const three = view(3)
+    expect(three.top.map((c) => c.id)).toEqual(['c0', 'c1'])
+    expect(JSON.stringify(three)).not.toMatch(/f c1|c2/)
+    const four = view(4)
+    expect(four.top.map((c) => [c.id, c.partial ?? false])).toEqual([['c0', false], ['c1', false], ['c2', false]])
+    expect(JSON.stringify(four)).not.toContain('c3')
+    expect(view(12).top).toHaveLength(3)
+  })
 })

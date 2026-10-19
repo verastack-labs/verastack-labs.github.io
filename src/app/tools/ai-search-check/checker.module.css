@@ -162,6 +162,11 @@
   box-shadow: 0 -30px 60px -10px var(--ink);
 }
 .lockCard[data-over='true'] { margin-top: -40px; }
+/* A short report: the second fix is held back. Its line is placeholder text (the real one never
+   reaches the page), blurred and fading down into the placeholder rows and the unlock card. */
+.heldFix { user-select: none; pointer-events: none; filter: blur(4px); opacity: 0.6; -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent 100%); mask-image: linear-gradient(180deg, #000 10%, transparent 100%); }
+.list:has(.heldFix) .check:last-child { border-bottom-color: transparent; }
+.lockCard[data-over='fix'] { margin-top: -28px; }
 /* "+2 issues" at about the size of the score, with a blurred copy of the number behind it, so it
    reads as more underneath rather than one last thing. */
 .lockCount { position: relative; display: flex; align-items: baseline; gap: 14px; margin: 0; font-weight: 800; line-height: 0.9; letter-spacing: -0.06em; color: var(--text); }

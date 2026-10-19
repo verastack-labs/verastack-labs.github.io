@@ -67,6 +67,28 @@ AI-referred visitors converted 31% more over holiday 2025.
 Each tool ships with a short blog post (how to fix the gap, our number, the tool embedded) and a
 LinkedIn post through the Social chat, so every tool is also content.
 
+## Two rules for any tool that reports on a site (Rigan, 20 Oct 2026)
+
+These apply to every tool that finds problems on someone's site and says how to fix them: the AI
+search check today, and the planned meta description tester, link preview checker and AI crawler
+checker (their "what is missing" lists). Generators, where visitors make their own file from their
+own input, are not reports: their output stays free, as point 2 above says.
+
+1. **Never the whole fix list for free.**
+   - More than three items: the top three in full, then blurred placeholder rows and the call to
+     action (complete report by email, or talk to us).
+   - Three or fewer: the first item in full; the second item's finding shown but its fix blurred,
+     fading down under a gradient mask into the call to action; nothing of the third.
+   - Held-back text never reaches the browser. The server (the Worker's `publicView` in
+     `workers/aeo-check/src/score.ts`) leaves it out and marks the cut item `partial`; what the page
+     blurs is placeholder text, so nothing is readable in the source, alt text, a screen reader or
+     a copy and paste. Tests hold 0, 1, 2, 3, 4 and many items.
+2. **The address names the site.** A tool that takes a URL writes it into the address bar once the
+   result is in (`?url=example.com`, no scheme or trailing slash, encoded), with
+   `history.replaceState`, so there is no reload and no new history entry. Opening that link fills
+   the field and runs it. Use `readShared` and `writeShared` from `src/lib/share-url.ts`. Live on
+   the AI search check and "What ChatGPT sees".
+
 ## Order, one at a time
 
 Ranked by how many sites have the problem, how quickly the fix shows on our checker, and effort.
@@ -94,6 +116,6 @@ share a Worker route that fetches one page safely, reusing the checker's address
 
 ## Per tool, done means
 
-The tool works on desktop and phone, has tests for its output (valid JSON-LD, escaping, limits),
+The tool works on desktop and phone, follows the two reporting rules above if it reports on a site, has tests for its output (valid JSON-LD, escaping, limits),
 quotes its number from the scan data, passes its own check where relevant, is in /tools, the
 sitemap and llms.txt, and has its blog post sent to the Social and Portfolio chats.
