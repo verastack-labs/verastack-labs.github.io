@@ -1,7 +1,7 @@
 # VeraStack Labs site status
 
 The single place to catch up on verastack-labs.github.io. Update it in the same PR as any change
-that finishes, adds or drops an item. Last updated 2026-10-17.
+that finishes, adds or drops an item. Last updated 2026-10-20.
 
 - Design spec: [superpowers/specs/2026-09-28-verastack-labs-site-design.md](superpowers/specs/2026-09-28-verastack-labs-site-design.md)
 - Phase plans: [superpowers/plans/](superpowers/plans/)
@@ -227,6 +227,14 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Short reports gated, and shareable result links (2026-10-20, Rigan via the Social chat, after
+    the syntaxsuite.io report showed all three of its fixes in full). The checker never shows the
+    whole fix list: more than three issues, the top three in full as before; three or fewer, the first
+    in full and the second's finding with its fix blurred into the call to action. The Worker sends
+    no text for what is held back (`partial` in `publicView`), so nothing is readable in the source
+    or a copy and paste. The checker and "What ChatGPT sees" write `?url=<site>` into the address bar
+    after a result (replaceState), and a link with it runs that site. Both rules are in
+    `docs/tools-plan.md` for every planned tool that reports on a site.
   - [x] Founder film on /founder (2026-10-19): the agency cut of the portfolio launch film (no Oinkbuns,
     51 s, 1080p, 6.5 MB) from the video session (verastack-labs/studio 80278fa), click to play with a
     poster and captions, a caption on the client work and bookings, and VideoObject JSON-LD. Files in

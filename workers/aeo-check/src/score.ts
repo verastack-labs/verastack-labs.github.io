@@ -288,14 +288,28 @@ export function topFixes(checks: Check[], n = 3): Check[] {
   return checks.filter((c) => c.status !== 'pass').sort((a, b) => rank(b) - rank(a)).slice(0, n)
 }
 
-// What the public page gets: the score, the top fixes in full and only a count of the rest. Every
-// check's finding and fix together are the audit, so they stay with the studio (see `full` in index.ts).
+// What the public page gets: the score, a few fixes and only a count of the rest. Every check's
+// finding and fix together are the audit, so they stay with the studio (see `full` in index.ts).
+// The page never gets the whole list: with more than three issues it shows the top three in full;
+// with three or fewer it shows the first in full and the next one's finding without its fix
+// (`partial`), and the fix text is never sent, so it cannot be read in the page or its source.
+export type PublicCheck = Check & { partial?: true }
 export type PublicReport = {
   url: string
   checkedAt: string
   score: number
-  top: Check[]
+  top: PublicCheck[]
   counts: { pass: number; warn: number; fail: number; total: number }
+}
+
+export const FULL_SHOWN = 3
+
+export function publicTop(checks: Check[]): PublicCheck[] {
+  const failing = topFixes(checks, checks.length)
+  if (failing.length > FULL_SHOWN) return failing.slice(0, FULL_SHOWN)
+  const cut = (c: Check): PublicCheck => ({ ...c, fix: '', partial: true })
+  if (failing.length === 1) return [cut(failing[0])]
+  return failing.length ? [failing[0], cut(failing[1])] : []
 }
 
 export function publicView(report: { url: string; checkedAt: string; score: number; checks: Check[] }): PublicReport {
@@ -304,7 +318,7 @@ export function publicView(report: { url: string; checkedAt: string; score: numb
     url: report.url,
     checkedAt: report.checkedAt,
     score: report.score,
-    top: topFixes(report.checks),
+    top: publicTop(report.checks),
     counts: { pass: n('pass'), warn: n('warn'), fail: n('fail'), total: report.checks.length },
   }
 }

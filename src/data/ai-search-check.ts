@@ -7,7 +7,7 @@ export const checker = {
   path: '/tools/ai-search-check',
   title: 'Free AEO and GEO check: does ChatGPT know your site?',
   description:
-    'A free AEO and GEO check: how your page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the top three fixes.',
+    'A free AEO and GEO check: how your page reads to ChatGPT, Perplexity, Claude and Google AI answers. Sixteen checks, a score out of 100 and the fixes that matter most.',
 }
 
 export const checks: { id: string; label: string; why: string }[] = [
