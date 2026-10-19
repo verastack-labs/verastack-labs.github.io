@@ -51,6 +51,20 @@ Our own site scores 100 on the same check; these three and an llms.txt are most 
 
 This measures how readable a homepage is to AI search, not how good a studio's client work is. It is one page per studio, checked on one day.
 
+
+<section class="method" aria-labelledby="method-title">
+<h2 id="method-title">How we measured</h2>
+<dl>
+<dt>What we checked</dt><dd>Software studios and agencies from a list we keep for outreach, so not a random sample: the homepage of each, 25 scored. The full list is below.</dd>
+<dt>When</dt><dd>18 October 2026, one run per site.</dd>
+<dt>With what</dt><dd>Our free <a href="/tools/ai-search-check">AEO and GEO check</a>, with its sixteen weighted checks as they stood that day (crawler access, text in the server HTML, structured data, answers to buyers' questions, titles and descriptions, llms.txt, sitemap, freshness and more) (<a href="https://github.com/verastack-labs/verastack-labs.github.io/blob/main/workers/aeo-check/src/score.ts">the scoring code</a>). It reads the HTML the server sends, without running JavaScript, plus robots.txt, llms.txt and the sitemap. On 18 October 2026 we changed the FAQ check to count questions answered on the page; this study used the earlier rule, which looked for FAQPage markup or two or more question headings.</dd>
+<dt>What the score means</dt><dd>A score out of 100: the weighted share of the sixteen checks a page passes, with a partial pass earning a third of its weight. A page that blocks AI crawlers or asks not to be indexed is capped at 40. It measures how readable a page is to AI search, not whether any AI answer names or recommends the company.</dd>
+<dt>Limits</dt><dd>One page per site, one run, one day; sites change, so a fresh check may differ. Every score named in this post links to a live re-check.</dd>
+<dt>Per-site results</dt><dd>We name only the top scorers in public. Each company can have its own full report from us; anyone can run any site on the check and see its score today.</dd>
+</dl>
+<details><summary>All 25 sites we scored</summary><ul class="method-list"><li><a href="https://10clouds.com">10Clouds</a></li><li><a href="https://appsilon.com">Appsilon</a></li><li><a href="https://atomicobject.com">Atomic Object</a></li><li><a href="https://bigbinary.com">BigBinary</a></li><li><a href="https://bitovi.com">Bitovi</a></li><li><a href="https://datasparq.ai">Datasparq</a></li><li><a href="https://fuzzylabs.ai">Fuzzy Labs</a></li><li><a href="https://geekyants.com">GeekyAnts</a></li><li><a href="https://infinum.com">Infinum</a></li><li><a href="https://joshsoftware.com">Josh Software</a></li><li><a href="https://ksolves.com">Ksolves</a></li><li><a href="https://mindbowser.com">Mindbowser</a></li><li><a href="https://mobisoftinfotech.com">Mobisoft Infotech</a></li><li><a href="https://monterail.com">Monterail</a></li><li><a href="https://planetargon.com">Planet Argon</a></li><li><a href="https://polestaranalytics.com">Polestar Analytics</a></li><li><a href="https://saeloun.com">Saeloun</a></li><li><a href="https://sankeysolutions.com">Sankey Solutions</a></li><li><a href="https://swmansion.com">Software Mansion</a></li><li><a href="https://softwire.com">Softwire</a></li><li><a href="https://sparkbox.com">Sparkbox</a></li><li><a href="https://testdouble.com">Test Double</a></li><li><a href="https://tighten.com">Tighten</a></li><li><a href="https://xomnia.com">Xomnia</a></li><li><a href="https://zluri.com">Zluri</a></li></ul></details>
+</section>
+
 ## Check your own
 
 The check is free and takes about ten seconds: [run it on your homepage](/tools/ai-search-check). If you would rather we made the fixes, or you are launching something of your own, see the [SaaS Launch Kit](/launch-kit) or [tell us about it](/#contact).

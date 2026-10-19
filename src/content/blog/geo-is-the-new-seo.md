@@ -10,16 +10,16 @@ checkCompare: Across 226 YC Summer 2026 homepages, the median AEO and GEO score 
 tags: GEO, AEO, SEO
 ---
 
-For twenty years, getting found meant ranking: be one of ten blue links and hope for the click. Now a growing share of buyers never see the links. They ask ChatGPT, Perplexity or Google's AI Mode which tool to use, read one written answer, and shortlist whoever is named in it.
+For twenty years, getting found meant ranking: be one of ten blue links and hope for the click. Now fewer people click them: in a Pew Research study, people clicked a regular result on [8% of visits when Google showed an AI summary, against 15% without one](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/). More and more, buyers ask ChatGPT, Perplexity or Google's AI Mode which tool to use, read one written answer, and shortlist whoever is named in it.
 
-Getting named in that answer has picked up two names. **AEO**, answer engine optimisation, came first. **GEO**, generative engine optimisation, is the one founders search for now, after the engines that generate their answers. They describe nearly the same work. Here is what that work is, and how much of it is still plain SEO.
+Getting named in that answer has picked up two names. **AEO**, answer engine optimisation, came first. **GEO**, generative engine optimisation, takes its name from [a 2023 research paper](https://arxiv.org/abs/2311.09735) on engines that generate their answers. They describe nearly the same work. Here is what that work is, and how much of it is still plain SEO.
 
 ## What doesn't change
 
 Most of GEO is SEO done properly, for a reader that happens to be a model.
 
-- **Crawlers have to get in.** If robots.txt or your CDN's bot protection turns away OAI-SearchBot or PerplexityBot, nothing else matters. Our check caps the score at 40 when that happens, however good the rest of the page is.
-- **The words have to be in the HTML.** Many AI crawlers do not run JavaScript. A homepage that only says what you do after an animation loads is blank to them. In our [YC Summer 2026 study](/blog/yc-summer-2026-ai-search), 30 of 226 homepages sent 50 words or fewer before JavaScript ran.
+- **Crawlers have to get in.** If robots.txt or your CDN's bot protection turns away [OAI-SearchBot](https://developers.openai.com/api/docs/bots) or [PerplexityBot](https://docs.perplexity.ai/guides/bots), nothing else matters. Our check caps the score at 40 when that happens, however good the rest of the page is.
+- **The words have to be in the HTML.** [None of the major AI crawlers rendered JavaScript](https://vercel.com/blog/the-rise-of-the-ai-crawler) in Vercel's 2024 study. A homepage that only says what you do after an animation loads is blank to them. In our [YC Summer 2026 study](/blog/yc-summer-2026-ai-search), 30 of 226 homepages sent 50 words or fewer before JavaScript ran.
 - **Titles, descriptions, headings and a sitemap** still tell an engine what a page is and where the rest of the site lives.
 
 If your SEO is broken, your GEO is broken. That part is not new, it just got punished harder.
@@ -28,13 +28,13 @@ If your SEO is broken, your GEO is broken. That part is not new, it just got pun
 
 ## What changes
 
-**The unit is a passage, not a page.** A search engine ranks pages. A generative engine lifts a sentence or two and builds an answer around it. Pages that state the thing plainly, in one quotable sentence, get used. Pages that circle it in brand language get skipped.
+**The unit is a passage, not a page.** A search engine ranks pages. A generative engine lifts a sentence or two and builds an answer around it. In the research that named GEO, adding statistics, quotations and citations to a page raised its visibility in generated answers [by up to 40%](https://arxiv.org/abs/2311.09735), on the authors' own benchmark.
 
-**Being cited matters more than being ranked.** When a model names three tools, it leans on what other sites say: review sites, directories, comparison posts, Reddit threads, the press. Your own site is one voice in that answer, not the whole of it.
+**Being cited matters more than being ranked.** In our view, when a model names three tools it leans on what other sites say: review sites, directories, comparison posts, Reddit threads, the press. Your own site is one voice in that answer, not the whole of it.
 
-**Facts beat adjectives.** Prices, numbers, who it is for, how it compares. A model can quote "from $49 a month, for teams of 5 to 50"; it cannot quote "powerful and intuitive".
+**Facts beat adjectives** (our view, in line with that research). Prices, numbers, who it is for, how it compares. A model can quote "from $49 a month, for teams of 5 to 50"; it cannot quote "powerful and intuitive".
 
-**Answers on the page, labelled clearly.** Plain answers to the questions buyers ask, on the page itself, give a model something real to read. Structured data labels the rest: Organization data says which company you are among the namesakes, Product or SoftwareApplication data says what you sell. To be straight about it, Google says AI answers need no special markup, and a 2026 Ahrefs test found adding JSON-LD alone did not raise AI citations; it is good practice that keeps facts unambiguous, not a shortcut. In our studies, these were the gaps on most homepages, from [Indian D2C stores](/blog/ai-search-indian-d2c-brands) to [established SaaS](/blog/ai-search-saas-homepages).
+**Answers on the page, labelled clearly.** Plain answers to the questions buyers ask, on the page itself, give a model something real to read. Structured data labels the rest: Organization data says which company you are among the namesakes, Product or SoftwareApplication data says what you sell. To be straight about it, Google says AI answers [need no special markup](https://developers.google.com/search/docs/appearance/ai-features), and a 2026 Ahrefs test found [adding JSON-LD alone did not raise AI citations](https://ahrefs.com/blog/schema-ai-citations/); it is good practice that keeps facts unambiguous, not a shortcut. In our studies, these were the gaps on most homepages, from [Indian D2C stores](/blog/ai-search-indian-d2c-brands) to [established SaaS](/blog/ai-search-saas-homepages).
 
 **There is no rank to check.** You cannot look up position three for a prompt. The only way to know whether you are named is to ask the engines the questions your buyers ask, write down who gets named, and ask again after every change.
 
@@ -53,3 +53,15 @@ If your SEO is broken, your GEO is broken. That part is not new, it just got pun
 Start with what a model can read today. Our [AEO and GEO check](/tools/ai-search-check) runs sixteen checks on one page in about ten seconds and gives you the three fixes that matter most. It's free.
 
 The page is step one. Whether ChatGPT names you or a competitor comes down to the questions your buyers ask, the sites the answers draw on, and pages worth quoting. That is the audit we run, and the work we do. [Tell us about your site](/#contact).
+
+## Sources
+
+- Pew Research Center, [Google users are less likely to click on links when an AI summary appears](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/), 22 July 2025.
+- Aggarwal et al., [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735), 2023, KDD 2024.
+- OpenAI, [Overview of OpenAI crawlers](https://developers.openai.com/api/docs/bots); Perplexity, [Perplexity crawlers](https://docs.perplexity.ai/guides/bots).
+- Vercel, [The rise of the AI crawler](https://vercel.com/blog/the-rise-of-the-ai-crawler), 17 December 2024.
+- Google Search Central, [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features).
+- Ahrefs, [schema and AI citations](https://ahrefs.com/blog/schema-ai-citations/), 2026.
+- Our own numbers: the [YC Summer 2026](/blog/yc-summer-2026-ai-search), [D2C](/blog/ai-search-indian-d2c-brands) and [SaaS](/blog/ai-search-saas-homepages) studies, each with how we measured.
+- Our own view, not from a source: how answers lean on other sites, and the SEO versus AEO and GEO table.
+
