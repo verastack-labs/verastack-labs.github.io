@@ -9,7 +9,10 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const here = process.argv[2] ?? dirname(fileURLToPath(import.meta.url))
+// The study folder lives in the private social-docs repo (research/studies/<study>); pass it.
+if (!process.argv[2]) throw new Error('Pass the study folder, e.g. ../social-docs/research/studies/yc-s26')
+const here = process.argv[2]
+const repo = join(dirname(fileURLToPath(import.meta.url)), '..')
 const ENDPOINT = 'https://api.verastack.dev/aeo-check'
 const PAUSE_MS = 7000
 
@@ -24,7 +27,7 @@ const brands = readFileSync(join(here, 'brands.csv'), 'utf8')
 
 // Resumable: brands already in scan.json without an error are kept and skipped.
 // Studies need every check, so this sends the studio's key (workers/aeo-check/.report-key).
-const REPORT_KEY = readFileSync(join(here, '../../../workers/aeo-check/.report-key'), 'utf8').trim()
+const REPORT_KEY = readFileSync(join(repo, 'workers/aeo-check/.report-key'), 'utf8').trim()
 
 let results = []
 try {

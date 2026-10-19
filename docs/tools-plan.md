@@ -23,7 +23,7 @@ SaaS, 25 software studios, 6 freshly funded startups), the share that fail or on
 | Link previews (Open Graph) broken or partial | 18% | Link preview checker |
 | AI crawlers blocked in robots.txt | 3%, but it caps the score at 40 | AI crawler checker |
 
-Source: `docs/study/*/` scan data, recomputed for each tool page from the files so the numbers stay
+Source: `social-docs/research/studies/*/` scan data, recomputed for each tool page from the files so the numbers stay
 true. Every tool page quotes its own row.
 
 ## Outside numbers (to source before tool 1)
