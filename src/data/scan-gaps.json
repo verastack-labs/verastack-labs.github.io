@@ -1,0 +1,86 @@
+{
+  "homepages": 379,
+  "updated": "2026-10-19",
+  "checks": {
+    "canonical": {
+      "total": 379,
+      "none": 76,
+      "notPassing": 94
+    },
+    "crawlers": {
+      "total": 379,
+      "none": 1,
+      "notPassing": 12
+    },
+    "description": {
+      "total": 379,
+      "none": 11,
+      "notPassing": 135
+    },
+    "edge": {
+      "total": 379,
+      "none": 0,
+      "notPassing": 3
+    },
+    "faq": {
+      "total": 379,
+      "none": 306,
+      "notPassing": 335
+    },
+    "fresh": {
+      "total": 379,
+      "none": 1,
+      "notPassing": 96
+    },
+    "headings": {
+      "total": 379,
+      "none": 43,
+      "notPassing": 127
+    },
+    "identity": {
+      "total": 379,
+      "none": 148,
+      "notPassing": 202
+    },
+    "images": {
+      "total": 379,
+      "none": 5,
+      "notPassing": 28
+    },
+    "indexable": {
+      "total": 379,
+      "none": 1,
+      "notPassing": 1
+    },
+    "llms": {
+      "total": 379,
+      "none": 177,
+      "notPassing": 192
+    },
+    "og": {
+      "total": 379,
+      "none": 27,
+      "notPassing": 70
+    },
+    "sitemap": {
+      "total": 379,
+      "none": 76,
+      "notPassing": 76
+    },
+    "structured": {
+      "total": 379,
+      "none": 307,
+      "notPassing": 307
+    },
+    "text": {
+      "total": 379,
+      "none": 63,
+      "notPassing": 130
+    },
+    "title": {
+      "total": 379,
+      "none": 2,
+      "notPassing": 95
+    }
+  }
+}

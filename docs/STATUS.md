@@ -127,7 +127,7 @@ Content (placeholders are in the design until these arrive):
   - [x] Blog post "Funded this fortnight: six AI agents for the back office" (2026-10-18, Startups):
     Hone, Duvo, Causa Prima, Clueso, Forgepoint and Shamrock AI, $136.8M, rounds fact-checked; top three
     AI search scores named (Clueso 100, Duvo 90, Causa Prima 82), the rest private. Data in
-    `docs/study/funded-2026-10/`. Next edition after 31 Oct.
+    `social-docs/research/studies/funded-2026-10/`. Next edition after 31 Oct.
   - [x] AEO and GEO used together everywhere (Rigan, 2026-10-18): checker title, description, label and
     lede; FAQ adds "What is GEO?" and "AEO vs GEO vs SEO"; audit pitch, services blurb, home FAQ, site
     description and the report email. New post "GEO is the new SEO: what changes and what doesn't"
@@ -184,7 +184,7 @@ Content (placeholders are in the design until these arrive):
     is gone.
   - [x] Startup series started (2026-10-17): the leads chat scouts weekly
     (`social-docs/research/startups/`); we verify, scan and write. New Startups category. First post
-    "AI search scores of YC Summer 2026, by space" (`docs/study/yc-s26/`). Next: "Funded this
+    "AI search scores of YC Summer 2026, by space" (`social-docs/research/studies/yc-s26/`). Next: "Funded this
     fortnight" on back-office agents, from the 17 Oct scout file.
   - [ ] SaaS Launch Kit: decided 2026-10-18 (`docs/launch-kit.md`): $9,500 fixed, 4 weeks, two a
     month, 10% back per late week capped at 30%, equity case by case (60% cash floor, up to 1% via
@@ -206,7 +206,7 @@ Content (placeholders are in the design until these arrive):
   - [ ] Free tools programme (`docs/tools-plan.md`, approved 2026-10-18): eight zero-cost tools, one
     at a time. Shared: `src/app/tools/tool.module.css`, `ToolBridge` (the honest limit, the full
     check with their URL, the audit, the kit, a call) and `src/lib/scan-stats.ts` (each page's number
-    computed from docs/study at build time).
+    from `src/data/scan-gaps.json`, totals regenerated from the private study data).
     - [x] 1. FAQ schema generator at /tools/faq-schema (2026-10-18): templates for SaaS, studios and
       stores, live JSON-LD, HTML and preview, copy buttons, quotability notes; 81% of 379 homepages
       have no FAQ. Next: its blog post, and the outside numbers once `docs/why-ai-search-numbers.md`
@@ -237,7 +237,7 @@ Content (placeholders are in the design until these arrive):
     only named). The two explainers end with Sources (OpenAI, Perplexity, Anthropic, Google Search
     Central, Cloudflare, Vercel, Ahrefs, Pew, the GEO paper, llms.txt), and our own views are
     labelled. External links in posts open in a new tab with a hidden note and a ↗ arrow. Note: the
-    raw per-site study data in `docs/study/` is in a public repo, which shows low scores.
+    raw per-site study data in `social-docs/research/studies/` is in a public repo, which shows low scores.
   - [x] Claims rule (2026-10-18): no page, post or pitch promises being quoted or cited by AI. Markup
     is "good practice that labels"; numbers only from `docs/why-ai-search-numbers.md` or the scans.
     Study FAQ figures were counted under the old FAQ rule: quote them as "no FAQ on the homepage".
@@ -312,13 +312,13 @@ Content (placeholders are in the design until these arrive):
     the paid fix. The result scrolls smoothly into view below the header. The site-wide offer
     holds off while a result is on screen (`data-offer-hold`).
   - [x] D2C AI-visibility study, part A (2026-10-17): 99 brands from the AEO outreach batches
-    through the live checker (`docs/study/d2c-ai-visibility/`, scan.json). 96 reachable: median
+    through the live checker (`social-docs/research/studies/d2c-ai-visibility/`, scan.json). 96 reachable: median
     75, top 91, 71 under 80; 91 homepages lack product structured data, 71 have no FAQ. Published
     as the blog post "We ran 96 Indian D2C sites through an AI search check", naming only the top
     ten (praise in public; low scorers hear privately by email or DM). Part B (asking the engines
     who they name) dropped: paid APIs or hours by hand, not worth it now.
   - [x] SaaS version (2026-10-17): 27 homepages, 26 reachable, median 77.5, four at 100; post
-    "AI search scores of 26 SaaS homepages" names everyone at 85 or above (`docs/study/saas-ai-search/`).
+    "AI search scores of 26 SaaS homepages" names everyone at 85 or above (`social-docs/research/studies/saas-ai-search/`).
 
 - [ ] Booking figures in the Work headliners are Ultraviolette's public numbers (2026-10-16, from the
   press links in `src/data/work.ts`): Tesseract 60,000+, Shockwave 7,000+, X-47 3,000+ in 24 hours,
