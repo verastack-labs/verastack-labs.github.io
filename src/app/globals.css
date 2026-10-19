@@ -44,8 +44,26 @@ html[data-motion='static'] {
   --dim: var(--muted);
 }
 
-/* An hCaptcha challenge lifted above a modal dialog (src/components/hcaptcha.tsx). Undo the
-   popover defaults so hCaptcha's own inline position and size still apply. */
+/* An hCaptcha challenge lifted above a modal dialog (src/components/hcaptcha.tsx). Its own modal
+   dialog is a zero-size box at the top of the page, so hCaptcha's page coordinates still land in
+   the same place; hCaptcha draws its own dimmed backdrop. */
+.hcaptcha-host {
+  position: absolute;
+  inset: auto;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  overflow: visible;
+}
+.hcaptcha-host::backdrop { background: transparent; }
+/* Undo the popover defaults so hCaptcha's own inline position and size still apply. */
 .hcaptcha-raised {
   inset: auto;
   margin: 0;
