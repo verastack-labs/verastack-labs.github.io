@@ -248,6 +248,13 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] YC Fall 2026 study (2026-10-21): 158 F26 companies on YC's directory, 155 with a website,
+    153 scored (`social-docs/research/studies/yc-f26/`). Median 72, seven at 100, 22 at 90+, 17 under
+    50, 13 near-blank; Industrials 58.5 against 77 to 80 for software spaces. Scored under the current
+    FAQ rule, so not like for like with Summer's 66. Post "AI search scores of YC Fall 2026, six weeks
+    before Demo Day" (Startups) names the perfect scores and the top three per space (Yam, 92, left
+    out on tone). Scan totals now cover 532 homepages (`node scripts/study-gaps.mjs`), so every tool
+    page's figure moved with them.
   - [x] Films page and our own player (2026-10-21, Rigan): /films shows the studio film big, with
     chapter buttons (countdown, services, one team, proof, products, Launch Kit, sign-off), then a
     grid of the rest (rigseed, Origan, the founder film, Bruno), each with title, one line, length and
