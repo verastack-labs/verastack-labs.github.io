@@ -105,7 +105,7 @@ export function Checker() {
   const [unlock, setUnlock] = useState<'locked' | 'sending' | 'sent' | 'failed'>('locked')
   const resultRef = useRef<HTMLDivElement>(null)
   const lockedRef = useRef<HTMLElement>(null)
-  const sentRef = useRef<HTMLParagraphElement>(null)
+  const sentRef = useRef<HTMLHeadingElement>(null)
   const gateRef = useRef<HTMLDialogElement>(null)
   // The unlock dialog opens by itself once per visit, when the locked list scrolls into view.
   const autoShown = useRef(false)
@@ -183,8 +183,10 @@ export function Checker() {
     return () => io.disconnect()
   }, [report, unlock, openGate])
 
+  // The confirmation replaces the form inside the dialog (a bottom sheet on phones), so it shows
+  // where the visitor pressed Send. The page behind is held still while the dialog is open.
   useEffect(() => {
-    if (unlock === 'sent' && sentRef.current) reveal(sentRef.current)
+    if (unlock === 'sent') sentRef.current?.focus()
   }, [unlock])
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
@@ -221,7 +223,6 @@ export function Checker() {
       const body = (await res.json().catch(() => null)) as { success?: boolean } | null
       if (res.ok && body?.success) {
         setUnlock('sent')
-        closeGate()
       } else {
         setUnlock('failed')
         setCaptchaReset((n) => n + 1)
@@ -354,7 +355,7 @@ export function Checker() {
                 </p>
                 <p className={styles.lockTitle}>Find {held === 1 ? 'it' : 'them all'} in the complete report.</p>
                 {unlock === 'sent' ? (
-                  <p className={styles.lockText} ref={sentRef} tabIndex={-1}>
+                  <p className={styles.lockText}>
                     The complete report for {host} is on its way to {email.trim()}, within one working day. Want it fixed
                     sooner?{' '}
                     <Link href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
@@ -413,6 +414,21 @@ export function Checker() {
               <p className={styles.label}>
                 /report <em>{'//'}</em> {host}
               </p>
+              {unlock === 'sent' ? (
+                <div className={styles.gateSent} role="status">
+                  <h2 id="gate-title" className={styles.gateTitle} ref={sentRef} tabIndex={-1}>
+                    Got it. <span>Your report is on its way.</span>
+                  </h2>
+                  <p className={styles.gateText}>
+                    A person on our team writes the complete report for {host} and sends it to <b>{email.trim()}</b> from{' '}
+                    {site.email} within one working day. If it isn&apos;t in your inbox by then, check spam.
+                  </p>
+                  <button type="button" className={styles.go} onClick={closeGate}>
+                    Done
+                  </button>
+                </div>
+              ) : (
+              <>
               <h2 id="gate-title" className={styles.gateTitle}>
                 <span>+{held}</span> more {heldWord} on {host}. Find {held === 1 ? 'it' : 'them all'} in the complete report.
               </h2>
@@ -448,9 +464,18 @@ export function Checker() {
                     <HCaptcha siteKey={site.hcaptchaSiteKey} onToken={setToken} resetKey={captchaReset} />
                   </div>
                 )}
-                {unlock === 'failed' && <FieldWarning>That did not go through. Tick the box again and retry.</FieldWarning>}
+                {unlock === 'failed' && (
+                  <FieldWarning>
+                    That did not go through. Tick the box again and retry, or email {site.email} with your site.
+                  </FieldWarning>
+                )}
+                {emailOk && captchaOn && !token && unlock !== 'sending' && (
+                  <p className={styles.note}>Tick the box above to send.</p>
+                )}
                 <p className={styles.note}>One email with your report, maybe one follow-up. No newsletter.</p>
               </form>
+              </>
+              )}
               <p className={styles.gateAlt}>
                 Rather have it done?{' '}
                 <Link href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
