@@ -76,7 +76,7 @@ ${
 </div>`
     : ''
 }
-<p>Our own site, verastack.dev, and our product Origan score 100 on this same check.</p>
+<p>Our own site, verastack.dev, and our products Origan and Riggit score 100 on this same check.</p>
 <p><b>What a score can't see.</b> These checks read one page. Whether ChatGPT, Perplexity or Google's AI answers actually name ${esc(host)}, or a competitor, depends on more than that: how the questions your buyers ask get answered today, what the sites engines quote say about you, and whether the rest of your pages give an engine something worth citing. That is what our AEO and GEO audit covers, and we make the fixes too.</p>
 <p>${issues.length ? 'Questions about any of this? Just reply.' : `${link(call, 'Book a 30-minute call')} to talk about the audit, or just reply.`} You can ${link(recheck, 're-run the check')} any time after a change.</p>
 <p>Rigan, for the VeraStack Labs team<br>${link('https://verastack.dev', 'verastack.dev')}</p>
