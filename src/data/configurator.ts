@@ -23,7 +23,7 @@ const groups: OptionGroup[] = [
     id: 'keycaps',
     label: 'keycaps',
     choices: [
-      { id: 'bone', label: 'bone', color: '#D8D5C7', delta: FREE },
+      { id: 'bone', label: 'bone', color: '#8E8C84', delta: FREE },
       { id: 'ink', label: 'ink pbt', color: '#1D1F17', delta: { inr: 2000, usd: 24 } },
     ],
   },
