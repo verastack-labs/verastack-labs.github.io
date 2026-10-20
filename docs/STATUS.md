@@ -240,6 +240,12 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] FAQ check reads questions as a reader does (2026-10-20, found by the Riggit chat): a question
+    whose summary ended in a decorative "+" (`Is this allowed?<span aria-hidden="true">+</span>`)
+    read as "Is this allowed?+" and did not count, so riggit.verastack.dev dropped to 95. Now
+    aria-hidden parts and trailing symbols or count badges are ignored (`isQuestion` in
+    `workers/aeo-check/src/html.ts`, with tests); the result cache key moved to v4. Accordions with
+    icons are common, so other sites may score higher than before on this check.
   - [ ] Instant confirmation email for report requests (idea, Rigan 2026-10-20: "we can think of
     it"). Web3Forms' free plan has no auto-reply, so the checker Worker would send it through Brevo's
     transactional API; Rigan adds the Brevo key as a Worker secret. Not started.
