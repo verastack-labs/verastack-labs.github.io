@@ -59,7 +59,12 @@ Content (placeholders are in the design until these arrive):
   visitor asked for it, so it is opted-in mail and fits Brevo's terms; signed by a person, as the
   page promises. Drafted with `node workers/aeo-check/report-email.mjs <host> [first name]` (every
   issue with what we found and what it takes, then what a score can't see and a 30-minute call
-  link), checked, then sent by hand while volume is low; automate later through Brevo's
+  link), checked, then sent by hand while volume is low. Since 2026-10-20 (Rigan's review of the
+  syntaxsuite.io email) each issue gets what we found and a one-line first step, not the full
+  how-to, which is the paid work; then one offer box (we fix them all and get the page to 100, fixed
+  price after a call, "reply go for a quote"; a page under 60 points to a rebuild and the Launch
+  Kit), proof (verastack.dev and Origan score 100; Riggit was 95 that day, so it is left out), and
+  what a score can't see. Check the proof line before sending; automate later through Brevo's
   transactional API (already set up for the domain, DKIM passing), no new account needed.
 - [x] Hero headline confirmed by Rigan on 2026-10-15: "Sites, apps, 3D and films, built to launch and
   get found." (`src/data/hero.ts`; it covers all six services, like the title and description) and the `availability` line in
