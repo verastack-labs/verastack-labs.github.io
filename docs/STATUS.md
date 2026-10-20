@@ -240,6 +240,10 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] One page, whole site (2026-10-20, Rigan): the checked address carries "// this page only",
+    and the band under the score now sells the whole site: "This score is for one page. We cover your
+    whole site: every page that sells, fixed and re-checked until each reads 100." with a "Cover my
+    whole site" button; at 100, "This page reads 100. Your other pages may not." before the audit.
   - [x] FAQ check reads questions as a reader does (2026-10-20, found by the Riggit chat): a question
     whose summary ended in a decorative "+" (`Is this allowed?<span aria-hidden="true">+</span>`)
     read as "Is this allowed?+" and did not count, so riggit.verastack.dev dropped to 95. Now
