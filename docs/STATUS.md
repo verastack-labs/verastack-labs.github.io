@@ -83,6 +83,14 @@ Content (placeholders are in the design until these arrive):
 - [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the
   Web3Forms inbox shows every field (name, email, company, service, budget, timeline, subject and
   the full sentence).
+- [ ] Repositioning (raised 2026-10-21, under discussion, nothing changed on the site): with Pari on
+  marketing and 3D not selling, a proposed Design · Build · Market shape around launches. 3D stays
+  as a Build capability; the Launch Kit gains a marketing piece and a monthly marketing plan. Headline
+  options: "We design it, build it and get it found." (leaning), "Design, code and marketing for
+  product launches. One team.", "From first sketch to first customers." The summary went to Pari on
+  WhatsApp through the Social chat (21 Oct, no prices). Waiting on her view and Rigan's call;
+  then copy drafts. Open: whether the VeraStack launch film waits for the new line, and whether Pari
+  appears by name (the hidden team row).
 - [ ] The home page's Questions (`src/data/faq.ts`): check the five answers read right, especially
   the cost answer ("quoted after a free first call").
 - [x] Test the hCaptcha challenge inside the popups on a real device again (passed 2026-10-20: Rigan
