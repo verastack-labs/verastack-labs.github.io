@@ -234,6 +234,14 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Report request confirmation in the dialog (2026-10-20, Rigan on Android): after Send, the
+    dialog used to close and the "on its way" line sat further down the page, where the scroll to it
+    never ran (the page is held still while the dialog is open), so nothing seemed to happen. Now
+    the confirmation replaces the form inside the dialog or bottom sheet: who writes it, the address
+    it goes to, from rigan@verastack.dev, within one working day, check spam, and a Done button. A
+    "Tick the box above to send" hint shows while the captcha is unticked, and a failure names the
+    studio address. There is still no instant email to the visitor: Web3Forms delivers the request to
+    the studio inbox and the report is written by hand.
   - [x] Short reports gated, and shareable result links (2026-10-20, Rigan via the Social chat, after
     the syntaxsuite.io report showed all three of its fixes in full). The checker never shows the
     whole fix list: more than three issues, the top three in full as before; three or fewer, the first

@@ -228,6 +228,10 @@
 .gateTitle { margin: 12px 0; padding-right: 32px; font-weight: 800; font-size: clamp(26px, 4vw, 34px); line-height: 1.05; letter-spacing: -0.04em; overflow-wrap: anywhere; }
 .gateTitle span { color: var(--alert); }
 .gateText { margin: 0 0 20px; font-size: 16px; line-height: 1.5; color: var(--muted); }
+/* After Send: the confirmation takes the form's place in the dialog. */
+.gateSent .gateTitle span { color: var(--signal); }
+.gateSent .gateTitle:focus { outline: none; }
+.gateSent .gateText b { color: var(--text); font-weight: 600; overflow-wrap: anywhere; }
 .gateDialog .gate { padding: 0; border: 0; background: none; }
 .gateAlt { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
 .gateAlt a { color: var(--signal); text-decoration: none; font-weight: 600; }
