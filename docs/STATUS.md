@@ -80,7 +80,8 @@ Content (placeholders are in the design until these arrive):
   the full sentence).
 - [ ] The home page's Questions (`src/data/faq.ts`): check the five answers read right, especially
   the cost answer ("quoted after a free first call").
-- [ ] Test the hCaptcha challenge inside the popups on a real device again. On 2026-10-20 Rigan
+- [x] Test the hCaptcha challenge inside the popups on a real device again (passed 2026-10-20: Rigan
+  solved the puzzle in the checker's bottom sheet on Android, sent, and saw the new confirmation). On 2026-10-20 Rigan
   found the puzzle could not be used on Android: a modal dialog makes everything outside it inert,
   so the 2026-10-17 popover showed the challenge but taps went through to the dialog (a long press
   selected its text). Fix: the challenge's wrapper moves (with `moveBefore`, which keeps the iframe
@@ -234,6 +235,9 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [ ] Instant confirmation email for report requests (idea, Rigan 2026-10-20: "we can think of
+    it"). Web3Forms' free plan has no auto-reply, so the checker Worker would send it through Brevo's
+    transactional API; Rigan adds the Brevo key as a Worker secret. Not started.
   - [x] Report request confirmation in the dialog (2026-10-20, Rigan on Android): after Send, the
     dialog used to close and the "on its way" line sat further down the page, where the scroll to it
     never ran (the page is held still while the dialog is open), so nothing seemed to happen. Now
