@@ -248,6 +248,16 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Films page and our own player (2026-10-21, Rigan): /films shows the studio film big, with
+    chapter buttons (countdown, services, one team, proof, products, Launch Kit, sign-off), then a
+    grid of the rest (rigseed, Origan, the founder film, Bruno), each with title, one line, length and
+    format chips; on a mouse a card plays a few silent seconds on hover, and picking one swaps it into
+    the big player. One player everywhere (`src/components/film-player/`): poster with a big neon play
+    button (a breathing ring), a centre flash on play and pause, slim controls that fade while playing
+    (lime scrubber with buffered range, time, captions, mute, full screen), keyboard keys, nothing
+    loaded before play. Used on /films, /founder and the Services film dialog. /film forwards to
+    /films. Films in the nav's studio group (new dot), the sitemap and llms.txt; the nav row now needs
+    1520 px, so narrower mouse screens use the panel. Data in `src/data/films.ts`.
   - [x] Launch film page at /film (2026-10-21, Rigan approved the film the same day): the 90 s
     VeraStack Labs launch film from the video session (verastack-labs/studio 71392c8), 1080p web cut,
     poster and captions in `public/films/verastack-launch.*`, VideoObject JSON-LD, the poster as the
