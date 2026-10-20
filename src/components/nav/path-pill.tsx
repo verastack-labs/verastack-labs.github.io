@@ -19,9 +19,10 @@ const INTRO_MS = 3000
 // A beat after hydration, so the widening is seen as a morph rather than a jump.
 const INTRO_DELAY_MS = 300
 
-// The horizontal row (sections, then the studio pages) needs about 1400px beside the wordmark and
-// both buttons; below that, or without hover, the pill opens the vertical panel instead.
-const PANEL_QUERY = '(hover: none), (max-width: 1399px)'
+// The horizontal row (sections, then the studio pages) needs about 1520px beside the wordmark and
+// both buttons (measured with films added, 2026-10-21); below that, or without hover, the pill opens
+// the vertical panel instead.
+const PANEL_QUERY = '(hover: none), (max-width: 1519px)'
 
 function usePanelMode(): boolean {
   const [touch, setTouch] = useState(false)

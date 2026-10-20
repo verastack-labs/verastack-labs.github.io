@@ -3,6 +3,7 @@ import { founder, founderQuestions, pressOutlets } from '@/data/founder'
 import { booking, shareImage, site } from '@/data/site'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { PageMotion } from '@/components/page-motion'
+import { FilmPlayer } from '@/components/film-player/film-player'
 import styles from '@/app/founder/founder.module.css'
 
 export const metadata: Metadata = {
@@ -94,18 +95,12 @@ export default function FounderPage() {
         <h2 id="film-title" className={styles.h2}>
           The founder, in <em>51 seconds</em>
         </h2>
-        <video
-          className={styles.video}
-          controls
-          playsInline
-          preload="none"
+        <FilmPlayer
+          src="/founder/founder-film.mp4"
           poster="/founder/founder-film-poster.jpg"
-          width={1920}
-          height={1080}
-        >
-          <source src="/founder/founder-film.mp4" type="video/mp4" />
-          <track kind="captions" src="/founder/founder-film.vtt" srcLang="en" label="English" />
-        </video>
+          captions="/founder/founder-film.vtt"
+          title={`${site.founderName}, founder of ${site.name}`}
+        />
         <p className={styles.filmNote}>
           The client work in the film is {site.founderName}&apos;s own, from before the studio; the 70,000+ bookings are
           Ultraviolette&apos;s, through configurators {site.founderName.split(' ')[0]} built. Music: &ldquo;Fresh&rdquo; by Bransboynd, via Pixabay.

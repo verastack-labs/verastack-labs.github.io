@@ -122,6 +122,7 @@ export function llmsText(): string {
     `- [Free FAQ schema generator](${site.url}/tools/faq-schema/): FAQPage structured data and HTML from your questions`,
     `- [Blog](${site.url}/blog/): notes on launches and AI search`,
     `- [The founder](${site.url}${founder.path}/): who you work with, on every call`,
+    `- [Films](${site.url}/films/): the studio's 90-second film and the launch films and explainers we make`,
     `- [Start a project](${site.url}/#contact)`,
     '',
     '## Services',

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Film } from '@/data/services'
+import { FilmPlayer } from '@/components/film-player/film-player'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import styles from '@/scenes/services/services.module.css'
 
@@ -12,7 +13,6 @@ const EXIT_MS = 320
 // controls, sound and captions, and the page holds still underneath.
 export function FilmReel({ films }: { films: Film[] }) {
   const dialog = useRef<HTMLDialogElement>(null)
-  const video = useRef<HTMLVideoElement>(null)
   const [film, setFilm] = useState<Film | null>(null)
   // Bumped on every open, so pressing the same poster again reopens the dialog.
   const [opens, setOpens] = useState(0)
@@ -28,7 +28,7 @@ export function FilmReel({ films }: { films: Film[] }) {
   // Undo everything opening did. Called directly from every way out (button, backdrop, Escape),
   // with the dialog's close event as a backstop, so it never waits on that event.
   const release = useCallback(() => {
-    video.current?.pause()
+    dialog.current?.querySelector('video')?.pause()
     lenisRef.current?.start()
     document.documentElement.style.overflow = ''
     window.clearTimeout(unmount.current)
@@ -47,7 +47,6 @@ export function FilmReel({ films }: { films: Film[] }) {
     if (!d.open) d.showModal()
     lenisRef.current?.stop()
     document.documentElement.style.overflow = 'hidden'
-    void video.current?.play().catch(() => {})
     const onCancel = (e: Event) => {
       e.preventDefault()
       shut()
@@ -88,10 +87,9 @@ export function FilmReel({ films }: { films: Film[] }) {
       >
         {film && (
           <div className={styles.playerInner}>
-            <video ref={video} key={film.id} src={film.src} poster={film.poster} controls playsInline preload="metadata">
-              {/* Off by default: the films already carry their words on screen. */}
-              <track kind="captions" src={film.captions} srcLang="en" label="English" />
-            </video>
+            {/* Plays straight away: the poster press is the click. Captions stay off by default, as the
+                films carry their words on screen. */}
+            <FilmPlayer key={`${film.id}-${opens}`} src={film.src} poster={film.poster} captions={film.captions} title={film.title} autoPlay />
             <div className={styles.playerBar}>
               <span>
                 {film.title} <em>· {film.meta}</em>
