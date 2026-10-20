@@ -294,7 +294,9 @@ export function Checker() {
               <span>/100</span>
             </p>
             <div>
-              <p className={styles.checked}>{report.url}</p>
+              <p className={styles.checked}>
+                {report.url} <span>{'//'} this page only</span>
+              </p>
               <p className={styles.verdict}>{verdict(report.score)}</p>
               <button type="button" className={styles.again} onClick={() => void check(report.url, true)}>
                 Check again
@@ -306,17 +308,18 @@ export function Checker() {
             <p>
               {report.score < 100 ? (
                 <>
-                  <b>Get this to 100:</b> we fix every item in the report and re-run the check until it reads 100. Price on request.
+                  <b>This score is for one page.</b> We cover your whole site: every page that sells, fixed and re-checked until
+                  each reads 100. Price on request.
                 </>
               ) : (
                 <>
-                  <b>Readable is step one.</b> The audit checks who AI engines cite for your category and gets you named. Price on
-                  request.
+                  <b>This page reads 100. Your other pages may not.</b> The audit covers every page that sells, checks who AI engines
+                  cite for your category and gets you named. Price on request.
                 </>
               )}
             </p>
             <Link className={styles.upsellCta} href="/#contact" onClick={() => setEnquiryPrefill('ai-search')}>
-              {report.score < 100 ? 'Get it to 100' : 'Ask about the audit'}
+              {report.score < 100 ? 'Cover my whole site' : 'Ask about the audit'}
             </Link>
           </div>
 
