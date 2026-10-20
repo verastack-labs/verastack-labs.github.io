@@ -63,7 +63,7 @@ Content (placeholders are in the design until these arrive):
   syntaxsuite.io email) each issue gets what we found and a one-line first step, not the full
   how-to, which is the paid work; then one offer box (we fix them all and get the page to 100, fixed
   price after a call, "reply go for a quote"; a page under 60 points to a rebuild and the Launch
-  Kit), proof (verastack.dev and Origan score 100; Riggit was 95 that day, so it is left out), and
+  Kit), proof (verastack.dev, Origan and Riggit score 100; Riggit dipped to 95 on 2026-10-20 through a checker bug, fixed the same day), and
   what a score can't see. Check the proof line before sending; automate later through Brevo's
   transactional API (already set up for the domain, DKIM passing), no new account needed.
 - [x] Hero headline confirmed by Rigan on 2026-10-15: "Sites, apps, 3D and films, built to launch and
