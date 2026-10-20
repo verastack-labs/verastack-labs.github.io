@@ -250,8 +250,8 @@ Content (placeholders are in the design until these arrive):
     aria-hidden parts and trailing symbols or count badges are ignored (`isQuestion` in
     `workers/aeo-check/src/html.ts`, with tests); the result cache key moved to v4. Accordions with
     icons are common, so other sites may score higher than before on this check.
-  - [ ] Instant confirmation email for report requests (idea, Rigan 2026-10-20: "we can think of
-    it"). Web3Forms' free plan has no auto-reply, so the checker Worker would send it through Brevo's
+  - [x] Instant confirmation email for report requests: dropped (Rigan 2026-10-20, not needed).
+    Was: idea, Rigan 2026-10-20. Web3Forms' free plan has no auto-reply, so the checker Worker would send it through Brevo's
     transactional API; Rigan adds the Brevo key as a Worker secret. Not started.
   - [x] Report request confirmation in the dialog (2026-10-20, Rigan on Android): after Send, the
     dialog used to close and the "on its way" line sat further down the page, where the scroll to it
@@ -425,7 +425,8 @@ Content (placeholders are in the design until these arrive):
     Cloudflare's one-time approval) and `https://verastack.dev/sitemap.xml` submitted. `www`
     already redirects to the bare domain. All five sitemaps are in that property (2026-10-13):
     all five read Success on 2026-10-14 (20 pages found: studio 1, Origan 6, rigseed 5, Riggit 7,
-    Mehfil 1).
+    Mehfil 1). Oinkbuns' sitemap (https://oinkbuns.verastack.dev/sitemap.xml, 4 pages) submitted by Rigan on
+    2026-10-20; the instant report-confirmation email was dropped the same day (not wanted).
   - [x] Email on @verastack.dev, receiving, via **Cloudflare Email Routing** (2026-10-14). MX, SPF
     and DKIM records added by Cloudflare; `rigan@verastack.dev` and a catch-all both forward to
     verastack.labs@gmail.com (destination verified). Zoho dropped: its Forever Free plan is only
