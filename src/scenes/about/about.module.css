@@ -31,6 +31,8 @@
 }
 .meet:hover, .meet:focus-visible { border-color: var(--signal); transform: translateY(-1px); }
 .meet img { flex: none; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; }
+.meet + .meet { margin-top: 12px; }
+.meet img[data-film] { object-position: 50% 50%; }
 .meetText { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
 .meetText b { font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
 .meetText span { font: 400 12px/1.4 var(--font-mono); color: var(--muted); }

@@ -248,6 +248,12 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Launch film page at /film (2026-10-21, Rigan approved the film the same day): the 90 s
+    VeraStack Labs launch film from the video session (verastack-labs/studio 71392c8), 1080p web cut,
+    poster and captions in `public/films/verastack-launch.*`, VideoObject JSON-LD, the poster as the
+    share image, a call and Launch Kit buttons, in the sitemap, and linked from About ("Watch the
+    film"). Music "Voyage" by AudioClubz (Pixabay). To be remade once the repositioning lands; the
+    9:16 cut and the 12 s loop are not on the site.
   - [x] VS-65 default keycaps light grey (2026-10-20, Rigan via the video chat: "too white"). The 3D
     scene renders flat (no tone mapping), which washes light colours out, so "bone" moved from
     #D8D5C7 to #8E8C84 in `src/data/configurator.ts`; on the live site it now reads as light grey.

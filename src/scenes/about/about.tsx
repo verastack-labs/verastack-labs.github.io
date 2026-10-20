@@ -36,6 +36,16 @@ export function About() {
         </span>
         <span className={styles.meetCta}>Meet the founder →</span>
       </Link>
+      {/* The studio's launch film, on its own page so it can be shared as one link. */}
+      <Link href="/film" className={styles.meet}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- static export, no image optimiser */}
+        <img src="/films/verastack-launch.jpg" alt="" width={56} height={56} loading="lazy" data-film />
+        <span className={styles.meetText}>
+          <b>The studio, in 90 seconds</b>
+          <span>Our launch film: what we make, and for whom.</span>
+        </span>
+        <span className={styles.meetCta}>Watch the film →</span>
+      </Link>
       <CapabilitiesRow key={mode} animate={mode !== 'static'} />
       {team.length > 0 && (
         <ul className={styles.team}>
