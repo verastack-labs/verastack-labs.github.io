@@ -30,17 +30,31 @@ function flipCaptions(v: HTMLVideoElement | null): boolean | null {
   return on
 }
 
+// The player the letter shortcuts go to: the last one played, pressed or focused. Only one film
+// plays at a time, so a page with several players still has one obvious target.
+let activePlayer: symbol | null = null
+
+// Typing in a field, or a shortcut with a modifier, is never a player shortcut.
+function isTyping(e: KeyboardEvent): boolean {
+  const el = e.target as HTMLElement | null
+  if (e.ctrlKey || e.metaKey || e.altKey) return true
+  if (!el) return false
+  return el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)
+}
+
 // How long the controls stay up after the last pointer move while a film plays.
 const IDLE_MS = 2200
 
 // Our own player: the poster with a big neon play button until the first press, then slim controls
 // that fade out while the film plays. Nothing but the poster loads until play (preload="none").
-// Keyboard, inside the player: space or k play and pause, arrows seek 5 s, m mute, c captions, f full
-// screen. Every control is a real button or range input with a label.
+// Keyboard: f full screen (and back), m mute, c captions and k play or pause work anywhere on the page
+// for the player last used; space and the arrows (5 s) work while focus is inside the player. Every
+// control is a real button or range input with a label.
 export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }: Props) {
   const wrap = useRef<HTMLDivElement>(null)
   const video = useRef<HTMLVideoElement>(null)
   const idle = useRef<number | undefined>(undefined)
+  const id = useRef(Symbol('film'))
   // A film that plays on mount (picked from the grid) skips the big button.
   const [started, setStarted] = useState(!!autoPlay)
   const [playing, setPlaying] = useState(false)
@@ -119,19 +133,40 @@ export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }:
 
   useEffect(() => () => window.clearTimeout(idle.current), [])
 
+  // The letter shortcuts, page-wide, for the active player.
+  useEffect(() => {
+    const me = id.current
+    // The first player on a page takes the shortcuts until another one is used.
+    if (activePlayer === null) activePlayer = me
+    const onKey = (e: KeyboardEvent) => {
+      if (activePlayer !== me || e.defaultPrevented || isTyping(e)) return
+      const run = ({ f: toggleFull, m: toggleMute, c: toggleCc, k: toggle } as Record<string, () => void>)[e.key.toLowerCase()]
+      if (!run) return
+      e.preventDefault()
+      run()
+      wake()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      if (activePlayer === me) activePlayer = null
+    }
+  }, [toggleFull, toggleMute, toggleCc, toggle, wake])
+
+  const claim = () => {
+    activePlayer = id.current
+  }
+
   const onKey = (e: React.KeyboardEvent) => {
     // Leave the range input's own arrow keys alone.
     if ((e.target as HTMLElement).tagName === 'INPUT' && e.key.startsWith('Arrow')) return
     const v = video.current
     if (!v) return
+    // The letters are handled page-wide (above); these need focus inside the player.
     const keys: Record<string, () => void> = {
       ' ': toggle,
-      k: toggle,
       ArrowRight: () => seek(v.currentTime + 5),
       ArrowLeft: () => seek(v.currentTime - 5),
-      m: toggleMute,
-      c: toggleCc,
-      f: toggleFull,
     }
     const run = keys[e.key]
     if (!run) return
@@ -155,7 +190,11 @@ export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }:
         data-controls={showControls || undefined}
         data-full={full || undefined}
         onPointerMove={wake}
-        onPointerDown={wake}
+        onPointerDown={() => {
+          claim()
+          wake()
+        }}
+        onFocus={claim}
         onKeyDown={onKey}
         role="region"
         aria-label={`${title}, video player`}
@@ -168,7 +207,10 @@ export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }:
           preload="none"
           playsInline
           onClick={toggle}
-          onPlay={() => setPlaying(true)}
+          onPlay={() => {
+            claim()
+            setPlaying(true)
+          }}
           onPause={() => setPlaying(false)}
           onEnded={() => setPlaying(false)}
           onWaiting={() => setWaiting(true)}
@@ -213,7 +255,7 @@ export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }:
             style={{ '--pct': `${pct}%`, '--loaded': `${loadedPct}%` } as React.CSSProperties}
           />
           <div className={styles.row}>
-            <button type="button" className={styles.btn} onClick={toggle} aria-label={playing ? 'Pause' : 'Play'}>
+            <button type="button" className={styles.btn} onClick={toggle} aria-label={playing ? 'Pause' : 'Play'} title={playing ? 'Pause (k)' : 'Play (k)'}>
               <svg viewBox="0 0 24 24" aria-hidden="true" data-icon={playing ? 'pause' : 'play'}>
                 <path className={styles.iconPlay} d="M8 5.5v13l10.5-6.5z" />
                 <path className={styles.iconPause} d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
@@ -224,17 +266,17 @@ export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }:
             </span>
             <span className={styles.spacer} />
             {captions && (
-              <button type="button" className={styles.btn} onClick={toggleCc} aria-pressed={cc} aria-label="Captions">
+              <button type="button" className={styles.btn} onClick={toggleCc} aria-pressed={cc} aria-label="Captions" title="Captions (c)">
                 <span className={styles.cc}>CC</span>
               </button>
             )}
-            <button type="button" className={styles.btn} onClick={toggleMute} aria-pressed={muted} aria-label={muted ? 'Unmute' : 'Mute'}>
+            <button type="button" className={styles.btn} onClick={toggleMute} aria-pressed={muted} aria-label={muted ? 'Unmute' : 'Mute'} title={muted ? 'Unmute (m)' : 'Mute (m)'}>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
                 {muted ? <path d="M16 9.5l5 5M21 9.5l-5 5" className={styles.stroke} /> : <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" className={styles.stroke} />}
               </svg>
             </button>
-            <button type="button" className={styles.btn} onClick={toggleFull} aria-label={full ? 'Exit full screen' : 'Full screen'}>
+            <button type="button" className={styles.btn} onClick={toggleFull} aria-label={full ? 'Exit full screen' : 'Full screen'} title={full ? 'Exit full screen (f)' : 'Full screen (f)'}>
               <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.stroke}>
                 {full ? <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" /> : <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />}
               </svg>
