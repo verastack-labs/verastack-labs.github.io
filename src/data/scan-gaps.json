@@ -1,86 +1,86 @@
 {
-  "homepages": 379,
-  "updated": "2026-10-19",
+  "homepages": 532,
+  "updated": "2026-10-20",
   "checks": {
     "canonical": {
-      "total": 379,
-      "none": 76,
-      "notPassing": 94
+      "total": 532,
+      "none": 109,
+      "notPassing": 136
     },
     "crawlers": {
-      "total": 379,
+      "total": 532,
       "none": 1,
-      "notPassing": 12
+      "notPassing": 17
     },
     "description": {
-      "total": 379,
-      "none": 11,
-      "notPassing": 135
+      "total": 532,
+      "none": 12,
+      "notPassing": 182
     },
     "edge": {
-      "total": 379,
+      "total": 532,
       "none": 0,
-      "notPassing": 3
+      "notPassing": 5
     },
     "faq": {
-      "total": 379,
-      "none": 306,
-      "notPassing": 335
+      "total": 532,
+      "none": 404,
+      "notPassing": 449
     },
     "fresh": {
-      "total": 379,
+      "total": 532,
       "none": 1,
-      "notPassing": 96
+      "notPassing": 152
     },
     "headings": {
-      "total": 379,
-      "none": 43,
-      "notPassing": 127
+      "total": 532,
+      "none": 53,
+      "notPassing": 159
     },
     "identity": {
-      "total": 379,
-      "none": 148,
-      "notPassing": 202
+      "total": 532,
+      "none": 218,
+      "notPassing": 299
     },
     "images": {
-      "total": 379,
-      "none": 5,
-      "notPassing": 28
+      "total": 532,
+      "none": 6,
+      "notPassing": 29
     },
     "indexable": {
-      "total": 379,
+      "total": 532,
       "none": 1,
       "notPassing": 1
     },
     "llms": {
-      "total": 379,
-      "none": 177,
-      "notPassing": 192
+      "total": 532,
+      "none": 264,
+      "notPassing": 284
     },
     "og": {
-      "total": 379,
-      "none": 27,
-      "notPassing": 70
+      "total": 532,
+      "none": 41,
+      "notPassing": 99
     },
     "sitemap": {
-      "total": 379,
-      "none": 76,
-      "notPassing": 76
+      "total": 532,
+      "none": 112,
+      "notPassing": 112
     },
     "structured": {
-      "total": 379,
-      "none": 307,
-      "notPassing": 307
+      "total": 532,
+      "none": 414,
+      "notPassing": 414
     },
     "text": {
-      "total": 379,
-      "none": 63,
-      "notPassing": 130
+      "total": 532,
+      "none": 91,
+      "notPassing": 196
     },
     "title": {
-      "total": 379,
-      "none": 2,
-      "notPassing": 95
+      "total": 532,
+      "none": 3,
+      "notPassing": 122
     }
   }
 }
