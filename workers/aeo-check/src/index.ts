@@ -228,7 +228,7 @@ const worker = {
     const full = !!env.REPORT_KEY && key === env.REPORT_KEY
     const view = (report: Parameters<typeof publicView>[0]) => (full ? report : publicView(report))
     const target = publicUrl(normaliseInput(input), env.SELF_HOST)
-    const cacheKey = target ? new Request(`https://${env.SELF_HOST}/cache/aeo-check/v3?u=${encodeURIComponent(target.href)}`) : null
+    const cacheKey = target ? new Request(`https://${env.SELF_HOST}/cache/aeo-check/v4?u=${encodeURIComponent(target.href)}`) : null
     if (cacheKey && !fresh) {
       const hit = await caches.default.match(cacheKey)
       if (hit) return json(view((await hit.json()) as Parameters<typeof publicView>[0]), 200, cors)

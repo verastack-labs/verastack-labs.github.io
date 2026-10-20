@@ -216,6 +216,16 @@ describe('which addresses may be fetched', () => {
   })
 })
 
+describe('visible questions', () => {
+  it('ignores accordion icons and trailing decoration', () => {
+    const page = (inner: string) => readPage(`<html><body>${inner}</body></html>`).visibleQuestions
+    expect(page('<details><summary>Is this allowed?<span aria-hidden="true">+</span></summary><p>Yes.</p></details>')).toBe(1)
+    expect(page('<h3>How much is it? <svg aria-hidden="true"><path d="M0 0"/></svg></h3>')).toBe(1)
+    expect(page('<dt>Who is it for? ›</dt><dt>Can I cancel? (3)</dt>')).toBe(2)
+    expect(page('<summary>Pricing<span aria-hidden="true">?</span></summary><h2>Our plans</h2>')).toBe(0)
+  })
+})
+
 describe('public view', () => {
   it('keeps the top fixes and only counts the rest', () => {
     const mk = (id: string, status: 'pass' | 'warn' | 'fail', weight: number) => ({ id, label: id, status, weight, detail: `d ${id}`, fix: `f ${id}` })

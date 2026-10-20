@@ -85,6 +85,14 @@ function collect(node: unknown, into: Found) {
 
 const stripTags = (html: string) => decode(html.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim()
 
+// Whether a heading, summary or term reads as a question. Decoration is ignored, as a reader ignores
+// it: anything marked aria-hidden (a "+" or chevron icon in an accordion), and trailing symbols or
+// a count badge after the question mark.
+function isQuestion(inner: string): boolean {
+  const shown = inner.replace(/<(\w+)\b[^>]*\baria-hidden=["']?true["']?[^>]*>[\s\S]*?<\/\1>/gi, '')
+  return /\?[^\p{L}]*$/u.test(stripTags(shown))
+}
+
 // The words a reader would see, from the server HTML alone.
 export function visibleWords(html: string): number {
   const body = html.match(/<body\b[^>]*>([\s\S]*)<\/body>/i)?.[1] ?? html
@@ -128,7 +136,7 @@ export function readPage(html: string): PageFacts {
     h1Count: (html.match(/<h1\b/gi) ?? []).length,
     h2Count: (html.match(/<h2\b/gi) ?? []).length,
     questionHeadings: [...html.matchAll(/<h[23]\b[^>]*>([\s\S]*?)<\/h[23]>/gi)].filter((m) => stripTags(m[1]).endsWith('?')).length,
-    visibleQuestions: [...html.matchAll(/<(h[2-4]|summary|dt|button)\b[^>]*>([\s\S]*?)<\/\1>/gi)].filter((m) => stripTags(m[2]).trim().endsWith('?')).length,
+    visibleQuestions: [...html.matchAll(/<(h[2-4]|summary|dt|button)\b[^>]*>([\s\S]*?)<\/\1>/gi)].filter((m) => isQuestion(m[2])).length,
     images: { total: images.length, withAlt: images.filter((i) => 'alt' in i).length },
     words: visibleWords(html),
     og: { title: !!meta('property', 'og:title'), description: !!meta('property', 'og:description'), image: !!meta('property', 'og:image') },
