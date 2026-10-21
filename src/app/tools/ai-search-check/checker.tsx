@@ -20,14 +20,47 @@ type Check = { id: string; label: string; status: 'pass' | 'warn' | 'fail'; weig
 // Every check's finding and fix together are the audit; the rest comes by email from the studio.
 type Report = { url: string; score: number; top: Check[]; counts: { pass: number; warn: number; fail: number; total: number } }
 
-const verdict = (score: number) =>
-  score >= 85
-    ? 'Engines can read this page well. The rest is about who cites you.'
-    : score >= 60
-      ? 'Readable, with gaps that cost you mentions.'
-      : 'AI search engines will struggle to understand this page.'
+// Three bands, one set of cut-offs (70 and 85), so the colour, the label and the sentence always agree.
+const BANDS = [
+  { from: 0, tone: 'poor', label: 'Losing mentions', verdict: 'AI search engines will struggle to understand this page.' },
+  { from: 70, tone: 'fair', label: 'Gaps', verdict: 'Readable, with gaps that cost you mentions.' },
+  { from: 85, tone: 'good', label: 'Ready', verdict: 'Engines can read this page well. The rest is about who cites you.' },
+] as const
 
-const tone = (score: number) => (score >= 85 ? 'good' : score >= 60 ? 'fair' : 'poor')
+const band = (score: number) => [...BANDS].reverse().find((b) => score >= b.from) ?? BANDS[0]
+const verdict = (score: number) => band(score).verdict
+const tone = (score: number) => band(score).tone
+
+// The meter under the score: a red to amber to green bar, ticks at the two cut-offs, and a marker
+// that slides in to the score. The band is also in words, so nothing rests on colour alone.
+function ScoreMeter({ score }: { score: number }) {
+  const b = band(score)
+  return (
+    <div className={styles.meter} data-tone={b.tone}>
+      <div
+        className={styles.meterBar}
+        role="meter"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={score}
+        aria-valuetext={`${score} out of 100: ${b.label}`}
+        aria-label="AI search readiness"
+        style={{ '--at': `${score}%` } as React.CSSProperties}
+      >
+        <span className={styles.meterTick} style={{ left: '70%' }} aria-hidden="true" />
+        <span className={styles.meterTick} style={{ left: '85%' }} aria-hidden="true" />
+        <span className={styles.meterMarker} aria-hidden="true" />
+      </div>
+      <div className={styles.meterLabels} aria-hidden="true">
+        {BANDS.map((x, i) => (
+          <span key={x.label} data-on={x === b || undefined} style={{ left: `${x.from}%`, width: `${(BANDS[i + 1]?.from ?? 100) - x.from}%` }}>
+            {x.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 const STATUS_WORD = { pass: 'pass', warn: 'improve', fail: 'fix' } as const
 
@@ -294,6 +327,9 @@ export function Checker() {
               <span>/100</span>
             </p>
             <div>
+              <p className={styles.band} data-tone={tone(report.score)}>
+                {band(report.score).label}
+              </p>
               <p className={styles.checked}>
                 {report.url} <span>{'//'} this page only</span>
               </p>
@@ -303,12 +339,13 @@ export function Checker() {
               </button>
             </div>
           </div>
+          <ScoreMeter key={`${report.url}-${report.score}`} score={report.score} />
 
           <div className={styles.upsell}>
             <p>
               {report.score < 100 ? (
                 <>
-                  <b>This score is for one page.</b> We cover your whole site: every page that sells, fixed and re-checked until
+                  <b>{report.score < 85 ? 'Get this page into the green.' : 'This score is for one page.'}</b> We cover your whole site: every page that sells, fixed and re-checked until
                   each reads 100. Price on request.
                 </>
               ) : (
