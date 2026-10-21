@@ -248,6 +248,9 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Meter polish (2026-10-21, Rigan): the verdict is two lines (a bold one, then a quieter one,
+    so nothing wraps mid-thought), the green past the marker is dimmed less so the bands still read,
+    and "N points to 100" sits above the bar's right end ("Full marks" at 100).
   - [x] Score meter on the checker (2026-10-21, Rigan via the Social chat): under the score, a red to
     amber to green bar with ticks at 70 and 85 and a marker that slides in to the score (static under
     reduced motion), labels "Losing mentions" / "Gaps" / "Ready", the band as a pill beside the
@@ -417,6 +420,9 @@ Content (placeholders are in the design until these arrive):
   A new product page is one line in `src/data/landing-pages.ts`.
 - [ ] Check back in a few days that both sitemaps (root and `/origan/`) move from "Couldn't fetch"
   to "Success". "Couldn't fetch" is normal until Google first reads a new property's sitemap.
+- [x] Bing Webmaster Tools (2026-10-21): Rigan imported from Google Search Console with
+  therealriganb@gmail.com, six sites with their sitemaps (verastack.dev, the product subdomains and the
+  old verastack-labs.github.io address). Bing feeds ChatGPT search and Copilot.
 - [ ] Google Search Console: the verification tag is live (`googleSiteVerification` in
   `src/data/site.ts`, 2026-09-28). Remaining: press Verify, then submit
   `https://verastack-labs.github.io/sitemap.xml` under Sitemaps. Bing Webmaster Tools can import

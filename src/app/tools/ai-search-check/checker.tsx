@@ -22,13 +22,12 @@ type Report = { url: string; score: number; top: Check[]; counts: { pass: number
 
 // Three bands, one set of cut-offs (70 and 85), so the colour, the label and the sentence always agree.
 const BANDS = [
-  { from: 0, tone: 'poor', label: 'Losing mentions', verdict: 'AI search engines will struggle to understand this page.' },
-  { from: 70, tone: 'fair', label: 'Gaps', verdict: 'Readable, with gaps that cost you mentions.' },
-  { from: 85, tone: 'good', label: 'Ready', verdict: 'Engines can read this page well. The rest is about who cites you.' },
+  { from: 0, tone: 'poor', label: 'Losing mentions', verdict: 'AI search engines will struggle to understand this page.', more: 'Start with the fixes below.' },
+  { from: 70, tone: 'fair', label: 'Gaps', verdict: 'Readable, with gaps.', more: 'Each one costs you mentions.' },
+  { from: 85, tone: 'good', label: 'Ready', verdict: 'Engines can read this page well.', more: 'The rest is about who cites you.' },
 ] as const
 
 const band = (score: number) => [...BANDS].reverse().find((b) => score >= b.from) ?? BANDS[0]
-const verdict = (score: number) => band(score).verdict
 const tone = (score: number) => band(score).tone
 
 // The meter under the score: a red to amber to green bar, ticks at the two cut-offs, and a marker
@@ -37,6 +36,7 @@ function ScoreMeter({ score }: { score: number }) {
   const b = band(score)
   return (
     <div className={styles.meter} data-tone={b.tone}>
+      <p className={styles.meterNote}>{score < 100 ? `${100 - score} ${100 - score === 1 ? 'point' : 'points'} to 100` : 'Full marks'}</p>
       <div
         className={styles.meterBar}
         role="meter"
@@ -333,7 +333,9 @@ export function Checker() {
               <p className={styles.checked}>
                 {report.url} <span>{'//'} this page only</span>
               </p>
-              <p className={styles.verdict}>{verdict(report.score)}</p>
+              <p className={styles.verdict}>
+                {band(report.score).verdict} <span className={styles.verdictMore}>{band(report.score).more}</span>
+              </p>
               <button type="button" className={styles.again} onClick={() => void check(report.url, true)}>
                 Check again
               </button>
