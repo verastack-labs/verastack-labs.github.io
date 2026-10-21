@@ -248,6 +248,12 @@ Content (placeholders are in the design until these arrive):
     - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
       checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
       tools 1 to 3 has one yet ("What ChatGPT sees" first).
+  - [x] Score meter on the checker (2026-10-21, Rigan via the Social chat): under the score, a red to
+    amber to green bar with ticks at 70 and 85 and a marker that slides in to the score (static under
+    reduced motion), labels "Losing mentions" / "Gaps" / "Ready", the band as a pill beside the
+    address, and the score in the band's colour. One set of cut-offs (70, 85) now drives the colour,
+    the label and the verdict (the verdict used to switch at 60). The bar is a `role="meter"` with the
+    band in its value text. Under 85 the upsell opens "Get this page into the green."
   - [x] YC Fall 2026 study (2026-10-21): 158 F26 companies on YC's directory, 155 with a website,
     153 scored (`social-docs/research/studies/yc-f26/`). Median 72, seven at 100, 22 at 90+, 17 under
     50, 13 near-blank; Industrials 58.5 against 77 to 80 for software spaces. Scored under the current
