@@ -44,7 +44,7 @@ export const studioFilm: FilmEntry = {
     { at: 46.3, label: 'Proof' },
     { at: 61.7, label: 'Our products' },
     { at: 75.4, label: 'Launch Kit' },
-    { at: 84, label: "Let's build something" },
+    { at: 84, label: "Let's launch something" },
   ],
   uploaded: '2026-10-23',
 }
