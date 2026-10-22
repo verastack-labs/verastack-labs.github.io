@@ -257,6 +257,12 @@ Content (placeholders are in the design until these arrive):
     row stays on screens 1520 px and up; phones keep the panel. Fixes: the wheel no longer scrolls
     the page behind any menu (`data-lenis-prevent`), and `scrollbar-gutter: stable` on html stops the
     page shifting sideways when a menu or the film dialog locks scrolling.
+  - [x] Section copy audit for the whole launch (2026-10-23, Rigan asked why it was missed): About
+    headline "Design, build and launch. One team." and a statement naming the whole launch; founder
+    card "design to launch"; capabilities row Design "brands, interfaces and sites", Launch "AI search,
+    films and launch marketing"; the process launch step adds getting found; the first home question's
+    answer; contact headline "Let's launch something." with "launch marketing" as a choice. Products,
+    work, notes and the offer already fit and were left alone.
   - [x] Follow-ups (2026-10-23, Rigan): the Mehfil slide moved from warm brown to a deep night teal
     (#10282A) with the app cream on the phone and a terracotta hard shadow; pitches that open with a
     question break after it ("Chai in ten? / Rally the group."). The service groups now sit in a
