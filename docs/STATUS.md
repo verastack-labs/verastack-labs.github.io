@@ -86,8 +86,8 @@ Content (placeholders are in the design until these arrive):
 - [ ] Launch film rebuild for "The whole launch": the Video analysis chat remakes the studio film for the
   new line (asked 2026-10-23); it replaces the current one at /films. No team page or named partners on
   the site for now (Rigan, 23 Oct); a team page is for later.
-- [ ] The home page's Questions (`src/data/faq.ts`): check the five answers read right, especially
-  the cost answer ("quoted after a free first call").
+- [x] The home page's Questions (`src/data/faq.ts`): approved by Rigan on 2026-10-23, including the
+  updated first answer and the cost answer ("quoted after a free first call").
 - [x] Test the hCaptcha challenge inside the popups on a real device again (passed 2026-10-20: Rigan
   solved the puzzle in the checker's bottom sheet on Android, sent, and saw the new confirmation). On 2026-10-20 Rigan
   found the puzzle could not be used on Android: a modal dialog makes everything outside it inert,
