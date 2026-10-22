@@ -251,8 +251,10 @@ Content (placeholders are in the design until these arrive):
   - [x] Full-screen desktop menu (2026-10-22, Rigan): from 900 px up, the nav pill (home) and the page
     pill (inner pages) open a full-screen menu (`src/components/nav/full-menu.tsx`, a modal dialog):
     a circle wipes open from the pill, the sections rise in big type one by one, hovering one dims the
-    rest and slides it right, and a glyph rail (lime slash, section number, bar) springs to line up
-    with it. Beside them: the studio pages (current one lit), the studio film, Start a project, a call
+    rest and slides it right. Behind it all, faded line icons for what we do (code, video, browser,
+    3D, app, AI search, cursor, clapper, layers, mail, LinkedIn) float and bob; highlighting a link
+    snaps them towards it on a 28 px step grid and lights the icons that belong to that section in
+    neon (`src/components/nav/menu-glyphs.tsx`, replacing the first try, a slash rail). Beside them: the studio pages (current one lit), the studio film, Start a project, a call
     and the email. Escape or close shuts it; section links scroll in place on home. The hover dock
     row stays on screens 1520 px and up; phones keep the panel. Fixes: the wheel no longer scrolls
     the page behind any menu (`data-lenis-prevent`), and `scrollbar-gutter: stable` on html stops the

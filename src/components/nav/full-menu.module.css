@@ -63,25 +63,42 @@
   margin: 0 auto;
 }
 
-/* The sections and, to their right, the glyph rail that follows the link in focus. */
-.sectionsWrap { position: relative; display: grid; grid-template-columns: max-content 1fr; }
 .sections { margin: 0; padding: 0; list-style: none; }
-.rail { --y: 0px; position: relative; grid-column: 2; grid-row: 1; min-width: 120px; pointer-events: none; }
-.rail > * {
+
+/* ---------- The floating glyphs behind everything ---------- */
+.glyphs { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.top, .body, .foot { position: relative; z-index: 1; }
+.glyph {
+  --pull: 0px;
   position: absolute;
-  top: 0;
-  transform: translateY(calc(var(--y) - 50%));
-  /* A little overshoot, and each glyph a beat behind the one before: a springy chain. */
-  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  margin: calc(var(--size, 0px) * -0.5);
+  color: var(--muted);
+  opacity: 0;
+  /* Snappy: a quick move with a small overshoot, each glyph a few ms behind the last. */
+  transform: translateY(var(--pull));
+  transition: transform 0.32s cubic-bezier(0.25, 1.5, 0.45, 1) calc(var(--k) * 12ms), opacity 0.35s ease, color 0.25s ease;
 }
-.railSlash { left: 28px; font-weight: 800; font-size: clamp(36px, 5.4vh, 64px); line-height: 1; letter-spacing: -0.05em; color: var(--signal); transition-delay: 0s; }
-.railIndex { left: 74px; font: 600 12px var(--font-mono); color: var(--signal); transition-delay: 0.06s; }
-.railBar { left: 74px; width: 36px; height: 2px; margin-top: 14px; border-radius: 2px; background: var(--signal); transition-delay: 0.12s; }
-.menu:not([open]) .rail > *, .menu[data-closing] .rail > * { opacity: 0; }
-.rail > * { opacity: 0; }
-.menu[open]:not([data-closing]) .rail > * { opacity: 1; transition-property: transform, opacity; }
-@starting-style { .menu[open] .rail > * { opacity: 0; } }
-@media (max-width: 1100px) { .rail { min-width: 90px; } .railSlash { left: 16px; } .railIndex, .railBar { left: 54px; } }
+.glyph svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: bob var(--d) ease-in-out infinite alternate;
+  transition: filter 0.25s ease;
+}
+@keyframes bob {
+  from { transform: translateY(-7px) rotate(-5deg); }
+  to { transform: translateY(7px) rotate(5deg); }
+}
+.menu[open]:not([data-closing]) .glyph { opacity: 0.16; transition-delay: calc(var(--k) * 12ms), calc(0.5s + var(--k) * 30ms), 0s; }
+@starting-style { .menu[open] .glyph { opacity: 0; } }
+.menu[open]:not([data-closing]) .glyph[data-on] { opacity: 0.85; color: var(--signal); }
+.glyph[data-on] svg { filter: drop-shadow(0 0 10px rgba(212, 255, 63, 0.55)); }
+.menu[data-closing] .glyph { opacity: 0; transition-delay: 0s; }
 .sections a {
   display: flex;
   align-items: baseline;
@@ -210,13 +227,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rail > * { transition: opacity 0.2s; }
+  .glyph { transition: opacity 0.2s, color 0.2s; }
+  .glyph svg { animation: none; }
   .menu, .menu[data-closing] { clip-path: none; transition: opacity 0.2s; }
   .menu[data-closing] { opacity: 0; }
   .word > span, .side > *, .studio li { transform: none !important; transition: none !important; opacity: 1 !important; }
 }
 :global(html[data-motion='static']) .menu { clip-path: none; transition: none; }
-:global(html[data-motion='static']) .rail > * { transition: none; }
+:global(html[data-motion='static']) .glyph { transition: none; }
+:global(html[data-motion='static']) .glyph svg { animation: none; }
 :global(html[data-motion='static']) .word > span,
 :global(html[data-motion='static']) .side > *,
 :global(html[data-motion='static']) .studio li { transform: none; transition: none; opacity: 1; }
