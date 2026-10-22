@@ -53,6 +53,7 @@
   letter-spacing: -0.055em;
 }
 .headline em { font-style: normal; color: var(--signal); }
+.sub { max-width: 46ch; margin: 22px 0 0; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.5; color: var(--muted); text-wrap: pretty; }
 .row { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
 .ctas { display: flex; flex-wrap: wrap; gap: 10px; }
 .primary { background: var(--signal); color: var(--ink); border-radius: 999px; padding: 13px 20px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.2s; }
