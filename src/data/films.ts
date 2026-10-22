@@ -24,7 +24,7 @@ export type FilmEntry = {
 export const studioFilm: FilmEntry = {
   id: 'verastack-launch',
   title: 'VeraStack Labs in 90 seconds',
-  line: 'What we design and build, the AI search work, the films, our own products and the Launch Kit.',
+  line: 'We design it, build it and get it found: the work, the proof, our own products and the Launch Kit.',
   length: '1:30',
   duration: 'PT1M30S',
   src: '/films/verastack-launch.mp4',
@@ -36,14 +36,17 @@ export const studioFilm: FilmEntry = {
   // From the film's captions.
   chapters: [
     { at: 0, label: 'Countdown' },
-    { at: 14.2, label: 'Services' },
-    { at: 38.2, label: 'One team' },
-    { at: 46.8, label: 'Proof' },
-    { at: 62.2, label: 'Our products' },
-    { at: 75.9, label: 'Launch Kit' },
-    { at: 84.3, label: 'Sign-off' },
+    { at: 3.4, label: 'VeraStack Labs' },
+    { at: 13.7, label: 'Design' },
+    { at: 17.1, label: 'Build' },
+    { at: 30.9, label: 'Market' },
+    { at: 37.7, label: 'One team' },
+    { at: 46.3, label: 'Proof' },
+    { at: 61.7, label: 'Our products' },
+    { at: 75.4, label: 'Launch Kit' },
+    { at: 84, label: "Let's build something" },
   ],
-  uploaded: '2026-10-21',
+  uploaded: '2026-10-23',
 }
 
 export const films: FilmEntry[] = [

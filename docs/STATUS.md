@@ -83,8 +83,9 @@ Content (placeholders are in the design until these arrive):
 - [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the
   Web3Forms inbox shows every field (name, email, company, service, budget, timeline, subject and
   the full sentence).
-- [ ] Launch film rebuild for "The whole launch": the Video analysis chat remakes the studio film for the
-  new line (asked 2026-10-23); it replaces the current one at /films. No team page or named partners on
+- [x] Launch film rebuild for "The whole launch" (2026-10-23, Rigan approved): the repositioned 90 s
+  film (studio repo ba36936) replaces the old one at /films, with ten chapters (design, build and
+  market among them). The 9:16 cut is for social; the site loop is unchanged. No team page or named partners on
   the site for now (Rigan, 23 Oct); a team page is for later.
 - [x] The home page's Questions (`src/data/faq.ts`): approved by Rigan on 2026-10-23, including the
   updated first answer and the cost answer ("quoted after a free first call").
