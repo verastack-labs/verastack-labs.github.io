@@ -57,18 +57,18 @@ const ICONS: Record<string, ReactNode> = {
 // Where each glyph floats (as a share of the menu), how big it is, how strongly it is drawn to the
 // highlighted link, and which sections light it up.
 const GLYPHS: { icon: keyof typeof ICONS; x: number; y: number; size: number; pull: number; tags: string[] }[] = [
-  { icon: 'code', x: 47, y: 14, size: 44, pull: 0.32, tags: ['services', 'products', 'process'] },
-  { icon: 'video', x: 58, y: 30, size: 52, pull: 0.22, tags: ['top', 'services'] },
-  { icon: 'browser', x: 42, y: 44, size: 58, pull: 0.4, tags: ['services', 'work', 'products'] },
-  { icon: 'sparkle', x: 55, y: 58, size: 30, pull: 0.5, tags: ['services', 'notes'] },
-  { icon: 'cube', x: 46, y: 74, size: 48, pull: 0.28, tags: ['services', 'work'] },
-  { icon: 'linkedin', x: 59, y: 86, size: 34, pull: 0.36, tags: ['about', 'contact'] },
-  { icon: 'search', x: 63, y: 9, size: 32, pull: 0.45, tags: ['services', 'notes'] },
-  { icon: 'phone', x: 38, y: 25, size: 36, pull: 0.3, tags: ['services', 'products'] },
-  { icon: 'cursor', x: 64, y: 47, size: 26, pull: 0.55, tags: ['top', 'work', 'process'] },
-  { icon: 'mail', x: 37, y: 88, size: 34, pull: 0.25, tags: ['contact'] },
-  { icon: 'clapper', x: 35, y: 62, size: 40, pull: 0.34, tags: ['services', 'work'] },
-  { icon: 'layers', x: 61, y: 70, size: 30, pull: 0.42, tags: ['process', 'about'] },
+  { icon: 'code', x: 45, y: 21, size: 33, pull: 0.32, tags: ['services', 'products', 'process'] },
+  { icon: 'video', x: 52, y: 34, size: 39, pull: 0.22, tags: ['top', 'services'] },
+  { icon: 'browser', x: 42, y: 45, size: 44, pull: 0.4, tags: ['services', 'work', 'products'] },
+  { icon: 'sparkle', x: 50, y: 56, size: 22, pull: 0.5, tags: ['services', 'notes'] },
+  { icon: 'cube', x: 45, y: 69, size: 36, pull: 0.28, tags: ['services', 'work'] },
+  { icon: 'linkedin', x: 52, y: 79, size: 26, pull: 0.36, tags: ['about', 'contact'] },
+  { icon: 'search', x: 55, y: 17, size: 24, pull: 0.45, tags: ['services', 'notes'] },
+  { icon: 'phone', x: 40, y: 30, size: 27, pull: 0.3, tags: ['services', 'products'] },
+  { icon: 'cursor', x: 55, y: 48, size: 20, pull: 0.55, tags: ['top', 'work', 'process'] },
+  { icon: 'mail', x: 39, y: 80, size: 26, pull: 0.25, tags: ['contact'] },
+  { icon: 'clapper', x: 38, y: 60, size: 30, pull: 0.34, tags: ['services', 'work'] },
+  { icon: 'layers', x: 54, y: 66, size: 22, pull: 0.42, tags: ['process', 'about'] },
 ]
 
 export type GlyphHandle = { aim: (link: HTMLElement | null, section: string | null) => void }

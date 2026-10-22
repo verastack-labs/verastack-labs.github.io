@@ -74,9 +74,9 @@
   margin: calc(var(--size, 0px) * -0.5);
   color: var(--muted);
   opacity: 0;
-  /* Snappy: a quick move with a small overshoot, each glyph a few ms behind the last. */
+  /* A quick glide with a slight overshoot, each glyph a few ms behind the last. */
   transform: translateY(var(--pull));
-  transition: transform 0.32s cubic-bezier(0.25, 1.5, 0.45, 1) calc(var(--k) * 12ms), opacity 0.35s ease, color 0.25s ease;
+  transition: transform 0.45s cubic-bezier(0.22, 1.15, 0.36, 1) calc(var(--k) * 8ms), opacity 0.35s ease, color 0.25s ease;
 }
 .glyph svg {
   display: block;
@@ -94,7 +94,7 @@
   from { transform: translateY(-7px) rotate(-5deg); }
   to { transform: translateY(7px) rotate(5deg); }
 }
-.menu[open]:not([data-closing]) .glyph { opacity: 0.16; transition-delay: calc(var(--k) * 12ms), calc(0.5s + var(--k) * 30ms), 0s; }
+.menu[open]:not([data-closing]) .glyph { opacity: 0.16; transition-delay: calc(var(--k) * 8ms), calc(0.5s + var(--k) * 30ms), 0s; }
 @starting-style { .menu[open] .glyph { opacity: 0; } }
 .menu[open]:not([data-closing]) .glyph[data-on] { opacity: 0.85; color: var(--signal); }
 .glyph[data-on] svg { filter: drop-shadow(0 0 10px rgba(212, 255, 63, 0.55)); }
@@ -137,6 +137,9 @@
 .menu[open]:not([data-closing]) .sections a:hover .word > span,
 .menu[open]:not([data-closing]) .sections a:focus-visible .word > span { transform: translateX(0.55em); transition-delay: 0s; transition-duration: 0.35s; }
 .sections:has(a:hover, a:focus-visible) a:not(:hover):not(:focus-visible) { opacity: 0.28; }
+/* After the entry has played, words follow the pointer at once: no stagger, a short move. */
+.menu[data-ready] .word > span { transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: 0s; }
+.menu[data-ready] .sections a { transition-duration: 0.18s; }
 .sections a:hover small, .sections a:focus-visible small { color: var(--signal); }
 .sections a:focus-visible { outline: none; }
 .sections a[aria-current='true'] { color: var(--signal); }
