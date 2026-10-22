@@ -17,6 +17,8 @@ setup, in 4 weeks for one fixed fee. App builds and 3D are add-ons, quoted separ
 | AEO and GEO proof | We promise the launch site scores 90 or more on our check, with a before and after. Proof: our own sites at 100 and the studies. No promise of being named in AI answers. Headline wording: "built to be found by ChatGPT from day one", not "found on day one". |
 | Build tool | Code (Next.js) by default; the client owns the repo. Framer on request, when their team wants to edit pages without a developer. |
 | India pricing | The page shows $9,500 to everyone. Visitors whose browser time zone is Asia/Kolkata also see "Building from India? We offer regional pricing. Book a call and we'll quote in rupees." (added in the browser, so crawlers and structured data see only $9,500). No rupee figure is published. Quote on the call by scope and budget, typically INR 4.5 to 6 lakh; the floor for the full kit is INR 4 lakh (Rigan, 18 Oct 2026, internal only). Below the floor, cut scope (the film or the brand work) instead of discounting further. |
+| Launch marketing (add-on, 2026-10-23) | First 30 days: a launch plan, posts for LinkedIn and X, and the launch-day push. Quoted on a call; no price set. |
+| Monthly marketing plan (optional, 2026-10-23) | Content and social around the product after launch. Scoped and quoted on a call; no price set. |
 | Monthly plan | $2,500/mo, 3-month minimum, then pause any time. Site changes and new pages, monthly AEO and GEO tracking (the engines asked the buyers' questions again), and two short cut-downs or new clips a month. |
 
 ## Added 18 Oct 2026 (Rigan)

@@ -27,6 +27,12 @@ export const siteKit = {
   note: 'For founders who already have a brand. Add the film any time.',
 }
 
+// Launch marketing, added 2026-10-23 (the whole launch). Quoted on a call, so no price here yet.
+export const kitMarketing = {
+  addon: 'launch marketing for your first 30 days: a launch plan, posts for LinkedIn and X, and the launch-day push',
+  monthly: 'Launch marketing, monthly: content and social around your product after launch, scoped and quoted on a call.',
+}
+
 export const kitParts = [
   { tag: '01 / brand', title: 'Brand basics', text: 'Logo, colours, type and a one-page guide your team can keep using.' },
   { tag: '02 / site', title: '5-page launch site', text: 'Home, product, pricing, about and contact. Code you own, or Framer if your team wants to edit it.' },
@@ -69,6 +75,10 @@ export const kitQuestions: { q: string; a: string }[] = [
   {
     q: 'Is it only for SaaS?',
     a: 'It is built for software launches, but it fits any product with a launch date. Web and mobile app builds, 3D experiences and configurators are add-ons, quoted separately.',
+  },
+  {
+    q: 'Can you market the launch too?',
+    a: 'Yes. Launch marketing for the first 30 days is an add-on: a launch plan, posts for LinkedIn and X, and the launch-day push. After launch, a monthly marketing plan can keep it going. Both are scoped and quoted on a call.',
   },
   {
     q: 'Do you offer regional pricing?',
