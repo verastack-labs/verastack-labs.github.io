@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { services, servicesMore } from '@/data/services'
 import { useScramble } from '@/components/use-scramble'
 import { formatCounter } from '@/lib/counter'
-import { activeService, demoOpenness, snapToHold } from '@/lib/services-beats'
+import { LEAD, activeService, demoOpenness, snapToHold } from '@/lib/services-beats'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { FilmReel } from '@/scenes/services/film-reel'
 import { ConfiguratorDemo } from '@/scenes/services/configurator-demo'
@@ -16,6 +16,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const LAST = services.length
 const pad = (n: number) => String(n).padStart(2, '0')
+// The pillar name shows once, beside the first service of its group.
+const opensPillar = (i: number) => i === 0 || services[i - 1].pillar !== services[i].pillar
 
 function ProofLine({ text, animate }: { text: string; animate: boolean }) {
   const ref = useScramble<HTMLElement>(text, animate)
@@ -70,7 +72,7 @@ function PinnedServices() {
   }, [])
 
   const service = services[active]
-  const next = services[1]
+  const next = services[LEAD + 1]
 
   return (
     <section id="services" aria-labelledby="services-title">
@@ -89,11 +91,12 @@ function PinnedServices() {
       <div ref={main} className={styles.stage}>
         <div className={styles.list}>
           <p className={styles.label}>
-            /services <em>{'//'}</em> {formatCounter(active + 1, LAST)}
+            /services <em>{'//'}</em> {service.pillar} <em>{'//'}</em> {formatCounter(active + 1, LAST)}
           </p>
           <ol className={styles.rows} aria-hidden="true">
             {services.map((s, i) => (
-              <li key={s.id} className={styles.row} data-on={i === active}>
+              <li key={s.id} className={styles.row} data-on={i === active} data-group={s.pillar === service.pillar}>
+                <span className={styles.pillar}>{opensPillar(i) ? s.pillar : ''}</span>
                 <span className={styles.num}>{pad(i + 1)}</span>
                 <span className={styles.name}>{s.name}</span>
               </li>
@@ -115,7 +118,7 @@ function PinnedServices() {
             {service.films && <FilmReel films={service.films} />}
           </div>
           <div className={styles.demo} inert={!open}>
-            <ConfiguratorDemo live mounted={near} running={open} animate holdNote={`02 ${next.short}`} />
+            <ConfiguratorDemo live mounted={near} running={open} animate holdNote={`${pad(LEAD + 2)} ${next.short}`} />
           </div>
         </div>
       </div>
@@ -136,6 +139,7 @@ function StackedServices({ animate }: { animate: boolean }) {
       </h2>
       {services.map((s, i) => (
         <div key={s.id} className={styles.block}>
+          {opensPillar(i) && <p className={styles.pillarHead}>{s.pillar}</p>}
           <h3 className={styles.blockName}>
             <span className={styles.num}>{pad(i + 1)}</span>
             {s.name}

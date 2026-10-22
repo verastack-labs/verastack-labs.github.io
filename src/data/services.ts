@@ -8,8 +8,12 @@ export type Film = {
   captions: string
 }
 
+// The three pillars of a launch: design it, build it, get it found.
+export type Pillar = 'design' | 'build' | 'market'
+
 export type Service = {
   id: string
+  pillar: Pillar
   name: string
   // One word for the "keep scrolling for 02 ..." hint.
   short: string
@@ -19,11 +23,22 @@ export type Service = {
   films?: Film[]
 }
 
-// Spec 6.02, in this order. Proof lines credit the founder's work (spec voice, section 4.4). The
-// first service carries the configurator demo, one example of 3D on the web.
+// Grouped by pillar: design, build, market (Rigan, 2026-10-23, "the whole launch"). Proof lines credit
+// the founder's work (spec voice, section 4.4). The lead service, second, carries the configurator demo:
+// 3D experiences are a build capability, not the headline. Its place must match LEAD in services-beats.
 export const services: Service[] = [
   {
+    id: 'sites',
+    pillar: 'design',
+    name: 'Websites & launches',
+    short: 'websites',
+    blurb: 'Brand basics, marketing sites, rebuilds and launch pages, in code or in Framer and Webflow when your team wants to edit it themselves.',
+    proof: ['E3 TRION launch', 'PixelStack Studio'],
+    lead: false,
+  },
+  {
     id: 'experiences',
+    pillar: 'build',
     name: 'Web & 3D experiences',
     short: 'experiences',
     blurb: 'Distinctive, motion-rich sites and 3D experiences on the web: configurators, product stories, interactive pieces.',
@@ -32,6 +47,7 @@ export const services: Service[] = [
   },
   {
     id: 'web-apps',
+    pillar: 'build',
     name: 'Web apps & CMS',
     short: 'apps',
     blurb: 'Custom CMS, bookings, payments, dashboards and the internal tools behind a business.',
@@ -39,15 +55,17 @@ export const services: Service[] = [
     lead: false,
   },
   {
-    id: 'sites',
-    name: 'Websites & launches',
-    short: 'websites',
-    blurb: 'Marketing sites, rebuilds and launch pages, in code or in Framer and Webflow when your team wants to edit it themselves.',
-    proof: ['E3 TRION launch', 'PixelStack Studio'],
+    id: 'apps',
+    pillar: 'build',
+    name: 'Desktop & mobile apps',
+    short: 'native',
+    blurb: 'Small, fast apps for desktop and Android, from internal tools to our own products.',
+    proof: ['rigseed · Riggit', 'Pee Empro attendance app'],
     lead: false,
   },
   {
     id: 'search',
+    pillar: 'market',
     name: 'AI search & SEO',
     short: 'search',
     blurb: "Get named when people ask ChatGPT, Perplexity or Google's AI answers. AEO and GEO (answer and generative engine optimisation): structured data, llms.txt and pages written to be quoted, on solid SEO foundations.",
@@ -56,6 +74,7 @@ export const services: Service[] = [
   },
   {
     id: 'videos',
+    pillar: 'market',
     name: 'Product videos',
     short: 'videos',
     blurb: 'Launch films, explainers and ad cuts for SaaS and other products, made in hours and in your brand\'s own style. Priced to test: ship a few versions, keep the one that works.',
@@ -88,14 +107,6 @@ export const services: Service[] = [
         captions: '/films/bruno-launch.vtt',
       },
     ],
-  },
-  {
-    id: 'apps',
-    name: 'Desktop & mobile apps',
-    short: 'native',
-    blurb: 'Small, fast apps for desktop and Android, from internal tools to our own products.',
-    proof: ['rigseed · Riggit', 'Pee Empro attendance app'],
-    lead: false,
   },
 ]
 
