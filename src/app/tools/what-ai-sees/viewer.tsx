@@ -14,7 +14,7 @@ const ENDPOINT = checker.endpoint.replace(/\/aeo-check$/, '/page-view')
 // The same bands as the checker's "plain HTML" check (500 passes, under 200 fails).
 function verdict(words: number): { tone: 'poor' | 'fair' | 'good'; head: string; text: string } {
   if (words < 50)
-    return { tone: 'poor', head: 'Almost blank to ChatGPT.', text: 'This page draws its words with JavaScript, which most AI crawlers do not run. To them, there is next to nothing here.' }
+    return { tone: 'poor', head: 'Almost blank to AI crawlers.', text: 'This page draws its words with JavaScript, which most AI crawlers do not run. To them, there is next to nothing here.' }
   if (words < 200) return { tone: 'poor', head: 'Thin to an AI crawler.', text: 'Some words arrive in the HTML, but not enough for an engine to understand what you do.' }
   if (words < 500) return { tone: 'fair', head: 'Readable, but light.', text: 'An engine gets the gist. A plain paragraph on what you do, for whom and from what price would make it clear.' }
   return { tone: 'good', head: 'Reads well without JavaScript.', text: 'Your words are in the HTML. The next question is whether engines name you, which takes more than a readable page.' }
@@ -98,7 +98,7 @@ export function Viewer() {
           </div>
 
           <div className={styles.viewPane}>
-            <p className={styles.count}>What ChatGPT&apos;s crawler gets, with no JavaScript</p>
+            <p className={styles.count}>What ChatGPT, Claude and Perplexity get, with no JavaScript</p>
             <div className={styles.viewDoc}>
               <p className={styles.viewMeta}>
                 <b>Title:</b> {view.title ?? <em>none</em>}
