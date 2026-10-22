@@ -39,13 +39,29 @@ function Cta({ product }: { product: Product }) {
   )
 }
 
+// Pitches that open with a question break after it, so the lines come out more even.
+function Pitch({ text }: { text: string }) {
+  const [first, ...rest] = text.split(/(?<=\?) /)
+  return rest.length ? (
+    <>
+      {first}
+      <br />
+      {rest.join(' ')}
+    </>
+  ) : (
+    text
+  )
+}
+
 function Copy({ product }: { product: Product }) {
   return (
     <div className={styles.copy}>
       <p className={styles.kicker}>
         /products/{product.id} · {product.platform}
       </p>
-      <h3 className={styles.pitch}>{product.pitch}</h3>
+      <h3 className={styles.pitch}>
+        <Pitch text={product.pitch} />
+      </h3>
       <p className={styles.line}>{product.line}</p>
       <p className={styles.meta}>{product.meta}</p>
       <Cta product={product} />
@@ -187,7 +203,9 @@ function CardSwap() {
         })}
       </div>
       <div className={styles.swapCopy} role="tabpanel" aria-live="polite">
-        <h3 className={styles.swapPitch}>{current.pitch}</h3>
+        <h3 className={styles.swapPitch}>
+          <Pitch text={current.pitch} />
+        </h3>
         <p className={styles.swapLine}>{current.line}</p>
         <p className={styles.swapMeta}>{current.meta}</p>
         <Cta product={current} />

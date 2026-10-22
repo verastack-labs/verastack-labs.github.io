@@ -86,9 +86,9 @@ export const products: Product[] = [
     url: 'https://mehfil.verastack.dev/',
     status: 'coming-soon',
     kind: 'app',
-    // Mehfil after dark: its ink as the stage, its cream as text and its saffron as the action, the way
-    // its own dark header bar uses them. Cream on this ink is about 13:1.
-    palette: { bg: '#1E1510', fg: '#E8DCC8', accent: '#E8A33D', onAccent: '#1C120B' },
+    // Mehfil at night: a deep teal from its own outfit colours as the stage, cream text and saffron for
+    // the action, with the app itself still cream on the phone. Cream on this teal is about 12:1.
+    palette: { bg: '#10282A', fg: '#EDE3D1', accent: '#E8A33D', onAccent: '#1C120B' },
     light: false,
     brutal: true,
   },
