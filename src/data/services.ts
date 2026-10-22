@@ -24,9 +24,9 @@ export type Service = {
 export const services: Service[] = [
   {
     id: 'experiences',
-    name: 'Web experiences & 3D',
+    name: 'Web & 3D experiences',
     short: 'experiences',
-    blurb: 'Distinctive, motion-rich sites and 3D on the web: configurators, product stories, interactive pieces.',
+    blurb: 'Distinctive, motion-rich sites and 3D experiences on the web: configurators, product stories, interactive pieces.',
     proof: ['Ultraviolette X-47 · Tesseract · Shockwave, behind 70,000+ bookings', 'E3 TRION'],
     lead: true,
   },

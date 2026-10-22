@@ -3,7 +3,7 @@
 export const faq: { q: string; a: string }[] = [
   {
     q: 'What does VeraStack Labs do?',
-    a: 'We design and build web experiences and 3D, web and mobile apps, AI search and SEO, and product videos, for clients and for our own products.',
+    a: 'We design and build web and 3D experiences, web and mobile apps, AI search and SEO, and product videos, for clients and for our own products.',
   },
   {
     q: 'Do you work with clients outside India?',

@@ -78,7 +78,7 @@ export default function LaunchKitPage() {
               </div>
             ))}
             <p className={styles.addons}>
-              <b>Add-ons, quoted separately:</b> web and mobile app builds, 3D and configurators.
+              <b>Add-ons, quoted separately:</b> web and mobile app builds, 3D experiences and configurators.
             </p>
           </section>
 

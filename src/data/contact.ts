@@ -4,7 +4,7 @@ export const contact = {
   services: [
     'a website',
     'a web experience',
-    'something in 3D',
+    'a 3D experience',
     'a configurator',
     'a web app',
     'a CMS',

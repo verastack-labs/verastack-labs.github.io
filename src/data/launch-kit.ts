@@ -68,7 +68,7 @@ export const kitQuestions: { q: string; a: string }[] = [
   },
   {
     q: 'Is it only for SaaS?',
-    a: 'It is built for software launches, but it fits any product with a launch date. Web and mobile app builds, 3D and configurators are add-ons, quoted separately.',
+    a: 'It is built for software launches, but it fits any product with a launch date. Web and mobile app builds, 3D experiences and configurators are add-ons, quoted separately.',
   },
   {
     q: 'Do you offer regional pricing?',
