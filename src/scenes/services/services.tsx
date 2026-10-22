@@ -16,7 +16,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 const LAST = services.length
 const pad = (n: number) => String(n).padStart(2, '0')
-// The pillar name shows once, beside the first service of its group.
+// The pillars in list order (design, build, market), shown as a row above the list.
+const PILLARS = [...new Set(services.map((s) => s.pillar))]
+// On the stacked layout the pillar name heads the first service of its group.
 const opensPillar = (i: number) => i === 0 || services[i - 1].pillar !== services[i].pillar
 
 function ProofLine({ text, animate }: { text: string; animate: boolean }) {
@@ -91,12 +93,19 @@ function PinnedServices() {
       <div ref={main} className={styles.stage}>
         <div className={styles.list}>
           <p className={styles.label}>
-            /services <em>{'//'}</em> {service.pillar} <em>{'//'}</em> {formatCounter(active + 1, LAST)}
+            /services <em>{'//'}</em> {formatCounter(active + 1, LAST)}
+          </p>
+          <p className={styles.pillars} aria-hidden="true">
+            {PILLARS.map((p, i) => (
+              <span key={p}>
+                {i > 0 && <em>/</em>}
+                <b data-on={p === service.pillar}>{p}</b>
+              </span>
+            ))}
           </p>
           <ol className={styles.rows} aria-hidden="true">
             {services.map((s, i) => (
-              <li key={s.id} className={styles.row} data-on={i === active} data-group={s.pillar === service.pillar}>
-                <span className={styles.pillar}>{opensPillar(i) ? s.pillar : ''}</span>
+              <li key={s.id} className={styles.row} data-on={i === active}>
                 <span className={styles.num}>{pad(i + 1)}</span>
                 <span className={styles.name}>{s.name}</span>
               </li>

@@ -74,22 +74,22 @@
   55%, 100% { background: #23915F; box-shadow: none; }
 }
 
-/* Mehfil after dark: neobrutal cream borders, warm surfaces and hard terracotta shadows. */
+/* Mehfil: the app as it is, cream and neobrutal, lifted off the night teal by a terracotta shadow. */
 .phone {
   width: 250px;
   padding: 16px 14px 18px;
-  border: 3px solid #E8DCC8;
+  border: 3px solid #1C120B;
   border-radius: 28px;
-  background: #2A1E16;
-  box-shadow: 8px 8px 0 #B93E29;
-  color: #E8DCC8;
+  background: #F3E9DA;
+  box-shadow: 10px 10px 0 #B93E29;
+  color: #1C120B;
   font-family: var(--font-display);
 }
-.phoneTop { display: flex; justify-content: space-between; margin-bottom: 14px; font: 500 10.5px var(--font-mono); color: #BBA992; }
-.event { margin-bottom: 11px; padding: 11px; border: 2.5px solid #E8DCC8; border-radius: 12px; background: #36281D; box-shadow: 4px 4px 0 #120C08; }
+.phoneTop { display: flex; justify-content: space-between; margin-bottom: 14px; font: 500 10.5px var(--font-mono); }
+.event { margin-bottom: 11px; padding: 11px; border: 2.5px solid #1C120B; border-radius: 12px; background: #FAF4EA; box-shadow: 4px 4px 0 #1C120B; }
 .event h4 { margin: 0 0 4px; font-size: 17px; font-weight: 800; letter-spacing: -0.03em; }
-.event p { margin: 0 0 8px; font: 500 10.5px var(--font-mono); color: #BBA992; }
-.eventDim { opacity: 0.7; }
+.event p { margin: 0 0 8px; font: 500 10.5px var(--font-mono); color: #5B4D42; }
+.eventDim { opacity: 0.75; }
 .eventDim p { margin: 0; }
 .who { display: flex; }
 .who b { width: 20px; height: 20px; margin-right: -5px; border: 2px solid #1C120B; border-radius: 50%; animation: pop 3.2s ease-in-out infinite; }
@@ -102,7 +102,7 @@
   border: 2.5px solid #1C120B;
   border-radius: 10px;
   background: #E8A33D;
-  box-shadow: 3px 3px 0 #B93E29;
+  box-shadow: 3px 3px 0 #1C120B;
   color: #1C120B;
   text-align: center;
   font-size: 15px;
