@@ -29,7 +29,7 @@ export const founder = {
   sameAs: ['https://riganb.github.io', 'https://github.com/riganb', 'https://www.linkedin.com/in/rigan-burnwal/'],
   letter: [
     "Before you hand anyone your launch, you should know who'll be on the other side of the table. At VeraStack Labs, that's me, on every call and in every meeting, from the first sketch to the day it goes live.",
-    'We ship launches end to end, design to code, in the same hands, so nothing gets lost between a mockup and a handover. And the modern layer comes built in at every turn: AI search, so you get named when buyers ask ChatGPT, and product videos for the launch itself.',
+    'We design it, build it and get it found, end to end and in the same hands, so nothing gets lost between a mockup and a handover. Getting found comes built in at every turn: AI search, so you get named when buyers ask ChatGPT, a film for the launch itself, and launch marketing when you want it.',
   ],
   // `source` is the work entry each figure comes from; `evidence` must appear in that entry's text.
   metrics: [

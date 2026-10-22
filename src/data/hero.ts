@@ -5,7 +5,7 @@ export const hero = {
   lead: 'We design it, build it and get it ',
   accent: 'found',
   tail: '.',
-  sub: 'Brand and sites, apps and 3D, launch films, then the AI search and launch marketing that bring people in. One team, start to finish.',
+  sub: 'Brand and sites, apps and 3D experiences, launch films, then the AI search and launch marketing that bring people in. One team, start to finish.',
   primary: { label: 'Start a project', href: '#contact' },
   secondary: { label: 'See the work', href: '#work' },
 }

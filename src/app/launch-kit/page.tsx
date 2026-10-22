@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { discounted, kitIncluded, kitParts, kitProof, kitQuestions, kitWeeks, launchKit, siteKit, usd, yearEnd, yearEndActive } from '@/data/launch-kit'
+import { discounted, kitIncluded, kitParts, kitProof, kitQuestions, kitWeeks, launchKit, siteKit, usd, yearEnd, yearEndActive, kitMarketing } from '@/data/launch-kit'
 import { shareImage, site } from '@/data/site'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { IndiaBlock, IndiaChip, KitBar } from '@/app/launch-kit/india-pricing'
@@ -78,7 +78,7 @@ export default function LaunchKitPage() {
               </div>
             ))}
             <p className={styles.addons}>
-              <b>Add-ons, quoted separately:</b> web and mobile app builds, 3D and configurators.
+              <b>Add-ons, quoted separately:</b> web and mobile app builds, 3D experiences and configurators, and {kitMarketing.addon}.
             </p>
           </section>
 
@@ -211,6 +211,10 @@ export default function LaunchKitPage() {
               <b>{launchKit.monthly}/mo</b>, 3-month minimum, then pause any time. Site changes and new pages, monthly AEO and GEO
               tracking, two short clips a month.
             </p>
+          </div>
+          <div className={styles.plan}>
+            <p className={styles.tag}>marketing, optional</p>
+            <p>{kitMarketing.monthly}</p>
           </div>
         </aside>
       </div>

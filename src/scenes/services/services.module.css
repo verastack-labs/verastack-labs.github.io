@@ -23,6 +23,10 @@
 }
 .row[data-on='true'] { color: var(--text); transform: translateX(10px); }
 .row[data-on='true'] .num { color: var(--signal); }
+/* Design, build, market: a small tag beside the first service of each pillar, lit for the active group. */
+.pillar { flex: none; width: 64px; font: 500 11px var(--font-mono); letter-spacing: 0.02em; color: var(--dim); transition: color 0.35s; }
+.row[data-group='true'] .pillar { color: var(--signal); }
+.pillarHead { margin: 10px 0 -4px; font: 500 11px var(--font-mono); letter-spacing: 0.04em; color: var(--signal); }
 .name {
   font-weight: 800;
   font-variation-settings: 'opsz' 96;
