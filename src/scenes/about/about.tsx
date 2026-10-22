@@ -19,11 +19,11 @@ export function About() {
         /about <em>{'//'}</em> the studio
       </p>
       <h2 className={styles.headline}>
-        Design and engineering. <em>One studio.</em>
+        Design, build and launch. <em>One team.</em>
       </h2>
       <p className={styles.statement}>
-        {site.name} is a design and engineering studio.{' '}
-        <b>We build web and 3D experiences, apps and content systems, AI search and SEO, and product videos, for clients and for our own products.</b>{' '}
+        {site.name} is a design and engineering studio for launches.{' '}
+        <b>We design it, build it and get it found: brand and sites, web and 3D experiences, apps and content systems, launch films, and the AI search, SEO and launch marketing around them, for clients and for our own products.</b>{' '}
         Design and build happen in the same hands, so nothing gets lost between a mockup and a handover.
       </p>
       {/* The way to the founder page, where a visitor is deciding about the studio. */}
@@ -32,7 +32,7 @@ export function About() {
         <img src={founder.photo.src} alt="" width={56} height={56} loading="lazy" />
         <span className={styles.meetText}>
           <b>{site.founderName}, founder</b>
-          <span>One person on every call, design to code.</span>
+          <span>One person on every call, design to launch.</span>
         </span>
         <span className={styles.meetCta}>Meet the founder →</span>
       </Link>
