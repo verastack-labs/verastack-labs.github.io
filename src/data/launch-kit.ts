@@ -4,7 +4,7 @@ export const launchKit = {
   path: '/launch-kit',
   title: 'The SaaS Launch Kit: launch-ready in 4 weeks',
   description:
-    'Brand, a 5-page launch site, a 60-second launch film, and AEO and GEO built in from day one. One team, 4 weeks, $9,500 fixed, 25% off booked by 31 December. Two launch slots a month.',
+    'Brand, a 5-page launch site, a 60-second launch film, and AEO and GEO from day one. One team, 4 weeks, $9,500 fixed, 25% off booked by 31 December.',
   price: 9500,
   priceLabel: '$9,500',
   monthly: '$2,500',
