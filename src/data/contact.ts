@@ -1,6 +1,6 @@
 // Contact scene copy and choices (spec 6.07).
 export const contact = {
-  headline: "Let's build something.",
+  headline: "Let's launch something.",
   services: [
     'a website',
     'a web experience',
@@ -11,6 +11,7 @@ export const contact = {
     'to show up in AI search',
     'a mobile or desktop app',
     'a product video',
+    'launch marketing',
     'something else',
   ],
   // Picked when a visitor arrives from the configurator demo's Pre-book button, or from the AI
