@@ -5,7 +5,7 @@ date: 2026-10-23
 time: 18:30
 category: ai-search
 hook: See your own page the way ChatGPT's crawler gets it, word for word, with no JavaScript run. Free, one page at a time.
-hookCta: See what ChatGPT sees | /tools/what-ai-sees
+hookCta: See what AI sees | /tools/what-ai-sees
 checkCompare: 37% of the 532 homepages we've scanned send under 500 words before JavaScript runs. Where does yours land?
 tags: AEO, GEO, JavaScript, rendering
 ---
@@ -30,7 +30,7 @@ These are not neglected sites. Plenty of them look sharp in a browser. They're b
 
 ## How to check yours
 
-Our free tool, [What ChatGPT sees](/tools/what-ai-sees/), fetches one page the way an AI crawler does and shows you exactly what it gets: the title, the description, then every heading, paragraph and list item in order, with a word count.
+Our free tool, [What AI sees](/tools/what-ai-sees/), fetches one page the way an AI crawler does and shows you exactly what it gets: the title, the description, then every heading, paragraph and list item in order, with a word count.
 
 Three outcomes are common:
 

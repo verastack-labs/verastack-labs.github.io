@@ -244,6 +244,9 @@ Content (placeholders are in the design until these arrive):
     - [ ] 6 to 8: meta description tester, link preview checker, AI crawler checker (order and
       numbers in `docs/tools-plan.md`). Scheduled for the next weekly session, Wed 28 or Thu 29 Oct
       (Rigan, 23 Oct: not this session, to save tokens).
+    - [x] Tool 3 renamed "What AI sees" (2026-10-23, Rigan), naming ChatGPT, Claude and Perplexity
+      under it: page title, headline, lede, results pane, /tools card, llms.txt and the blog post's
+      tool links. The URL (/tools/what-ai-sees) and the post's title and URL are unchanged.
     - [ ] Blog posts for tools 1, 2 and 4 (FAQ, product and Organization generators). Tool 3's post,
       "What ChatGPT sees when it reads your homepage", went up on 23 Oct.
     - Marketing add-on and monthly marketing plan prices: final answer "quoted on a call" (Rigan,

@@ -27,8 +27,8 @@ export const tools: Tool[] = [
   },
   {
     slug: 'what-ai-sees',
-    name: 'What ChatGPT sees',
-    line: 'Your page the way AI crawlers read it, with no JavaScript run: the words they get, and the ones they miss.',
+    name: 'What AI sees',
+    line: 'Your page the way ChatGPT, Claude and Perplexity read it, with no JavaScript run: the words they get, and the ones they miss.',
     href: '/tools/what-ai-sees',
     tag: 'AI search',
   },

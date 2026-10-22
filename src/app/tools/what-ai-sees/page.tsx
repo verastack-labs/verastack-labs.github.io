@@ -10,11 +10,11 @@ import styles from '@/app/tools/tool.module.css'
 const path = '/tools/what-ai-sees'
 const text = gap('text')
 
-const title = 'What ChatGPT sees: your page without JavaScript'
+const title = 'What AI sees: your page as ChatGPT, Claude and Perplexity read it'
 const description = `See your page the way AI crawlers read it, with no JavaScript run. Free. ${text.notPassingPct}% of ${text.total} homepages we checked send under 500 words.`
 
 export const metadata: Metadata = {
-  title: 'What ChatGPT sees on your page · VeraStack Labs',
+  title: 'What AI sees on your page · VeraStack Labs',
   description,
   alternates: { canonical: path },
   openGraph: { title, description, url: `${site.url}${path}/`, siteName: site.name, type: 'website', images: [shareImage] },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 const questions = [
   {
-    q: 'Why would ChatGPT see a different page from my visitors?',
+    q: 'Why would ChatGPT or Claude see a different page from my visitors?',
     a: 'Browsers run your JavaScript; most AI crawlers do not. Vercel’s study of its network found none of the major AI crawlers rendered JavaScript, including OpenAI’s and Anthropic’s (December 2024). If your words are drawn by JavaScript, those crawlers get the empty shell.',
   },
   {
@@ -46,7 +46,7 @@ const graph = {
     studioNode(),
     {
       '@type': 'WebApplication',
-      name: 'What ChatGPT sees',
+      name: 'What AI sees',
       url: `${site.url}${path}/`,
       description,
       applicationCategory: 'DeveloperApplication',
@@ -69,7 +69,7 @@ export default function WhatAiSeesPage() {
       <h1 className={styles.title} data-m="lines">
         <span className={styles.line}>See your page</span>
         <span className={styles.line}>
-          <em>the way ChatGPT does.</em>
+          <em>the way AI does.</em>
         </span>
       </h1>
       <p className={styles.lede}>
@@ -77,7 +77,7 @@ export default function WhatAiSeesPage() {
           {text.notPassingPct}%
         </b>{' '}
         of the {text.total} homepages we checked send fewer than 500 words before JavaScript runs, and {text.nonePct}% fewer than 200.
-        Most AI crawlers never run it. Enter a page to see exactly what they get.
+        The crawlers behind ChatGPT, Claude and Perplexity never run it. Enter a page to see exactly what they get.
       </p>
 
       <Viewer />

@@ -97,7 +97,7 @@ Ranked by how many sites have the problem, how quickly the fix shows on our chec
 | --- | --- | --- | --- | --- |
 | 1 | **FAQ markup generator**: add questions and answers (or start from a template for SaaS, studio, D2C), get FAQPage JSON-LD plus matching HTML, with a live preview. | Browser | Half a day | The most common gap (80%), and the quickest score jump |
 | 2 | **Product and service markup generator**: describe what you sell (product, SaaS plan or service, price, who it is for), get the JSON-LD. | Browser | Half a day | 81% have nothing; pairs with 1 |
-| 3 | **"What ChatGPT sees" viewer**: enter a URL, see the page as a crawler that skips JavaScript reads it, side by side with the word count. | Worker | One day | The most visual "aha": a blank page sells itself |
+| 3 | **"What AI sees" viewer** (named "What ChatGPT sees" until 23 Oct 2026): enter a URL, see the page as a crawler that skips JavaScript reads it, side by side with the word count. | Worker | One day | The most visual "aha": a blank page sells itself |
 | 4 | **Organization markup generator**: name, logo, profiles, get the JSON-LD; it checks the profile links resolve. | Browser | A few hours | 53% |
 | ~~5~~ | ~~**llms.txt generator**: enter a URL, we read the homepage and sitemap and draft the file to edit and download.~~ **Dropped 2026-10-23 (Rigan):** writing a site's llms.txt is part of the paid work, so a free generator would give away what clients come to us for. Kept here as history. | | | |
 | 6 | **Meta description tester**: paste or fetch, see length, the keyword-list warning, and a preview as Google and an AI answer would quote it. | Browser, optional fetch | A few hours | 35% |
