@@ -83,12 +83,9 @@ Content (placeholders are in the design until these arrive):
 - [x] Live test enquiry sent 2026-09-29 (captcha solved by Rigan): the site reported Sent and the
   Web3Forms inbox shows every field (name, email, company, service, budget, timeline, subject and
   the full sentence).
-- [ ] Repositioning, rest of the change (headline done 2026-10-23, see below): Rigan picked "The whole
-  launch". Still to do, on Rigan's go: group the services as Design, Build and Market (3D stays a
-  Build capability, not the lead), a marketing piece for the Launch Kit and a monthly marketing plan,
-  the founder page letter, the GitHub org profile, and the launch film rebuild for the new line. Pari's
-  view on the angles was not needed in the end (Rigan, 23 Oct); whether she appears by name (the hidden
-  team row) is still open. Marketing stays light: there for those who look for it, not the lead.
+- [ ] Launch film rebuild for "The whole launch": the Video analysis chat remakes the studio film for the
+  new line (asked 2026-10-23); it replaces the current one at /films. No team page or named partners on
+  the site for now (Rigan, 23 Oct); a team page is for later.
 - [ ] The home page's Questions (`src/data/faq.ts`): check the five answers read right, especially
   the cost answer ("quoted after a free first call").
 - [x] Test the hCaptcha challenge inside the popups on a real device again (passed 2026-10-20: Rigan
@@ -260,6 +257,12 @@ Content (placeholders are in the design until these arrive):
     row stays on screens 1520 px and up; phones keep the panel. Fixes: the wheel no longer scrolls
     the page behind any menu (`data-lenis-prevent`), and `scrollbar-gutter: stable` on html stops the
     page shifting sideways when a menu or the film dialog locks scrolling.
+  - [x] The rest of the reframe (2026-10-23, Rigan), one commit each: "3D" reads "3D experiences"
+    everywhere; the hero sub line runs two lines on desktop; services grouped as design, build and
+    market, with 3D experiences and the configurator demo moved to second, under build (beats shifted,
+    `LEAD` in `services-beats.ts`); a launch marketing add-on (first 30 days) and an optional monthly
+    marketing plan on the Launch Kit, both quoted on a call; the founder letter speaks to the whole
+    launch. The GitHub org profile and description match (verastack-labs/.github#6).
   - [x] Headline, "The whole launch" (2026-10-23, Rigan): the hero is now "We design it, build it and
     get it found." with a sub line naming the services (brand and sites, apps and 3D, launch films, AI
     search and launch marketing; one team). The label reads "design, build and launch studio"; the site
