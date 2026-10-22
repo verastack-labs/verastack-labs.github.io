@@ -15,6 +15,7 @@ export function Hero() {
         <em>{hero.accent}</em>
         {hero.tail}
       </h1>
+      <p className={styles.sub}>{hero.sub}</p>
       <div className={styles.row}>
         <div className={styles.ctas}>
           <a className={styles.primary} href={hero.primary.href}>
