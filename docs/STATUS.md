@@ -241,8 +241,12 @@ Content (placeholders are in the design until these arrive):
       de-duplicated sameAs links with the platform recognised); 53% of 379 homepages have it missing
       or unlinked, 39% none.
     - [ ] 6 to 8: meta description tester, link preview checker, AI crawler checker (order and
-      numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of tools 1 to 4 has
-      one yet ("What ChatGPT sees" first).
+      numbers in `docs/tools-plan.md`). Scheduled for the next weekly session, Wed 28 or Thu 29 Oct
+      (Rigan, 23 Oct: not this session, to save tokens).
+    - [ ] Blog posts for tools 1, 2 and 4 (FAQ, product and Organization generators). Tool 3's post,
+      "What ChatGPT sees when it reads your homepage", went up on 23 Oct.
+    - Marketing add-on and monthly marketing plan prices: final answer "quoted on a call" (Rigan,
+      23 Oct). No figures on the site.
     - Dropped 2026-10-23 (Rigan): tool 5, the llms.txt generator. Writing a site's llms.txt is
       part of the work clients pay us for; a free generator would hand it out. It stays in
       `docs/tools-plan.md` as history, struck through.
