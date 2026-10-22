@@ -27,7 +27,7 @@ function Label() {
 
 function Cta({ product }: { product: Product }) {
   const style = { background: product.palette.accent, color: product.palette.onAccent }
-  const cls = `${styles.cta} ${product.light ? styles.ctaBrutal : ''}`
+  const cls = `${styles.cta} ${product.brutal ? styles.ctaBrutal : ''}`
   return product.url ? (
     <a className={cls} style={style} href={product.url} target="_blank" rel="noopener">
       {product.cta}

@@ -34,7 +34,8 @@
   transition: transform 0.2s;
 }
 a.cta:hover { transform: translateY(-2px); }
-.ctaBrutal { border: 2.5px solid #1A1410; box-shadow: 3px 3px 0 #1A1410; }
+/* Mehfil's neobrutal button, after dark: an ink border and a hard terracotta shadow. */
+.ctaBrutal { border: 2.5px solid #1C120B; box-shadow: 4px 4px 0 #B93E29; }
 
 /* ---------- Hand-over (full): --bg and --fg are tweened from scroll ---------- */
 .handover {

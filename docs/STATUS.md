@@ -257,6 +257,12 @@ Content (placeholders are in the design until these arrive):
     row stays on screens 1520 px and up; phones keep the panel. Fixes: the wheel no longer scrolls
     the page behind any menu (`data-lenis-prevent`), and `scrollbar-gutter: stable` on html stops the
     page shifting sideways when a menu or the film dialog locks scrolling.
+  - [x] Mehfil slide after dark and footer rework (2026-10-23, Rigan): the Mehfil product slide uses a
+    dark version of Mehfil's palette (ink stage, cream text, saffron action, terracotta hard shadows),
+    so the nav stays dark over it (`light: false`, new `brutal` flag in `products.ts`). Footer: the
+    whole-launch line, an email with a faint rest line and a lime underline that draws on hover plus a
+    copy chip, link lists where a lime slash slides in on hover and external arrows lift, a call pill,
+    films added to "elsewhere", and a lifting back-to-top arrow.
   - [x] The rest of the reframe (2026-10-23, Rigan), one commit each: "3D" reads "3D experiences"
     everywhere; the hero sub line runs two lines on desktop; services grouped as design, build and
     market, with 3D experiences and the configurator demo moved to second, under build (beats shifted,

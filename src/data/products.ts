@@ -20,8 +20,11 @@ export type Product = {
   // How search engines should read it: an app, or a service sold as a partnership.
   kind: 'app' | 'service'
   palette: ProductPalette
-  // The nav switches to its light palette over this product (Mehfil's cream).
+  // The nav switches to its light palette over this product. None do now: Mehfil shows in a dark
+  // version of its own palette (Rigan, 2026-10-23: the cream slide was a flashbang).
   light: boolean
+  // Neobrutal call to action: a hard border and offset shadow, as in Mehfil's own design.
+  brutal: boolean
 }
 
 // Copy comes from each product's landing page (spec 6.04), except Mehfil's pitch, which is
@@ -40,6 +43,7 @@ export const products: Product[] = [
     kind: 'service',
     palette: { bg: '#0D1815', fg: '#EEF3F0', accent: '#5FD9A8', onAccent: '#06251A' },
     light: false,
+    brutal: false,
   },
   {
     id: 'rigseed',
@@ -54,6 +58,7 @@ export const products: Product[] = [
     kind: 'app',
     palette: { bg: '#0E1318', fg: '#E6EDF3', accent: '#8FB0CB', onAccent: '#0E1318' },
     light: false,
+    brutal: false,
   },
   {
     id: 'riggit',
@@ -68,6 +73,7 @@ export const products: Product[] = [
     kind: 'app',
     palette: { bg: '#08120E', fg: '#E7F5EE', accent: '#34D399', onAccent: '#08120E' },
     light: false,
+    brutal: false,
   },
   {
     id: 'mehfil',
@@ -80,7 +86,10 @@ export const products: Product[] = [
     url: 'https://mehfil.verastack.dev/',
     status: 'coming-soon',
     kind: 'app',
-    palette: { bg: '#F4EBDA', fg: '#1A1410', accent: '#B93E29', onAccent: '#F4EBDA' },
-    light: true,
+    // Mehfil after dark: its ink as the stage, its cream as text and its saffron as the action, the way
+    // its own dark header bar uses them. Cream on this ink is about 13:1.
+    palette: { bg: '#1E1510', fg: '#E8DCC8', accent: '#E8A33D', onAccent: '#1C120B' },
+    light: false,
+    brutal: true,
   },
 ]
