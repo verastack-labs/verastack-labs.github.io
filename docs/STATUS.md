@@ -240,9 +240,12 @@ Content (placeholders are in the design until these arrive):
       for the page first, then Organization JSON-LD (logo, founding year, place, founders, contact,
       de-duplicated sameAs links with the platform recognised); 53% of 379 homepages have it missing
       or unlinked, 39% none.
-    - [ ] 5 to 8: llms.txt generator, meta description tester, link preview checker, AI crawler
-      checker (order and numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of
-      tools 1 to 3 has one yet ("What ChatGPT sees" first).
+    - [ ] 6 to 8: meta description tester, link preview checker, AI crawler checker (order and
+      numbers in `docs/tools-plan.md`). Each tool also needs its blog post; none of tools 1 to 4 has
+      one yet ("What ChatGPT sees" first).
+    - Dropped 2026-10-23 (Rigan): tool 5, the llms.txt generator. Writing a site's llms.txt is
+      part of the work clients pay us for; a free generator would hand it out. It stays in
+      `docs/tools-plan.md` as history, struck through.
   - [x] Full-screen desktop menu (2026-10-22, Rigan): from 900 px up, the nav pill (home) and the page
     pill (inner pages) open a full-screen menu (`src/components/nav/full-menu.tsx`, a modal dialog):
     a circle wipes open from the pill, the sections rise in big type one by one, hovering one dims the
