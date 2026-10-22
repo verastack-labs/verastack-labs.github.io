@@ -8,6 +8,7 @@ import { sections } from '@/data/sections'
 import { booking, site } from '@/data/site'
 import { studioLinks } from '@/data/studio-links'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
+import { MenuGlyphs, type GlyphHandle } from '@/components/nav/menu-glyphs'
 import styles from '@/components/nav/full-menu.module.css'
 
 // Matches the closing transition in full-menu.module.css.
@@ -45,22 +46,12 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
   const pathname = usePathname()
   const dialog = useRef<HTMLDialogElement>(null)
   const closeTimer = useRef(0)
-  const rail = useRef<HTMLDivElement>(null)
-  const railIndex = useRef<HTMLSpanElement>(null)
+  const glyphs = useRef<GlyphHandle>(null)
 
-  // The glyph rail beside the sections: it springs to line up with the link in focus or under the
-  // pointer, and rests beside the current section. Set straight on the element, no re-render.
-  const aim = useCallback((a: HTMLElement | null, i: number) => {
-    const r = rail.current
-    if (!r || !a) return
-    r.style.setProperty('--y', `${a.offsetTop + a.offsetHeight / 2}px`)
-    if (railIndex.current) railIndex.current.textContent = String(i).padStart(2, '0')
-  }, [])
-  const rest = useCallback(() => {
-    const list = rail.current?.parentElement?.querySelectorAll<HTMLElement>('ol a')
-    const i = onHome && current !== undefined ? current : 0
-    aim(list?.[i] ?? null, i)
-  }, [aim, current, onHome])
+  // The floating glyphs snap towards the link in focus or under the pointer; away from the links
+  // they go back to drifting where they were.
+  const aim = useCallback((a: HTMLElement | null, section: string | null) => glyphs.current?.aim(a, section), [])
+  const rest = useCallback(() => aim(null, null), [aim])
 
   useEffect(() => {
     const d = dialog.current
@@ -132,15 +123,9 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
         </button>
       </div>
 
+      <MenuGlyphs ref={glyphs} />
       <div className={styles.body}>
-        <nav aria-label="Home sections" className={styles.sectionsWrap} onPointerLeave={rest}>
-          <div ref={rail} className={styles.rail} aria-hidden="true">
-            <span className={styles.railSlash}>/</span>
-            <span ref={railIndex} className={styles.railIndex}>
-              00
-            </span>
-            <span className={styles.railBar} />
-          </div>
+        <nav aria-label="Home sections" onPointerLeave={rest}>
           <ol className={styles.sections}>
             {sections.map((s, i) => (
               <li key={s.id} style={{ '--i': i } as CSSProperties}>
@@ -148,8 +133,8 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
                   href={onHome ? `#${s.id === 'top' ? '' : s.id}` : s.id === 'top' ? '/' : `/#${s.id}`}
                   aria-current={onHome && current === i ? 'true' : undefined}
                   onClick={goTo(s.id)}
-                  onPointerEnter={(e) => aim(e.currentTarget, i)}
-                  onFocus={(e) => aim(e.currentTarget, i)}
+                  onPointerEnter={(e) => aim(e.currentTarget, s.id)}
+                  onFocus={(e) => aim(e.currentTarget, s.id)}
                 >
                   <small>{String(i).padStart(2, '0')}</small>
                   <span className={styles.word}>
