@@ -50,8 +50,17 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
 
   // The floating glyphs snap towards the link in focus or under the pointer; away from the links
   // they go back to drifting where they were.
-  const aim = useCallback((a: HTMLElement | null, section: string | null) => glyphs.current?.aim(a, section), [])
+  // Sweeping across several links aims only at the one the pointer settles on: each new target
+  // replaces the last before it fires, and the glyphs glide there from wherever they are.
+  const aimTimer = useRef(0)
+  const aim = useCallback((a: HTMLElement | null, section: string | null, now = false) => {
+    window.clearTimeout(aimTimer.current)
+    if (now) glyphs.current?.aim(a, section)
+    else aimTimer.current = window.setTimeout(() => glyphs.current?.aim(a, section), 70)
+  }, [])
   const rest = useCallback(() => aim(null, null), [aim])
+  // Once the entry animation has played, hover moves drop its staggered delays.
+  const readyTimer = useRef(0)
 
   useEffect(() => {
     const d = dialog.current
@@ -61,6 +70,9 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
       d.removeAttribute('data-closing')
       if (!d.open) d.showModal()
       rest()
+      d.removeAttribute('data-ready')
+      window.clearTimeout(readyTimer.current)
+      readyTimer.current = window.setTimeout(() => d.setAttribute('data-ready', ''), 900)
       lenisRef.current?.stop()
       document.documentElement.style.overflow = 'hidden'
       return
@@ -69,6 +81,8 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
     lenisRef.current?.start()
     document.documentElement.style.overflow = ''
     if (!d.open) return
+    window.clearTimeout(readyTimer.current)
+    d.removeAttribute('data-ready')
     d.setAttribute('data-closing', '')
     closeTimer.current = window.setTimeout(() => {
       d.removeAttribute('data-closing')
@@ -79,6 +93,8 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
   useEffect(
     () => () => {
       window.clearTimeout(closeTimer.current)
+      window.clearTimeout(readyTimer.current)
+      window.clearTimeout(aimTimer.current)
       lenisRef.current?.start()
       document.documentElement.style.overflow = ''
     },
@@ -134,7 +150,7 @@ export function FullMenu({ open, onClose, current, onHome }: Props) {
                   aria-current={onHome && current === i ? 'true' : undefined}
                   onClick={goTo(s.id)}
                   onPointerEnter={(e) => aim(e.currentTarget, s.id)}
-                  onFocus={(e) => aim(e.currentTarget, s.id)}
+                  onFocus={(e) => aim(e.currentTarget, s.id, true)}
                 >
                   <small>{String(i).padStart(2, '0')}</small>
                   <span className={styles.word}>
