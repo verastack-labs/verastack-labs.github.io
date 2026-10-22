@@ -74,36 +74,36 @@
   55%, 100% { background: #23915F; box-shadow: none; }
 }
 
-/* Mehfil: neobrutal borders and hard shadows */
+/* Mehfil after dark: neobrutal cream borders, warm surfaces and hard terracotta shadows. */
 .phone {
   width: 250px;
   padding: 16px 14px 18px;
-  border: 3px solid #1A1410;
+  border: 3px solid #E8DCC8;
   border-radius: 28px;
-  background: #F4EBDA;
-  box-shadow: 8px 8px 0 #1A1410;
-  color: #1A1410;
+  background: #2A1E16;
+  box-shadow: 8px 8px 0 #B93E29;
+  color: #E8DCC8;
   font-family: var(--font-display);
 }
-.phoneTop { display: flex; justify-content: space-between; margin-bottom: 14px; font: 500 10.5px var(--font-mono); }
-.event { margin-bottom: 11px; padding: 11px; border: 2.5px solid #1A1410; border-radius: 12px; background: #fff; box-shadow: 4px 4px 0 #1A1410; }
+.phoneTop { display: flex; justify-content: space-between; margin-bottom: 14px; font: 500 10.5px var(--font-mono); color: #BBA992; }
+.event { margin-bottom: 11px; padding: 11px; border: 2.5px solid #E8DCC8; border-radius: 12px; background: #36281D; box-shadow: 4px 4px 0 #120C08; }
 .event h4 { margin: 0 0 4px; font-size: 17px; font-weight: 800; letter-spacing: -0.03em; }
-.event p { margin: 0 0 8px; font: 500 10.5px var(--font-mono); color: #5B4D42; }
-.eventDim { opacity: 0.75; }
+.event p { margin: 0 0 8px; font: 500 10.5px var(--font-mono); color: #BBA992; }
+.eventDim { opacity: 0.7; }
 .eventDim p { margin: 0; }
 .who { display: flex; }
-.who b { width: 20px; height: 20px; margin-right: -5px; border: 2px solid #1A1410; border-radius: 50%; animation: pop 3.2s ease-in-out infinite; }
+.who b { width: 20px; height: 20px; margin-right: -5px; border: 2px solid #1C120B; border-radius: 50%; animation: pop 3.2s ease-in-out infinite; }
 .who b:nth-child(2) { animation-delay: 0.25s; }
 .who b:nth-child(3) { animation-delay: 0.5s; }
 @keyframes pop { 0%, 70%, 100% { transform: none; } 80% { transform: translateY(-4px); } }
 .imIn {
   display: block;
   padding: 9px;
-  border: 2.5px solid #1A1410;
+  border: 2.5px solid #1C120B;
   border-radius: 10px;
-  background: #B93E29;
-  box-shadow: 3px 3px 0 #1A1410;
-  color: #F4EBDA;
+  background: #E8A33D;
+  box-shadow: 3px 3px 0 #B93E29;
+  color: #1C120B;
   text-align: center;
   font-size: 15px;
   font-weight: 800;
