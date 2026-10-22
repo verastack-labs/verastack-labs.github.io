@@ -262,6 +262,9 @@ Content (placeholders are in the design until these arrive):
     row stays on screens 1520 px and up; phones keep the panel. Fixes: the wheel no longer scrolls
     the page behind any menu (`data-lenis-prevent`), and `scrollbar-gutter: stable` on html stops the
     page shifting sideways when a menu or the film dialog locks scrolling.
+  - [x] Films page to 100 on the AI search check (2026-10-23): /films was 88 (too little text, no
+    questions). Added "How a film gets made" (three steps) and five Questions with FAQPage data
+    (`filmSteps`, `filmQuestions` in `src/data/films.ts`), using only facts already on the site.
   - [x] Menu button (2026-10-23, Rigan): the closed nav and page pills carry a dim lime ring that
     turns full lime with a glow on hover; the old faint arrow is now a neon disc with two lines (the
     short one grows on hover, they cross into an x while a panel is open), and the pill pulses twice
