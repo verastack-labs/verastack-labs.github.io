@@ -9,6 +9,7 @@ import { formatCounter } from '@/lib/counter'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { useActiveSection } from '@/components/nav/use-active-section'
 import { useScramble } from '@/components/use-scramble'
+import { FullMenu, useFullMenu } from '@/components/nav/full-menu'
 import styles from '@/components/nav/path-pill.module.css'
 
 const IDS = sections.map((s) => s.id)
@@ -40,6 +41,9 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
   const { index, theme } = useActiveSection(IDS)
   const mode = useMotionPreference()
   const touch = usePanelMode()
+  // From 900 px up the pill opens the full-screen menu on click; the hover row stays on wide screens.
+  const wide = useFullMenu()
+  const [full, setFull] = useState(false)
   const [open, setOpen] = useState(false)
   const closeTimer = useRef(0)
   const navRef = useRef<HTMLElement>(null)
@@ -138,9 +142,16 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
             ref={pathRef}
             type="button"
             className={styles.path}
-            aria-expanded={open}
-            aria-controls={touch ? 'section-panel' : 'section-row'}
-            onClick={() => (touch ? setOpen((v) => !v) : openNow())}
+            aria-expanded={wide ? full : open}
+            aria-controls={wide ? undefined : touch ? 'section-panel' : 'section-row'}
+            aria-haspopup={wide ? 'dialog' : undefined}
+            onClick={() => {
+              if (wide) {
+                setOpen(false)
+                setFull(true)
+              } else if (touch) setOpen((v) => !v)
+              else openNow()
+            }}
           >
             <span className="sr-only">Current section: {sections[index].label}. Show all sections</span>
             <span ref={segRef} className={styles.seg} aria-hidden="true">
@@ -186,8 +197,19 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
           </ul>
         </div>
       </nav>
-      {touch && (
-        <div id="section-panel" className={`${styles.panel} ${open ? styles.panelOpen : ''}`}>
+      {wide && (
+        <FullMenu
+          open={full}
+          onClose={() => {
+            setFull(false)
+            pathRef.current?.focus({ preventScroll: true })
+          }}
+          current={index}
+          onHome
+        />
+      )}
+      {touch && !wide && (
+        <div id="section-panel" className={`${styles.panel} ${open ? styles.panelOpen : ''}`} data-lenis-prevent>
           {sections.map((s, i) => (
             <a
               key={s.id}

@@ -7,6 +7,7 @@ import { useFramed } from '@/lib/use-framed'
 import { PathPill } from '@/components/nav/path-pill'
 import { sections } from '@/data/sections'
 import { studioLinks } from '@/data/studio-links'
+import { FullMenu, useFullMenu } from '@/components/nav/full-menu'
 import styles from '@/components/nav/path-pill.module.css'
 
 // The Launch Kit button, beside Start a project on desktop; hidden on its own page.
@@ -25,9 +26,13 @@ function KitButton() {
 function PageMenu({ path, short }: { path: string; short?: string }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  // From 900 px up a click opens the full-screen menu instead of the dropdown.
+  const wide = useFullMenu()
+  const [full, setFull] = useState(false)
+  const btn = useRef<HTMLButtonElement>(null)
   const wrap = useRef<HTMLDivElement>(null)
   const timer = useRef(0)
-  const hover = () => window.matchMedia('(hover: hover) and (min-width: 641px)').matches
+  const hover = () => !wide && window.matchMedia('(hover: hover) and (min-width: 641px)').matches
 
   useEffect(() => {
     if (!open) return
@@ -57,10 +62,12 @@ function PageMenu({ path, short }: { path: string; short?: string }) {
     >
       <button
         type="button"
+        ref={btn}
         className={`${styles.pill} ${styles.pagePill} ${styles.pageMenuBtn}`}
-        aria-expanded={open}
-        aria-controls="page-menu"
-        onClick={() => setOpen((v) => !v)}
+        aria-expanded={wide ? full : open}
+        aria-controls={wide ? undefined : 'page-menu'}
+        aria-haspopup={wide ? 'dialog' : undefined}
+        onClick={() => (wide ? setFull(true) : setOpen((v) => !v))}
       >
         <span className="sr-only">Menu, on {path}. </span>
         <span className={styles.seg} aria-hidden="true">
@@ -71,7 +78,16 @@ function PageMenu({ path, short }: { path: string; short?: string }) {
           ▾
         </span>
       </button>
-      <nav id="page-menu" aria-label="Site" className={`${styles.dropdown} ${open ? styles.panelOpen : ''}`}>
+      {wide && (
+        <FullMenu
+          open={full}
+          onClose={() => {
+            setFull(false)
+            btn.current?.focus({ preventScroll: true })
+          }}
+        />
+      )}
+      <nav id="page-menu" aria-label="Site" className={`${styles.dropdown} ${open ? styles.panelOpen : ''}`} data-lenis-prevent hidden={wide || undefined}>
         <p className={styles.panelHead}>home</p>
         {sections.map((sec, i) => (
           <Link key={sec.id} href={sec.id === 'top' ? '/' : `/#${sec.id}`} tabIndex={open ? 0 : -1} onClick={close}>
