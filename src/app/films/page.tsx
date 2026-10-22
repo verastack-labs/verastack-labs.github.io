@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { FilmsGallery } from '@/app/films/gallery'
-import { allFilms, studioFilm } from '@/data/films'
+import { allFilms, filmQuestions, filmSteps, studioFilm } from '@/data/films'
 import { booking, site } from '@/data/site'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import styles from '@/app/films/films.module.css'
@@ -45,6 +45,10 @@ const graph = {
         },
       })),
     },
+    {
+      '@type': 'FAQPage',
+      mainEntity: filmQuestions.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
   ],
 }
 
@@ -64,6 +68,35 @@ export default function FilmsPage() {
       </p>
 
       <FilmsGallery />
+
+      <section className={styles.block} aria-labelledby="films-how">
+        <h2 id="films-how" className={styles.h2} data-reveal>
+          How a film <em>gets made</em>
+        </h2>
+        <ol className={styles.steps}>
+          {filmSteps.map((s, i) => (
+            <li key={s.title} data-reveal>
+              <small>{String(i + 1).padStart(2, '0')}</small>
+              <b>{s.title}</b>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className={styles.block} aria-labelledby="films-questions">
+        <h2 id="films-questions" className={styles.h2} data-reveal>
+          Questions
+        </h2>
+        <div className={styles.faq} data-reveal>
+          {filmQuestions.map((f) => (
+            <details key={f.q}>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
 
       <section className={styles.ask} data-reveal>
         <div>

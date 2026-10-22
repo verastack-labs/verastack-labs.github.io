@@ -104,3 +104,43 @@ export const films: FilmEntry[] = [
 ]
 
 export const allFilms = [studioFilm, ...films]
+
+// How a film gets made, shown under the gallery.
+export const filmSteps = [
+  {
+    title: 'A short call',
+    text: 'What is launching, who it is for and where the film will run. We leave with the one thing the film has to make people understand.',
+  },
+  {
+    title: 'Script and style',
+    text: "We write the script and storyboard, and take the look from the product itself: its colours, its type and its real screens, so the film feels like the product rather than a template.",
+  },
+  {
+    title: 'Edit and cuts',
+    text: 'We animate and edit the main film with captions, then cut versions for each feed: wide for the site and YouTube, vertical for phones, and a short loop.',
+  },
+]
+
+// Questions on the films page, shown as a list and labelled with FAQPage structured data.
+export const filmQuestions = [
+  {
+    q: 'What kind of films do you make?',
+    a: 'Launch films, product explainers and founder films, plus the cut-downs that go with them. Everything on this page was made by our team, either for our own products or, like the Bruno film, independently.',
+  },
+  {
+    q: 'Do we need a camera crew or a shoot?',
+    a: "Usually not. Our films are built from the product itself: screen captures, its interface and type, and motion graphics. If a founder wants to appear, we plan for it in the script.",
+  },
+  {
+    q: 'What do we get at the end?',
+    a: 'The main film with captions, and cuts for each place it will run: 16:9 for your site and YouTube, 9:16 for phones, and short versions for LinkedIn, X and your launch post.',
+  },
+  {
+    q: 'How long does it take?',
+    a: 'In the Launch Kit the film takes one of the four weeks: script, capture and edit, after the brand and the site are in place. A film on its own is scheduled after a short call.',
+  },
+  {
+    q: 'How do we get one?',
+    a: 'A 60-second launch film comes with the Launch Kit, alongside the brand and the site. You can also ask for a film on its own; book a 30-minute call and we will scope it with you.',
+  },
+]
