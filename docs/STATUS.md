@@ -251,14 +251,21 @@ Content (placeholders are in the design until these arrive):
   - [x] Full-screen desktop menu (2026-10-22, Rigan): from 900 px up, the nav pill (home) and the page
     pill (inner pages) open a full-screen menu (`src/components/nav/full-menu.tsx`, a modal dialog):
     a circle wipes open from the pill, the sections rise in big type one by one, hovering one dims the
-    rest and slides it right. Behind it all, faded line icons for what we do (code, video, browser,
-    3D, app, AI search, cursor, clapper, layers, mail, LinkedIn) float and bob; highlighting a link
-    snaps them towards it on a 28 px step grid and lights the icons that belong to that section in
-    neon (`src/components/nav/menu-glyphs.tsx`, replacing the first try, a slash rail). Beside them: the studio pages (current one lit), the studio film, Start a project, a call
+    rest and slides it right. A lime slash, with the section number and a short bar trailing it,
+    slides beside the highlighted word. Behind it all, faded line icons for what we do (code, video,
+    browser, 3D, app, AI search, cursor, clapper, layers, mail, LinkedIn) drift freely in 2D, shift
+    a little with the pointer, lean towards the highlighted link and light up in neon when they
+    belong to that section; a faint lime glow trails the pointer. Everything moving there runs on
+    springs in one animation loop (`src/components/nav/menu-glyphs.tsx`, `src/lib/motion/spring.ts`),
+    so a fast sweep bends smoothly to the newest link instead of restarting per link. Beside them: the studio pages (current one lit), the studio film, Start a project, a call
     and the email. Escape or close shuts it; section links scroll in place on home. The hover dock
     row stays on screens 1520 px and up; phones keep the panel. Fixes: the wheel no longer scrolls
     the page behind any menu (`data-lenis-prevent`), and `scrollbar-gutter: stable` on html stops the
     page shifting sideways when a menu or the film dialog locks scrolling.
+  - [x] Menu button (2026-10-23, Rigan): the closed nav and page pills carry a dim lime ring that
+    turns full lime with a glow on hover; the old faint arrow is now a neon disc with two lines (the
+    short one grows on hover, they cross into an x while a panel is open), and the pill pulses twice
+    after load so first-time visitors spot it.
   - [x] Meter polish (2026-10-21, Rigan): the verdict is two lines (a bold one, then a quieter one,
     so nothing wraps mid-thought), the green past the marker is dimmed less so the bands still read,
     and "N points to 100" sits above the bar's right end ("Full marks" at 100).

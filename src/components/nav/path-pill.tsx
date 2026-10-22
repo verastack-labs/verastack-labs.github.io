@@ -161,7 +161,8 @@ export function PathPill({ onTheme }: { onTheme: (theme: 'dark' | 'light') => vo
               {formatCounter(index, LAST)}
             </span>
             <span className={styles.caret} aria-hidden="true">
-              ▾
+              <i />
+              <i />
             </span>
           </button>
           <ul id="section-row" ref={rowRef} className={styles.row}>

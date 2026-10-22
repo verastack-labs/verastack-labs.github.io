@@ -15,6 +15,10 @@
   --path: var(--signal);
   --idle: var(--muted);
   --fade: rgba(11, 12, 10, 0.9);
+  /* The pill's ring: a dim lime at rest, full lime with a soft glow on hover. */
+  --ring: rgba(212, 255, 63, 0.3);
+  --ring-on: var(--signal);
+  --glow: rgba(212, 255, 63, 0.22);
   /* A soft fade so the wordmark never sits directly on a headline scrolling beneath it. */
   background: linear-gradient(to bottom, var(--fade), transparent);
   transition: color 0.35s, background 0.35s;
@@ -29,6 +33,9 @@
   --path: #b93e29;
   --idle: #5b4d42;
   --fade: rgba(244, 235, 218, 0.9);
+  --ring: rgba(26, 20, 16, 0.3);
+  --ring-on: #1a1410;
+  --glow: transparent;
 }
 .wordmark { font-weight: 800; font-size: 17px; letter-spacing: -0.04em; white-space: nowrap; padding-top: 9px; color: inherit; text-decoration: none; }
 .wordmark em { font-style: normal; color: var(--path); }
@@ -40,13 +47,14 @@
   position: relative;
   height: 42px;
   border-radius: 999px;
-  border: 1px solid var(--pill-line);
+  border: 1px solid var(--ring);
   background: var(--pill-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
-  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.35s, border-color 0.35s;
+  transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.35s, border-color 0.35s, box-shadow 0.35s;
 }
+.pill:hover, .pill:has(:focus-visible) { border-color: var(--ring-on); box-shadow: 0 0 0 3px color-mix(in srgb, var(--glow) 40%, transparent), 0 0 22px var(--glow); }
 .path {
   position: absolute;
   inset: 0 auto 0 0;
@@ -63,12 +71,36 @@
 }
 .seg { font: 500 12.5px var(--font-mono); color: var(--path); min-width: 9ch; text-align: left; }
 .count { font: 400 11px var(--font-mono); opacity: 0.55; }
+/* The menu button: a neon disc with two lines, like the close button inside the menu. The short
+   line grows on hover, and the two cross into an x while a panel is open. */
 .caret {
-  width: 28px; height: 28px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  font: 500 11px var(--font-mono);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  flex: none;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--hi);
+  color: var(--hi-ink);
+  box-shadow: 0 0 14px var(--glow);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s;
+}
+.caret i {
+  position: absolute;
+  top: 50%; left: 9px;
+  width: 12px; height: 2px; margin-top: -1px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1), width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.caret i:first-child { transform: translateY(-2.5px); }
+.caret i:last-child { width: 7px; transform: translateY(2.5px); }
+.pill:hover .caret, .pill:has(:focus-visible) .caret { transform: scale(1.08); box-shadow: 0 0 20px var(--glow); }
+.pill:hover .caret i:last-child, .pill:has(:focus-visible) .caret i:last-child { width: 12px; }
+[aria-expanded='true'] > .caret i:first-child { transform: rotate(45deg); }
+[aria-expanded='true'] > .caret i:last-child { width: 12px; transform: rotate(-45deg); }
+/* Twice after load, a lime ring pulses out of the pill so first-time visitors spot the menu. */
+.pill { animation: ping 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s 2; }
+@keyframes ping {
+  from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ring-on) 55%, transparent); }
+  to { box-shadow: 0 0 0 12px transparent; }
 }
 .row {
   position: absolute; inset: 0 auto 0 0;
@@ -136,7 +168,6 @@
 .header[data-theme='light'] .panel a small { color: #5b4d42; }
 .header[data-theme='light'] .panel a[aria-current='true'] { background: #1a1410; color: #f4ebda; }
 .header[data-theme='light'] .panel a[aria-current='true'] small { color: #f4ebda; }
-.touch.open .caret { transform: rotate(180deg); }
 .touch .path { opacity: 1; transform: none; pointer-events: auto; }
 .touch .row { display: none; }
 
@@ -203,7 +234,8 @@
 /* Pages away from home: the page pill opens the same menu as a dropdown. */
 .menuWrap { position: relative; }
 .pageMenuBtn { cursor: pointer; gap: 10px; color: inherit; font: inherit; }
-.pageMenuBtn .caret { width: 24px; height: 24px; }
+.pageMenuBtn .caret { width: 28px; height: 28px; }
+.pageMenuBtn .caret i { left: 8px; }
 .dropdown {
   position: absolute; top: 50px; left: 0; z-index: 49; width: 300px;
   border-radius: 18px; border: 1px solid var(--pill-line);
@@ -248,6 +280,11 @@
   .header { justify-content: space-between; }
   .nav { margin-left: 0; }
   .cta { margin-left: 0; }
-  .caret { width: 30px; height: 30px; font-size: 15px; }
-  .pageMenuBtn .caret { width: 28px; height: 28px; font-size: 15px; }
+  .caret { width: 32px; height: 32px; }
+  .caret i { left: 10px; }
+  .pageMenuBtn .caret { width: 30px; height: 30px; }
+  .pageMenuBtn .caret i { left: 9px; }
 }
+
+@media (prefers-reduced-motion: reduce) { .pill { animation: none; } }
+:global(html[data-motion='static']) .pill { animation: none; }
