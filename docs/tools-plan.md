@@ -17,7 +17,7 @@ SaaS, 25 software studios, 6 freshly funded startups), the share that fail or on
 | No FAQ an AI answer can quote | 80% none, 88% not passing | FAQ markup generator |
 | Nothing describing what they sell | 81% | Product and service markup generator |
 | Organization data missing or unlinked | 53% (39% none) | Organization markup generator |
-| No llms.txt | 46% (50% not passing) | llms.txt generator |
+| No llms.txt | 46% (50% not passing) | ~~llms.txt generator~~ (dropped, see below) |
 | A meta description that reads as keywords or is missing | 35% | Meta description tester |
 | Little or no text before JavaScript runs | 34% (16% fail) | "What ChatGPT sees" viewer |
 | Link previews (Open Graph) broken or partial | 18% | Link preview checker |
@@ -99,7 +99,7 @@ Ranked by how many sites have the problem, how quickly the fix shows on our chec
 | 2 | **Product and service markup generator**: describe what you sell (product, SaaS plan or service, price, who it is for), get the JSON-LD. | Browser | Half a day | 81% have nothing; pairs with 1 |
 | 3 | **"What ChatGPT sees" viewer**: enter a URL, see the page as a crawler that skips JavaScript reads it, side by side with the word count. | Worker | One day | The most visual "aha": a blank page sells itself |
 | 4 | **Organization markup generator**: name, logo, profiles, get the JSON-LD; it checks the profile links resolve. | Browser | A few hours | 53% |
-| 5 | **llms.txt generator**: enter a URL, we read the homepage and sitemap and draft the file to edit and download. | Worker | Half a day | 50% |
+| ~~5~~ | ~~**llms.txt generator**: enter a URL, we read the homepage and sitemap and draft the file to edit and download.~~ **Dropped 2026-10-23 (Rigan):** writing a site's llms.txt is part of the paid work, so a free generator would give away what clients come to us for. Kept here as history. | | | |
 | 6 | **Meta description tester**: paste or fetch, see length, the keyword-list warning, and a preview as Google and an AI answer would quote it. | Browser, optional fetch | A few hours | 35% |
 | 7 | **Link preview checker**: how a URL looks shared on LinkedIn, X and WhatsApp, and what is missing. | Worker | One day | 18%, and founders feel it on launch day |
 | 8 | **AI crawler checker**: which AI bots robots.txt lets in, and a corrected file. | Worker | Half a day | Rare (3%) but fatal when it happens |
