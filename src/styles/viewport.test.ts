@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 // dvh grows and shrinks as a phone's address bar hides and shows, shifting everything below it.
 // Page sections use svh; only dialogs, which have nothing flowing beneath them, may use dvh.
-const DIALOGS = ['src/components/offer/offer.module.css', 'src/app/tools/ai-search-check/checker.module.css']
+const DIALOGS = ['src/components/offer/offer.module.css', 'src/app/tools/ai-search-check/checker.module.css', 'src/components/nav/full-menu.module.css']
 
 function files(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
