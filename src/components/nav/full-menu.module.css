@@ -65,18 +65,17 @@
 
 .sections { margin: 0; padding: 0; list-style: none; }
 
-/* ---------- The floating glyphs behind everything ---------- */
+/* ---------- The moving layer: glyphs, the slash rail and the pointer glow ---------- */
+/* menu-glyphs.tsx moves everything here on springs every frame; CSS only fades and colours. */
 .glyphs { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .top, .body, .foot { position: relative; z-index: 1; }
 .glyph {
-  --pull: 0px;
   position: absolute;
   margin: calc(var(--size, 0px) * -0.5);
   color: var(--muted);
   opacity: 0;
-  /* A quick glide with a slight overshoot, each glyph a few ms behind the last. */
-  transform: translateY(var(--pull));
-  transition: transform 0.45s cubic-bezier(0.22, 1.15, 0.36, 1) calc(var(--k) * 8ms), opacity 0.35s ease, color 0.25s ease;
+  will-change: transform;
+  transition: opacity 0.6s ease, color 0.45s ease;
 }
 .glyph svg {
   display: block;
@@ -87,18 +86,40 @@
   stroke-width: 1.4;
   stroke-linecap: round;
   stroke-linejoin: round;
-  animation: bob var(--d) ease-in-out infinite alternate;
-  transition: filter 0.25s ease;
+  transition: filter 0.45s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@keyframes bob {
-  from { transform: translateY(-7px) rotate(-5deg); }
-  to { transform: translateY(7px) rotate(5deg); }
-}
-.menu[open]:not([data-closing]) .glyph { opacity: 0.16; transition-delay: calc(var(--k) * 8ms), calc(0.5s + var(--k) * 30ms), 0s; }
+.menu[open]:not([data-closing]) .glyph { opacity: 0.16; transition-delay: calc(0.35s + var(--k) * 40ms), 0s; }
 @starting-style { .menu[open] .glyph { opacity: 0; } }
-.menu[open]:not([data-closing]) .glyph[data-on] { opacity: 0.85; color: var(--signal); }
-.glyph[data-on] svg { filter: drop-shadow(0 0 10px rgba(212, 255, 63, 0.55)); }
-.menu[data-closing] .glyph { opacity: 0; transition-delay: 0s; }
+.menu[data-ready] .glyph { transition-delay: 0s; }
+.menu[open]:not([data-closing]) .glyph[data-on] { opacity: 0.8; color: var(--signal); }
+.glyph[data-on] svg { filter: drop-shadow(0 0 10px rgba(212, 255, 63, 0.5)); transform: scale(1.12); }
+.menu[data-closing] .glyph { opacity: 0; transition-delay: 0s; transition-duration: 0.25s; }
+
+/* The slash that marks the highlighted section, with its index and a short bar trailing it. */
+.railSlash, .railIndex, .railBar { position: absolute; top: 0; left: 0; opacity: 0; will-change: transform; transition: opacity 0.4s ease; }
+.railSlash { margin-top: -0.52em; font-weight: 800; font-size: clamp(36px, 5.4vh, 64px); line-height: 1; letter-spacing: -0.05em; color: var(--signal); text-shadow: 0 0 24px rgba(212, 255, 63, 0.35); }
+.railIndex { margin: -0.9em 0 0 0.9em; padding-left: clamp(20px, 2.6vh, 34px); font: 600 12px var(--font-mono); color: var(--signal); }
+.railBar { width: 36px; height: 2px; margin: 10px 0 0 calc(clamp(20px, 2.6vh, 34px) + 11px); border-radius: 2px; background: var(--signal); }
+.menu[open]:not([data-closing]) :is(.railSlash, .railIndex, .railBar) { opacity: 1; transition-delay: 0.55s; }
+.menu[data-ready] :is(.railSlash, .railIndex, .railBar) { transition-delay: 0s; }
+.menu[data-closing] :is(.railSlash, .railIndex, .railBar) { opacity: 0; transition-delay: 0s; transition-duration: 0.2s; }
+
+/* A faint lime glow trailing the pointer, lagging a little behind it. */
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 720px;
+  height: 720px;
+  margin: -360px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(212, 255, 63, 0.07), rgba(212, 255, 63, 0.025) 45%, transparent);
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.8s ease;
+}
+.menu[open]:not([data-closing]) .glow[data-on] { opacity: 1; }
+
 .sections a {
   display: flex;
   align-items: baseline;
@@ -133,7 +154,7 @@
 @starting-style { .menu[open] .word > span { transform: translateY(110%); } }
 .menu[data-closing] .word > span { transition-duration: 0.3s; transition-delay: 0s; }
 
-/* The hovered word slides right (the rail's slash points at it); the others dim. */
+/* The hovered word slides right (the slash follows it); the others dim. */
 .menu[open]:not([data-closing]) .sections a:hover .word > span,
 .menu[open]:not([data-closing]) .sections a:focus-visible .word > span { transform: translateX(0.55em); transition-delay: 0s; transition-duration: 0.35s; }
 .sections:has(a:hover, a:focus-visible) a:not(:hover):not(:focus-visible) { opacity: 0.28; }
@@ -230,15 +251,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glyph { transition: opacity 0.2s, color 0.2s; }
-  .glyph svg { animation: none; }
+  .glyph, .glow, .railSlash, .railIndex, .railBar { transition-duration: 0.2s; }
   .menu, .menu[data-closing] { clip-path: none; transition: opacity 0.2s; }
   .menu[data-closing] { opacity: 0; }
   .word > span, .side > *, .studio li { transform: none !important; transition: none !important; opacity: 1 !important; }
 }
 :global(html[data-motion='static']) .menu { clip-path: none; transition: none; }
-:global(html[data-motion='static']) .glyph { transition: none; }
-:global(html[data-motion='static']) .glyph svg { animation: none; }
+:global(html[data-motion='static']) .glow { display: none; }
 :global(html[data-motion='static']) .word > span,
 :global(html[data-motion='static']) .side > *,
 :global(html[data-motion='static']) .studio li { transform: none; transition: none; opacity: 1; }

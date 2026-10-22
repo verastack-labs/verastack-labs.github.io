@@ -75,7 +75,8 @@ function PageMenu({ path, short }: { path: string; short?: string }) {
           {short && <span className={styles.segShort}>{short}</span>}
         </span>
         <span className={styles.caret} aria-hidden="true">
-          ▾
+          <i />
+          <i />
         </span>
       </button>
       {wide && (
