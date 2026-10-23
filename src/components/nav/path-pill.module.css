@@ -102,35 +102,6 @@
   from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ring-on) 55%, transparent); }
   to { box-shadow: 0 0 0 12px transparent; }
 }
-.row {
-  position: absolute; inset: 0 auto 0 0;
-  display: flex; align-items: center; gap: 2px; padding: 0 4px;
-  list-style: none; margin: 0; white-space: nowrap;
-  pointer-events: none;
-}
-.row a {
-  position: relative; z-index: 1;
-  display: flex; align-items: baseline; gap: 6px;
-  padding: 8px 12px; border-radius: 999px;
-  font: 500 12px var(--font-mono); color: var(--idle); text-decoration: none;
-  opacity: 0; transform: translateY(6px);
-  transition: opacity 0.25s, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s;
-  transition-delay: calc(var(--i) * 40ms);
-}
-.row a small { font-size: 10px; opacity: 0.6; }
-.row a:hover, .row a:focus-visible { color: inherit; }
-.row a[aria-current='true'] { color: var(--hi-ink); }
-.highlight {
-  list-style: none;
-  position: absolute; top: 4px; bottom: 4px; left: 0; width: 0;
-  border-radius: 999px; background: var(--hi); opacity: 0;
-  transition: left 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s 0.1s, background 0.35s;
-}
-.open .path { opacity: 0; transform: translateX(-14px); pointer-events: none; }
-.open .row { pointer-events: auto; }
-.open .row a { opacity: 1; transform: none; }
-.open .highlight { opacity: 1; }
-
 .cta {
   flex: none; margin-left: 10px;
   background: var(--hi); color: var(--hi-ink);
@@ -139,7 +110,7 @@
 }
 .header:not([data-theme='light']) .cta { background: var(--signal); color: var(--ink); }
 
-/* Touch: the pill stays a path; a vertical panel lists every section by name. */
+/* Below 900 px: a vertical panel lists every section by name. */
 .panel {
   position: fixed; left: 14px; right: 14px; top: 66px; z-index: 49;
   border-radius: 18px; border: 1px solid var(--pill-line);
@@ -168,8 +139,6 @@
 .header[data-theme='light'] .panel a small { color: #5b4d42; }
 .header[data-theme='light'] .panel a[aria-current='true'] { background: #1a1410; color: #f4ebda; }
 .header[data-theme='light'] .panel a[aria-current='true'] small { color: #f4ebda; }
-.touch .path { opacity: 1; transform: none; pointer-events: auto; }
-.touch .row { display: none; }
 
 @media (max-width: 640px) {
   .header { padding: 14px; }
@@ -189,11 +158,9 @@
 
 /* Static motion mode: no stagger, no width or slide animation. */
 :global(html[data-motion='static']) .pill,
-:global(html[data-motion='static']) .row a,
 :global(html[data-motion='static']) .path,
 :global(html[data-motion='static']) .panel,
-:global(html[data-motion='static']) .panel a,
-:global(html[data-motion='static']) .highlight {
+:global(html[data-motion='static']) .panel a {
   transition: none;
 }
 
@@ -207,8 +174,7 @@
   .segShort { display: inline; }
 }
 
-/* The studio pages after the sections: a hairline in the row, a labelled group in the panel. */
-.divider { list-style: none; flex: none; width: 1px; height: 18px; margin: 0 6px; background: var(--pill-line); }
+/* The studio pages after the sections, as a labelled group in the panel. */
 .newDot { width: 6px; height: 6px; margin-left: 2px; border-radius: 50%; background: var(--signal); align-self: center; }
 .panelHead {
   margin: 8px 0 0; padding: 10px 14px 4px; border-top: 1px solid var(--line);
@@ -258,7 +224,7 @@
 }
 
 /* With the studio group the panel runs long: it scrolls on short phones, links sit a little
-   tighter, and on wider screens without room for the row it opens as a dropdown at the right. */
+   tighter, and from 641 px it opens as a dropdown at the right. */
 .panel, .dropdown { max-height: calc(100svh - 80px); overflow-y: auto; overscroll-behavior: contain; background: var(--ink); }
 .panel a { padding: 10px 14px; font-size: 20px; }
 @media (min-width: 641px) {
