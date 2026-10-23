@@ -130,6 +130,11 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [ ] Design work page (Rigan, 2026-10-23; next weekly session): a page for design work only (the
+  #work section shows no design), mirroring the private PDF made for a prospect the same day
+  (`proposals/design-work/` in the workspace, sources and capture script in `src/`). Same rules:
+  Rigan's portfolio labelled as his, Origan demo as screenshots with "illustrative data", no Farm
+  Advisors or concepts link, Cold Stone not shown on public pages until its site is live.
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
   token in `site.analyticsToken`. Entries also created for origan., rigseed., riggit., mehfil.,
   oinkbuns.verastack.dev and riganb.github.io; each project chat was sent its snippet.
