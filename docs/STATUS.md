@@ -135,6 +135,15 @@ Content (placeholders are in the design until these arrive):
   (`proposals/design-work/` in the workspace, sources and capture script in `src/`). Same rules:
   Rigan's portfolio labelled as his, Origan demo as screenshots with "illustrative data", no Farm
   Advisors or concepts link, Cold Stone not shown on public pages until its site is live.
+- [ ] Work architecture brainstorm (Rigan, 2026-10-23; a later week, not the next session): one
+  section, name to be decided ("x" for now), that holds our own products and client work together,
+  in up to three levels: `/x`, `/x/design`, `/x/design/rigseed` (or a longer slug such as
+  `rigseed-torrent-app`). A product could also stand alone at `/x/products/rigseed` with design and
+  dev sections that lead to `/x/design/rigseed` and `/x/dev/rigseed`. To settle: the section name
+  (and whether to say product, products, concepts or something else), how the home #work section
+  and the planned design work page fit in, which page types we commit to for consistency, and how
+  much process each page reveals (never design systems; see the design PDF rules). Use the
+  brainstorming process before any build.
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
   token in `site.analyticsToken`. Entries also created for origan., rigseed., riggit., mehfil.,
   oinkbuns.verastack.dev and riganb.github.io; each project chat was sent its snippet.
