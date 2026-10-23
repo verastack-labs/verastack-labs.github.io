@@ -46,10 +46,9 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
   time (`src/lib/structured-data.ts`).
 - **Sentence form**: the Contact enquiry, one sentence with blanks (`src/scenes/contact/`).
 - **Motion modes**: `full`, `lite` and `static` from `useMotionPreference()`.
-- **Path pill**: the nav (`src/components/nav/path-pill.tsx`). Opens into the **dock row** on hover
-  at 900 px and wider, and the **section panel** on touch or narrower screens. On desktop it starts
-  open as the dock row for 3 s after load, then folds.
-- **Panel mode**: `(hover: none), (max-width: 899px)`.
+- **Path pill**: the nav (`src/components/nav/path-pill.tsx`). A click opens the **full-screen
+  menu** at 900 px and wider, and a tap opens the **section panel** below that. Nothing opens on
+  hover (the dock row was removed on 2026-10-23).
 
 ## Waiting on Rigan
 
