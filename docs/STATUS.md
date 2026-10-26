@@ -54,6 +54,16 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
+- [ ] Paid AI search audit price (raised 2026-10-26): Rigan's idea is a $99 downloadable report
+  and a $499 complete audit, linked from the AI search check, which today says "price on request".
+  Research: `social-docs/outreach/research/aeo-audit-pricing-2026-10-26.md` (Fiverr $10 to $400,
+  agencies $500 to $5,000, tools around $99 a month; India Rs 1,999 budget to Rs 1.5 lakh and up).
+  To decide: the tiers and prices (a $99 report sits next to $29-a-month tools; $499 needs a real
+  deliverable, and $750 to $999 still undercuts agencies), a rupee price for India, "2 working
+  days" rather than "48 hours", how buyers pay from India (Razorpay international, a Stripe link or
+  a merchant of record such as Lemon Squeezy or Paddle), who writes audits and a weekly cap, the
+  refund rule, and crediting the fee against a revamp within 30 days. The free check must keep
+  giving away no more of the paid work than it does now.
 - [x] AI search check complete reports go from rigan@verastack.dev (decided 2026-10-18): the
   visitor asked for it, so it is opted-in mail and fits Brevo's terms; signed by a person, as the
   page promises. Drafted with `node workers/aeo-check/report-email.mjs <host> [first name]` (every
