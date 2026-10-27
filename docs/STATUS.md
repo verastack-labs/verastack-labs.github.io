@@ -54,10 +54,11 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Public concepts (2026-10-27, see the work and concepts routes spec): which pitch concepts go
-  public and how (Whispr teaser: public, decided 2026-10-28, named once Rohit OKs it in writing, asked
-  through the Social chat; reports such as Ginkvora stay private), whether to make our
-  own concepts on a schedule, and whether `/work` is the right section name.
+- [ ] Own concepts schedule (Rigan, 2026-10-28: "we make concepts on a schedule"): one own concept a
+  fortnight for a made-up brand in a target industry, built on Opus 5.5 or Fable, listed in the
+  gallery and on /work. The scheduled task could not be created from a chat (blocked by the
+  permission check); Rigan to allow `mcp__scheduled-tasks__create_scheduled_task` or create it.
+- [ ] Section name: "work" for now, with concepts labelled "(concept)". Open if Rigan prefers another.
 - [ ] Paid AI search audit price (raised 2026-10-26): Rigan's idea is a $99 downloadable report
   and a $499 complete audit, linked from the AI search check, which today says "price on request".
   Research: `social-docs/outreach/research/aeo-audit-pricing-2026-10-26.md` (Fiverr $10 to $400,
@@ -151,16 +152,10 @@ Content (placeholders are in the design until these arrive):
   each in its own palette and display face; concept titles end in "(concept)" and carry the Concept
   tag. Home links: "See all our work" under #work and "How we made it" on each product. Still open:
   deep dives, more shots per piece, and the section name.
-- [ ] Work, products and concepts routes (planned 2026-10-27; spec
-  `docs/superpowers/specs/2026-10-27-work-and-concepts-routes-design.md`). Replaces the 2026-10-23
-  "Design work page" and "Work architecture brainstorm" items. One `/work/` section for client work,
-  our products and concept samples, with kind views (`/work/clients/`, `/work/products/`),
-  discipline views (`/work/design/` is the design work page), one page per piece at `/work/<slug>/` and
-  optional deep dives at `/work/<slug>/<discipline>/`. concepts.verastack.dev's root becomes the
-  public gallery of samples (designs, builds, films; never reports), each also a free case study on
-  `/work/`, labelled "Concept", and own, anonymised or named (with the client's OK). Five phases: data
-  and routes, Bookwell moves to `/work/bookwell/`, design view, concepts gallery and first public
-  samples, home and nav links.
+- [x] Concepts gallery live (2026-10-28, concepts PR #16): concepts.verastack.dev's root lists the
+  public samples in `concepts/public.json` (Whispr teaser, named, no OK needed per Rigan; Bookwell,
+  our own). Only the root, `/covers/` and listed samples are indexable; Ginkvora and Farm Advisors
+  keep noindex. `gallery.mjs` refuses reports and listed pages that still carry noindex.
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
   token in `site.analyticsToken`. Entries also created for origan., rigseed., riggit., mehfil.,
   oinkbuns.verastack.dev and riganb.github.io; each project chat was sent its snippet.
