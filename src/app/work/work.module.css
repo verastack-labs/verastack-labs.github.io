@@ -1,0 +1,30 @@
+.page { max-width: 1200px; margin: 0 auto; padding: 120px 16px 96px; }
+@media (min-width: 768px) { .page { padding: 160px 40px 128px; } }
+.label { margin: 0 0 18px; font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0.02em; }
+.label em { font-style: normal; color: var(--signal); }
+.title { margin: 0 0 18px; font-weight: 800; font-variation-settings: 'opsz' 96; font-size: clamp(44px, 7vw, 92px); line-height: 0.92; letter-spacing: -0.055em; }
+.title em { font-style: normal; color: var(--signal); }
+.lede { max-width: 50ch; margin: 0 0 32px; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: var(--muted); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; }
+.filters a { padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; font: 500 12px var(--font-mono); color: var(--muted); text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.filters a:hover { color: var(--text); border-color: var(--muted); }
+.filters a[aria-current='page'] { color: var(--ink); background: var(--signal); border-color: var(--signal); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.card { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 12px 12px 22px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--text); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+.card:hover { border-color: var(--c-accent); transform: translateY(-2px); }
+.card > :not(.cover) { margin-inline: 10px; }
+.cover { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 10; margin-bottom: 8px; overflow: hidden; border-radius: 12px; background: radial-gradient(120% 90% at 30% 20%, color-mix(in srgb, var(--c-accent) 30%, var(--c-bg)), var(--c-bg)); }
+.cover img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+.word { font-weight: 800; font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.05em; color: var(--c-fg); }
+.meta { display: flex; justify-content: space-between; align-items: center; }
+.kind { font: 500 11px var(--font-mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.concept { padding: 3px 8px; border-radius: 999px; background: var(--signal); color: var(--ink); }
+.when { font: 500 11px var(--font-mono); color: var(--muted); }
+.card b { font-size: 22px; line-height: 1.15; letter-spacing: -0.03em; }
+.line { font-size: 15px; line-height: 1.55; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips span { padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; font: 500 11px var(--font-mono); color: var(--muted); }
+.go { margin-top: auto; padding-top: 10px; font-weight: 700; color: var(--signal); }
+@media (prefers-reduced-motion: reduce) { .card, .card:hover { transition: none; transform: none; } }

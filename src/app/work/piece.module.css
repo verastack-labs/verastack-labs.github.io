@@ -1,0 +1,40 @@
+/* A piece page wears the piece's own theme; the variables come from its data. */
+.page { min-height: 100vh; background: var(--p-bg); color: var(--p-fg); }
+.inner { max-width: 1120px; margin: 0 auto; padding: 120px 16px 96px; }
+@media (min-width: 768px) { .inner { padding: 160px 40px 128px; } }
+.page[data-font='sora'] .title, .page[data-font='jakarta'] .title { font-family: var(--font-piece), var(--font-body); font-variation-settings: normal; letter-spacing: -0.035em; }
+
+.crumb { margin: 0 0 28px; font: 500 11px var(--font-mono); color: var(--p-muted); }
+.crumb a { color: var(--p-fg); }
+.crumb em { font-style: normal; color: var(--p-accent); }
+
+.head { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 48px; }
+.kind { font: 500 11px var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--p-muted); }
+.concept { padding: 4px 10px; border-radius: 999px; background: var(--p-accent); color: var(--p-on-accent); }
+.title { margin: 0; max-width: 18ch; font-weight: 800; font-variation-settings: 'opsz' 96; font-size: clamp(40px, 6.4vw, 84px); line-height: 0.95; letter-spacing: -0.05em; overflow-wrap: anywhere; }
+.line { max-width: 56ch; margin: 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: var(--p-muted); }
+.credit { margin: 0; font: 500 12px var(--font-mono); color: var(--p-muted); }
+.button { display: inline-flex; align-items: center; gap: 6px; padding: 12px 20px; border-radius: 999px; background: var(--p-accent); color: var(--p-on-accent); font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+.button:hover { transform: translateY(-2px); }
+
+.cover { display: block; width: auto; max-width: 100%; height: auto; max-height: 78vh; border-radius: 20px; border: 1px solid color-mix(in srgb, var(--p-fg) 12%, transparent); }
+
+.section { margin-top: 88px; }
+.h2 { margin: 0 0 14px; font: 500 12px var(--font-mono); color: var(--p-accent); }
+.idea { max-width: 60ch; margin: 0 0 32px; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.4; letter-spacing: -0.015em; }
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; align-items: start; }
+.shot { margin: 0; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--p-fg) 12%, transparent); }
+.shot figcaption { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--p-muted); }
+.shot figcaption span { display: block; margin-top: 4px; font: 500 11px var(--font-mono); }
+
+.takes { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 96px; padding: 32px; border-radius: 24px; background: color-mix(in srgb, var(--p-fg) 6%, var(--p-bg)); border: 1px solid color-mix(in srgb, var(--p-fg) 12%, transparent); }
+.takes p { margin: 0; max-width: 60ch; font-size: 18px; line-height: 1.55; }
+.takes .h2 { font-size: 12px; }
+.takes .note { font-size: 14px; color: var(--p-muted); }
+
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 96px; padding-top: 32px; border-top: 1px solid color-mix(in srgb, var(--p-fg) 12%, transparent); }
+.pager a { display: flex; flex-direction: column; gap: 6px; color: var(--p-fg); font-weight: 700; text-decoration: none; }
+.pager a:last-child { text-align: right; align-items: flex-end; }
+.pager span { font: 500 11px var(--font-mono); color: var(--p-muted); }
+@media (prefers-reduced-motion: reduce) { .button, .button:hover { transition: none; transform: none; } }

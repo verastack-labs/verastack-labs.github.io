@@ -230,4 +230,7 @@ export const RESERVED: readonly string[] = [...facets.map((f) => f.slug), 'conce
 
 export const liveFacets = facets.filter((f) => pieces.some(f.filter))
 
+// Every slug under /work/: the filtered views first, then the piece pages.
+export const workSlugs = (): string[] => [...liveFacets.map((f) => f.slug), ...pagePieces.map((p) => p.slug)]
+
 export const conceptsGallery = 'https://concepts.verastack.dev/'

@@ -144,6 +144,13 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [x] /work section live (2026-10-28, plan `docs/superpowers/plans/2026-10-28-work-and-concepts.md`):
+  `src/data/pieces.ts` holds client work (Ultraviolette, E3, cards linking to Rigan's case studies),
+  the four products and the concepts (Whispr teaser, named; Bookwell, our own). `/work/` plus
+  `/work/clients|products|design|development|films|ai-search/` and a page per product and concept,
+  each in its own palette and display face; concept titles end in "(concept)" and carry the Concept
+  tag. Home links: "See all our work" under #work and "How we made it" on each product. Still open:
+  deep dives, more shots per piece, and the section name.
 - [ ] Work, products and concepts routes (planned 2026-10-27; spec
   `docs/superpowers/specs/2026-10-27-work-and-concepts-routes-design.md`). Replaces the 2026-10-23
   "Design work page" and "Work architecture brainstorm" items. One `/work/` section for client work,

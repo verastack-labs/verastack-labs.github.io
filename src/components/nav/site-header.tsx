@@ -138,6 +138,7 @@ export function SiteHeader() {
   if (framed) return null
   if (pathname?.startsWith('/blog')) return <PageHeader key={pathname} path="/blog" />
     if (pathname?.startsWith('/examples')) return <PageHeader key={pathname} path="/examples" />
+  if (pathname?.startsWith('/work')) return <PageHeader key={pathname} path={pathname.replace(/\/$/, '') || '/work'} short="/work" />
   if (pathname?.startsWith('/founder')) return <PageHeader key={pathname} path="/founder" />
   if (pathname?.startsWith('/film')) return <PageHeader key={pathname} path="/films" />
   if (pathname?.startsWith('/launch-kit')) return <PageHeader key={pathname} path="/launch-kit" short="/kit" />

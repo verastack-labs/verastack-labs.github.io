@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { headliners, roleLabel, type WorkEntry } from '@/data/work'
@@ -164,6 +165,9 @@ export function Work() {
       {/* The reel runs on phones too (its layout adapts in CSS); only reduced motion gets cards. */}
       {mode === 'static' ? <Cards autoplay={false} /> : <Reel />}
       <FlowingList marquee={mode === 'full'} />
+      <p className={styles.allWork}>
+        <Link href="/work/">See all our work, products and concepts →</Link>
+      </p>
     </section>
   )
 }
