@@ -25,7 +25,10 @@ to change.
 ## Goals
 
 1. One section that holds everything we make: client work, our own products and concepts.
-2. Concepts get public pages and count as work, clearly labelled as concepts.
+2. concepts.verastack.dev becomes the public home for concepts: its root lists every public sample
+   (Rigan, 2026-10-27: "can't the concepts be put on concepts?"). The concepts that are samples
+   (designs, builds, films) also appear in `/work/` as free case studies, clearly labelled as
+   concepts. Reports never go public on either site.
 3. Every piece has one address, so links in posts, PDFs and DMs never break.
 4. Cuts by discipline (design, development, films, AI search), so the design work page becomes one view
    of the section rather than a separate page.
@@ -33,7 +36,8 @@ to change.
 
 ## Non-goals
 
-- Moving concept code into this repo. Concepts keep any stack and stay deployed from the concepts repo
+- Moving concept code into this repo. Concepts keep any stack and stay deployed from the concepts repo,
+  which also hosts the public gallery
   (**my call**: building a WordPress export or a Vite app inside the Next.js site would break both
   builds). verastack.dev hosts the page *about* a concept; the concept itself runs at
   concepts.verastack.dev/<slug>/.
@@ -44,8 +48,9 @@ to change.
 
 - A concept reads as a client project or a live site. Every concept card and page says "Concept" before
   anything else, and never "client".
-- A prospect finds their own unrequested critique published under their name. Findings pages about a
-  named company are never public under that name without their written OK.
+- A report goes public. Findings, reviews and audits (Ginkvora) stay private pitch material on
+  concepts.verastack.dev, noindex and unlisted, whatever the client says (Rigan, 2026-10-27: samples
+  yes, not reports).
 - A public concept gives away paid work (full audit, fix code, the real film).
 - Design system images on any of these pages (palettes, tokens, component sheets).
 - Farm Advisors (live bid), or Cold Stone before its site is live.
@@ -59,7 +64,8 @@ it, not rival sections.
 | Route | Page type | What it shows |
 | --- | --- | --- |
 | `/work/` | Index | Everything, newest first, with two filter rows: kind (all, client, product, concept) and discipline (design, development, films, AI search) |
-| `/work/clients/`, `/work/products/`, `/work/concepts/` | Index, pre-filtered by kind | Same grid, own title and intro, indexable |
+| `/work/clients/`, `/work/products/` | Index, pre-filtered by kind | Same grid, own title and intro, indexable |
+| concepts.verastack.dev/ | Concepts gallery (in the concepts repo) | Every public sample, each opening at concepts.verastack.dev/<slug>/. `/work/?kind=concept` filters the same samples on the main site, and its intro links to the gallery |
 | `/work/design/`, `/work/development/`, `/work/films/`, `/work/ai-search/` | Index, pre-filtered by discipline | Same grid. `/work/design/` is the planned design work page |
 | `/work/<slug>/` | Piece | One page per piece, with a section per discipline it involved |
 | `/work/<slug>/<discipline>/` | Deep dive, optional | Only when a discipline has enough material to need its own page, for example `/work/rigseed/design/` |
@@ -69,7 +75,7 @@ Rigan's sketch had `/x/design/rigseed` and `/x/dev/rigseed`. **My call** is to p
 nothing has two addresses. The discipline indexes still give the "all our design" view.
 
 Rules:
-- Reserved slugs: `clients`, `products`, `concepts`, `design`, `development`, `films`, `ai-search`. A
+- Reserved slugs: `clients`, `products`, `concepts` (kept free for a later index), `design`, `development`, `films`, `ai-search`. A
   test fails if a piece uses one.
 - Slugs are short names (`rigseed`, not `rigseed-torrent-app`), lowercase, never changed once published.
 - Filter state on `/work/` lives in the URL (`?kind=concept`), but the pre-filtered routes above are what
@@ -108,9 +114,14 @@ Tests (Vitest, alongside `content.test.ts`): every concept has `concept` set, it
 "Concept", and `visibility: 'named'` needs `consent`; no reserved slugs; no duplicate slugs; Farm Advisors
 and Cold Stone never appear while excluded; every `deep` discipline has a section.
 
-## Concepts: from private pitch to public piece
+## Concepts: from private pitch to public sample
 
-Three kinds of public concept, set per concept in `concept.visibility`:
+Only samples go public: designs, builds, prototypes and film previews. Reports (findings, reviews,
+audits, score write-ups) never do; they stay private pitch pages. Each public sample lives on
+concepts.verastack.dev, listed in its gallery, and gets a free case study page at `/work/<slug>/` on the
+main site that links to it.
+
+Three kinds of public sample, set per concept in `concept.visibility`:
 
 1. **Own** (`own`): made by us for an invented or our own brand, such as Bookwell. Public by default.
 2. **Anonymised** (`anonymised`): a pitch concept with the client's name, logo, quotes and identifying
@@ -119,13 +130,18 @@ Three kinds of public concept, set per concept in `concept.visibility`:
 3. **Named** (`named`): the pitch concept as made, only with the client's written OK, recorded in
    `consent`.
 
-Findings or review pages (Ginkvora) go public only as anonymised or named. Films and design concepts
-(Whispr) can go either way. The private, noindex pitch copy keeps working at its old address for the
-client.
+Ginkvora (findings) stays private. Whispr (a teaser film, names already illustrative) can go public as
+anonymised or named. The private, noindex pitch copy keeps working at its old address for the client.
 
-Changes to the concepts repo (done in that repo, in its own PR, when the first concept goes public):
-- A public concept gets its own folder without the noindex meta tag, and `_headers` drops
-  `X-Robots-Tag` for that path only. Private folders keep both.
+Changes to the concepts repo (done in that repo, in its own PR, when the first sample goes public):
+- The root holding page becomes the gallery: a grid of public samples only (cover, title, "for
+  <industry>" or the client, what it is, month and year), in the concepts site's own neutral style,
+  with a link back to verastack.dev/work/. Private folders never appear in it.
+- A list in the repo (for example `public.json`) names the public folders; `build.mjs` builds the
+  gallery from it and a check fails the build if a listed folder still has the noindex tag or is a
+  report.
+- A public sample gets its own folder without the noindex meta tag, and `_headers` and `robots.txt`
+  allow the gallery and that path only. Private folders keep both.
 - Its banner changes from "Concept by VeraStack Labs for <client>" to "Concept by VeraStack Labs:
   <what>, <month year>", plus "for <industry>" or the client's name by visibility.
 - Public concepts are kept, not retired after the pitch.
@@ -172,16 +188,16 @@ a share image, reduced motion respected.
 3. **Design view**: `/work/design/` carries the design PDF material (rigseed, Origan demo with
    "illustrative data, not a real college", Mehfil "in development", E3 glassmorphic credit, Rigan's
    portfolio labelled his). Replaces the "Design work page" STATUS item.
-4. **First public pitch concepts**: once Rigan picks them and their visibility (see below), the concepts
-   repo PR makes them public, then this repo adds their pieces.
+4. **Concepts gallery and first public samples**: the concepts repo PR turns its root into the
+   gallery and makes the chosen samples public (see below), then this repo adds their case studies.
 5. **Home and nav links**, then a post through the Social chat.
 
 Each phase updates STATUS and runs lint, typecheck, tests and a visual check before merging.
 
 ## Waiting on Rigan
 
-- Which existing pitch concepts go public, and as what: Ginkvora (findings, so anonymised or with their
-  OK), Whispr (teaser; names already illustrative). Farm Advisors stays private while the bid is live.
+- Whether Whispr goes public, and as anonymised or named. Ginkvora is a report, so it stays private.
+  Farm Advisors stays private while the bid is live.
 - Whether to keep making `own` concepts on purpose (for example one a fortnight for an invented brand in
   a target industry), which would keep `/work/concepts/` growing without needing client OKs.
 - The section name, if `/work` doesn't sit right.
