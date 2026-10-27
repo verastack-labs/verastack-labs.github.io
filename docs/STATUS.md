@@ -55,7 +55,7 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 Content (placeholders are in the design until these arrive):
 
 - [ ] Public concepts (2026-10-27, see the work and concepts routes spec): which pitch concepts go
-  public and how (Ginkvora findings: anonymised or with their OK; Whispr teaser), whether to make our
+  public and how (Whispr teaser: anonymised or named; reports such as Ginkvora stay private), whether to make our
   own concepts on a schedule, and whether `/work` is the right section name.
 - [ ] Paid AI search audit price (raised 2026-10-26): Rigan's idea is a $99 downloadable report
   and a $499 complete audit, linked from the AI search check, which today says "price on request".
@@ -146,12 +146,13 @@ Content (placeholders are in the design until these arrive):
 - [ ] Work, products and concepts routes (planned 2026-10-27; spec
   `docs/superpowers/specs/2026-10-27-work-and-concepts-routes-design.md`). Replaces the 2026-10-23
   "Design work page" and "Work architecture brainstorm" items. One `/work/` section for client work,
-  our products and concepts, with kind views (`/work/clients/`, `/work/products/`, `/work/concepts/`),
+  our products and concept samples, with kind views (`/work/clients/`, `/work/products/`),
   discipline views (`/work/design/` is the design work page), one page per piece at `/work/<slug>/` and
-  optional deep dives at `/work/<slug>/<discipline>/`. Public concepts are labelled "Concept", run at
-  concepts.verastack.dev and are own, anonymised or named (with the client's OK). Five phases: data
-  and routes, Bookwell moves to `/work/bookwell/`, design view, first public pitch concepts, home and
-  nav links.
+  optional deep dives at `/work/<slug>/<discipline>/`. concepts.verastack.dev's root becomes the
+  public gallery of samples (designs, builds, films; never reports), each also a free case study on
+  `/work/`, labelled "Concept", and own, anonymised or named (with the client's OK). Five phases: data
+  and routes, Bookwell moves to `/work/bookwell/`, design view, concepts gallery and first public
+  samples, home and nav links.
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
   token in `site.analyticsToken`. Entries also created for origan., rigseed., riggit., mehfil.,
   oinkbuns.verastack.dev and riganb.github.io; each project chat was sent its snippet.
