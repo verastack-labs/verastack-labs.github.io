@@ -80,9 +80,13 @@ Rules:
 - Slugs are short names (`rigseed`, not `rigseed-torrent-app`), lowercase, never changed once published.
 - Filter state on `/work/` lives in the URL (`?kind=concept`), but the pre-filtered routes above are what
   we share and what search engines index.
-- `/examples/bookwell/` moves to `/work/bookwell/` as a concept. The old address stays as a page that
-  redirects (static export has no server redirects, so a meta refresh plus a canonical link, as GitHub
-  Pages allows).
+- Bookwell (amended 2026-10-28, my call): the running sample stays at `/examples/bookwell/`, the same
+  way Whispr runs at concepts.verastack.dev/whispr/, and `/work/bookwell/` is its case study. Nothing
+  moves, so no link breaks.
+- Filters are links between the static routes above, not query strings (amended 2026-10-28, my call).
+  The concept filter links to the concepts gallery.
+- Deep dives (`/work/<slug>/<discipline>/`) wait until a piece has the material; the first build ships
+  none (amended 2026-10-28).
 
 ## One data source
 
@@ -110,8 +114,8 @@ type Piece = {
 }
 ```
 
-Tests (Vitest, alongside `content.test.ts`): every concept has `concept` set, its credit starts with
-"Concept", and `visibility: 'named'` needs `consent`; no reserved slugs; no duplicate slugs; Farm Advisors
+Tests (Vitest, alongside `content.test.ts`): every concept has `concept` set and its credit starts with
+"Concept"; no reserved slugs; no duplicate slugs; Farm Advisors
 and Cold Stone never appear while excluded; every `deep` discipline has a section.
 
 ## Concepts: from private pitch to public sample
@@ -127,8 +131,9 @@ Three kinds of public sample, set per concept in `concept.visibility`:
 2. **Anonymised** (`anonymised`): a pitch concept with the client's name, logo, quotes and identifying
    facts removed, described by industry ("for a B2B sourcing marketplace"). Needs a cleaned copy in the
    concepts repo under a new slug, because the original quotes the client's own site line by line.
-3. **Named** (`named`): the pitch concept as made, only with the client's written OK, recorded in
-   `consent`.
+3. **Named** (`named`): the pitch concept as made, under the client's name. Amended 2026-10-28 by
+   Rigan: no need to wait for the client's OK; the client gets a courtesy heads-up and we take the
+   sample down the same day if they object. `consent` records the heads-up instead.
 
 Ginkvora (findings) stays private. Whispr (a teaser film, names already illustrative) can go public as
 anonymised or named. The private, noindex pitch copy keeps working at its old address for the client.
@@ -167,7 +172,12 @@ colour so they can't be mistaken. Empty filters never show (a filter with no pie
 **Deep dive** (`/work/<slug>/<discipline>/`): more screens and the thinking, in the same voice. Never the
 system behind it (no tokens, palettes or component sheets), never the paid deliverable.
 
-All pages: our house style (the concept itself keeps its own theming at concepts.verastack.dev),
+Theming (Rigan, 2026-10-28: "Ensure the individual work / concept pages follow their own theming"):
+index pages use the house style; every piece page wears that piece's own palette and display font
+(products from `products.ts`, concepts from their brand, kept dark and soft-contrast so the site header
+still reads). Concept titles carry "(concept)", for example "Whispr launch teaser (concept)".
+
+All pages:
 `CreativeWork` JSON-LD with `creator` VeraStack Labs (or Rigan as a person for pre-studio work),
 a share image, reduced motion respected.
 
@@ -194,14 +204,17 @@ a share image, reduced motion respected.
 
 Each phase updates STATUS and runs lint, typecheck, tests and a visual check before merging.
 
+## Own concepts on a schedule
+
+Rigan, 2026-10-28: we make our own concepts on a schedule. A fortnightly scheduled task builds one own
+concept for an invented brand in an industry we want clients from, as a PR in the concepts repo with
+its gallery entry and a case study entry here. Builds run on Opus 5.5 or Fable, never Sonnet.
+
 ## Waiting on Rigan
 
-- Whispr goes public (Rigan, 2026-10-28), named, once Rohit (Whispr's founder) OKs it in writing; the
-  Social chat already holds a posting ask with him. If he declines, it stays private: anonymising
-  would mean re-cutting a film built on Whispr's own brand. Ginkvora is a report, so it stays private.
-  Farm Advisors stays private while the bid is live.
-- Whether to keep making `own` concepts on purpose (for example one a fortnight for an invented brand in
-  a target industry), which would keep `/work/concepts/` growing without needing client OKs.
+- Decided 2026-10-28: Whispr goes public now under its name, with a courtesy heads-up to Rohit (sent by
+  the Social chat once the gallery is live). Ginkvora is a report, so it stays private. Farm Advisors
+  stays private while the bid is live.
 - The section name, if `/work` doesn't sit right.
 
 ## Left to the builder
