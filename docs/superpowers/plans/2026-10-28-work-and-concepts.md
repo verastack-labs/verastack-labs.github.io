@@ -78,7 +78,7 @@ Seed content (values pinned here; copy lines may be tightened but claims may not
   - `gives every page piece a section for each discipline it claims` only where `sections` is set: keys are a subset of `disciplines`.
   - `orders pieces newest first`: `date` non-increasing.
   - `liveFacets drops empty facets`.
-  - No copy string in pieces contains `—`.
+  - No copy string in pieces contains an em dash (U+2014).
 - [ ] **Step 2:** `npx vitest run src/data/pieces.test.ts` → FAIL (module missing).
 - [ ] **Step 3:** Implement `src/data/pieces.ts` with the interfaces and seed content above.
 - [ ] **Step 4:** Re-run → PASS. Then `npm test` (all green).
