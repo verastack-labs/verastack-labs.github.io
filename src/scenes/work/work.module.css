@@ -171,3 +171,7 @@ html[data-motion='static'] .artGlow { animation: none; }
   .layer .credit { text-align: left; }
   .layer .result { font-size: 15px; }
 }
+
+.allWork { margin: 0; padding: 32px 16px 0; text-align: center; font-weight: 700; }
+.allWork a { color: var(--signal); text-decoration: none; }
+.allWork a:hover { text-decoration: underline; }

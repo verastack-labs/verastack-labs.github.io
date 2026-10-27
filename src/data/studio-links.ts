@@ -2,6 +2,7 @@
 export type StudioLink = { href: string; label: string; isNew?: boolean }
 
 export const studioLinks: readonly StudioLink[] = [
+  { href: '/work', label: 'work', isNew: true },
   { href: '/launch-kit', label: 'launch kit', isNew: true },
   { href: '/tools', label: 'tools' },
   { href: '/films', label: 'films', isNew: true },

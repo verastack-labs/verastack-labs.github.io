@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -29,9 +30,14 @@ function Cta({ product }: { product: Product }) {
   const style = { background: product.palette.accent, color: product.palette.onAccent }
   const cls = `${styles.cta} ${product.brutal ? styles.ctaBrutal : ''}`
   return product.url ? (
-    <a className={cls} style={style} href={product.url} target="_blank" rel="noopener">
-      {product.cta}
-    </a>
+    <span className={styles.ctas}>
+      <a className={cls} style={style} href={product.url} target="_blank" rel="noopener">
+        {product.cta}
+      </a>
+      <Link className={styles.made} href={`/work/${product.id}/`}>
+        How we made it →
+      </Link>
+    </span>
   ) : (
     <span className={cls} style={style}>
       {product.cta}

@@ -139,3 +139,7 @@ a.cta:hover { transform: translateY(-2px); }
 /* In the card swap the shelf sits inside the section's padding, so it reaches back out to the edges. */
 .swap .mods { margin: 72px -24px -72px; }
 @media (min-width: 768px) { .swap .mods { margin: 96px -40px -96px; } }
+
+.ctas { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.made { font-weight: 700; color: inherit; opacity: 0.85; text-decoration: none; }
+.made:hover { opacity: 1; text-decoration: underline; }
