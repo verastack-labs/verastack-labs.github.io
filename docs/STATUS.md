@@ -54,6 +54,9 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
+- [ ] Public concepts (2026-10-27, see the work and concepts routes spec): which pitch concepts go
+  public and how (Ginkvora findings: anonymised or with their OK; Whispr teaser), whether to make our
+  own concepts on a schedule, and whether `/work` is the right section name.
 - [ ] Paid AI search audit price (raised 2026-10-26): Rigan's idea is a $99 downloadable report
   and a $499 complete audit, linked from the AI search check, which today says "price on request".
   Research: `social-docs/outreach/research/aeo-audit-pricing-2026-10-26.md` (Fiverr $10 to $400,
@@ -140,20 +143,15 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] Design work page (Rigan, 2026-10-23; next weekly session): a page for design work only (the
-  #work section shows no design), mirroring the private PDF made for a prospect the same day
-  (`proposals/design-work/` in the workspace, sources and capture script in `src/`). Same rules:
-  Rigan's portfolio labelled as his, Origan demo as screenshots with "illustrative data", no Farm
-  Advisors or concepts link, Cold Stone not shown on public pages until its site is live.
-- [ ] Work architecture brainstorm (Rigan, 2026-10-23; a later week, not the next session): one
-  section, name to be decided ("x" for now), that holds our own products and client work together,
-  in up to three levels: `/x`, `/x/design`, `/x/design/rigseed` (or a longer slug such as
-  `rigseed-torrent-app`). A product could also stand alone at `/x/products/rigseed` with design and
-  dev sections that lead to `/x/design/rigseed` and `/x/dev/rigseed`. To settle: the section name
-  (and whether to say product, products, concepts or something else), how the home #work section
-  and the planned design work page fit in, which page types we commit to for consistency, and how
-  much process each page reveals (never design systems; see the design PDF rules). Use the
-  brainstorming process before any build.
+- [ ] Work, products and concepts routes (planned 2026-10-27; spec
+  `docs/superpowers/specs/2026-10-27-work-and-concepts-routes-design.md`). Replaces the 2026-10-23
+  "Design work page" and "Work architecture brainstorm" items. One `/work/` section for client work,
+  our products and concepts, with kind views (`/work/clients/`, `/work/products/`, `/work/concepts/`),
+  discipline views (`/work/design/` is the design work page), one page per piece at `/work/<slug>/` and
+  optional deep dives at `/work/<slug>/<discipline>/`. Public concepts are labelled "Concept", run at
+  concepts.verastack.dev and are own, anonymised or named (with the client's OK). Five phases: data
+  and routes, Bookwell moves to `/work/bookwell/`, design view, first public pitch concepts, home and
+  nav links.
 - [x] Cloudflare Web Analytics on verastack.dev (2026-10-17): cookieless, production builds only,
   token in `site.analyticsToken`. Entries also created for origan., rigseed., riggit., mehfil.,
   oinkbuns.verastack.dev and riganb.github.io; each project chat was sent its snippet.
