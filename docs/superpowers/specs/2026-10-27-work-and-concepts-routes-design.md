@@ -196,7 +196,9 @@ Each phase updates STATUS and runs lint, typecheck, tests and a visual check bef
 
 ## Waiting on Rigan
 
-- Whether Whispr goes public, and as anonymised or named. Ginkvora is a report, so it stays private.
+- Whispr goes public (Rigan, 2026-10-28), named, once Rohit (Whispr's founder) OKs it in writing; the
+  Social chat already holds a posting ask with him. If he declines, it stays private: anonymising
+  would mean re-cutting a film built on Whispr's own brand. Ginkvora is a report, so it stays private.
   Farm Advisors stays private while the bid is live.
 - Whether to keep making `own` concepts on purpose (for example one a fortnight for an invented brand in
   a target industry), which would keep `/work/concepts/` growing without needing client OKs.

@@ -55,7 +55,8 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 Content (placeholders are in the design until these arrive):
 
 - [ ] Public concepts (2026-10-27, see the work and concepts routes spec): which pitch concepts go
-  public and how (Whispr teaser: anonymised or named; reports such as Ginkvora stay private), whether to make our
+  public and how (Whispr teaser: public, decided 2026-10-28, named once Rohit OKs it in writing, asked
+  through the Social chat; reports such as Ginkvora stay private), whether to make our
   own concepts on a schedule, and whether `/work` is the right section name.
 - [ ] Paid AI search audit price (raised 2026-10-26): Rigan's idea is a $99 downloadable report
   and a $499 complete audit, linked from the AI search check, which today says "price on request".
