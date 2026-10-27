@@ -132,8 +132,9 @@ Three kinds of public sample, set per concept in `concept.visibility`:
    facts removed, described by industry ("for a B2B sourcing marketplace"). Needs a cleaned copy in the
    concepts repo under a new slug, because the original quotes the client's own site line by line.
 3. **Named** (`named`): the pitch concept as made, under the client's name. Amended 2026-10-28 by
-   Rigan: no need to wait for the client's OK; the client gets a courtesy heads-up and we take the
-   sample down the same day if they object. `consent` records the heads-up instead.
+   Rigan: no need to wait for the client's OK. The client is not told unless Rigan explicitly
+   approves a heads-up; if they object, we take the sample down the same day. `consent` records
+   what was decided.
 
 Ginkvora (findings) stays private. Whispr (a teaser film, names already illustrative) can go public as
 anonymised or named. The private, noindex pitch copy keeps working at its old address for the client.
@@ -212,8 +213,8 @@ its gallery entry and a case study entry here. Builds run on Opus 5.5 or Fable, 
 
 ## Waiting on Rigan
 
-- Decided 2026-10-28: Whispr goes public now under its name, with a courtesy heads-up to Rohit (sent by
-  the Social chat once the gallery is live). Ginkvora is a report, so it stays private. Farm Advisors
+- Decided 2026-10-28: Whispr goes public now under its name, with no heads-up to Rohit unless
+  Rigan explicitly approves one. Ginkvora is a report, so it stays private. Farm Advisors
   stays private while the bid is live.
 - The section name, if `/work` doesn't sit right.
 

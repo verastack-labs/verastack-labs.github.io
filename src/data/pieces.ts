@@ -42,7 +42,8 @@ export type Piece = {
     // The client's name when named, an industry when anonymised, a made-up brand when our own.
     for: string
     visibility: 'own' | 'anonymised' | 'named'
-    // For named samples: the heads-up the client got (Rigan, 2026-10-28: no OK needed).
+    // For named samples: what the client was told, if anything. A heads-up needs Rigan's OK first.
+    // (Rigan, 2026-10-28: no client OK needed to publish.)
     consent?: string
     // What the paid version adds. No prices.
     takes: string
@@ -137,7 +138,7 @@ const unsorted: Piece[] = [
     concept: {
       for: 'Whispr',
       visibility: 'named',
-      consent: 'A heads-up to the founder once the gallery went live; we take it down the same day if they ask (Rigan, 2026-10-28).',
+      consent: 'Published without asking (Rigan, 2026-10-28); no heads-up unless Rigan approves one; taken down the same day if they object.',
       takes: 'The finished film: licensed music, a voiceover if you want one, cut-downs for every platform and a 4K master.',
     },
   },
