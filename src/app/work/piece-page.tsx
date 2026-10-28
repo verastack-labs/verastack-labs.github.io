@@ -4,11 +4,13 @@ import { disciplineLabel, kindLabel, pagePieces, type Piece } from '@/data/piece
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { site } from '@/data/site'
 import { pieceFont } from '@/app/work/fonts'
+import { PieceMotifArt } from '@/app/work/piece-motif'
 import styles from '@/app/work/piece.module.css'
 
 const month = (date: string) => new Date(`${date}-01T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })
 
-// One piece of work, dressed in its own theme: its palette and, where it has one, its display face.
+// One piece of work, dressed in its own theme: its palette, its faces, its shape and a drawing from
+// its own world.
 export function PiecePage({ piece }: { piece: Piece }) {
   const { theme } = piece
   const vars = {
@@ -43,34 +45,62 @@ export function PiecePage({ piece }: { piece: Piece }) {
   // The cover already shows above, so a section never repeats it.
   const sections = piece.disciplines.flatMap((d) => {
     const s = piece.sections?.[d]
-    return s ? [{ d, idea: s.idea, shots: s.shots.filter((x) => x.src !== piece.cover) }] : []
+    return s ? [{ d, idea: s.idea, strip: s.strip, shots: s.shots.filter((x) => x.src !== piece.cover) }] : []
   })
 
   return (
-    <main id="main" className={`${styles.page} ${pieceFont(theme.font)}`} style={vars} data-font={theme.font}>
+    <main
+      id="main"
+      className={`${styles.page} ${pieceFont(theme.font, theme.mono)}`}
+      style={vars}
+      data-font={theme.font}
+      data-mono={theme.mono ?? 'house'}
+      data-shape={theme.shape ?? 'soft'}
+    >
       <span id="top" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(graph) }} />
       <div className={styles.inner}>
         <p className={styles.crumb}>
           <Link href="/work/">/work</Link> <em>{'//'}</em> {piece.disciplines.map((d) => disciplineLabel[d]).join(' · ')}
         </p>
-        <header className={styles.head}>
-          <span className={piece.kind === 'concept' ? `${styles.kind} ${styles.concept}` : styles.kind}>{kindLabel[piece.kind]}</span>
-          <h1 className={styles.title}>{piece.title}</h1>
-          <p className={styles.line}>{piece.line}</p>
-          <p className={styles.credit}>
-            {piece.credit}
-            {piece.concept && piece.concept.visibility !== 'named' ? ` · for ${piece.concept.for}` : ''} · {month(piece.date)}
-          </p>
-          {piece.external && external && (
-            <a className={styles.button} href={external} {...(external.startsWith('/') ? {} : { target: '_blank', rel: 'noreferrer' })}>
-              {piece.external.label} {external.startsWith('/') ? '→' : '↗'}
-            </a>
-          )}
-        </header>
+        <div className={styles.hero}>
+          <header className={styles.head}>
+            <span className={piece.kind === 'concept' ? `${styles.kind} ${styles.concept}` : styles.kind}>{kindLabel[piece.kind]}</span>
+            <h1 className={styles.title}>{piece.title}</h1>
+            <p className={styles.line}>{piece.line}</p>
+            <p className={styles.credit}>
+              {piece.credit}
+              {piece.concept && piece.concept.visibility !== 'named' ? ` · for ${piece.concept.for}` : ''} · {month(piece.date)}
+            </p>
+            {piece.external && external && (
+              <a className={styles.button} href={external} {...(external.startsWith('/') ? {} : { target: '_blank', rel: 'noreferrer' })}>
+                {piece.external.label} {external.startsWith('/') ? '→' : '↗'}
+              </a>
+            )}
+          </header>
+          {theme.motif && <PieceMotifArt motif={theme.motif} />}
+        </div>
+        {piece.facts && (
+          <dl className={styles.facts}>
+            {piece.facts.map((f) => (
+              <div key={f.label}>
+                <dt>{f.label}</dt>
+                <dd>{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
         {piece.cover && (
           // eslint-disable-next-line @next/next/no-img-element
           <img className={styles.cover} src={piece.cover} alt={`${piece.title}, cover`} />
+        )}
+        {piece.brief && (
+          <section className={styles.brief} aria-labelledby="s-brief">
+            <h2 id="s-brief" className={styles.h2}>
+              /the brief
+            </h2>
+            <p>{piece.brief}</p>
+          </section>
         )}
         {sections.map((s) => (
           <section key={s.d} className={styles.section} aria-labelledby={`s-${s.d}`}>
@@ -79,7 +109,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
             </h2>
             <p className={styles.idea}>{s.idea}</p>
             {s.shots.length > 0 && (
-              <div className={styles.shots} data-count={s.shots.length}>
+              <div className={s.strip ? styles.strip : styles.shots} data-count={s.shots.length}>
                 {s.shots.map((sh) => (
                   <figure key={sh.src} className={styles.shot}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -94,6 +124,18 @@ export function PiecePage({ piece }: { piece: Piece }) {
             )}
           </section>
         ))}
+        {piece.details && (
+          <section className={styles.details} aria-labelledby="s-details">
+            <h2 id="s-details" className={styles.h2}>
+              /small things
+            </h2>
+            <ol>
+              {piece.details.map((d) => (
+                <li key={d}>{d}</li>
+              ))}
+            </ol>
+          </section>
+        )}
         {piece.concept && (
           <aside className={styles.takes} aria-label="What the full version takes">
             <p className={styles.h2}>/what the full version takes</p>

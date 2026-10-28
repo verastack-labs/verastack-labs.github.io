@@ -146,7 +146,11 @@ Content (placeholders are in the design until these arrive):
   `/work/clients|products|design|development|films|ai-search/` and a page per product and concept,
   each in its own palette and display face; concept titles end in "(concept)" and carry the Concept
   tag. Home links: "See all our work" under #work and "How we made it" on each product. Still open:
-  deep dives and more shots per piece.
+  deep dives.
+- [x] Richer piece pages (2026-10-28, Rigan: "more theming and content"): each piece page now uses its
+  brand's own faces, a shape (soft, card, sheet, brutal) and a hero drawing from its world, plus a
+  facts row, "/the brief", "/small things" and 13 new screens captured from the live sites (Whispr
+  shows all seven frames in a strip).
 - [x] Section names settled (2026-10-28, Rigan): the section stays "Work" at /work, and the concepts
   gallery is the "Lab" (the /work filter reads "Lab ↗"; `lab` is reserved for a later /work/lab/).
 - [x] Own concepts schedule (2026-10-28): scheduled task `own-concept-fortnightly` (Thursdays 11:00,
