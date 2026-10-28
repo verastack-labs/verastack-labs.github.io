@@ -84,7 +84,8 @@ Rules:
   way Whispr runs at concepts.verastack.dev/whispr/, and `/work/bookwell/` is its case study. Nothing
   moves, so no link breaks.
 - Filters are links between the static routes above, not query strings (amended 2026-10-28, my call).
-  The concept filter links to the concepts gallery.
+  The concept filter links to the concepts gallery. It is labelled "Lab" (Rigan, 28 Oct 2026): the
+  gallery is the studio's Lab, while pieces keep the "(concept)" title suffix and Concept tag.
 - Deep dives (`/work/<slug>/<discipline>/`) wait until a piece has the material; the first build ships
   none (amended 2026-10-28).
 

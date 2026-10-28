@@ -54,11 +54,6 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Own concepts schedule (Rigan, 2026-10-28: "we make concepts on a schedule"): one own concept a
-  fortnight for a made-up brand in a target industry, built on Opus 5.5 or Fable, listed in the
-  gallery and on /work. The scheduled task could not be created from a chat (blocked by the
-  permission check); Rigan to allow `mcp__scheduled-tasks__create_scheduled_task` or create it.
-- [ ] Section name: "work" for now, with concepts labelled "(concept)". Open if Rigan prefers another.
 - [ ] Paid AI search audit price (raised 2026-10-26): Rigan's idea is a $99 downloadable report
   and a $499 complete audit, linked from the AI search check, which today says "price on request".
   Research: `social-docs/outreach/research/aeo-audit-pricing-2026-10-26.md` (Fiverr $10 to $400,
@@ -151,7 +146,12 @@ Content (placeholders are in the design until these arrive):
   `/work/clients|products|design|development|films|ai-search/` and a page per product and concept,
   each in its own palette and display face; concept titles end in "(concept)" and carry the Concept
   tag. Home links: "See all our work" under #work and "How we made it" on each product. Still open:
-  deep dives, more shots per piece, and the section name.
+  deep dives and more shots per piece.
+- [x] Section names settled (2026-10-28, Rigan): the section stays "Work" at /work, and the concepts
+  gallery is the "Lab" (the /work filter reads "Lab ↗"; `lab` is reserved for a later /work/lab/).
+- [x] Own concepts schedule (2026-10-28): scheduled task `own-concept-fortnightly` (Thursdays 11:00,
+  builds only when 12+ days since the last own concept, from 12 Nov). Built on Opus 5.5 or Fable;
+  every concept tries something new (logged in `concepts/EXPERIMENTS.md`); no posting for now.
 - [x] Concepts gallery live (2026-10-28, concepts PR #16): concepts.verastack.dev's root lists the
   public samples in `concepts/public.json` (Whispr teaser, named, no OK needed per Rigan; Bookwell,
   our own). Only the root, `/covers/` and listed samples are indexable; Ginkvora and Farm Advisors

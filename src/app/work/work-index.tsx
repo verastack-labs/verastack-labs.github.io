@@ -42,7 +42,7 @@ export function WorkIndex({ title, name, lede, path, items, active }: Props) {
           </Link>
         ))}
         <a href={conceptsGallery} target="_blank" rel="noreferrer">
-          Concepts ↗
+          Lab ↗
         </a>
       </nav>
       <ul className={styles.grid}>
