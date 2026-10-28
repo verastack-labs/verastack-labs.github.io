@@ -11,6 +11,7 @@ describe('pieces', () => {
     expect(new Set(slugs).size).toBe(slugs.length)
     for (const s of slugs) expect(RESERVED).not.toContain(s)
     for (const f of facets) expect(RESERVED).toContain(f.slug)
+    expect(RESERVED).toContain('lab')
     expect(RESERVED).toContain('concepts')
   })
 

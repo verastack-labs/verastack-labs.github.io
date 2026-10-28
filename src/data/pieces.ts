@@ -226,8 +226,9 @@ export const facets: Facet[] = [
   { slug: 'ai-search', label: 'AI search', title: 'AI search', lede: 'Pages written and built to be read well by search engines and AI answers.', filter: (p) => p.disciplines.includes('ai-search') },
 ]
 
-// `concepts` stays free for a later index; the gallery lives at concepts.verastack.dev for now.
-export const RESERVED: readonly string[] = [...facets.map((f) => f.slug), 'concepts']
+// `lab` and `concepts` stay free for a later index; the Lab (the concepts gallery) lives at
+// concepts.verastack.dev for now (named the Lab by Rigan, 28 Oct 2026).
+export const RESERVED: readonly string[] = [...facets.map((f) => f.slug), 'lab', 'concepts']
 
 export const liveFacets = facets.filter((f) => pieces.some(f.filter))
 
