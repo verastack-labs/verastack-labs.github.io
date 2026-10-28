@@ -179,6 +179,22 @@ index pages use the house style; every piece page wears that piece's own palette
 (products from `products.ts`, concepts from their brand, kept dark and soft-contrast so the site header
 still reads). Concept titles carry "(concept)", for example "Whispr launch teaser (concept)".
 
+Deeper theming and content (Rigan, 2026-10-28: "Individual work pages can have more theming and
+content"). Each piece page also takes:
+
+- **Its brand's faces:** a page face and a mono face (Origan: Archivo and Azeret Mono; rigseed: Inter
+  and JetBrains Mono; Riggit: Geist and Geist Mono; Mehfil: Space Grotesk; Whispr: Plus Jakarta Sans;
+  Bookwell: Sora), loaded only on that page.
+- **A shape:** soft, card, sheet (Origan's drawing-sheet hairlines, square corners) or brutal
+  (Mehfil's ink border and hard offset shadow), applied to frames, buttons and the concept box.
+- **A hero drawing from its own world** (`piece-motif.tsx`): Whispr's messages with a typing caret,
+  Bookwell's booking slots, Mehfil's pinned notice with tear-off tabs, Origan's contours and
+  triangulation stations, Riggit's commit graph with its filled-in weeks, rigseed's speed graph.
+  Decoration only, hidden from screen readers, still under reduced motion.
+- **More content:** a facts row (platform, stack, status; never prices), "/the brief" (what the piece
+  had to do), more finished screens (film frames in a sideways strip), and "/small things" (three or
+  four craft details, each true to the product's own docs). Riggit copy never names its mechanism.
+
 All pages:
 `CreativeWork` JSON-LD with `creator` VeraStack Labs (or Rigan as a person for pre-studio work),
 a share image, reduced motion respected.

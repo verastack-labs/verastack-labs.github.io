@@ -60,6 +60,19 @@ describe('pieces', () => {
     }
   })
 
+  it('gives every page piece a brief, facts, small things and a motif', () => {
+    for (const p of pagePieces) {
+      expect(p.brief, p.slug).toBeTruthy()
+      expect(p.facts?.length, p.slug).toBeGreaterThanOrEqual(3)
+      expect(p.details?.length, p.slug).toBeGreaterThanOrEqual(3)
+      expect(p.theme.motif, p.slug).toBeDefined()
+    }
+  })
+
+  it('keeps prices off concept pages', () => {
+    for (const p of pieces.filter((x) => x.kind === 'concept')) expect(JSON.stringify(p), p.slug).not.toMatch(/[₹$€£]\s?\d/)
+  })
+
   it('orders pieces newest first', () => {
     for (let i = 1; i < pieces.length; i++) expect(pieces[i - 1].date >= pieces[i].date).toBe(true)
   })
