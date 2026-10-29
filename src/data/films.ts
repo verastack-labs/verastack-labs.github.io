@@ -14,6 +14,8 @@ export type FilmEntry = {
   poster: string
   captions: string
   formats: string[]
+  // Vertical films play in a tall player and sit on a blurred backdrop in the grid.
+  portrait?: boolean
   // Seconds into the film where the card's hover preview starts.
   previewAt: number
   note?: string
@@ -50,6 +52,42 @@ export const studioFilm: FilmEntry = {
 }
 
 export const films: FilmEntry[] = [
+  {
+    // An unofficial film, not made with or for the Hallmark team; the note says so.
+    id: 'hallmark-launch',
+    title: 'Hallmark film (unofficial)',
+    line: 'An unofficial launch film for Hallmark v2, the open-source design skill that stops AI-made sites all looking the same.',
+    length: '0:28',
+    duration: 'PT28S',
+    src: '/films/hallmark-launch.mp4',
+    poster: '/films/hallmark-launch.jpg',
+    captions: '/films/hallmark-launch.vtt',
+    formats: ['16:9'],
+    previewAt: 15,
+    note: 'Made on our own, not for or with the Hallmark team; Hallmark and its marks belong to their owners. Music: “Energetic Upbeat Future Bass” by prettyjohn1, via Pixabay.',
+    chapters: [
+      { at: 0, label: 'Hook' },
+      { at: 3.7, label: 'Key message' },
+      { at: 14, label: 'Example' },
+      { at: 24, label: 'Outro' },
+    ],
+    uploaded: '2026-10-29',
+  },
+  {
+    id: 'whispr-teaser',
+    title: 'Whispr teaser (concept)',
+    line: 'A 15-second concept for a conversation-first social app where you meet minds first: the profile photo is the words he wrote.',
+    length: '0:15',
+    duration: 'PT15S',
+    src: '/films/whispr-teaser.mp4',
+    poster: '/films/whispr-teaser.jpg',
+    captions: '/films/whispr-teaser.vtt',
+    formats: ['9:16'],
+    portrait: true,
+    previewAt: 8,
+    note: 'A concept by VeraStack Labs, not commissioned by or affiliated with Whispr; Whispr and its marks belong to their owner. Names and messages are placeholders. Music: “Love Books” by ProducesPlatinum, via Pixabay.',
+    uploaded: '2026-10-27',
+  },
   {
     id: 'rigseed-launch',
     title: 'rigseed launch film',
@@ -128,7 +166,7 @@ export const filmSteps = [
 export const filmQuestions = [
   {
     q: 'What kind of films do you make?',
-    a: 'Launch films, product explainers and founder films, plus the cut-downs that go with them. Everything on this page was made by our team, either for our own products or, like the Bruno film, independently.',
+    a: 'Launch films, product explainers and founder films, plus the cut-downs that go with them. Everything on this page was made by our team: for our own products, independently like the Bruno and Hallmark films, or as concepts like the Whispr teaser.',
   },
   {
     q: 'Do we need a camera crew or a shoot?',

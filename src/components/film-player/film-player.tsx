@@ -13,6 +13,8 @@ type Props = {
   // Start playing as soon as it mounts: only after a click (a film picked from the grid, a poster
   // pressed), so the browser allows sound.
   autoPlay?: boolean
+  // A vertical film: a 9:16 frame, as tall as the screen allows.
+  portrait?: boolean
 }
 
 const time = (s: number) => {
@@ -50,7 +52,7 @@ const IDLE_MS = 2200
 // Keyboard: f full screen (and back), m mute, c captions and k play or pause work anywhere on the page
 // for the player last used; space and the arrows (5 s) work while focus is inside the player. Every
 // control is a real button or range input with a label.
-export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }: Props) {
+export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay, portrait }: Props) {
   const wrap = useRef<HTMLDivElement>(null)
   const video = useRef<HTMLVideoElement>(null)
   const idle = useRef<number | undefined>(undefined)
@@ -189,6 +191,7 @@ export function FilmPlayer({ src, poster, captions, title, chapters, autoPlay }:
         data-playing={playing || undefined}
         data-controls={showControls || undefined}
         data-full={full || undefined}
+        data-portrait={portrait || undefined}
         onPointerMove={wake}
         onPointerDown={() => {
           claim()

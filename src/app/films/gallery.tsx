@@ -31,11 +31,12 @@ function Card({ film, onPick }: { film: FilmEntry; onPick: (f: FilmEntry) => voi
   }
 
   return (
-    <li className={styles.card} data-hot={hot || undefined}>
+    <li className={styles.card} data-hot={hot || undefined} data-portrait={film.portrait || undefined}>
       <button type="button" className={styles.cardButton} onClick={() => onPick(film)} onPointerEnter={start} onPointerLeave={stop} onFocus={start} onBlur={stop}>
         <span className={styles.thumb}>
+          {film.portrait && <span className={styles.backdrop} style={{ backgroundImage: `url(${film.poster})` }} aria-hidden="true" />}
           {/* eslint-disable-next-line @next/next/no-img-element -- static export, no image optimiser */}
-          <img src={film.poster} alt="" width={1280} height={720} loading="lazy" decoding="async" />
+          <img src={film.poster} alt="" width={film.portrait ? 720 : 1280} height={film.portrait ? 1280 : 720} loading="lazy" decoding="async" />
           <video ref={preview} muted playsInline loop preload="none" aria-hidden="true" tabIndex={-1} />
           <span className={styles.cardPlay} aria-hidden="true">
             <svg viewBox="0 0 24 24">
@@ -86,6 +87,7 @@ export function FilmsGallery() {
           title={current.title}
           chapters={current.chapters}
           autoPlay={picked}
+          portrait={current.portrait}
         />
         <div className={styles.now} key={`${current.id}-text`}>
           <div>

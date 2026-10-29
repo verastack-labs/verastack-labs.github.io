@@ -150,6 +150,11 @@ Content (placeholders are in the design until these arrive):
   each in its own palette and display face; concept titles end in "(concept)" and carry the Concept
   tag. Home links: "See all our work" under #work and "How we made it" on each product. Still open:
   deep dives.
+- [x] Two films on /films (2026-10-29, from the Video analysis chat; Rigan: every finished motion
+  film, concept or not, goes on the films page, except the experimental chat's): the Hallmark film
+  (unofficial, 16:9) and the Whispr teaser (concept, the watermarked 9:16 preview). Vertical films
+  play in a tall player and sit whole on a blurred backdrop in the grid. Ozer's film follows when
+  Rigan approves it.
 - [x] /work index motion (2026-10-29, Rigan): title breaks after the comma; cards scroll from the
   cover to a second screen on hover (`peek`, else the first non-cover shot), with a pointer-following
   gradient in the piece's accent, arrow and chip micro-animations, and rise-in on load and on scroll
