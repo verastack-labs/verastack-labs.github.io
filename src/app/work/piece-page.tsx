@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
+import { FilmPair } from '@/components/film-player/film-pair'
+import { FilmPlayer } from '@/components/film-player/film-player'
+import { allFilms } from '@/data/films'
 import { disciplineLabel, kindLabel, pagePieces, type Piece } from '@/data/pieces'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { site } from '@/data/site'
@@ -45,7 +48,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
   // The cover already shows above, so a section never repeats it.
   const sections = piece.disciplines.flatMap((d) => {
     const s = piece.sections?.[d]
-    return s ? [{ d, idea: s.idea, strip: s.strip, shots: s.shots.filter((x) => x.src !== piece.cover) }] : []
+    return s ? [{ d, idea: s.idea, strip: s.strip, film: allFilms.find((f) => f.id === s.film), shots: s.shots.filter((x) => x.src !== piece.cover) }] : []
   })
 
   return (
@@ -108,6 +111,16 @@ export function PiecePage({ piece }: { piece: Piece }) {
               /{disciplineLabel[s.d]}
             </h2>
             <p className={styles.idea}>{s.idea}</p>
+            {s.film && (
+              <div className={styles.film}>
+                {s.film.versions ? (
+                  <FilmPair versions={s.film.versions} captions={s.film.captions} title={s.film.title} />
+                ) : (
+                  <FilmPlayer src={s.film.src} poster={s.film.poster} captions={s.film.captions} title={s.film.title} portrait={s.film.portrait} />
+                )}
+                {s.film.note && <p className={styles.filmNote}>{s.film.note}</p>}
+              </div>
+            )}
             {s.shots.length > 0 && (
               <div className={s.strip ? styles.strip : styles.shots} data-count={s.shots.length}>
                 {s.shots.map((sh) => (

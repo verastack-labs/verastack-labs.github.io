@@ -3,6 +3,11 @@
 
 export type Chapter = { at: number; label: string }
 
+export type FilmCut = { src: string; poster: string }
+// A film made in light and dark, each as a vertical and a square cut. The player shows the pair side
+// by side, with a switch for the cut (and, on phones, for the version).
+export type FilmVersions = Record<'light' | 'dark', Record<'tall' | 'square', FilmCut>>
+
 export type FilmEntry = {
   id: string
   title: string
@@ -16,6 +21,7 @@ export type FilmEntry = {
   formats: string[]
   // Vertical films play in a tall player and sit on a blurred backdrop in the grid.
   portrait?: boolean
+  versions?: FilmVersions
   // Seconds into the film where the card's hover preview starts.
   previewAt: number
   note?: string
@@ -52,6 +58,36 @@ export const studioFilm: FilmEntry = {
 }
 
 export const films: FilmEntry[] = [
+  {
+    id: 'ozer-launch',
+    title: 'Ozer film (concept)',
+    line: 'A 17-second concept for a business you run from iMessage: the morning brief lands, the founder answers with a tapback and two words.',
+    length: '0:17',
+    duration: 'PT17S',
+    // The light vertical cut stands for the film in the grid preview and structured data; the card
+    // poster is light and dark split down the middle.
+    src: '/films/ozer-light-9x16.mp4',
+    poster: '/films/ozer-split.jpg',
+    captions: '/films/ozer.vtt',
+    formats: ['9:16', '1:1', 'light and dark'],
+    portrait: true,
+    versions: {
+      light: { tall: { src: '/films/ozer-light-9x16.mp4', poster: '/films/ozer-light-9x16.jpg' }, square: { src: '/films/ozer-light-1x1.mp4', poster: '/films/ozer-light-1x1.jpg' } },
+      dark: { tall: { src: '/films/ozer-dark-9x16.mp4', poster: '/films/ozer-dark-9x16.jpg' }, square: { src: '/films/ozer-dark-1x1.mp4', poster: '/films/ozer-dark-1x1.jpg' } },
+    },
+    previewAt: 4,
+    note: 'A concept by VeraStack Labs, not commissioned by or affiliated with Ozer. Ozer and its marks belong to Ozer Labs, Inc. Numbers are illustrative. Music: “Lofi Upbeat” by Kulakovka, via Pixabay.',
+    chapters: [
+      { at: 0, label: 'Morning brief' },
+      { at: 1.95, label: 'The brief' },
+      { at: 4, label: 'One tapback' },
+      { at: 5.95, label: 'Two words' },
+      { at: 8.05, label: 'By 11:40' },
+      { at: 11, label: 'Everything else' },
+      { at: 12.95, label: 'End card' },
+    ],
+    uploaded: '2026-10-29',
+  },
   {
     // An unofficial film, not made with or for the Hallmark team; the note says so.
     id: 'hallmark-launch',
@@ -166,7 +202,7 @@ export const filmSteps = [
 export const filmQuestions = [
   {
     q: 'What kind of films do you make?',
-    a: 'Launch films, product explainers and founder films, plus the cut-downs that go with them. Everything on this page was made by our team: for our own products, independently like the Bruno and Hallmark films, or as concepts like the Whispr teaser.',
+    a: 'Launch films, product explainers and founder films, plus the cut-downs that go with them. Everything on this page was made by our team: for our own products, independently like the Bruno and Hallmark films, or as concepts like the Whispr and Ozer films.',
   },
   {
     q: 'Do we need a camera crew or a shoot?',

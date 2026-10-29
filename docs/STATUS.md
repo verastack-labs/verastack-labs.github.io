@@ -54,11 +54,6 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
-- [ ] Approve the Ozer film and its layout (29 Oct 2026). It comes in light and dark, each in 9:16
-  and 1:1. Proposed: one /films entry with the light and dark 9:16 films side by side (a Light /
-  Dark switch on phones), a Vertical / Square switch for the 1:1 cuts, and a split light/dark
-  poster in the grid; /work/ozer/ opens its films section with the same pair, 1:1 cuts below as the
-  feed versions. Rendering waits on this; files then come from the Video analysis chat.
 - [ ] Registration line in the footer? VeraStack Labs is Udyam registered (29 Oct 2026,
   UDYAM-KR-03-0780546), a sole proprietorship in Rigan's name. Add "Udyam registered
   (UDYAM-KR-03-0780546)" only if Rigan wants it. Never "Pvt Ltd", "LLP" or "Inc." (none on the site).
@@ -158,8 +153,11 @@ Content (placeholders are in the design until these arrive):
 - [x] Two films on /films (2026-10-29, from the Video analysis chat; Rigan: every finished motion
   film, concept or not, goes on the films page, except the experimental chat's): the Hallmark film
   (unofficial, 16:9) and the Whispr teaser (concept, the watermarked 9:16 preview). Vertical films
-  play in a tall player and sit whole on a blurred backdrop in the grid. Ozer's film follows when
-  Rigan approves it.
+  play in a tall player and sit whole on a blurred backdrop in the grid.
+- [x] Ozer on /films and /work/ozer/ (2026-10-29, Rigan approved going live): one /films entry with
+  the light and dark 9:16 cuts side by side, a Vertical / Square switch, a Light / Dark switch on
+  phones and a split light/dark poster; /work/ozer/ in Ozer's own theme plays the same pair above the
+  seven light frames. concepts.verastack.dev/ozer/ links back to the case study.
 - [x] /work index motion (2026-10-29, Rigan): title breaks after the comma; cards scroll from the
   cover to a second screen on hover (`peek`, else the first non-cover shot), with a pointer-following
   gradient in the piece's accent, arrow and chip micro-animations, and rise-in on load and on scroll

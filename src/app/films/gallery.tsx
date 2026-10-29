@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
 import { allFilms, type FilmEntry } from '@/data/films'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
@@ -79,16 +80,20 @@ export function FilmsGallery() {
   return (
     <>
       <section ref={stage} className={styles.stage} aria-labelledby="now-title">
-        <FilmPlayer
-          key={current.id}
-          src={current.src}
-          poster={current.poster}
-          captions={current.captions}
-          title={current.title}
-          chapters={current.chapters}
-          autoPlay={picked}
-          portrait={current.portrait}
-        />
+        {current.versions ? (
+          <FilmPair key={current.id} versions={current.versions} captions={current.captions} title={current.title} autoPlay={picked} />
+        ) : (
+          <FilmPlayer
+            key={current.id}
+            src={current.src}
+            poster={current.poster}
+            captions={current.captions}
+            title={current.title}
+            chapters={current.chapters}
+            autoPlay={picked}
+            portrait={current.portrait}
+          />
+        )}
         <div className={styles.now} key={`${current.id}-text`}>
           <div>
             <h2 id="now-title" className={styles.nowTitle}>
