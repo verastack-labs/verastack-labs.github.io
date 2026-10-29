@@ -328,7 +328,7 @@ const unsorted: Piece[] = [
   }),
   productPiece('origan', '2026-10', {
     look: { font: 'archivo', mono: 'azeret', shape: 'sheet', motif: 'survey' },
-    brief: 'Most colleges prepare students for placements in the last few weeks. Origan is four years instead. The site had to survive the search a dean runs after a meeting and give a placement officer something to forward, with no product demo and no proof to cite yet.',
+    brief: 'Placement preparation breaks down four ways: students don’t know where to start, get stuck, lose interest, and nobody sees who’s falling behind until the drives. Origan fixes all four together, with a Campus Coach and software that tracks every student’s progress. The site had to survive the search a dean runs after a meeting and give a placement officer something to forward, with no product demo and no proof to cite yet.',
     facts: [
       { label: 'Platform', value: 'Web, for engineering colleges' },
       { label: 'Built with', value: 'Next.js' },
