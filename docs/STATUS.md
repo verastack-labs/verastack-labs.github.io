@@ -154,6 +154,9 @@ Content (placeholders are in the design until these arrive):
   film, concept or not, goes on the films page, except the experimental chat's): the Hallmark film
   (unofficial, 16:9) and the Whispr teaser (concept, the watermarked 9:16 preview). Vertical films
   play in a tall player and sit whole on a blurred backdrop in the grid.
+- [x] Home "See all our work" link (2026-10-29, Rigan: the line and placement looked weak): now a
+  wide signal-edged block in the list column with a big title and an arrow disc, filling with signal
+  on hover, instead of a small centred line pressed against the section rule.
 - [x] Ozer on /films and /work/ozer/ (2026-10-29, Rigan approved going live): one /films entry with
   the light and dark 9:16 cuts side by side, a Vertical / Square switch, a Light / Dark switch on
   phones and a split light/dark poster; /work/ozer/ in Ozer's own theme plays the same pair above the
