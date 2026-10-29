@@ -153,7 +153,8 @@ Content (placeholders are in the design until these arrive):
   (scroll-driven where supported). All of it off under reduced motion.
 - [x] Named concepts carry a trademark line (2026-10-29, Rigan via the Social chat): "not commissioned
   by or affiliated with X. X and its marks belong to ...". Clients need not be told or asked before a
-  concept goes public. Never reproduce their real logo; draw our own and name them in plain text.
+  concept goes public. A concept for a client who agreed to a sample may match their brand, logo,
+  mascot and UI; anything comes down if they ask.
 - [x] Richer piece pages (2026-10-28, Rigan: "more theming and content"): each piece page now uses its
   brand's own faces, a shape (soft, card, sheet, brutal) and a hero drawing from its world, plus a
   facts row, "/the brief", "/small things" and 13 new screens captured from the live sites (Whispr

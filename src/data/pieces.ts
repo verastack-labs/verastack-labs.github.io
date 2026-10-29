@@ -71,8 +71,8 @@ export type Piece = {
     // For named samples: what the client was told, if anything. Clients need not be told or asked
     // before a concept goes public (Rigan, 2026-10-29).
     consent?: string
-    // For named samples: who owns the name and marks, for the trademark line. Their real logo is
-    // never reproduced; we draw our own version and use the name in plain text.
+    // For named samples: who owns the name and marks, for the trademark line. A concept made for a
+    // client who agreed to a sample may use their own brand, logo and UI; taken down if they ask.
     owner?: string
     // What the paid version adds. No prices.
     takes: string
