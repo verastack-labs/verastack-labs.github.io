@@ -69,6 +69,10 @@ describe('pieces', () => {
     }
   })
 
+  it('gives every named concept an owner for the trademark line', () => {
+    for (const p of pieces.filter((x) => x.concept?.visibility === 'named')) expect(p.concept?.owner, p.slug).toBeTruthy()
+  })
+
   it('keeps prices off concept pages', () => {
     for (const p of pieces.filter((x) => x.kind === 'concept')) expect(JSON.stringify(p), p.slug).not.toMatch(/[₹$€£]\s?\d/)
   })

@@ -147,6 +147,13 @@ Content (placeholders are in the design until these arrive):
   each in its own palette and display face; concept titles end in "(concept)" and carry the Concept
   tag. Home links: "See all our work" under #work and "How we made it" on each product. Still open:
   deep dives.
+- [x] /work index motion (2026-10-29, Rigan): title breaks after the comma; cards scroll from the
+  cover to a second screen on hover (`peek`, else the first non-cover shot), with a pointer-following
+  gradient in the piece's accent, arrow and chip micro-animations, and rise-in on load and on scroll
+  (scroll-driven where supported). All of it off under reduced motion.
+- [x] Named concepts carry a trademark line (2026-10-29, Rigan via the Social chat): "not commissioned
+  by or affiliated with X. X and its marks belong to ...". Clients need not be told or asked before a
+  concept goes public. Never reproduce their real logo; draw our own and name them in plain text.
 - [x] Richer piece pages (2026-10-28, Rigan: "more theming and content"): each piece page now uses its
   brand's own faces, a shape (soft, card, sheet, brutal) and a hero drawing from its world, plus a
   facts row, "/the brief", "/small things" and 13 new screens captured from the live sites (Whispr

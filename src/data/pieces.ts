@@ -49,6 +49,8 @@ export type Piece = {
   date: string
   // A finished screen or film frame. Never a design system image.
   cover: string | null
+  // The screen a card scrolls to on hover. Defaults to the first shot that is not the cover.
+  peek?: string
   credit: string
   external?: { label: string; url: string }
   // False: the card links straight to `external`.
@@ -66,9 +68,12 @@ export type Piece = {
     // The client's name when named, an industry when anonymised, a made-up brand when our own.
     for: string
     visibility: 'own' | 'anonymised' | 'named'
-    // For named samples: what the client was told, if anything. A heads-up needs Rigan's OK first.
-    // (Rigan, 2026-10-28: no client OK needed to publish.)
+    // For named samples: what the client was told, if anything. Clients need not be told or asked
+    // before a concept goes public (Rigan, 2026-10-29).
     consent?: string
+    // For named samples: who owns the name and marks, for the trademark line. Their real logo is
+    // never reproduced; we draw our own version and use the name in plain text.
+    owner?: string
     // What the paid version adds. No prices.
     takes: string
   }
@@ -144,6 +149,7 @@ const unsorted: Piece[] = [
     disciplines: ['films', 'design'],
     date: '2026-10',
     cover: '/work/whispr/cover.webp',
+    peek: '/work/whispr/page.webp',
     credit: 'Concept by VeraStack Labs',
     external: { label: 'See the concept', url: 'https://concepts.verastack.dev/whispr/' },
     page: true,
@@ -182,7 +188,8 @@ const unsorted: Piece[] = [
     concept: {
       for: 'Whispr',
       visibility: 'named',
-      consent: 'Published without asking (Rigan, 2026-10-28); no heads-up unless Rigan approves one; taken down the same day if they object.',
+      consent: 'Published without asking; clients need not be told (Rigan, 2026-10-29); taken down the same day if they object.',
+      owner: 'their owner',
       takes: 'The finished film: licensed music, a voiceover if you want one, cut-downs for every platform and a 4K master.',
     },
   },
@@ -194,6 +201,7 @@ const unsorted: Piece[] = [
     disciplines: ['design', 'development', 'ai-search'],
     date: '2026-10',
     cover: '/work/bookwell/cover.webp',
+    peek: '/work/bookwell/how.webp',
     credit: 'Concept by VeraStack Labs',
     external: { label: 'See the concept', url: '/examples/bookwell/' },
     page: true,
@@ -349,6 +357,14 @@ const unsorted: Piece[] = [
 export const pieces: Piece[] = [...unsorted].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
 
 export const pagePieces = pieces.filter((p) => p.page)
+
+// The second screen a card shows on hover, if the piece has one.
+export function peekOf(p: Piece): string | null {
+  if (!p.cover) return null
+  if (p.peek) return p.peek
+  const shots = Object.values(p.sections ?? {}).flatMap((s) => s?.shots ?? [])
+  return shots.find((s) => s.src !== p.cover)?.src ?? null
+}
 
 export type Facet = { slug: string; label: string; title: string; lede: string; filter: (p: Piece) => boolean }
 
