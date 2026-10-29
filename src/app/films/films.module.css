@@ -78,6 +78,9 @@
 .thumb img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 .thumb video { opacity: 0; transition: opacity 0.35s ease; }
 .card[data-hot] .thumb video { opacity: 1; }
+/* A vertical film sits whole in the 16:9 thumb, over a blurred copy of its own poster. */
+.backdrop { position: absolute; inset: -20px; background-size: cover; background-position: center; filter: blur(22px) brightness(0.55); }
+.card[data-portrait] .thumb img, .card[data-portrait] .thumb video { object-fit: contain; }
 .cardButton:hover .thumb img { transform: scale(1.04); }
 .cardPlay {
   position: absolute;
