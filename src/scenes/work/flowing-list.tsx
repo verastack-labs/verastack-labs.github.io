@@ -1,8 +1,10 @@
+import Link from 'next/link'
 import { supporting } from '@/data/work'
 import styles from '@/scenes/work/work.module.css'
 
 // Supporting work (spec 6.03). With `marquee`, hovering a row slides up a signal band with the
-// row's text scrolling across it (flowing menu). No links: these have no case studies yet.
+// row's text scrolling across it (flowing menu). No links: these have no case studies yet. The
+// list closes on the way into /work, set in the same column so it reads as the list's last word.
 export function FlowingList({ marquee }: { marquee: boolean }) {
   return (
     <div className={styles.listWrap}>
@@ -31,6 +33,13 @@ export function FlowingList({ marquee }: { marquee: boolean }) {
           )
         })}
       </ul>
+      <Link href="/work/" className={styles.allWork}>
+        <span className={styles.allWorkLabel}>clients, products and concepts</span>
+        <span className={styles.allWorkTitle}>See all our work</span>
+        <span className={styles.allWorkArrow} aria-hidden="true">
+          →
+        </span>
+      </Link>
     </div>
   )
 }

@@ -172,6 +172,40 @@ html[data-motion='static'] .artGlow { animation: none; }
   .layer .result { font-size: 15px; }
 }
 
-.allWork { margin: 0; padding: 32px 16px 0; text-align: center; font-weight: 700; }
-.allWork a { color: var(--signal); text-decoration: none; }
-.allWork a:hover { text-decoration: underline; }
+/* The way into /work: a wide signal-edged block under the list, title left, arrow disc right. On
+   hover it fills with signal like the rows' band and the arrow slides on. */
+.allWork {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 6px 20px;
+  margin-top: 48px;
+  padding: 24px 24px 26px;
+  border: 1px solid color-mix(in srgb, var(--signal) 45%, transparent);
+  border-radius: 20px;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--signal) 12%, transparent), transparent 70%);
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition: background-color 0.35s, color 0.35s, border-color 0.35s;
+}
+.allWorkLabel { grid-column: 1 / -1; font: 400 11.5px/1.6 var(--font-mono); color: var(--signal); transition: color 0.35s; }
+.allWorkTitle { font-weight: 700; font-size: clamp(34px, 6vw, 72px); line-height: 0.95; letter-spacing: -0.05em; text-wrap: balance; }
+.allWorkArrow {
+  display: grid;
+  place-items: center;
+  width: clamp(48px, 6vw, 72px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--signal);
+  color: var(--ink);
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 700;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.35s, color 0.35s;
+}
+.allWork:hover, .allWork:focus-visible { background-color: var(--signal); border-color: var(--signal); color: var(--ink); }
+.allWork:hover .allWorkLabel, .allWork:focus-visible .allWorkLabel { color: var(--ink); }
+.allWork:hover .allWorkArrow, .allWork:focus-visible .allWorkArrow { transform: translateX(6px) rotate(-45deg); background: var(--ink); color: var(--signal); }
+@media (min-width: 768px) { .allWork { margin-top: 64px; padding: 32px 36px 36px; border-radius: 24px; } }
+@media (prefers-reduced-motion: reduce) { .allWork, .allWorkArrow, .allWorkLabel { transition: none; } .allWork:hover .allWorkArrow { transform: none; } }
