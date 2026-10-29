@@ -17,19 +17,28 @@ export function SmoothScroll() {
   const mode = useMotionPreference()
 
   useEffect(() => {
-    // No refresh on resize: that Chrome fires a resize as its toolbar slides, and a refresh then
-    // re-measures every pin against the new height, so the page shifts. Pins are refreshed on load
-    // and when the width changes (a rotation or a resized window), never on height alone.
+    // No automatic refresh on resize: that Chrome fires a resize as its toolbar slides, and a
+    // refresh then re-measures every pin against the new height, so the page shifts. On touch
+    // screens pins are refreshed on load and when the width changes (a rotation), never on height
+    // alone. With a mouse any resize refreshes them once it settles, so a window that grows taller
+    // after load gets full-height pins (src/lib/screen-lock.ts re-measures the height first).
     ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load' })
+    const touch = window.matchMedia('(pointer: coarse)').matches
     let width = window.innerWidth
+    let timer = 0
     const onResize = () => {
-      // A rotation or a resized window, not the pixel the toolbar nudges the width by.
-      if (Math.abs(window.innerWidth - width) < 50) return
+      // On touch, a rotation, not the pixel the toolbar nudges the width by.
+      if (touch && Math.abs(window.innerWidth - width) < 50) return
       width = window.innerWidth
-      ScrollTrigger.refresh()
+      window.clearTimeout(timer)
+      timer = window.setTimeout(() => ScrollTrigger.refresh(), 150)
+    }
+    const stop = () => {
+      window.removeEventListener('resize', onResize)
+      window.clearTimeout(timer)
     }
     window.addEventListener('resize', onResize)
-    if (mode === 'static') return () => window.removeEventListener('resize', onResize)
+    if (mode === 'static') return stop
 
     const lenis = new Lenis({ anchors: true })
     lenisRef.current = lenis
@@ -39,7 +48,7 @@ export function SmoothScroll() {
     gsap.ticker.lagSmoothing(0)
 
     return () => {
-      window.removeEventListener('resize', onResize)
+      stop()
       gsap.ticker.remove(tick)
       lenis.destroy()
       lenisRef.current = null

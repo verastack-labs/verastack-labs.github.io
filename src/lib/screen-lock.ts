@@ -7,8 +7,11 @@
 //
 // So the height is measured once, in pixels, and frozen: --screen-small (the visible height at
 // load, with the browser's bars showing) and --screen-large (100lvh at load, never less than that).
-// They are measured again only when the width changes (a rotation, a resized window), never on a height-only change,
-// which is all a toolbar ever causes. CSS falls back to the units themselves before this runs.
+// On touch screens they are measured again only when the width changes (a rotation), never on a
+// height-only change, which is all a toolbar ever causes. With a mouse there is no such toolbar, and
+// a window that grows taller after load (maximised, a side or bottom panel closed) has to be
+// followed, or every full-screen section stops short of the bottom; there any resize measures
+// again. CSS falls back to the units themselves before this runs.
 //
 // The function is serialised into an inline <script> in the document head, so it runs before the
 // first paint; it must stay self-contained.
@@ -27,10 +30,11 @@ export function lockScreenHeight() {
     if (large > 0) root.style.setProperty('--screen-large', `${Math.round(Math.max(large, small))}px`)
   }
   measure()
+  const touch = window.matchMedia('(pointer: coarse)').matches
   let width = window.innerWidth
   window.addEventListener('resize', () => {
-    // A real change of width (a rotation); the toolbar can nudge the reported width by a pixel.
-    if (Math.abs(window.innerWidth - width) < 50) return
+    // On touch, a real change of width (a rotation); the toolbar can nudge the reported width by a pixel.
+    if (touch && Math.abs(window.innerWidth - width) < 50) return
     width = window.innerWidth
     measure()
   })

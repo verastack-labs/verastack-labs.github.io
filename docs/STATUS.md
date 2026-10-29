@@ -154,6 +154,10 @@ Content (placeholders are in the design until these arrive):
   film, concept or not, goes on the films page, except the experimental chat's): the Hallmark film
   (unofficial, 16:9) and the Whispr teaser (concept, the watermarked 9:16 preview). Vertical films
   play in a tall player and sit whole on a blurred backdrop in the grid.
+- [x] Full-height sections on desktop (2026-10-29, Rigan: the hero and the work reel stopped short of
+  the bottom). The screen height lock and the pin refresh now ignore height-only resizes on touch
+  screens only (the Android toolbar fix); with a mouse any resize re-measures, so a window that
+  grows taller after load fills again.
 - [x] Home "See all our work" link (2026-10-29, Rigan: the line and placement looked weak): now a
   wide signal-edged block in the list column with a big title and an arrow disc, filling with signal
   on hover, instead of a small centred line pressed against the section rule.
