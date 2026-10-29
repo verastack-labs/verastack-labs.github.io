@@ -19,7 +19,9 @@ export default function WorkPage() {
     <WorkIndex
       title={
         <>
-          Everything we make, <em>in one place.</em>
+          Everything we make,
+          <br />
+          <em>in one place.</em>
         </>
       }
       name="Work by VeraStack Labs"

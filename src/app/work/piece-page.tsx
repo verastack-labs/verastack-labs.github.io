@@ -143,7 +143,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
             <p className={styles.note}>
               {piece.concept.visibility === 'own'
                 ? 'A concept for a brand we made up, to show what we would ship. Not a client project.'
-                : `A concept we made for ${piece.concept.for}, not a commissioned project.`}
+                : `A concept by VeraStack Labs, not commissioned by or affiliated with ${piece.concept.for}. ${piece.concept.for} and its marks belong to ${piece.concept.owner ?? piece.concept.for}.`}
             </p>
             <Link className={styles.button} href="/#contact">
               Want one for your launch? →

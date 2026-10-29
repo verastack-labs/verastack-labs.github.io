@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { conceptsGallery, disciplineLabel, kindLabel, liveFacets, type Piece } from '@/data/pieces'
+import { conceptsGallery, disciplineLabel, kindLabel, liveFacets, peekOf, type Piece } from '@/data/pieces'
+import { CardGlow } from '@/app/work/card-glow'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { site } from '@/data/site'
 import styles from '@/app/work/work.module.css'
@@ -45,15 +46,25 @@ export function WorkIndex({ title, name, lede, path, items, active }: Props) {
           Lab ↗
         </a>
       </nav>
+      <CardGlow />
       <ul className={styles.grid}>
-        {items.map((p) => {
+        {items.map((p, i) => {
           const theme = { '--c-bg': p.theme.bg, '--c-fg': p.theme.fg, '--c-accent': p.theme.accent } as CSSProperties
+          const peek = peekOf(p)
           const outside = !p.page
           return (
-            <li key={p.slug}>
-              <Link className={styles.card} href={href(p)} style={theme} {...(outside ? { target: '_blank', rel: 'noreferrer' } : {})}>
+            <li key={p.slug} style={{ '--i': i } as CSSProperties}>
+              <Link className={styles.card} href={href(p)} style={theme} data-glow {...(outside ? { target: '_blank', rel: 'noreferrer' } : {})}>
                 <span className={styles.cover}>
-                  {p.cover ? (
+                  {p.cover && peek ? (
+                    // The card scrolls from the cover to a second screen on hover.
+                    <span className={styles.track}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={p.cover} alt="" loading="lazy" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={peek} alt="" loading="lazy" />
+                    </span>
+                  ) : p.cover ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={p.cover} alt="" loading="lazy" />
                   ) : (
@@ -73,7 +84,9 @@ export function WorkIndex({ title, name, lede, path, items, active }: Props) {
                     <span key={d}>{disciplineLabel[d]}</span>
                   ))}
                 </span>
-                <span className={styles.go}>{outside ? `${p.external?.label ?? 'Open'} ↗` : 'See the work →'}</span>
+                <span className={styles.go}>
+                  {outside ? (p.external?.label ?? 'Open') : 'See the work'} <span className={styles.arrow}>{outside ? '↗' : '→'}</span>
+                </span>
               </Link>
             </li>
           )
