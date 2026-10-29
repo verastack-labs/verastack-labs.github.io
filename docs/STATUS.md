@@ -54,6 +54,9 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 Content (placeholders are in the design until these arrive):
 
+- [ ] Registration line in the footer? VeraStack Labs is Udyam registered (29 Oct 2026,
+  UDYAM-KR-03-0780546), a sole proprietorship in Rigan's name. Add "Udyam registered
+  (UDYAM-KR-03-0780546)" only if Rigan wants it. Never "Pvt Ltd", "LLP" or "Inc." (none on the site).
 - [ ] Paid AI search audit price (raised 2026-10-26): Rigan's idea is a $99 downloadable report
   and a $499 complete audit, linked from the AI search check, which today says "price on request".
   Research: `social-docs/outreach/research/aeo-audit-pricing-2026-10-26.md` (Fiverr $10 to $400,
