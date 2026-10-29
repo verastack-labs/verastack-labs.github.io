@@ -144,7 +144,27 @@ function Speed() {
   )
 }
 
-const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed }
+// A message thread: the brief, a reply of two words and a thumbs-up tapback landing on the brief.
+function Tapback() {
+  return (
+    <svg viewBox="0 0 320 240">
+      <rect x="20" y="22" width="200" height="40" rx="20" style={s({ fill: faint })} />
+      <rect x="40" y="38" width="120" height="8" rx="4" style={s({ fill: line })} />
+      <rect x="20" y="72" width="170" height="40" rx="20" style={s({ fill: faint })} />
+      <rect x="40" y="88" width="96" height="8" rx="4" style={s({ fill: line })} />
+      <g className={styles.fill}>
+        <circle cx="196" cy="70" r="15" style={s({ fill: accent, stroke: 'var(--p-bg)', strokeWidth: 3 })} />
+        <path d="M 190 73 v -6 l 4 -6 c 1.5 0 2.5 1 2 3 l -1 3 h 5 c 1.5 0 2.5 1.2 2 2.6 l -2 5 c -0.4 1 -1.2 1.4 -2.2 1.4 h -7.8 z M 186 67 h 3 v 10 h -3 z" style={s({ fill: 'var(--p-on-accent)' })} />
+      </g>
+      <rect x="170" y="140" width="130" height="40" rx="20" style={s({ fill: accent })} />
+      <rect x="190" y="156" width="80" height="8" rx="4" style={s({ fill: 'var(--p-on-accent)', opacity: 0.7 })} />
+      <rect x="20" y="194" width="140" height="34" rx="17" style={s({ fill: 'none', stroke: line })} />
+      <rect className={styles.caret} x="40" y="203" width="3" height="16" style={s({ fill: accent })} />
+    </svg>
+  )
+}
+
+const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback }
 
 export function PieceMotifArt({ motif }: { motif: PieceMotif }) {
   const Drawing = drawings[motif]

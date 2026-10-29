@@ -1,0 +1,35 @@
+/* A light and dark pair of players (film-pair.tsx). */
+.pair { width: 100%; }
+.bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.switch { display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }
+.switch button {
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  font: 600 13px inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.switch button:hover { color: var(--pair-text, var(--text)); }
+.switch button:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; }
+.switch button[aria-pressed='true'] { background: var(--signal); color: var(--ink); }
+
+.films { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.film { margin: 0; }
+.film figcaption { margin-top: 10px; text-align: center; font: 500 12px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+/* Side by side from 720px; one at a time below. */
+.sides { display: none; }
+@media (max-width: 719px) {
+  .sides { display: inline-flex; }
+  .films { grid-template-columns: 1fr; }
+  .pair[data-side='light'] .film[data-side='dark'], .pair[data-side='dark'] .film[data-side='light'] { display: none; }
+  .film figcaption { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch button { transition: none; }
+}

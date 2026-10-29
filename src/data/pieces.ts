@@ -16,7 +16,7 @@ export type PieceMono = 'house' | 'azeret' | 'jetbrains' | 'geist-mono'
 // hairlines), brutal (ink border and a hard offset shadow).
 export type PieceShape = 'soft' | 'card' | 'sheet' | 'brutal'
 // The drawing in the hero, taken from the piece's own world (piece-motif.tsx).
-export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed'
+export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback'
 
 export type PieceTheme = {
   bg: string
@@ -37,6 +37,8 @@ export type Section = {
   shots: Shot[]
   // Portrait frames (film stills, phones) sit in a row instead of the grid.
   strip?: boolean
+  // A film from /films (its id) that plays above the shots.
+  film?: string
 }
 
 export type Piece = {
@@ -141,6 +143,63 @@ const ILLUSTRATIVE = 'Illustrative data, not a real college.'
 const MEHFIL_NOTE = 'In development, not launched. Real app screens with invented sample data.'
 
 const unsorted: Piece[] = [
+  {
+    slug: 'ozer',
+    kind: 'concept',
+    title: 'Ozer launch film (concept)',
+    line: 'A 17-second film for a business you run from iMessage: the morning brief lands, and the founder answers with a tapback and two words.',
+    disciplines: ['films', 'design'],
+    date: '2026-10',
+    cover: '/work/ozer/cover.webp',
+    peek: '/work/ozer/square-5.webp',
+    credit: 'Concept by VeraStack Labs',
+    external: { label: 'See the concept', url: 'https://concepts.verastack.dev/ozer/' },
+    page: true,
+    theme: { bg: '#F2F3F6', fg: '#2A2C33', muted: '#5C5F68', accent: '#0A66D1', onAccent: '#F4F6FB', font: 'inter', shape: 'soft', motif: 'tapback' },
+    brief: 'Ozer runs a business from iMessage: it watches the orders, the ads and the abandoned carts, and the founder answers in the thread. The launch film had to show that in seventeen seconds, with no dashboard on screen, and feel at home on the phone it plays on.',
+    facts: [
+      { label: 'Format', value: '17 seconds, vertical and square' },
+      { label: 'Versions', value: 'Light and dark' },
+      { label: 'Frames', value: 'Seven, each a still post too' },
+      { label: 'Status', value: 'Concept, not commissioned' },
+    ],
+    sections: {
+      films: {
+        idea: 'One morning, start to finish. The brief lands at 7:02, the founder answers with a tapback and two words, and by 11:40 three carts have come back. Then the thread pulls back to show everything else Ozer handles. It comes in light and dark, so it matches the phone it plays on.',
+        film: 'ozer-launch',
+        strip: true,
+        shots: [
+          shot('ozer', 'frame-1.webp', 'The morning brief lands on the lock screen at 7:02', '0:00'),
+          shot('ozer', 'frame-2.webp', 'Yesterday in three bubbles, and one question', '0:02'),
+          shot('ozer', 'frame-3.webp', 'One tapback pauses the ad', '0:04'),
+          shot('ozer', 'frame-4.webp', 'Two words nudge nine carts', '0:06'),
+          shot('ozer', 'frame-5.webp', 'By 11:40, three carts came back', '0:08'),
+          shot('ozer', 'frame-6.webp', 'The thread pulls back: everything else Ozer handles', '0:11'),
+          shot('ozer', 'frame-7.webp', 'Run your entire business, on iMessage', '0:13'),
+        ],
+      },
+      design: {
+        idea: 'Built in Ozer’s own look, not ours: iMessage bubbles, its blue, its mascot and its wordmark, so it reads as their launch from the first frame. The square cuts turn the thread into a card for feeds.',
+        shots: [
+          shot('ozer', 'square-5.webp', 'The square cut: the thread as a card, with tapbacks around it'),
+          shot('ozer', 'square-7.webp', 'The square end card'),
+        ],
+      },
+    },
+    details: [
+      'No dashboard anywhere. Every number arrives as a message, because that is the product.',
+      'The founder never types more than two words; a tapback does the rest.',
+      'Light and dark versions, so the film matches the phone it plays on.',
+      'The numbers are illustrative, and every frame says so.',
+    ],
+    concept: {
+      for: 'Ozer',
+      visibility: 'named',
+      consent: 'Published without asking; clients need not be told (Rigan, 2026-10-29); taken down the same day if they object.',
+      owner: 'Ozer Labs, Inc.',
+      takes: 'The finished film: licensed music, a voiceover if you want one, cut-downs for every platform and 4K masters in light and dark.',
+    },
+  },
   {
     slug: 'whispr',
     kind: 'concept',

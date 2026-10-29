@@ -91,3 +91,15 @@
   .button, .button:hover { transition: none; transform: none; }
   .caret, .fill { animation: none; }
 }
+
+/* A film from /films inside a section, in the piece's own colours. */
+.film {
+  --signal: var(--p-accent);
+  --ink: var(--p-on-accent);
+  --muted: var(--p-muted);
+  --line: color-mix(in srgb, var(--p-fg) 18%, transparent);
+  --pair-text: var(--p-fg);
+  max-width: 960px;
+  margin: 28px auto 0;
+}
+.filmNote { max-width: 70ch; margin: 14px auto 0; font-size: 13.5px; line-height: 1.55; color: var(--p-muted); text-align: center; }
