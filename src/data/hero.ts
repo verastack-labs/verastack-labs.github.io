@@ -7,5 +7,5 @@ export const hero = {
   tail: '.',
   sub: 'Brand and sites, apps and 3D experiences, launch films, then the AI search and launch marketing that bring people in. One team, start to finish.',
   primary: { label: 'Start a project', href: '#contact' },
-  secondary: { label: 'See the work', href: '#work' },
+  secondary: { label: 'See the work', href: '/work/' },
 }
