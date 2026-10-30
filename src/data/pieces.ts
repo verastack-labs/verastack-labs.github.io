@@ -42,8 +42,10 @@ export type Section = {
 }
 
 // One product in several visual directions (piece-worlds.tsx): a pinned phone walks through them as
-// the page scrolls, then one screen at a time sits side by side. Each system is told in words; its
-// sheets never go on a page (Rigan, 2026-10-23). Screens live at /work/<slug>/<world>-<screen>.webp.
+// the page scrolls, then one screen at a time sits side by side. Each system is told in words. Its
+// sheet shows only where `sheets` is set: design-system sheets stay off pages by default (Rigan,
+// 2026-10-23), and Tokri is the one he cleared (2026-10-31). Screens live at
+// /work/<slug>/<world>-<screen>.webp, sheets at /work/<slug>/<world>-system.webp.
 export type World = {
   key: string
   name: string
@@ -60,7 +62,7 @@ export type World = {
   muted: string
   accent: string
 }
-export type Worlds = { worlds: World[]; screens: { id: string; label: string }[] }
+export type Worlds = { worlds: World[]; screens: { id: string; label: string }[]; sheets?: boolean }
 
 export type Piece = {
   slug: string
@@ -267,6 +269,7 @@ const unsorted: Piece[] = [
         { id: 'track', label: 'Tracking' },
         { id: 'med', label: 'Medicine' },
       ],
+      sheets: true,
     },
     details: [
       'No screen in any direction has a place where an ad could go.',

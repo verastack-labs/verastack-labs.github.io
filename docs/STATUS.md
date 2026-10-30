@@ -17,7 +17,7 @@ The home Questions (About, `src/data/faq.ts`) are eight accordions since 2026-10
 
 The hero's "See the work" goes to the /work page, not the home work section (since 2026-10-31). Concept cards on /work and concept piece headings drop "(concept)" because the Concept pill beside them already says it (`pillTitle` in `pieces.ts`); the page title, structured data and pager keep it.
 
-/work/tokri (since 2026-10-30): the Tokri delivery app concept, four directions over one product. A pinned phone wipes from one direction's home screen to the next as the page scrolls, with the band taking each direction's colours and each system told in words (type, colour, signature), then a "same screen, four worlds" comparer (`src/app/work/piece-worlds.tsx`, data in `pieces.ts` under `worlds`). Screens copied from the concepts repo into `public/work/tokri/`; prototypes link out to concepts.verastack.dev/tokri/. Credited for "a team in North Bengal" until the firm name is in.
+/work/tokri (since 2026-10-30): the Tokri delivery app concept, four directions over one product. A pinned phone wipes from one direction's home screen to the next as the page scrolls, with the band taking each direction's colours and each system told in words (type, colour, signature), then a "same screen, four worlds" comparer and each direction's full design system sheet in a scrolling frame (`src/app/work/piece-worlds.tsx`, data in `pieces.ts` under `worlds`). Screens copied from the concepts repo into `public/work/tokri/`; prototypes link out to concepts.verastack.dev/tokri/. Credited for "a team in North Bengal" until the firm name is in. The sheets show because Rigan cleared Tokri on 2026-10-31 (`worlds.sheets`; a test keeps Tokri the only one). The 23 Oct rule of no design-system images still holds everywhere else.
 
 Product version strings in `src/data/products.ts` are kept by hand: bump them when a product
 releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
@@ -59,7 +59,6 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 ## Waiting on Rigan
 
 - **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
-- **Tokri design system sheets:** the concepts chat relayed that the four sheets belong on the work page, but the 23 Oct rule is no design-system images anywhere. The page names each system in words only. Say yes to show the sheets.
 
 Content (placeholders are in the design until these arrive):
 
