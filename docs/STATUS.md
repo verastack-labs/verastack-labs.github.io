@@ -15,7 +15,7 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 
 The home Questions (About, `src/data/faq.ts`) are eight accordions since 2026-10-30, closed at first, two columns from 768px (`src/scenes/about/faq-list.tsx`). Keep the count even so the columns stay level; the same list feeds the FAQPage JSON-LD.
 
-The hero's "See the work" goes to the /work page, not the home work section (since 2026-10-31). Concept piece pages drop "(concept)" from the heading because the Concept pill already says it; the page title, cards and pager keep it.
+The hero's "See the work" goes to the /work page, not the home work section (since 2026-10-31). Concept cards on /work and concept piece headings drop "(concept)" because the Concept pill beside them already says it (`pillTitle` in `pieces.ts`); the page title, structured data and pager keep it.
 
 /work/tokri (since 2026-10-30): the Tokri delivery app concept, four directions over one product. A pinned phone wipes from one direction's home screen to the next as the page scrolls, with the band taking each direction's colours and each system told in words (type, colour, signature), then a "same screen, four worlds" comparer and each direction's full design system sheet in a scrolling frame (`src/app/work/piece-worlds.tsx`, data in `pieces.ts` under `worlds`). Screens copied from the concepts repo into `public/work/tokri/`; prototypes link out to concepts.verastack.dev/tokri/. Credited for "a team in North Bengal" until the firm name is in. The sheets show because Rigan cleared Tokri on 2026-10-31 (`worlds.sheets`; a test keeps Tokri the only one). The 23 Oct rule of no design-system images still holds everywhere else.
 

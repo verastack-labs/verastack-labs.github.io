@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react'
 import { FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
 import { allFilms } from '@/data/films'
-import { disciplineLabel, kindLabel, pagePieces, type Piece } from '@/data/pieces'
+import { disciplineLabel, kindLabel, pagePieces, pillTitle, type Piece } from '@/data/pieces'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { site } from '@/data/site'
 import { pieceFont } from '@/app/work/fonts'
@@ -70,8 +70,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
         <div className={styles.hero}>
           <header className={styles.head}>
             <span className={piece.kind === 'concept' ? `${styles.kind} ${styles.concept}` : styles.kind}>{kindLabel[piece.kind]}</span>
-            {/* The pill above already says concept, so the heading drops the title's "(concept)". */}
-            <h1 className={styles.title}>{piece.kind === 'concept' ? piece.title.replace(/ \(concept\)$/, '') : piece.title}</h1>
+            <h1 className={styles.title}>{pillTitle(piece)}</h1>
             <p className={styles.line}>{piece.line}</p>
             <p className={styles.credit}>
               {piece.credit}

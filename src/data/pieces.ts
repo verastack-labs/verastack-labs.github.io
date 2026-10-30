@@ -114,6 +114,10 @@ export const disciplineLabel: Record<Discipline, string> = {
 
 export const kindLabel: Record<Kind, string> = { client: 'Client', product: 'Product', concept: 'Concept' }
 
+// The title where a Concept pill sits beside it (cards, piece headings), so "(concept)" is not said
+// twice. Page titles, structured data and the pager keep the full title.
+export const pillTitle = (p: Pick<Piece, 'kind' | 'title'>) => (p.kind === 'concept' ? p.title.replace(/ \(concept\)$/, '') : p.title)
+
 const shot = (slug: string, file: string, alt: string, note?: string): Shot => ({ src: `/work/${slug}/${file}`, alt, ...(note ? { note } : {}) })
 
 // Dark or light text on an accent, whichever reads better.
