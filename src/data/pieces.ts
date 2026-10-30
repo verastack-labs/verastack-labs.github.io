@@ -10,13 +10,13 @@ export type Discipline = 'design' | 'development' | 'films' | 'ai-search'
 export type Kind = 'client' | 'product' | 'concept'
 
 // Faces a piece borrows from its own brand: `font` for the page, `mono` for labels and numbers.
-export type PieceFont = 'house' | 'sora' | 'jakarta' | 'archivo' | 'inter' | 'geist' | 'space-grotesk'
+export type PieceFont = 'house' | 'sora' | 'jakarta' | 'archivo' | 'inter' | 'geist' | 'space-grotesk' | 'familjen'
 export type PieceMono = 'house' | 'azeret' | 'jetbrains' | 'geist-mono'
 // How frames and buttons are drawn: soft (round), card (small radius), sheet (a drawing sheet's
 // hairlines), brutal (ink border and a hard offset shadow).
 export type PieceShape = 'soft' | 'card' | 'sheet' | 'brutal'
 // The drawing in the hero, taken from the piece's own world (piece-motif.tsx).
-export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback'
+export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback' | 'basket'
 
 export type PieceTheme = {
   bg: string
@@ -40,6 +40,27 @@ export type Section = {
   // A film from /films (its id) that plays above the shots.
   film?: string
 }
+
+// One product in several visual directions (piece-worlds.tsx): a pinned phone walks through them as
+// the page scrolls, then one screen at a time sits side by side. Each system is told in words; its
+// sheets never go on a page (Rigan, 2026-10-23). Screens live at /work/<slug>/<world>-<screen>.webp.
+export type World = {
+  key: string
+  name: string
+  // Which of the ordering ideas this direction wears.
+  flow: string
+  line: string
+  world: string
+  type: string
+  colour: string
+  signature: string
+  // The direction's own ground and inks, for the scene's background as it passes.
+  bg: string
+  fg: string
+  muted: string
+  accent: string
+}
+export type Worlds = { worlds: World[]; screens: { id: string; label: string }[] }
 
 export type Piece = {
   slug: string
@@ -66,6 +87,7 @@ export type Piece = {
   sections?: Partial<Record<Discipline, Section>>
   // Small craft details worth noticing, one sentence each.
   details?: string[]
+  worlds?: Worlds
   concept?: {
     // The client's name when named, an industry when anonymised, a made-up brand when our own.
     for: string
@@ -143,6 +165,118 @@ const ILLUSTRATIVE = 'Illustrative data, not a real college.'
 const MEHFIL_NOTE = 'In development, not launched. Real app screens with invented sample data.'
 
 const unsorted: Piece[] = [
+  {
+    slug: 'tokri',
+    kind: 'concept',
+    title: 'Tokri delivery app (concept)',
+    line: 'Dinner, milk and medicine in one basket, with no ads. One delivery app, designed four ways, and every one of them is a prototype you can tap through.',
+    disciplines: ['design', 'development'],
+    date: '2026-10',
+    cover: '/work/tokri/cover.webp',
+    peek: '/work/tokri/haat-cart.webp',
+    credit: 'Concept by VeraStack Labs',
+    external: { label: 'Tap through all four', url: 'https://concepts.verastack.dev/tokri/' },
+    page: true,
+    theme: { bg: '#15120E', fg: '#F6F1E7', muted: '#BFB5A4', accent: '#E8B04A', onAccent: '#1C1408', font: 'familjen', shape: 'soft', motif: 'basket' },
+    brief: 'A team in North Bengal asked for a delivery app that is simple and quick, without any advertisement. Food, groceries and medicine from the shops nearby, in one order, on a budget Android phone, in the languages people there actually read.',
+    facts: [
+      { label: 'Directions', value: 'Four, each a full prototype' },
+      { label: 'Screens to tap', value: '88' },
+      { label: 'Languages', value: 'Bengali, Hindi, Nepali and English' },
+      { label: 'Status', value: 'Concept, not commissioned' },
+    ],
+    sections: {
+      design: {
+        idea: 'Two ways to order, each dressed two ways. In the Bill Book your order is one honest bill from the first tap; in One Trip the kitchen, the grocer and the chemist are stops on one route to your door. The flows and the promises stay fixed. Colour, type, drawing and motion change completely.',
+        shots: [],
+      },
+      development: {
+        idea: 'None of the four is a picture. Each is a working prototype, 88 screens in all, in four languages, drawn in SVG and CSS instead of photos so it stays light on a budget phone and a weak signal.',
+        shots: [],
+      },
+    },
+    worlds: {
+      worlds: [
+        {
+          key: 'tri',
+          name: 'Triplicate',
+          flow: 'Bill Book',
+          line: 'Your order is a bright, honest bill you can hold.',
+          world: 'A shop’s bill book keeps a white original and coloured carbon copies. Every order is that slip, lying on a deep ink desk, with the copy beneath in the colour of what you ordered.',
+          type: 'Bricolage Grotesque, with Hind Siliguri for Bengali and Hind for Hindi and Nepali.',
+          colour: 'Desk ink under carbon copies: rose for food, butter for groceries, sky for medicine.',
+          signature: 'Tear to pay. The carbon copy underneath becomes your tracking screen.',
+          bg: '#1C2766',
+          fg: '#F6F7FD',
+          muted: '#C3CAF0',
+          accent: '#F7CDD4',
+        },
+        {
+          key: 'ridge',
+          name: 'Ridgeline',
+          flow: 'One Trip',
+          line: 'Everything you need, one trip across the hills to your door.',
+          world: 'North Bengal is where the plains meet the hills. Screens are layered like ridges fading into haze, and the light follows the hour: mist and tea green in the morning, dusk and apricot at dinner.',
+          type: 'Anek, one family for all four languages: narrow for map lettering, wide for times.',
+          colour: 'Dusk, apricot sky, far ridge, near ridge, mist, and one colour for the route.',
+          signature: 'Tracking that survives a weak signal: solid, dashed and dotted lines carry each stop.',
+          bg: '#163A3A',
+          fg: '#EEF4F2',
+          muted: '#B9D0CB',
+          accent: '#F4A06B',
+        },
+        {
+          key: 'haat',
+          name: 'Haat',
+          flow: 'Bill Book',
+          line: 'The whole market, painted bright, on one honest bill.',
+          world: 'The weekly market and its hand-painted signboards. Every shop gets its own board colour and chunky lettering, the food is flat poster art, and the bill stays clean so it reads at a glance.',
+          type: 'Baloo 2, with Baloo Da 2 for Bengali.',
+          colour: 'Marigold, chilli, kingfisher, leaf and lotus, one per shop board, around a clean bill.',
+          signature: 'Write a list the way you would hand it to a shop, in any of four languages, and each line finds its item.',
+          bg: '#F3A712',
+          fg: '#191C3A',
+          muted: '#3A3017',
+          accent: '#191C3A',
+        },
+        {
+          key: 'tiffin',
+          name: 'Tiffin',
+          flow: 'One Trip',
+          line: 'One stack, many kitchens: your whole order travels as one tiffin.',
+          world: 'The steel tiffin carrier, known in every Indian home, is one basket from many kitchens. Each shop on your trip is a tier with its own enamel band, and the map is the lid, its lathe rings marking minutes from home.',
+          type: 'Archivo, with Noto Sans Bengali and Noto Sans Devanagari.',
+          colour: 'Deep teal and brushed steel, with an enamel band each for the kitchen, the grocer and the chemist.',
+          signature: 'The tiers fill stop by stop as the rider goes, and your code waits for the gate.',
+          bg: '#0E5E63',
+          fg: '#F2F7F7',
+          muted: '#CFE3E1',
+          accent: '#E39B2D',
+        },
+      ],
+      screens: [
+        { id: 'home', label: 'Home' },
+        { id: 'menu', label: 'Menu' },
+        { id: 'dish', label: 'Dish' },
+        { id: 'cart', label: 'Bill' },
+        { id: 'checkout', label: 'Checkout' },
+        { id: 'track', label: 'Tracking' },
+        { id: 'med', label: 'Medicine' },
+      ],
+    },
+    details: [
+      'No screen in any direction has a place where an ad could go.',
+      'The price you see is the price you pay: delivery shows from the first item, with its reason, and the tip is a blank you fill if you like.',
+      'A named pharmacist reads every prescription, on screen, before medicine leaves the shop.',
+      'Your delivery code appears only when the rider is at your gate, so nobody can ask for it on a call.',
+      'Cash and UPI sit side by side as equals. Neither is greyed out or pushed.',
+    ],
+    concept: {
+      for: 'a team in North Bengal',
+      visibility: 'anonymised',
+      takes: 'The direction you pick, or a mix, designed for every screen and state, then built as the app for Android and iOS.',
+    },
+  },
   {
     slug: 'ozer',
     kind: 'concept',
