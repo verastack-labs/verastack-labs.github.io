@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { contrastRatio } from '@/lib/contrast'
 import { facets, liveFacets, pagePieces, pieces, RESERVED } from '@/data/pieces'
@@ -84,6 +86,12 @@ describe('pieces', () => {
   it('drops facets with no pieces', () => {
     for (const f of liveFacets) expect(pieces.some(f.filter)).toBe(true)
     for (const f of facets.filter((x) => !liveFacets.includes(x))) expect(pieces.some(f.filter)).toBe(false)
+  })
+
+  it('has every screen a directions scene shows', () => {
+    for (const p of pieces.filter((x) => x.worlds)) {
+      for (const w of p.worlds!.worlds) for (const s of p.worlds!.screens) expect(existsSync(join('public', 'work', p.slug, `${w.key}-${s.id}.webp`)), `${p.slug} ${w.key}-${s.id}`).toBe(true)
+    }
   })
 
   it('never uses an em dash', () => {

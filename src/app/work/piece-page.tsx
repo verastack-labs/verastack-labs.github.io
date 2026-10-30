@@ -8,6 +8,7 @@ import { jsonLd, studioNode } from '@/lib/structured-data'
 import { site } from '@/data/site'
 import { pieceFont } from '@/app/work/fonts'
 import { PieceMotifArt } from '@/app/work/piece-motif'
+import { PieceWorlds } from '@/app/work/piece-worlds'
 import styles from '@/app/work/piece.module.css'
 
 const month = (date: string) => new Date(`${date}-01T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })
@@ -111,6 +112,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
               /{disciplineLabel[s.d]}
             </h2>
             <p className={styles.idea}>{s.idea}</p>
+            {s.d === 'design' && piece.worlds && <PieceWorlds slug={piece.slug} worlds={piece.worlds} />}
             {s.film && (
               <div className={styles.film}>
                 {s.film.versions ? (
@@ -156,7 +158,9 @@ export function PiecePage({ piece }: { piece: Piece }) {
             <p className={styles.note}>
               {piece.concept.visibility === 'own'
                 ? 'A concept for a brand we made up, to show what we would ship. Not a client project.'
-                : `A concept by VeraStack Labs, not commissioned by or affiliated with ${piece.concept.for}. ${piece.concept.for} and its marks belong to ${piece.concept.owner ?? piece.concept.for}.`}
+                : piece.concept.visibility === 'anonymised'
+                  ? `A concept by VeraStack Labs for ${piece.concept.for}, made as a sample, not a commissioned project. The name and every figure in it are made up.`
+                  : `A concept by VeraStack Labs, not commissioned by or affiliated with ${piece.concept.for}. ${piece.concept.for} and its marks belong to ${piece.concept.owner ?? piece.concept.for}.`}
             </p>
             <Link className={styles.button} href="/#contact">
               Want one for your launch? →

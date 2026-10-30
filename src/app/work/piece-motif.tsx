@@ -164,7 +164,36 @@ function Tapback() {
   )
 }
 
-const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback }
+// A basket with a bowl, a bottle of milk and a strip of tablets settling into it.
+function Basket() {
+  return (
+    <svg viewBox="0 0 320 240">
+      <g className={styles.fill}>
+        <ellipse cx="118" cy="98" rx="34" ry="12" style={s({ fill: accent })} />
+        <path d="M 84 98 a 34 30 0 0 0 68 0 z" style={s({ fill: accent })} />
+      </g>
+      <rect x="160" y="52" width="28" height="68" rx="9" style={s({ fill: 'none', stroke: line, strokeWidth: 2 })} />
+      <rect x="166" y="42" width="16" height="12" rx="3" style={s({ fill: faint })} />
+      <g transform="rotate(-14 230 92)">
+        <rect x="200" y="74" width="62" height="34" rx="6" style={s({ fill: 'none', stroke: line, strokeWidth: 2 })} />
+        {[0, 1, 2].map((i) => (
+          <circle key={i} cx={214 + i * 17} cy="91" r="5" style={s({ fill: faint })} />
+        ))}
+      </g>
+      <path d="M 104 126 a 56 56 0 0 1 112 0" style={s({ fill: 'none', stroke: 'var(--p-fg)', strokeWidth: 5, strokeLinecap: 'round', opacity: 0.85 })} />
+      <rect x="44" y="120" width="232" height="16" rx="8" style={s({ fill: 'var(--p-fg)', opacity: 0.85 })} />
+      <path d="M 56 136 h 208 l -16 70 a 12 12 0 0 1 -12 9 h -152 a 12 12 0 0 1 -12 -9 z" style={s({ fill: 'var(--p-fg)', opacity: 0.85 })} />
+      {[160, 186].map((y) => (
+        <line key={y} x1="62" y1={y} x2="258" y2={y} style={s({ stroke: 'var(--p-bg)', strokeWidth: 3, opacity: 0.5 })} />
+      ))}
+      {Array.from({ length: 7 }, (_, i) => (
+        <line key={i} x1={86 + i * 25} y1="138" x2={86 + i * 25 - (i - 3) * 2} y2="212" style={s({ stroke: 'var(--p-bg)', strokeWidth: 3, opacity: 0.5 })} />
+      ))}
+    </svg>
+  )
+}
+
+const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback, basket: Basket }
 
 export function PieceMotifArt({ motif }: { motif: PieceMotif }) {
   const Drawing = drawings[motif]

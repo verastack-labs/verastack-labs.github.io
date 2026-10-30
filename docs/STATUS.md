@@ -15,6 +15,8 @@ Foundation, hero and Services built: tokens, fonts, motion system, nav, footer, 
 
 The home Questions (About, `src/data/faq.ts`) are eight accordions since 2026-10-30, closed at first, two columns from 768px (`src/scenes/about/faq-list.tsx`). Keep the count even so the columns stay level; the same list feeds the FAQPage JSON-LD.
 
+/work/tokri (since 2026-10-30): the Tokri delivery app concept, four directions over one product. A pinned phone wipes from one direction's home screen to the next as the page scrolls, with the band taking each direction's colours and each system told in words (type, colour, signature), then a "same screen, four worlds" comparer (`src/app/work/piece-worlds.tsx`, data in `pieces.ts` under `worlds`). Screens copied from the concepts repo into `public/work/tokri/`; prototypes link out to concepts.verastack.dev/tokri/. Credited for "a team in North Bengal" until the firm name is in.
+
 Product version strings in `src/data/products.ts` are kept by hand: bump them when a product
 releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
@@ -53,6 +55,9 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
   hover (the dock row was removed on 2026-10-23).
 
 ## Waiting on Rigan
+
+- **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
+- **Tokri design system sheets:** the concepts chat relayed that the four sheets belong on the work page, but the 23 Oct rule is no design-system images anywhere. The page names each system in words only. Say yes to show the sheets.
 
 Content (placeholders are in the design until these arrive):
 
