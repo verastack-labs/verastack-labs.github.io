@@ -123,8 +123,27 @@
 .cell figcaption b { margin-right: 6px; color: var(--p-fg); }
 @keyframes cell-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
 
+/* Each direction's design system sheet, one at a time. */
+.sheets { margin-top: 96px; }
+.sheetFrame {
+  position: relative;
+  /* A fixed height, so a lazy sheet has room to load into; every sheet is taller than this. */
+  height: min(78svh, 900px);
+  overflow-y: auto;
+  border-radius: 24px;
+  outline: 1px solid color-mix(in srgb, var(--p-fg) 14%, transparent);
+  background: #0f1114;
+  scrollbar-width: thin;
+  scrollbar-color: var(--p-accent) transparent;
+  overscroll-behavior: contain;
+}
+.sheetFrame:focus-visible { outline: 2px solid var(--p-accent); outline-offset: 3px; }
+.sheetFrame img { display: block; width: 100%; height: auto; animation: cell-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+.sheetLink { display: inline-block; margin-top: 14px; font-size: 14px; color: var(--p-muted); text-underline-offset: 3px; }
+.sheetLink:hover { color: var(--p-fg); }
+
 @media (prefers-reduced-motion: reduce) {
   .scene, .stage, .rail li, .chapter, .tabs button { transition: none; }
   .chapter { transform: none; }
-  .cell img { animation: none; }
+  .cell img, .sheetFrame img { animation: none; }
 }

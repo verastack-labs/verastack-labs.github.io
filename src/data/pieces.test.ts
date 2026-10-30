@@ -94,6 +94,13 @@ describe('pieces', () => {
     }
   })
 
+  it('has a sheet for every direction only where sheets are cleared', () => {
+    for (const p of pieces.filter((x) => x.worlds?.sheets)) {
+      for (const w of p.worlds!.worlds) expect(existsSync(join('public', 'work', p.slug, `${w.key}-system.webp`)), `${p.slug} ${w.key}-system`).toBe(true)
+    }
+    expect(pieces.filter((x) => x.worlds?.sheets).map((x) => x.slug)).toEqual(['tokri'])
+  })
+
   it('never uses an em dash', () => {
     expect(JSON.stringify(pieces)).not.toContain(EM_DASH)
   })

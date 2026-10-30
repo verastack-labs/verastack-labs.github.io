@@ -10,13 +10,14 @@ const clamp = (n: number) => Math.min(1, Math.max(0, n))
 // One product, several directions. A pinned phone shows each direction's home screen, and as its
 // chapter scrolls by, the next one wipes up over the last while the band takes on that direction's
 // colours. Then one screen at a time, all directions side by side.
-export function PieceWorlds({ slug, worlds: { worlds, screens } }: { slug: string; worlds: Worlds }) {
+export function PieceWorlds({ slug, worlds: { worlds, screens, sheets } }: { slug: string; worlds: Worlds }) {
   const mode = useMotionPreference()
   const still = mode === 'static'
   const scene = useRef<HTMLDivElement>(null)
   const layers = useRef<(HTMLImageElement | null)[]>([])
   const [active, setActive] = useState(0)
   const [screen, setScreen] = useState(screens[0].id)
+  const [sheet, setSheet] = useState(0)
   const src = (world: string, id: string) => `/work/${slug}/${world}-${id}.webp`
 
   // Progress runs from 0 at the first chapter to worlds.length - 1 at the last, measured from the
@@ -146,6 +147,31 @@ export function PieceWorlds({ slug, worlds: { worlds, screens } }: { slug: strin
           })}
         </div>
       </div>
+
+      {sheets && (
+        <div className={styles.sheets}>
+          <div className={styles.compareHead}>
+            <p className={styles.compareTitle}>
+              The system <em>behind each.</em>
+            </p>
+            <div className={styles.tabs} role="group" aria-label="Pick a direction">
+              {worlds.map((x, i) => (
+                <button key={x.key} type="button" aria-pressed={i === sheet} onClick={() => setSheet(i)}>
+                  {x.name}
+                </button>
+              ))}
+            </div>
+          </div>
+          {/* A tall sheet scrolls inside its frame, so the page keeps its pace. */}
+          <div className={styles.sheetFrame} tabIndex={0} aria-label={`${worlds[sheet].name} design system, scrollable`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img key={worlds[sheet].key} src={src(worlds[sheet].key, 'system')} alt={`${worlds[sheet].name} design system: colour, type, spacing, components, illustration, icons and motion`} width={1600} loading="lazy" />
+          </div>
+          <a className={styles.sheetLink} href={src(worlds[sheet].key, 'system')} target="_blank" rel="noreferrer">
+            Open the {worlds[sheet].name} sheet full size ↗
+          </a>
+        </div>
+      )}
     </>
   )
 }
