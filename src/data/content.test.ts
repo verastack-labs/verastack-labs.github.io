@@ -50,10 +50,9 @@ describe('content', () => {
     expect(products.map((p) => p.id)).toEqual(['origan', 'rigseed', 'riggit', 'mehfil'])
   })
 
-  it('points the hero calls to action at real sections', () => {
-    const ids = sections.map((s) => `#${s.id}`)
-    expect(ids).toContain(hero.primary.href)
-    expect(ids).toContain(hero.secondary.href)
+  it('points the hero calls to action at a real section and the work page', () => {
+    expect(sections.map((s) => `#${s.id}`)).toContain(hero.primary.href)
+    expect(hero.secondary.href).toBe('/work/')
   })
 
   it('backs results with press links, and claims no figure where none is public', () => {

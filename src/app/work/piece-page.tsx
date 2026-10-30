@@ -70,7 +70,8 @@ export function PiecePage({ piece }: { piece: Piece }) {
         <div className={styles.hero}>
           <header className={styles.head}>
             <span className={piece.kind === 'concept' ? `${styles.kind} ${styles.concept}` : styles.kind}>{kindLabel[piece.kind]}</span>
-            <h1 className={styles.title}>{piece.title}</h1>
+            {/* The pill above already says concept, so the heading drops the title's "(concept)". */}
+            <h1 className={styles.title}>{piece.kind === 'concept' ? piece.title.replace(/ \(concept\)$/, '') : piece.title}</h1>
             <p className={styles.line}>{piece.line}</p>
             <p className={styles.credit}>
               {piece.credit}
