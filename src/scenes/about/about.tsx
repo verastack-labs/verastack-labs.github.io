@@ -1,13 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { faq } from '@/data/faq'
 import { founder } from '@/data/founder'
 import { products } from '@/data/products'
 import { site } from '@/data/site'
 import { team } from '@/data/team'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
 import { CapabilitiesRow } from '@/scenes/about/capabilities-row'
+import { FaqList } from '@/scenes/about/faq-list'
 import styles from '@/scenes/about/about.module.css'
 
 // Unpinned on purpose: the page's breather after four pinned scenes (spec 5.3, 6.06).
@@ -64,15 +64,11 @@ export function About() {
         </ul>
       )}
       <div className={styles.faq}>
-        <h3 className={styles.faqTitle}>Questions</h3>
-        <dl>
-          {faq.map((f) => (
-            <div key={f.q}>
-              <dt>{f.q}</dt>
-              <dd>{f.a}</dd>
-            </div>
-          ))}
-        </dl>
+        <p className={styles.faqLabel}>questions</p>
+        <h3 className={styles.faqTitle}>
+          Asked before the <em>first call.</em>
+        </h3>
+        <FaqList />
       </div>
       <p className={styles.foot}>
         <span>
