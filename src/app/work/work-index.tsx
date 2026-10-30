@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { conceptsGallery, disciplineLabel, kindLabel, liveFacets, peekOf, type Piece } from '@/data/pieces'
+import { conceptsGallery, disciplineLabel, kindLabel, liveFacets, peekOf, pillTitle, type Piece } from '@/data/pieces'
 import { CardGlow } from '@/app/work/card-glow'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { site } from '@/data/site'
@@ -77,7 +77,7 @@ export function WorkIndex({ title, name, lede, path, items, active }: Props) {
                   <span className={p.kind === 'concept' ? `${styles.kind} ${styles.concept}` : styles.kind}>{kindLabel[p.kind]}</span>
                   <span className={styles.when}>{year(p)}</span>
                 </span>
-                <b>{p.title}</b>
+                <b>{pillTitle(p)}</b>
                 <span className={styles.line}>{p.line}</span>
                 <span className={styles.chips}>
                   {p.disciplines.map((d) => (
