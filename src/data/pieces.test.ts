@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { contrastRatio } from '@/lib/contrast'
-import { facets, liveFacets, pagePieces, pieces, RESERVED } from '@/data/pieces'
+import { facets, liveFacets, pagePieces, pieces, pillTitle, RESERVED } from '@/data/pieces'
 
 // Built from its code point so this file never contains the character itself.
 const EM_DASH = String.fromCodePoint(0x2014)
@@ -92,6 +92,11 @@ describe('pieces', () => {
     for (const p of pieces.filter((x) => x.worlds)) {
       for (const w of p.worlds!.worlds) for (const s of p.worlds!.screens) expect(existsSync(join('public', 'work', p.slug, `${w.key}-${s.id}.webp`)), `${p.slug} ${w.key}-${s.id}`).toBe(true)
     }
+  })
+
+  it('drops "(concept)" only where a Concept pill sits beside the title', () => {
+    expect(pillTitle({ kind: 'concept', title: 'Tokri delivery app (concept)' })).toBe('Tokri delivery app')
+    expect(pillTitle({ kind: 'client', title: 'A (concept) store' })).toBe('A (concept) store')
   })
 
   it('never uses an em dash', () => {
