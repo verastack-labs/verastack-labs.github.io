@@ -3,7 +3,7 @@
   display: grid;
   gap: 32px;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 96px;
   padding: 28px 20px;
   border-radius: var(--p-r-frame, 28px);
   background: radial-gradient(120% 90% at 85% 40%, color-mix(in srgb, var(--k) 22%, transparent), transparent 60%), color-mix(in srgb, var(--p-fg) 5%, var(--p-bg));

@@ -3,14 +3,16 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type { Worlds } from '@/data/pieces'
 import { useMotionPreference } from '@/lib/motion/use-motion-preference'
+import { PiecePlay } from '@/app/work/piece-play'
 import styles from '@/app/work/worlds.module.css'
 
 const clamp = (n: number) => Math.min(1, Math.max(0, n))
 
 // One product, several directions. A pinned phone shows each direction's home screen, and as its
 // chapter scrolls by, the next one wipes up over the last while the band takes on that direction's
-// colours. Then one screen at a time, all directions side by side.
-export function PieceWorlds({ slug, worlds: { worlds, screens, sheets } }: { slug: string; worlds: Worlds }) {
+// colours. Then the working prototype, one screen at a time with all directions side by side, and the
+// systems behind them.
+export function PieceWorlds({ slug, worlds: { worlds, screens, sheets, play } }: { slug: string; worlds: Worlds }) {
   const mode = useMotionPreference()
   const still = mode === 'static'
   const scene = useRef<HTMLDivElement>(null)
@@ -118,6 +120,9 @@ export function PieceWorlds({ slug, worlds: { worlds, screens, sheets } }: { slu
           ))}
         </div>
       </div>
+
+      {/* Tap it first, then compare it screen by screen. */}
+      {play && <PiecePlay slug={slug} worlds={{ worlds, screens, play }} />}
 
       <div className={styles.compare}>
         <div className={styles.compareHead}>
