@@ -1,5 +1,7 @@
-"""Put the studio's mark, "By VeraStack Labs", on every image of our work the site serves, so a screenshot
-or a saved image still carries the name (Rigan, 2026-10-31). Run it after adding or replacing an image:
+"""Put the studio's mark on every image of our work the site serves, so a screenshot or a saved image still
+carries the name (Rigan, 2026-10-31). Concept pieces (kind 'concept' in src/data/pieces.ts) say "Concept by
+VeraStack Labs", as the concepts site does; our own products and the blog say "By VeraStack Labs", since
+"concept" would be untrue there. Run it after adding or replacing an image:
 
     python scripts/brand-mark.py
 
@@ -26,9 +28,15 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(ROOT, 'scripts', 'brand-marks.json')
 MARK = 'By VeraStack Labs'
+CONCEPT_MARK = 'Concept by VeraStack Labs'
 FONT = 'C:/Windows/Fonts/segoeuib.ttf'
 SERVED = ['public/work/*/*.webp', 'public/blog/*/*.webp']
 DIRECTIONS = {'tri': 'Triplicate', 'ridge': 'Ridgeline', 'haat': 'Haat', 'tiffin': 'Tiffin'}
+
+
+def concept_slugs():
+    with open(os.path.join(ROOT, 'src', 'data', 'pieces.ts'), encoding='utf-8') as f:
+        return set(re.findall(r"slug: '([a-z0-9-]+)',\s*kind: 'concept'", f.read()))
 
 
 def sha(path):
@@ -50,7 +58,7 @@ def text(draw, xy, s, size, fill, anchor):
     draw.text(xy, s, font=ImageFont.truetype(FONT, size), fill=fill, anchor=anchor)
 
 
-def status(im):
+def status(im, mark):
     # The clock sits at the left of a 390 wide screen around y 22; its colour is the pixel in that box
     # furthest from the bar's own colour.
     w, h = im.size
@@ -59,11 +67,11 @@ def status(im):
     box = im.crop((int(30 * k), int(14 * k), int(64 * k), int(30 * k)))
     ink = max(box.get_flattened_data(), key=lambda p: sum(abs(p[i] - bg[i]) for i in range(3)))
     layer = Image.new('RGBA', im.size, (0, 0, 0, 0))
-    text(ImageDraw.Draw(layer), (w / 2, 22.5 * k), MARK, round(10.5 * k), (*ink[:3], 180), 'mm')
+    text(ImageDraw.Draw(layer), (w / 2, 22.5 * k), mark, round(10.5 * k), (*ink[:3], 180), 'mm')
     return Image.alpha_composite(im, layer)
 
 
-def sheet(im, name):
+def sheet(im, name, mark):
     w, h = im.size
     # the page colour around the sheet's rounded box, so the band reads as the page continuing
     ground = im.getpixel((1, h - 1))[:3]
@@ -73,35 +81,38 @@ def sheet(im, name):
     ink = (24, 24, 28, 170) if luma(ground) > 0.55 else (245, 245, 245, 170)
     d = ImageDraw.Draw(out)
     size = round(w * 0.0125)
-    text(d, (round(w * 0.025), h + band / 2), MARK, size, ink, 'lm')
-    text(d, (w - round(w * 0.025), h + band / 2), f'Tokri concept, the {name} system', size, ink, 'rm')
+    text(d, (round(w * 0.025), h + band / 2), mark, size, ink, 'lm')
+    text(d, (w - round(w * 0.025), h + band / 2), f'Tokri, the {name} system', size, ink, 'rm')
     return out
 
 
-def corner(im):
+def corner(im, mark):
     w, h = im.size
     size = max(12, round(w * 0.0105))
     pad = max(12, round(w * 0.02))
     under = mean(im, (int(w * 0.78), int(h - pad - size * 2), w - 1, h - 1))
     ink = (24, 24, 28, 150) if luma(under) > 0.55 else (245, 245, 245, 150)
     layer = Image.new('RGBA', im.size, (0, 0, 0, 0))
-    text(ImageDraw.Draw(layer), (w - pad, h - pad), MARK, size, ink, 'rs')
+    text(ImageDraw.Draw(layer), (w - pad, h - pad), mark, size, ink, 'rs')
     return Image.alpha_composite(im, layer)
 
 
-def placement(rel):
+def placement(rel, concepts):
+    piece = re.match(r'public/work/([a-z0-9-]+)/', rel)
+    mark = CONCEPT_MARK if piece and piece.group(1) in concepts else MARK
     m = re.match(r'public/work/tokri/(tri|ridge|haat|tiffin)-(\w+)\.webp$', rel)
     if m and m.group(2) == 'system':
-        return lambda im: sheet(im, DIRECTIONS[m.group(1)])
+        return lambda im: sheet(im, DIRECTIONS[m.group(1)], mark)
     if m:
-        return status
-    return corner
+        return lambda im: status(im, mark)
+    return lambda im: corner(im, mark)
 
 
 def main():
     with open(MANIFEST, encoding='utf-8') as f:
         data = json.load(f)
     marked, at_source = data['marked'], set(data['atSource'])
+    concepts = concept_slugs()
     done = 0
     for pattern in SERVED:
         for path in sorted(glob.glob(os.path.join(ROOT, pattern))):
@@ -109,7 +120,7 @@ def main():
             if rel in at_source or marked.get(rel) == sha(path):
                 continue
             im = Image.open(path).convert('RGBA')
-            placement(rel)(im).convert('RGB').save(path, 'WEBP', quality=88, method=6)
+            placement(rel, concepts)(im).convert('RGB').save(path, 'WEBP', quality=88, method=6)
             marked[rel] = sha(path)
             done += 1
             print('marked', rel)
