@@ -55,7 +55,7 @@
     "public/work/tokri/haat-home.webp": "764157f9e9ae2f5b5682a562549d0fb71c197e76b46421023863e300084031d2",
     "public/work/tokri/haat-med.webp": "1f5c79fd26e67180c1dc85db535aaed8a5d09bd08f1b2e3bd958fe8ef2d995fe",
     "public/work/tokri/haat-menu.webp": "03f3f2284421965a522d585382120c727c57b9a53398c17ce8a9e3d6b8637c20",
-    "public/work/tokri/haat-system.webp": "76d88729b32a29a541991fd2b6ca2d5c0d458c98fe65b22e74d127345b66018d",
+    "public/work/tokri/haat-system.webp": "6f519af6500246dfe6f97231de94a7ebd97bc651206e963c059b219d0e7ebd78",
     "public/work/tokri/haat-track.webp": "86e719a21848b8db910e088f8197132979dafd2e3ea1b3ea260be9b94b1af5cb",
     "public/work/tokri/ridge-cart.webp": "cacef90c905475004758fd94fe374bbe7ab1beae73d84a1618c532afe66997f9",
     "public/work/tokri/ridge-checkout.webp": "210ada4fd4630197bde45483b4d20a28943a94a3418a7b2423df09e1a789627a",
@@ -63,7 +63,7 @@
     "public/work/tokri/ridge-home.webp": "6febbea403648c61e5883e6553eea511f2a6e1c4ae110acd7ba2dce18fb316de",
     "public/work/tokri/ridge-med.webp": "4dc7805f5dced981da3fa2ac6d3b9609a7e307855696f59a1a28f12ce445a69d",
     "public/work/tokri/ridge-menu.webp": "5385fe0daf78e6d8180935bb632ce619ca0d08201272183523fac638cb6c7916",
-    "public/work/tokri/ridge-system.webp": "1c0a4243b9dc3023838353e3ba1a4a3c301e74c92b38f1e7aa70de8137f1a7a5",
+    "public/work/tokri/ridge-system.webp": "bd9c7bc59602ee602709c18a39070b2319a75abecd677c8f40e26d6dec34698b",
     "public/work/tokri/ridge-track.webp": "8f04c1a2be8fdeeb1fbd17043ad40d2c3f539358984a85ef4cf52d26268ffdd7",
     "public/work/tokri/tiffin-cart.webp": "a7ec970678cce41017fc91f5e15206ee5df642116651bc83e4d53959fa4bf00f",
     "public/work/tokri/tiffin-checkout.webp": "cccd1fc7d53f2f46f84557d3e63a5df2a8225c8d7db52408b8a3f3fee795de50",
@@ -71,7 +71,7 @@
     "public/work/tokri/tiffin-home.webp": "49859d1c6ac626d01a3abe327194629f58b726ec833468367ee61dbce8322fe9",
     "public/work/tokri/tiffin-med.webp": "cb6b458313192ab61de5de10b2e82bf3917e52ca7467c6ee60f6e0637d59c61f",
     "public/work/tokri/tiffin-menu.webp": "7908ee90d3ad9a57470f39483acd62655cfba75c48b5f772d3cd1046524ad337",
-    "public/work/tokri/tiffin-system.webp": "79168ecb696b6e7cc2f92ac6cbe55a069f3e3af5d177eec630b3ce9ab7d47199",
+    "public/work/tokri/tiffin-system.webp": "88812e13f865bb917297c7d79b545ea79a0716cc503c84ae99c4ffe69c950a31",
     "public/work/tokri/tiffin-track.webp": "fa161f777038efdf1a252d865bae36cb113f02ca8065e3766007875f45fd2a5e",
     "public/work/tokri/tri-cart.webp": "c60085f76f8b94e70b820a3e2e6e3401e7b3d097bd001c2b2b5d9ecf2cce6255",
     "public/work/tokri/tri-checkout.webp": "33aec3bd052ce63eeb0007c9b30744180eceeaaf28d0608e17331ffd1c933478",
@@ -79,7 +79,7 @@
     "public/work/tokri/tri-home.webp": "1c2a077483ae876c73e20c3416d6d487b0bfe0c14237fb234fbfba95da78a325",
     "public/work/tokri/tri-med.webp": "f89e1969608a41309e0d59c790561180f5829f42380c69143a10792c87efc81d",
     "public/work/tokri/tri-menu.webp": "aaf99a92402c229e9e03f0bba2463623850fde576cff611c87d609a5be631e86",
-    "public/work/tokri/tri-system.webp": "2a3f8394e10163948a7f85d28e1d57bca15776489dcfe78132280c545b71f76e",
+    "public/work/tokri/tri-system.webp": "9022332d1694bc1a3c5c7c8f40905f937e1f95bf8e8696f246b38f355eeb0ffc",
     "public/work/tokri/tri-track.webp": "3a9047f060d28a95c09852fb2dc66062cbcc6b3e0d4cb84e90e41f62145fdba0"
   }
 }

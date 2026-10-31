@@ -167,8 +167,9 @@ export function PieceWorlds({ slug, worlds: { worlds, screens, sheets, play } }:
               ))}
             </div>
           </div>
-          {/* A tall sheet scrolls inside its frame, so the page keeps its pace. */}
-          <div className={styles.sheetFrame} tabIndex={0} aria-label={`${worlds[sheet].name} design system, scrollable`}>
+          {/* A tall sheet scrolls inside its frame, so the page keeps its pace. data-lenis-prevent hands
+              the wheel and touch to the frame instead of the page's smooth scroll. */}
+          <div className={styles.sheetFrame} tabIndex={0} data-lenis-prevent aria-label={`${worlds[sheet].name} design system, scrollable`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img key={worlds[sheet].key} src={src(worlds[sheet].key, 'system')} alt={`${worlds[sheet].name} design system: colour, type, spacing, components, illustration, icons and motion`} width={1600} loading="lazy" />
           </div>
