@@ -10,7 +10,6 @@ import { pieceFont } from '@/app/work/fonts'
 import { DetailGlyphArt } from '@/app/work/piece-glyphs'
 import { PieceMotifArt } from '@/app/work/piece-motif'
 import { CountUp, ScrollWords } from '@/app/work/piece-motion'
-import { PiecePlay } from '@/app/work/piece-play'
 import { PieceWorlds } from '@/app/work/piece-worlds'
 import styles from '@/app/work/piece.module.css'
 
@@ -68,6 +67,8 @@ export function PiecePage({ piece }: { piece: Piece }) {
       data-shape={theme.shape ?? 'soft'}
     >
       <span id="top" />
+      {/* How far down the piece the reader is, in its accent, along the top edge. */}
+      <div className={styles.progress} aria-hidden="true" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(graph) }} />
       <div className={styles.inner}>
         <p className={styles.crumb}>
@@ -114,14 +115,13 @@ export function PiecePage({ piece }: { piece: Piece }) {
             <ScrollWords text={piece.brief} />
           </section>
         )}
-        {sections.map((s) => (
+        {sections.map((s, i) => (
           <section key={s.d} className={styles.section} aria-labelledby={`s-${s.d}`}>
-            <h2 id={`s-${s.d}`} className={styles.h2}>
-              /{disciplineLabel[s.d]}
+            <h2 id={`s-${s.d}`} className={`${styles.h2} ${styles.pin}`}>
+              <em>{String(i + 1).padStart(2, '0')}</em> /{disciplineLabel[s.d]}
             </h2>
             <p className={styles.idea}>{marked(s.idea)}</p>
             {s.d === 'design' && piece.worlds && <PieceWorlds slug={piece.slug} worlds={piece.worlds} />}
-            {s.d === 'development' && piece.worlds?.play && <PiecePlay slug={piece.slug} worlds={piece.worlds} />}
             {s.film && (
               <div className={styles.film}>
                 {s.film.versions ? (
@@ -150,7 +150,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
         ))}
         {piece.details && (
           <section className={styles.details} aria-labelledby="s-details">
-            <h2 id="s-details" className={styles.h2}>
+            <h2 id="s-details" className={`${styles.h2} ${styles.pin}`}>
               /small things
             </h2>
             <ol>

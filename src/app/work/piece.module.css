@@ -87,6 +87,48 @@
 .pager a { display: flex; flex-direction: column; gap: 6px; color: var(--p-fg); font-weight: 700; text-decoration: none; }
 .pager a:last-child { text-align: right; align-items: flex-end; }
 .pager span { font: 500 11px var(--p-mono); color: var(--p-muted); }
+/* A section's label pins under the header while its section scrolls past, as a small frosted pill, so
+   the reader always knows where they are. It stays inside its own section, so the next one takes over. */
+.pin {
+  position: sticky;
+  top: 84px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  padding: 7px 14px 7px 10px;
+  margin-left: -10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--p-bg) 70%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  backdrop-filter: blur(12px) saturate(1.2);
+  border: 1px solid color-mix(in srgb, var(--p-fg) 12%, transparent);
+}
+.pin em { font-style: normal; color: var(--p-muted); }
+@media (max-width: 899px) { .pin { top: 76px; } }
+
+/* Reading progress along the top edge, driven by the page's own scroll (CSS only; left out where the
+   browser has no scroll timelines). */
+.progress { display: none; }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 60;
+      display: block;
+      height: 3px;
+      background: linear-gradient(90deg, color-mix(in srgb, var(--p-accent) 50%, transparent), var(--p-accent));
+      box-shadow: 0 0 12px color-mix(in srgb, var(--p-accent) 60%, transparent);
+      transform-origin: 0 50%;
+      animation: progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
 /* The brief brightens word by word as it scrolls up (piece-motion.tsx); without the script it is
    simply all there. */
 .words[data-live] span { opacity: calc(0.16 + 0.84 * var(--w, 0)); transition: opacity 0.25s linear; }
