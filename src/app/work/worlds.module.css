@@ -20,8 +20,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0 20px;
-  background: linear-gradient(var(--w-bg) 82%, transparent);
+  /* On phones the section label pins at 76px, so the phone starts below it rather than beside it. */
+  padding: 64px 0 20px;
+  background: linear-gradient(var(--w-bg) 86%, transparent);
   transition: background 0.7s;
 }
 @media (min-width: 900px) {
@@ -128,15 +129,20 @@
 .sheetFrame {
   position: relative;
   /* A fixed height, so a lazy sheet has room to load into; every sheet is taller than this. */
-  height: min(78svh, 900px);
+  height: min(64svh, 560px);
   overflow-y: auto;
   border-radius: 24px;
   outline: 1px solid color-mix(in srgb, var(--p-fg) 14%, transparent);
   background: #0f1114;
-  scrollbar-width: thin;
-  scrollbar-color: var(--p-accent) transparent;
-  overscroll-behavior: contain;
+  /* A full-width scrollbar in the accent on a faint track of the piece's own ink: easy to see and grab. */
+  scrollbar-width: auto;
+  scrollbar-color: var(--p-accent) color-mix(in srgb, var(--p-fg) 8%, var(--p-bg));
 }
+/* On larger screens the frame keeps the wheel to itself; on phones a swipe that reaches the sheet's end
+   carries on down the page, so the frame never traps the reader. */
+@media (min-width: 900px) { .sheetFrame { height: min(78svh, 900px); overscroll-behavior: contain; } }
+/* Lenis's own stylesheet contains every [data-lenis-prevent] box; it leaves touch alone, so phones undo it. */
+@media (max-width: 899px) { :global(.lenis) .sheetFrame[data-lenis-prevent] { overscroll-behavior: auto; } }
 .sheetFrame:focus-visible { outline: 2px solid var(--p-accent); outline-offset: 3px; }
 .sheetFrame img { display: block; width: 100%; height: auto; animation: cell-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 .sheetLink { display: inline-block; margin-top: 14px; font-size: 14px; color: var(--p-muted); text-underline-offset: 3px; }
