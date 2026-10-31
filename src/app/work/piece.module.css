@@ -87,7 +87,38 @@
 .pager a { display: flex; flex-direction: column; gap: 6px; color: var(--p-fg); font-weight: 700; text-decoration: none; }
 .pager a:last-child { text-align: right; align-items: flex-end; }
 .pager span { font: 500 11px var(--p-mono); color: var(--p-muted); }
+/* The brief brightens word by word as it scrolls up (piece-motion.tsx); without the script it is
+   simply all there. */
+.words[data-live] span { opacity: calc(0.16 + 0.84 * var(--w, 0)); transition: opacity 0.25s linear; }
+
+/* An idea's ==phrase==: a marker stroke under it that sweeps across as it scrolls into view. */
+.mark {
+  padding: 0 0.06em;
+  color: inherit;
+  background: linear-gradient(color-mix(in srgb, var(--p-accent) 40%, transparent), color-mix(in srgb, var(--p-accent) 40%, transparent)) no-repeat 0 90% / 100% 0.4em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.count { font-variant-numeric: tabular-nums; }
+
+/* A detail with a glyph keeps its number on the left and wears the glyph on the right. */
+.details li[data-glyph] { position: relative; padding-right: 40px; }
+.details li svg { position: absolute; top: 12px; right: 0; width: 28px; height: 28px; fill: none; stroke: var(--p-accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Scroll-linked, CSS only, where the browser supports it; everything is simply shown elsewhere. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .mark { animation: mark-in linear both; animation-timeline: view(); animation-range: entry 50% cover 45%; }
+    .details li { animation: detail-in linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+    .details li svg { animation: glyph-in linear both; animation-timeline: view(); animation-range: entry 40% cover 35%; }
+  }
+}
+@keyframes mark-in { from { background-size: 0% 0.4em; } }
+@keyframes detail-in { from { opacity: 0; transform: translateY(18px); } }
+@keyframes glyph-in { from { opacity: 0; transform: rotate(-12deg) scale(0.7); } }
+
 @media (prefers-reduced-motion: reduce) {
+  .words[data-live] span { opacity: 1; transition: none; }
   .button, .button:hover { transition: none; transform: none; }
   .caret, .fill { animation: none; }
 }

@@ -62,7 +62,19 @@ export type World = {
   muted: string
   accent: string
 }
-export type Worlds = { worlds: World[]; screens: { id: string; label: string }[]; sheets?: boolean }
+export type Worlds = {
+  worlds: World[]
+  screens: { id: string; label: string }[]
+  sheets?: boolean
+  // A page that runs one direction's prototype alone, picked with ?d=<key> (piece-play.tsx). Cloudflare
+  // Pages serves play.html without its extension, so the address has none.
+  play?: string
+}
+
+// Line glyphs a detail can wear (piece-glyphs.tsx).
+export type DetailGlyph = 'no-ads' | 'price' | 'pharmacist' | 'gate' | 'cash'
+export type Detail = string | { text: string; glyph: DetailGlyph }
+export const detailText = (d: Detail) => (typeof d === 'string' ? d : d.text)
 
 export type Piece = {
   slug: string
@@ -85,10 +97,11 @@ export type Piece = {
   brief?: string
   // Short label and value pairs shown under the title. No prices.
   facts?: { label: string; value: string }[]
-  // The idea in a sentence or two, then the finished screens.
+  // The idea in a sentence or two, then the finished screens. Wrap one phrase in ==...== to give it
+  // the accent highlight as it scrolls in.
   sections?: Partial<Record<Discipline, Section>>
   // Small craft details worth noticing, one sentence each.
-  details?: string[]
+  details?: Detail[]
   worlds?: Worlds
   concept?: {
     // The client's name when named, an industry when anonymised, a made-up brand when our own.
@@ -193,11 +206,11 @@ const unsorted: Piece[] = [
     ],
     sections: {
       design: {
-        idea: 'Two ways to order, each dressed two ways. In the Bill Book your order is one honest bill from the first tap; in One Trip the kitchen, the grocer and the chemist are stops on one route to your door. The flows and the promises stay fixed. Colour, type, drawing and motion change completely.',
+        idea: 'Two ways to order, each dressed two ways. In the Bill Book your order is one honest bill from the first tap; in One Trip the kitchen, the grocer and the chemist are stops on one route to your door. The flows and the promises stay fixed. ==Colour, type, drawing and motion change completely.==',
         shots: [],
       },
       development: {
-        idea: 'None of the four is a picture. Each is a working prototype, 88 screens in all, in four languages, drawn in SVG and CSS instead of photos so it stays light on a budget phone and a weak signal.',
+        idea: '==None of the four is a picture.== Each is a working prototype, 88 screens in all, in four languages, drawn in SVG and CSS instead of photos so it stays light on a budget phone and a weak signal.',
         shots: [],
       },
     },
@@ -270,13 +283,14 @@ const unsorted: Piece[] = [
         { id: 'med', label: 'Medicine' },
       ],
       sheets: true,
+      play: 'https://concepts.verastack.dev/tokri/play',
     },
     details: [
-      'No screen in any direction has a place where an ad could go.',
-      'The price you see is the price you pay: delivery shows from the first item, with its reason, and the tip is a blank you fill if you like.',
-      'A named pharmacist reads every prescription, on screen, before medicine leaves the shop.',
-      'Your delivery code appears only when the rider is at your gate, so nobody can ask for it on a call.',
-      'Cash and UPI sit side by side as equals. Neither is greyed out or pushed.',
+      { text: 'No screen in any direction has a place where an ad could go.', glyph: 'no-ads' },
+      { text: 'The price you see is the price you pay: delivery shows from the first item, with its reason, and the tip is a blank you fill if you like.', glyph: 'price' },
+      { text: 'A named pharmacist reads every prescription, on screen, before medicine leaves the shop.', glyph: 'pharmacist' },
+      { text: 'Your delivery code appears only when the rider is at your gate, so nobody can ask for it on a call.', glyph: 'gate' },
+      { text: 'Cash and UPI sit side by side as equals. Neither is greyed out or pushed.', glyph: 'cash' },
     ],
     concept: {
       for: 'a team in North Bengal',

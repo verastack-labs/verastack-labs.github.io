@@ -106,6 +106,14 @@ describe('pieces', () => {
     expect(pillTitle({ kind: 'client', title: 'A (concept) store' })).toBe('A (concept) store')
   })
 
+  it('closes every highlighted phrase in an idea', () => {
+    for (const p of pieces) for (const sec of Object.values(p.sections ?? {})) expect((sec.idea.match(/==/g) ?? []).length % 2, p.slug).toBe(0)
+  })
+
+  it('points a live prototype at a concepts play page', () => {
+    for (const p of pieces.filter((x) => x.worlds?.play)) expect(p.worlds!.play, p.slug).toMatch(/^https:\/\/concepts\.verastack\.dev\/[a-z-]+\/play$/)
+  })
+
   it('never uses an em dash', () => {
     expect(JSON.stringify(pieces)).not.toContain(EM_DASH)
   })

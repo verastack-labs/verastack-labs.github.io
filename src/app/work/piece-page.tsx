@@ -3,13 +3,19 @@ import type { CSSProperties } from 'react'
 import { FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
 import { allFilms } from '@/data/films'
-import { disciplineLabel, kindLabel, pagePieces, pillTitle, type Piece } from '@/data/pieces'
+import { detailText, disciplineLabel, kindLabel, pagePieces, pillTitle, type Piece } from '@/data/pieces'
 import { jsonLd, studioNode } from '@/lib/structured-data'
 import { site } from '@/data/site'
 import { pieceFont } from '@/app/work/fonts'
+import { DetailGlyphArt } from '@/app/work/piece-glyphs'
 import { PieceMotifArt } from '@/app/work/piece-motif'
+import { CountUp, ScrollWords } from '@/app/work/piece-motion'
+import { PiecePlay } from '@/app/work/piece-play'
 import { PieceWorlds } from '@/app/work/piece-worlds'
 import styles from '@/app/work/piece.module.css'
+
+// An idea's ==phrase== becomes a highlight that sweeps in as it scrolls into view.
+const marked = (text: string) => text.split(/==(.+?)==/).map((t, i) => (i % 2 ? <mark key={i} className={styles.mark}>{t}</mark> : t))
 
 const month = (date: string) => new Date(`${date}-01T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })
 
@@ -89,7 +95,9 @@ export function PiecePage({ piece }: { piece: Piece }) {
             {piece.facts.map((f) => (
               <div key={f.label}>
                 <dt>{f.label}</dt>
-                <dd>{f.value}</dd>
+                <dd>
+                  <CountUp value={f.value} />
+                </dd>
               </div>
             ))}
           </dl>
@@ -103,7 +111,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
             <h2 id="s-brief" className={styles.h2}>
               /the brief
             </h2>
-            <p>{piece.brief}</p>
+            <ScrollWords text={piece.brief} />
           </section>
         )}
         {sections.map((s) => (
@@ -111,8 +119,9 @@ export function PiecePage({ piece }: { piece: Piece }) {
             <h2 id={`s-${s.d}`} className={styles.h2}>
               /{disciplineLabel[s.d]}
             </h2>
-            <p className={styles.idea}>{s.idea}</p>
+            <p className={styles.idea}>{marked(s.idea)}</p>
             {s.d === 'design' && piece.worlds && <PieceWorlds slug={piece.slug} worlds={piece.worlds} />}
+            {s.d === 'development' && piece.worlds?.play && <PiecePlay slug={piece.slug} worlds={piece.worlds} />}
             {s.film && (
               <div className={styles.film}>
                 {s.film.versions ? (
@@ -145,8 +154,11 @@ export function PiecePage({ piece }: { piece: Piece }) {
               /small things
             </h2>
             <ol>
-              {piece.details.map((d) => (
-                <li key={d}>{d}</li>
+              {piece.details.map((d, i) => (
+                <li key={detailText(d)} style={{ '--i': i } as CSSProperties} data-glyph={typeof d === 'string' ? undefined : ''}>
+                  {typeof d !== 'string' && <DetailGlyphArt glyph={d.glyph} />}
+                  {detailText(d)}
+                </li>
               ))}
             </ol>
           </section>
