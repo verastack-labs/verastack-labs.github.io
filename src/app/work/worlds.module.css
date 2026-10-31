@@ -129,7 +129,8 @@
 .sheetFrame {
   position: relative;
   /* A fixed height, so a lazy sheet has room to load into; every sheet is taller than this. */
-  height: min(64svh, 560px);
+  /* Short on phones, well under half the screen, so most of any swipe lands on the page, not the sheet. */
+  height: min(40svh, 340px);
   overflow-y: auto;
   border-radius: 24px;
   outline: 1px solid color-mix(in srgb, var(--p-fg) 14%, transparent);
