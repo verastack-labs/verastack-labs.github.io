@@ -115,3 +115,7 @@ a.copy { display: inline-block; text-decoration: none; }
 /* Organization generator: a profile row with the platform it recognised. */
 .profileRow { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; }
 .chipTag { padding: 4px 10px; border: 1px solid var(--signal); border-radius: 999px; color: var(--signal); font: 500 11px var(--font-mono); white-space: nowrap; }
+
+/* On phones these boxes stay well under half the screen, so a swipe mostly moves the page and never gets
+   stuck scrolling the box. */
+@media (max-width: 899px) { .code, .viewDoc { max-height: min(40svh, 340px); } }
