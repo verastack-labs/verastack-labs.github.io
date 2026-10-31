@@ -108,3 +108,8 @@ html[data-motion='static'] .reveal-pending { opacity: 1; transform: none; }
 html, body { overflow-x: clip; }
 /* The scrollbar's space is always kept, so locking the page (menu, film dialog) never shifts it sideways. */
 html { scrollbar-gutter: stable; }
+
+/* Scrolling boxes inside a page (code, panels, strips) get a thin muted thumb on a clear track, never
+   the default light track; the work pages tint theirs with the piece's accent. Phone mockups show no
+   scrollbar at all, as a real phone does (play.html on the concepts site hides them). */
+body * { scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--text) 28%, transparent) transparent; }
