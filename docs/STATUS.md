@@ -62,7 +62,6 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 ## Waiting on Rigan
 
-- **What AI sees (film):** held off /films. Its last line, "the AI never reads them", is stronger than its own notes, which only say many crawlers read the HTML as served. Add it to the Studio shorts group once the line is softened in the Video analysis chat, for example "many AI crawlers never read them".
 - **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
 
 Content (placeholders are in the design until these arrive):
@@ -163,7 +162,7 @@ Content (placeholders are in the design until these arrive):
   each in its own palette and display face; concept titles end in "(concept)" and carry the Concept
   tag. Home links: "See all our work" under #work and "How we made it" on each product. Still open:
   deep dives.
-- [x] Studio shorts on /films (2026-11-04, Rigan left the pick to the site chat): a separate group under the main grid, "Our own pieces ... None of these is client work", with eight of the twelve spree films: AI-built sites all look the same, 2 AM deploy, Homepage horror stories, GEO is the new SEO, Git does not store diffs, 0.1 + 0.2, The Switch lesson 9 (labelled The Open Shelf, never Origan; a test holds this) and What does this print?. Left off on purpose: 0.016% and This week in AI (dated news), and Do you read the diff? (a poll with no answer, it needs a comment thread). What AI sees is held, see Waiting on Rigan. Web cuts are 1080p H.264 capped at 3 Mbps, 0.8 to 8.6 MB, from the 4K renders in videonalyzer/renders/spree; captions come from the renders' .srt files. `shorts` in `src/data/films.ts`; voiced films say the voice is synthetic in their note.
+- [x] Studio shorts on /films (2026-11-04, Rigan left the pick to the site chat): a separate group under the main grid, "Our own pieces ... None of these is client work", with nine of the twelve spree films: AI-built sites all look the same, 2 AM deploy, Homepage horror stories, GEO is the new SEO, Git does not store diffs, 0.1 + 0.2, The Switch lesson 9 (labelled The Open Shelf, never Origan; a test holds this) and What does this print?. Left off on purpose: 0.016% and This week in AI (dated news), and Do you read the diff? (a poll with no answer, it needs a comment thread). What AI sees joined the same day, once its last line was softened to "many AI crawlers never read them". Web cuts are 1080p H.264 capped at 3 Mbps, 0.8 to 8.6 MB, from the 4K renders in videonalyzer/renders/spree; captions come from the renders' .srt files. `shorts` in `src/data/films.ts`; voiced films say the voice is synthetic in their note.
 - [x] Two films on /films (2026-10-29, from the Video analysis chat; Rigan: every finished motion
   film, concept or not, goes on the films page, except the experimental chat's): the Hallmark film
   (unofficial, 16:9) and the Whispr teaser (concept, the watermarked 9:16 preview). Vertical films
