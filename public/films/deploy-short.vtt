@@ -1,0 +1,18 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:08.000
+2:00 AM: deploy --prod
+
+2
+00:00:08.200 --> 00:00:12.800
+2:01 AM: 502 Bad Gateway
+
+3
+00:00:13.000 --> 00:00:18.800
+2:14 AM: you forgot the env var. 200 OK. Ship it.
+
+4
+00:00:19.000 --> 00:00:21.200
+every deploy has a 2 AM
+

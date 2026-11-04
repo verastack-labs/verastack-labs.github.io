@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
-import { allFilms, type FilmEntry } from '@/data/films'
+import { allFilms, films, shorts, studioFilm, type FilmEntry } from '@/data/films'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import styles from '@/app/films/films.module.css'
 
@@ -116,7 +116,21 @@ export function FilmsGallery() {
           More films <em>we&apos;ve made</em>
         </h2>
         <ul className={styles.grid}>
-          {allFilms
+          {[studioFilm, ...films]
+            .filter((f) => f.id !== current.id)
+            .map((f) => (
+              <Card key={f.id} film={f} onPick={pick} />
+            ))}
+        </ul>
+      </section>
+
+      <section className={styles.more} aria-labelledby="shorts-title">
+        <h2 id="shorts-title" className={styles.h2}>
+          Studio shorts: <em>explainers and jokes</em>
+        </h2>
+        <p className={styles.moreLine}>Our own pieces, made between projects. None of these is client work.</p>
+        <ul className={styles.grid}>
+          {shorts
             .filter((f) => f.id !== current.id)
             .map((f) => (
               <Card key={f.id} film={f} onPick={pick} />
