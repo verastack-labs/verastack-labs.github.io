@@ -1,0 +1,58 @@
+WEBVTT
+
+1
+00:00:00.425 --> 00:00:03.050
+Ask a computer for zero point one plus zero
+
+2
+00:00:03.050 --> 00:00:04.025
+point two
+
+3
+00:00:04.175 --> 00:00:06.225
+and it says zero point three
+
+4
+00:00:06.400 --> 00:00:07.650
+followed by a four
+
+5
+00:00:07.775 --> 00:00:09.300
+far down the line
+
+6
+00:00:10.425 --> 00:00:11.450
+Not a bug
+
+7
+00:00:12.600 --> 00:00:15.900
+A binary computer cannot write one tenth exactly
+
+8
+00:00:16.025 --> 00:00:18.875
+the way decimal cannot write one third
+
+9
+00:00:20.000 --> 00:00:22.375
+It stores the nearest fraction it can
+
+10
+00:00:22.475 --> 00:00:23.975
+with fifty two bits
+
+11
+00:00:25.125 --> 00:00:26.100
+Add two of those
+
+12
+00:00:26.137 --> 00:00:27.625
+and the rounding shows
+
+13
+00:00:28.800 --> 00:00:31.275
+So never compare floats with equals
+
+14
+00:00:32.375 --> 00:00:35.000
+Compare the difference to a tiny epsilon
+

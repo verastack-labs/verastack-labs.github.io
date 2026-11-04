@@ -1,0 +1,10 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:09.500
+What does this print?
+
+2
+00:00:09.500 --> 00:00:16.000
+C: 3 3 12 -1. put replaces, merge adds, putIfAbsent skips.
+

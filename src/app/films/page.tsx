@@ -10,7 +10,7 @@ const page = {
   path: '/films',
   title: 'Films by VeraStack Labs',
   description:
-    'Launch films and explainers we make for products, ours and others: the studio in 90 seconds, then the Hallmark and Bruno films, Ozer and Whispr concepts, rigseed, Origan and the founder film.',
+    'Launch films and explainers we make for products, ours and others: the studio in 90 seconds, then the Hallmark and Bruno films, Ozer and Whispr concepts, rigseed, Origan and the founder film, plus our own studio shorts.',
 }
 
 const shareImage = { url: studioFilm.poster, width: 1920, height: 1080, alt: studioFilm.title }
@@ -64,7 +64,7 @@ export default function FilmsPage() {
         Films that <em>launch things.</em>
       </h1>
       <p className={styles.lede} data-reveal>
-        Launch films, explainers and cut-downs for every feed, in the product&apos;s own style. Start with ours.
+        Launch films, explainers and cut-downs for every feed, in the product&apos;s own style. Start with ours, then see the shorts we make between projects.
       </p>
 
       <FilmsGallery />

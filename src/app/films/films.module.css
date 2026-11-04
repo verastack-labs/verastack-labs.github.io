@@ -47,6 +47,7 @@
 
 /* ---------- The grid ---------- */
 .more { margin-top: 88px; }
+.moreLine { max-width: 52ch; margin: -12px 0 24px; color: var(--muted); text-wrap: pretty; }
 .h2 { margin: 0 0 24px; font-weight: 800; font-size: clamp(28px, 3.6vw, 44px); line-height: 1; letter-spacing: -0.045em; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
 .card { min-width: 0; }

@@ -1,0 +1,86 @@
+WEBVTT
+
+1
+00:00:00.425 --> 00:00:02.175
+Git does not store diffs
+
+2
+00:00:03.300 --> 00:00:05.350
+Every commit points to a tree
+
+3
+00:00:06.475 --> 00:00:08.550
+The tree lists files by the hash of their
+
+4
+00:00:08.550 --> 00:00:09.575
+contents
+
+5
+00:00:10.725 --> 00:00:11.475
+Same contents
+
+6
+00:00:11.525 --> 00:00:12.175
+same hash
+
+7
+00:00:12.250 --> 00:00:13.350
+stored once
+
+8
+00:00:14.500 --> 00:00:17.400
+Rename a file and the blob does not change
+
+9
+00:00:17.587 --> 00:00:19.650
+only the tree gets a new name
+
+10
+00:00:20.775 --> 00:00:22.800
+That is why renames are free
+
+11
+00:00:22.950 --> 00:00:25.400
+and why git diff is computed when you ask
+
+12
+00:00:25.500 --> 00:00:26.650
+not stored
+
+13
+00:00:27.775 --> 00:00:29.675
+Pack files add compression later
+
+14
+00:00:29.712 --> 00:00:30.800
+with deltas
+
+15
+00:00:30.900 --> 00:00:32.075
+but that is storage
+
+16
+00:00:32.150 --> 00:00:33.275
+not the model
+
+17
+00:00:34.375 --> 00:00:35.750
+The model is simple
+
+18
+00:00:35.888 --> 00:00:36.425
+a commit
+
+19
+00:00:36.500 --> 00:00:37.000
+a tree
+
+20
+00:00:37.038 --> 00:00:37.800
+and blobs
+
+21
+00:00:37.888 --> 00:00:40.175
+all addressed by what they contain
+

@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { allFilms } from '@/data/films'
+import { allFilms, shorts } from '@/data/films'
 
 const EM_DASH = String.fromCodePoint(0x2014)
 
@@ -24,6 +24,12 @@ describe('films', () => {
 
   it('labels concepts and unofficial films with a trademark line', () => {
     for (const f of allFilms.filter((x) => /\((concept|unofficial)\)/.test(x.title))) expect(f.note, f.id).toMatch(/marks belong to/)
+  })
+
+  it('labels The Switch as The Open Shelf, not Origan', () => {
+    const film = shorts.find((f) => f.id === 'switch-short')
+    expect(`${film?.line} ${film?.note}`).toContain('The Open Shelf')
+    expect(JSON.stringify(film)).not.toMatch(/origan/i)
   })
 
   it('never uses an em dash', () => {
