@@ -62,7 +62,7 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 ## Waiting on Rigan
 
-- **Wingmann social concept page:** approve the plan before anything is built, and see the note under Planned, not started.
+- **Wingmann social concept page:** review /work/wingmann with Pari. Do not send it to the founders until you both have; copy may still change after her review.
 - **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
 
 Content (placeholders are in the design until these arrive):
@@ -156,7 +156,7 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
-- [ ] /work/wingmann, Wingmann social posts (concept), planned 2026-11-05, not started: one public page of all 12 frames, 7 photo and 5 paper, in Wingmann's theme, listed in `concepts/public.json` with the card opening this page, and no separate concepts.verastack.dev page. The photo frames stay in by Rigan's decision (2026-11-05), made after the Pexels licence's no implied endorsement line was raised. Needs the Social chat's captions, watermark change to "Concept by VeraStack Labs" and the trademark owner name. Pari and Rigan see it before the founders do. About half a day: new pinned carousel with a phone swipe, a new serif in `src/app/work/fonts.ts`, checks at 375 and 360 px.
+- [x] /work/wingmann (2026-11-05, Rigan approved the plan via the Social chat): Wingmann social posts (concept), 9 posts and 19 frames from social-docs/outreach/proposals/wingmann/trial/statics, with copy from page-copy.md in the same folder. Carousels pin on larger screens and swipe on phones (`src/app/work/piece-social.tsx`, data under `social` in `pieces.ts`); reduced motion gets the plain row. Lora and Playfair Display are the faces the posts use. The photo frames are Pexels stock, kept by Rigan's decision after the licence's no implied endorsement line was raised; the page calls them stand-ins for real creator shoots. To change a frame, replace the webp in `public/work/wingmann/` (the frames carry "Concept by VeraStack Labs" from source). The concepts gallery card opens this page; there is no separate concepts folder.
 - [x] /work section live (2026-10-28, plan `docs/superpowers/plans/2026-10-28-work-and-concepts.md`):
   `src/data/pieces.ts` holds client work (Ultraviolette, E3, cards linking to Rigan's case studies),
   the four products and the concepts (Whispr teaser, named; Bookwell, our own). `/work/` plus
