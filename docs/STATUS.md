@@ -62,7 +62,7 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 ## Waiting on Rigan
 
-- **Wingmann social concept page:** review /work/wingmann with Pari. Do not send it to the founders until you both have; copy may still change after her review.
+- **Wingmann social concept page:** review the live /work/wingmann. Nothing goes to the founders until you have (2026-11-05, Rigan via the Social chat: no need to wait on Pari).
 - **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
 
 Content (placeholders are in the design until these arrive):
