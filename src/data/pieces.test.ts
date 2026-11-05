@@ -110,6 +110,26 @@ describe('pieces', () => {
     for (const p of pieces) for (const sec of Object.values(p.sections ?? {})) expect((sec.idea.match(/==/g) ?? []).length % 2, p.slug).toBe(0)
   })
 
+  it('has every frame of a social set on disk, with alt text and a caption', () => {
+    for (const p of pieces.filter((x) => x.social)) {
+      for (const set of p.social!) {
+        for (const f of set.frames) {
+          expect(existsSync(join('public', f.src)), f.src).toBe(true)
+          expect(f.alt.length, f.src).toBeGreaterThan(10)
+          expect(set.singles ? f.caption : set.caption, f.src).toBeTruthy()
+        }
+        expect(set.singles || set.frames.length > 1, set.name).toBe(true)
+      }
+    }
+  })
+
+  it('says up top that a social concept never ran, and claims no results', () => {
+    for (const p of pieces.filter((x) => x.social)) {
+      expect(p.concept?.notice, p.slug).toMatch(/none of these posts has run/)
+      expect(JSON.stringify(p), p.slug).not.toMatch(/\d+\s?%|\d+\s?(k|lakh|impressions|followers)\b/i)
+    }
+  })
+
   it('points a live prototype at a concepts play page', () => {
     for (const p of pieces.filter((x) => x.worlds?.play)) expect(p.worlds!.play, p.slug).toMatch(/^https:\/\/concepts\.verastack\.dev\/[a-z-]+\/play$/)
   })

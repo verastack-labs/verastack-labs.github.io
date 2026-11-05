@@ -10,6 +10,7 @@ import { pieceFont } from '@/app/work/fonts'
 import { DetailGlyphArt } from '@/app/work/piece-glyphs'
 import { PieceMotifArt } from '@/app/work/piece-motif'
 import { CountUp, ScrollWords } from '@/app/work/piece-motion'
+import { PieceSocial } from '@/app/work/piece-social'
 import { PieceWorlds } from '@/app/work/piece-worlds'
 import styles from '@/app/work/piece.module.css'
 
@@ -83,6 +84,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
               {piece.credit}
               {piece.concept && piece.concept.visibility !== 'named' ? ` · for ${piece.concept.for}` : ''} · {month(piece.date)}
             </p>
+            {piece.concept?.notice && <p className={styles.notice}>{piece.concept.notice}</p>}
             {piece.external && external && (
               <a className={styles.button} href={external} {...(external.startsWith('/') ? {} : { target: '_blank', rel: 'noreferrer' })}>
                 {piece.external.label} {external.startsWith('/') ? '→' : '↗'}
@@ -122,6 +124,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
             </h2>
             <p className={styles.idea}>{marked(s.idea)}</p>
             {s.d === 'design' && piece.worlds && <PieceWorlds slug={piece.slug} worlds={piece.worlds} />}
+            {s.d === 'design' && piece.social && <PieceSocial sets={piece.social} />}
             {s.film && (
               <div className={styles.film}>
                 {s.film.versions ? (
@@ -151,7 +154,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
         {piece.details && (
           <section className={styles.details} aria-labelledby="s-details">
             <h2 id="s-details" className={`${styles.h2} ${styles.pin}`}>
-              /small things
+              {piece.detailsTitle ?? '/small things'}
             </h2>
             <ol>
               {piece.details.map((d, i) => (
@@ -175,7 +178,7 @@ export function PiecePage({ piece }: { piece: Piece }) {
                   : `A concept by VeraStack Labs, not commissioned by or affiliated with ${piece.concept.for}. ${piece.concept.for} and its marks belong to ${piece.concept.owner ?? piece.concept.for}.`}
             </p>
             <Link className={styles.button} href="/#contact">
-              Want one for your launch? →
+              {piece.concept.cta ?? 'Want one for your launch? →'}
             </Link>
           </aside>
         )}
