@@ -1,0 +1,54 @@
+/* Social posts on a piece page (piece-social.tsx). The frames are the work, so they keep their own 4:5
+   shape and nothing crops them. */
+.social { display: grid; gap: 72px; margin-top: 16px; }
+.name { margin: 0; font-family: var(--p-display, inherit); font-weight: 700; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.06; letter-spacing: -0.015em; text-wrap: balance; }
+.setLine { max-width: 44ch; margin: 12px 0 0; font-size: 16px; line-height: 1.55; color: var(--p-muted); text-wrap: pretty; }
+.caption { margin: 18px 0 0; max-width: 40ch; font-size: 15px; line-height: 1.5; text-wrap: pretty; }
+.caption b { display: block; margin-bottom: 4px; font: 500 11px var(--p-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--p-accent); }
+
+.counter { display: flex; align-items: center; gap: 12px; margin: 20px 0 0; font: 500 12px var(--p-mono); color: var(--p-muted); font-variant-numeric: tabular-nums; }
+.counter i { display: block; flex: 0 1 120px; height: 2px; background: var(--p-accent); transform-origin: 0 50%; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* A plain row by default: it swipes sideways and runs to the screen's edges, so a frame leaves the
+   screen rather than meeting a hard line. */
+.view { margin: 24px -16px 0; }
+.row { display: flex; gap: 12px; margin: 0; padding: 4px 16px 14px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; scrollbar-width: none; }
+.row::-webkit-scrollbar { display: none; }
+.row:focus-visible { outline: 2px solid var(--p-accent); outline-offset: -2px; }
+.frame { flex: 0 0 min(78%, 400px); scroll-snap-align: start; }
+.frame img, .grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; border-radius: 10px; box-shadow: 0 18px 40px -22px color-mix(in srgb, #120a18 80%, transparent); }
+@media (min-width: 768px) { .view { margin-inline: -40px; } .row { padding-inline: 40px; scroll-padding-inline: 40px; } }
+
+/* Pinned: the scene is as tall as the frames need, and the stage holds still inside it. */
+.scene[data-pinned] { height: calc(100svh + (var(--n) - 1) * 58svh); }
+.scene[data-pinned] .stage { position: sticky; top: 0; box-sizing: border-box; display: grid; grid-template-columns: minmax(240px, 0.8fr) minmax(0, 2fr); gap: 48px; align-items: center; height: 100svh; padding-top: 64px; }
+.scene[data-pinned] .view {
+  overflow: hidden;
+  margin: 0 -40px 0 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 56px), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 56px), transparent);
+}
+.scene[data-pinned] .row { width: max-content; gap: 20px; padding: 8px 56px 28px 32px; overflow: visible; scroll-snap-type: none; will-change: transform; }
+.scene[data-pinned] .frame { flex: none; width: calc(min(100svh - 150px, 620px) * 0.8); }
+
+.singlesHead { margin-bottom: 24px; }
+.grid { display: flex; gap: 12px; margin: 0 -16px; padding: 4px 16px 14px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; scrollbar-width: none; }
+.grid::-webkit-scrollbar { display: none; }
+.grid li { flex: 0 0 min(78%, 400px); scroll-snap-align: start; }
+.grid figure { margin: 0; }
+.grid .caption { margin-top: 14px; }
+@media (min-width: 768px) {
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; overflow: visible; }
+}
+
+/* Each single settles in as it arrives, one after the next. Shown as it is everywhere else. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+    .grid li { animation: single-in linear both; animation-timeline: view(); animation-range: entry calc(var(--i) * 12%) entry calc(70% + var(--i) * 12%); }
+  }
+}
+@keyframes single-in { from { opacity: 0; transform: translateY(26px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .counter i { transition: none; }
+}

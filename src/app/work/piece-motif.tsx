@@ -193,7 +193,22 @@ function Basket() {
   )
 }
 
-const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback, basket: Basket }
+// An envelope with a reference letter sliding out and a stamp in the corner.
+function Envelope() {
+  return (
+    <svg viewBox="0 0 320 240">
+      <rect x="70" y="14" width="180" height="150" rx="10" style={s({ fill: 'var(--p-fg)' })} />
+      <rect x="92" y="40" width="96" height="10" rx="5" style={s({ fill: 'var(--p-bg)' })} />
+      <rect x="92" y="62" width="136" height="6" rx="3" style={s({ fill: 'var(--p-muted)' })} />
+      <rect x="92" y="78" width="112" height="6" rx="3" style={s({ fill: 'var(--p-muted)' })} />
+      <path d="M36 104 L160 176 L284 104 V214 a10 10 0 0 1 -10 10 H46 a10 10 0 0 1 -10 -10 Z" style={s({ fill: 'color-mix(in srgb, var(--p-fg) 16%, var(--p-bg))', stroke: line })} />
+      <path d="M36 224 L128 158 M284 224 L192 158" style={s({ fill: 'none', stroke: line })} />
+      <rect className={styles.fill} x="232" y="176" width="34" height="34" rx="3" style={s({ fill: accent })} />
+    </svg>
+  )
+}
+
+const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback, basket: Basket, envelope: Envelope }
 
 export function PieceMotifArt({ motif }: { motif: PieceMotif }) {
   const Drawing = drawings[motif]

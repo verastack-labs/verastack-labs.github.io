@@ -1,4 +1,4 @@
-import { Archivo, Azeret_Mono, Familjen_Grotesk, Geist, Geist_Mono, Inter, JetBrains_Mono, Plus_Jakarta_Sans, Sora, Space_Grotesk } from 'next/font/google'
+import { Archivo, Azeret_Mono, Familjen_Grotesk, Geist, Geist_Mono, Inter, JetBrains_Mono, Lora, Playfair_Display, Plus_Jakarta_Sans, Sora, Space_Grotesk } from 'next/font/google'
 import type { PieceFont, PieceMono } from '@/data/pieces'
 
 // Faces a piece can borrow from its own brand. The house faces need nothing extra. Font files only
@@ -10,6 +10,10 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-piece', display: 'sw
 const geist = Geist({ subsets: ['latin'], variable: '--font-piece', display: 'swap' })
 const familjen = Familjen_Grotesk({ subsets: ['latin'], variable: '--font-piece', display: 'swap' })
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-piece', display: 'swap' })
+
+// Lora for reading, Playfair Display for headings: the pair Wingmann's posts are set in.
+const lora = Lora({ subsets: ['latin'], variable: '--font-piece', display: 'swap' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-piece-display', display: 'swap' })
 
 const azeret = Azeret_Mono({ subsets: ['latin'], variable: '--font-piece-mono', display: 'swap' })
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-piece-mono', display: 'swap' })
@@ -23,6 +27,7 @@ const faces: Record<Exclude<PieceFont, 'house'>, string> = {
   geist: geist.variable,
   'space-grotesk': spaceGrotesk.variable,
   familjen: familjen.variable,
+  lora: `${lora.variable} ${playfair.variable}`,
 }
 const monos: Record<Exclude<PieceMono, 'house'>, string> = { azeret: azeret.variable, jetbrains: jetbrains.variable, 'geist-mono': geistMono.variable }
 

@@ -10,13 +10,13 @@ export type Discipline = 'design' | 'development' | 'films' | 'ai-search'
 export type Kind = 'client' | 'product' | 'concept'
 
 // Faces a piece borrows from its own brand: `font` for the page, `mono` for labels and numbers.
-export type PieceFont = 'house' | 'sora' | 'jakarta' | 'archivo' | 'inter' | 'geist' | 'space-grotesk' | 'familjen'
+export type PieceFont = 'house' | 'sora' | 'jakarta' | 'archivo' | 'inter' | 'geist' | 'space-grotesk' | 'familjen' | 'lora'
 export type PieceMono = 'house' | 'azeret' | 'jetbrains' | 'geist-mono'
 // How frames and buttons are drawn: soft (round), card (small radius), sheet (a drawing sheet's
 // hairlines), brutal (ink border and a hard offset shadow).
 export type PieceShape = 'soft' | 'card' | 'sheet' | 'brutal'
 // The drawing in the hero, taken from the piece's own world (piece-motif.tsx).
-export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback' | 'basket'
+export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback' | 'basket' | 'envelope'
 
 export type PieceTheme = {
   bg: string
@@ -71,6 +71,12 @@ export type Worlds = {
   play?: string
 }
 
+// A run of social posts (piece-social.tsx). A set of frames is one carousel, pinned while it plays out
+// on larger screens and swiped on phones, with one caption; `singles` lays separate posts out side by
+// side, each with its own caption.
+export type SocialFrame = { src: string; alt: string; caption?: string }
+export type SocialSet = { name: string; line: string; caption?: string; singles?: boolean; frames: SocialFrame[] }
+
 // Line glyphs a detail can wear (piece-glyphs.tsx).
 export type DetailGlyph = 'no-ads' | 'price' | 'pharmacist' | 'gate' | 'cash'
 export type Detail = string | { text: string; glyph: DetailGlyph }
@@ -102,7 +108,10 @@ export type Piece = {
   sections?: Partial<Record<Discipline, Section>>
   // Small craft details worth noticing, one sentence each.
   details?: Detail[]
+  // The heading over `details`, where "/small things" is the wrong name for them.
+  detailsTitle?: string
   worlds?: Worlds
+  social?: SocialSet[]
   concept?: {
     // The client's name when named, an industry when anonymised, a made-up brand when our own.
     for: string
@@ -113,8 +122,12 @@ export type Piece = {
     // For named samples: who owns the name and marks, for the trademark line. A concept made for a
     // client who agreed to a sample may use their own brand, logo and UI; taken down if they ask.
     owner?: string
+    // Said up top, beside the title, where a concept could otherwise pass for live work.
+    notice?: string
     // What the paid version adds. No prices.
     takes: string
+    // The button under `takes`, where "launch" is the wrong word.
+    cta?: string
   }
 }
 
@@ -130,6 +143,8 @@ export const kindLabel: Record<Kind, string> = { client: 'Client', product: 'Pro
 // The title where a Concept pill sits beside it (cards, piece headings), so "(concept)" is not said
 // twice. Page titles, structured data and the pager keep the full title.
 export const pillTitle = (p: Pick<Piece, 'kind' | 'title'>) => (p.kind === 'concept' ? p.title.replace(/ \(concept\)$/, '') : p.title)
+
+const post = (name: string, alt: string, caption?: string): SocialFrame => ({ src: `/work/wingmann/${name}.webp`, alt, ...(caption ? { caption } : {}) })
 
 const shot = (slug: string, file: string, alt: string, note?: string): Shot => ({ src: `/work/${slug}/${file}`, alt, ...(note ? { note } : {}) })
 
@@ -184,6 +199,103 @@ const ILLUSTRATIVE = 'Illustrative data, not a real college.'
 const MEHFIL_NOTE = 'In development, not launched. Real app screens with invented sample data.'
 
 const unsorted: Piece[] = [
+  {
+    slug: 'wingmann',
+    kind: 'concept',
+    title: 'Wingmann social posts (concept)',
+    line: 'Nine Instagram posts for a dating app where your first hello is a call: paper jokes that get sent, and warm photos that build trust.',
+    disciplines: ['design'],
+    date: '2026-11',
+    cover: '/work/wingmann/cover.webp',
+    peek: '/work/wingmann/minutes-1.webp',
+    credit: 'Concept by VeraStack Labs',
+    page: true,
+    theme: { bg: '#2B1836', fg: '#F3ECE6', muted: '#C4B4CC', accent: '#F2C230', onAccent: '#2B1836', font: 'lora', shape: 'soft', motif: 'envelope' },
+    brief: 'Wingmann’s feed already holds its sharpest idea: “Application to date someone” turns dating into a form you have to fill in. It’s funny because everyone has felt interviewed on a first date.',
+    facts: [
+      { label: 'Format', value: 'Instagram posts, 4:5' },
+      { label: 'Posts', value: '9 posts, 19 frames' },
+      { label: 'Series', value: 'Paper and photo' },
+      { label: 'Status', value: 'Concept, never run' },
+    ],
+    sections: {
+      design: {
+        idea: 'We kept pulling that thread. If dating has an application, it also has a reference from your best friend, a leave letter from swiping, a report card and an invitation to a first hello. Paper suits a brand that asks people to slow down. ==It looks like something a person made==, which is the opposite of a feed of profiles.',
+        shots: [],
+      },
+    },
+    social: [
+      {
+        name: 'Reference for dating my friend',
+        line: 'The application, answered by the person who actually knows you.',
+        caption: 'We’ve done the application. Now, has anyone checked your references? Send this to the friend who’d write yours.',
+        frames: [
+          post('paper-1', 'A form headed Reference for dating my friend, to be filled in by the person who actually knows them'),
+          post('paper-2', 'Candidate details: known them since the bad haircut, seen them at their worst twice this month, would trust them with my phone, not my fries'),
+          post('paper-3', 'What their profile leaves out: goes quiet when they like someone, “I’m fine with anything” is a lie at restaurants, takes a week to answer a voice note, worth the wait'),
+          post('paper-4', 'Final recommendation: set them up. One name, and why. Approved by best friend'),
+          post('paper-5', 'Every love story has a friend behind it. Send this to yours, then write to a Wingmate'),
+        ],
+      },
+      {
+        name: 'Paper singles',
+        line: 'One joke, one sheet of paper.',
+        singles: true,
+        frames: [
+          post('single-1', 'A leave letter to The Principal, My Love Life, asking for leave from swiping, signed my thumb', 'Dear thumb, leave sanctioned. Three curated profiles a day on Wingmann.'),
+          post('single-2', 'An invitation to your first hello. Venue: a phone call. Dress code: whatever you’re wearing', 'Your first hello on Wingmann is a call. Come as you are.'),
+          post('single-3', 'A report card for modern dating: swiping A plus, replying C minus, saying what you want D, and a note saying see a Wingmate', 'Top of the class at swiping. Needs work on everything after. Which grade hurts most?'),
+        ],
+      },
+      {
+        name: 'Minutes of the group chat',
+        line: 'The committee behind every first call.',
+        caption: 'Every first call has a committee behind it. Tag yours.',
+        frames: [
+          post('minutes-1', 'Emergency meeting, everyone present: minutes of the group chat. Someone has a first call tonight'),
+          post('minutes-2', 'Agenda: is “haha” enough, who hangs up first, what if they’re actually nice'),
+          post('minutes-3', 'Resolved: take the call, report back. Passed unanimously'),
+          post('minutes-4', 'Your first hello is a call. Your friends will want minutes. Write to a Wingmate'),
+        ],
+      },
+      {
+        name: 'The friend test',
+        line: 'Paper carries the jokes. Photos carry the trust. On a dating app people want to see faces, so this series sits on warm, unposed couples with one line of type. The photos are stand-ins for real creator shoots.',
+        caption: 'Your profile says one thing. Your best friend has receipts. Tag the one who’d set you up.',
+        frames: [
+          post('photo-carousel-1', 'A couple looks into the camera under the line: what your best friend knows that your profile doesn’t'),
+          post('photo-carousel-2', 'Your profile says great communicator. Your best friend says goes quiet the second they like someone'),
+          post('photo-carousel-3', 'Your profile says easy-going foodie. Your best friend says “I’m fine with anything” is a lie at restaurants'),
+          post('photo-carousel-4', 'Tag the friend who’d set you up, then write to a Wingmate'),
+        ],
+      },
+      {
+        name: 'Photo singles',
+        line: 'One photo, one line of type.',
+        singles: true,
+        frames: [
+          post('static-1', 'A couple laughing, with the line: your first hello is a call. Nervous? So are they', 'Your first hello on Wingmann is a call. Yes, a real one. Yes, they’re nervous too. Who picks up first?'),
+          post('static-2', 'A couple holding hands at a garden cafe, with the line: three people a day, enough for one good evening', 'Three curated profiles a day. Which one would you actually call?'),
+          post('static-3', 'A couple outdoors, with the line: one name, and why. A good friend never sends a list', 'A good friend doesn’t send a list. One name, and the reason. Who does this for you?'),
+        ],
+      },
+    ],
+    detailsTitle: '/how we’d run it',
+    details: [
+      'Hooks: every post opens on something a single person has said out loud, then we test first lines against each other.',
+      'Format: paper posts for saves and sends, photo posts for trust, one idea per post.',
+      'What we’d watch: saves, sends and tags per post, then which posts lead to the app.',
+    ],
+    concept: {
+      for: 'Wingmann',
+      visibility: 'named',
+      consent: 'Published without asking; clients need not be told (Rigan, 2026-10-29); taken down the same day if they object.',
+      owner: 'Wingmann Connections Private Limited',
+      notice: 'Our read of Wingmann’s public feed, made as a concept. Not commissioned, not affiliated, and none of these posts has run.',
+      takes: 'The full version: posts and Reels with real creator shoots, written around your calendar, scheduled and measured with your team.',
+      cta: 'Want posts like these? →',
+    },
+  },
   {
     slug: 'tokri',
     kind: 'concept',
