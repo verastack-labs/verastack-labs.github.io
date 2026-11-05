@@ -62,6 +62,7 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 ## Waiting on Rigan
 
+- **Wingmann social concept page:** approve the plan before anything is built, and see the note under Planned, not started.
 - **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
 
 Content (placeholders are in the design until these arrive):
@@ -155,6 +156,7 @@ Content (placeholders are in the design until these arrive):
 
 ## Planned, not started
 
+- [ ] /work/wingmann, Wingmann social posts (concept), planned 2026-11-05, not started: one public page of paper-object posts in Wingmann's theme, listed in `concepts/public.json` with the card opening this page, and no separate concepts.verastack.dev page. Paper frames only: the Pexels licence forbids implying endorsement by people in a photo, so the 7 photo frames stay off until we have our own shoots with signed releases. Needs the Social chat's extra paper frames, captions, watermark change to "Concept by VeraStack Labs" and the trademark owner name. Pari and Rigan see it before the founders do. About half a day: new pinned carousel with a phone swipe, a new serif in `src/app/work/fonts.ts`, checks at 375 and 360 px.
 - [x] /work section live (2026-10-28, plan `docs/superpowers/plans/2026-10-28-work-and-concepts.md`):
   `src/data/pieces.ts` holds client work (Ultraviolette, E3, cards linking to Rigan's case studies),
   the four products and the concepts (Whispr teaser, named; Bookwell, our own). `/work/` plus
