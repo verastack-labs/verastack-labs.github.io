@@ -208,7 +208,25 @@ function Envelope() {
   )
 }
 
-const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback, basket: Basket, envelope: Envelope }
+// A kulhad on a potter's wheel, glazed at the rim, with the rings of the potter's fingers.
+function Wheel() {
+  const edge = (y: number) => ((y - 72) * 20) / 108
+  return (
+    <svg viewBox="0 0 320 240">
+      <path d="M 32 196 v 12 a 128 26 0 0 0 256 0 v -12" style={s({ fill: 'var(--p-fg)', opacity: 0.35 })} />
+      <ellipse cx="160" cy="196" rx="128" ry="26" style={s({ fill: 'color-mix(in srgb, var(--p-fg) 22%, var(--p-bg))' })} />
+      <path d="M 52 160 a 120 34 0 0 0 30 30 M 268 160 a 120 34 0 0 1 -30 30" style={s({ fill: 'none', stroke: line, strokeWidth: 2, strokeLinecap: 'round' })} />
+      <path d="M 108 72 L 212 72 L 192 180 Q 160 192 128 180 Z" style={s({ fill: 'var(--p-fg)', opacity: 0.85 })} />
+      {[100, 122, 144, 164].map((y) => (
+        <line key={y} x1={108 + edge(y) + 3} y1={y} x2={212 - edge(y) - 3} y2={y} style={s({ stroke: 'var(--p-bg)', strokeWidth: 3, opacity: 0.35 })} />
+      ))}
+      <ellipse className={styles.fill} cx="160" cy="72" rx="52" ry="12" style={s({ fill: accent })} />
+      <ellipse cx="160" cy="73" rx="43" ry="8" style={s({ fill: 'var(--p-bg)', opacity: 0.35 })} />
+    </svg>
+  )
+}
+
+const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback, basket: Basket, envelope: Envelope, wheel: Wheel }
 
 export function PieceMotifArt({ motif }: { motif: PieceMotif }) {
   const Drawing = drawings[motif]

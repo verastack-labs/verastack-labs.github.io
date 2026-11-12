@@ -14,6 +14,7 @@
 .page:not([data-font='house']) { --p-sans: var(--font-piece), var(--font-body); }
 .page:not([data-mono='house']) { --p-mono: var(--font-piece-mono), var(--font-mono); }
 .page[data-font='lora'] { --p-display: var(--font-piece-display), serif; }
+.page[data-font='hanken'] { --p-display: var(--font-piece-display), Georgia, serif; }
 .page[data-shape='card'] { --p-r-frame: 12px; --p-r-btn: 10px; }
 .page[data-shape='sheet'] { --p-r-frame: 0; --p-r-btn: 0; --p-frame-border: 1px solid color-mix(in srgb, var(--p-fg) 28%, transparent); }
 .page[data-shape='brutal'] {
@@ -28,6 +29,7 @@
 @media (min-width: 768px) { .inner { padding: 160px 40px 128px; } }
 .page:not([data-font='house']) .title { font-variation-settings: normal; letter-spacing: -0.035em; }
 .page[data-font='lora'] .title { font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; }
+.page[data-font='hanken'] .title { font-weight: 400; letter-spacing: -0.02em; line-height: 1.02; }
 .page[data-font='lora'] .brief p { font-family: var(--p-display); font-weight: 500; letter-spacing: -0.01em; }
 .page[data-shape='sheet'] .h2, .page[data-shape='sheet'] .kind { text-transform: uppercase; letter-spacing: 0.12em; }
 
