@@ -10,13 +10,13 @@ export type Discipline = 'design' | 'development' | 'films' | 'ai-search'
 export type Kind = 'client' | 'product' | 'concept'
 
 // Faces a piece borrows from its own brand: `font` for the page, `mono` for labels and numbers.
-export type PieceFont = 'house' | 'sora' | 'jakarta' | 'archivo' | 'inter' | 'geist' | 'space-grotesk' | 'familjen' | 'lora'
+export type PieceFont = 'house' | 'sora' | 'jakarta' | 'archivo' | 'inter' | 'geist' | 'space-grotesk' | 'familjen' | 'lora' | 'hanken'
 export type PieceMono = 'house' | 'azeret' | 'jetbrains' | 'geist-mono'
 // How frames and buttons are drawn: soft (round), card (small radius), sheet (a drawing sheet's
 // hairlines), brutal (ink border and a hard offset shadow).
 export type PieceShape = 'soft' | 'card' | 'sheet' | 'brutal'
 // The drawing in the hero, taken from the piece's own world (piece-motif.tsx).
-export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback' | 'basket' | 'envelope'
+export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback' | 'basket' | 'envelope' | 'wheel'
 
 export type PieceTheme = {
   bg: string
@@ -199,6 +199,59 @@ const ILLUSTRATIVE = 'Illustrative data, not a real college.'
 const MEHFIL_NOTE = 'In development, not launched. Real app screens with invented sample data.'
 
 const unsorted: Piece[] = [
+  {
+    slug: 'kulra',
+    kind: 'concept',
+    title: 'Kulra, a kulhad you can turn (concept)',
+    line: 'A product page for a made-up stoneware brand where the cup is a live 3D experience: scroll and it is thrown, fired and glazed, then turn it yourself.',
+    disciplines: ['design', 'development'],
+    date: '2026-11',
+    cover: '/work/kulra/cover.webp',
+    peek: '/work/kulra/fired.webp',
+    credit: 'Concept by VeraStack Labs',
+    external: { label: 'See the concept', url: 'https://concepts.verastack.dev/kulra/' },
+    page: true,
+    theme: { bg: '#251B15', fg: '#EBDDCA', muted: '#B9A58E', accent: '#D98A5C', onAccent: '#251B15', font: 'hanken', shape: 'soft', motif: 'wheel' },
+    brief: 'Everyone already knows what a clay cup looks like, so a product page for one has to show something else. This one shows how it is made. The cup melts back into clay, and every step of the story makes it again, until it is in the reader’s hands.',
+    facts: [
+      { label: 'For', value: 'A made-up Indian D2C stoneware brand' },
+      { label: 'Built with', value: 'three.js, plain HTML' },
+      { label: 'Model files', value: 'None, drawn in code' },
+      { label: 'Status', value: 'Concept' },
+    ],
+    sections: {
+      design: {
+        idea: 'The cup is the hero and the story at once. ==It is made again as you scroll==: a fist of wet clay, pulled up on the wheel, glowing in the kiln, glazed inside and left bare outside. Everything around it stays quiet: clay-coloured paper, a kiln-dark close and one serif with a potter’s weight.',
+        shots: [
+          shot('kulra', 'page.webp', 'The Kulra page opening on a finished kulhad, indigo inside and bare clay outside, on a potter’s wheel'),
+          shot('kulra', 'clay.webp', 'Step one: the cup has slumped back into a mound of wet clay'),
+          shot('kulra', 'thrown.webp', 'Step two: thrown on the wheel, with the rings of the potter’s fingers'),
+          shot('kulra', 'fired.webp', 'Step three: fired, with a warm kiln glow behind the cup'),
+          shot('kulra', 'yours.webp', 'The last step: a tall cup with a turmeric glaze, picked with the glaze and size buttons'),
+          shot('kulra', 'small.webp', 'Small things you only notice holding one: rim, foot, stack and base'),
+        ],
+      },
+      development: {
+        idea: 'Our first concept with a WebGL 3D experience. There is no model file: the cup is a profile turned on a lathe in three.js, so the same few lines make the lump, all three sizes and the rings left by fingers. ==Scroll position drives the shape, the kiln glow and the glaze==, and the last step hands the cup over to be turned by hand.',
+        strip: true,
+        shots: [
+          shot('kulra', 'mobile.webp', 'The page on a phone, with the cup pinned above the story'),
+          shot('kulra', 'mobile-yours.webp', 'On a phone, a deep red glaze picked in the last step'),
+        ],
+      },
+    },
+    details: [
+      'Without WebGL, still photos of the cup stand in, and the glaze buttons swap them, so the choice still shows.',
+      'With reduced motion on, the cup stops its idle turn and each step snaps to its state instead of morphing.',
+      'The kiln glow only shows on the way up, while the cup is being fired, never as it melts back into clay.',
+      'A sideways drag turns the cup, while an up-and-down swipe still scrolls the page on a phone.',
+    ],
+    concept: {
+      for: 'a made-up Indian D2C stoneware brand',
+      visibility: 'own',
+      takes: 'Your own product on your page as a 3D experience people can turn, drawn from the real thing, with still photos for every device that can’t run it.',
+    },
+  },
   {
     slug: 'wingmann',
     kind: 'concept',
