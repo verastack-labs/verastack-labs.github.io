@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
-import { FilmPair } from '@/components/film-player/film-pair'
+import { FilmCuts, FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
 import { allFilms } from '@/data/films'
 import { detailText, disciplineLabel, kindLabel, pagePieces, pillTitle, type Piece } from '@/data/pieces'
@@ -129,6 +129,8 @@ export function PiecePage({ piece }: { piece: Piece }) {
               <div className={styles.film}>
                 {s.film.versions ? (
                   <FilmPair versions={s.film.versions} captions={s.film.captions} title={s.film.title} />
+                ) : s.film.cuts ? (
+                  <FilmCuts cuts={s.film.cuts} captions={s.film.captions} title={s.film.title} />
                 ) : (
                   <FilmPlayer src={s.film.src} poster={s.film.poster} captions={s.film.captions} title={s.film.title} portrait={s.film.portrait} />
                 )}

@@ -9,8 +9,15 @@ describe('films', () => {
   it('has unique ids and every file on disk', () => {
     expect(new Set(allFilms.map((f) => f.id)).size).toBe(allFilms.length)
     for (const f of allFilms) {
-      const cuts = f.versions ? Object.values(f.versions).flatMap((v) => Object.values(v)) : []
+      const cuts = [...(f.versions ? Object.values(f.versions).flatMap((v) => Object.values(v)) : []), ...(f.cuts ? Object.values(f.cuts) : [])]
       for (const file of [f.src, f.poster, f.captions, ...cuts.flatMap((c) => [c.src, c.poster])]) expect(existsSync(join(process.cwd(), 'public', file)), `${f.id}: ${file}`).toBe(true)
+    }
+  })
+
+  it('lists both cuts as formats, vertical first', () => {
+    for (const f of allFilms.filter((x) => x.cuts)) {
+      expect(f.formats.slice(0, 2), f.id).toEqual(['9:16', '1:1'])
+      expect(f.cuts!.tall.src, f.id).toBe(f.src)
     }
   })
 
