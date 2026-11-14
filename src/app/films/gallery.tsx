@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { FilmPair } from '@/components/film-player/film-pair'
+import { FilmCuts, FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
 import { allFilms, films, shorts, studioFilm, type FilmEntry } from '@/data/films'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
@@ -82,6 +82,8 @@ export function FilmsGallery() {
       <section ref={stage} className={styles.stage} aria-labelledby="now-title">
         {current.versions ? (
           <FilmPair key={current.id} versions={current.versions} captions={current.captions} title={current.title} autoPlay={picked} />
+        ) : current.cuts ? (
+          <FilmCuts key={current.id} cuts={current.cuts} captions={current.captions} title={current.title} autoPlay={picked} />
         ) : (
           <FilmPlayer
             key={current.id}

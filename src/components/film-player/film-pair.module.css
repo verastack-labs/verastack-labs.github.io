@@ -1,4 +1,4 @@
-/* A light and dark pair of players (film-pair.tsx). */
+/* A light and dark pair of players, and the vertical and square switch (film-pair.tsx). */
 .pair { width: 100%; }
 .bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
 .switch { display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }

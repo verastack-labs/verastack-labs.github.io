@@ -7,6 +7,8 @@ export type FilmCut = { src: string; poster: string }
 // A film made in light and dark, each as a vertical and a square cut. The player shows the pair side
 // by side, with a switch for the cut (and, on phones, for the version).
 export type FilmVersions = Record<'light' | 'dark', Record<'tall' | 'square', FilmCut>>
+// A film in one version, cut vertical and square. The player shows one cut at a time, with a switch.
+export type FilmCuts = Record<'tall' | 'square', FilmCut>
 
 export type FilmEntry = {
   id: string
@@ -22,6 +24,7 @@ export type FilmEntry = {
   // Vertical films play in a tall player and sit on a blurred backdrop in the grid.
   portrait?: boolean
   versions?: FilmVersions
+  cuts?: FilmCuts
   // Seconds into the film where the card's hover preview starts.
   previewAt: number
   note?: string
@@ -69,6 +72,10 @@ export const films: FilmEntry[] = [
     captions: '/films/kulra-launch.vtt',
     formats: ['9:16', '1:1'],
     portrait: true,
+    cuts: {
+      tall: { src: '/films/kulra-launch.mp4', poster: '/films/kulra-launch.jpg' },
+      square: { src: '/films/kulra-launch-1x1.mp4', poster: '/films/kulra-launch-1x1.jpg' },
+    },
     previewAt: 8,
     note: 'A concept for a made-up brand, built by the team. The cup is the concept page’s own 3D experience, drawn in code with no model files. Music: “Monsoon Metro Drift” by kaazoom, via Pixabay.',
     uploaded: '2026-11-14',

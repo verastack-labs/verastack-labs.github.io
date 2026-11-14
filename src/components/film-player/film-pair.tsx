@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { FilmPlayer } from '@/components/film-player/film-player'
-import type { FilmVersions } from '@/data/films'
+import type { FilmCuts as Cuts, FilmVersions } from '@/data/films'
 import styles from '@/components/film-player/film-pair.module.css'
 
 type Cut = 'tall' | 'square'
@@ -84,6 +84,34 @@ export function FilmPair({ versions, captions, title, autoPlay }: { versions: Fi
           </figure>
         ))}
       </div>
+    </div>
+  )
+}
+
+// A film in one version, cut vertical and square: one player and a switch for the cut. Switching
+// stops the film; the new cut waits for a press.
+export function FilmCuts({ cuts: films, captions, title, autoPlay }: { cuts: Cuts; captions?: string; title: string; autoPlay?: boolean }) {
+  const [cut, setCut] = useState<Cut>('tall')
+  const [picked, setPicked] = useState(!!autoPlay)
+  const pick = (v: Cut) => {
+    setPicked(false)
+    setCut(v)
+  }
+  return (
+    <div className={styles.pair} data-cut={cut}>
+      <div className={styles.bar}>
+        <Switch label="Cut" options={cuts} value={cut} onChange={pick} />
+      </div>
+      <FilmPlayer
+        key={cut}
+        src={films[cut].src}
+        poster={films[cut].poster}
+        captions={captions}
+        title={`${title}, ${cut === 'tall' ? 'vertical' : 'square'}`}
+        portrait={cut === 'tall'}
+        square={cut === 'square'}
+        autoPlay={picked}
+      />
     </div>
   )
 }
