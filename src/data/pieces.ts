@@ -221,6 +221,7 @@ const unsorted: Piece[] = [
     ],
     sections: {
       design: {
+        film: 'kulra-launch',
         idea: 'The cup is the hero and the story at once. ==It is made again as you scroll==: a fist of wet clay, pulled up on the wheel, glowing in the kiln, glazed inside and left bare outside. Everything around it stays quiet: clay-coloured paper, a kiln-dark close and one serif with a potter’s weight.',
         shots: [
           shot('kulra', 'page.webp', 'The Kulra page opening on a finished kulhad, indigo inside and bare clay outside, on a potter’s wheel'),

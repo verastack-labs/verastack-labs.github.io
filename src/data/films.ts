@@ -59,6 +59,21 @@ export const studioFilm: FilmEntry = {
 
 export const films: FilmEntry[] = [
   {
+    id: 'kulra-launch',
+    title: 'Kulra launch film (concept)',
+    line: 'A 26-second film for a made-up stoneware brand: the cup slumps back to clay, then is thrown, fired and glazed as the page scrolls, and you pick the glaze.',
+    length: '0:26',
+    duration: 'PT26S',
+    src: '/films/kulra-launch.mp4',
+    poster: '/films/kulra-launch.jpg',
+    captions: '/films/kulra-launch.vtt',
+    formats: ['9:16', '1:1'],
+    portrait: true,
+    previewAt: 8,
+    note: 'A concept for a made-up brand, built by the team. The cup is the concept page’s own 3D experience, drawn in code with no model files. Music: “Monsoon Metro Drift” by kaazoom, via Pixabay.',
+    uploaded: '2026-11-14',
+  },
+  {
     id: 'ozer-launch',
     title: 'Ozer film (concept)',
     line: 'A 17-second concept for a business you run from iMessage: the morning brief lands, the founder answers with a tapback and two words.',

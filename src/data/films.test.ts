@@ -22,8 +22,9 @@ describe('films', () => {
     for (const f of allFilms.filter((x) => x.versions)) expect(f.formats, f.id).toEqual(expect.arrayContaining(['9:16', '1:1', 'light and dark']))
   })
 
+  // A concept for a made-up brand has no marks to credit, so it says what it is instead.
   it('labels concepts and unofficial films with a trademark line', () => {
-    for (const f of allFilms.filter((x) => /\((concept|unofficial)\)/.test(x.title))) expect(f.note, f.id).toMatch(/marks belong to/)
+    for (const f of allFilms.filter((x) => /\((concept|unofficial)\)/.test(x.title))) expect(f.note, f.id).toMatch(/marks belong to|made-up brand/)
   })
 
   it('labels The Switch as The Open Shelf, not Origan', () => {
