@@ -44,6 +44,8 @@
   white-space: nowrap;
 }
 .note { max-width: 70ch; margin: 14px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+.noteLink { color: var(--signal); text-underline-offset: 3px; white-space: nowrap; }
+.noteLink:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; border-radius: 2px; }
 
 /* ---------- The grid ---------- */
 .more { margin-top: 88px; }

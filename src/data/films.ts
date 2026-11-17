@@ -29,6 +29,8 @@ export type FilmEntry = {
   previewAt: number
   note?: string
   chapters?: Chapter[]
+  // The film's own page on YouTube, for the channels we run there.
+  youtube?: string
   uploaded: string
 }
 
@@ -335,7 +337,130 @@ export const shorts: FilmEntry[] = [
   },
 ]
 
-export const allFilms = [studioFilm, ...films, ...shorts]
+// The channels we are trying on YouTube, each a section of its own on /films.
+export type Channel = {
+  id: string
+  // The heading; kind follows it in the accent face.
+  name: string
+  kind: string
+  line: string
+  films: FilmEntry[]
+}
+
+export const channels: Channel[] = [
+  {
+    id: 'daily-diff',
+    name: 'The Daily Diff (working title)',
+    kind: 'AI news shorts',
+    line: 'A daily AI news short, vertical only, made to start a conversation in the comments. The facts are sourced; the jokes are marked as jokes. A channel we are trying on YouTube.',
+    films: [
+      {
+        id: 'diff-e1',
+        title: 'India just beat America. On ChatGPT.',
+        line: "India is now ChatGPT's biggest market by weekly users. Do you actually pay for it?",
+        length: '0:30',
+        duration: 'PT30S',
+        src: '/films/diff-e1.mp4',
+        poster: '/films/diff-e1.jpg',
+        captions: '/films/diff-e1.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 1.5,
+        note: "Synthetic voice (Kokoro). Source: OpenAI India's MD, reported 3 Nov 2026. Music: Cybertech Tense News by Tunetank, via Pixabay.",
+        uploaded: '2026-11-15',
+      },
+      {
+        id: 'diff-e2',
+        title: 'OpenAI breaks up its robot team',
+        line: 'Booth 208. No logo. No demo. Now the chatbot is the robot department.',
+        length: '0:31',
+        duration: 'PT31S',
+        src: '/films/diff-e2.mp4',
+        poster: '/films/diff-e2.jpg',
+        captions: '/films/diff-e2.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 6.5,
+        note: "Satire on a Fortune report, 13 Nov 2026; 'the chatbot is the robot department' is our joke, not a reported claim. Synthetic voice (Kokoro). Music: So Easy by BombinSound, via Pixabay.",
+        uploaded: '2026-11-15',
+      },
+    ],
+  },
+  {
+    id: 'lamplight',
+    name: 'Lamplight',
+    kind: 'calm shorts',
+    line: 'Calm vertical shorts on a YouTube channel we run as a lab: public-domain archive film, one word on screen at a time, a quiet synthetic voice. Each episode changes one thing and we read the numbers.',
+    films: [
+      {
+        id: 'lamplight-e0',
+        title: 'Curiosity',
+        line: 'The first episode and the baseline every experiment is measured against.',
+        length: '0:46',
+        duration: 'PT46S',
+        src: '/films/lamplight-e0.mp4',
+        poster: '/films/lamplight-e0.jpg',
+        captions: '/films/lamplight-e0.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 3.6,
+        note: "Voice: synthetic (Kokoro, am_michael). Music: a pad made in code. Film: Build Your Vocabulary, A Date With Your Family, The Librarian, Habit Patterns, Have I Told You Lately That I Love You?, Young Man's Fancy, The Home Economics Story; public domain, Prelinger Archives (Internet Archive).",
+        youtube: 'https://youtube.com/shorts/3p57lBfjx58',
+        uploaded: '2026-10-31',
+      },
+      {
+        id: 'lamplight-e5',
+        title: 'Cartoons',
+        line: "The topic test: public-domain cartoons, and the channel's most-viewed short.",
+        length: '0:42',
+        duration: 'PT42S',
+        src: '/films/lamplight-e5.mp4',
+        poster: '/films/lamplight-e5.jpg',
+        captions: '/films/lamplight-e5.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 6,
+        note: 'Voice: synthetic (Kokoro, am_michael). Music: a pad made in code. Film: Why Play Leap Frog?, Going Places, A is for Atom; public domain, Prelinger Archives (Internet Archive).',
+        youtube: 'https://youtube.com/shorts/R8SKzAqYpCM',
+        uploaded: '2026-11-05',
+      },
+      {
+        id: 'lamplight-e9',
+        title: 'Mother',
+        line: 'The voice test: the same recipe read by a female synthetic voice.',
+        length: '0:50',
+        duration: 'PT50S',
+        src: '/films/lamplight-e9.mp4',
+        poster: '/films/lamplight-e9.jpg',
+        captions: '/films/lamplight-e9.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 6,
+        note: 'Voice: synthetic (Kokoro, af_nicole). Music: a pad made in code. Film: Good Eating Habits, Joan Avoids a Cold, Mind Your Manners; public domain, Prelinger Archives (Internet Archive).',
+        youtube: 'https://youtube.com/shorts/Cmt--JOhVfo',
+        uploaded: '2026-11-09',
+      },
+      {
+        id: 'lamplight-e13',
+        title: '11:42',
+        line: 'The script test: a scene with no lesson, in place of the early template.',
+        length: '0:52',
+        duration: 'PT52S',
+        src: '/films/lamplight-e13.mp4',
+        poster: '/films/lamplight-e13.jpg',
+        captions: '/films/lamplight-e13.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 6,
+        note: "Voice: synthetic (Kokoro, am_michael). Music: a pad made in code. Film: Who's Boss?, Our Changing Family Life, The Children Must Learn, This Charming Couple, Eat for Health, Habit Patterns; public domain, Prelinger Archives (Internet Archive).",
+        youtube: 'https://youtube.com/shorts/3w8rPJSaF2E',
+        uploaded: '2026-11-15',
+      },
+    ],
+  },
+]
+
+export const allFilms = [studioFilm, ...films, ...shorts, ...channels.flatMap((c) => c.films)]
 
 // How a film gets made, shown under the gallery.
 export const filmSteps = [
