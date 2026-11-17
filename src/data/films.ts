@@ -335,7 +335,58 @@ export const shorts: FilmEntry[] = [
   },
 ]
 
-export const allFilms = [studioFilm, ...films, ...shorts]
+// The channels we are trying on YouTube, each a section of its own on /films.
+export type Channel = {
+  id: string
+  // The heading; kind follows it in the accent face.
+  name: string
+  kind: string
+  line: string
+  films: FilmEntry[]
+}
+
+export const channels: Channel[] = [
+  {
+    id: 'daily-diff',
+    name: 'The Daily Diff (working title)',
+    kind: 'AI news shorts',
+    line: 'A daily AI news short, vertical only, made to start a conversation in the comments. The facts are sourced; the jokes are marked as jokes. A channel we are trying on YouTube.',
+    films: [
+      {
+        id: 'diff-e1',
+        title: 'India just beat America. On ChatGPT.',
+        line: "India is now ChatGPT's biggest market by weekly users. Do you actually pay for it?",
+        length: '0:30',
+        duration: 'PT30S',
+        src: '/films/diff-e1.mp4',
+        poster: '/films/diff-e1.jpg',
+        captions: '/films/diff-e1.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 1.5,
+        note: "Synthetic voice (Kokoro). Source: OpenAI India's MD, reported 3 Nov 2026. Music: Cybertech Tense News by Tunetank, via Pixabay.",
+        uploaded: '2026-11-15',
+      },
+      {
+        id: 'diff-e2',
+        title: 'OpenAI breaks up its robot team',
+        line: 'Booth 208. No logo. No demo. Now the chatbot is the robot department.',
+        length: '0:31',
+        duration: 'PT31S',
+        src: '/films/diff-e2.mp4',
+        poster: '/films/diff-e2.jpg',
+        captions: '/films/diff-e2.vtt',
+        formats: ['9:16'],
+        portrait: true,
+        previewAt: 6.5,
+        note: "Satire on a Fortune report, 13 Nov 2026; 'the chatbot is the robot department' is our joke, not a reported claim. Synthetic voice (Kokoro). Music: So Easy by BombinSound, via Pixabay.",
+        uploaded: '2026-11-15',
+      },
+    ],
+  },
+]
+
+export const allFilms = [studioFilm, ...films, ...shorts, ...channels.flatMap((c) => c.films)]
 
 // How a film gets made, shown under the gallery.
 export const filmSteps = [

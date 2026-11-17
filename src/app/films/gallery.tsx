@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { FilmCuts, FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
-import { allFilms, films, shorts, studioFilm, type FilmEntry } from '@/data/films'
+import { allFilms, channels, films, shorts, studioFilm, type FilmEntry } from '@/data/films'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
 import styles from '@/app/films/films.module.css'
 
@@ -139,6 +139,22 @@ export function FilmsGallery() {
             ))}
         </ul>
       </section>
+
+      {channels.map((c) => (
+        <section key={c.id} className={styles.more} aria-labelledby={`${c.id}-title`}>
+          <h2 id={`${c.id}-title`} className={styles.h2}>
+            {c.name}: <em>{c.kind}</em>
+          </h2>
+          <p className={styles.moreLine}>{c.line}</p>
+          <ul className={styles.grid}>
+            {c.films
+              .filter((f) => f.id !== current.id)
+              .map((f) => (
+                <Card key={f.id} film={f} onPick={pick} />
+              ))}
+          </ul>
+        </section>
+      ))}
     </>
   )
 }
