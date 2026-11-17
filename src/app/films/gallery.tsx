@@ -110,7 +110,19 @@ export function FilmsGallery() {
             ))}
           </p>
         </div>
-        {current.note && <p className={styles.note}>{current.note}</p>}
+        {(current.note || current.youtube) && (
+          <p className={styles.note}>
+            {current.note}
+            {current.youtube && (
+              <>
+                {' '}
+                <a className={styles.noteLink} href={current.youtube} target="_blank" rel="noopener">
+                  Watch on YouTube
+                </a>
+              </>
+            )}
+          </p>
+        )}
       </section>
 
       <section className={styles.more} aria-labelledby="more-title">
