@@ -49,7 +49,7 @@ export function WorkIndex({ title, name, lede, path, items, active }: Props) {
       <CardGlow />
       <ul className={styles.grid}>
         {items.map((p, i) => {
-          const theme = { '--c-bg': p.theme.bg, '--c-fg': p.theme.fg, '--c-accent': p.theme.accent } as CSSProperties
+          const theme = { '--c-bg': p.theme.bg, '--c-fg': p.theme.fg, '--c-accent': p.theme.glow ?? p.theme.accent } as CSSProperties
           const peek = peekOf(p)
           const outside = !p.page
           return (

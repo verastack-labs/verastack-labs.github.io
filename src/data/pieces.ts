@@ -26,6 +26,8 @@ export type PieceTheme = {
   // Text on the accent (buttons, the concept tag).
   onAccent: string
   font: PieceFont
+  // The card's hover glow on /work, when the accent is the wrong colour for it.
+  glow?: string
   mono?: PieceMono
   shape?: PieceShape
   motif?: PieceMotif
@@ -264,7 +266,7 @@ const unsorted: Piece[] = [
     peek: '/work/wingmann/minutes-1.webp',
     credit: 'Concept by VeraStack Labs',
     page: true,
-    theme: { bg: '#2B1836', fg: '#F3ECE6', muted: '#C4B4CC', accent: '#F2C230', onAccent: '#2B1836', font: 'lora', shape: 'soft', motif: 'envelope' },
+    theme: { bg: '#2B1836', fg: '#F3ECE6', muted: '#C4B4CC', accent: '#F2C230', onAccent: '#2B1836', glow: '#9B6BC0', font: 'lora', shape: 'soft', motif: 'envelope' },
     brief: 'Wingmann’s feed already holds its sharpest idea: “Application to date someone” turns dating into a form you have to fill in. It’s funny because everyone has felt interviewed on a first date.',
     facts: [
       { label: 'Format', value: 'Instagram posts, 4:5' },
