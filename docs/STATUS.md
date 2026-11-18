@@ -64,6 +64,7 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
 ## Waiting on Rigan
 
+- **Full-screen mobile menu:** OK on the concept in the workspace's `.superpowers/brainstorm/mobile-fullscreen-menu.html` (circle wipe from the pill, big home sections, studio pages as tiles, a bottom dock with Start a project and a second close). Built once approved.
 - **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
 
 Content (placeholders are in the design until these arrive):
