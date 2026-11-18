@@ -64,6 +64,21 @@ export const studioFilm: FilmEntry = {
 
 export const films: FilmEntry[] = [
   {
+    id: 'verastack-reel',
+    title: 'VeraStack Labs in 60 seconds',
+    line: 'The launch film cut for Reels: every chapter, with whole beats dropped rather than sped up, and a softer finish.',
+    length: '0:59',
+    duration: 'PT59S',
+    src: '/films/verastack-reel.mp4',
+    poster: '/films/verastack-reel.jpg',
+    captions: '/films/verastack-reel.vtt',
+    formats: ['9:16'],
+    portrait: true,
+    previewAt: 6,
+    note: "The 70,000+ bookings are Ultraviolette's, through configurators our founder built there as an employee, before the studio. Music: “Voyage” by AudioClubz, via Pixabay.",
+    uploaded: '2026-11-18',
+  },
+  {
     id: 'kulra-launch',
     title: 'Kulra launch film (concept)',
     line: 'A 26-second film for a made-up stoneware brand: the cup slumps back to clay, then is thrown, fired and glazed as the page scrolls, and you pick the glaze.',
