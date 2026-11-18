@@ -197,13 +197,14 @@
 .kit .newDot { margin: 0; }
 @media (max-width: 899px) { .kit { display: none; } }
 
-/* Pages away from home: the page pill opens the same menu as a dropdown. */
-.menuWrap { position: relative; }
+/* Pages away from home: the page pill opens the same menu as a dropdown. It sits on the right with
+   the buttons, as the home page's pill does, and the dropdown opens from its right edge. */
+.menuWrap { position: relative; margin-left: auto; }
 .pageMenuBtn { cursor: pointer; gap: 10px; color: inherit; font: inherit; }
 .pageMenuBtn .caret { width: 28px; height: 28px; }
 .pageMenuBtn .caret i { left: 8px; }
 .dropdown {
-  position: absolute; top: 50px; left: 0; z-index: 49; width: 300px;
+  position: absolute; top: 50px; right: 0; z-index: 49; width: min(300px, calc(100vw - 28px));
   border-radius: 18px; border: 1px solid var(--pill-line);
   background: color-mix(in srgb, var(--ink) 96%, transparent);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
