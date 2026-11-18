@@ -378,6 +378,8 @@ Content (placeholders are in the design until these arrive):
     turns full lime with a glow on hover; the old faint arrow is now a neon disc with two lines (the
     short one grows on hover, they cross into an x while a panel is open), and the pill pulses twice
     after load so first-time visitors spot it.
+  - [x] Page header alignment (2026-11-18, Rigan): away from home, the page pill and buttons now sit
+    on the right on desktop, as they do on the home page (they had bunched up beside the wordmark).
   - [x] Meter polish (2026-10-21, Rigan): the verdict is two lines (a bold one, then a quieter one,
     so nothing wraps mid-thought), the green past the marker is dimmed less so the bands still read,
     and "N points to 100" sits above the bar's right end ("Full marks" at 100).
