@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { FilmCuts, FilmPair } from '@/components/film-player/film-pair'
 import { FilmPlayer } from '@/components/film-player/film-player'
 import { allFilms, channels, films, shorts, studioFilm, type FilmEntry } from '@/data/films'
@@ -9,7 +9,7 @@ import styles from '@/app/films/films.module.css'
 
 // One card in the grid. On a mouse, hovering plays a few silent seconds of the film itself; the file
 // only starts loading then. Touch screens and reduced motion get the poster alone.
-function Card({ film, onPick }: { film: FilmEntry; onPick: (f: FilmEntry) => void }) {
+function Card({ film, onPick, reveal }: { film: FilmEntry; onPick: (f: FilmEntry) => void; reveal?: number }) {
   const preview = useRef<HTMLVideoElement>(null)
   const [hot, setHot] = useState(false)
   const canPreview = () =>
@@ -32,7 +32,13 @@ function Card({ film, onPick }: { film: FilmEntry; onPick: (f: FilmEntry) => voi
   }
 
   return (
-    <li className={styles.card} data-hot={hot || undefined} data-portrait={film.portrait || undefined}>
+    <li
+      className={styles.card}
+      data-hot={hot || undefined}
+      data-portrait={film.portrait || undefined}
+      data-reveal={reveal !== undefined || undefined}
+      style={reveal !== undefined ? ({ '--i': reveal } as CSSProperties) : undefined}
+    >
       <button type="button" className={styles.cardButton} onClick={() => onPick(film)} onPointerEnter={start} onPointerLeave={stop} onFocus={start} onBlur={stop}>
         <span className={styles.thumb}>
           {film.portrait && <span className={styles.backdrop} style={{ backgroundImage: `url(${film.poster})` }} aria-hidden="true" />}
@@ -58,6 +64,58 @@ function Card({ film, onPick }: { film: FilmEntry; onPick: (f: FilmEntry) => voi
         <span className="sr-only">, play this film</span>
       </button>
     </li>
+  )
+}
+
+// A section's grid: the first few films, then a card that opens the rest. The first section shows
+// more before it folds; later ones fold after a single row. A lone extra film is shown, not folded.
+function Shelf({ list, show, what, onPick }: { list: FilmEntry[]; show: number; what: string; onPick: (f: FilmEntry) => void }) {
+  const [open, setOpen] = useState(false)
+  const grid = useRef<HTMLUListElement>(null)
+  const folds = !open && list.length > show + 1
+  const shown = folds ? list.slice(0, show) : list
+  const rest = list.slice(show)
+
+  const opened = useRef(false)
+  const expand = () => {
+    opened.current = true
+    setOpen(true)
+  }
+  // After the card opens the rest, focus lands on the first film that was hidden.
+  useEffect(() => {
+    if (!open || !opened.current) return
+    opened.current = false
+    grid.current?.querySelectorAll<HTMLButtonElement>('button')[show]?.focus({ preventScroll: true })
+  }, [open, show])
+
+  return (
+    <ul ref={grid} className={styles.grid}>
+      {shown.map((f, i) => (
+        <Card key={f.id} film={f} onPick={onPick} reveal={open && i >= show ? i - show : undefined} />
+      ))}
+      {folds && (
+        <li className={`${styles.card} ${styles.moreCard}`}>
+          <button type="button" className={styles.cardButton} onClick={expand} aria-label={`Show ${rest.length} more ${what}`}>
+            <span className={`${styles.thumb} ${styles.fan}`} aria-hidden="true">
+              {rest.slice(0, 3).map((f, i) => (
+                // eslint-disable-next-line @next/next/no-img-element -- static export, no image optimiser
+                <img key={f.id} src={f.poster} alt="" loading="lazy" decoding="async" data-portrait={f.portrait || undefined} style={{ '--i': i } as CSSProperties} />
+              ))}
+              <span className={styles.fanCount}>+{rest.length}</span>
+            </span>
+            <span className={styles.cardText}>
+              <b>
+                {rest.length} more {what}
+              </b>
+              <span>
+                {rest[0].title} and {rest.length - 1} more.
+              </span>
+              <span className={styles.moreGo}>Show all <span aria-hidden="true">↓</span></span>
+            </span>
+          </button>
+        </li>
+      )}
+    </ul>
   )
 }
 
@@ -129,13 +187,7 @@ export function FilmsGallery() {
         <h2 id="more-title" className={styles.h2}>
           More films <em>we&apos;ve made</em>
         </h2>
-        <ul className={styles.grid}>
-          {[studioFilm, ...films]
-            .filter((f) => f.id !== current.id)
-            .map((f) => (
-              <Card key={f.id} film={f} onPick={pick} />
-            ))}
-        </ul>
+        <Shelf list={[studioFilm, ...films].filter((f) => f.id !== current.id)} show={5} what="films" onPick={pick} />
       </section>
 
       <section className={styles.more} aria-labelledby="shorts-title">
@@ -143,13 +195,7 @@ export function FilmsGallery() {
           Studio shorts: <em>explainers and jokes</em>
         </h2>
         <p className={styles.moreLine}>Our own pieces, made between projects. None of these is client work.</p>
-        <ul className={styles.grid}>
-          {shorts
-            .filter((f) => f.id !== current.id)
-            .map((f) => (
-              <Card key={f.id} film={f} onPick={pick} />
-            ))}
-        </ul>
+        <Shelf list={shorts.filter((f) => f.id !== current.id)} show={2} what="shorts" onPick={pick} />
       </section>
 
       {channels.map((c) => (
@@ -158,13 +204,7 @@ export function FilmsGallery() {
             {c.name}: <em>{c.kind}</em>
           </h2>
           <p className={styles.moreLine}>{c.line}</p>
-          <ul className={styles.grid}>
-            {c.films
-              .filter((f) => f.id !== current.id)
-              .map((f) => (
-                <Card key={f.id} film={f} onPick={pick} />
-              ))}
-          </ul>
+          <Shelf list={c.films.filter((f) => f.id !== current.id)} show={2} what="episodes" onPick={pick} />
         </section>
       ))}
     </>
