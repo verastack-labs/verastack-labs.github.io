@@ -364,10 +364,10 @@ export type Channel = {
 
 export const channels: Channel[] = [
   {
-    id: 'daily-diff',
-    name: 'The Daily Diff (working title)',
-    kind: 'AI news shorts',
-    line: 'A daily AI news short, vertical only, made to start a conversation in the comments. The facts are sourced; the jokes are marked as jokes. A channel we are trying on YouTube.',
+    id: 'ctrl-alt-huh',
+    name: 'Ctrl+Alt+Huh',
+    kind: 'AI and software shorts',
+    line: 'Short vertical takes on AI and software, made to start a conversation in the comments. The facts are sourced; the jokes are marked as jokes. A channel we are trying on YouTube.',
     films: [
       {
         id: 'diff-e1',
