@@ -359,6 +359,8 @@ export type Channel = {
   name: string
   kind: string
   line: string
+  // The channel's YouTube page, once it is live.
+  url?: string
   films: FilmEntry[]
 }
 
@@ -367,7 +369,8 @@ export const channels: Channel[] = [
     id: 'ctrl-alt-huh',
     name: 'Ctrl+Alt+Huh',
     kind: 'AI and software shorts',
-    line: 'Short vertical takes on AI and software, made to start a conversation in the comments. The facts are sourced; the jokes are marked as jokes. A channel we are trying on YouTube.',
+    line: 'Short vertical takes on AI and software, made to start a conversation in the comments. The facts are sourced; the jokes are marked as jokes.',
+    url: 'https://www.youtube.com/@ctrlalthuh',
     films: [
       {
         id: 'diff-e1',

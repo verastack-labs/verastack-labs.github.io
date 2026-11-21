@@ -203,7 +203,17 @@ export function FilmsGallery() {
           <h2 id={`${c.id}-title`} className={styles.h2}>
             {c.name}: <em>{c.kind}</em>
           </h2>
-          <p className={styles.moreLine}>{c.line}</p>
+          <p className={styles.moreLine}>
+            {c.line}
+            {c.url && (
+              <>
+                {' '}
+                <a className={styles.noteLink} href={c.url} target="_blank" rel="noopener">
+                  The channel on YouTube
+                </a>
+              </>
+            )}
+          </p>
           <Shelf list={c.films.filter((f) => f.id !== current.id)} show={2} what="episodes" onPick={pick} />
         </section>
       ))}
