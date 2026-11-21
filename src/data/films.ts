@@ -429,7 +429,7 @@ export const channels: Channel[] = [
         formats: ['9:16'],
         portrait: true,
         previewAt: 3,
-        note: "Source: Signal's blog post “Signal is Serious About Protecting Your Privacy”, 20 Nov 2026. The chat and the robot are our illustrations.",
+        note: "Source: Signal's blog post “Signal is Serious About Protecting Your Privacy”, 20 Nov 2026. The chat and the robot are our illustrations, drawn in code. Synthetic voice (Kokoro). Music: So Easy by BombinSound, via Pixabay.",
         uploaded: '2026-11-21',
       },
     ],
