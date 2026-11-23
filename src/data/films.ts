@@ -510,7 +510,7 @@ export const channels: Channel[] = [
         line: "The repeat test: the cartoon recipe again, to see whether it wins twice.",
         length: '0:50',
         duration: 'PT50S',
-        src: '/films/lamplight-e21.mp4',
+        src: '/films/lamplight-e21-v2.mp4',
         poster: '/films/lamplight-e21.jpg',
         captions: '/films/lamplight-e21.vtt',
         formats: ['9:16'],
