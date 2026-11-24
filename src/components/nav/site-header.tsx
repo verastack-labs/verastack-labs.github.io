@@ -1,13 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useFramed } from '@/lib/use-framed'
 import { PathPill } from '@/components/nav/path-pill'
-import { sections } from '@/data/sections'
-import { studioLinks } from '@/data/studio-links'
 import { FullMenu, useFullMenu } from '@/components/nav/full-menu'
+import { MobileMenu } from '@/components/nav/mobile-menu'
 import styles from '@/components/nav/path-pill.module.css'
 
 // The Launch Kit button, beside Start a project on desktop; hidden on its own page.
@@ -21,53 +20,27 @@ function KitButton() {
   )
 }
 
-// The page pill opens a menu: the home page's sections, then the studio pages. Hover opens it on
-// desktop; a click or tap toggles it; Escape or a click elsewhere closes it.
+// The page pill opens the site menu: the desktop full-screen menu from 900 px up, the phone menu
+// below. Either way it is a modal dialog; Escape closes it and focus returns to the pill.
 function PageMenu({ path, short }: { path: string; short?: string }) {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
-  // From 900 px up a click opens the full-screen menu instead of the dropdown.
   const wide = useFullMenu()
   const [full, setFull] = useState(false)
+  const [phone, setPhone] = useState(false)
   const btn = useRef<HTMLButtonElement>(null)
-  const wrap = useRef<HTMLDivElement>(null)
-  const timer = useRef(0)
-  const hover = () => !wide && window.matchMedia('(hover: hover) and (min-width: 641px)').matches
-
-  useEffect(() => {
-    if (!open) return
-    const onDown = (e: PointerEvent) => {
-      if (!wrap.current?.contains(e.target as Node)) setOpen(false)
-    }
-    document.addEventListener('pointerdown', onDown)
-    return () => document.removeEventListener('pointerdown', onDown)
-  }, [open])
-  useEffect(() => () => window.clearTimeout(timer.current), [])
-
-  const close = () => setOpen(false)
+  const close = () => {
+    setFull(false)
+    setPhone(false)
+    btn.current?.focus({ preventScroll: true })
+  }
   return (
-    <div
-      ref={wrap}
-      className={styles.menuWrap}
-      onPointerEnter={() => {
-        if (!hover()) return
-        window.clearTimeout(timer.current)
-        setOpen(true)
-      }}
-      onPointerLeave={() => {
-        if (!hover()) return
-        timer.current = window.setTimeout(close, 260)
-      }}
-      onKeyDown={(e) => e.key === 'Escape' && close()}
-    >
+    <div className={styles.menuWrap}>
       <button
         type="button"
         ref={btn}
         className={`${styles.pill} ${styles.pagePill} ${styles.pageMenuBtn}`}
-        aria-expanded={wide ? full : open}
-        aria-controls={wide ? undefined : 'page-menu'}
-        aria-haspopup={wide ? 'dialog' : undefined}
-        onClick={() => (wide ? setFull(true) : setOpen((v) => !v))}
+        aria-expanded={wide ? full : phone}
+        aria-haspopup="dialog"
+        onClick={() => (wide ? setFull(true) : setPhone(true))}
       >
         <span className="sr-only">Menu, on {path}. </span>
         <span className={styles.seg} aria-hidden="true">
@@ -79,31 +52,7 @@ function PageMenu({ path, short }: { path: string; short?: string }) {
           <i />
         </span>
       </button>
-      {wide && (
-        <FullMenu
-          open={full}
-          onClose={() => {
-            setFull(false)
-            btn.current?.focus({ preventScroll: true })
-          }}
-        />
-      )}
-      <nav id="page-menu" aria-label="Site" className={`${styles.dropdown} ${open ? styles.panelOpen : ''}`} data-lenis-prevent hidden={wide || undefined}>
-        <p className={styles.panelHead}>home</p>
-        {sections.map((sec, i) => (
-          <Link key={sec.id} href={sec.id === 'top' ? '/' : `/#${sec.id}`} tabIndex={open ? 0 : -1} onClick={close}>
-            <small>{String(i).padStart(2, '0')}</small>
-            {sec.label}
-          </Link>
-        ))}
-        <p className={styles.panelHead}>studio</p>
-        {studioLinks.map((l) => (
-          <Link key={l.href} href={l.href} aria-current={!!pathname?.startsWith(l.href)} tabIndex={open ? 0 : -1} onClick={close}>
-            {l.label}
-            {l.isNew && <span className={styles.newTag}>new</span>}
-          </Link>
-        ))}
-      </nav>
+      {wide ? <FullMenu open={full} onClose={close} /> : <MobileMenu open={phone} onClose={close} from={btn} on={short ?? path} />}
     </div>
   )
 }
@@ -137,7 +86,7 @@ export function SiteHeader() {
   const framed = useFramed()
   if (framed) return null
   if (pathname?.startsWith('/blog')) return <PageHeader key={pathname} path="/blog" />
-    if (pathname?.startsWith('/examples')) return <PageHeader key={pathname} path="/examples" />
+  if (pathname?.startsWith('/examples')) return <PageHeader key={pathname} path="/examples" />
   if (pathname?.startsWith('/work')) return <PageHeader key={pathname} path={pathname.replace(/\/$/, '') || '/work'} short="/work" />
   if (pathname?.startsWith('/founder')) return <PageHeader key={pathname} path="/founder" />
   if (pathname?.startsWith('/film')) return <PageHeader key={pathname} path="/films" />

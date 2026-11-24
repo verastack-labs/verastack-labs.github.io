@@ -72,7 +72,7 @@
 .seg { font: 500 12.5px var(--font-mono); color: var(--path); min-width: 9ch; text-align: left; }
 .count { font: 400 11px var(--font-mono); opacity: 0.55; }
 /* The menu button: a neon disc with two lines, like the close button inside the menu. The short
-   line grows on hover, and the two cross into an x while a panel is open. */
+   line grows on hover, and the two cross into an x while the menu is open. */
 .caret {
   position: relative;
   flex: none;
@@ -110,36 +110,6 @@
 }
 .header:not([data-theme='light']) .cta { background: var(--signal); color: var(--ink); }
 
-/* Below 900 px: a vertical panel lists every section by name. */
-.panel {
-  position: fixed; left: 14px; right: 14px; top: 66px; z-index: 49;
-  border-radius: 18px; border: 1px solid var(--pill-line);
-  background: color-mix(in srgb, var(--ink) 94%, transparent);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  padding: 8px; display: grid; gap: 2px;
-  transform-origin: top center; transform: translateY(-8px) scaleY(0.96); opacity: 0; pointer-events: none;
-  transition: opacity 0.25s, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.panelOpen { opacity: 1; transform: none; pointer-events: auto; }
-.panel a {
-  display: flex; align-items: baseline; gap: 12px; padding: 12px 14px; border-radius: 12px;
-  color: var(--text); text-decoration: none; font-weight: 700; font-size: 22px; letter-spacing: -0.04em;
-  opacity: 0; transform: translateY(-6px);
-  transition: opacity 0.25s, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s;
-  transition-delay: calc(0.05s + var(--i) * 40ms);
-}
-.panel a small { font: 500 11px var(--font-mono); color: var(--muted); letter-spacing: 0; min-width: 18px; }
-.panel a[aria-current='true'] { background: var(--signal); color: var(--ink); }
-.panel a[aria-current='true'] small { color: var(--ink); }
-.panelOpen a { opacity: 1; transform: none; }
-.panelFoot { display: flex; justify-content: space-between; padding: 10px 14px 6px; margin-top: 6px; border-top: 1px solid var(--line); font: 400 11px var(--font-mono); color: var(--muted); text-decoration: none; }
-.panelFoot b { color: var(--signal); font-weight: 500; }
-.header[data-theme='light'] .panel { background: rgba(244, 235, 218, 0.96); border-color: rgba(26, 20, 16, 0.2); }
-.header[data-theme='light'] .panel a { color: #1a1410; }
-.header[data-theme='light'] .panel a small { color: #5b4d42; }
-.header[data-theme='light'] .panel a[aria-current='true'] { background: #1a1410; color: #f4ebda; }
-.header[data-theme='light'] .panel a[aria-current='true'] small { color: #f4ebda; }
-
 @media (max-width: 640px) {
   .header { padding: 14px; }
   .wordmark span { display: none; }
@@ -158,9 +128,7 @@
 
 /* Static motion mode: no stagger, no width or slide animation. */
 :global(html[data-motion='static']) .pill,
-:global(html[data-motion='static']) .path,
-:global(html[data-motion='static']) .panel,
-:global(html[data-motion='static']) .panel a {
+:global(html[data-motion='static']) .path {
   transition: none;
 }
 
@@ -174,17 +142,8 @@
   .segShort { display: inline; }
 }
 
-/* The studio pages after the sections, as a labelled group in the panel. */
+/* The new marker on the Launch kit button. */
 .newDot { width: 6px; height: 6px; margin-left: 2px; border-radius: 50%; background: var(--signal); align-self: center; }
-.panelHead {
-  margin: 8px 0 0; padding: 10px 14px 4px; border-top: 1px solid var(--line);
-  font: 500 11px var(--font-mono); color: var(--muted);
-  opacity: 0; transition: opacity 0.25s; transition-delay: calc(0.05s + var(--i) * 40ms);
-}
-.panelOpen .panelHead { opacity: 1; }
-.newTag { margin-left: auto; align-self: center; padding: 3px 9px; border-radius: 999px; background: var(--signal); color: var(--ink); font: 500 10.5px var(--font-mono); letter-spacing: 0; }
-.panel a[aria-current='true'] .newTag { background: var(--ink); color: var(--signal); }
-
 /* Desktop: the Launch Kit button beside Start a project. */
 .kit {
   flex: none; margin-left: 10px;
@@ -197,50 +156,12 @@
 .kit .newDot { margin: 0; }
 @media (max-width: 899px) { .kit { display: none; } }
 
-/* Pages away from home: the page pill opens the same menu as a dropdown. It sits on the right with
-   the buttons, as the home page's pill does, and the dropdown opens from its right edge. */
+/* Pages away from home: the page pill opens the site menu. It sits on the right with the buttons,
+   as the home page's pill does. */
 .menuWrap { position: relative; margin-left: auto; }
 .pageMenuBtn { cursor: pointer; gap: 10px; color: inherit; font: inherit; }
 .pageMenuBtn .caret { width: 28px; height: 28px; }
 .pageMenuBtn .caret i { left: 8px; }
-.dropdown {
-  position: absolute; top: 50px; right: 0; z-index: 49; width: min(300px, calc(100vw - 28px));
-  border-radius: 18px; border: 1px solid var(--pill-line);
-  background: color-mix(in srgb, var(--ink) 96%, transparent);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  padding: 8px; display: grid; gap: 2px;
-  opacity: 0; transform: translateY(-6px); pointer-events: none;
-  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.dropdown.panelOpen { opacity: 1; transform: none; pointer-events: auto; }
-.dropdown a { display: flex; align-items: baseline; gap: 12px; padding: 9px 12px; border-radius: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 17px; letter-spacing: -0.03em; }
-.dropdown a:hover, .dropdown a:focus-visible { background: color-mix(in srgb, var(--text) 8%, transparent); }
-.dropdown a[aria-current='true'] { background: var(--signal); color: var(--ink); }
-.dropdown a small { font: 500 11px var(--font-mono); color: var(--muted); min-width: 18px; }
-.dropdown .panelHead { opacity: 1; margin-top: 4px; }
-.dropdown .panelHead:first-child { margin-top: 0; border-top: 0; padding-top: 4px; }
-@media (max-width: 640px) {
-  .dropdown { position: fixed; left: 14px; right: 14px; top: 66px; width: auto; }
-  .dropdown a { font-size: 22px; padding: 12px 14px; }
-}
-
-/* With the studio group the panel runs long: it scrolls on short phones, links sit a little
-   tighter, and from 641 px it opens as a dropdown at the right. */
-.panel, .dropdown { max-height: calc(100svh - 80px); overflow-y: auto; overscroll-behavior: contain; background: var(--ink); }
-.panel a { padding: 10px 14px; font-size: 20px; }
-@media (min-width: 641px) {
-  .panel { left: auto; right: 20px; width: 320px; }
-  .panel a { font-size: 17px; padding: 9px 12px; }
-}
-
-/* Phones: the menus run in two columns, so every item shows at once; headings and the call span both. */
-@media (max-width: 640px) {
-  .panel, .dropdown { grid-template-columns: 1fr 1fr; column-gap: 4px; }
-  .panel .panelHead, .panel .panelFoot, .dropdown .panelHead { grid-column: 1 / -1; }
-  .panel a, .dropdown a { font-size: 17px; padding: 10px 12px; }
-  .panel a small, .dropdown a small { min-width: 16px; }
-}
-
 /* Phones: the bar spreads evenly (wordmark, pill centred, button at the edge) and the menu arrow is
    big enough to read as a control. */
 @media (max-width: 640px) {

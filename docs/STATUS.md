@@ -59,12 +59,11 @@ releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 - **Sentence form**: the Contact enquiry, one sentence with blanks (`src/scenes/contact/`).
 - **Motion modes**: `full`, `lite` and `static` from `useMotionPreference()`.
 - **Path pill**: the nav (`src/components/nav/path-pill.tsx`). A click opens the **full-screen
-  menu** at 900 px and wider, and a tap opens the **section panel** below that. Nothing opens on
+  menu** at 900 px and wider, and a tap opens the **phone menu** below that. Nothing opens on
   hover (the dock row was removed on 2026-10-23).
 
 ## Waiting on Rigan
 
-- **Full-screen mobile menu:** OK on the concept in the workspace's `.superpowers/brainstorm/mobile-fullscreen-menu.html` (circle wipe from the pill, big home sections, studio pages as tiles, a bottom dock with Start a project and a second close). Built once approved.
 - **Tokri credit:** Arka's firm or app name. /work/tokri says "for a team in North Bengal" until then (the concept page says "for Arkaprabha").
 
 Content (placeholders are in the design until these arrive):
@@ -333,6 +332,18 @@ Content (placeholders are in the design until these arrive):
     - Dropped 2026-10-23 (Rigan): tool 5, the llms.txt generator. Writing a site's llms.txt is
       part of the work clients pay us for; a free generator would hand it out. It stays in
       `docs/tools-plan.md` as history, struck through.
+  - [x] Full-screen phone menu (Rigan approved the concept 24 Nov): under 900 px the nav pill and the
+    page pill open `src/components/nav/mobile-menu.tsx`, a modal dialog, in place of the old section
+    panel and dropdown. A circle wipes open from the pill's measured position; the home sections rise
+    word by word in two columns, anchored low in thumb reach (on the home page the one in view is lime
+    with a slash); the studio pages sit below as tiles ("all work" for /work, so it does not clash
+    with the home section); Start a project and a second close sit in a bottom dock, with "or book a
+    30-min call" under it (dropped on short phones). Landscape phones get four columns and one row of
+    tiles; tablets hold it to 560 px in the middle. Focus stays inside, Escape, either close or the
+    back gesture closes it, and focus returns to the pill. Opening pushes a history entry so back
+    closes the menu; following a link replaces that entry, so history holds no stray copy of the page.
+    Checked at 375 x 812, 360 x 640, 740 x 360 and 768 x 1024: nothing overflows, every target is 44 px
+    or more.
   - [x] Full-screen desktop menu (2026-10-22, Rigan): from 900 px up, the nav pill (home) and the page
     pill (inner pages) open a full-screen menu (`src/components/nav/full-menu.tsx`, a modal dialog):
     a circle wipes open from the pill, the sections rise in big type one by one, hovering one dims the

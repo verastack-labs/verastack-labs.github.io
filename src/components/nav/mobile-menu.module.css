@@ -1,0 +1,212 @@
+/* The phone and tablet menu (mobile-menu.tsx), under 900 px. Ink stage, lime accents, big Bricolage
+   type, the action and the close in the thumb zone at the bottom. */
+.menu {
+  --ox: calc(100% - 90px);
+  --oy: 36px;
+  --wipe: cubic-bezier(0.77, 0, 0.18, 1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  border: 0;
+  background: var(--ink);
+  color: var(--text);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  clip-path: circle(0 at var(--ox) var(--oy));
+  transition: clip-path 0.6s var(--wipe);
+}
+.menu[open] { display: flex; clip-path: circle(150% at var(--ox) var(--oy)); }
+@starting-style { .menu[open] { clip-path: circle(0 at var(--ox) var(--oy)); } }
+.menu[data-closing] { clip-path: circle(0 at var(--ox) var(--oy)); transition-duration: 0.4s; }
+.menu::backdrop { background: transparent; }
+
+.menu :is(a, button):focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+/* ---------- Top: where you are, and a close ---------- */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 14px 0 18px; }
+.label { margin: 0; font: 500 12px var(--font-mono); color: var(--muted); }
+.label em { font-style: normal; color: var(--signal); }
+
+.xs, .xl {
+  position: relative;
+  flex: none;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s var(--ease), border-color 0.2s;
+}
+.xs { width: 44px; height: 44px; border: 1px solid var(--line); background: none; }
+.xl { width: 54px; height: 54px; border: 1px solid var(--line); background: var(--surface); }
+.xs::before, .xs::after, .xl::before, .xl::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  margin: -1px 0 0 -7px;
+  border-radius: 2px;
+  background: var(--text);
+  transform: rotate(45deg);
+}
+.xs::after, .xl::after { transform: rotate(-45deg); }
+.xs:active, .xl:active { transform: scale(0.9); }
+
+/* ---------- Home sections: anchored low, in thumb reach; spare height goes to the top ---------- */
+/* "safe" keeps a list that is too tall scrollable instead of pushing it off the top. */
+.body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe flex-end;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0 18px 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+.body[data-scroll] { mask-image: linear-gradient(to bottom, transparent, #000 28px, #000 calc(100% - 28px), transparent); }
+
+.head { display: flex; align-items: center; gap: 10px; margin: 14px 0 4px; font: 500 12px var(--font-mono); color: var(--muted); }
+.head::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--line), transparent); }
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
+  column-gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sections a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: max(44px, 6.2svh);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: clamp(20px, min(4.4svh, 7.6vw), 34px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  -webkit-tap-highlight-color: transparent;
+}
+.sections small { flex: none; width: 20px; font: 500 12px var(--font-mono); letter-spacing: 0; color: var(--muted); }
+/* Each word rises out of its own line, as on the desktop menu. */
+.word { display: inline-block; overflow: hidden; padding: 0.08em 0.04em 0.1em 0; margin: -0.08em 0 -0.1em; }
+.word > span { display: inline-block; transform: translateY(110%); transition: transform 0.7s var(--ease); transition-delay: calc(0.2s + var(--i) * 45ms); }
+.menu[open]:not([data-closing]) .word > span { transform: none; }
+@starting-style { .menu[open] .word > span { transform: translateY(110%); } }
+/* The section in view on the home page: lime, with the desktop menu's slash in place of its number. */
+.sections a[aria-current] { color: var(--signal); }
+.sections a[aria-current] small { color: transparent; }
+.sections a[aria-current] small::before {
+  content: '/';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-54%);
+  color: var(--signal);
+  font: 800 26px/1 var(--font-display);
+}
+
+/* ---------- Studio pages, pinned under the sections ---------- */
+.pinned { padding: 0 18px 4px; }
+.studio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 6px 0 0; padding: 0; list-style: none; }
+.studio a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  min-height: 48px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s, transform 0.5s var(--ease), border-color 0.2s, background 0.2s;
+  transition-delay: calc(0.42s + var(--i) * 35ms);
+}
+.studio a:active { background: var(--surface); }
+.menu[open]:not([data-closing]) .studio a { opacity: 1; transform: none; }
+@starting-style { .menu[open] .studio a { opacity: 0; transform: translateY(10px); } }
+/* You are here: a lime edge and lime text. Solid lime is kept for the one action, Start a project. */
+.studio a[aria-current] { border-color: var(--signal); color: var(--signal); background: color-mix(in srgb, var(--signal) 7%, transparent); }
+.new { flex: none; padding: 3px 7px; border-radius: 999px; background: color-mix(in srgb, var(--signal) 16%, transparent); color: var(--signal); font: 600 11px var(--font-mono); letter-spacing: 0; }
+
+/* Closing drops the delays, so nothing lags behind the wipe. */
+.menu[data-closing] :is(.studio a, .word > span) { transition-delay: 0s; transition-duration: 0.2s; }
+
+/* ---------- Thumb zone: the action and the close ---------- */
+.dock { display: flex; align-items: center; gap: 10px; padding: 12px 14px 16px; }
+.start {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  border-radius: 999px;
+  background: var(--signal);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.8);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s var(--ease);
+}
+.start:active { transform: scale(0.98); }
+.book { margin: -10px 0 0; padding: 0 18px 4px; text-align: center; font: 500 12px var(--font-mono); color: var(--muted); }
+.book a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; color: var(--text); text-underline-offset: 3px; text-decoration-color: var(--line); }
+
+/* Tablets: the same layout, held to a comfortable width in the middle. */
+@media (min-width: 600px) {
+  .top, .body, .pinned, .dock, .book { width: 100%; max-width: 560px; margin-inline: auto; }
+  .book { margin-top: -10px; }
+}
+/* Short phones: the call line gives its room to the sections. */
+@media (max-height: 640px) { .book { display: none; } }
+/* Landscape phones: sections in four columns, studio pages in one row of six, a slimmer dock. */
+@media (max-height: 420px) and (orientation: landscape) {
+  .top, .body, .pinned, .dock { max-width: none; }
+  .sections { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); }
+  .sections a { min-height: 44px; font-size: clamp(18px, 3.6vw, 26px); }
+  .studio { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .studio a { min-height: 44px; padding: 4px 10px; font-size: 14.5px; }
+  .studio .new { width: 7px; height: 7px; padding: 0; font-size: 0; }
+  .top { padding-top: 8px; }
+  .head { margin-top: 8px; }
+  .dock { padding: 8px 14px 10px; }
+  .start, .xl { height: 46px; }
+  .xl { width: 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu, .menu[data-closing] { clip-path: none; transition: opacity 0.2s; }
+  .menu[data-closing] { opacity: 0; }
+  .word > span, .studio a { transform: none !important; transition: none !important; opacity: 1 !important; }
+}
+:global(html[data-motion='static']) .menu { clip-path: none; transition: none; }
+:global(html[data-motion='static']) .word > span,
+:global(html[data-motion='static']) .studio a { transform: none; transition: none; opacity: 1; }
