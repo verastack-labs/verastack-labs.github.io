@@ -344,6 +344,10 @@ Content (placeholders are in the design until these arrive):
     tiles; tablets hold it to 560 px in the middle. Focus stays inside, Escape, either close or the
     back gesture closes it, and focus returns to the pill. Opening pushes a history entry so back
     closes the menu; following a link replaces that entry, so history holds no stray copy of the page.
+    Smoother close (26 Nov): the wipe's radius is measured to the farthest corner (`wipe.ts`) instead
+    of 150%, which spent the first ~150 ms of the 400 ms close shrinking off screen, and the close
+    curve now moves from the first frame. The history entry is dropped after the wipe ends, so Next's
+    re-render no longer lands mid-animation.
     Checked at 375 x 812, 360 x 640, 740 x 360 and 768 x 1024: nothing overflows, every target is 44 px
     or more.
   - [x] Full-screen desktop menu (2026-10-22, Rigan): from 900 px up, the nav pill (home) and the page
