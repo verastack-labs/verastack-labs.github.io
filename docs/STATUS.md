@@ -25,6 +25,8 @@ Piece pages move with the reader (since 2026-10-31, `src/app/work/piece-motion.t
 
 /work/kulra (since 2026-11-12): the second own concept from the fortnightly task, a product page for Kulra, a made-up Indian D2C stoneware brand, whose cup is a WebGL 3D experience (thrown, fired and glazed as the page scrolls, then turned by hand). The running page is at https://concepts.verastack.dev/kulra/; its source and rebuild notes are in the concepts repo under `_sources/kulra/`. The piece wears Kulra's own pair (Hanken Grotesk with Gloock headings, `font: 'hanken'`) and a potter's wheel motif (`wheel` in `piece-motif.tsx`).
 
+/work/ebbline (since 2026-11-26): the third own concept from the fortnightly task, a launch page for Ebbline, a made-up European cash-flow forecasting app, whose hero is a working demo: four what-ifs redraw ninety days of sample cash. Its experiment is the browser's own motion tools: native CSS scroll timelines for the explainer and same-document View Transitions for the demo readout. The running page is at https://concepts.verastack.dev/ebbline/ (source in the concepts repo under `ebbline/`). The piece wears Ebbline's sand and sea-ink with Familjen Grotesk and Azeret Mono (`font: 'familjen'`, `mono: 'azeret'`) and a tide-line motif (`tide` in `piece-motif.tsx`).
+
 Product version strings in `src/data/products.ts` are kept by hand: bump them when a product
 releases (rigseed set to v0.1.7 on 2026-10-16, it had drifted at v0.1.3).
 
