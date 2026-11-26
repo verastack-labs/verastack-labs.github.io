@@ -3,6 +3,8 @@
 .menu {
   --ox: calc(100% - 90px);
   --oy: 36px;
+  /* Set from script to the distance to the farthest corner, so every frame of the wipe is visible. */
+  --r: 150vmax;
   --wipe: cubic-bezier(0.77, 0, 0.18, 1);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   position: fixed;
@@ -23,9 +25,10 @@
   clip-path: circle(0 at var(--ox) var(--oy));
   transition: clip-path 0.6s var(--wipe);
 }
-.menu[open] { display: flex; clip-path: circle(150% at var(--ox) var(--oy)); }
+.menu[open] { display: flex; clip-path: circle(var(--r) at var(--ox) var(--oy)); }
 @starting-style { .menu[open] { clip-path: circle(0 at var(--ox) var(--oy)); } }
-.menu[data-closing] { clip-path: circle(0 at var(--ox) var(--oy)); transition-duration: 0.4s; }
+/* Closing moves from the first frame and settles softly into the menu button. */
+.menu[data-closing] { clip-path: circle(0 at var(--ox) var(--oy)); transition: clip-path 0.4s cubic-bezier(0.32, 0, 0.18, 1); }
 .menu::backdrop { background: transparent; }
 
 .menu :is(a, button):focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }

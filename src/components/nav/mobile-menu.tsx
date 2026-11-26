@@ -7,6 +7,7 @@ import { sections } from '@/data/sections'
 import { booking } from '@/data/site'
 import { studioLinks } from '@/data/studio-links'
 import { lenisRef } from '@/lib/motion/smooth-scroll'
+import { coverRadius } from '@/components/nav/wipe'
 import styles from '@/components/nav/mobile-menu.module.css'
 
 // Matches the closing wipe in mobile-menu.module.css.
@@ -36,6 +37,8 @@ export function MobileMenu({ open, onClose, from, on, current, onHome }: Props) 
   const closeTimer = useRef(0)
   // Whether the history entry pushed on open (so the back gesture closes the menu) is still on top.
   const pushed = useRef(false)
+  // Set when a close still has to drop that entry once the wipe ends: the page it was pushed on.
+  const popAfterClose = useRef<string | null>(null)
   const onCloseRef = useRef(onClose)
   useEffect(() => {
     onCloseRef.current = onClose
@@ -46,20 +49,30 @@ export function MobileMenu({ open, onClose, from, on, current, onHome }: Props) 
     if (!d) return
     window.clearTimeout(closeTimer.current)
     if (open) {
-      const b = from.current?.getBoundingClientRect()
-      if (b) {
-        d.style.setProperty('--ox', `${b.left + b.width / 2}px`)
-        d.style.setProperty('--oy', `${b.top + b.height / 2}px`)
+      // The wipe's centre is the menu button, and its radius just reaches the farthest corner.
+      const place = () => {
+        const b = from.current?.getBoundingClientRect()
+        const x = b ? b.left + b.width / 2 : innerWidth - 90
+        const y = b ? b.top + b.height / 2 : 36
+        d.style.setProperty('--ox', `${x}px`)
+        d.style.setProperty('--oy', `${y}px`)
+        d.style.setProperty('--r', `${coverRadius(x, y, innerWidth, innerHeight)}px`)
       }
+      place()
       d.removeAttribute('data-closing')
       if (!d.open) d.showModal()
       lenisRef.current?.stop()
       document.documentElement.style.overflow = 'hidden'
-      if (!pushed.current) {
+      if (popAfterClose.current) {
+        // Reopened before the last close finished: its entry is still on top, so keep using it.
+        popAfterClose.current = null
+        pushed.current = true
+      } else if (!pushed.current) {
         history.pushState(history.state, '', location.href)
         pushed.current = true
       }
-      return
+      addEventListener('resize', place)
+      return () => removeEventListener('resize', place)
     }
     lenisRef.current?.start()
     document.documentElement.style.overflow = ''
@@ -68,12 +81,19 @@ export function MobileMenu({ open, onClose, from, on, current, onHome }: Props) 
     closeTimer.current = window.setTimeout(() => {
       d.removeAttribute('data-closing')
       d.close()
+      // Dropping the pushed entry makes Next re-render the page, so it waits until the wipe is done.
+      // If the visitor already went somewhere else, the entry stays rather than sending them back.
+      const href = popAfterClose.current
+      popAfterClose.current = null
+      if (href && href === location.href) history.back()
     }, CLOSE_MS)
   }, [open, from])
 
   // The back gesture pops the entry pushed on open, which closes the menu.
   useEffect(() => {
     const onPop = () => {
+      // A back press during the closing wipe already dropped the entry; don't go back twice.
+      popAfterClose.current = null
       if (!pushed.current) return
       pushed.current = false
       onCloseRef.current()
@@ -107,7 +127,7 @@ export function MobileMenu({ open, onClose, from, on, current, onHome }: Props) 
   const dismiss = () => {
     if (pushed.current) {
       pushed.current = false
-      history.back()
+      popAfterClose.current = location.href
     }
     onClose()
   }
