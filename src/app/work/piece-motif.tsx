@@ -226,7 +226,32 @@ function Wheel() {
   )
 }
 
-const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback, basket: Basket, envelope: Envelope, wheel: Wheel }
+// A cash forecast as a tide line: paid invoices lift it, bills pull it down, and once it dips under
+// the dashed floor the low point is ringed.
+function Tide() {
+  const steps: [number, number][] = [[10, 92], [52, 92], [52, 70], [96, 70], [96, 150], [122, 150], [122, 168], [150, 168], [150, 108], [196, 108], [196, 82], [222, 82], [222, 160], [262, 160], [262, 120], [310, 120]]
+  const d = steps.map(([x, y], i) => `${i ? 'L' : 'M'} ${x} ${y}`).join(' ')
+  return (
+    <svg viewBox="0 0 320 240">
+      {[60, 110].map((y) => (
+        <line key={y} x1="10" y1={y} x2="310" y2={y} style={s({ stroke: faint })} />
+      ))}
+      <rect x="10" y="146" width="300" height="54" style={s({ fill: faint })} />
+      <path d={`${d} L 310 200 L 10 200 Z`} style={s({ fill: accent, opacity: 0.14 })} />
+      <path d={d} style={s({ fill: 'none', stroke: accent, strokeWidth: 2.5, strokeLinejoin: 'round' })} />
+      <line x1="10" y1="146" x2="310" y2="146" style={s({ stroke: line, strokeWidth: 1.5, strokeDasharray: '6 5' })} />
+      <circle className={styles.fill} cx="136" cy="168" r="7" style={s({ fill: 'var(--p-bg)', stroke: accent, strokeWidth: 3 })} />
+      {[52, 150, 196, 262].map((x) => (
+        <circle key={x} cx={x} cy="222" r="4" style={s({ fill: accent })} />
+      ))}
+      {[96, 122, 222].map((x) => (
+        <circle key={x} cx={x} cy="222" r="4" style={s({ fill: line })} />
+      ))}
+    </svg>
+  )
+}
+
+const drawings: Record<PieceMotif, () => JSX.Element> = { typing: Typing, slots: Slots, notice: Notice, survey: Survey, commits: Commits, speed: Speed, tapback: Tapback, basket: Basket, envelope: Envelope, wheel: Wheel, tide: Tide }
 
 export function PieceMotifArt({ motif }: { motif: PieceMotif }) {
   const Drawing = drawings[motif]

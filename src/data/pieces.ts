@@ -16,7 +16,7 @@ export type PieceMono = 'house' | 'azeret' | 'jetbrains' | 'geist-mono'
 // hairlines), brutal (ink border and a hard offset shadow).
 export type PieceShape = 'soft' | 'card' | 'sheet' | 'brutal'
 // The drawing in the hero, taken from the piece's own world (piece-motif.tsx).
-export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback' | 'basket' | 'envelope' | 'wheel'
+export type PieceMotif = 'typing' | 'slots' | 'notice' | 'survey' | 'commits' | 'speed' | 'tapback' | 'basket' | 'envelope' | 'wheel' | 'tide'
 
 export type PieceTheme = {
   bg: string
@@ -201,6 +201,58 @@ const ILLUSTRATIVE = 'Illustrative data, not a real college.'
 const MEHFIL_NOTE = 'In development, not launched. Real app screens with invented sample data.'
 
 const unsorted: Piece[] = [
+  {
+    slug: 'ebbline',
+    kind: 'concept',
+    title: 'Ebbline, a quarter you can play with (concept)',
+    line: 'A launch page for a made-up cash-flow app where the hero is the product: flip a what-if and ninety days of cash redraw in front of you.',
+    disciplines: ['design', 'development'],
+    date: '2026-11',
+    cover: '/work/ebbline/cover.webp',
+    peek: '/work/ebbline/wet.webp',
+    credit: 'Concept by VeraStack Labs',
+    external: { label: 'Try the concept', url: 'https://concepts.verastack.dev/ebbline/' },
+    page: true,
+    theme: { bg: '#ECE7DC', fg: '#1C2A2C', muted: '#55625F', accent: '#1F6B66', onAccent: '#F4F0E6', font: 'familjen', mono: 'azeret', shape: 'card', motif: 'tide' },
+    brief: 'Most money apps open with a promise and a screenshot. A forecasting tool can do better, because its whole job fits in one picture. So the first screen of this page is the app itself, running on a sample studio, and the reader learns what it does by pressing what-ifs.',
+    facts: [
+      { label: 'For', value: 'A made-up European fintech brand' },
+      { label: 'Built with', value: 'Plain HTML, CSS and a little JavaScript' },
+      { label: 'Animation', value: 'Native CSS scroll timelines and View Transitions' },
+      { label: 'Status', value: 'Concept' },
+    ],
+    sections: {
+      design: {
+        idea: 'Cash flow is drawn as a tide: invoices lift the line, payroll and VAT pull it down, and a dashed floor marks the cash a studio never wants to go under. ==The hero is a working demo.== Four switches, like a client paying a month late or a new hire in February, redraw the quarter, and the numbers turn coral the moment the line goes under the floor. Sand paper, sea-ink type and one teal keep it calm until something is wrong.',
+        shots: [
+          shot('ebbline', 'page.webp', 'The Ebbline page opening on a working app window with a calm ninety-day cash line above a dashed floor'),
+          shot('ebbline', 'wet.webp', 'Two what-ifs switched on: a client paying late and a new hire push the line under the floor, and the numbers turn coral'),
+          shot('ebbline', 'explain-dots.webp', 'A dark section where the quarter starts as dots: money in along the top, money out along the bottom'),
+          shot('ebbline', 'explain-line.webp', 'Scrolling on, the dots join into the tide line'),
+          shot('ebbline', 'explain-floor.webp', 'Then the floor appears, with a note on the day the line goes under it'),
+        ],
+      },
+      development: {
+        idea: 'Our first concept built on the browser’s own motion tools. ==The explainer runs on CSS scroll timelines with no animation library==: each step names its own timeline, and the pinned chart reads all three, so the dots, the line and the floor arrive as their step scrolls past. In the demo, a View Transition lifts the low-point marker and the two numbers out of the page and glides them to their new places, while the line itself morphs through a CSS transition on its path.',
+        strip: true,
+        shots: [
+          shot('ebbline', 'mobile.webp', 'The page on a phone, with the app window under the headline and the what-ifs stacked'),
+          shot('ebbline', 'mobile-explain.webp', 'On a phone, the chart stays pinned at the top while the steps scroll beneath it'),
+        ],
+      },
+    },
+    details: [
+      'Only the marker and the two numbers take part in the View Transition, so the rest of the page stays live and clickable while they move.',
+      'Browsers without scroll timelines show every layer of the explainer at once, so nothing is hidden behind motion.',
+      'With reduced motion on, the what-ifs redraw instantly and the explainer shows its finished chart.',
+      'A link can open the demo with what-ifs already on, so one scenario can be shared on its own.',
+    ],
+    concept: {
+      for: 'a made-up European fintech brand',
+      visibility: 'own',
+      takes: 'Your own product running in the first screen of your launch page, on sample data that tells its story, with motion built on the browser itself.',
+    },
+  },
   {
     slug: 'kulra',
     kind: 'concept',
